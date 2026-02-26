@@ -1,91 +1,175 @@
-/* components/Header.module.css */
-
 .header {
-	background-color: #0055A4;
-	color: white;
-	position: sticky;
-	top: 0;
-	z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #d7e3ef;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+}
+
+.notice {
+  background: linear-gradient(90deg, #0b3c6f, #0f5da0);
+  color: #e7f3ff;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.32rem 1rem;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.topBar {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.desktopNav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.desktopNav li a {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.62rem;
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 0.94rem;
+  font-weight: 600;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.desktopNav li a:hover {
+  background: #eff6ff;
+  color: #0f5da0;
+}
+
+.activeLink {
+  background: #e0efff;
+  color: #0b4d84 !important;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border-radius: 0.72rem;
+  background: #0f5da0;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.86rem;
+  padding: 0 0.9rem;
+  transition: background-color 0.18s ease;
+}
+
+.ctaButton:hover {
+  background: #0b4d84;
+}
+
+.mobileMenuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 0.72rem;
+  border: 1px solid #d7e3ef;
+  background: #ffffff;
+  color: #0f5da0;
+  cursor: pointer;
+}
+
+.mobileNav {
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 0.8rem 1rem 1rem;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+}
+
+.mobileNav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.mobileNav li a {
+  display: block;
+  border-radius: 0.65rem;
+  padding: 0.65rem 0.72rem;
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.mobileNav li a:hover,
+.activeMobileLink {
+  background: #eff6ff;
+  color: #0f5da0 !important;
+}
+
+.mobileCta {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.75rem;
+  min-height: 44px;
+  border-radius: 0.7rem;
+  background: #0f5da0;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 960px) {
+  .desktopNav,
+  .ctaButton {
+    display: none;
   }
-  
-  .topBar {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 1rem 2rem;
-  }
-  
-  .logo {
-	display: flex;
-	align-items: center;
-  }
-  
-  .desktopNav ul {
-	display: flex;
-	gap: 1.5rem;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-  }
-  
-  .desktopNav li a {
-	color: white;
-	text-decoration: none;
-	font-weight: 500;
-  }
-  
-  .actions {
-	display: flex;
-	gap: 1rem;
-	align-items: center;
-  }
-  
-  /* Botón de búsqueda */
-  .searchButton {
-	background: none;
-	border: none;
-	cursor: pointer;
-	color: white;
-  }
-  
-  /* Botón para menú móvil (visible en dispositivos pequeños) */
+
   .mobileMenuButton {
-	background: none;
-	border: none;
-	cursor: pointer;
-	color: white;
-	display: none; /* Oculto en desktop */
+    display: inline-flex;
   }
-  
-  /* Menú móvil */
-  .mobileNav {
-	background-color: #0055A4;
-	padding: 1rem 2rem;
+}
+
+@media (max-width: 540px) {
+  .notice {
+    font-size: 0.66rem;
+    padding: 0.3rem 0.7rem;
   }
-  
-  .mobileNav ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+
+  .topBar {
+    min-height: 64px;
   }
-  
-  .mobileNav li a {
-	color: white;
-	text-decoration: none;
-	font-size: 1.2rem;
-  }
-  
-  /* Responsive: Mostrar el botón de menú móvil y ocultar el nav de escritorio */
-  @media (max-width: 768px) {
-	.desktopNav {
-	  display: none;
-	}
-	.mobileMenuButton {
-	  display: block;
-	}
-  }
-  
-  
+}

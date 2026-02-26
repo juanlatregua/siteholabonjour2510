@@ -1,8 +1,134 @@
-/* components/Footer.module.css */
 .footer {
-	background-color: #EF4135;
-	color: white;
-	padding: 1rem;
-	text-align: center;
+  margin-top: 3rem;
+  background: linear-gradient(120deg, #0b3c6f, #0e4f8d);
+  color: #e8f2ff;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1rem 1.2rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.brand {
+  margin: 0;
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 0.83rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #cde5ff;
+}
+
+.text {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.trustList {
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.trustList li {
+  font-size: 0.75rem;
+  color: #e5f1ff;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  padding: 0.26rem 0.58rem;
+}
+
+.linkList {
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.linkList a {
+  color: #f2f8ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.linkList a:hover {
+  text-decoration: underline;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+
+.social a {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.legalLinks {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+}
+
+.legalLinks a {
+  color: #d5e9ff;
+  font-size: 0.84rem;
+  text-decoration: none;
+}
+
+.legalLinks a:hover {
+  text-decoration: underline;
+}
+
+.bottom {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+  color: #d7e9ff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.bottom p {
+  margin: 0;
+}
+
+@media (min-width: 860px) {
+  .grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
   }
-  
+
+  .bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
