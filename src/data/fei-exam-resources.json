@@ -1,0 +1,1010 @@
+{
+  "generatedAt": "2026-02-26T07:25:54.466Z",
+  "source": "France Education international",
+  "sourceOrigin": "https://www.france-education-international.fr",
+  "legalNotice": "Los enlaces apuntan a recursos oficiales FEI. No reproducir ni redistribuir sujetos oficiales fuera de las condiciones de uso de FEI.",
+  "levels": [
+    {
+      "level": "A1",
+      "exam": "DELF",
+      "sourcePage": "https://www.france-education-international.fr/diplome/delf-tout-public/niveau-a1/exemples-sujets?langue=fr",
+      "counts": {
+        "total": 23,
+        "documents": 12,
+        "audios": 11
+      },
+      "resources": [
+        {
+          "label": "Audio: 1312",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1312",
+          "slug": "1312",
+          "contentType": "audio/mpeg",
+          "fileName": "TP_demo2_A1_exo1.mp3"
+        },
+        {
+          "label": "Audio: 1313",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1313",
+          "slug": "1313",
+          "contentType": "audio/mpeg",
+          "fileName": "TP_demo2_A1_exo2.mp3"
+        },
+        {
+          "label": "Audio: 1314",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1314",
+          "slug": "1314",
+          "contentType": "audio/mpeg",
+          "fileName": "TP_demo2_A1_exo3.mp3"
+        },
+        {
+          "label": "Audio: 1315",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1315",
+          "slug": "1315",
+          "contentType": "audio/mpeg",
+          "fileName": "TP_demo2_A1_exo4.mp3"
+        },
+        {
+          "label": "Audio: 1316",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1316",
+          "slug": "1316",
+          "contentType": "audio/mpeg",
+          "fileName": "TP_demo2_A1_exo5.mp3"
+        },
+        {
+          "label": "Audio: 1317",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1317",
+          "slug": "1317",
+          "contentType": "audio/mpeg",
+          "fileName": "TP_demo2_A1_integral_2021.mp3"
+        },
+        {
+          "label": "Audio: 917",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/917",
+          "slug": "917",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-dalf-a1-tp-demo-exercice-1.mp3"
+        },
+        {
+          "label": "Audio: 918",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/918",
+          "slug": "918",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-dalf-a1-tp-demo-exercice-2.mp3"
+        },
+        {
+          "label": "Audio: 919",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/919",
+          "slug": "919",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-dalf-a1-tp-demo-exercice-3.mp3"
+        },
+        {
+          "label": "Audio: 923",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/923",
+          "slug": "923",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-dalf-a1-tp-demo-exercice-4.mp3"
+        },
+        {
+          "label": "Audio: 924",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/924",
+          "slug": "924",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-dalf-a1-tp-demo-complet.mp3"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-candidat-coll-sujet-demo",
+          "slug": "delf-dalf-a1-tp-candidat-coll-sujet-demo",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (production orale)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-candidat-ind-sujet-demo",
+          "slug": "delf-dalf-a1-tp-candidat-ind-sujet-demo",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-correcteur-sujet-demo",
+          "slug": "delf-dalf-a1-tp-correcteur-sujet-demo",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document examinateur (production orale)",
+          "type": "document",
+          "role": "examinador",
+          "url": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-examinateur-sujet-demo0",
+          "slug": "delf-dalf-a1-tp-examinateur-sujet-demo0",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/delf-dalf-a1-tp-surveillant-sujet-demo",
+          "slug": "delf-dalf-a1-tp-surveillant-sujet-demo",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delfa1toutpubliccandidatexemple2",
+          "slug": "delfa1toutpubliccandidatexemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/delfa1toutpubliccorrecteurexemple2",
+          "slug": "delfa1toutpubliccorrecteurexemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/delfa1toutpublicsurveillantexemple2",
+          "slug": "delfa1toutpublicsurveillantexemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DELF A1 pour la production écrite",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-pe-a1",
+          "slug": "descript-perf-pe-a1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DELF A1 pour la production orale",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-po-a1",
+          "slug": "descript-perf-po-a1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production écrite du DELF A1",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-pe-a1",
+          "slug": "grille-pe-a1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production orale du DELF A1",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-po-a1",
+          "slug": "grille-po-a1",
+          "contentType": "application/pdf"
+        }
+      ]
+    },
+    {
+      "level": "A2",
+      "exam": "DELF",
+      "sourcePage": "https://www.france-education-international.fr/diplome/delf-tout-public/niveau-a2/exemples-sujets?langue=fr",
+      "counts": {
+        "total": 22,
+        "documents": 12,
+        "audios": 10
+      },
+      "resources": [
+        {
+          "label": "Audio: 1120",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1120",
+          "slug": "1120",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple1-exercice1.mp3"
+        },
+        {
+          "label": "Audio: 1121",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1121",
+          "slug": "1121",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple1-exercice2.mp3"
+        },
+        {
+          "label": "Audio: 1122",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1122",
+          "slug": "1122",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple1-exercice3.mp3"
+        },
+        {
+          "label": "Audio: 1128",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1128",
+          "slug": "1128",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple1-exercice4.mp3"
+        },
+        {
+          "label": "Audio: 1136",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1136",
+          "slug": "1136",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple2-exercice1.mp3"
+        },
+        {
+          "label": "Audio: 1137",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1137",
+          "slug": "1137",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple2-exercice2.mp3"
+        },
+        {
+          "label": "Audio: 1138",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1138",
+          "slug": "1138",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple2-exercice3.mp3"
+        },
+        {
+          "label": "Audio: 1139",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1139",
+          "slug": "1139",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple2-exercice4.mp3"
+        },
+        {
+          "label": "Audio: 1140",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1140",
+          "slug": "1140",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-a2-tp-coll-exemple2-integral.mp3"
+        },
+        {
+          "label": "Audio: 1417",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1417",
+          "slug": "1417",
+          "contentType": "audio/mpeg",
+          "fileName": "DELFA2_TP_integral.mp3"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-a2-tp-candidat-coll-exemple10",
+          "slug": "delf-a2-tp-candidat-coll-exemple10",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-a2-tp-candidat-coll-exemple2",
+          "slug": "delf-a2-tp-candidat-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (production orale)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-a2-tp-candidat-ind",
+          "slug": "delf-a2-tp-candidat-ind",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/delf-a2-tp-correcteur-coll-exemple1",
+          "slug": "delf-a2-tp-correcteur-coll-exemple1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/delf-a2-tp-correcteur-coll-exemple2",
+          "slug": "delf-a2-tp-correcteur-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document examinateur (production orale)",
+          "type": "document",
+          "role": "examinador",
+          "url": "https://www.france-education-international.fr/document/delf-a2-tp-examinateur-ind",
+          "slug": "delf-a2-tp-examinateur-ind",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/delf-a2-tp-surveillant-coll-exemple1",
+          "slug": "delf-a2-tp-surveillant-coll-exemple1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/delf-a2-tp-surveillant-coll-exemple2",
+          "slug": "delf-a2-tp-surveillant-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DELF A2 pour la production écrite",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-pe-a2",
+          "slug": "descript-perf-pe-a2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DELF A2 pour la production orale",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-po-a2",
+          "slug": "descript-perf-po-a2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production écrite du DELF A2",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-pe-a2",
+          "slug": "grille-pe-a2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production orale du DELF A2",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-po-a2",
+          "slug": "grille-po-a2",
+          "contentType": "application/pdf"
+        }
+      ]
+    },
+    {
+      "level": "B1",
+      "exam": "DELF",
+      "sourcePage": "https://www.france-education-international.fr/diplome/delf-tout-public/niveau-b1/exemples-sujets?langue=fr",
+      "counts": {
+        "total": 20,
+        "documents": 12,
+        "audios": 8
+      },
+      "resources": [
+        {
+          "label": "Audio: 1161",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1161",
+          "slug": "1161",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b1-tp-coll-exemple1-exercice1.mp3"
+        },
+        {
+          "label": "Audio: 1162",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1162",
+          "slug": "1162",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b1-tp-coll-exemple1-exercice2.mp3"
+        },
+        {
+          "label": "Audio: 1163",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1163",
+          "slug": "1163",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b1-tp-coll-exemple1-exercice3.mp3"
+        },
+        {
+          "label": "Audio: 1164",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1164",
+          "slug": "1164",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b1-tp-coll-exemple1-integral.mp3"
+        },
+        {
+          "label": "Audio: 1168",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1168",
+          "slug": "1168",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b1-tp-coll-exemple2-exercice1.mp3"
+        },
+        {
+          "label": "Audio: 1169",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1169",
+          "slug": "1169",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b1-tp-coll-exemple2-exercice2.mp3"
+        },
+        {
+          "label": "Audio: 1170",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1170",
+          "slug": "1170",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b1-tp-coll-exemple2-exercice3.mp3"
+        },
+        {
+          "label": "Audio: 1171",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1171",
+          "slug": "1171",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b1-tp-coll-exemple2-integralite.mp3"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-b1-tp-candidat-coll-exemple1",
+          "slug": "delf-b1-tp-candidat-coll-exemple1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-b1-tp-candidat-coll-exemple2",
+          "slug": "delf-b1-tp-candidat-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (production orale)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-b1-tp-candidat-ind0",
+          "slug": "delf-b1-tp-candidat-ind0",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/delf-b1-tp-correcteur-coll-exemple1",
+          "slug": "delf-b1-tp-correcteur-coll-exemple1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/delf-b1-tp-correcteur-coll-exemple2",
+          "slug": "delf-b1-tp-correcteur-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document examinateur (production orale)",
+          "type": "document",
+          "role": "examinador",
+          "url": "https://www.france-education-international.fr/document/delf-b1-tp-examinateur-ind",
+          "slug": "delf-b1-tp-examinateur-ind",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/delf-b1-tp-surveillant-coll-exemple1",
+          "slug": "delf-b1-tp-surveillant-coll-exemple1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/delf-b1-tp-surveillant-coll-exemple2",
+          "slug": "delf-b1-tp-surveillant-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DELF B1 pour la production écrite",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-pe-b1",
+          "slug": "descript-perf-pe-b1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DELF B1 pour la production orale",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-po-b1",
+          "slug": "descript-perf-po-b1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production écrite du DELF B1",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-pe-b1",
+          "slug": "grille-pe-b1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production orale du DELF B1",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-po-b1",
+          "slug": "grille-po-b1",
+          "contentType": "application/pdf"
+        }
+      ]
+    },
+    {
+      "level": "B2",
+      "exam": "DELF",
+      "sourcePage": "https://www.france-education-international.fr/diplome/delf-tout-public/niveau-b2/exemples-sujets?langue=fr",
+      "counts": {
+        "total": 19,
+        "documents": 12,
+        "audios": 7
+      },
+      "resources": [
+        {
+          "label": "Audio: 1180",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1180",
+          "slug": "1180",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b2-tp-coll-exemple1-exercice1.mp3"
+        },
+        {
+          "label": "Audio: 1181",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1181",
+          "slug": "1181",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b2-tp-coll-exemple1-exercice2.mp3"
+        },
+        {
+          "label": "Audio: 1182",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1182",
+          "slug": "1182",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b2-tp-coll-exemple1-exercice3.mp3"
+        },
+        {
+          "label": "Audio: 1183",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1183",
+          "slug": "1183",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b2-tp-coll-exemple1-integral.mp3"
+        },
+        {
+          "label": "Audio: 1187",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1187",
+          "slug": "1187",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b2-tp-coll-exemple2-exercice1.mp3"
+        },
+        {
+          "label": "Audio: 1188",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1188",
+          "slug": "1188",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b2-tp-coll-exemple2-exercice2.mp3"
+        },
+        {
+          "label": "Audio: 1189",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/1189",
+          "slug": "1189",
+          "contentType": "audio/mpeg",
+          "fileName": "delf-b2-tp-coll-exemple2-integral.mp3"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-b2-tp-candidat-coll-exemple1",
+          "slug": "delf-b2-tp-candidat-coll-exemple1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-b2-tp-candidat-coll-exemple2",
+          "slug": "delf-b2-tp-candidat-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (production orale)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/delf-b2-tp-candidat-ind",
+          "slug": "delf-b2-tp-candidat-ind",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/delf-b2-tp-correcteur-coll-exemple1",
+          "slug": "delf-b2-tp-correcteur-coll-exemple1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/delf-b2-tp-correcteur-coll-exemple2",
+          "slug": "delf-b2-tp-correcteur-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document examinateur (production orale)",
+          "type": "document",
+          "role": "examinador",
+          "url": "https://www.france-education-international.fr/document/delf-b2-tp-examinateur-ind",
+          "slug": "delf-b2-tp-examinateur-ind",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/delf-b2-tp-surveillant-coll-exemple1",
+          "slug": "delf-b2-tp-surveillant-coll-exemple1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/delf-b2-tp-surveillant-coll-exemple2",
+          "slug": "delf-b2-tp-surveillant-coll-exemple2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DELF B2 pour la production écrite",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-pe-b2",
+          "slug": "descript-perf-pe-b2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DELF B2 pour la production orale",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-po-b2",
+          "slug": "descript-perf-po-b2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production écrite du DELF B2",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-pe-b2",
+          "slug": "grille-pe-b2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production orale du DELF B2",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-po-b2",
+          "slug": "grille-po-b2",
+          "contentType": "application/pdf"
+        }
+      ]
+    },
+    {
+      "level": "C1",
+      "exam": "DALF",
+      "sourcePage": "https://www.france-education-international.fr/diplome/dalf/exemples-sujets?langue=fr",
+      "counts": {
+        "total": 13,
+        "documents": 9,
+        "audios": 4
+      },
+      "resources": [
+        {
+          "label": "Audio: 867",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/867",
+          "slug": "867",
+          "contentType": "audio/mpeg",
+          "fileName": "DALF_C1_DEMO_exo1.mp3"
+        },
+        {
+          "label": "Audio: 868",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/868",
+          "slug": "868",
+          "contentType": "audio/mpeg",
+          "fileName": "DALF_C1_DEMO_exo2_a.mp3"
+        },
+        {
+          "label": "Audio: 869",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/869",
+          "slug": "869",
+          "contentType": "audio/mpeg",
+          "fileName": "DALF_C1_DEMO_exo2_b.mp3"
+        },
+        {
+          "label": "Audio: 870",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/870",
+          "slug": "870",
+          "contentType": "audio/mpeg",
+          "fileName": "dalf_c1_demo.mp3"
+        },
+        {
+          "label": "Document candidat (épreuves collectives)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/dalf-c1sujet-demo-candidat-coll",
+          "slug": "dalf-c1sujet-demo-candidat-coll",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (production orale)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/dalf-c1sujet-demo-candidat-indiv",
+          "slug": "dalf-c1sujet-demo-candidat-indiv",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document correcteur (épreuves collectives)",
+          "type": "document",
+          "role": "corrector",
+          "url": "https://www.france-education-international.fr/document/dalf-c1sujet-demo-correcteur",
+          "slug": "dalf-c1sujet-demo-correcteur",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document examinateur (production orale)",
+          "type": "document",
+          "role": "examinador",
+          "url": "https://www.france-education-international.fr/document/dalf-c1sujet-demo-examinateur",
+          "slug": "dalf-c1sujet-demo-examinateur",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/dalf-c1sujet-demo-surveillant",
+          "slug": "dalf-c1sujet-demo-surveillant",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DALF C1 pour la production écrite",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-pe-c1",
+          "slug": "descript-perf-pe-c1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DALF C1 pour la production orale",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-po-c1",
+          "slug": "descript-perf-po-c1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production écrite du DALF C1",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-pe-c1",
+          "slug": "grille-pe-c1",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de production orale du DALF C1",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-po-c1",
+          "slug": "grille-po-c1",
+          "contentType": "application/pdf"
+        }
+      ]
+    },
+    {
+      "level": "C2",
+      "exam": "DALF",
+      "sourcePage": "https://www.france-education-international.fr/diplome/dalf/dalf-c2-exemples-de-sujets?langue=fr",
+      "counts": {
+        "total": 14,
+        "documents": 12,
+        "audios": 2
+      },
+      "resources": [
+        {
+          "label": "Audio: 877",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/877",
+          "slug": "877",
+          "contentType": "audio/mpeg",
+          "fileName": "dalf_c2_demo_sujet1.mp3"
+        },
+        {
+          "label": "Audio: 884",
+          "type": "audio",
+          "role": "recurso",
+          "url": "https://www.france-education-international.fr/audio/884",
+          "slug": "884",
+          "contentType": "audio/mpeg",
+          "fileName": "dalf_c2_demo_sujet2.mp3"
+        },
+        {
+          "label": "Document candidat (compréhension et production écrites)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/dalf-c2sujet-demo1candidatcollpe",
+          "slug": "dalf-c2sujet-demo1candidatcollpe",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (compréhension et production orales)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/dalf-c2sujet-demo1candidatindivpo",
+          "slug": "dalf-c2sujet-demo1candidatindivpo",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document examinateur (compréhension et production orales)",
+          "type": "document",
+          "role": "examinador",
+          "url": "https://www.france-education-international.fr/document/dalf-c2sujet-demo1examinateur",
+          "slug": "dalf-c2sujet-demo1examinateur",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/dalf-c2sujet-demo1surveillant",
+          "slug": "dalf-c2sujet-demo1surveillant",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (compréhension et production écrites)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/dalf-c2sujet-demo2candidatcollpe",
+          "slug": "dalf-c2sujet-demo2candidatcollpe",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document candidat (compréhension et production orales)",
+          "type": "document",
+          "role": "candidato",
+          "url": "https://www.france-education-international.fr/document/dalf-c2sujet-demo2candidatindivpo",
+          "slug": "dalf-c2sujet-demo2candidatindivpo",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Documento: dalf c2sujet demo2examinateur",
+          "type": "document",
+          "role": "examinador",
+          "url": "https://www.france-education-international.fr/document/dalf-c2sujet-demo2examinateur",
+          "slug": "dalf-c2sujet-demo2examinateur",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Document surveillant (transcription de la compréhension de l'oral)",
+          "type": "document",
+          "role": "vigilancia",
+          "url": "https://www.france-education-international.fr/document/dalf-c2sujet-demo2surveillant",
+          "slug": "dalf-c2sujet-demo2surveillant",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DALF C2 pour la compréhension et la production écrites",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-pe-c2",
+          "slug": "descript-perf-pe-c2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Descripteurs de performance du DALF C2 pour la compréhension et la production orales",
+          "type": "document",
+          "role": "descriptor",
+          "url": "https://www.france-education-international.fr/document/descript-perf-po-c2",
+          "slug": "descript-perf-po-c2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de compréhension production écrite du DALF C2",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-cepe-c2",
+          "slug": "grille-cepe-c2",
+          "contentType": "application/pdf"
+        },
+        {
+          "label": "Grille de compréhension production orale du DALF C2",
+          "type": "document",
+          "role": "rubrica",
+          "url": "https://www.france-education-international.fr/document/grille-copo-c2",
+          "slug": "grille-copo-c2",
+          "contentType": "application/pdf"
+        }
+      ]
+    }
+  ]
+}
