@@ -8,7 +8,8 @@ const quickLinks = [
   { href: "/#isabelle", label: "Isabelle" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
   { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
-  { href: "/#tarifas", label: "Tarifas" },
+  { href: "/contratar", label: "Contratar pack" },
+  { href: "/zona-alumno", label: "Zona alumno" },
   { href: "/contact", label: "Contacto" },
 ];
 
@@ -36,7 +37,7 @@ const socialLinks = [
 ];
 
 const trustSignals = [
-  "Direccion academica: Isabelle Guitton",
+  "Isabelle Guitton: directora academica y docente",
   "Proyecto docente activo desde 2017",
   "Zoom + entorno de aprendizaje digital personalizado",
 ];

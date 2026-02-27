@@ -12,7 +12,8 @@ const links = [
   { href: "/#isabelle", label: "Isabelle" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
   { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
-  { href: "/#tarifas", label: "Tarifas" },
+  { href: "/contratar", label: "Contratar pack" },
+  { href: "/zona-alumno", label: "Zona alumno" },
   { href: "/contact", label: "Contacto" },
 ];
 
@@ -40,7 +41,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.notice}>
-        Direccion: Isabelle Guitton · Zoom + entorno digital personalizado · Pack 4h desde 140€
+        Isabelle Guitton, directora academica y docente · Zoom + entorno digital · Pack 4h desde 140€
       </div>
 
       <div className={styles.inner}>
@@ -70,8 +71,8 @@ const Header = () => {
           </nav>
 
           <div className={styles.actions}>
-            <Link href="/contact" className={styles.ctaButton}>
-              Reservar orientacion
+            <Link href="/contratar" className={styles.ctaButton}>
+              Contratar pack
             </Link>
             <button
               className={styles.mobileMenuButton}
@@ -99,8 +100,8 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          <Link href="/contact" className={styles.mobileCta} onClick={closeMobileMenu}>
-            Reservar orientacion
+          <Link href="/contratar" className={styles.mobileCta} onClick={closeMobileMenu}>
+            Contratar pack
           </Link>
         </nav>
       )}

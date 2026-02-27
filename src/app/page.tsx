@@ -28,7 +28,7 @@ const highlights = [
 ];
 
 const trustSignals = [
-  "Direccion academica: Isabelle Guitton",
+  "Isabelle Guitton: directora academica y docente",
   "Trayectoria activa desde 2017",
   "Modelo 100% online por Zoom con plan personalizado",
 ];
@@ -39,7 +39,9 @@ export default function HomePage() {
       <section className="rounded-2xl bg-gradient-to-br from-[#0b3c6f] via-[#0f5da0] to-[#1b78c2] px-5 py-7 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:px-8 sm:py-9">
         <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start">
           <div>
-            <p className="text-xs uppercase tracking-[0.17em] text-blue-100">HolaBonjour · Direccion Isabelle Guitton</p>
+            <p className="text-xs uppercase tracking-[0.17em] text-blue-100">
+              HolaBonjour · Direccion Isabelle Guitton
+            </p>
             <h1 className="mt-2 text-3xl font-bold leading-tight sm:text-4xl">
               Frances online personalizado: examen oficial o conversacion
             </h1>
@@ -49,10 +51,10 @@ export default function HomePage() {
             </p>
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
               <Link
-                href="/prueba-nivel"
+                href="/contratar"
                 className="inline-flex min-h-11 items-center justify-center rounded-xl bg-white px-5 text-sm font-semibold text-[#0b3c6f] transition hover:bg-blue-50"
               >
-                Empezar prueba de nivel
+                Contratar pack
               </Link>
               <Link
                 href="/contact"
@@ -64,11 +66,14 @@ export default function HomePage() {
           </div>
 
           <aside className="rounded-xl border border-white/20 bg-white/10 p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-blue-100">Como trabajamos ahora</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-blue-100">
+              Pedido de clases en 4 pasos
+            </p>
             <ol className="mt-2 space-y-2 text-sm text-white">
-              <li>1. Prueba de nivel orientativa o entrevista inicial.</li>
-              <li>2. Elegimos ruta: examen DELF/DALF o conversacion.</li>
-              <li>3. Activamos cuenta y plan digital personalizado.</li>
+              <li>1. Eliges ruta: examen o conversacion.</li>
+              <li>2. Seleccionas pack por nivel.</li>
+              <li>3. Reservas en agenda disponible de Isabelle.</li>
+              <li>4. Accedes a tu zona alumno con material por clase.</li>
             </ol>
           </aside>
         </div>
@@ -91,7 +96,10 @@ export default function HomePage() {
         ))}
       </section>
 
-      <section id="isabelle" className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+      <section
+        id="isabelle"
+        className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
+      >
         <div className="grid gap-5 md:grid-cols-[1fr_1.3fr] md:items-center">
           <div className="overflow-hidden rounded-xl border border-slate-200">
             <Image
@@ -115,7 +123,7 @@ export default function HomePage() {
               sesiones por Zoom, seguimiento individual y plan de trabajo digital para cada alumno.
             </p>
             <p className="mt-3 text-sm font-medium text-slate-800">
-              Trayectoria del proyecto: academia presencial (desde 2017) → modelo online especializado actual.
+              Trayectoria del proyecto: academia presencial (desde 2017) - modelo online especializado actual.
             </p>
           </div>
         </div>
@@ -130,24 +138,53 @@ export default function HomePage() {
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <article className="rounded-xl border border-blue-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Niveles A1 a B2</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas · 140€</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">
+              Niveles A1 a B2
+            </p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 140€</p>
             <p className="mt-2 text-sm text-slate-700">Conversacion o preparacion DELF A1, A2, B1 y B2.</p>
           </article>
 
           <article className="rounded-xl border border-blue-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Niveles C1 y C2</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas · 200€</p>
-            <p className="mt-2 text-sm text-slate-700">Conversacion o preparacion de alto rendimiento C1-C2.</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">
+              Niveles C1 y C2
+            </p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 200€</p>
+            <p className="mt-2 text-sm text-slate-700">
+              Conversacion o preparacion de alto rendimiento C1-C2.
+            </p>
           </article>
         </div>
 
         <Link
-          href="/contact"
+          href="/contratar"
           className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
         >
-          Quiero mi plan personalizado
+          Contratar pack
         </Link>
+      </section>
+
+      <section id="contratar" className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <h2 className="text-xl font-semibold text-slate-900">Reserva de clases con agenda disponible</h2>
+        <p className="mt-2 text-sm text-slate-700">
+          Ya puedes iniciar tu pedido de clases y abrir el calendario para reservar en huecos reales
+          de Isabelle.
+        </p>
+
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href="/contratar"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
+          >
+            Ir a contratar y calendario
+          </Link>
+          <Link
+            href="/zona-alumno?alumno=demo"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#0f5da0] px-5 text-sm font-semibold text-[#0f5da0] transition hover:bg-blue-100"
+          >
+            Ver zona alumno demo
+          </Link>
+        </div>
       </section>
 
       <section className="mt-8">

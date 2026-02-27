@@ -1,0 +1,71 @@
+{
+  "students": [
+    {
+      "id": "demo",
+      "name": "Alumno Demo",
+      "email": "demo@holabonjour.es",
+      "route": "preparacion-examen",
+      "level": "B1",
+      "coach": "Isabelle Guitton"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "lesson-001",
+      "studentId": "demo",
+      "date": "2026-03-03",
+      "durationMinutes": 60,
+      "mode": "Zoom",
+      "focus": "Comprension oral DELF B1",
+      "notes": "Trabajo de estrategias de escucha y gestion del tiempo en tareas B1.",
+      "materials": [
+        {
+          "id": "mat-001",
+          "title": "Checklist comprension oral B1",
+          "type": "PDF",
+          "url": "https://www.france-education-international.fr/diplome/delf-tout-public?langue=fr"
+        },
+        {
+          "id": "mat-002",
+          "title": "Audio guiado de entrenamiento",
+          "type": "AUDIO",
+          "url": "https://www.france-education-international.fr/diplome/delf-tout-public/niveau-b1/exemples-sujets?langue=fr"
+        }
+      ]
+    },
+    {
+      "id": "lesson-002",
+      "studentId": "demo",
+      "date": "2026-03-07",
+      "durationMinutes": 60,
+      "mode": "Zoom",
+      "focus": "Produccion escrita B1",
+      "notes": "Redaccion guiada con estructura, conectores y control de errores frecuentes.",
+      "materials": [
+        {
+          "id": "mat-003",
+          "title": "Plantilla produccion escrita",
+          "type": "DOC",
+          "url": "https://www.france-education-international.fr/diplome/delf-tout-public?langue=fr"
+        }
+      ]
+    },
+    {
+      "id": "lesson-003",
+      "studentId": "demo",
+      "date": "2026-03-12",
+      "durationMinutes": 60,
+      "mode": "Zoom",
+      "focus": "Conversacion y fluidez",
+      "notes": "Sesion de expresion oral para ganar naturalidad, precision y confianza.",
+      "materials": [
+        {
+          "id": "mat-004",
+          "title": "Guion de conversacion semanal",
+          "type": "NOTA",
+          "url": "https://www.holabonjour.es/preparacion-delf-dalf"
+        }
+      ]
+    }
+  ]
+}
