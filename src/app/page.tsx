@@ -94,15 +94,16 @@ export default function HomePage() {
       </section>
 
       <section className="mt-8 relative overflow-hidden rounded-3xl border border-slate-200 shadow-sm">
-        <div className="relative min-h-[260px] sm:min-h-[460px]">
-          <Image
-            src="/assets/s1final.jpg"
-            alt="Imagen historica HolaBonjour con Isabelle y mensaje de clases online"
-            fill
-            className="object-cover object-[44%_center] sm:object-center"
-            priority
+        <picture>
+          <source media="(max-width: 640px)" srcSet="/images/hero-pompidu-mobile.jpg" />
+          <source media="(max-width: 1024px)" srcSet="/images/hero-pompidu-tablet.jpg" />
+          <img
+            src="/images/hero-pompidu-desktop.jpg"
+            alt="Imagen historica HolaBonjour con Isabelle y su taza"
+            className="h-[260px] w-full object-cover sm:h-[460px]"
+            loading="eager"
           />
-        </div>
+        </picture>
       </section>
 
       <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
