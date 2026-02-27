@@ -8,9 +8,9 @@ import {
 import { feiAllLevels, getFeiLevelResources } from "@/lib/fei-resources";
 
 export const metadata: Metadata = {
-  title: "Preparación online DELF/DALF",
+  title: "Preparacion online DELF/DALF",
   description:
-    "Programas de preparación online para DELF y DALF con ruta por nivel y orientación por convocatorias oficiales.",
+    "Preparacion online dirigida por Isabelle Guitton: ruta examen oficial DELF/DALF o ruta conversacion, con tarifas por pack de 4 horas.",
   alternates: {
     canonical: "/preparacion-delf-dalf",
   },
@@ -43,11 +43,42 @@ export default async function PreparacionDelfDalfPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <section className="rounded-2xl bg-[#0b3c6f] px-6 py-8 text-white">
-        <h1 className="text-3xl font-bold sm:text-4xl">Preparación oficial DELF/DALF</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Preparacion oficial DELF/DALF y conversacion</h1>
         <p className="mt-3 max-w-3xl text-sm text-blue-100 sm:text-base">
-          Planes formativos diseñados para candidatos a certificación oficial. Trabajamos estructura de
-          examen, corrección estratégica y simulacros con tiempos reales.
+          Programa online con direccion academica de Isabelle Guitton. Puedes trabajar un objetivo de
+          certificacion oficial o mantener nivel con plan de conversacion y seguimiento individual.
         </p>
+      </section>
+
+      <section className="mt-6 grid gap-4 md:grid-cols-2" id="tarifas">
+        <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Tarifa A1-B2</p>
+          <p className="mt-1 text-2xl font-bold text-gray-900">Pack 4 horas · 140€</p>
+          <p className="mt-2 text-sm text-gray-700">
+            Valido para conversacion o preparacion DELF en niveles A1, A2, B1 y B2.
+          </p>
+        </article>
+        <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Tarifa C1-C2</p>
+          <p className="mt-1 text-2xl font-bold text-gray-900">Pack 4 horas · 200€</p>
+          <p className="mt-2 text-sm text-gray-700">
+            Sesiones de exigencia alta para objetivos C1-C2 en ruta examen o conversacion avanzada.
+          </p>
+        </article>
+      </section>
+
+      <section className="mt-6 rounded-2xl border border-blue-100 bg-blue-50/50 p-5">
+        <h2 className="text-xl font-semibold text-gray-900">Dos rutas de trabajo</h2>
+        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-gray-700">
+          <li>
+            <strong>Preparacion de examen:</strong> simulacion por pruebas, correccion y estrategia
+            para convocatoria oficial.
+          </li>
+          <li>
+            <strong>Conversacion:</strong> continuidad de nivel con sesiones activas y feedback de
+            precision oral.
+          </li>
+        </ul>
       </section>
 
       <section className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -109,7 +140,7 @@ export default async function PreparacionDelfDalfPage({
               </summary>
 
               <p className="mt-3 text-xs text-gray-600">
-                Fuente oficial: {" "}
+                Fuente oficial:{" "}
                 <a
                   href={group.sourcePage}
                   target="_blank"
@@ -145,8 +176,8 @@ export default async function PreparacionDelfDalfPage({
       <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-semibold text-gray-900">Calendario orientativo de convocatorias</h2>
         <p className="mt-2 text-sm text-gray-700">
-          Fechas sujetas a publicación de cada centro examinador. Recomendamos confirmar convocatoria en la
-          red oficial de France Education international antes de cerrar matrícula.
+          Fechas sujetas a publicacion de cada centro examinador. Recomendamos confirmar convocatoria en la
+          red oficial de France Education international antes de cerrar matricula.
         </p>
 
         <div className="mt-5 grid gap-3 md:grid-cols-3">

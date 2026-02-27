@@ -1,35 +1,36 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import TrustReviews from "@/components/TrustReviews";
 
 export const metadata: Metadata = {
-  title: "Plataforma DELF/DALF",
+  title: "Isabelle Guitton | Frances online personalizado",
   description:
-    "Evalua tu nivel de frances y recibe un plan de preparacion online para examenes DELF y DALF.",
+    "HolaBonjour evoluciona a modelo 100% online con direccion academica de Isabelle Guitton, ruta examen DELF/DALF o conversacion y tarifas por pack de 4 horas.",
 };
 
 const highlights = [
   {
-    title: "Prueba de nivel online",
+    title: "Ruta 1: preparacion de examen",
     detail:
-      "Evalua comprension y gramatica en pocos minutos para estimar tu nivel CEFR con criterio orientativo.",
+      "Entrenamiento para DELF/DALF con simulaciones, estrategia por prueba y acompanamiento para llegar a convocatoria con seguridad.",
   },
   {
-    title: "Ruta por examen oficial",
+    title: "Ruta 2: conversacion",
     detail:
-      "Te orientamos a DELF o DALF segun tu resultado y tu objetivo academico o profesional.",
+      "Clases para mantener y mejorar nivel con foco en soltura oral, precision y continuidad real de uso del frances.",
   },
   {
-    title: "Preparacion 100% online",
+    title: "Entorno digital personalizado",
     detail:
-      "Clases en directo centradas en las pruebas oficiales: comprension, produccion escrita y oral.",
+      "Cada alumno trabaja con cuenta propia, seguimiento individual y recursos organizados para avanzar sin friccion.",
   },
 ];
 
 const trustSignals = [
-  "Enfoque examenes oficiales FEI",
-  "Seguimiento docente personalizado",
-  "Metodologia online clara y estructurada",
+  "Direccion academica: Isabelle Guitton",
+  "Trayectoria activa desde 2017",
+  "Modelo 100% online por Zoom con plan personalizado",
 ];
 
 export default function HomePage() {
@@ -38,13 +39,13 @@ export default function HomePage() {
       <section className="rounded-2xl bg-gradient-to-br from-[#0b3c6f] via-[#0f5da0] to-[#1b78c2] px-5 py-7 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:px-8 sm:py-9">
         <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start">
           <div>
-            <p className="text-xs uppercase tracking-[0.17em] text-blue-100">HolaBonjour · DELF/DALF</p>
+            <p className="text-xs uppercase tracking-[0.17em] text-blue-100">HolaBonjour · Direccion Isabelle Guitton</p>
             <h1 className="mt-2 text-3xl font-bold leading-tight sm:text-4xl">
-              Evalua tu nivel de frances y preparate para el examen oficial
+              Frances online personalizado: examen oficial o conversacion
             </h1>
             <p className="mt-3 max-w-2xl text-sm text-blue-50 sm:text-base">
-              Plataforma online para candidatos DELF/DALF: diagnostico inicial, recomendacion de
-              nivel y plan de preparacion orientado a convocatorias oficiales.
+              Pasamos de academia fisica a plataforma 100% online manteniendo el mismo criterio
+              docente. Clases por Zoom, cuenta de alumno y plan a medida segun objetivo.
             </p>
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
               <Link
@@ -54,20 +55,20 @@ export default function HomePage() {
                 Empezar prueba de nivel
               </Link>
               <Link
-                href="/preparacion-delf-dalf"
+                href="/contact"
                 className="inline-flex min-h-11 items-center justify-center rounded-xl border border-blue-200 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                Ver programas DELF/DALF
+                Reservar orientacion
               </Link>
             </div>
           </div>
 
           <aside className="rounded-xl border border-white/20 bg-white/10 p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-blue-100">Como funciona</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-blue-100">Como trabajamos ahora</p>
             <ol className="mt-2 space-y-2 text-sm text-white">
-              <li>1. Realizas la prueba orientativa online.</li>
-              <li>2. Recibes nivel estimado y recomendacion.</li>
-              <li>3. Accedes a preparacion DELF/DALF adaptada.</li>
+              <li>1. Prueba de nivel orientativa o entrevista inicial.</li>
+              <li>2. Elegimos ruta: examen DELF/DALF o conversacion.</li>
+              <li>3. Activamos cuenta y plan digital personalizado.</li>
             </ol>
           </aside>
         </div>
@@ -90,16 +91,75 @@ export default function HomePage() {
         ))}
       </section>
 
+      <section id="isabelle" className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="grid gap-5 md:grid-cols-[1fr_1.3fr] md:items-center">
+          <div className="overflow-hidden rounded-xl border border-slate-200">
+            <Image
+              src="/images/conocenos2020.jpg"
+              alt="Isabelle Guitton en la etapa de academia fisica"
+              width={900}
+              height={600}
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          <div>
+            <p className="text-xs uppercase tracking-[0.12em] text-[#0f5da0]">Direccion academica</p>
+            <h2 className="mt-1 text-2xl font-bold text-slate-900">Isabelle Guitton</h2>
+            <p className="mt-3 text-sm text-slate-700 sm:text-base">
+              Fundadora y directora de HolaBonjour. Desde 2017 lidera el proyecto docente en Malaga,
+              primero en formato academia fisica y hoy en formato online personalizado.
+            </p>
+            <p className="mt-3 text-sm text-slate-700 sm:text-base">
+              Esta evolucion mantiene la experiencia acumulada y la adapta a una operativa mas eficaz:
+              sesiones por Zoom, seguimiento individual y plan de trabajo digital para cada alumno.
+            </p>
+            <p className="mt-3 text-sm font-medium text-slate-800">
+              Trayectoria del proyecto: academia presencial (desde 2017) → modelo online especializado actual.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tarifas" className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">
+        <h2 className="text-xl font-semibold text-[#0b3c6f]">Tarifas actuales por pack</h2>
+        <p className="mt-2 text-sm text-slate-700">
+          Una misma estructura de trabajo para los dos recorridos: preparacion de examen oficial o
+          conversacion para mantener nivel.
+        </p>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <article className="rounded-xl border border-blue-200 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Niveles A1 a B2</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas · 140€</p>
+            <p className="mt-2 text-sm text-slate-700">Conversacion o preparacion DELF A1, A2, B1 y B2.</p>
+          </article>
+
+          <article className="rounded-xl border border-blue-200 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Niveles C1 y C2</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas · 200€</p>
+            <p className="mt-2 text-sm text-slate-700">Conversacion o preparacion de alto rendimiento C1-C2.</p>
+          </article>
+        </div>
+
+        <Link
+          href="/contact"
+          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
+        >
+          Quiero mi plan personalizado
+        </Link>
+      </section>
+
       <section className="mt-8">
         <TrustReviews tone="white" />
       </section>
 
       <section className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">
-        <h2 className="text-xl font-semibold text-[#0b3c6f]">Base academica y fuentes oficiales</h2>
+        <h2 className="text-xl font-semibold text-[#0b3c6f]">Marco oficial y trabajo real</h2>
         <p className="mt-2 text-sm text-slate-700">
-          El itinerario se apoya en el marco CEFR y en modelos de examen publicados por France
-          Education international. Esta plataforma ofrece simulaciones orientativas para ayudarte a
-          elegir plan de preparacion.
+          El entorno de estudio se apoya en CEFR y en formatos de examen de France Education
+          international para orientar el progreso. El objetivo practico es que avances con un metodo
+          claro, estable y adaptado a tu disponibilidad.
         </p>
       </section>
     </div>

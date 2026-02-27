@@ -5,8 +5,10 @@ import styles from "./Footer.module.css";
 
 const quickLinks = [
   { href: "/", label: "Inicio" },
+  { href: "/#isabelle", label: "Isabelle" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
-  { href: "/preparacion-delf-dalf", label: "Preparacion DELF/DALF" },
+  { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
+  { href: "/#tarifas", label: "Tarifas" },
   { href: "/contact", label: "Contacto" },
 ];
 
@@ -33,7 +35,11 @@ const socialLinks = [
   },
 ];
 
-const trustSignals = ["Metodo online", "Enfoque DELF/DALF", "Seguimiento docente"];
+const trustSignals = [
+  "Direccion academica: Isabelle Guitton",
+  "Proyecto docente activo desde 2017",
+  "Zoom + entorno de aprendizaje digital personalizado",
+];
 
 const Footer = () => {
   return (
@@ -43,8 +49,8 @@ const Footer = () => {
           <section>
             <p className={styles.brand}>HolaBonjour</p>
             <p className={styles.text}>
-              Academia especializada en preparacion online DELF y DALF. Simulaciones orientativas,
-              plan por nivel y acompanamiento docente.
+              Direccion academica de Isabelle Guitton. Nacimos como academia fisica en Malaga y hoy
+              trabajamos 100% online con seguimiento individual y plan por objetivo.
             </p>
             <ul className={styles.trustList}>
               {trustSignals.map((item) => (
@@ -65,9 +71,11 @@ const Footer = () => {
           </section>
 
           <section>
-            <p className={styles.sectionTitle}>Contacto</p>
+            <p className={styles.sectionTitle}>Contacto y tarifas</p>
             <p className={styles.text}>Telefono / WhatsApp: 685 07 03 04</p>
             <p className={styles.text}>Email: info@holabonjour.es</p>
+            <p className={styles.text}>A1-B2: pack 4 horas por 140€</p>
+            <p className={styles.text}>C1-C2: pack 4 horas por 200€</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (
                 <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
@@ -86,7 +94,7 @@ const Footer = () => {
 
         <div className={styles.bottom}>
           <p>© {new Date().getFullYear()} HolaBonjour.</p>
-          <p>Preparacion online para examenes oficiales DELF/DALF.</p>
+          <p>Preparacion online por Zoom: ruta examen o ruta conversacion.</p>
         </div>
       </div>
     </footer>

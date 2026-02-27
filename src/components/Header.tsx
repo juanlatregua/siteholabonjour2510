@@ -9,8 +9,10 @@ import styles from "./Header.module.css";
 
 const links = [
   { href: "/", label: "Inicio" },
+  { href: "/#isabelle", label: "Isabelle" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
-  { href: "/preparacion-delf-dalf", label: "Preparacion DELF/DALF" },
+  { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
+  { href: "/#tarifas", label: "Tarifas" },
   { href: "/contact", label: "Contacto" },
 ];
 
@@ -20,12 +22,26 @@ const Header = () => {
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
+  const getBasePath = (href: string) => {
+    const [path] = href.split("#");
+    return path || "/";
+  };
+
+  const isActive = (href: string) => {
+    const basePath = getBasePath(href);
+
+    if (basePath === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === basePath || pathname.startsWith(`${basePath}/`);
+  };
 
   return (
     <header className={styles.header}>
-      <div className={styles.notice}>Formacion online para examenes oficiales DELF y DALF</div>
+      <div className={styles.notice}>
+        Direccion: Isabelle Guitton · Zoom + entorno digital personalizado · Pack 4h desde 140€
+      </div>
 
       <div className={styles.inner}>
         <div className={styles.topBar}>
@@ -54,8 +70,8 @@ const Header = () => {
           </nav>
 
           <div className={styles.actions}>
-            <Link href="/prueba-nivel" className={styles.ctaButton}>
-              Empezar prueba
+            <Link href="/contact" className={styles.ctaButton}>
+              Reservar orientacion
             </Link>
             <button
               className={styles.mobileMenuButton}
@@ -83,8 +99,8 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          <Link href="/prueba-nivel" className={styles.mobileCta} onClick={closeMobileMenu}>
-            Hacer prueba de nivel
+          <Link href="/contact" className={styles.mobileCta} onClick={closeMobileMenu}>
+            Reservar orientacion
           </Link>
         </nav>
       )}
