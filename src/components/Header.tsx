@@ -12,6 +12,9 @@ const links = [
   { href: "/#equipo", label: "Equipo" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
   { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
+  { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
+  { href: "/zona-alumno", label: "Zona alumno" },
+  { href: "/zona-profesor", label: "Zona profesor" },
   { href: "/contact", label: "Contacto" },
 ];
 

@@ -8,6 +8,9 @@ const quickLinks = [
   { href: "/#equipo", label: "Equipo" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
   { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
+  { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
+  { href: "/zona-alumno", label: "Zona alumno" },
+  { href: "/zona-profesor", label: "Zona profesor" },
   { href: "/contratar", label: "Contratar pack" },
   { href: "/contact", label: "Contacto" },
 ];

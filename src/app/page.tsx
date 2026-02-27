@@ -2,71 +2,58 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import TrustReviews from "@/components/TrustReviews";
+import QuickHelpChat from "@/components/QuickHelpChat";
 
 export const metadata: Metadata = {
-  title: "Isabelle Guitton | Frances online por Zoom",
+  title: "Academia de frances online | Preparacion DELF/DALF",
   description:
-    "HolaBonjour evoluciona a modelo 100% online con direccion academica de Isabelle Guitton: ruta examen DELF/DALF o conversacion, packs de 4 horas y confirmacion por transferencia.",
+    "HolaBonjour, academia de frances online dirigida por Isabelle Guitton: preparacion DELF/DALF y conversacion por Zoom. Pack 4h A1-B2 140EUR, C1-C2 200EUR.",
 };
 
 const highlights = [
   {
-    title: "Ruta 1: preparacion de examen",
+    title: "Preparacion oficial DELF/DALF",
     detail:
-      "Entrenamiento para DELF/DALF con simulaciones, estrategia por prueba y acompanamiento para llegar a convocatoria con seguridad.",
+      "Trabajo por competencias y simulacion por pruebas para llegar con seguridad a convocatoria.",
+    icon: "/images/icono-legacy-u2998.png",
   },
   {
-    title: "Ruta 2: conversacion",
+    title: "Conversacion para mantener nivel",
     detail:
-      "Clases para mantener y mejorar nivel con foco en soltura oral, precision y continuidad real de uso del frances.",
+      "Clases centradas en fluidez, precision oral y continuidad real de uso del frances.",
+    icon: "/images/icono-legacy-u3005.png",
   },
   {
-    title: "Entorno digital personalizado",
+    title: "Entorno de alumno personalizado",
     detail:
-      "Cada alumno trabaja con cuenta propia, seguimiento individual y recursos organizados para avanzar sin friccion.",
+      "Seguimiento individual, materiales por sesion y trazabilidad del avance academico.",
+    icon: "/images/icons-zoom.svg",
   },
 ];
 
 const trustSignals = [
-  "Isabelle Guitton: direccion academica y docencia directa",
-  "Proyecto activo desde 2017 (academia presencial y modelo online)",
+  "Direccion academica: Isabelle Guitton",
+  "Proyecto docente activo desde 2017",
+  "Modelo actual 100% online por Zoom",
   "Pago activo por transferencia bancaria de empresa",
-];
-
-const quickFaq = [
-  {
-    q: "Que incluye el pack de 4 horas?",
-    a: "Sesiones por Zoom, plan de trabajo y material en tu entorno digital.",
-  },
-  {
-    q: "Que pack necesito?",
-    a: "A1-B2: 140EUR. C1-C2: 200EUR. Si dudas, te orientamos antes de contratar.",
-  },
-  {
-    q: "Como se confirma el pago?",
-    a: "Ahora mismo por transferencia bancaria a la cuenta de HBTJ Consultores Linguisticos S.L.",
-  },
-  {
-    q: "Cuanto tardais en responder?",
-    a: "Te respondemos en menos de 24h laborables con ruta y siguiente paso.",
-  },
 ];
 
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <section className="rounded-2xl bg-gradient-to-br from-[#0b3c6f] via-[#0f5da0] to-[#1b78c2] px-5 py-7 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:px-8 sm:py-9">
-        <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start">
+        <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start">
           <div>
             <p className="text-xs uppercase tracking-[0.17em] text-blue-100">
-              HolaBonjour · Direccion Isabelle Guitton
+              HolaBonjour · Academia de frances online
             </p>
             <h1 className="mt-2 text-3xl font-bold leading-tight sm:text-4xl">
-              Frances online personalizado: examen oficial o conversacion
+              Preparacion DELF/DALF y conversacion por Zoom
             </h1>
             <p className="mt-3 max-w-2xl text-sm text-blue-50 sm:text-base">
-              Pasamos de academia fisica a plataforma 100% online manteniendo el mismo criterio
-              docente. Clases por Zoom, cuenta de alumno y plan a medida segun objetivo.
+              Evolucionamos desde academia fisica a plataforma online, manteniendo el mismo nivel
+              docente. Te ayudamos a preparar examen oficial o a mantener nivel con clases
+              personalizadas.
             </p>
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
               <Link
@@ -76,28 +63,28 @@ export default function HomePage() {
                 Contratar pack
               </Link>
               <Link
-                href="/contact"
+                href="/prueba-nivel"
                 className="inline-flex min-h-11 items-center justify-center rounded-xl border border-blue-200 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                Reservar orientacion (15 min)
+                Hacer prueba de nivel
               </Link>
             </div>
           </div>
 
           <aside className="rounded-xl border border-white/20 bg-white/10 p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-blue-100">
-              Pedido de clases en 4 pasos
+              Packs actuales
             </p>
-            <ol className="mt-2 space-y-2 text-sm text-white">
-              <li>1. Eliges ruta: examen o conversacion.</li>
-              <li>2. Seleccionas pack por nivel.</li>
-              <li>3. Reservas en agenda disponible de Isabelle.</li>
-              <li>4. Confirmas presupuesto y pago por transferencia.</li>
-            </ol>
+            <ul className="mt-2 space-y-2 text-sm text-white">
+              <li>A1-B2: pack 4h por 140EUR</li>
+              <li>C1-C2: pack 4h por 200EUR</li>
+              <li>Ruta examen o ruta conversacion</li>
+              <li>Confirmacion por transferencia bancaria</li>
+            </ul>
           </aside>
         </div>
 
-        <ul className="mt-5 grid gap-2 text-xs text-blue-50 sm:grid-cols-3 sm:text-sm">
+        <ul className="mt-5 grid gap-2 text-xs text-blue-50 sm:grid-cols-2 lg:grid-cols-4 sm:text-sm">
           {trustSignals.map((item) => (
             <li key={item} className="rounded-lg border border-white/15 bg-white/10 px-3 py-2">
               {item}
@@ -106,75 +93,125 @@ export default function HomePage() {
         </ul>
       </section>
 
+      <section className="mt-8 relative overflow-hidden rounded-3xl border border-slate-200 shadow-sm">
+        <div className="relative min-h-[380px]">
+          <Image
+            src="/images/isabelle-taza-legacy.jpg"
+            alt="Isabelle Guitton en HolaBonjour"
+            fill
+            className="object-cover object-top"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0b3c6f]/85 via-[#0b3c6f]/55 to-transparent" />
+          <div className="relative z-10 max-w-xl px-6 py-8 text-white sm:px-8 sm:py-10">
+            <p className="text-xs uppercase tracking-[0.12em] text-blue-100">Direccion academica</p>
+            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Isabelle Guitton</h2>
+            <p className="mt-3 text-sm text-blue-50 sm:text-base">
+              Desde 2017, el proyecto HolaBonjour combina experiencia docente real y metodologia
+              aplicada a objetivos concretos: aprobar DELF/DALF o mantener un frances activo.
+            </p>
+            <Link
+              href="/#equipo"
+              className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-white px-4 text-sm font-semibold text-[#0b3c6f] hover:bg-blue-50"
+            >
+              Conocer equipo
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <p className="text-xs uppercase tracking-[0.12em] text-[#0f5da0]">Logos y diseno historico</p>
+        <h2 className="mt-1 text-2xl font-bold text-slate-900">Identidad visual HolaBonjour</h2>
+        <p className="mt-2 text-sm text-slate-700">
+          Recuperamos elementos visuales de la web historica publicada para mantener continuidad de marca.
+        </p>
+
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <Image src="/images/logo-holabonjour-01.svg" alt="Logo HolaBonjour" width={220} height={64} />
+            <p className="mt-2 text-xs text-slate-600">Logo principal corporativo</p>
+          </article>
+          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <Image src="/assets/logo.svg" alt="Logo legacy HolaBonjour" width={220} height={64} />
+            <p className="mt-2 text-xs text-slate-600">Logo legacy recuperado del diseno original</p>
+          </article>
+          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <Image src="/images/banner-legacy-poster.png" alt="Elemento grafico legacy" width={220} height={168} />
+            <p className="mt-2 text-xs text-slate-600">Poster visual historico de marca</p>
+          </article>
+        </div>
+      </section>
+
       <section className="mt-8 grid gap-3.5 sm:grid-cols-3">
         {highlights.map((item) => (
           <article key={item.title} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-900">{item.title}</h2>
+            <div className="flex items-center gap-3">
+              <Image src={item.icon} alt="Icono del servicio" width={44} height={44} />
+              <h2 className="text-lg font-semibold text-slate-900">{item.title}</h2>
+            </div>
             <p className="mt-2 text-sm text-slate-700">{item.detail}</p>
           </article>
         ))}
       </section>
 
-      <section
-        id="equipo"
-        className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
-      >
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <h2 className="text-2xl font-bold text-slate-900">Academia de frances online con enfoque de examen</h2>
+        <p className="mt-3 text-sm text-slate-700 sm:text-base">
+          Si buscas una academia de frances online para preparar DELF/DALF, en HolaBonjour trabajamos
+          por nivel y por objetivo. Tambien puedes elegir la ruta de conversacion si tu prioridad es
+          mantener nivel y soltura.
+        </p>
+        <p className="mt-3 text-sm text-slate-700 sm:text-base">
+          La metodologia combina evaluacion inicial, plan por competencias, correccion continua y
+          seguimiento individual. El formato de clases es por Zoom, con materiales organizados en tu
+          entorno de alumno.
+        </p>
+      </section>
+
+      <section id="equipo" className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
         <div className="grid gap-5 md:grid-cols-[1fr_1.3fr] md:items-center">
           <div className="overflow-hidden rounded-xl border border-slate-200">
             <Image
               src="/images/conocenos2020.jpg"
-              alt="Isabelle Guitton en la etapa de academia fisica"
+              alt="Equipo HolaBonjour desde 2017"
               width={900}
               height={600}
               className="h-full w-full object-cover"
             />
           </div>
-
           <div>
-            <p className="text-xs uppercase tracking-[0.12em] text-[#0f5da0]">Equipo y direccion academica</p>
-            <h2 className="mt-1 text-2xl font-bold text-slate-900">Isabelle Guitton</h2>
+            <p className="text-xs uppercase tracking-[0.12em] text-[#0f5da0]">Equipo y experiencia</p>
+            <h2 className="mt-1 text-2xl font-bold text-slate-900">De academia presencial a operativa digital</h2>
             <p className="mt-3 text-sm text-slate-700 sm:text-base">
-              Fundadora y directora de HolaBonjour. Desde 2017 lidera el proyecto docente en Malaga,
-              primero en formato academia fisica y hoy en formato online personalizado.
-            </p>
-            <p className="mt-3 text-sm text-slate-700 sm:text-base">
-              Esta evolucion mantiene la experiencia acumulada y la adapta a una operativa mas eficaz:
-              sesiones por Zoom, seguimiento individual y plan de trabajo digital para cada alumno.
-            </p>
-            <p className="mt-3 text-sm font-medium text-slate-800">
-              Trayectoria del proyecto: academia presencial (desde 2017) y modelo online especializado actual.
+              El proyecto nacio en Malaga y se transformo al modelo online manteniendo criterio
+              academico, seguimiento cercano y adaptacion a cada alumno.
             </p>
           </div>
         </div>
       </section>
 
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <h2 className="text-xl font-semibold text-slate-900">Galeria real de la etapa HolaBonjour</h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <Image src="/assets/s1final.jpg" alt="Imagen real de la academia HolaBonjour 1" width={800} height={520} className="rounded-xl border border-slate-200 object-cover" />
+          <Image src="/assets/s2final.jpg" alt="Imagen real de la academia HolaBonjour 2" width={800} height={520} className="rounded-xl border border-slate-200 object-cover" />
+          <Image src="/assets/s3nuevo3.jpg" alt="Imagen real de la academia HolaBonjour 3" width={800} height={520} className="rounded-xl border border-slate-200 object-cover" />
+        </div>
+      </section>
+
       <section id="tarifas" className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">
         <h2 className="text-xl font-semibold text-[#0b3c6f]">Tarifas actuales por pack</h2>
-        <p className="mt-2 text-sm text-slate-700">
-          Una misma estructura de trabajo para los dos recorridos: preparacion de examen oficial o
-          conversacion para mantener nivel.
-        </p>
-
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <article className="rounded-xl border border-blue-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">
-              Niveles A1 a B2
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Niveles A1 a B2</p>
             <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 140EUR</p>
-            <p className="mt-2 text-sm text-slate-700">Conversacion o preparacion DELF A1, A2, B1 y B2.</p>
           </article>
-
           <article className="rounded-xl border border-blue-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">
-              Niveles C1 y C2
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Niveles C1 y C2</p>
             <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 200EUR</p>
-            <p className="mt-2 text-sm text-slate-700">
-              Conversacion o preparacion de alto rendimiento C1-C2.
-            </p>
           </article>
         </div>
-
         <Link
           href="/contratar"
           className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
@@ -183,51 +220,10 @@ export default function HomePage() {
         </Link>
       </section>
 
-      <section id="contratar" className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <h2 className="text-xl font-semibold text-slate-900">Reserva de clases con agenda disponible</h2>
-        <p className="mt-2 text-sm text-slate-700">
-          Inicia tu pedido de clases y abre el calendario para reservar en huecos reales de Isabelle.
-        </p>
-
-        <div className="mt-4 flex flex-wrap gap-3">
-          <Link
-            href="/contratar"
-            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
-          >
-            Ir a contratar y calendario
-          </Link>
-          <Link
-            href="/contact#faq"
-            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#0f5da0] px-5 text-sm font-semibold text-[#0f5da0] transition hover:bg-blue-100"
-          >
-            Ver preguntas frecuentes
-          </Link>
-        </div>
-      </section>
+      <QuickHelpChat />
 
       <section className="mt-8">
         <TrustReviews tone="white" />
-      </section>
-
-      <section id="faq-rapida" className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">
-        <h2 className="text-xl font-semibold text-[#0b3c6f]">Preguntas rapidas antes de escribir por WhatsApp</h2>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {quickFaq.map((item) => (
-            <article key={item.q} className="rounded-xl border border-blue-200 bg-white p-4">
-              <h3 className="text-sm font-semibold text-slate-900">{item.q}</h3>
-              <p className="mt-2 text-sm text-slate-700">{item.a}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">
-        <h2 className="text-xl font-semibold text-[#0b3c6f]">Marco oficial y trabajo real</h2>
-        <p className="mt-2 text-sm text-slate-700">
-          El entorno de estudio se apoya en CEFR y en formatos de examen de France Education
-          international para orientar el progreso. El objetivo practico es que avances con un metodo
-          claro, estable y adaptado a tu disponibilidad.
-        </p>
       </section>
     </div>
   );
