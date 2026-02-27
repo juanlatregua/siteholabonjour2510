@@ -1,0 +1,15 @@
+# UX/UI Audit Summary
+- Alcance auditado: `/`, `/contratar`, `/preparacion-delf-dalf`, `/prueba-nivel`, `/contact`, `/zona-alumno`.
+- Stack revisado: Next.js App Router + Vercel (fuente principal: código en `src/app` y `src/components`).
+- Modelo de negocio detectado correctamente: Zoom, 2 rutas (examen/conversación), packs 4h (140€/200€), liderazgo de Isabelle Guitton.
+- Hallazgo P0 #1 (privacidad/confianza): `/zona-alumno` es público y muestra IDs válidos cuando falla búsqueda (`src/app/zona-alumno/page.tsx:36`).
+- Hallazgo P0 #2 (fricción contratación): en `/contratar`, si no hay agenda conectada se muestra fallback técnico y no hay cierre de reserva guiado (`src/app/contratar/page.tsx:34`, `:99-102`).
+- Hallazgo P0 #3 (fuga de conversión): en resultado de `/prueba-nivel/[assessmentId]` falta CTA directo a contratar pack; solo enlaza a plan (`src/components/AssessmentFlow.tsx:747`).
+- Hallazgo P0 #4 (claridad): copy inconsistente sin acentos y microcopy ambiguo en navegación/CTA (ej. “Preparacion y conversacion”).
+- Hallazgo P1: jerarquía visual correcta en home, pero con exceso de bloques informativos y CTA repetidos para móvil.
+- Hallazgo P1: deuda de frontend con componente legacy no usado (`src/components/Navigation.tsx`) y riesgo de inconsistencia futura.
+- Hallazgo P1: falta patrón unificado de estados vacíos/errores entre páginas clave.
+- Hallazgo P2: reforzar bloque FAQ/chat guiado para reducir WhatsApp repetitivo (objetivo de negocio explícito).
+- Validación QA runtime en dominio público: **NO_VERIFICADO** en esta ejecución (DNS no resolvía desde runner).
+- Validación automation E2E: **NO_VERIFICADO** (no existe suite Playwright/Cypress en `package.json`).
+- Recomendación de release actual: **NO-GO** hasta cerrar P0 de privacidad + paso de contratación.
