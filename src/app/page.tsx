@@ -94,29 +94,14 @@ export default function HomePage() {
       </section>
 
       <section className="mt-8 relative overflow-hidden rounded-3xl border border-slate-200 shadow-sm">
-        <div className="relative min-h-[380px]">
+        <div className="relative min-h-[380px] sm:min-h-[460px]">
           <Image
-            src="/images/isabelle-taza-legacy.jpg"
-            alt="Isabelle Guitton en HolaBonjour"
+            src="/assets/s1final.jpg"
+            alt="Imagen historica HolaBonjour con Isabelle y mensaje de clases online"
             fill
-            className="object-cover object-top"
+            className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0b3c6f]/85 via-[#0b3c6f]/55 to-transparent" />
-          <div className="relative z-10 max-w-xl px-6 py-8 text-white sm:px-8 sm:py-10">
-            <p className="text-xs uppercase tracking-[0.12em] text-blue-100">Direccion academica</p>
-            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Isabelle Guitton</h2>
-            <p className="mt-3 text-sm text-blue-50 sm:text-base">
-              Desde 2017, el proyecto HolaBonjour combina experiencia docente real y metodologia
-              aplicada a objetivos concretos: aprobar DELF/DALF o mantener un frances activo.
-            </p>
-            <Link
-              href="/#equipo"
-              className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-white px-4 text-sm font-semibold text-[#0b3c6f] hover:bg-blue-50"
-            >
-              Conocer equipo
-            </Link>
-          </div>
         </div>
       </section>
 
