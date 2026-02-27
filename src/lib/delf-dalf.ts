@@ -90,16 +90,19 @@ export const trainingTracks: Record<CEFRLevel, TrainingTrack> = {
 
 export const officialExamWindows: ExamWindow[] = [
   {
-    period: "Convocatorias primavera",
-    note: "Inscripción habitualmente entre enero y marzo según centro examinador.",
+    period: "Convocatoria junio 2026 (Alianza Francesa Malaga)",
+    note:
+      "Matricula: del 12 al 22 de mayo. Prueba oral: del 22 al 25 de junio. Prueba escrita: viernes 26 de junio. Resultados: del 15 al 17 de julio.",
   },
   {
-    period: "Convocatorias verano",
-    note: "Sesiones extraordinarias en algunos centros. Revisar disponibilidad local.",
+    period: "Convocatoria octubre 2026 (Alianza Francesa Malaga)",
+    note:
+      "Matricula: del 14 al 24 de septiembre. Prueba oral: del 5 al 8 de octubre. Prueba escrita: viernes 9 de octubre. Resultados: del 26 al 28 de octubre.",
   },
   {
-    period: "Convocatorias otoño/invierno",
-    note: "Inscripción escalonada entre septiembre y noviembre según sede oficial.",
+    period: "Fuente oficial del calendario",
+    note:
+      "Alianza Francesa Malaga (PDF Calendario DELF/DALF 2026). Confirmar siempre actualizaciones del centro examinador.",
   },
 ];
 
