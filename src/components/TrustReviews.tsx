@@ -6,27 +6,27 @@ type TrustReviewsProps = {
   tone?: "light" | "white";
 };
 
-const reviewItems = [
+const trustItems = [
   {
-    quote:
-      "La prueba me dio un nivel realista y supe exactamente que preparar para presentarme al DELF B1.",
-    author: "Elena M. · Preparacion B1",
+    title: "Resenas publicas verificables",
+    detail:
+      "Consulta opiniones reales en la ficha de Google y revisa la experiencia de alumnos antes de contratar.",
   },
   {
-    quote:
-      "Me gusto que todo fuese online y con pasos claros. Pase de dudas a plan de estudio en el mismo dia.",
-    author: "Carlos R. · Objetivo B2",
+    title: "Proyecto docente con trayectoria",
+    detail:
+      "HolaBonjour mantiene actividad formativa desde 2017, primero en academia presencial y ahora en formato online.",
   },
   {
-    quote:
-      "El enfoque en examenes oficiales y simulacros con tiempo real marca la diferencia.",
-    author: "Laura P. · Candidata DALF C1",
+    title: "Servicio especializado",
+    detail:
+      "Preparacion DELF/DALF y conversacion por Zoom con seguimiento personalizado.",
   },
 ];
 
 const TrustReviews = ({
-  title = "Experiencias reales de alumnos",
-  intro = "Opiniones de estudiantes que usaron la prueba orientativa y continuaron preparacion online.",
+  title = "Confianza y prueba social",
+  intro = "Antes de contratar, puedes verificar opiniones reales y entender como trabajamos hoy en formato online.",
   tone = "light",
 }: TrustReviewsProps) => {
   const sectionClassName =
@@ -39,21 +39,32 @@ const TrustReviews = ({
       ? "rounded-xl border border-slate-200 bg-slate-50 p-4"
       : "rounded-xl border border-blue-100 bg-white p-4";
 
+  const reviewsUrl =
+    process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_URL ||
+    "https://www.google.com/search?q=holabonjour+resenas";
+
   return (
-    <section className={sectionClassName} aria-label="Resenas de alumnos">
+    <section className={sectionClassName} aria-label="Prueba social y confianza">
       <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">{title}</h2>
       <p className="mt-2 text-sm text-slate-700 sm:text-base">{intro}</p>
 
       <div className="mt-4 grid gap-3 md:grid-cols-3">
-        {reviewItems.map((item) => (
-          <article key={item.author} className={cardClassName}>
-            <p className="text-sm leading-relaxed text-slate-800"><span aria-hidden="true">&ldquo;</span>{item.quote}<span aria-hidden="true">&rdquo;</span></p>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.06em] text-slate-600">
-              {item.author}
-            </p>
+        {trustItems.map((item) => (
+          <article key={item.title} className={cardClassName}>
+            <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.detail}</p>
           </article>
         ))}
       </div>
+
+      <a
+        href={reviewsUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b4d84]"
+      >
+        Ver resenas reales en Google
+      </a>
     </section>
   );
 };

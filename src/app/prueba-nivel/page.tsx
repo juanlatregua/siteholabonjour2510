@@ -26,8 +26,8 @@ export default function PruebaNivelIndexPage() {
             Pruebas de nivel online DELF/DALF
           </h1>
           <p className="mt-3 max-w-2xl text-sm text-cyan-50/95 sm:text-base">
-            En menos de 20 minutos sabras tu nivel estimado, tus puntos fuertes y el plan recomendado
-            para preparar examen oficial.
+            En menos de 20 minutos sabras tu nivel estimado, tus puntos fuertes y el plan recomendado.
+            Al terminar, podras contratar tu pack directamente.
           </p>
 
           <div className="mt-5 grid gap-2.5 sm:grid-cols-3">
@@ -41,7 +41,7 @@ export default function PruebaNivelIndexPage() {
             </div>
             <div className="rounded-xl border border-white/15 bg-white/10 p-3">
               <p className="text-[11px] uppercase tracking-[0.08em] text-cyan-100">Paso 3</p>
-              <p className="mt-1 text-sm font-semibold">Recibe nivel y plan</p>
+              <p className="mt-1 text-sm font-semibold">Recibe nivel y ruta de contratacion</p>
             </div>
           </div>
         </section>
@@ -49,7 +49,7 @@ export default function PruebaNivelIndexPage() {
         <section className="mt-5 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
           <p className="text-sm text-slate-700">
             Esta prueba es una <strong>simulacion orientativa</strong>. No sustituye la evaluacion
-            oficial FEI, pero te ayuda a decidir el itinerario de preparacion mas adecuado.
+            oficial FEI, pero te ayuda a decidir itinerario y pack con mas precision.
           </p>
         </section>
 
@@ -85,6 +85,19 @@ export default function PruebaNivelIndexPage() {
               </Link>
             </article>
           ))}
+        </section>
+
+        <section className="mt-7 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">Siguiente paso recomendado</h2>
+          <p className="mt-2 text-sm text-slate-700 sm:text-base">
+            Si prefieres ir directo, puedes contratar ahora y ajustamos nivel/ruta en la orientacion inicial.
+          </p>
+          <Link
+            href="/contratar"
+            className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b4d84]"
+          >
+            Contratar pack ahora
+          </Link>
         </section>
 
         <section className="mt-7">

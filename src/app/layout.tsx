@@ -8,11 +8,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.holabonjour.es"),
   title: {
-    default: "Preparación online DELF/DALF | HolaBonjour",
+    default: "Preparacion online DELF/DALF | HolaBonjour",
     template: "%s | HolaBonjour",
   },
   description:
-    "Plataforma online de francés orientada a exámenes oficiales DELF y DALF: prueba de nivel, itinerario recomendado y preparación en directo.",
+    "Plataforma online de frances orientada a examenes oficiales DELF y DALF: prueba de nivel, itinerario recomendado y preparacion en directo.",
   alternates: {
     canonical: "/",
   },
@@ -23,8 +23,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="es">
       <body className="min-h-screen flex flex-col bg-white text-[#1f2937]">
         <ClientScripts />
+        <a className="skip-link" href="#main-content">
+          Saltar al contenido principal
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

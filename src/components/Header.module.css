@@ -11,10 +11,10 @@
   background: linear-gradient(90deg, #0b3c6f, #0f5da0);
   color: #e7f3ff;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 0.32rem 1rem;
+  letter-spacing: 0.02em;
+  padding: 0.36rem 1rem;
 }
 
 .inner {
@@ -165,8 +165,8 @@
 
 @media (max-width: 540px) {
   .notice {
-    font-size: 0.66rem;
-    padding: 0.3rem 0.7rem;
+    font-size: 0.72rem;
+    padding: 0.34rem 0.7rem;
   }
 
   .topBar {
