@@ -106,29 +106,6 @@ export default function HomePage() {
         </picture>
       </section>
 
-      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <p className="text-xs uppercase tracking-[0.12em] text-[#0f5da0]">Logos y diseno historico</p>
-        <h2 className="mt-1 text-2xl font-bold text-slate-900">Identidad visual HolaBonjour</h2>
-        <p className="mt-2 text-sm text-slate-700">
-          Recuperamos elementos visuales de la web historica publicada para mantener continuidad de marca.
-        </p>
-
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
-          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <Image src="/images/logo-holabonjour-01.svg" alt="Logo HolaBonjour" width={220} height={64} />
-            <p className="mt-2 text-xs text-slate-600">Logo principal corporativo</p>
-          </article>
-          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <Image src="/assets/logo.svg" alt="Logo legacy HolaBonjour" width={220} height={64} />
-            <p className="mt-2 text-xs text-slate-600">Logo legacy recuperado del diseno original</p>
-          </article>
-          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <Image src="/images/banner-legacy-poster.png" alt="Elemento grafico legacy" width={220} height={168} />
-            <p className="mt-2 text-xs text-slate-600">Poster visual historico de marca</p>
-          </article>
-        </div>
-      </section>
-
       <section className="mt-8 grid gap-3.5 sm:grid-cols-3">
         {highlights.map((item) => (
           <article key={item.title} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
