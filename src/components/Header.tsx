@@ -12,7 +12,6 @@ const links = [
   { href: "/#equipo", label: "Equipo" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
   { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
-  { href: "/contratar", label: "Contratar pack" },
   { href: "/contact", label: "Contacto" },
 ];
 
@@ -40,7 +39,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.notice}>
-        Isabelle Guitton, directora academica y docente · Zoom + entorno digital · Pack 4h desde 140€
+        Clases online con Isabelle Guitton · Pack 4h desde 140EUR · Zoom + entorno digital
       </div>
 
       <div className={styles.inner}>
@@ -77,6 +76,8 @@ const Header = () => {
               className={styles.mobileMenuButton}
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
             >
               {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -85,7 +86,7 @@ const Header = () => {
       </div>
 
       {mobileMenuOpen && (
-        <nav className={styles.mobileNav} aria-label="Navegacion movil">
+        <nav id="mobile-nav" className={styles.mobileNav} aria-label="Navegacion movil">
           <ul>
             {links.map((link) => (
               <li key={link.href}>

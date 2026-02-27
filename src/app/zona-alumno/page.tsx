@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getStudentDashboard, listStudents } from "@/lib/student-zone-db";
+import { getStudentDashboard } from "@/lib/student-zone-db";
 
 export const metadata: Metadata = {
   title: "Zona alumno",
   description:
     "Accede a apuntes, material y seguimiento de clases del alumno en entorno digital personalizado.",
+  robots: {
+    index: false,
+    follow: false,
+    noarchive: true,
+    nosnippet: true,
+  },
 };
 
 const formatDate = (value: string) => {
@@ -22,24 +28,40 @@ export default async function ZonaAlumnoPage({
   searchParams: Promise<{ alumno?: string }>;
 }) {
   const resolved = await searchParams;
-  const selectedStudentId = resolved.alumno || "demo";
+  const selectedStudentId = resolved.alumno?.trim();
+
+  if (!selectedStudentId) {
+    return (
+      <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold text-gray-900">Zona alumno</h1>
+        <p className="mt-3 text-gray-700">
+          Esta area es privada. Accede con el enlace personal que te enviamos tras confirmar tu pedido.
+        </p>
+        <Link
+          href="/contact"
+          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
+        >
+          Solicitar acceso
+        </Link>
+      </div>
+    );
+  }
 
   const dashboard = getStudentDashboard(selectedStudentId);
-  const students = listStudents();
 
   if (!dashboard) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-gray-900">Zona alumno</h1>
-        <p className="mt-3 text-gray-700">No encontramos ese alumno.</p>
+        <p className="mt-3 text-gray-700">No hemos podido abrir tu zona de alumno.</p>
         <p className="mt-2 text-sm text-gray-600">
-          IDs disponibles: {students.map((student) => student.id).join(", ")}
+          Contactanos y te enviamos de nuevo tu enlace personal de acceso.
         </p>
         <Link
-          href="/zona-alumno?alumno=demo"
+          href="/contact"
           className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
         >
-          Abrir alumno demo
+          Contactar soporte academico
         </Link>
       </div>
     );

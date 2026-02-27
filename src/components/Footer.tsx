@@ -15,7 +15,7 @@ const quickLinks = [
 const socialLinks = [
   {
     href: "https://www.facebook.com/holabonjourmalaga/",
-    icon: "/images/icons-facbook.svg",
+    icon: "/images/icons-facebook.svg",
     label: "Facebook",
   },
   {
@@ -36,7 +36,7 @@ const socialLinks = [
 ];
 
 const trustSignals = [
-  "Isabelle Guitton: directora academica y docente",
+  "Isabelle Guitton: direccion academica y docente",
   "Proyecto docente activo desde 2017",
   "Zoom + entorno de aprendizaje digital personalizado",
 ];
@@ -74,8 +74,9 @@ const Footer = () => {
             <p className={styles.sectionTitle}>Contacto y tarifas</p>
             <p className={styles.text}>Telefono / WhatsApp: 685 07 03 04</p>
             <p className={styles.text}>Email: info@holabonjour.es</p>
-            <p className={styles.text}>A1-B2: pack 4 horas por 140€</p>
-            <p className={styles.text}>C1-C2: pack 4 horas por 200€</p>
+            <p className={styles.text}>A1-B2: pack 4 horas por 140EUR</p>
+            <p className={styles.text}>C1-C2: pack 4 horas por 200EUR</p>
+            <p className={styles.text}>Pago activo: transferencia bancaria</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (
                 <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>

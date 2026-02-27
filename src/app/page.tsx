@@ -4,9 +4,9 @@ import Image from "next/image";
 import TrustReviews from "@/components/TrustReviews";
 
 export const metadata: Metadata = {
-  title: "Isabelle Guitton | Frances online personalizado",
+  title: "Isabelle Guitton | Frances online por Zoom",
   description:
-    "HolaBonjour evoluciona a modelo 100% online con direccion academica de Isabelle Guitton, ruta examen DELF/DALF o conversacion y tarifas por pack de 4 horas.",
+    "HolaBonjour evoluciona a modelo 100% online con direccion academica de Isabelle Guitton: ruta examen DELF/DALF o conversacion, packs de 4 horas y confirmacion por transferencia.",
 };
 
 const highlights = [
@@ -28,9 +28,28 @@ const highlights = [
 ];
 
 const trustSignals = [
-  "Isabelle Guitton: directora academica y docente",
-  "Trayectoria activa desde 2017",
-  "Modelo 100% online por Zoom con plan personalizado",
+  "Isabelle Guitton: direccion academica y docencia directa",
+  "Proyecto activo desde 2017 (academia presencial y modelo online)",
+  "Pago activo por transferencia bancaria de empresa",
+];
+
+const quickFaq = [
+  {
+    q: "Que incluye el pack de 4 horas?",
+    a: "Sesiones por Zoom, plan de trabajo y material en tu entorno digital.",
+  },
+  {
+    q: "Que pack necesito?",
+    a: "A1-B2: 140EUR. C1-C2: 200EUR. Si dudas, te orientamos antes de contratar.",
+  },
+  {
+    q: "Como se confirma el pago?",
+    a: "Ahora mismo por transferencia bancaria a la cuenta de HBTJ Consultores Linguisticos S.L.",
+  },
+  {
+    q: "Cuanto tardais en responder?",
+    a: "Te respondemos en menos de 24h laborables con ruta y siguiente paso.",
+  },
 ];
 
 export default function HomePage() {
@@ -60,7 +79,7 @@ export default function HomePage() {
                 href="/contact"
                 className="inline-flex min-h-11 items-center justify-center rounded-xl border border-blue-200 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                Reservar orientacion
+                Reservar orientacion (15 min)
               </Link>
             </div>
           </div>
@@ -73,7 +92,7 @@ export default function HomePage() {
               <li>1. Eliges ruta: examen o conversacion.</li>
               <li>2. Seleccionas pack por nivel.</li>
               <li>3. Reservas en agenda disponible de Isabelle.</li>
-              <li>4. Accedes a tu zona alumno con material por clase.</li>
+              <li>4. Confirmas presupuesto y pago por transferencia.</li>
             </ol>
           </aside>
         </div>
@@ -123,7 +142,7 @@ export default function HomePage() {
               sesiones por Zoom, seguimiento individual y plan de trabajo digital para cada alumno.
             </p>
             <p className="mt-3 text-sm font-medium text-slate-800">
-              Trayectoria del proyecto: academia presencial (desde 2017) - modelo online especializado actual.
+              Trayectoria del proyecto: academia presencial (desde 2017) y modelo online especializado actual.
             </p>
           </div>
         </div>
@@ -141,7 +160,7 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">
               Niveles A1 a B2
             </p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 140€</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 140EUR</p>
             <p className="mt-2 text-sm text-slate-700">Conversacion o preparacion DELF A1, A2, B1 y B2.</p>
           </article>
 
@@ -149,7 +168,7 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">
               Niveles C1 y C2
             </p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 200€</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 200EUR</p>
             <p className="mt-2 text-sm text-slate-700">
               Conversacion o preparacion de alto rendimiento C1-C2.
             </p>
@@ -167,8 +186,7 @@ export default function HomePage() {
       <section id="contratar" className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
         <h2 className="text-xl font-semibold text-slate-900">Reserva de clases con agenda disponible</h2>
         <p className="mt-2 text-sm text-slate-700">
-          Ya puedes iniciar tu pedido de clases y abrir el calendario para reservar en huecos reales
-          de Isabelle.
+          Inicia tu pedido de clases y abre el calendario para reservar en huecos reales de Isabelle.
         </p>
 
         <div className="mt-4 flex flex-wrap gap-3">
@@ -179,16 +197,28 @@ export default function HomePage() {
             Ir a contratar y calendario
           </Link>
           <Link
-            href="/zona-alumno?alumno=demo"
+            href="/contact#faq"
             className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#0f5da0] px-5 text-sm font-semibold text-[#0f5da0] transition hover:bg-blue-100"
           >
-            Ver zona alumno demo
+            Ver preguntas frecuentes
           </Link>
         </div>
       </section>
 
       <section className="mt-8">
         <TrustReviews tone="white" />
+      </section>
+
+      <section id="faq-rapida" className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">
+        <h2 className="text-xl font-semibold text-[#0b3c6f]">Preguntas rapidas antes de escribir por WhatsApp</h2>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          {quickFaq.map((item) => (
+            <article key={item.q} className="rounded-xl border border-blue-200 bg-white p-4">
+              <h3 className="text-sm font-semibold text-slate-900">{item.q}</h3>
+              <p className="mt-2 text-sm text-slate-700">{item.a}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">

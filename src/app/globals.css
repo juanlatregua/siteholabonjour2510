@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #1f2937;
+  --focus-ring: #0f5da0;
 }
 
 body {
@@ -10,4 +11,34 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  z-index: 2000;
+  background: #0f5da0;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: 12px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--focus-ring) 45%, white);
+  outline-offset: 2px;
+  border-radius: 0.45rem;
 }

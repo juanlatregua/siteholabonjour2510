@@ -744,12 +744,22 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
             ))}
           </div>
 
+          <p className="mt-4 rounded-xl border border-emerald-200 bg-white px-4 py-3 text-sm text-emerald-900">
+            Siguiente paso: contratar pack y reservar agenda. Pago activo por transferencia.
+          </p>
+
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <Link
-              href={`/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
+              href={`/contratar?nivel=${result.estimatedLevel}`}
               className="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-700 px-5 py-2.5 text-sm font-semibold text-white"
             >
-              Ver plan recomendado
+              Contratar pack recomendado
+            </Link>
+            <Link
+              href={`/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-emerald-700 px-5 py-2.5 text-sm font-semibold text-emerald-900"
+            >
+              Ver plan detallado
             </Link>
             <button
               type="button"

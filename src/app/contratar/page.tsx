@@ -4,20 +4,20 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Contratar pack de clases",
   description:
-    "Contrata tu pack de clases con Isabelle Guitton y reserva en agenda segun disponibilidad.",
+    "Contrata tu pack de clases con Isabelle Guitton y reserva segun disponibilidad. Pago activo por transferencia bancaria.",
 };
 
 const packs = [
   {
     id: "a1-b2",
     title: "Pack A1-B2",
-    price: "140€",
+    price: "140EUR",
     detail: "4 horas para conversacion o preparacion DELF A1, A2, B1 y B2.",
   },
   {
     id: "c1-c2",
     title: "Pack C1-C2",
-    price: "200€",
+    price: "200EUR",
     detail: "4 horas para conversacion avanzada o preparacion C1-C2.",
   },
 ];
@@ -26,8 +26,14 @@ const steps = [
   "Elige tu ruta: preparacion de examen o conversacion.",
   "Selecciona pack por nivel (A1-B2 o C1-C2).",
   "Abre la agenda y reserva segun disponibilidad.",
-  "Recibe confirmacion y acceso a tu entorno de trabajo.",
+  "Confirma presupuesto y realiza pago por transferencia.",
 ];
+
+const bankDetails = {
+  beneficiary: "HBTJ Consultores Linguisticos S.L.",
+  iban: "ES66 0182 3370 67 0201616991",
+  bic: "BBVAESMM",
+};
 
 export default function ContratarPage() {
   const calendarUrl =
@@ -83,7 +89,7 @@ export default function ContratarPage() {
               href="/contact"
               className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
             >
-              Solicitar reserva por WhatsApp/email
+              Reservar por WhatsApp o email
             </Link>
           )}
 
@@ -97,11 +103,41 @@ export default function ContratarPage() {
 
         {!hasCalendar && (
           <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-            Para conectar la agenda real de Isabelle, configura la variable
-            <code className="ml-1 rounded bg-amber-100 px-1.5 py-0.5">NEXT_PUBLIC_ISABELLE_CALENDAR_URL</code>
-            con el enlace de reservas.
+            La agenda online se esta actualizando. Mientras tanto, reserva por WhatsApp o email y te
+            confirmamos hueco en menos de 24h laborables.
           </p>
         )}
+      </section>
+
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-2xl font-semibold text-gray-900">Confirmacion del presupuesto y pago</h2>
+        <p className="mt-3 text-sm text-gray-700">
+          Metodo activo ahora: transferencia bancaria. Bizum y tarjeta quedan en stand by.
+        </p>
+
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <p className="text-xs uppercase tracking-wide text-slate-500">Beneficiario</p>
+            <p className="mt-1 text-sm font-semibold text-slate-900">{bankDetails.beneficiary}</p>
+          </article>
+          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <p className="text-xs uppercase tracking-wide text-slate-500">IBAN</p>
+            <p className="mt-1 text-sm font-semibold text-slate-900">{bankDetails.iban}</p>
+          </article>
+          <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <p className="text-xs uppercase tracking-wide text-slate-500">BIC / SWIFT</p>
+            <p className="mt-1 text-sm font-semibold text-slate-900">{bankDetails.bic}</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-2xl font-semibold text-gray-900">Que pasa despues de reservar</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-gray-700">
+          <li>Te confirmamos la reserva por WhatsApp o email.</li>
+          <li>Recibes ruta recomendada (examen o conversacion) y plan inicial.</li>
+          <li>Tras confirmar presupuesto, realizas transferencia y activamos tu entorno de alumno.</li>
+        </ul>
       </section>
     </div>
   );
