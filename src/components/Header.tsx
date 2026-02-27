@@ -9,11 +9,10 @@ import styles from "./Header.module.css";
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/#isabelle", label: "Isabelle" },
+  { href: "/#equipo", label: "Equipo" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
   { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
   { href: "/contratar", label: "Contratar pack" },
-  { href: "/zona-alumno", label: "Zona alumno" },
   { href: "/contact", label: "Contacto" },
 ];
 

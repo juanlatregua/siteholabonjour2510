@@ -97,7 +97,7 @@ export default function HomePage() {
       </section>
 
       <section
-        id="isabelle"
+        id="equipo"
         className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
       >
         <div className="grid gap-5 md:grid-cols-[1fr_1.3fr] md:items-center">
@@ -112,7 +112,7 @@ export default function HomePage() {
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-[0.12em] text-[#0f5da0]">Direccion academica</p>
+            <p className="text-xs uppercase tracking-[0.12em] text-[#0f5da0]">Equipo y direccion academica</p>
             <h2 className="mt-1 text-2xl font-bold text-slate-900">Isabelle Guitton</h2>
             <p className="mt-3 text-sm text-slate-700 sm:text-base">
               Fundadora y directora de HolaBonjour. Desde 2017 lidera el proyecto docente en Malaga,
