@@ -1,0 +1,30 @@
+/* Navigation.module.css */
+.height {
+	/* hace que la barra quede fija arriba */
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+  
+	/* flex básico para distribuir contenido */
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+  
+	/* alto, fondo y padding iguales a MasterClass */
+	height: 64px;
+	background-color: #fff;
+	padding: 0 24px;
+  
+	/* la línea inferior que crea la “división” */
+	border-bottom: 1px solid #e3e3e3;
+  
+	/* sombra muy suave (opcional) */
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  
+  
+  

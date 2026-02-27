@@ -1,0 +1,37 @@
+/* components/LevelTestCTA.module.css */
+.container {
+	text-align: center;
+	margin: 2rem auto;
+	padding: 1.5rem;
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	max-width: 600px;
+  }
+  
+  .title {
+	font-size: 1.75rem;
+	margin-bottom: 1rem;
+	color: #333;
+  }
+  
+  .levels {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+  }
+  
+  .levelButton {
+	background-color: #0055a4;
+	color: #fff;
+	padding: 0.75rem 1.25rem;
+	border-radius: 4px;
+	text-decoration: none;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+  }
+  
+  .levelButton:hover {
+	background-color: #003f7d;
+  }
+  
