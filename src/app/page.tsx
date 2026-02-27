@@ -94,12 +94,12 @@ export default function HomePage() {
       </section>
 
       <section className="mt-8 relative overflow-hidden rounded-3xl border border-slate-200 shadow-sm">
-        <div className="relative min-h-[380px] sm:min-h-[460px]">
+        <div className="relative min-h-[260px] sm:min-h-[460px]">
           <Image
             src="/assets/s1final.jpg"
             alt="Imagen historica HolaBonjour con Isabelle y mensaje de clases online"
             fill
-            className="object-cover object-center"
+            className="object-cover object-[44%_center] sm:object-center"
             priority
           />
         </div>
