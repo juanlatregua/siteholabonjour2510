@@ -22,6 +22,11 @@
   color: #ffffff;
 }
 
+.brandLogo {
+  filter: brightness(0) invert(1);
+  margin-bottom: 0.5rem;
+}
+
 .sectionTitle {
   margin: 0;
   font-size: 0.83rem;

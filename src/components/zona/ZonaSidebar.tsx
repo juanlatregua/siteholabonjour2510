@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FiMenu, FiX } from "react-icons/fi";
 
@@ -54,6 +55,19 @@ export default function ZonaSidebar({ links, user }: ZonaSidebarProps) {
 
   const navContent = (
     <>
+      {/* Brand logo */}
+      <div className="px-4 pt-4 pb-2">
+        <Link href="/">
+          <Image
+            src="/images/logo-holabonjour-01.svg"
+            alt="HolaBonjour"
+            width={120}
+            height={43}
+            priority
+          />
+        </Link>
+      </div>
+
       {/* User info */}
       <div className="flex items-center gap-3 border-b border-gray-200 px-4 py-5">
         <UserAvatar user={user} />

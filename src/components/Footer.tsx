@@ -13,7 +13,7 @@ const quickLinks = [
 const socialLinks = [
   {
     href: "https://www.facebook.com/holabonjourmalaga/",
-    icon: "/images/icons-facbook.svg",
+    icon: "/images/icons-facebook.svg",
     label: "Facebook",
   },
   {
@@ -41,7 +41,13 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.grid}>
           <section>
-            <p className={styles.brand}>HolaBonjour</p>
+            <Image
+              src="/images/logo-holabonjour-01.svg"
+              alt="HolaBonjour"
+              width={120}
+              height={43}
+              className={styles.brandLogo}
+            />
             <p className={styles.text}>
               Academia especializada en preparacion online DELF y DALF. Simulaciones orientativas,
               plan por nivel y acompanamiento docente.

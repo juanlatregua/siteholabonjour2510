@@ -22,7 +22,7 @@
   }
   
   .levelButton {
-	background-color: #0055a4;
+	background-color: var(--color-blue);
 	color: #fff;
 	padding: 0.75rem 1.25rem;
 	border-radius: 4px;
@@ -32,6 +32,6 @@
   }
   
   .levelButton:hover {
-	background-color: #003f7d;
+	background-color: var(--color-blue-hover);
   }
   
