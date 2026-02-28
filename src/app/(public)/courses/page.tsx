@@ -1,6 +1,6 @@
 // src/app/courses/page.tsx
 import React from 'react';
-import CourseCard from '../../components/CourseCard';
+import CourseCard from '@/components/CourseCard';
 
 const Courses = () => {
   return (

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
 import AssessmentAudioPlayer from "@/components/AssessmentAudioPlayer";
+import ResultScreen from "@/components/assessment/ResultScreen";
 import type {
   AssessmentResult,
   PublicAssessment,
@@ -721,45 +721,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
       )}
 
       {step === "result" && result && (
-        <section className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-4 shadow-[0_6px_18px_rgba(5,150,105,0.1)] sm:p-5">
-          <p className="inline-flex rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-emerald-700">
-            Paso 4 de 4
-          </p>
-          <h3 className="mt-2 text-2xl font-bold text-emerald-900">
-            Nota: {result.totalScore}/{result.maxScore} ({result.percentage}%)
-          </h3>
-          <p className="mt-2 text-sm text-emerald-900">
-            Nivel estimado: <strong>{result.estimatedLevel}</strong>
-          </p>
-          <p className="text-sm text-emerald-900">
-            Recomendacion: <strong>{result.recommendedExam}</strong>
-          </p>
-          <p className="text-sm text-emerald-900">{result.recommendedCourse}</p>
-
-          <div className="mt-4 space-y-2 rounded-2xl border border-emerald-100 bg-white p-4">
-            {result.sectionScores.map((section) => (
-              <p key={section.sectionId} className="text-sm text-slate-700">
-                {section.sectionTitle}: {section.score}/{section.maxScore} ({section.percentage}% )
-              </p>
-            ))}
-          </div>
-
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href={`/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-700 px-5 py-2.5 text-sm font-semibold text-white"
-            >
-              Ver plan recomendado
-            </Link>
-            <button
-              type="button"
-              onClick={clearDraft}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-emerald-700 px-5 py-2.5 text-sm font-semibold text-emerald-900"
-            >
-              Empezar otro intento
-            </button>
-          </div>
-        </section>
+        <ResultScreen result={result} assessment={assessment} onRestart={clearDraft} />
       )}
 
       {message && (

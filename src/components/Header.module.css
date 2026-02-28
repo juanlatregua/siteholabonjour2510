@@ -45,7 +45,8 @@
   padding: 0;
 }
 
-.desktopNav li a {
+.desktopNav li a,
+.dropdownTrigger {
   display: inline-flex;
   align-items: center;
   border-radius: 0.6rem;
@@ -55,9 +56,15 @@
   font-size: 0.94rem;
   font-weight: 600;
   transition: background-color 0.18s ease, color 0.18s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  gap: 0.25rem;
 }
 
-.desktopNav li a:hover {
+.desktopNav li a:hover,
+.dropdownTrigger:hover {
   background: #eff6ff;
   color: #0f5da0;
 }
@@ -65,6 +72,68 @@
 .activeLink {
   background: #e0efff;
   color: #0b4d84 !important;
+}
+
+.chevron {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+  padding: 0.35rem;
+  margin-top: 0.25rem;
+  z-index: 50;
+  animation: dropdownFadeIn 0.15s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #374151;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdownItem:hover {
+  background: #eff6ff;
+  color: #0f5da0;
+}
+
+.dropdownItemActive {
+  background: #e0efff;
+  color: #0b4d84;
+  font-weight: 600;
 }
 
 .actions {
@@ -86,6 +155,7 @@
   font-size: 0.86rem;
   padding: 0 0.9rem;
   transition: background-color 0.18s ease;
+  white-space: nowrap;
 }
 
 .ctaButton:hover {
@@ -105,6 +175,7 @@
   cursor: pointer;
 }
 
+/* Mobile nav */
 .mobileNav {
   border-top: 1px solid #e5e7eb;
   background: #ffffff;
@@ -135,6 +206,66 @@
 .activeMobileLink {
   background: #eff6ff;
   color: #0f5da0 !important;
+}
+
+/* Accordion */
+.accordion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 0.65rem;
+  padding: 0.65rem 0.72rem;
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.accordion:hover {
+  background: #eff6ff;
+  color: #0f5da0;
+}
+
+.accordionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-left: 0.75rem;
+  margin-top: 0.15rem;
+  border-left: 2px solid #e0efff;
+  margin-left: 0.72rem;
+  animation: accordionSlideIn 0.2s ease;
+}
+
+@keyframes accordionSlideIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.accordionItem {
+  display: block;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.72rem;
+  text-decoration: none;
+  color: #4b5563;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.accordionItem:hover {
+  background: #eff6ff;
+  color: #0f5da0;
 }
 
 .mobileCta {

@@ -1,0 +1,263 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ── NextAuth tables ──
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ── Application models ──
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+  role          String    @default("STUDENT") // STUDENT | TEACHER | ADMIN
+  level         String?   // CEFR: A1, A2, B1, B2, C1, C2
+  route         String?   // "preparacion-examen" | "conversacion"
+  phone         String?
+  active        Boolean   @default(true)
+  coachId       String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  coach    User?  @relation("CoachStudents", fields: [coachId], references: [id])
+  students User[] @relation("CoachStudents")
+
+  accounts Account[]
+  sessions Session[]
+
+  studentPacks     Pack[]
+  studentLessons   Lesson[]   @relation("StudentLessons")
+  studentMaterials Material[] @relation("StudentMaterials")
+  studentPayments  Payment[]
+
+  teacherLessons      Lesson[]       @relation("TeacherLessons")
+  teacherAvailability Availability[]
+  uploadedMaterials   Material[]     @relation("UploadedMaterials")
+
+  assessmentLinks AssessmentLink[]
+
+  @@map("users")
+}
+
+model Pack {
+  id          String   @id @default(cuid())
+  studentId   String
+  hoursTotal  Float    // e.g. 4.0
+  hoursUsed   Float    @default(0)
+  price       Float    // e.g. 140.00
+  levelRange  String   // "A1-B2" or "C1-C2"
+  status      String   @default("ACTIVE") // ACTIVE | EXPIRED | EXHAUSTED | CANCELLED
+  purchasedAt DateTime @default(now())
+  expiresAt   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  student  User      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  payments Payment[]
+  lessons  Lesson[]
+
+  @@map("packs")
+}
+
+model Lesson {
+  id              String   @id @default(cuid())
+  studentId       String
+  teacherId       String
+  packId          String?
+  scheduledAt     DateTime
+  durationMinutes Int      @default(60)
+  zoomLink        String?
+  status          String   @default("SCHEDULED") // SCHEDULED | COMPLETED | CANCELLED | NO_SHOW
+  focus           String?
+  notes           String?
+  studentFeedback String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  student   User       @relation("StudentLessons", fields: [studentId], references: [id])
+  teacher   User       @relation("TeacherLessons", fields: [teacherId], references: [id])
+  pack      Pack?      @relation(fields: [packId], references: [id])
+  materials Material[]
+
+  @@index([studentId, scheduledAt])
+  @@index([teacherId, scheduledAt])
+  @@map("lessons")
+}
+
+model Material {
+  id           String   @id @default(cuid())
+  lessonId     String?
+  studentId    String
+  uploadedById String
+  type         String   // PDF | AUDIO | DOC | NOTE
+  title        String
+  storagePath  String
+  publicUrl    String?
+  sizeBytes    Int?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  lesson     Lesson? @relation(fields: [lessonId], references: [id], onDelete: SetNull)
+  student    User    @relation("StudentMaterials", fields: [studentId], references: [id])
+  uploadedBy User    @relation("UploadedMaterials", fields: [uploadedById], references: [id])
+
+  @@index([studentId])
+  @@index([lessonId])
+  @@map("materials")
+}
+
+model Payment {
+  id          String    @id @default(cuid())
+  studentId   String
+  packId      String?
+  amount      Float
+  method      String    @default("TRANSFER") // TRANSFER | BIZUM | OTHER
+  status      String    @default("PENDING")  // PENDING | CONFIRMED | REJECTED
+  reference   String?
+  notes       String?
+  confirmedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  student User  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  pack    Pack? @relation(fields: [packId], references: [id])
+
+  @@index([studentId])
+  @@map("payments")
+}
+
+model Availability {
+  id        String  @id @default(cuid())
+  teacherId String
+  dayOfWeek Int     // 0=Sunday, 1=Monday ... 6=Saturday
+  startTime String  // "09:00"
+  endTime   String  // "10:00"
+  active    Boolean @default(true)
+
+  teacher User @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  @@unique([teacherId, dayOfWeek, startTime])
+  @@map("availability")
+}
+
+model AssessmentLink {
+  id           String   @id @default(cuid())
+  userId       String
+  attemptId    String   @unique
+  assessmentId String
+  linkedAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("assessment_links")
+}
+
+// ── Le Marché (weekly quiz) ──
+
+model Quiz {
+  id          String    @id @default(cuid())
+  weekNumber  Int
+  year        Int
+  theme       String
+  title       String
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  questions QuizQuestion[]
+  results   QuizResult[]
+
+  @@unique([weekNumber, year])
+  @@map("quizzes")
+}
+
+model QuizQuestion {
+  id          String  @id @default(cuid())
+  quizId      String
+  text        String
+  textFr      String?
+  options     String  // JSON string: ["option1","option2","option3","option4"]
+  correctIdx  Int
+  explanation String?
+  imageUrl    String?
+  order       Int
+
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@index([quizId])
+  @@map("quiz_questions")
+}
+
+model QuizResult {
+  id        String   @id @default(cuid())
+  quizId    String
+  name      String
+  email     String
+  score     Int
+  timeMs    Int
+  createdAt DateTime @default(now())
+
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@index([quizId, score])
+  @@map("quiz_results")
+}
+
+// ── Newsletter ──
+
+model NewsletterSubscriber {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  subscribedAt DateTime @default(now())
+  active       Boolean  @default(true)
+
+  @@map("newsletter_subscribers")
+}

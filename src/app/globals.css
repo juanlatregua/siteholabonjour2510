@@ -1,13 +1,55 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap");
 
 :root {
   --background: #ffffff;
   --foreground: #1f2937;
+
+  /* Le Côté Vie palette */
+  --vie-cream: #faf7f2;
+  --vie-gold: #c9a84c;
+  --vie-gold-light: #e8d9a0;
+  --vie-navy: #1a2744;
+  --vie-wine: #722f37;
+  --vie-sage: #7c9a6e;
+  --vie-bleu: #2d5f8a;
+  --vie-rose: #d4a5a5;
+
+  /* Typography */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", "Inter", system-ui, sans-serif;
 }
 
 body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
+}
+
+/* Le Côté Vie section styling */
+.vie-section {
+  background: var(--vie-cream);
+  font-family: var(--font-body);
+}
+
+.vie-heading {
+  font-family: var(--font-display);
+  color: var(--vie-navy);
+}
+
+.vie-accent {
+  color: var(--vie-gold);
+}
+
+.vie-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vie-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }

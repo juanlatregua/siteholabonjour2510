@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TrustReviews from "@/components/TrustReviews";
+import MotDuJourWidget from "@/components/le-mot-du-jour/MotDuJourWidget";
 
 export const metadata: Metadata = {
   title: "Plataforma DELF/DALF",
@@ -92,6 +93,16 @@ export default function HomePage() {
 
       <section className="mt-8">
         <TrustReviews tone="white" />
+      </section>
+
+      <section className="mt-8 vie-section rounded-2xl p-5 sm:p-6">
+        <h2 className="vie-heading text-xl font-semibold">Le Mot du Jour</h2>
+        <p className="mt-1 text-sm text-gray-600">
+          Cada dia, una expresion francesa para ampliar tu vocabulario.
+        </p>
+        <div className="mt-4 max-w-md">
+          <MotDuJourWidget />
+        </div>
       </section>
 
       <section className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">

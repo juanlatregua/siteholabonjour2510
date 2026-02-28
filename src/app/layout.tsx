@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ClientScripts from "@/components/ClientScripts";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/lib/auth";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,17 +17,15 @@ export const metadata: Metadata = {
   },
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await auth();
   return (
     <html lang="es">
       <body className="min-h-screen flex flex-col bg-white text-[#1f2937]">
-        <ClientScripts />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <SessionProvider session={session}>
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
