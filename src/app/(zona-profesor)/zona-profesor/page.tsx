@@ -140,6 +140,7 @@ export default async function ZonaProfesorDashboard() {
                     teacherName={lesson.student.name || lesson.student.email}
                     zoomLink={lesson.zoomLink}
                     durationMinutes={lesson.durationMinutes}
+                    personLabel="Alumno"
                   />
                 ))}
               </div>
@@ -168,6 +169,7 @@ export default async function ZonaProfesorDashboard() {
                     teacherName={lesson.student.name || lesson.student.email}
                     zoomLink={lesson.zoomLink}
                     durationMinutes={lesson.durationMinutes}
+                    personLabel="Alumno"
                   />
                 ))}
               </div>

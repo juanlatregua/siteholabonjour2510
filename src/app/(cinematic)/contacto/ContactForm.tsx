@@ -40,11 +40,38 @@ export default function ContactForm() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          objetivo: formData.objetivo,
+          message: formData.message,
+          source: "contact-form",
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.message || "Error al enviar el mensaje.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al enviar el mensaje. Inténtalo de nuevo.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -189,9 +216,23 @@ export default function ContactForm() {
         />
       </div>
 
+      {error && (
+        <p
+          className="text-sm px-4 py-3 rounded-xl"
+          style={{
+            background: "rgba(239,68,68,0.1)",
+            border: "1px solid rgba(239,68,68,0.3)",
+            color: "#fca5a5",
+          }}
+        >
+          {error}
+        </p>
+      )}
+
       <button
         type="submit"
-        className="mt-2 font-semibold cursor-pointer transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_24px_rgba(232,184,101,0.35)]"
+        disabled={submitting}
+        className="mt-2 font-semibold cursor-pointer transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_24px_rgba(232,184,101,0.35)] disabled:opacity-50 disabled:cursor-not-allowed"
         style={{
           padding: "14px 28px",
           borderRadius: 12,
@@ -203,7 +244,7 @@ export default function ContactForm() {
           letterSpacing: "0.01em",
         }}
       >
-        Envoyer le message
+        {submitting ? "Enviando..." : "Envoyer le message"}
       </button>
     </form>
   );

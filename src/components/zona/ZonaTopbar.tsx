@@ -15,6 +15,7 @@ interface ZonaTopbarProps {
 
 const breadcrumbLabels: Record<string, string> = {
   "zona-alumno": "Zona Alumno",
+  "zona-profesor": "Panel profesor",
   clases: "Clases",
   calendario: "Calendario",
   reservar: "Reservar",
@@ -22,6 +23,13 @@ const breadcrumbLabels: Record<string, string> = {
   pagos: "Pagos",
   resultados: "Resultados",
   recursos: "Recursos",
+  alumnos: "Alumnos",
+  nuevo: "Nuevo",
+  nueva: "Nueva",
+  materiales: "Materiales",
+  subir: "Subir material",
+  disponibilidad: "Disponibilidad",
+  packs: "Packs",
 };
 
 export default function ZonaTopbar({ title, user }: ZonaTopbarProps) {

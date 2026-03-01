@@ -55,7 +55,7 @@ export default function HomePage() {
                 Empezar prueba de nivel
               </Link>
               <Link
-                href="/preparacion-delf-dalf"
+                href="/cursos/preparacion-delf-dalf"
                 className="inline-flex min-h-11 items-center justify-center rounded-xl border border-blue-200 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 Ver programas DELF/DALF

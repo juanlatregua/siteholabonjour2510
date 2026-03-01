@@ -31,8 +31,8 @@ const contactMethods = [
   {
     title: "Courriel",
     description: "Te respondemos en menos de 24 horas",
-    detail: "info@holabonjour.es",
-    href: "mailto:info@holabonjour.es",
+    detail: "hola@holabonjour.es",
+    href: "mailto:hola@holabonjour.es",
     cta: "Envoyer un courriel",
   },
   {

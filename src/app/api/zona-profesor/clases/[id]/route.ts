@@ -78,9 +78,34 @@ export async function PATCH(
   if (parsed.data.zoomLink !== undefined) data.zoomLink = parsed.data.zoomLink;
   if (parsed.data.focus !== undefined) data.focus = parsed.data.focus;
 
-  const updated = await prisma.lesson.update({
-    where: { id },
-    data,
+  const newStatus = parsed.data.status;
+  const oldStatus = lesson.status;
+  const statusChanged = newStatus !== undefined && newStatus !== oldStatus;
+  const hoursDelta = lesson.durationMinutes / 60;
+
+  // Use a transaction to update lesson and pack.hoursUsed atomically
+  const updated = await prisma.$transaction(async (tx) => {
+    const updatedLesson = await tx.lesson.update({
+      where: { id },
+      data,
+    });
+
+    // Adjust pack.hoursUsed when status transitions to/from COMPLETED
+    if (statusChanged && lesson.packId) {
+      if (newStatus === "COMPLETED" && oldStatus !== "COMPLETED") {
+        await tx.pack.update({
+          where: { id: lesson.packId },
+          data: { hoursUsed: { increment: hoursDelta } },
+        });
+      } else if (oldStatus === "COMPLETED" && newStatus !== "COMPLETED") {
+        await tx.pack.update({
+          where: { id: lesson.packId },
+          data: { hoursUsed: { decrement: hoursDelta } },
+        });
+      }
+    }
+
+    return updatedLesson;
   });
 
   return NextResponse.json({ ok: true, lesson: updated });

@@ -5,11 +5,13 @@ import styles from "./Footer.module.css";
 
 const navLinks = [
   { href: "/cursos", label: "Cursos" },
-  { href: "/le-voyage", label: "Le Voyage" },
-  { href: "/le-cote-vie", label: "Le Cote Vie" },
+  { href: "/test-de-nivel", label: "Test de nivel" },
+  { href: "/le-marche", label: "Le Côté Vie" },
   { href: "/recursos", label: "Recursos" },
   { href: "/tarifas", label: "Tarifs" },
   { href: "/contacto", label: "Contact" },
+  { href: "/sobre-nosotros", label: "Sobre nosotros" },
+  { href: "/empresas", label: "Empresas" },
 ];
 
 const vieCultureLinks = [
@@ -58,7 +60,7 @@ const Footer = () => {
             </p>
             <p className={styles.tagline}>L&apos;aventure commence ici</p>
             <p className={styles.text}>
-              Academie en ligne de francais / Academia online de frances: clases en directo con profesores nativos.
+              Académie en ligne de français / Academia online de francés: clases en directo con profesores nativos.
             </p>
             <ul className={styles.trustList}>
               {trustSignals.map((item) => (
@@ -95,7 +97,7 @@ const Footer = () => {
           <section>
             <p className={styles.sectionTitle}>Contact</p>
             <p className={styles.text}>WhatsApp: +34 685 07 03 04</p>
-            <p className={styles.text}>Email: info@holabonjour.es</p>
+            <p className={styles.text}>Email: hola@holabonjour.es</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (
                 <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>

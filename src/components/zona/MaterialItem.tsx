@@ -35,7 +35,7 @@ export default function MaterialItem({
 }: MaterialItemProps) {
   const date =
     typeof createdAt === "string" ? new Date(createdAt) : createdAt;
-  const downloadHref = publicUrl || storagePath;
+  const downloadHref = publicUrl || `/api/zona-profesor/download?path=${encodeURIComponent(storagePath)}`;
 
   return (
     <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3">

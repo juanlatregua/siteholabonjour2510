@@ -3,7 +3,7 @@ export const runtime = "nodejs";
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { uploadMaterial } from "@/lib/supabase";
+import { uploadMaterial, getSignedUrl } from "@/lib/supabase";
 
 export async function POST(request: Request) {
   const session = await auth();
@@ -36,6 +36,9 @@ export async function POST(request: Request) {
   const path = `${session.user.id}/${studentId}/${Date.now()}-${file.name}`;
   const { path: storagePath } = await uploadMaterial(buffer, path);
 
+  // Generate a signed URL for download (7 days expiry)
+  const publicUrl = await getSignedUrl(storagePath, 7 * 24 * 3600);
+
   const type = file.type.includes("pdf")
     ? "PDF"
     : file.type.includes("audio")
@@ -49,6 +52,7 @@ export async function POST(request: Request) {
       type,
       title: title || file.name,
       storagePath,
+      publicUrl,
       sizeBytes: file.size,
     },
   });

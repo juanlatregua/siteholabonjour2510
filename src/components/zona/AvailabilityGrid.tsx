@@ -32,9 +32,9 @@ export default function AvailabilityGrid({}: AvailabilityGridProps) {
     try {
       const res = await fetch("/api/zona-profesor/disponibilidad");
       const data = await res.json();
-      if (data.ok && data.availability) {
+      if (data.ok && data.slots) {
         const newSlots: SlotState = {};
-        for (const slot of data.availability) {
+        for (const slot of data.slots) {
           const key = `${slot.dayOfWeek}-${slot.startTime}`;
           newSlots[key] = slot.active;
         }
@@ -66,22 +66,20 @@ export default function AvailabilityGrid({}: AvailabilityGridProps) {
     setSuccess(false);
 
     try {
-      // Build the payload: list of active slots
-      const activeSlots: { dayOfWeek: number; startTime: string; endTime: string }[] = [];
+      // Build the payload: all slots (active and inactive) so removed slots get deactivated
+      const allSlots: { dayOfWeek: number; startTime: string; endTime: string; active: boolean }[] = [];
       for (const [key, active] of Object.entries(slots)) {
-        if (active) {
-          const [dayStr, startTime] = key.split("-");
-          const dayOfWeek = parseInt(dayStr, 10);
-          const hour = parseInt(startTime.split(":")[0], 10);
-          const endTime = `${String(hour + 1).padStart(2, "0")}:00`;
-          activeSlots.push({ dayOfWeek, startTime, endTime });
-        }
+        const [dayStr, startTime] = key.split("-");
+        const dayOfWeek = parseInt(dayStr, 10);
+        const hour = parseInt(startTime.split(":")[0], 10);
+        const endTime = `${String(hour + 1).padStart(2, "0")}:00`;
+        allSlots.push({ dayOfWeek, startTime, endTime, active });
       }
 
       const res = await fetch("/api/zona-profesor/disponibilidad", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slots: activeSlots }),
+        body: JSON.stringify({ slots: allSlots }),
       });
 
       const data = await res.json();

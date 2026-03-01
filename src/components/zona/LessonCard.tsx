@@ -10,6 +10,7 @@ interface LessonCardProps {
   teacherName?: string | null;
   zoomLink?: string | null;
   durationMinutes: number;
+  personLabel?: string;
 }
 
 const statusVariant: Record<string, "info" | "success" | "danger" | "warning"> = {
@@ -33,6 +34,7 @@ export default function LessonCard({
   teacherName,
   zoomLink,
   durationMinutes,
+  personLabel = "Profesor",
 }: LessonCardProps) {
   const date = typeof scheduledAt === "string" ? new Date(scheduledAt) : scheduledAt;
 
@@ -48,7 +50,7 @@ export default function LessonCard({
           </p>
           {teacherName && (
             <p className="mt-1 text-sm text-gray-600">
-              Profesor: <span className="font-medium">{teacherName}</span>
+              {personLabel}: <span className="font-medium">{teacherName}</span>
             </p>
           )}
           {focus && (

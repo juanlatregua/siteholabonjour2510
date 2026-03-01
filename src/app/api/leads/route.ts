@@ -6,9 +6,11 @@ export async function POST(request: Request) {
     email?: string;
     objetivo?: string;
     source?: string;
+    message?: string;
+    phone?: string;
   };
 
-  const { name, email, objetivo, source } = body;
+  const { name, email, objetivo, source, message, phone } = body;
 
   if (!name || !email) {
     return NextResponse.json(
@@ -21,7 +23,9 @@ export async function POST(request: Request) {
   console.log("[LEAD]", {
     name,
     email,
+    phone,
     objetivo,
+    message,
     source,
     createdAt: new Date().toISOString(),
   });

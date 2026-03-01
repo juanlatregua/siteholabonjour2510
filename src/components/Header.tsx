@@ -242,7 +242,7 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
 
           {/* CTA at the bottom */}
           <Link
-            href="/le-voyage"
+            href="/test-de-nivel"
             className={isCinematic ? styles.overlayCta : styles.overlayCtaLight}
             onClick={closeMenu}
           >

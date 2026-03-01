@@ -62,6 +62,7 @@ export default async function ClaseDetailPage({
         teacherName={lesson.student.name || lesson.student.email}
         zoomLink={lesson.zoomLink}
         durationMinutes={lesson.durationMinutes}
+        personLabel="Alumno"
       />
 
       {/* Edit notes & feedback */}

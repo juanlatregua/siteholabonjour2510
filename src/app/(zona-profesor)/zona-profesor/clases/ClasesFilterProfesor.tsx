@@ -64,6 +64,7 @@ export default function ClasesFilterProfesor({ upcoming, past }: ClasesFilterPro
                 teacherName={lesson.studentName}
                 zoomLink={lesson.zoomLink}
                 durationMinutes={lesson.durationMinutes}
+                personLabel="Alumno"
               />
             </Link>
           ))}

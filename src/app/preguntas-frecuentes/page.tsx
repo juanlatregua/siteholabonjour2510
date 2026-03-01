@@ -39,7 +39,7 @@ export default function PreguntasFrecuentesPage() {
           Escríbenos y te orientamos en menos de 24h laborables con ruta, nivel y siguiente paso.
         </p>
         <Link
-          href="/contact"
+          href="/contacto"
           className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white hover:bg-[#0b4d84]"
         >
           Contactar ahora

@@ -13,7 +13,7 @@ const slotSchema = z.object({
 });
 
 const upsertSchema = z.object({
-  slots: z.array(slotSchema).min(1, "Se requiere al menos un slot"),
+  slots: z.array(slotSchema),
 });
 
 export async function GET() {

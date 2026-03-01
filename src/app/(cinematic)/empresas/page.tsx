@@ -184,7 +184,7 @@ export default function EmpresasPage() {
             >
               Solicitar propuesta
             </GoldButton>
-            <GoldButton href="mailto:info@holabonjour.es" variant="outline">
+            <GoldButton href="mailto:hola@holabonjour.es" variant="outline">
               Écrire par email
             </GoldButton>
           </div>

@@ -65,7 +65,7 @@ const QuickHelpChat = () => {
           Ver FAQ completa
         </Link>
         <Link
-          href="/contact"
+          href="/contacto"
           className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 text-sm font-semibold text-white hover:bg-[#0b4d84]"
         >
           Aun tengo dudas: contactar

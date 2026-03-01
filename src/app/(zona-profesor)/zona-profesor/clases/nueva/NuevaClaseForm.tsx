@@ -20,14 +20,6 @@ interface NuevaClaseFormProps {
   students: { value: string; label: string }[];
 }
 
-const durationOptions = [
-  { value: "30", label: "30 minutos" },
-  { value: "45", label: "45 minutos" },
-  { value: "60", label: "60 minutos" },
-  { value: "90", label: "90 minutos" },
-  { value: "120", label: "120 minutos" },
-];
-
 export default function NuevaClaseForm({ students }: NuevaClaseFormProps) {
   const router = useRouter();
   const [serverError, setServerError] = useState<string | null>(null);
@@ -100,12 +92,8 @@ export default function NuevaClaseForm({ students }: NuevaClaseFormProps) {
         error={errors.time?.message}
       />
 
-      <Select
-        label="Duracion"
-        options={durationOptions}
-        {...register("durationMinutes")}
-        error={errors.durationMinutes?.message}
-      />
+      <input type="hidden" {...register("durationMinutes")} />
+      <p className="text-sm text-gray-500">Duración: 60 minutos</p>
 
       <Input
         label="Enlace Zoom"

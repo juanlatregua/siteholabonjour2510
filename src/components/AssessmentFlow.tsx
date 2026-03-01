@@ -911,7 +911,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               Contratar pack recomendado
             </Link>
             <Link
-              href={`/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
+              href={`/cursos/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
               className="inline-flex min-h-11 items-center justify-center rounded-xl border border-emerald-700 px-5 py-2.5 text-sm font-semibold text-emerald-900"
             >
               Ver plan detallado

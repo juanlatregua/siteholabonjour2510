@@ -86,7 +86,7 @@ export default function ContratarPage() {
             </a>
           ) : (
             <Link
-              href="/contact"
+              href="/contacto"
               className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
             >
               Reservar por WhatsApp o email
@@ -94,7 +94,7 @@ export default function ContratarPage() {
           )}
 
           <Link
-            href="/contact"
+            href="/contacto"
             className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#0f5da0] px-5 text-sm font-semibold text-[#0f5da0] transition hover:bg-blue-100"
           >
             Reservar orientacion

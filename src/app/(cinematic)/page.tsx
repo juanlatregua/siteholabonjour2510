@@ -791,10 +791,10 @@ const CinematicHomePage = () => {
             >
               Email:{" "}
               <a
-                href="mailto:info@holabonjour.es"
+                href="mailto:hola@holabonjour.es"
                 style={{ color: "#e8b865", textDecoration: "none" }}
               >
-                info@holabonjour.es
+                hola@holabonjour.es
               </a>
             </p>
           </div>

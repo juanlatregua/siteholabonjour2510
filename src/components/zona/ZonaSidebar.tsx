@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiLogOut } from "react-icons/fi";
+import { signOut } from "next-auth/react";
 
 interface SidebarLink {
   href: string;
@@ -84,7 +85,9 @@ export default function ZonaSidebar({ links, user }: ZonaSidebarProps) {
         {links.map((link) => {
           const isActive =
             pathname === link.href ||
-            (link.href !== "/zona-alumno" && pathname.startsWith(link.href));
+            (link.href !== "/zona-alumno" &&
+              link.href !== "/zona-profesor" &&
+              pathname.startsWith(link.href));
           return (
             <Link
               key={link.href}
@@ -102,6 +105,17 @@ export default function ZonaSidebar({ links, user }: ZonaSidebarProps) {
           );
         })}
       </nav>
+
+      {/* Logout button */}
+      <div className="border-t border-gray-200 px-3 py-4">
+        <button
+          onClick={() => signOut({ callbackUrl: "/iniciar-sesion" })}
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
+        >
+          <span className="text-lg"><FiLogOut /></span>
+          Cerrar sesión
+        </button>
+      </div>
     </>
   );
 

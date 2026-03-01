@@ -53,7 +53,7 @@ const QUICK_REPLIES = [
 ];
 
 const WHATSAPP_URL =
-  "https://wa.me/34624178122?text=Hola%20HolaBonjour%20%F0%9F%87%AB%F0%9F%87%B7";
+  "https://wa.me/34685070304?text=Hola%20HolaBonjour%20%F0%9F%87%AB%F0%9F%87%B7";
 
 const STORAGE_KEY_MESSAGES = "hb-chat-messages";
 const STORAGE_KEY_SESSION = "hb-chat-session";
