@@ -112,14 +112,27 @@ const Footer = () => {
           <Link href="/politica-de-cookies">Cookies</Link>
         </div>
 
+        {/* HBTJ Ecosystem */}
+        <div className={styles.ecosystem}>
+          <Image
+            src="/images/hbtj-icon-128.png"
+            alt="HBTJ Consultores Lingüísticos"
+            width={40}
+            height={40}
+            style={{ borderRadius: "50%", opacity: 0.8 }}
+          />
+          <div>
+            <p className={styles.ecosystemTitle}>Écosystème HBTJ</p>
+            <p className={styles.ecosystemLinks}>
+              <a href="https://mitraductorjurado.es" target="_blank" rel="noreferrer">mitraductorjurado.es</a>
+              {" "}&middot;{" "}
+              <a href="https://holabonjour.es" target="_blank" rel="noreferrer">holabonjour.es</a>
+            </p>
+          </div>
+        </div>
+
         <div className={styles.bottom}>
-          <p>&copy; 2026 HolaBonjour &middot; HBTJ Consultores Linguisticos S.L. &middot; Malaga</p>
-          <p className={styles.synergy}>
-            Sinergia / Traductions juridiques:{" "}
-            <a href="https://traduccionesjuradas.net" target="_blank" rel="noreferrer">traduccionesjuradas.net</a>
-            {" "}&middot;{" "}
-            <a href="https://traductorjurado.es" target="_blank" rel="noreferrer">traductorjurado.es</a>
-          </p>
+          <p>&copy; 2026 HolaBonjour &middot; HBTJ Consultores Lingüísticos S.L. &middot; Málaga</p>
         </div>
       </div>
     </footer>
