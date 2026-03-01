@@ -31,7 +31,7 @@ const valueProps = [
   {
     title: "Cours en direct",
     description:
-      "Sesiones online con profesores nativos franceses. Grupos reducidos o clases particulares.",
+      "Clases individuales online con profesores nativos franceses. 1 hora por Zoom, 100% personalizadas.",
   },
 ];
 

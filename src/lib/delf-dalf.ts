@@ -41,7 +41,7 @@ export const trainingTracks: Record<CEFRLevel, TrainingTrack> = {
   A1: {
     level: "A1",
     exam: "DELF A1",
-    mode: "Online en directo (grupos reducidos)",
+    mode: "Clases individuales online por Zoom",
     weeklyLoad: "2 sesiones/semana + práctica guiada",
     focus: ["Comprensión oral básica", "Presentación personal", "Producción escrita corta"],
     outcome: "Llegar a una comunicación inicial funcional para trámites básicos.",

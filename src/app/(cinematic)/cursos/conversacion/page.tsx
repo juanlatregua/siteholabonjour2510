@@ -9,7 +9,7 @@ import { CONTACT } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Conversation en francais — HolaBonjour",
   description:
-    "Talleres de conversacion en frances con profesores nativos. Temas de actualidad, debates, grupos reducidos.",
+    "Clases individuales de conversacion en frances con profesores nativos. Temas de actualidad, debates y practica oral personalizada.",
 };
 
 const features = [
@@ -17,13 +17,13 @@ const features = [
     icon: "💬",
     title: "Themes varies",
     description:
-      "Actualidad, cultura francesa, debates eticos, cine, gastronomia y mucho mas. Temas rotativos cada semana.",
+      "Actualidad, cultura francesa, debates eticos, cine, gastronomia y mucho mas. Temas adaptados a tus intereses.",
   },
   {
     icon: "📊",
     title: "Niveau A2 → C2",
     description:
-      "Grupos organizados por nivel para que puedas participar con confianza desde A2 hasta C2.",
+      "Sesiones adaptadas a tu nivel para que practiques con confianza desde A2 hasta C2.",
   },
   {
     icon: "💻",
@@ -70,7 +70,7 @@ export default function ConversacionPage() {
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "rgba(255,255,255,0.7)" }}
           >
-            Talleres tematicos rotativos con profesores nativos. Cultura,
+            Sesiones individuales de conversacion con profesores nativos. Cultura,
             actualidad, debates y expresiones coloquiales.
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function ConversacionPage() {
                 color: "#c77dba",
               }}
             >
-              1h30 par seance &middot; Groupes de 4-6 &middot; 100% en francais
+              1h par s&eacute;ance &middot; Cours individuel &middot; 100% en fran&ccedil;ais
             </p>
           </GlassCard>
         </div>
@@ -135,12 +135,12 @@ export default function ConversacionPage() {
               {
                 step: "01",
                 title: "Choisis ton niveau",
-                text: "Selecciona tu grupo segun tu nivel: A2-B1, B2, o C1-C2.",
+                text: "Indica tu nivel (A2-B1, B2 o C1-C2) y adaptamos la sesion a ti.",
               },
               {
                 step: "02",
-                title: "Rejoins le groupe",
-                text: "Recibe tu enlace de Zoom y unete a la sesion semanal.",
+                title: "Connecte-toi",
+                text: "Recibe tu enlace de Zoom y conectate a tu sesion individual.",
               },
               {
                 step: "03",
@@ -187,9 +187,9 @@ export default function ConversacionPage() {
             className="text-lg mb-8"
             style={{ color: "rgba(255,255,255,0.65)" }}
           >
-            Reserva tu plaza en el proximo taller de conversacion.
+            Reserva tu sesion individual de conversacion.
           </p>
-          <GoldButton href={CONTACT.whatsapp}>Reserver ma place</GoldButton>
+          <GoldButton href={CONTACT.whatsapp}>R&eacute;server ma s&eacute;ance</GoldButton>
         </div>
       </CinematicSection>
     </div>

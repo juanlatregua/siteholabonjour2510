@@ -15,7 +15,7 @@ export const pricingTiers: PricingTier[] = [
     hours: 4,
     features: [
       "4 horas de clase en directo",
-      "Grupos reducidos (máx. 6)",
+      "Clases individuales 1-to-1 por Zoom",
       "Material didáctico incluido",
       "Acceso a Le Côté Vie",
       "Seguimiento del profesor",
@@ -30,7 +30,7 @@ export const pricingTiers: PricingTier[] = [
     popular: true,
     features: [
       "4 horas de clase en directo",
-      "Grupos reducidos (máx. 6)",
+      "Clases individuales 1-to-1 por Zoom",
       "Simulacros de examen DELF",
       "Material didáctico incluido",
       "Acceso a Le Côté Vie",
@@ -45,7 +45,7 @@ export const pricingTiers: PricingTier[] = [
     hours: 4,
     features: [
       "4 horas de clase en directo",
-      "Grupos reducidos (máx. 4)",
+      "Clases individuales 1-to-1 por Zoom",
       "Simulacros de examen DALF",
       "Corrección detallada de producciones",
       "Material avanzado incluido",
@@ -60,7 +60,7 @@ export const faqItems = [
   {
     question: "¿Cómo funcionan las clases online?",
     answer:
-      "Las clases se imparten en directo por videoconferencia con profesores nativos franceses. Cada sesión es interactiva con ejercicios prácticos, simulacros de examen y correcciones en tiempo real.",
+      "Las clases son individuales (1-to-1) de 1 hora por Zoom con profesores nativos franceses. Cada sesión es interactiva con ejercicios prácticos, simulacros de examen y correcciones en tiempo real.",
   },
   {
     question: "¿Qué incluye el pack?",
@@ -70,21 +70,21 @@ export const faqItems = [
   {
     question: "¿Puedo cambiar de nivel?",
     answer:
-      "Sí. Si durante las clases el profesor considera que tu nivel es diferente al estimado, te reubicamos sin coste adicional.",
+      "Sí. Si durante las clases el profesor considera que tu nivel es diferente al estimado, ajustamos el contenido sin coste adicional.",
   },
   {
     question: "¿Cuándo puedo empezar?",
     answer:
-      "Los grupos se abren de forma continua. Una vez contratado el pack, te asignamos al próximo grupo disponible para tu nivel.",
+      "Puedes empezar en cualquier momento. Una vez contratado el pack, coordinamos los horarios de tus clases individuales.",
   },
   {
     question: "¿Qué necesito para las clases?",
     answer:
-      "Solo necesitas un ordenador o tablet con conexión a internet, micrófono y cámara. Usamos plataformas de videoconferencia estándar.",
+      "Solo necesitas un ordenador o tablet con conexión a internet, micrófono y cámara. Todas las clases se imparten por Zoom.",
   },
   {
-    question: "¿Ofrecéis clases particulares?",
+    question: "¿Cómo son las clases?",
     answer:
-      "Sí, además de los grupos reducidos, ofrecemos clases particulares con horarios flexibles. Contacta con nosotros para tarifas personalizadas.",
+      "Todas nuestras clases son individuales (1-to-1) de 1 hora por Zoom con profesores nativos franceses. Horarios flexibles adaptados a tu disponibilidad.",
   },
 ];

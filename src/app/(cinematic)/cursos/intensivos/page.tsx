@@ -127,7 +127,7 @@ export default function IntensivosPage() {
               className="leading-relaxed"
               style={{ color: "rgba(255,255,255,0.6)" }}
             >
-              Sesiones diarias de 2-4 horas por Zoom con profesores nativos.
+              Sesiones individuales diarias de 1 hora por Zoom con profesores nativos.
               Material incluido y seguimiento personalizado.
             </p>
           </GlassCard>
@@ -150,7 +150,7 @@ export default function IntensivosPage() {
             {[
               {
                 title: "Test de niveau initial",
-                text: "Evaluacion previa para ubicarte en el grupo correcto.",
+                text: "Evaluacion previa para disenar tu programa individual.",
               },
               {
                 title: "Materiel pedagogique",
@@ -200,7 +200,7 @@ export default function IntensivosPage() {
             className="text-lg mb-8"
             style={{ color: "rgba(255,255,255,0.65)" }}
           >
-            Reserva tu plaza ahora. Grupos reducidos con plazas limitadas.
+            Reserva tu plaza ahora. Clases individuales con horarios flexibles.
           </p>
           <GoldButton href={CONTACT.whatsapp}>
             Reserver mon intensif
