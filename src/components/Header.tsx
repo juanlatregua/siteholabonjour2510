@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import styles from "./Header.module.css";
@@ -157,15 +158,15 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
       <div className={styles.inner}>
         <div className={styles.topBar}>
           <div className={styles.logo}>
-            <Link href="/" aria-label="Ir al inicio" onClick={closeMenu} style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "1.3rem",
-              fontWeight: 700,
-              color: isCinematic ? "#ffffff" : "#1f2937",
-              textDecoration: "none",
-              letterSpacing: "-0.01em",
-            }}>
-              Hola<span style={{ color: isCinematic ? "#e8b865" : "#0f5da0" }}>Bonjour</span>
+            <Link href="/" aria-label="Ir al inicio" onClick={closeMenu}>
+              <Image
+                src="/images/logo-holabonjour-01.svg"
+                alt="HolaBonjour"
+                width={120}
+                height={43}
+                priority
+                style={isCinematic ? { filter: "brightness(0) invert(1)" } : undefined}
+              />
             </Link>
           </div>
 
