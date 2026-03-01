@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2744;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d4a7a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c8a55a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8d5a0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="248" fill="url(#grad1)" />
+  
+  <!-- Inner subtle ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#c8a55a" stroke-width="1" opacity="0.3" />
+  
+  <!-- HBTJ letters — bold, modern -->
+  <text x="256" y="235" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="108" fill="#FFFFFF" letter-spacing="8">HBTJ</text>
+  
+  <!-- Gold accent line -->
+  <rect x="116" y="258" width="280" height="3" rx="1.5" fill="url(#grad2)" />
+  
+  <!-- Subtitle -->
+  <text x="256" y="300" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="28" fill="#c8a55a" letter-spacing="6">CONSULTORES</text>
+  <text x="256" y="335" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="24" fill="#8a9bb5" letter-spacing="8">LINGÜÍSTICOS</text>
+  
+  <!-- Small decorative elements — two translation brackets -->
+  <text x="88" y="240" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="200" font-size="80" fill="#c8a55a" opacity="0.25">‹</text>
+  <text x="432" y="240" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="200" font-size="80" fill="#c8a55a" opacity="0.25">›</text>
+  
+  <!-- Bottom accent — Málaga -->
+  <text x="256" y="385" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="14" fill="#5a6f8a" letter-spacing="12">MÁLAGA</text>
+</svg>

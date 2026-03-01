@@ -3,16 +3,22 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 
-const quickLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/#equipo", label: "Equipo" },
-  { href: "/prueba-nivel", label: "Prueba de nivel" },
-  { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
-  { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
-  { href: "/zona-alumno", label: "Zona alumno" },
-  { href: "/zona-profesor", label: "Zona profesor" },
-  { href: "/contratar", label: "Contratar pack" },
-  { href: "/contact", label: "Contacto" },
+const navLinks = [
+  { href: "/cursos", label: "Cursos" },
+  { href: "/le-voyage", label: "Le Voyage" },
+  { href: "/le-cote-vie", label: "Le Cote Vie" },
+  { href: "/recursos", label: "Recursos" },
+  { href: "/tarifas", label: "Tarifs" },
+  { href: "/contacto", label: "Contact" },
+];
+
+const vieCultureLinks = [
+  { href: "/le-marche", label: "Le Marche" },
+  { href: "/la-carte", label: "La Carte" },
+  { href: "/le-cinema", label: "Le Cinema" },
+  { href: "/la-cuisine", label: "La Cuisine" },
+  { href: "/le-mot-du-jour", label: "Le Mot du Jour" },
+  { href: "/le-jeu", label: "Le Jeu" },
 ];
 
 const socialLinks = [
@@ -38,22 +44,21 @@ const socialLinks = [
   },
 ];
 
-const trustSignals = [
-  "Isabelle Guitton: direccion academica y docente",
-  "Proyecto docente activo desde 2017",
-  "Zoom + entorno de aprendizaje digital personalizado",
-];
+const trustSignals = ["Methode immersive", "Examens DELF/DALF", "Professeurs natifs", "Cours en direct"];
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.grid}>
+          {/* Column 1: Brand + tagline + trust signals */}
           <section>
-            <p className={styles.brand}>HolaBonjour</p>
+            <p className={styles.brand}>
+              Hola<span className={styles.brandAccent}>Bonjour</span>
+            </p>
+            <p className={styles.tagline}>L&apos;aventure commence ici</p>
             <p className={styles.text}>
-              Direccion academica de Isabelle Guitton. Nacimos como academia fisica en Malaga y hoy
-              trabajamos 100% online con seguimiento individual y plan por objetivo.
+              Academie en ligne de francais / Academia online de frances: clases en directo con profesores nativos.
             </p>
             <ul className={styles.trustList}>
               {trustSignals.map((item) => (
@@ -62,10 +67,11 @@ const Footer = () => {
             </ul>
           </section>
 
+          {/* Column 2: Navigation */}
           <section>
-            <p className={styles.sectionTitle}>Navegacion</p>
+            <p className={styles.sectionTitle}>Navigation</p>
             <ul className={styles.linkList}>
-              {quickLinks.map((item) => (
+              {navLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href}>{item.label}</Link>
                 </li>
@@ -73,13 +79,23 @@ const Footer = () => {
             </ul>
           </section>
 
+          {/* Column 3: Ecosysteme culturel */}
           <section>
-            <p className={styles.sectionTitle}>Contacto y tarifas</p>
-            <p className={styles.text}>Telefono / WhatsApp: 685 07 03 04</p>
+            <p className={styles.sectionTitle}>Ecosysteme culturel</p>
+            <ul className={styles.linkList}>
+              {vieCultureLinks.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Column 4: Contact + social */}
+          <section>
+            <p className={styles.sectionTitle}>Contact</p>
+            <p className={styles.text}>WhatsApp: +34 685 07 03 04</p>
             <p className={styles.text}>Email: info@holabonjour.es</p>
-            <p className={styles.text}>A1-B2: pack 4 horas por 140EUR</p>
-            <p className={styles.text}>C1-C2: pack 4 horas por 200EUR</p>
-            <p className={styles.text}>Pago activo: transferencia bancaria</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (
                 <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
@@ -96,9 +112,27 @@ const Footer = () => {
           <Link href="/politica-de-cookies">Cookies</Link>
         </div>
 
+        {/* HBTJ Ecosystem */}
+        <div className={styles.ecosystem}>
+          <Image
+            src="/images/hbtj-icon-128.png"
+            alt="HBTJ Consultores Lingüísticos"
+            width={40}
+            height={40}
+            style={{ borderRadius: "50%", opacity: 0.8 }}
+          />
+          <div>
+            <p className={styles.ecosystemTitle}>Écosystème HBTJ</p>
+            <p className={styles.ecosystemLinks}>
+              <a href="https://mitraductorjurado.es" target="_blank" rel="noreferrer">mitraductorjurado.es</a>
+              {" "}&middot;{" "}
+              <a href="https://holabonjour.es" target="_blank" rel="noreferrer">holabonjour.es</a>
+            </p>
+          </div>
+        </div>
+
         <div className={styles.bottom}>
-          <p>© {new Date().getFullYear()} HolaBonjour.</p>
-          <p>Preparacion online por Zoom: ruta examen o ruta conversacion.</p>
+          <p>&copy; 2026 HolaBonjour &middot; HBTJ Consultores Lingüísticos S.L. &middot; Málaga</p>
         </div>
       </div>
     </footer>

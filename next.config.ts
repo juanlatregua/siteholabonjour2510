@@ -11,7 +11,40 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Otras configuraciones que puedas tener...
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        destination: '/contacto',
+        permanent: true,
+      },
+      {
+        source: '/courses',
+        destination: '/cursos',
+        permanent: true,
+      },
+      {
+        source: '/prueba-nivel',
+        destination: '/test-de-nivel',
+        permanent: true,
+      },
+      {
+        source: '/test-de-niveau',
+        destination: '/test-de-nivel',
+        permanent: true,
+      },
+      {
+        source: '/frances-empresas',
+        destination: '/cursos/frances-empresas',
+        permanent: true,
+      },
+      {
+        source: '/preparacion-delf-dalf',
+        destination: '/cursos/preparacion-delf-dalf',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

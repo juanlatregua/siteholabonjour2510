@@ -1,6 +1,6 @@
 .footer {
   margin-top: 3rem;
-  background: linear-gradient(120deg, #0b3c6f, #0e4f8d);
+  background: linear-gradient(135deg, #0a0f1a 0%, #0f1929 50%, #0a0f1a 100%);
   color: #e8f2ff;
 }
 
@@ -17,9 +17,23 @@
 
 .brand {
   margin: 0;
-  font-size: 1.22rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
   color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.brandAccent {
+  color: #e8b865;
+}
+
+.tagline {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .sectionTitle {
@@ -28,7 +42,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
-  color: #cde5ff;
+  color: #e8b865;
 }
 
 .text {
@@ -69,7 +83,8 @@
 }
 
 .linkList a:hover {
-  text-decoration: underline;
+  color: #e8b865;
+  text-decoration: none;
 }
 
 .social {
@@ -87,6 +102,11 @@
   justify-content: center;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
+  transition: background-color 0.18s ease;
+}
+
+.social a:hover {
+  background: rgba(232, 184, 101, 0.2);
 }
 
 .legalLinks {
@@ -121,9 +141,44 @@
   margin: 0;
 }
 
+.ecosystem {
+  margin-top: 1.2rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ecosystemTitle {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ecosystemLinks {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ecosystemLinks a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.ecosystemLinks a:hover {
+  color: #e8b865;
+  text-decoration: underline;
+}
+
 @media (min-width: 860px) {
   .grid {
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
   }
 
   .bottom {

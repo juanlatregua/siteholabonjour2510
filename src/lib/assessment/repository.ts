@@ -5,7 +5,7 @@ import type {
   AssessmentAttemptAnswer,
   AssessmentAttemptWithResult,
   AssessmentResult,
-} from "./types";
+} from "./types.ts";
 
 interface StoreSnapshot {
   attempts: Record<string, AssessmentAttemptWithResult>;

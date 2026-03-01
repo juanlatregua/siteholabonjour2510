@@ -3,7 +3,8 @@ export type CEFRLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 export type AssessmentSectionId =
   | "comprension-escrita"
   | "gramatica-vocabulario"
-  | "comprension-oral";
+  | "comprension-oral"
+  | "expressions-tournures";
 
 export type AssessmentDifficulty = "easy" | "medium" | "hard";
 

@@ -1,11 +1,11 @@
-import { trainingTracks } from "./delf-dalf";
+import { trainingTracks } from "./delf-dalf.ts";
 import type {
   Assessment,
   AssessmentAttemptAnswer,
   AssessmentResult,
   CEFRLevel,
   PublicAssessment,
-} from "./assessment/types";
+} from "./assessment/types.ts";
 
 const orderedLevels: CEFRLevel[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
@@ -138,5 +138,73 @@ export const calculateAssessmentResult = ({
     recommendedCourse: `${track.exam} · ${track.mode}`,
     sectionScores,
     calculatedAt: new Date().toISOString(),
+  };
+};
+
+export const calculateAdaptiveResult = ({
+  assessment,
+  attemptId,
+  answers,
+}: {
+  assessment: Assessment;
+  attemptId: string;
+  answers: AssessmentAttemptAnswer[];
+}): AssessmentResult => {
+  // First, get the base result
+  const baseResult = calculateAssessmentResult({ assessment, attemptId, answers });
+
+  // For non test-general assessments, just return the base result
+  if (assessment.slug !== "test-general") {
+    return baseResult;
+  }
+
+  // Weighted section analysis for finer-grained CEFR placement
+  const sectionWeights: Record<string, number> = {
+    "comprension-escrita": 0.30,
+    "gramatica-vocabulario": 0.25,
+    "comprension-oral": 0.25,
+    "expressions-tournures": 0.20,
+  };
+
+  const answerByQuestionId = new Map(
+    answers.map((answer) => [answer.questionId, answer]),
+  );
+
+  // Calculate weighted score
+  let weightedPercentage = 0;
+  let totalWeight = 0;
+
+  for (const section of assessment.sections) {
+    const weight = sectionWeights[section.id] ?? 0.25;
+    const sectionQuestions = assessment.questions.filter(
+      (q) => q.sectionId === section.id,
+    );
+
+    const sectionMaxScore = sectionQuestions.reduce((acc, q) => acc + q.points, 0);
+    const sectionScore = sectionQuestions.reduce((acc, q) => {
+      const answer = answerByQuestionId.get(q.id);
+      return acc + (answer?.pointsAwarded ?? 0);
+    }, 0);
+
+    const sectionPercentage = sectionMaxScore === 0 ? 0 : (sectionScore / sectionMaxScore) * 100;
+    weightedPercentage += sectionPercentage * weight;
+    totalWeight += weight;
+  }
+
+  // Normalize
+  const finalPercentage = totalWeight === 0 ? 0 : weightedPercentage / totalWeight;
+
+  // Use the weighted percentage for a finer level estimation
+  const estimatedLevel = mapScoreToLevel(assessment.targetLevel, finalPercentage);
+
+  // Get the track for recommendations
+  const track = trainingTracks[estimatedLevel];
+
+  return {
+    ...baseResult,
+    percentage: Number.parseFloat(finalPercentage.toFixed(2)),
+    estimatedLevel,
+    recommendedExam: track.exam,
+    recommendedCourse: `${track.exam} · ${track.mode}`,
   };
 };

@@ -1,14 +1,14 @@
 import { randomUUID } from "node:crypto";
-import { assessmentById, assessments } from "../../data/assessment-bank";
-import { calculateAssessmentResult, toPublicAssessment } from "../assessment-engine";
-import { assessmentRepository } from "./repository";
+import { assessmentById, assessments } from "../../data/assessment-bank.ts";
+import { calculateAssessmentResult, calculateAdaptiveResult, toPublicAssessment } from "../assessment-engine.ts";
+import { assessmentRepository } from "./repository.ts";
 import type {
   Assessment,
   AssessmentAttemptAnswer,
   AssessmentAttemptWithResult,
   AssessmentResult,
   PublicAssessment,
-} from "./types";
+} from "./types.ts";
 
 export class AssessmentServiceError extends Error {
   readonly code: string;
@@ -236,7 +236,8 @@ export const finishAssessmentAttempt = async ({
   }
 
   const answers = await assessmentRepository.listAttemptAnswers(attemptId);
-  const result = calculateAssessmentResult({
+  const resultFn = assessment.slug === "test-general" ? calculateAdaptiveResult : calculateAssessmentResult;
+  const result = resultFn({
     assessment,
     attemptId,
     answers,

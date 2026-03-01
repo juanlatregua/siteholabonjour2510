@@ -1,3 +1,10 @@
+/* ═══════════════════════════════════════════════════
+   Header — burger-menu-only at ALL breakpoints
+   "Desfile de elección" (parade of choices) pattern
+   ═══════════════════════════════════════════════════ */
+
+/* ─── Header bar (light) ─── */
+
 .header {
   position: sticky;
   top: 0;
@@ -6,6 +13,19 @@
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(8px);
 }
+
+/* ─── Header bar (cinematic) ─── */
+
+.headerCinematic {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(26, 26, 46, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* ─── Notice bar ─── */
 
 .notice {
   background: linear-gradient(90deg, #0b3c6f, #0f5da0);
@@ -16,6 +36,18 @@
   letter-spacing: 0.02em;
   padding: 0.36rem 1rem;
 }
+
+.noticeCinematic {
+  background: linear-gradient(90deg, #1a1a2e, #16213e);
+  color: #e8b865;
+  text-align: center;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.36rem 1rem;
+}
+
+/* ─── Inner layout ─── */
 
 .inner {
   max-width: 1200px;
@@ -36,140 +68,374 @@
   align-items: center;
 }
 
-.desktopNav ul {
-  display: flex;
-  align-items: center;
-  gap: 0.24rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+/* ─── Burger button (ALWAYS visible) ─── */
 
-.desktopNav li a {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 0.6rem;
-  padding: 0.46rem 0.52rem;
-  text-decoration: none;
-  color: #1f2937;
-  font-size: 0.84rem;
-  font-weight: 600;
-  transition: background-color 0.18s ease, color 0.18s ease;
-}
-
-.desktopNav li a:hover {
-  background: #eff6ff;
-  color: #0f5da0;
-}
-
-.activeLink {
-  background: #e0efff;
-  color: #0b4d84 !important;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.ctaButton {
+.burgerButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  border-radius: 0.72rem;
-  background: #0f5da0;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.86rem;
-  padding: 0 0.9rem;
-  transition: background-color 0.18s ease;
-}
-
-.ctaButton:hover {
-  background: #0b4d84;
-}
-
-.mobileMenuButton {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 0.72rem;
   border: 1px solid #d7e3ef;
   background: #ffffff;
   color: #0f5da0;
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.mobileNav {
-  border-top: 1px solid #e5e7eb;
-  background: #ffffff;
-  padding: 0.8rem 1rem 1rem;
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+.burgerButton:hover {
+  background: #eff6ff;
+  border-color: #0f5da0;
 }
 
-.mobileNav ul {
+.burgerButtonCinematic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 0.72rem;
+  border: 1px solid rgba(232, 184, 101, 0.25);
+  background: rgba(232, 184, 101, 0.08);
+  color: #e8b865;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.burgerButtonCinematic:hover {
+  background: rgba(232, 184, 101, 0.15);
+  border-color: rgba(232, 184, 101, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════
+   Full-screen overlay menu
+   ═══════════════════════════════════════════════════ */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  /* Transition */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  pointer-events: none;
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.overlayCinematic {
+  background: rgba(26, 26, 46, 0.95);
+}
+
+/* ─── Overlay inner scroll container ─── */
+
+.overlayInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 6rem 2rem 3rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── Menu list ─── */
+
+.menuList {
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
-  gap: 0.28rem;
+  gap: 0;
 }
 
-.mobileNav li a {
+/* ─── Menu item (each row) ─── */
+
+.menuItem {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.overlayCinematic .menuItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Menu link (top-level plain links) ─── */
+
+.menuLink {
   display: block;
-  border-radius: 0.65rem;
-  padding: 0.65rem 0.72rem;
+  padding: 1.1rem 0.5rem;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.menuLink:hover {
+  color: #0f5da0;
+  padding-left: 1rem;
+}
+
+.menuLinkActive {
+  color: #0f5da0;
+}
+
+.menuLinkCinematic {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.menuLinkCinematic:hover {
+  color: #e8b865;
+  padding-left: 1rem;
+}
+
+.menuLinkActiveCinematic {
+  color: #e8b865;
+}
+
+/* ─── Chevron ─── */
+
+.chevron {
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ═══════════════════════════════════════════════════
+   Accordion (expandable sub-sections)
+   ═══════════════════════════════════════════════════ */
+
+.accordionTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 1.1rem 0.5rem;
   text-decoration: none;
   color: #1f2937;
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
-.mobileNav li a:hover,
-.activeMobileLink {
-  background: #eff6ff;
-  color: #0f5da0 !important;
+.accordionTrigger:hover {
+  color: #0f5da0;
+  padding-left: 1rem;
 }
 
-.mobileCta {
-  display: inline-flex;
-  width: 100%;
+.accordionTriggerCinematic {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.accordionTriggerCinematic:hover {
+  color: #e8b865;
+  padding-left: 1rem;
+}
+
+/* ─── Accordion body (animated open/close) ─── */
+
+.accordionBody {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordionBodyOpen {
+  max-height: 600px;
+}
+
+/* ─── Accordion list (sub-items container) ─── */
+
+.accordionList {
+  list-style: none;
+  margin: 0 0 0.6rem 0.75rem;
+  padding: 0.3rem 0 0.3rem 1rem;
+  border-left: 3px solid #0f5da0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.accordionListCinematic {
+  border-left-color: #e8b865;
+}
+
+/* ─── Accordion item (sub-link) ─── */
+
+.accordionItem {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #374151;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: background-color 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
+}
+
+.accordionItem:hover {
+  background: rgba(15, 93, 160, 0.06);
+  color: #0f5da0;
+  padding-left: 1.1rem;
+}
+
+.accordionItemActive {
+  color: #0f5da0;
+  background: rgba(15, 93, 160, 0.08);
+}
+
+.accordionItemCinematic {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.accordionItemCinematic:hover {
+  background: rgba(232, 184, 101, 0.1);
+  color: #e8b865;
+  padding-left: 1.1rem;
+}
+
+.accordionItemActiveCinematic {
+  color: #e8b865;
+  background: rgba(232, 184, 101, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════
+   CTA button at the bottom of the overlay
+   ═══════════════════════════════════════════════════ */
+
+.overlayCta {
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0.75rem;
-  min-height: 44px;
-  border-radius: 0.7rem;
-  background: #0f5da0;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 2rem;
+  min-height: 52px;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #e8b865, #d4a24c);
+  color: #1a1a2e;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 20px rgba(232, 184, 101, 0.25);
+}
+
+.overlayCta:hover {
+  background: linear-gradient(135deg, #f0d08a, #e8b865);
+  box-shadow: 0 6px 28px rgba(232, 184, 101, 0.4);
+  transform: translateY(-1px);
+}
+
+.overlayCtaLight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 2rem;
+  min-height: 52px;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #0f5da0, #0b4d84);
   color: #ffffff;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 20px rgba(15, 93, 160, 0.2);
 }
 
-@media (max-width: 1170px) {
-  .desktopNav,
-  .ctaButton {
-    display: none;
-  }
-
-  .mobileMenuButton {
-    display: inline-flex;
-  }
+.overlayCtaLight:hover {
+  background: linear-gradient(135deg, #1472c4, #0f5da0);
+  box-shadow: 0 6px 28px rgba(15, 93, 160, 0.35);
+  transform: translateY(-1px);
 }
+
+/* ═══════════════════════════════════════════════════
+   Responsive fine-tuning
+   ═══════════════════════════════════════════════════ */
 
 @media (max-width: 540px) {
-  .notice {
+  .notice,
+  .noticeCinematic {
     font-size: 0.72rem;
     padding: 0.34rem 0.7rem;
   }
 
   .topBar {
     min-height: 64px;
+  }
+
+  .overlayInner {
+    padding: 5rem 1.25rem 2rem;
+  }
+
+  .menuLink,
+  .accordionTrigger {
+    font-size: 1.15rem;
+    padding: 1rem 0.4rem;
+  }
+
+  .accordionItem {
+    font-size: 0.98rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .overlayInner {
+    padding: 7rem 3rem 3rem;
+  }
+
+  .menuLink,
+  .accordionTrigger {
+    font-size: 1.4rem;
+    padding: 1.25rem 0.5rem;
+  }
+
+  .accordionItem {
+    font-size: 1.1rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .overlayCta,
+  .overlayCtaLight {
+    font-size: 1.12rem;
+    min-height: 56px;
+    margin-top: 2.5rem;
   }
 }
