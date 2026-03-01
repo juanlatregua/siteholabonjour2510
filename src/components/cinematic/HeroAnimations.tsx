@@ -86,30 +86,9 @@ export default function HeroAnimations() {
             <GoldButton href="/test-de-nivel">
               Faire le test de niveau &rarr;
             </GoldButton>
-            <a
-              href="https://wa.me/34685070304"
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "12px 28px",
-                borderRadius: 12,
-                background: "rgba(37, 211, 102, 0.15)",
-                border: "2px solid rgba(37, 211, 102, 0.5)",
-                color: "#25d366",
-                fontWeight: 700,
-                fontSize: "0.95rem",
-                textDecoration: "none",
-                transition: "background 0.25s ease",
-                fontFamily: "var(--font-heading)",
-                letterSpacing: "0.01em",
-                cursor: "pointer",
-              }}
-            >
-              Classe d&apos;essai gratuite
-            </a>
+            <GoldButton href="/le-marche" variant="outline">
+              Explorer l&apos;&eacute;cosyst&egrave;me &rarr;
+            </GoldButton>
           </div>
         </RevealText>
 

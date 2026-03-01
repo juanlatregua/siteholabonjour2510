@@ -723,8 +723,8 @@ const CinematicHomePage = () => {
               marginRight: "auto",
             }}
           >
-            Reserva tu clase de prueba, escríbenos por WhatsApp o envíanos un
-            email.
+            Descubre tu nivel, explora nuestros recursos gratuitos o
+            escr&iacute;benos por WhatsApp.
           </p>
 
           <div
@@ -768,7 +768,7 @@ const CinematicHomePage = () => {
                   cursor: "pointer",
                 }}
               >
-                Classe d&apos;essai gratuite
+                Inf&oacute;rmate por WhatsApp
               </a>
             </div>
 

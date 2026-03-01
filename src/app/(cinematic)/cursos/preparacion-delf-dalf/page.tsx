@@ -238,8 +238,7 @@ export default function PreparacionDelfDalfPage() {
             className="text-lg mb-8"
             style={{ color: "rgba(255,255,255,0.65)" }}
           >
-            Empieza tu preparacion con profesoras examinadoras. Primera clase de
-            prueba gratuita.
+            Empieza tu preparaci&oacute;n con profesoras examinadoras. Inf&oacute;rmate sin compromiso.
           </p>
           <GoldButton href={CONTACT.whatsapp}>
             Commencer ma preparation

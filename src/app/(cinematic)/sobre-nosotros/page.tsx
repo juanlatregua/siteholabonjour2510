@@ -152,14 +152,14 @@ export default function SobreNosotrosPage() {
             className="mb-10 text-lg"
             style={{ color: "rgba(255,255,255,0.65)" }}
           >
-            Escríbenos por WhatsApp o reserva una clase de prueba gratuita.
+            Escr&iacute;benos por WhatsApp o descubre tu nivel con nuestro test gratuito.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <GoldButton href="https://wa.me/34685070304">
               WhatsApp
             </GoldButton>
-            <GoldButton href="/contacto" variant="outline">
-              Réserver une classe d&apos;essai
+            <GoldButton href="/test-de-nivel" variant="outline">
+              Faire le test de niveau
             </GoldButton>
           </div>
         </div>

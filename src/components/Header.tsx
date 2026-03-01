@@ -165,7 +165,7 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
                 width={120}
                 height={43}
                 priority
-                style={isCinematic ? { filter: "brightness(0) invert(1)" } : undefined}
+                style={undefined}
               />
             </Link>
           </div>

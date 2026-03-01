@@ -7,7 +7,7 @@ import ContactForm from "./ContactForm";
 export const metadata: Metadata = {
   title: "Contacto",
   description:
-    "Contacta con HolaBonjour: WhatsApp, email o formulario. Reserva tu clase de prueba gratuita.",
+    "Contacta con HolaBonjour: WhatsApp, email o formulario. Infórmate sobre nuestros cursos.",
 };
 
 const contactMethods = [
@@ -26,11 +26,11 @@ const contactMethods = [
     cta: "Envoyer un courriel",
   },
   {
-    title: "Classe d'essai",
-    description: "Conoce nuestro método sin compromiso",
-    detail: "Sesión gratuita de 30 minutos",
-    href: "https://wa.me/34685070304?text=Quiero%20reservar%20una%20clase%20de%20prueba",
-    cta: "Réserver une classe",
+    title: "Renseignements",
+    description: "Te asesoramos sin compromiso",
+    detail: "Asesoramiento personalizado",
+    href: "https://wa.me/34685070304?text=Bonjour%2C%20je%20voudrais%20des%20informations%20sur%20les%20cours",
+    cta: "Demander des infos",
   },
 ];
 

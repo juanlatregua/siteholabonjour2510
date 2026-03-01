@@ -132,8 +132,8 @@ export default function ClasesParticularesPage() {
             {[
               {
                 step: "01",
-                title: "Classe d'essai gratuite",
-                text: "Reserva una sesion de prueba sin compromiso para conocer a tu profesor y evaluar tu nivel.",
+                title: "Teste ton niveau",
+                text: "Haz nuestro test de nivel gratuito o escríbenos por WhatsApp para que te asesoremos sin compromiso.",
               },
               {
                 step: "02",
@@ -185,10 +185,10 @@ export default function ClasesParticularesPage() {
             className="text-lg mb-8"
             style={{ color: "rgba(255,255,255,0.65)" }}
           >
-            Tu primera clase de prueba es gratuita y sin compromiso.
+            Inf&oacute;rmate sin compromiso. Te asesoramos sobre el programa ideal para ti.
           </p>
           <GoldButton href={CONTACT.whatsapp}>
-            Reserver ma classe d&apos;essai gratuite
+            Demander des informations
           </GoldButton>
         </div>
       </CinematicSection>
