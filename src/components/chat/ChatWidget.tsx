@@ -1,10 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 /* ------------------------------------------------------------------ */
 /*  Types & constants                                                  */
 /* ------------------------------------------------------------------ */
+
+type ConciergeGender = "femme" | "homme";
 
 interface Message {
   id: string;
@@ -13,13 +16,34 @@ interface Message {
   timestamp: Date;
 }
 
-const WELCOME_MESSAGE: Message = {
-  id: "welcome",
-  role: "assistant",
-  content:
-    "Bonjour ! Soy Le Concierge de HolaBonjour.\n\nPuedo ayudarte con:\n\u2022 Encontrar el curso perfecto para tu nivel\n\u2022 Informaci\u00f3n sobre DELF/DALF\n\u2022 Descubrir nuestros recursos gratuitos\n\u2022 Ense\u00f1arte una expresi\u00f3n en fran\u00e7ais\n\nQu\u2019est-ce que je peux faire pour toi ?",
-  timestamp: new Date(),
+const CONCIERGE_IMAGES: Record<ConciergeGender, string> = {
+  femme: "/images/concierge-femme.png",
+  homme: "/images/concierge-homme.png",
 };
+
+const CONCIERGE_NAMES: Record<ConciergeGender, string> = {
+  femme: "La Concierge",
+  homme: "Le Concierge",
+};
+
+const WELCOME_MESSAGES: Record<ConciergeGender, Message> = {
+  femme: {
+    id: "welcome",
+    role: "assistant",
+    content:
+      "Bonjour ! Soy tu Concierge de HolaBonjour.\n\nPuedo ayudarte con:\n\u2022 Encontrar el curso perfecto para tu nivel\n\u2022 Informaci\u00f3n sobre DELF/DALF\n\u2022 Descubrir nuestros recursos gratuitos\n\u2022 Ense\u00f1arte una expresi\u00f3n en fran\u00e7ais\n\nQu\u2019est-ce que je peux faire pour toi ?",
+    timestamp: new Date(),
+  },
+  homme: {
+    id: "welcome",
+    role: "assistant",
+    content:
+      "Bonjour ! Soy tu Concierge de HolaBonjour.\n\nPuedo ayudarte con:\n\u2022 Encontrar el curso perfecto para tu nivel\n\u2022 Informaci\u00f3n sobre DELF/DALF\n\u2022 Descubrir nuestros recursos gratuitos\n\u2022 Ense\u00f1arte una expresi\u00f3n en fran\u00e7ais\n\nQu\u2019est-ce que je peux faire pour toi ?",
+    timestamp: new Date(),
+  },
+};
+
+const STORAGE_KEY_GENDER = "hb-chat-gender";
 
 const QUICK_REPLIES = [
   { label: "Cursos y precios", emoji: "\uD83C\uDF93" },
@@ -79,7 +103,8 @@ export default function ChatWidget() {
   /* ----- state ----- */
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
+  const [gender, setGender] = useState<ConciergeGender | null>(null);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -103,16 +128,22 @@ export default function ChatWidget() {
   /* ----- restore session from sessionStorage ----- */
   useEffect(() => {
     try {
+      const storedGender = sessionStorage.getItem(STORAGE_KEY_GENDER) as ConciergeGender | null;
       const stored = sessionStorage.getItem(STORAGE_KEY_MESSAGES);
       const storedSession = sessionStorage.getItem(STORAGE_KEY_SESSION);
-      if (stored) {
-        const parsed: Message[] = JSON.parse(stored).map((m: Message) => ({
-          ...m,
-          timestamp: new Date(m.timestamp),
-        }));
-        if (parsed.length > 0) {
-          setMessages(parsed);
-          setShowQuickReplies(parsed.length <= 1);
+      if (storedGender && (storedGender === "femme" || storedGender === "homme")) {
+        setGender(storedGender);
+        if (stored) {
+          const parsed: Message[] = JSON.parse(stored).map((m: Message) => ({
+            ...m,
+            timestamp: new Date(m.timestamp),
+          }));
+          if (parsed.length > 0) {
+            setMessages(parsed);
+            setShowQuickReplies(parsed.length <= 1);
+          }
+        } else {
+          setMessages([WELCOME_MESSAGES[storedGender]]);
         }
       }
       if (storedSession) setSessionId(storedSession);
@@ -217,14 +248,25 @@ export default function ChatWidget() {
     }, 250);
   }, []);
 
+  const handleSelectGender = useCallback((g: ConciergeGender) => {
+    setGender(g);
+    setMessages([WELCOME_MESSAGES[g]]);
+    setShowQuickReplies(true);
+    try {
+      sessionStorage.setItem(STORAGE_KEY_GENDER, g);
+    } catch { /* ignore */ }
+  }, []);
+
   const handleClear = useCallback(() => {
-    setMessages([WELCOME_MESSAGE]);
+    setGender(null);
+    setMessages([]);
     setShowQuickReplies(true);
     setRateLimited(false);
     setSessionId(null);
     try {
       sessionStorage.removeItem(STORAGE_KEY_MESSAGES);
       sessionStorage.removeItem(STORAGE_KEY_SESSION);
+      sessionStorage.removeItem(STORAGE_KEY_GENDER);
     } catch {
       /* ignore */
     }
@@ -377,21 +419,23 @@ export default function ChatWidget() {
             bottom: 24,
             right: 88,
             zIndex: 900,
-            width: 56,
-            height: 56,
+            width: 62,
+            height: 62,
             borderRadius: "50%",
-            border: "none",
+            border: "3px solid #e8b865",
             cursor: "pointer",
-            background: "linear-gradient(135deg, #e8b865, #c8a55a)",
+            background: "linear-gradient(135deg, #1a1a2e, #16213e)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            padding: 0,
+            overflow: "hidden",
             boxShadow: "0 4px 20px rgba(232,184,101,0.35)",
             transition: "transform 0.25s ease, box-shadow 0.25s ease",
             animation: "chatPulse 3s ease-in-out infinite",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.05)";
+            e.currentTarget.style.transform = "scale(1.08)";
             e.currentTarget.style.boxShadow =
               "0 6px 28px rgba(232,184,101,0.55)";
           }}
@@ -401,36 +445,13 @@ export default function ChatWidget() {
               "0 4px 20px rgba(232,184,101,0.35)";
           }}
         >
-          {/* Le Concierge icon — French concierge with beret & speech bubble */}
-          <svg
-            width="34"
-            height="34"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Beret */}
-            <ellipse cx="32" cy="18" rx="16" ry="6" fill="#1a1a2e" />
-            <ellipse cx="32" cy="17" rx="13" ry="5" fill="#2a2a4e" />
-            <circle cx="32" cy="13" r="2.5" fill="#1a1a2e" />
-            {/* Face */}
-            <circle cx="32" cy="30" r="12" fill="#1a1a2e" />
-            <circle cx="32" cy="30" r="11" fill="#F5DEB3" />
-            {/* Eyes */}
-            <ellipse cx="28" cy="28" rx="1.5" ry="2" fill="#1a1a2e" />
-            <ellipse cx="36" cy="28" rx="1.5" ry="2" fill="#1a1a2e" />
-            {/* Smile */}
-            <path d="M27 33 Q32 37 37 33" stroke="#1a1a2e" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-            {/* Mustache */}
-            <path d="M26 31 Q29 33 32 31 Q35 33 38 31" stroke="#1a1a2e" strokeWidth="1.3" fill="none" strokeLinecap="round" />
-            {/* Speech bubble */}
-            <rect x="42" y="8" width="18" height="14" rx="5" fill="#1a1a2e" />
-            <polygon points="44,20 42,24 48,20" fill="#1a1a2e" />
-            {/* "Bonjour" dots in speech bubble */}
-            <circle cx="48" cy="14" r="1.5" fill="#e8b865" />
-            <circle cx="53" cy="14" r="1.5" fill="#e8b865" />
-            <circle cx="58" cy="14" r="1.5" fill="#e8b865" />
-          </svg>
+          <Image
+            src={gender ? CONCIERGE_IMAGES[gender] : CONCIERGE_IMAGES.femme}
+            alt="Le Concierge"
+            width={56}
+            height={56}
+            style={{ borderRadius: "50%", objectFit: "cover" }}
+          />
         </button>
       )}
 
@@ -478,26 +499,21 @@ export default function ChatWidget() {
               {/* Mini concierge avatar */}
               <div
                 style={{
-                  width: 36,
-                  height: 36,
+                  width: 40,
+                  height: 40,
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #e8b865, #c8a55a)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  border: "2px solid #e8b865",
+                  overflow: "hidden",
                   flexShrink: 0,
                 }}
               >
-                <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
-                  <ellipse cx="32" cy="18" rx="16" ry="6" fill="#1a1a2e" />
-                  <ellipse cx="32" cy="17" rx="13" ry="5" fill="#2a2a4e" />
-                  <circle cx="32" cy="13" r="2.5" fill="#1a1a2e" />
-                  <circle cx="32" cy="30" r="11" fill="#F5DEB3" />
-                  <ellipse cx="28" cy="28" rx="1.5" ry="2" fill="#1a1a2e" />
-                  <ellipse cx="36" cy="28" rx="1.5" ry="2" fill="#1a1a2e" />
-                  <path d="M27 33 Q32 37 37 33" stroke="#1a1a2e" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-                  <path d="M26 31 Q29 33 32 31 Q35 33 38 31" stroke="#1a1a2e" strokeWidth="1.3" fill="none" strokeLinecap="round" />
-                </svg>
+                <Image
+                  src={gender ? CONCIERGE_IMAGES[gender] : CONCIERGE_IMAGES.femme}
+                  alt={gender ? CONCIERGE_NAMES[gender] : "Le Concierge"}
+                  width={40}
+                  height={40}
+                  style={{ objectFit: "cover" }}
+                />
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <span
@@ -515,7 +531,7 @@ export default function ChatWidget() {
                       color: "#e8b865",
                     }}
                   >
-                    Le Concierge
+                    {gender ? CONCIERGE_NAMES[gender] : "Le Concierge"}
                   </span>{" "}
                   <span style={{ color: "rgba(255,255,255,0.4)", fontWeight: 400 }}>
                     &middot; HolaBonjour
@@ -646,7 +662,106 @@ export default function ChatWidget() {
             </div>
           </div>
 
+          {/* ---- Gender selection screen ---- */}
+          {!gender && (
+            <div
+              style={{
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "24px 20px",
+                gap: 20,
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontStyle: "italic",
+                  fontSize: 18,
+                  color: "#e8b865",
+                  margin: 0,
+                  textAlign: "center",
+                }}
+              >
+                Bienvenue !
+              </p>
+              <p
+                style={{
+                  fontSize: 14,
+                  color: "rgba(255,255,255,0.65)",
+                  margin: 0,
+                  textAlign: "center",
+                  lineHeight: 1.5,
+                }}
+              >
+                Elige a tu concierge para empezar:
+              </p>
+              <div style={{ display: "flex", gap: 20 }}>
+                {(["femme", "homme"] as ConciergeGender[]).map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => handleSelectGender(g)}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 10,
+                      background: "rgba(255,255,255,0.04)",
+                      border: "2px solid rgba(255,255,255,0.08)",
+                      borderRadius: 16,
+                      padding: "16px 20px",
+                      cursor: "pointer",
+                      transition: "all 0.25s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(232,184,101,0.5)";
+                      e.currentTarget.style.background = "rgba(232,184,101,0.08)";
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                      e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+                      e.currentTarget.style.transform = "translateY(0)";
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 90,
+                        height: 90,
+                        borderRadius: "50%",
+                        overflow: "hidden",
+                        border: "3px solid #e8b865",
+                      }}
+                    >
+                      <Image
+                        src={CONCIERGE_IMAGES[g]}
+                        alt={CONCIERGE_NAMES[g]}
+                        width={90}
+                        height={90}
+                        style={{ objectFit: "cover" }}
+                      />
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        fontStyle: "italic",
+                        color: "#e8b865",
+                        fontSize: 15,
+                        fontWeight: 600,
+                      }}
+                    >
+                      {CONCIERGE_NAMES[g]}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* ---- Messages area ---- */}
+          {gender && (
           <div
             aria-live="polite"
             style={{
@@ -798,8 +913,10 @@ export default function ChatWidget() {
 
             <div ref={messagesEndRef} />
           </div>
+          )}
 
           {/* ---- Input area ---- */}
+          {gender && (
           <div
             style={{
               borderTop: "1px solid rgba(255,255,255,0.06)",
@@ -894,6 +1011,7 @@ export default function ChatWidget() {
               </svg>
             </button>
           </div>
+          )}
         </div>
       )}
 
