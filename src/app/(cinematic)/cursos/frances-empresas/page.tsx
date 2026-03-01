@@ -52,6 +52,40 @@ const sectors = [
 export default function FrancesEmpresasPage() {
   return (
     <div style={{ background: "var(--cin-bg)", color: "var(--cin-text)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Francés para Empresas",
+            "description":
+              "Formación de francés para empresas: turismo, hostelería, inmobiliario. Clases individuales online, bonificable Fundae.",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "HolaBonjour",
+              "url": "https://holabonjour.es",
+            },
+            "educationalLevel": "A1-C2",
+            "inLanguage": "fr",
+            "teaches": "Francés profesional para empresas",
+            "courseMode": "online",
+            "offers": {
+              "@type": "Offer",
+              "price": "Precio a medida",
+              "availability": "https://schema.org/InStock",
+            },
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "instructor": {
+                "@type": "Person",
+                "name": "Profesoras nativas certificadas",
+              },
+            },
+          }),
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-24 px-6">
         <div

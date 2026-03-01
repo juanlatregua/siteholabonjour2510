@@ -42,6 +42,23 @@ function CheckIcon() {
 export default function TarifasPage() {
   return (
     <div style={{ background: "var(--cin-bg)", color: "var(--cin-text)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqItems.map(f => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.answer
+              }
+            }))
+          })
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-24 px-6">
         <div className="mx-auto max-w-4xl text-center">

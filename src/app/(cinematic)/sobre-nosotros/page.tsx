@@ -50,6 +50,29 @@ const methodologyPillars = [
 export default function SobreNosotrosPage() {
   return (
     <div style={{ background: "var(--cin-bg)", color: "var(--cin-text)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "Sobre nosotros — HolaBonjour",
+            "description": "Academia de francés online con sede en Málaga, fundada por profesoras nativas con experiencia como examinadoras DELF/DALF.",
+            "mainEntity": {
+              "@type": "EducationalOrganization",
+              "name": "HolaBonjour",
+              "url": "https://holabonjour.es",
+              "description": "Academia de francés online especializada en preparación DELF/DALF, conversación y francés para empresas.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Málaga",
+                "addressRegion": "Andalucía",
+                "addressCountry": "ES"
+              }
+            }
+          })
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-24 px-6">
         <div className="mx-auto max-w-4xl text-center">

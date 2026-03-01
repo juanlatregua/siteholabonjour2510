@@ -46,6 +46,40 @@ const courseTypes = [
 export default function IntensivosPage() {
   return (
     <div style={{ background: "var(--cin-bg)", color: "var(--cin-text)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Curso Intensivo de Francés Online",
+            "description":
+              "Cursos intensivos de francés: verano, pre-examen DELF/DALF, a medida. Sesiones individuales diarias por Zoom.",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "HolaBonjour",
+              "url": "https://holabonjour.es",
+            },
+            "educationalLevel": "A1-C2",
+            "inLanguage": "fr",
+            "teaches": "Francés — Curso intensivo personalizado",
+            "courseMode": "online",
+            "offers": {
+              "@type": "Offer",
+              "price": "Según formato",
+              "availability": "https://schema.org/InStock",
+            },
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "instructor": {
+                "@type": "Person",
+                "name": "Profesoras nativas certificadas",
+              },
+            },
+          }),
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-24 px-6">
         <div

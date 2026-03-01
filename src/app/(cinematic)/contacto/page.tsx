@@ -57,6 +57,30 @@ const socialLinks = [
 export default function ContactoPage() {
   return (
     <div style={{ background: "var(--cin-bg)", color: "var(--cin-text)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contacto — HolaBonjour",
+            "description": "Contacta con HolaBonjour. WhatsApp, email o formulario.",
+            "mainEntity": {
+              "@type": "EducationalOrganization",
+              "name": "HolaBonjour",
+              "url": "https://holabonjour.es",
+              "telephone": "+34685070304",
+              "email": "hola@holabonjour.es",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Málaga",
+                "addressRegion": "Andalucía",
+                "addressCountry": "ES"
+              }
+            }
+          })
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-24 px-6">
         <div className="mx-auto max-w-4xl text-center">

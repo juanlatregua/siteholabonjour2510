@@ -82,6 +82,59 @@ const faqs = [
 export default function PreparacionDelfDalfPage() {
   return (
     <div style={{ background: "var(--cin-bg)", color: "var(--cin-text)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Preparación DELF/DALF Online",
+            "description":
+              "Prepara tu examen DELF o DALF con profesoras examinadoras oficiales. Simulacros reales, corrección personalizada. Niveles A1 a C2.",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "HolaBonjour",
+              "url": "https://holabonjour.es",
+            },
+            "educationalLevel": "A1-C2",
+            "inLanguage": "fr",
+            "teaches":
+              "Francés — Preparación exámenes oficiales DELF y DALF",
+            "courseMode": "online",
+            "offers": {
+              "@type": "Offer",
+              "price": "35",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/InStock",
+            },
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "instructor": {
+                "@type": "Person",
+                "name": "Profesoras nativas certificadas",
+              },
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.answer,
+              },
+            })),
+          }),
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-24 px-6">
         <div

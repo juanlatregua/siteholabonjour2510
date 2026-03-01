@@ -52,6 +52,42 @@ const benefits = [
 export default function ClasesParticularesPage() {
   return (
     <div style={{ background: "var(--cin-bg)", color: "var(--cin-text)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Clases Particulares de Francés Online",
+            "description":
+              "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. 35\u20AC/clase.",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "HolaBonjour",
+              "url": "https://holabonjour.es",
+            },
+            "educationalLevel": "A1-C2",
+            "inLanguage": "fr",
+            "teaches":
+              "Francés — Clases individuales personalizadas",
+            "courseMode": "online",
+            "offers": {
+              "@type": "Offer",
+              "price": "35",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/InStock",
+            },
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "instructor": {
+                "@type": "Person",
+                "name": "Profesoras nativas certificadas",
+              },
+            },
+          }),
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-24 px-6">
         <div

@@ -46,6 +46,41 @@ const features = [
 export default function ConversacionPage() {
   return (
     <div style={{ background: "var(--cin-bg)", color: "var(--cin-text)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Conversación en Francés Online",
+            "description":
+              "Practica tu francés hablado con profesoras nativas. Sesiones individuales de 1h por Zoom, 100% en francés desde el primer minuto.",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "HolaBonjour",
+              "url": "https://holabonjour.es",
+            },
+            "educationalLevel": "A2-C2",
+            "inLanguage": "fr",
+            "teaches": "Francés — Conversación y expresión oral",
+            "courseMode": "online",
+            "offers": {
+              "@type": "Offer",
+              "price": "35",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/InStock",
+            },
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "instructor": {
+                "@type": "Person",
+                "name": "Profesoras nativas certificadas",
+              },
+            },
+          }),
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-24 px-6">
         <div
