@@ -1,29 +1,45 @@
-import { type ReactNode } from "react";
+"use client";
+
+import { useState, type ReactNode } from "react";
 
 interface GlassCardProps {
   children: ReactNode;
-  glow?: boolean;
   className?: string;
+  glow?: string;
+  hover?: boolean;
+  onClick?: () => void;
 }
 
 export default function GlassCard({
   children,
-  glow = false,
   className = "",
+  glow,
+  hover = true,
+  onClick,
 }: GlassCardProps) {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <div
       className={className}
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
-        background: "rgba(255,255,255,0.06)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-        border: "1px solid rgba(255,255,255,0.10)",
+        background: hovered && hover
+          ? "rgba(255,255,255,0.12)"
+          : "rgba(255,255,255,0.06)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
         borderRadius: 24,
-        padding: "24px 32px",
-        boxShadow: glow
-          ? "0 0 40px rgba(232,184,101,0.15), 0 0 80px rgba(232,184,101,0.05)"
-          : undefined,
+        border: "1px solid rgba(255,255,255,0.1)",
+        padding: 32,
+        cursor: onClick ? "pointer" : "default",
+        transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+        transform: hovered && hover ? "translateY(-6px) scale(1.01)" : "translateY(0)",
+        boxShadow: hovered && hover
+          ? `0 20px 60px rgba(0,0,0,0.3), 0 0 40px ${glow || "rgba(255,255,255,0.05)"}`
+          : "0 8px 32px rgba(0,0,0,0.2)",
       }}
     >
       {children}

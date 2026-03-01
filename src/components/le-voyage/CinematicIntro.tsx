@@ -26,7 +26,13 @@ export default function CinematicIntro({ onStart }: CinematicIntroProps) {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0e17]">
+    <section
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+      }}
+    >
       {/* Particles background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <Particles />
@@ -49,7 +55,7 @@ export default function CinematicIntro({ onStart }: CinematicIntroProps) {
           className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
-          <TypeWriter text="Et si on d&eacute;couvrait votre niveau de fran&ccedil;ais ?" />
+          <TypeWriter text="Et si on découvrait votre niveau ?" />
         </h1>
 
         <div
@@ -61,8 +67,7 @@ export default function CinematicIntro({ onStart }: CinematicIntroProps) {
         >
           <p className="text-lg text-[#f1f5f9]/70 sm:text-xl">
             <RevealText delay={0}>
-              Un voyage a travers la langue francaise pour decouvrir votre
-              niveau reel.
+              Un viaje por Francia. Cuatro ciudades. Tu nivel de francés.
             </RevealText>
           </p>
         </div>
@@ -75,7 +80,10 @@ export default function CinematicIntro({ onStart }: CinematicIntroProps) {
             transition: "opacity 0.6s ease, transform 0.6s ease",
           }}
         >
-          <GoldButton onClick={onStart}>Bon voyage</GoldButton>
+          <GoldButton onClick={onStart}>Bon voyage →</GoldButton>
+          <p className="mt-3 text-xs text-[#f1f5f9]/40">
+            15 min · 100% gratuit · Résultat immédiat
+          </p>
         </div>
       </div>
     </section>

@@ -62,7 +62,7 @@ export default function LeVoyageFlow({ assessments }: LeVoyageFlowProps) {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0a0e17]">
+    <div className="relative min-h-screen bg-[#1a1a2e]">
       {step === "intro" && <CinematicIntro onStart={handleIntroStart} />}
 
       {step === "passport" && (

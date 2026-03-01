@@ -12,28 +12,28 @@ export const metadata: Metadata = {
 
 const courseTypes = [
   {
-    title: "Preparación DELF/DALF",
+    title: "Préparation DELF/DALF",
     levels: "A1 – C2",
     description:
       "Preparación específica para cada nivel del examen oficial. Simulacros reales, correcciones detalladas y estrategia por prueba.",
     href: "/preparacion-delf-dalf",
   },
   {
-    title: "Conversación",
+    title: "Conversation",
     levels: "A2 – C2",
     description:
       "Práctica oral con profesores nativos. Temas de actualidad, debates, expresiones coloquiales y pronunciación.",
     href: "/contacto",
   },
   {
-    title: "Francés para empresas",
+    title: "Français pour entreprises",
     levels: "A1 – C1",
     description:
       "Programas corporativos adaptados: francés comercial, presentaciones, negociación y comunicación profesional.",
     href: "/contacto",
   },
   {
-    title: "Clases particulares",
+    title: "Cours particuliers",
     levels: "A1 – C2",
     description:
       "Sesiones individuales con horarios flexibles. Contenido 100% adaptado a tus necesidades y ritmo.",
@@ -42,12 +42,12 @@ const courseTypes = [
 ];
 
 const cefrLevels = [
-  { level: "A1", name: "Descubrimiento", description: "Primeras palabras y frases básicas" },
-  { level: "A2", name: "Supervivencia", description: "Comunicación en situaciones cotidianas" },
-  { level: "B1", name: "Umbral", description: "Autonomía en viajes y conversaciones" },
-  { level: "B2", name: "Avanzado", description: "Argumentación y comprensión compleja" },
-  { level: "C1", name: "Dominio", description: "Fluidez profesional y académica" },
-  { level: "C2", name: "Maestría", description: "Nivel nativo o casi nativo" },
+  { level: "A1", name: "Découverte", description: "Primeras palabras y frases básicas" },
+  { level: "A2", name: "Survie", description: "Comunicación en situaciones cotidianas" },
+  { level: "B1", name: "Seuil", description: "Autonomía en viajes y conversaciones" },
+  { level: "B2", name: "Avancé", description: "Argumentación y comprensión compleja" },
+  { level: "C1", name: "Autonome", description: "Fluidez profesional y académica" },
+  { level: "C2", name: "Maîtrise", description: "Nivel nativo o casi nativo" },
 ];
 
 export default function CursosPage() {
@@ -60,7 +60,7 @@ export default function CursosPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
           >
-            Cursos de francés online
+            Nos cours de français en ligne
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
@@ -118,7 +118,7 @@ export default function CursosPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-14"
             style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
           >
-            Niveles CEFR
+            Niveaux CECR
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {cefrLevels.map((item) => (
@@ -156,7 +156,7 @@ export default function CursosPage() {
             className="text-3xl font-bold mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            ¿No sabes tu nivel?
+            Vous ne connaissez pas votre niveau ?
           </h2>
           <p
             className="text-lg mb-8"
@@ -165,7 +165,7 @@ export default function CursosPage() {
             Haz nuestro test gratuito y descubre tu nivel de francés en menos de
             20 minutos.
           </p>
-          <GoldButton href="/test-de-nivel">Hacer el test de nivel</GoldButton>
+          <GoldButton href="/test-de-nivel">Faire le test de niveau</GoldButton>
         </div>
       </CinematicSection>
     </div>

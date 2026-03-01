@@ -56,13 +56,21 @@ export const dashboard = {
 
 // ─── Cinematic (Le Voyage / marketing) ───
 export const cinematic = {
-  bg:         "#0a0e17",
+  bg:         "#1a1a2e",
   bgCard:     "rgba(255,255,255,0.06)",
   border:     "rgba(255,255,255,0.10)",
   gold:       "#e8b865",
   goldLight:  "#f0d08a",
   text:       "#f1f5f9",
   textMuted:  "rgba(255,255,255,0.5)",
+} as const;
+
+// ─── City scenes (Le Voyage) ───
+export const scenes = {
+  paris:     { bg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)", accent: "#e8b865", particleColor: "rgba(232,184,101,0.6)" },
+  lyon:      { bg: "linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 50%, #462255 100%)", accent: "#c77dba", particleColor: "rgba(199,125,186,0.5)" },
+  bordeaux:  { bg: "linear-gradient(135deg, #1b2838 0%, #0d1b2a 50%, #1b3a4b 100%)", accent: "#6ec6ca", particleColor: "rgba(110,198,202,0.5)" },
+  marseille: { bg: "linear-gradient(135deg, #0c1821 0%, #1b2838 50%, #324a5f 100%)", accent: "#f0a500", particleColor: "rgba(240,165,0,0.5)" },
 } as const;
 
 // ─── Font Families ───

@@ -14,6 +14,9 @@ interface Destination {
   levels: CEFRLevel[];
   description: string;
   emoji: string;
+  accent: string;
+  badgeBg: string;
+  badgeBorder: string;
 }
 
 const DESTINATIONS: Destination[] = [
@@ -21,29 +24,41 @@ const DESTINATIONS: Destination[] = [
     city: "Paris",
     levels: ["A1", "A2"],
     description:
-      "Premiers pas dans la langue. Ideal pour les debutants qui decouvrent le francais.",
+      "Tu primer viaje. Gramática, vocabulario y comprensión desde cero hasta las alturas.",
     emoji: "\uD83C\uDDEB\uD83C\uDDF7",
+    accent: "#e8b865",
+    badgeBg: "rgba(232,184,101,0.1)",
+    badgeBorder: "rgba(232,184,101,0.3)",
   },
   {
     city: "Lyon",
     levels: ["B1"],
     description:
-      "Conversations du quotidien. Tu comprends l'essentiel et tu te debrouilles.",
+      "Preparación específica para las pruebas DELF B1. Conversación, comprensión y expresión.",
     emoji: "\uD83C\uDF77",
+    accent: "#c77dba",
+    badgeBg: "rgba(199,125,186,0.1)",
+    badgeBorder: "rgba(199,125,186,0.3)",
   },
   {
     city: "Bordeaux",
     levels: ["B2"],
     description:
-      "Discussions approfondies. Tu argumentes et tu t'exprimes avec aisance.",
+      "Nivel avanzado. Argumentación, textos complejos y expresión fluida.",
     emoji: "\uD83C\uDFF0",
+    accent: "#6ec6ca",
+    badgeBg: "rgba(110,198,202,0.1)",
+    badgeBorder: "rgba(110,198,202,0.3)",
   },
   {
     city: "Marseille",
     levels: ["C1", "C2"],
     description:
-      "Maitrise avancee. Tu manies la langue avec precision et nuance.",
+      "Dominio total. Matices, registros formales y precisión nativa.",
     emoji: "\u2600\uFE0F",
+    accent: "#f0a500",
+    badgeBg: "rgba(240,165,0,0.1)",
+    badgeBorder: "rgba(240,165,0,0.3)",
   },
 ];
 
@@ -61,19 +76,35 @@ export default function DestinationScreen({
   onSelect,
 }: DestinationScreenProps) {
   return (
-    <section className="flex min-h-screen items-center justify-center bg-[#0a0e17] px-4 py-12">
+    <section
+      className="flex min-h-screen items-center justify-center px-4 py-12"
+      style={{
+        background:
+          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+      }}
+    >
       <div className="w-full max-w-4xl">
         <div className="mb-10 text-center">
-          <h2
-            className="text-2xl font-bold text-white sm:text-3xl"
+          <p
+            className="text-lg text-[#f1f5f9]/60"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            <RevealText delay={0}>Choisissez votre destination</RevealText>
+            Bienvenue, <span style={{ color: "#e8b865" }}>voyageur</span>
+          </p>
+          <h2
+            className="mt-2 text-2xl font-bold text-white sm:text-3xl"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            <RevealText delay={0}>
+              Choisissez votre{" "}
+              <span style={{ fontWeight: 700, fontStyle: "italic" }}>
+                destination
+              </span>
+            </RevealText>
           </h2>
           <p className="mt-3 text-[#f1f5f9]/60">
             <RevealText delay={200}>
-              Cada ciudad corresponde a un nivel. Elige segun donde creas que
-              estas.
+              Cada ciudad es un nivel. ¿No sabes cuál elegir? Empieza por Paris.
             </RevealText>
           </p>
         </div>
@@ -108,7 +139,14 @@ export default function DestinationScreen({
                       >
                         {dest.emoji} {dest.city}
                       </h3>
-                      <span className="rounded-full border border-[#e8b865]/30 bg-[#e8b865]/10 px-2.5 py-1 text-xs font-semibold text-[#e8b865]">
+                      <span
+                        className="rounded-full px-2.5 py-1 text-xs font-semibold"
+                        style={{
+                          color: dest.accent,
+                          backgroundColor: dest.badgeBg,
+                          border: `1px solid ${dest.badgeBorder}`,
+                        }}
+                      >
                         {dest.levels.join("-")}
                       </span>
                     </div>
@@ -117,14 +155,27 @@ export default function DestinationScreen({
                       {dest.description}
                     </p>
 
+                    {isAvailable && assessment.totalQuestions > 0 && (
+                      <p
+                        className="mt-2 text-xs"
+                        style={{ color: dest.accent, opacity: 0.7 }}
+                      >
+                        {assessment.totalQuestions} preguntas
+                      </p>
+                    )}
+
                     <div className="mt-5">
                       {isAvailable ? (
                         <button
                           type="button"
                           onClick={() => onSelect(assessment)}
-                          className="w-full rounded-xl bg-[#e8b865] px-4 py-2.5 text-sm font-semibold text-[#0a0e17] transition hover:bg-[#d4a555]"
+                          className="w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition hover:brightness-110"
+                          style={{
+                            backgroundColor: dest.accent,
+                            color: "#1a1a2e",
+                          }}
                         >
-                          Embarquer
+                          Commencer le voyage
                         </button>
                       ) : (
                         <button

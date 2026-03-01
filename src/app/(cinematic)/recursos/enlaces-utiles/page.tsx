@@ -26,7 +26,7 @@ export default function EnlacesUtilesPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Enlaces útiles
+            Liens utiles
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"

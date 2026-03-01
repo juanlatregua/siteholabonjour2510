@@ -4,12 +4,12 @@ import Image from "next/image";
 import styles from "./Footer.module.css";
 
 const quickLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/test-de-nivel", label: "Test de nivel" },
-  { href: "/cursos", label: "Cursos" },
-  { href: "/tarifas", label: "Tarifas" },
-  { href: "/sobre-nosotros", label: "Sobre nosotros" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/", label: "Accueil / Inicio" },
+  { href: "/test-de-nivel", label: "Test de niveau / Test de nivel" },
+  { href: "/cursos", label: "Cours / Cursos" },
+  { href: "/tarifas", label: "Tarifs / Tarifas" },
+  { href: "/sobre-nosotros", label: "À propos / Sobre nosotros" },
+  { href: "/contacto", label: "Contact / Contacto" },
 ];
 
 const socialLinks = [
@@ -35,7 +35,7 @@ const socialLinks = [
   },
 ];
 
-const trustSignals = ["Método inmersivo", "Exámenes DELF/DALF", "Profesores nativos", "Clases en directo"];
+const trustSignals = ["Méthode immersive", "Examens DELF/DALF", "Professeurs natifs", "Cours en direct"];
 
 const Footer = () => {
   return (
@@ -45,8 +45,7 @@ const Footer = () => {
           <section>
             <p className={styles.brand}>HolaBonjour</p>
             <p className={styles.text}>
-              Academia online de francés: clases en directo con profesores nativos, preparación de
-              exámenes DELF/DALF y método inmersivo.
+              Académie en ligne de français / Academia online de francés: clases en directo con profesores nativos...
             </p>
             <ul className={styles.trustList}>
               {trustSignals.map((item) => (
@@ -56,7 +55,7 @@ const Footer = () => {
           </section>
 
           <section>
-            <p className={styles.sectionTitle}>Navegación</p>
+            <p className={styles.sectionTitle}>Navigation / Navegación</p>
             <ul className={styles.linkList}>
               {quickLinks.map((item) => (
                 <li key={item.href}>
@@ -67,7 +66,7 @@ const Footer = () => {
           </section>
 
           <section>
-            <p className={styles.sectionTitle}>Contacto y tarifas</p>
+            <p className={styles.sectionTitle}>Contact et tarifs / Contacto y tarifas</p>
             <p className={styles.text}>Teléfono / WhatsApp: 685 07 03 04</p>
             <p className={styles.text}>Email: info@holabonjour.es</p>
             <p className={styles.text}>A1-B2: pack 4 horas por 140EUR</p>
@@ -91,7 +90,7 @@ const Footer = () => {
 
         <div className={styles.bottom}>
           <p>&copy; {new Date().getFullYear()} HolaBonjour.</p>
-          <p>Aprende francés. Vive en francés.</p>
+          <p>Apprends le français. Vis en français.</p>
         </div>
       </div>
     </footer>

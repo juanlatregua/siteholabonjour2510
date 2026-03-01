@@ -14,11 +14,12 @@ interface PassportScreenProps {
 }
 
 const OBJETIVO_OPTIONS = [
-  "Viaje",
-  "Trabajo",
-  "Estudios",
-  "Examenes oficiales DELF/DALF",
-  "Cultura general",
+  { emoji: "📝", label: "Examen DELF/DALF" },
+  { emoji: "🏛️", label: "Oposiciones" },
+  { emoji: "💼", label: "Trabajo" },
+  { emoji: "✈️", label: "Viaje" },
+  { emoji: "🎓", label: "Estudios en Francia" },
+  { emoji: "💫", label: "Por placer" },
 ];
 
 export default function PassportScreen({ onComplete }: PassportScreenProps) {
@@ -33,7 +34,9 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
     setError("");
 
     if (!name.trim() || !email.trim()) {
-      setError("Nombre y email son obligatorios.");
+      setError(
+        "Nom et courriel sont obligatoires. / Nombre y email son obligatorios.",
+      );
       return;
     }
 
@@ -59,7 +62,13 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
   };
 
   return (
-    <section className="flex min-h-screen items-center justify-center bg-[#0a0e17] px-4 py-12">
+    <section
+      className="flex min-h-screen items-center justify-center px-4 py-12"
+      style={{
+        background:
+          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+      }}
+    >
       <div className="w-full max-w-md">
         <GlassCard>
           <div className="p-6 sm:p-8">
@@ -67,19 +76,25 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
               className="text-2xl font-bold text-white"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Votre passeport linguistique
+              Votre{" "}
+              <span style={{ fontWeight: 700, fontStyle: "italic" }}>
+                passeport
+              </span>
             </h2>
             <p className="mt-2 text-sm text-[#f1f5f9]/60">
-              Antes de embarcar, cuentanos sobre ti
+              Antes de embarcar, necesitamos algunos datos para tu billete.
             </p>
 
-            <form onSubmit={(e) => void handleSubmit(e)} className="mt-6 space-y-5">
+            <form
+              onSubmit={(e) => void handleSubmit(e)}
+              className="mt-6 space-y-5"
+            >
               <div>
                 <label
                   htmlFor="passport-name"
                   className="block text-sm font-medium text-[#f1f5f9]/80"
                 >
-                  Nombre *
+                  Nom / Nombre *
                 </label>
                 <input
                   id="passport-name"
@@ -97,7 +112,7 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
                   htmlFor="passport-email"
                   className="block text-sm font-medium text-[#f1f5f9]/80"
                 >
-                  Email *
+                  Courriel / Email *
                 </label>
                 <input
                   id="passport-email"
@@ -111,31 +126,27 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
               </div>
 
               <div>
-                <label
-                  htmlFor="passport-objetivo"
-                  className="block text-sm font-medium text-[#f1f5f9]/80"
-                >
-                  Objetivo
+                <label className="block text-sm font-medium text-[#f1f5f9]/80">
+                  Destination / ¿Tu objetivo?
                 </label>
-                <select
-                  id="passport-objetivo"
-                  value={objetivo}
-                  onChange={(e) => setObjetivo(e.target.value)}
-                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-[#e8b865] focus:outline-none focus:ring-2 focus:ring-[#e8b865]/20"
-                >
-                  <option value="" className="bg-[#0a0e17] text-white">
-                    Selecciona un objetivo
-                  </option>
+                <div className="mt-2 flex flex-wrap gap-2">
                   {OBJETIVO_OPTIONS.map((opt) => (
-                    <option
-                      key={opt}
-                      value={opt}
-                      className="bg-[#0a0e17] text-white"
+                    <button
+                      key={opt.label}
+                      type="button"
+                      onClick={() =>
+                        setObjetivo(objetivo === opt.label ? "" : opt.label)
+                      }
+                      className={`rounded-full border px-3.5 py-2 text-sm transition ${
+                        objetivo === opt.label
+                          ? "border-[#e8b865] bg-[#e8b865]/20 text-[#e8b865]"
+                          : "border-white/15 bg-white/5 text-[#f1f5f9]/70 hover:border-white/30 hover:bg-white/10"
+                      }`}
                     >
-                      {opt}
-                    </option>
+                      {opt.emoji} {opt.label}
+                    </button>
                   ))}
-                </select>
+                </div>
               </div>
 
               {error && (
@@ -147,9 +158,9 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-xl bg-[#e8b865] px-5 py-3 text-sm font-semibold text-[#0a0e17] transition hover:bg-[#d4a555] disabled:opacity-60"
+                className="w-full rounded-xl bg-[#e8b865] px-5 py-3 text-sm font-semibold text-[#1a1a2e] transition hover:bg-[#d4a555] disabled:opacity-60"
               >
-                {isSubmitting ? "Enviando..." : "Comenzar el viaje"}
+                {isSubmitting ? "Embarquement..." : "Embarquer →"}
               </button>
             </form>
           </div>

@@ -31,7 +31,7 @@ const baseStyles: React.CSSProperties = {
 const solidStyles: React.CSSProperties = {
   ...baseStyles,
   backgroundColor: "#e8b865",
-  color: "#0a0e17",
+  color: "#1a1a2e",
 };
 
 const outlineStyles: React.CSSProperties = {

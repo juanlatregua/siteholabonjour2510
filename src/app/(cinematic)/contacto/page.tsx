@@ -16,21 +16,21 @@ const contactMethods = [
     description: "Respuesta rápida en horario laboral",
     detail: "685 07 03 04",
     href: "https://wa.me/34685070304",
-    cta: "Escribir por WhatsApp",
+    cta: "Écrire sur WhatsApp",
   },
   {
-    title: "Email",
+    title: "Courriel",
     description: "Te respondemos en menos de 24 horas",
     detail: "info@holabonjour.es",
     href: "mailto:info@holabonjour.es",
-    cta: "Enviar email",
+    cta: "Envoyer un courriel",
   },
   {
-    title: "Clase de prueba",
+    title: "Classe d'essai",
     description: "Conoce nuestro método sin compromiso",
     detail: "Sesión gratuita de 30 minutos",
     href: "https://wa.me/34685070304?text=Quiero%20reservar%20una%20clase%20de%20prueba",
-    cta: "Reservar clase",
+    cta: "Réserver une classe",
   },
 ];
 
@@ -57,7 +57,7 @@ export default function ContactoPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Contacto
+            Contact
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
@@ -106,7 +106,7 @@ export default function ContactoPage() {
             className="text-3xl font-bold text-center mb-10"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Envíanos un mensaje
+            Envoyez-nous un message
           </h2>
           <GlassCard>
             <ContactForm />
@@ -121,7 +121,7 @@ export default function ContactoPage() {
             className="text-2xl font-bold mb-6"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Síguenos
+            Suivez-nous
           </h2>
           <div className="flex flex-wrap justify-center gap-4 mb-10">
             {socialLinks.map((link) => (

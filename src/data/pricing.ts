@@ -9,7 +9,7 @@ export interface PricingTier {
 
 export const pricingTiers: PricingTier[] = [
   {
-    name: "Iniciación",
+    name: "Initiation",
     levels: "A1 – A2",
     price: 140,
     hours: 4,
@@ -23,7 +23,7 @@ export const pricingTiers: PricingTier[] = [
     ],
   },
   {
-    name: "Intermedio",
+    name: "Intermédiaire",
     levels: "B1 – B2",
     price: 140,
     hours: 4,
@@ -39,7 +39,7 @@ export const pricingTiers: PricingTier[] = [
     ],
   },
   {
-    name: "Avanzado",
+    name: "Avancé",
     levels: "C1 – C2",
     price: 200,
     hours: 4,

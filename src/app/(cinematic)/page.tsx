@@ -18,17 +18,17 @@ export const metadata: Metadata = {
 
 const valueProps = [
   {
-    title: "Exámenes oficiales DELF/DALF",
+    title: "Examens officiels DELF/DALF",
     description:
       "Preparación específica para cada nivel del examen oficial con simulaciones y seguimiento docente.",
   },
   {
-    title: "Aprendizaje inmersivo",
+    title: "Apprentissage immersif",
     description:
       "Le Côté Vie: aprende francés a través del cine, la gastronomía, los juegos y la cultura.",
   },
   {
-    title: "Clases en directo",
+    title: "Cours en direct",
     description:
       "Sesiones online con profesores nativos franceses. Grupos reducidos o clases particulares.",
   },
@@ -36,22 +36,22 @@ const valueProps = [
 
 const courseTypes = [
   {
-    title: "Preparación DELF/DALF",
+    title: "Préparation DELF/DALF",
     description: "Todos los niveles, de A1 a C2",
     href: "/preparacion-delf-dalf",
   },
   {
-    title: "Conversación",
+    title: "Conversation",
     description: "Practica con profesores nativos",
     href: "/cursos#conversacion",
   },
   {
-    title: "Francés para empresas",
+    title: "Français pour entreprises",
     description: "Programas corporativos a medida",
     href: "/empresas",
   },
   {
-    title: "Clases particulares",
+    title: "Cours particuliers",
     description: "Sesiones individuales adaptadas",
     href: "/cursos",
   },
@@ -114,7 +114,7 @@ const CinematicHomePage = () => {
   return (
     <div
       style={{
-        background: "#0a0e17",
+        background: "#1a1a2e",
         color: "#f1f5f9",
         minHeight: "100vh",
       }}
@@ -143,7 +143,7 @@ const CinematicHomePage = () => {
               color: "#f1f5f9",
             }}
           >
-            Por qué elegir <span style={{ color: "#e8b865" }}>HolaBonjour</span>
+            Pourquoi choisir <span style={{ color: "#e8b865" }}>HolaBonjour</span>
           </h2>
 
           <div
@@ -276,7 +276,7 @@ const CinematicHomePage = () => {
               color: "#f1f5f9",
             }}
           >
-            Nuestros <span style={{ color: "#e8b865" }}>cursos</span>
+            Nos <span style={{ color: "#e8b865" }}>cours</span>
           </h2>
 
           <div
@@ -340,7 +340,7 @@ const CinematicHomePage = () => {
               color: "#f1f5f9",
             }}
           >
-            Lo que dicen <span style={{ color: "#e8b865" }}>nuestros alumnos</span>
+            Ce que disent <span style={{ color: "#e8b865" }}>nos élèves</span>
           </h2>
 
           <div
@@ -490,7 +490,7 @@ const CinematicHomePage = () => {
               color: "#f1f5f9",
             }}
           >
-            Empieza tu camino en <span style={{ color: "#e8b865" }}>francés</span>
+            Commencez votre voyage en <span style={{ color: "#e8b865" }}>français</span>
           </h2>
           <p
             style={{
@@ -522,7 +522,7 @@ const CinematicHomePage = () => {
                 justifyContent: "center",
               }}
             >
-              <GoldButton href="/test-de-nivel">Reservar clase de prueba</GoldButton>
+              <GoldButton href="/test-de-nivel">Réserver une classe d&apos;essai</GoldButton>
               <a
                 href="https://wa.me/34685070304"
                 target="_blank"
@@ -542,7 +542,7 @@ const CinematicHomePage = () => {
                   transition: "background 0.2s ease",
                 }}
               >
-                Escríbenos por WhatsApp
+                Écrivez-nous sur WhatsApp
               </a>
             </div>
 

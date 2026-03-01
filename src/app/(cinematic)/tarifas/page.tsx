@@ -39,7 +39,7 @@ export default function TarifasPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
           >
-            Tarifas
+            Nos tarifs
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
@@ -57,7 +57,7 @@ export default function TarifasPage() {
             {pricingTiers.map((tier) => (
               <GlassCard
                 key={tier.name}
-                glow={tier.popular}
+                glow={tier.popular ? "rgba(232,184,101,0.15)" : undefined}
                 className="flex flex-col relative"
               >
                 {tier.popular && (
@@ -68,7 +68,7 @@ export default function TarifasPage() {
                       color: "var(--cin-bg)",
                     }}
                   >
-                    Más popular
+                    Le plus populaire
                   </span>
                 )}
 
@@ -130,7 +130,7 @@ export default function TarifasPage() {
                   variant={tier.popular ? "solid" : "outline"}
                   className="w-full text-center"
                 >
-                  Empezar ahora
+                  Commencer
                 </GoldButton>
               </GlassCard>
             ))}
@@ -153,7 +153,7 @@ export default function TarifasPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-14"
             style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
           >
-            Preguntas frecuentes
+            Questions fréquentes
           </h2>
           <div className="flex flex-col gap-4">
             {faqItems.map((item) => (
@@ -206,7 +206,7 @@ export default function TarifasPage() {
             className="text-3xl md:text-4xl font-bold mb-6"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            ¿Necesitas un plan personalizado?
+            Besoin d&apos;un plan personnalisé ?
           </h2>
           <p
             className="mb-10 text-lg"

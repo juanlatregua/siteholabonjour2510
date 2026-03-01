@@ -12,25 +12,25 @@ export const metadata: Metadata = {
 
 const methodologyPillars = [
   {
-    title: "Inmersión cultural",
+    title: "Immersion culturelle",
     description:
       "Aprendes francés a través de la cultura: cine, gastronomía, actualidad y juegos. Cada clase es una ventana a Francia.",
     icon: "🎬",
   },
   {
-    title: "Preparación con criterio",
+    title: "Préparation rigoureuse",
     description:
       "Cada sesión está alineada con los estándares oficiales DELF y DALF. Simulacros reales, correcciones detalladas, estrategia por prueba.",
     icon: "🎯",
   },
   {
-    title: "Acompañamiento real",
+    title: "Accompagnement réel",
     description:
       "Tu profesor te conoce, sigue tu progreso y adapta el plan. Nada de cursos genéricos: cada alumno tiene su ruta.",
     icon: "🤝",
   },
   {
-    title: "100% online",
+    title: "100% en ligne",
     description:
       "Clases en directo por videoconferencia desde donde estés. Sin desplazamientos, con la misma calidad que una clase presencial.",
     icon: "💻",
@@ -47,7 +47,7 @@ export default function SobreNosotrosPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
           >
-            Sobre nosotros
+            À propos de nous
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
@@ -113,7 +113,7 @@ export default function SobreNosotrosPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-14"
             style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
           >
-            Nuestro método
+            Notre méthode
           </h2>
           <div className="grid sm:grid-cols-2 gap-8">
             {methodologyPillars.map((pillar) => (
@@ -146,7 +146,7 @@ export default function SobreNosotrosPage() {
             className="text-3xl md:text-4xl font-bold mb-6"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            ¿Quieres conocernos?
+            Envie de nous connaître ?
           </h2>
           <p
             className="mb-10 text-lg"
@@ -159,7 +159,7 @@ export default function SobreNosotrosPage() {
               WhatsApp
             </GoldButton>
             <GoldButton href="/contacto" variant="outline">
-              Reservar clase de prueba
+              Réserver une classe d&apos;essai
             </GoldButton>
           </div>
         </div>

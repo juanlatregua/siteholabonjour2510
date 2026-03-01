@@ -452,7 +452,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
       <section
         className={
           cinematic
-            ? "rounded-2xl border border-white/10 bg-[#0a0e17] p-4 text-white shadow-[0_10px_26px_rgba(232,184,101,0.1)] sm:p-5"
+            ? "rounded-2xl border border-white/10 bg-[#1a1a2e] p-4 text-white shadow-[0_10px_26px_rgba(232,184,101,0.1)] sm:p-5"
             : "rounded-2xl border border-cyan-200/80 bg-gradient-to-br from-[#0f4f8a] via-[#0f5da0] to-[#1b78c2] p-4 text-white shadow-[0_10px_26px_rgba(15,93,160,0.18)] sm:p-5"
         }
       >
@@ -474,7 +474,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
         <section
           className={
             cinematic
-              ? "rounded-2xl border border-white/10 bg-[#0a0e17] p-4 shadow-[0_6px_18px_rgba(232,184,101,0.07)] sm:p-5"
+              ? "rounded-2xl border border-white/10 bg-[#1a1a2e] p-4 shadow-[0_6px_18px_rgba(232,184,101,0.07)] sm:p-5"
               : "rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5"
           }
         >
@@ -516,7 +516,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               disabled={isSubmitting}
               className={
                 cinematic
-                  ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-5 py-3 text-sm font-semibold text-[#0a0e17] transition hover:bg-[#d4a555] disabled:opacity-60"
+                  ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-5 py-3 text-sm font-semibold text-[#1a1a2e] transition hover:bg-[#d4a555] disabled:opacity-60"
                   : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0b4d84] disabled:opacity-60"
               }
             >
@@ -544,14 +544,14 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
         <section
           className={
             cinematic
-              ? "space-y-3.5 rounded-2xl border border-white/10 bg-[#0a0e17] p-4 shadow-[0_6px_18px_rgba(232,184,101,0.07)] sm:p-5"
+              ? "space-y-3.5 rounded-2xl border border-white/10 bg-[#1a1a2e] p-4 shadow-[0_6px_18px_rgba(232,184,101,0.07)] sm:p-5"
               : "space-y-3.5 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5"
           }
         >
           <div
             className={
               cinematic
-                ? "-mx-4 sticky top-0 z-20 border-b border-white/10 bg-[#0a0e17]/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5"
+                ? "-mx-4 sticky top-0 z-20 border-b border-white/10 bg-[#1a1a2e]/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5"
                 : "-mx-4 sticky top-[84px] z-20 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5"
             }
           >
@@ -696,7 +696,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 }
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 py-2 text-sm font-semibold text-[#0a0e17]"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 py-2 text-sm font-semibold text-[#1a1a2e]"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 py-2 text-sm font-semibold text-white"
                 }
               >
@@ -708,7 +708,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 onClick={() => setStep("review")}
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 py-2 text-sm font-semibold text-[#0a0e17]"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 py-2 text-sm font-semibold text-[#1a1a2e]"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-700 px-4 py-2 text-sm font-semibold text-white"
                 }
               >
@@ -720,7 +720,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
           <div
             className={
               cinematic
-                ? "sticky bottom-0 z-10 mt-3 rounded-xl border border-white/10 bg-[#0a0e17]/95 p-2.5 shadow-[0_-4px_14px_rgba(232,184,101,0.1)] backdrop-blur sm:hidden"
+                ? "sticky bottom-0 z-10 mt-3 rounded-xl border border-white/10 bg-[#1a1a2e]/95 p-2.5 shadow-[0_-4px_14px_rgba(232,184,101,0.1)] backdrop-blur sm:hidden"
                 : "sticky bottom-0 z-10 mt-3 rounded-xl border border-slate-200 bg-white/95 p-2.5 shadow-[0_-4px_14px_rgba(15,93,160,0.1)] sm:hidden"
             }
           >
@@ -748,7 +748,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                   }
                   className={
                     cinematic
-                      ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 text-sm font-semibold text-[#0a0e17]"
+                      ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 text-sm font-semibold text-[#1a1a2e]"
                       : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 text-sm font-semibold text-white"
                   }
                 >
@@ -760,7 +760,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                   onClick={() => setStep("review")}
                   className={
                     cinematic
-                      ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 text-sm font-semibold text-[#0a0e17]"
+                      ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 text-sm font-semibold text-[#1a1a2e]"
                       : "inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-700 px-4 text-sm font-semibold text-white"
                   }
                 >
@@ -776,7 +776,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
         <section
           className={
             cinematic
-              ? "rounded-2xl border border-white/10 bg-[#0a0e17] p-4 shadow-[0_6px_18px_rgba(232,184,101,0.07)] sm:p-5"
+              ? "rounded-2xl border border-white/10 bg-[#1a1a2e] p-4 shadow-[0_6px_18px_rgba(232,184,101,0.07)] sm:p-5"
               : "rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5"
           }
         >
@@ -827,7 +827,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               disabled={isSubmitting || hasPendingSaves}
               className={
                 cinematic
-                  ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 py-2 text-sm font-semibold text-[#0a0e17] disabled:opacity-60"
+                  ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 py-2 text-sm font-semibold text-[#1a1a2e] disabled:opacity-60"
                   : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
               }
             >
@@ -842,7 +842,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
           <div
             className={
               cinematic
-                ? "sticky bottom-0 z-10 mt-3 rounded-xl border border-white/10 bg-[#0a0e17]/95 p-2.5 shadow-[0_-4px_14px_rgba(232,184,101,0.1)] backdrop-blur sm:hidden"
+                ? "sticky bottom-0 z-10 mt-3 rounded-xl border border-white/10 bg-[#1a1a2e]/95 p-2.5 shadow-[0_-4px_14px_rgba(232,184,101,0.1)] backdrop-blur sm:hidden"
                 : "sticky bottom-0 z-10 mt-3 rounded-xl border border-slate-200 bg-white/95 p-2.5 shadow-[0_-4px_14px_rgba(15,93,160,0.1)] sm:hidden"
             }
           >
@@ -864,7 +864,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 disabled={isSubmitting || hasPendingSaves}
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 text-sm font-semibold text-[#0a0e17] disabled:opacity-60"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 text-sm font-semibold text-[#1a1a2e] disabled:opacity-60"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 text-sm font-semibold text-white disabled:opacity-60"
                 }
               >

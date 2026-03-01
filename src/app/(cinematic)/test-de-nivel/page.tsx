@@ -3,9 +3,9 @@ import { listPublicAssessments } from "@/lib/assessment/service";
 import LeVoyageFlow from "@/components/le-voyage/LeVoyageFlow";
 
 export const metadata: Metadata = {
-  title: "Test de Nivel | Le Voyage",
+  title: "Test de niveau — Le Voyage",
   description:
-    "Descubre tu nivel real de frances con Le Voyage, una experiencia interactiva que evalua tu comprension escrita, oral, gramatica y expresiones.",
+    "Descubre tu nivel real con nuestros tests oficiales basados en el MCER. Resultado inmediato y recomendación personalizada.",
   alternates: {
     canonical: "/test-de-nivel",
   },

@@ -64,7 +64,7 @@ export default function ContactForm() {
           className="text-2xl font-bold mb-3"
           style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
         >
-          Mensaje enviado
+          Message envoyé
         </h3>
         <p style={{ color: "rgba(255,255,255,0.65)" }}>
           Te responderemos en menos de 24 horas. Merci !
@@ -88,12 +88,12 @@ export default function ContactForm() {
         className="text-2xl font-bold mb-2"
         style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
       >
-        Escríbenos
+        Écrivez-nous
       </h3>
 
       <div>
         <label htmlFor="contact-name" style={labelStyles}>
-          Nombre
+          Nom / Nombre
         </label>
         <input
           id="contact-name"
@@ -114,7 +114,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="contact-email" style={labelStyles}>
-          Email
+          Courriel / Email
         </label>
         <input
           id="contact-email"
@@ -135,7 +135,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="contact-objetivo" style={labelStyles}>
-          Objetivo
+          Objectif / Objetivo
         </label>
         <select
           id="contact-objetivo"
@@ -168,7 +168,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="contact-message" style={labelStyles}>
-          Mensaje
+          Message
         </label>
         <textarea
           id="contact-message"
@@ -203,7 +203,7 @@ export default function ContactForm() {
           letterSpacing: "0.01em",
         }}
       >
-        Enviar mensaje
+        Envoyer le message
       </button>
     </form>
   );
