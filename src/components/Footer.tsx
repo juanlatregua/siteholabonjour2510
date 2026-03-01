@@ -96,8 +96,16 @@ const Footer = () => {
           {/* Column 4: Contact + social */}
           <section>
             <p className={styles.sectionTitle}>Contact</p>
-            <p className={styles.text}>WhatsApp: +34 685 070 304</p>
-            <p className={styles.text}>Email: hola@holabonjour.es</p>
+            <p className={styles.text}>
+              <a href="https://wa.me/34685070304?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20los%20cursos." target="_blank" rel="noreferrer" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                WhatsApp: +34 685 070 304
+              </a>
+            </p>
+            <p className={styles.text}>
+              <a href="mailto:hola@holabonjour.es" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                hola@holabonjour.es
+              </a>
+            </p>
             <div className={styles.social}>
               {socialLinks.map((item) => (
                 <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
@@ -114,27 +122,8 @@ const Footer = () => {
           <Link href="/politica-de-cookies">Cookies</Link>
         </div>
 
-        {/* HBTJ Ecosystem */}
-        <div className={styles.ecosystem}>
-          <Image
-            src="/images/hbtj-icon-128.png"
-            alt="HBTJ Consultores Lingüísticos"
-            width={40}
-            height={40}
-            style={{ borderRadius: "50%", opacity: 0.8 }}
-          />
-          <div>
-            <p className={styles.ecosystemTitle}>Écosystème HBTJ</p>
-            <p className={styles.ecosystemLinks}>
-              <a href="https://mitraductorjurado.es" target="_blank" rel="noreferrer">mitraductorjurado.es</a>
-              {" "}&middot;{" "}
-              <a href="https://holabonjour.es" target="_blank" rel="noreferrer">holabonjour.es</a>
-            </p>
-          </div>
-        </div>
-
         <div className={styles.bottom}>
-          <p>&copy; 2026 HolaBonjour &middot; HBTJ Consultores Lingüísticos S.L. &middot; Málaga</p>
+          <p>&copy; 2026 HolaBonjour &middot; Academia online de francés &middot; Málaga</p>
         </div>
       </div>
     </footer>
