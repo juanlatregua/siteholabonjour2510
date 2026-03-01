@@ -9,12 +9,12 @@ import { CONTACT } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Clases particulares de francés online — HolaBonjour",
   description:
-    "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. 35\u20AC/clase.",
+    "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
   alternates: { canonical: "/cursos/clases-particulares" },
   openGraph: {
     title: "Clases particulares de francés online — HolaBonjour",
     description:
-      "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. 35\u20AC/clase.",
+      "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
     url: "https://holabonjour.es/cursos/clases-particulares",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -60,7 +60,7 @@ export default function ClasesParticularesPage() {
             "@type": "Course",
             "name": "Clases Particulares de Francés Online",
             "description":
-              "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. 35\u20AC/clase.",
+              "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
             "provider": {
               "@type": "EducationalOrganization",
               "name": "HolaBonjour",
@@ -72,9 +72,11 @@ export default function ClasesParticularesPage() {
               "Francés — Clases individuales personalizadas",
             "courseMode": "online",
             "offers": {
-              "@type": "Offer",
-              "price": "35",
+              "@type": "AggregateOffer",
+              "lowPrice": "35",
+              "highPrice": "50",
               "priceCurrency": "EUR",
+              "offerCount": "3",
               "availability": "https://schema.org/InStock",
             },
             "hasCourseInstance": {

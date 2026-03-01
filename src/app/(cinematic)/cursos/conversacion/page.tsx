@@ -65,9 +65,11 @@ export default function ConversacionPage() {
             "teaches": "Francés — Conversación y expresión oral",
             "courseMode": "online",
             "offers": {
-              "@type": "Offer",
-              "price": "35",
+              "@type": "AggregateOffer",
+              "lowPrice": "35",
+              "highPrice": "50",
               "priceCurrency": "EUR",
+              "offerCount": "3",
               "availability": "https://schema.org/InStock",
             },
             "hasCourseInstance": {

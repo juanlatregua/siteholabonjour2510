@@ -191,8 +191,8 @@ export default function SobreNosotrosPage() {
             <GoldButton href="https://wa.me/34685070304">
               WhatsApp
             </GoldButton>
-            <GoldButton href="/test-de-nivel" variant="outline">
-              Faire le test de niveau
+            <GoldButton href="mailto:hola@holabonjour.es" variant="outline">
+              hola@holabonjour.es
             </GoldButton>
           </div>
         </div>

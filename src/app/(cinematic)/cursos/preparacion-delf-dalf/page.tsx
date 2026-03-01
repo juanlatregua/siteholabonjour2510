@@ -102,9 +102,11 @@ export default function PreparacionDelfDalfPage() {
               "Francés — Preparación exámenes oficiales DELF y DALF",
             "courseMode": "online",
             "offers": {
-              "@type": "Offer",
-              "price": "35",
+              "@type": "AggregateOffer",
+              "lowPrice": "35",
+              "highPrice": "50",
               "priceCurrency": "EUR",
+              "offerCount": "3",
               "availability": "https://schema.org/InStock",
             },
             "hasCourseInstance": {
@@ -169,8 +171,14 @@ export default function PreparacionDelfDalfPage() {
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "rgba(255,255,255,0.7)" }}
           >
-            Preparacion especifica para cada nivel del examen oficial. Simulacros
+            Preparación específica para cada nivel del examen oficial. Simulacros
             reales, correcciones detalladas y estrategia por prueba.
+          </p>
+          <p
+            className="text-sm mt-4 tracking-wide"
+            style={{ color: "rgba(255,255,255,0.5)" }}
+          >
+            Cours individuel &middot; 1h par séance &middot; 100% en ligne par Zoom
           </p>
         </div>
       </CinematicSection>
