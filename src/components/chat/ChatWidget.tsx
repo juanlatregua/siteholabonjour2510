@@ -401,18 +401,35 @@ export default function ChatWidget() {
               "0 4px 20px rgba(232,184,101,0.35)";
           }}
         >
-          {/* Chat bubble SVG */}
+          {/* Le Concierge icon — French concierge with beret & speech bubble */}
           <svg
-            width="26"
-            height="26"
-            viewBox="0 0 24 24"
+            width="34"
+            height="34"
+            viewBox="0 0 64 64"
             fill="none"
-            stroke="#1a1a2e"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            {/* Beret */}
+            <ellipse cx="32" cy="18" rx="16" ry="6" fill="#1a1a2e" />
+            <ellipse cx="32" cy="17" rx="13" ry="5" fill="#2a2a4e" />
+            <circle cx="32" cy="13" r="2.5" fill="#1a1a2e" />
+            {/* Face */}
+            <circle cx="32" cy="30" r="12" fill="#1a1a2e" />
+            <circle cx="32" cy="30" r="11" fill="#F5DEB3" />
+            {/* Eyes */}
+            <ellipse cx="28" cy="28" rx="1.5" ry="2" fill="#1a1a2e" />
+            <ellipse cx="36" cy="28" rx="1.5" ry="2" fill="#1a1a2e" />
+            {/* Smile */}
+            <path d="M27 33 Q32 37 37 33" stroke="#1a1a2e" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+            {/* Mustache */}
+            <path d="M26 31 Q29 33 32 31 Q35 33 38 31" stroke="#1a1a2e" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+            {/* Speech bubble */}
+            <rect x="42" y="8" width="18" height="14" rx="5" fill="#1a1a2e" />
+            <polygon points="44,20 42,24 48,20" fill="#1a1a2e" />
+            {/* "Bonjour" dots in speech bubble */}
+            <circle cx="48" cy="14" r="1.5" fill="#e8b865" />
+            <circle cx="53" cy="14" r="1.5" fill="#e8b865" />
+            <circle cx="58" cy="14" r="1.5" fill="#e8b865" />
           </svg>
         </button>
       )}
@@ -458,6 +475,30 @@ export default function ChatWidget() {
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              {/* Mini concierge avatar */}
+              <div
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, #e8b865, #c8a55a)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+                  <ellipse cx="32" cy="18" rx="16" ry="6" fill="#1a1a2e" />
+                  <ellipse cx="32" cy="17" rx="13" ry="5" fill="#2a2a4e" />
+                  <circle cx="32" cy="13" r="2.5" fill="#1a1a2e" />
+                  <circle cx="32" cy="30" r="11" fill="#F5DEB3" />
+                  <ellipse cx="28" cy="28" rx="1.5" ry="2" fill="#1a1a2e" />
+                  <ellipse cx="36" cy="28" rx="1.5" ry="2" fill="#1a1a2e" />
+                  <path d="M27 33 Q32 37 37 33" stroke="#1a1a2e" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+                  <path d="M26 31 Q29 33 32 31 Q35 33 38 31" stroke="#1a1a2e" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+                </svg>
+              </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <span
                   style={{
