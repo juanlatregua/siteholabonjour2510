@@ -302,6 +302,55 @@ const questionsA1: AssessmentQuestion[] = [
     ],
     "b",
   ),
+  // expressions-tournures (A1)
+  makeQuestion(
+    "a1-q21",
+    "expressions-tournures",
+    "Que dit-on en francais pour saluer quelqu'un poliment dans la journee?",
+    [
+      ["a", "Bonsoir"],
+      ["b", "Bonjour"],
+      ["c", "Bonne nuit"],
+      ["d", "Au revoir"],
+    ],
+    "b",
+  ),
+  makeQuestion(
+    "a1-q22",
+    "expressions-tournures",
+    "Vous rencontrez une personne pour la premiere fois. Que dites-vous?",
+    [
+      ["a", "A bientot"],
+      ["b", "Bon appetit"],
+      ["c", "Enchante"],
+      ["d", "Bonne chance"],
+    ],
+    "c",
+  ),
+  makeQuestion(
+    "a1-q23",
+    "expressions-tournures",
+    "Au marche, vous voulez savoir le prix. Que demandez-vous?",
+    [
+      ["a", "Ou est la gare?"],
+      ["b", "Comment vous appelez-vous?"],
+      ["c", "Quelle heure est-il?"],
+      ["d", "Combien ca coute?"],
+    ],
+    "d",
+  ),
+  makeQuestion(
+    "a1-q24",
+    "expressions-tournures",
+    "Quelqu'un vous aide a trouver votre chemin. Que dites-vous pour le remercier?",
+    [
+      ["a", "Excusez-moi"],
+      ["b", "S'il vous plait"],
+      ["c", "Merci beaucoup"],
+      ["d", "Pardon"],
+    ],
+    "c",
+  ),
 ];
 
 const questionsA2: AssessmentQuestion[] = [
@@ -431,6 +480,137 @@ const questionsA2: AssessmentQuestion[] = [
       ["b", "Salut"],
       ["c", "Cordialement"],
       ["d", "Bye"],
+    ],
+    "c",
+    "medium",
+  ),
+  // New A2 questions
+  makeQuestion(
+    "a2-q11",
+    "gramatica-vocabulario",
+    "Completa: Hier, Marie ___ allee chez le medecin.",
+    [
+      ["a", "a"],
+      ["b", "est"],
+      ["c", "as"],
+      ["d", "avons"],
+    ],
+    "b",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q12",
+    "comprension-escrita",
+    "Lees un cartel en una tienda: Soldes! Jusqu'a -50% sur tout le magasin. Valable du 10 au 25 janvier. Que indica?",
+    [
+      ["a", "La tienda cierra del 10 al 25 de enero"],
+      ["b", "Hay rebajas de hasta el 50% del 10 al 25 de enero"],
+      ["c", "Los precios suben un 50% en enero"],
+      ["d", "Solo se aceptan pagos en efectivo"],
+    ],
+    "b",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q13",
+    "comprension-escrita",
+    "Lees un mensaje de un amigo: Salut! Je suis malade, je ne peux pas venir ce soir. On reporte a samedi? Que te propone?",
+    [
+      ["a", "Que canceles la cita definitivamente"],
+      ["b", "Que vayas a su casa esta noche"],
+      ["c", "Que aplacen el encuentro al sabado"],
+      ["d", "Que le llames al medico"],
+    ],
+    "c",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q14",
+    "comprension-oral",
+    "Escuchas: Bonjour, je voudrais un aller-retour pour Lyon, s'il vous plait. Que quiere la persona?",
+    [
+      ["a", "Un billete de ida a Lyon"],
+      ["b", "Un billete de ida y vuelta a Lyon"],
+      ["c", "Reservar un hotel en Lyon"],
+      ["d", "Informacion turistica sobre Lyon"],
+    ],
+    "b",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q15",
+    "comprension-oral",
+    "Escuchas: Vous avez de la fievre. Restez au lit et buvez beaucoup d'eau. Revenez dans trois jours. Quien habla probablemente?",
+    [
+      ["a", "Un profesor"],
+      ["b", "Un vendedor"],
+      ["c", "Un medico"],
+      ["d", "Un camarero"],
+    ],
+    "c",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q16",
+    "comprension-oral",
+    "Escuchas: Le prochain bus pour le centre-ville part dans quinze minutes, quai numero trois. Que informacion obtienes?",
+    [
+      ["a", "El autobus sale en 5 minutos del anden 3"],
+      ["b", "El autobus sale en 15 minutos del anden 3"],
+      ["c", "El autobus al centro esta cancelado"],
+      ["d", "El autobus sale en 15 minutos del anden 13"],
+    ],
+    "b",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q17",
+    "expressions-tournures",
+    "Votre ami a oublie votre livre. Que signifie Ca ne fait rien?",
+    [
+      ["a", "Estoy enfadado"],
+      ["b", "No importa, no pasa nada"],
+      ["c", "Devuelvemelo manana"],
+      ["d", "No lo entiendo"],
+    ],
+    "b",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q18",
+    "expressions-tournures",
+    "Vous partez en vacances demain. Que signifie J'ai hate?",
+    [
+      ["a", "Tengo miedo"],
+      ["b", "Tengo prisa"],
+      ["c", "Estoy impaciente, tengo muchas ganas"],
+      ["d", "Estoy cansado"],
+    ],
+    "c",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q19",
+    "expressions-tournures",
+    "Au restaurant, le serveur dit: Ca fait douze euros cinquante. Que vous indique-t-il?",
+    [
+      ["a", "El horario del restaurante"],
+      ["b", "El precio total a pagar"],
+      ["c", "El numero de mesa"],
+      ["d", "El tiempo de espera"],
+    ],
+    "b",
+    "medium",
+  ),
+  makeQuestion(
+    "a2-q20",
+    "expressions-tournures",
+    "Vous n'avez pas obtenu les billets de concert. Votre ami dit: Tant pis, on ira une autre fois. Que signifie tant pis?",
+    [
+      ["a", "Que suerte"],
+      ["b", "Es urgente"],
+      ["c", "Ni modo, no pasa nada"],
+      ["d", "Es imposible"],
     ],
     "c",
     "medium",
@@ -573,6 +753,147 @@ const questionsB1: AssessmentQuestion[] = [
       ["b", "Tren 602, anden 4, +10 minutos"],
       ["c", "Tren 602, anden 10, +4 minutos"],
       ["d", "Tren 602 cancelado"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  // New B1 questions
+  makeQuestion(
+    "b1-q11",
+    "gramatica-vocabulario",
+    "Completa: Si j'avais plus de temps, je ___ en France cet ete.",
+    [
+      ["a", "voyage"],
+      ["b", "voyagerais"],
+      ["c", "voyagerai"],
+      ["d", "ai voyage"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q12",
+    "comprension-escrita",
+    "Article de journal: Les autorites ont annonce la mise en place d'un nouveau systeme de tri selectif dans toutes les communes de la region a partir de janvier. Les habitants devront separer les dechets en quatre categories. Quel est l'objectif principal de cette mesure?",
+    [
+      ["a", "Augmenter les impots locaux"],
+      ["b", "Ameliorer le recyclage grace a un meilleur tri des dechets"],
+      ["c", "Reduire le nombre de communes dans la region"],
+      ["d", "Supprimer la collecte des dechets"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q13",
+    "comprension-escrita",
+    "Lettre formelle: Madame, Suite a votre demande du 15 mars, nous avons le plaisir de vous informer que votre dossier a ete accepte. Vous etes priee de vous presenter a nos bureaux muni d'une piece d'identite. Que doit faire la destinataire?",
+    [
+      ["a", "Envoyer un nouveau dossier par courrier"],
+      ["b", "Se rendre aux bureaux avec une piece d'identite"],
+      ["c", "Telephoner pour confirmer la reception"],
+      ["d", "Attendre une deuxieme lettre de confirmation"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q14",
+    "comprension-oral",
+    "Escuchas: En raison de travaux sur la ligne 3, le service sera interrompu ce week-end entre les stations Republique et Nation. Des bus de remplacement sont mis a disposition. Que proposen como alternativa?",
+    [
+      ["a", "Taxis gratuits"],
+      ["b", "Autobuses de reemplazo"],
+      ["c", "Otra linea de metro"],
+      ["d", "Reembolso de billetes"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q15",
+    "comprension-oral",
+    "Escuchas: Le directeur a dit que la reunion de vendredi est annulee parce qu'il doit partir en deplacement. Il propose de la reporter a lundi matin a 9 heures. Que se decidio?",
+    [
+      ["a", "La reunion se mantiene el viernes"],
+      ["b", "La reunion se cancela definitivamente"],
+      ["c", "La reunion se aplaza al lunes a las 9"],
+      ["d", "La reunion sera por videoconferencia"],
+    ],
+    "c",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q16",
+    "expressions-tournures",
+    "Que signifie la phrase: J'ai beau etudier, je ne comprends pas cette lecon?",
+    [
+      ["a", "J'etudie bien et je comprends tout"],
+      ["b", "Malgre mes efforts pour etudier, je ne comprends pas"],
+      ["c", "J'ai envie d'etudier cette lecon"],
+      ["d", "J'ai fini d'etudier cette lecon"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q17",
+    "expressions-tournures",
+    "Completez: Ne me derangez pas, je suis en train de ___.",
+    [
+      ["a", "fini mon travail"],
+      ["b", "finir mon travail"],
+      ["c", "avoir fini mon travail"],
+      ["d", "que je finis mon travail"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q18",
+    "expressions-tournures",
+    "Que signifie: Il vaut mieux partir tot pour eviter les embouteillages?",
+    [
+      ["a", "Il est obligatoire de partir tot"],
+      ["b", "Il est preferable de partir tot"],
+      ["c", "Il est interdit de partir tot"],
+      ["d", "Il est inutile de partir tot"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q19",
+    "expressions-tournures",
+    "Un acteur dit avant le spectacle: J'ai le trac! Que ressent-il?",
+    [
+      ["a", "Il a faim"],
+      ["b", "Il est nerveux et anxieux"],
+      ["c", "Il est tres content"],
+      ["d", "Il a froid"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b1-q20",
+    "expressions-tournures",
+    "Que signifie l'expression tomber dans les pommes?",
+    [
+      ["a", "Tomber dans un verger"],
+      ["b", "S'evanouir, perdre connaissance"],
+      ["c", "Avoir tres faim"],
+      ["d", "Faire une erreur grave"],
     ],
     "b",
     "hard",
@@ -721,6 +1042,147 @@ const questionsB2: AssessmentQuestion[] = [
     "hard",
     2,
   ),
+  // New B2 questions
+  makeQuestion(
+    "b2-q11",
+    "gramatica-vocabulario",
+    "Completez: Je regrette qu'il n'___ pas ___ a la reunion d'hier.",
+    [
+      ["a", "a ... assiste"],
+      ["b", "ait ... assiste"],
+      ["c", "avait ... assiste"],
+      ["d", "aurait ... assiste"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q12",
+    "gramatica-vocabulario",
+    "Remplacez les complements: Tu as donne les documents au directeur? — Oui, je ___.",
+    [
+      ["a", "les lui ai donnes"],
+      ["b", "lui les ai donnes"],
+      ["c", "le lui ai donne"],
+      ["d", "lui en ai donne"],
+    ],
+    "a",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q13",
+    "comprension-escrita",
+    "Extrait de presse: Si les chiffres du tourisme affichent une hausse record, les retombees economiques restent inegalement reparties entre les grandes villes et les zones rurales, ces dernieres ne captant qu'une infime part des revenus generes. Quelle est la these implicite de l'auteur?",
+    [
+      ["a", "Le tourisme est en baisse dans tout le pays"],
+      ["b", "La croissance touristique profite surtout aux grandes villes, au detriment des zones rurales"],
+      ["c", "Les zones rurales attirent plus de touristes que les villes"],
+      ["d", "Les chiffres du tourisme sont falsifies"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q14",
+    "comprension-escrita",
+    "Essai argumentatif: L'auteur affirme que l'intelligence artificielle ne remplacera pas les enseignants, car l'apprentissage repose avant tout sur la relation humaine et l'adaptation emotionnelle, dimensions que la technologie ne saurait reproduire. Quel type d'argument utilise-t-il principalement?",
+    [
+      ["a", "Un argument statistique fonde sur des donnees chiffrees"],
+      ["b", "Un argument d'autorite citant des experts"],
+      ["c", "Un argument par la nature irreductible de la relation humaine"],
+      ["d", "Un argument historique comparant des epoques"],
+    ],
+    "c",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q15",
+    "comprension-escrita",
+    "Editorial: Certes, la reforme fiscale a permis d'alleger la charge des classes moyennes. Neanmoins, elle a simultanement reduit les financements destines aux services publics, creant ainsi un desequilibre preoccupant. Quelle est la structure argumentative de ce passage?",
+    [
+      ["a", "Cause et consequence simples"],
+      ["b", "Concession suivie d'une objection nuancee"],
+      ["c", "Enumeration de faits sans prise de position"],
+      ["d", "Comparaison entre deux pays"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q16",
+    "comprension-oral",
+    "Escuchas: Dans ce debat, le premier intervenant soutient que la limitation de vitesse a 110 km/h sur autoroute reduirait considerablement les emissions de CO2, tandis que son opposant retorque que cette mesure penaliserait les habitants des zones rurales sans alternative de transport. Sur quoi porte le desaccord?",
+    [
+      ["a", "Sur le montant des amendes routieres"],
+      ["b", "Sur l'equilibre entre ecologie et equite territoriale"],
+      ["c", "Sur la construction de nouvelles autoroutes"],
+      ["d", "Sur le prix du carburant"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q17",
+    "comprension-oral",
+    "Escuchas: La sociologue interviewee explique que le teletravail a paradoxalement renforce les inegalites de genre, les femmes assumant davantage de taches domestiques lorsqu'elles travaillent depuis leur domicile. Quel paradoxe souleve-t-elle?",
+    [
+      ["a", "Le teletravail a fait disparaitre les inegalites"],
+      ["b", "Un dispositif cense offrir plus de flexibilite a en realite accentue les inegalites homme-femme"],
+      ["c", "Les hommes travaillent plus a domicile que les femmes"],
+      ["d", "Le teletravail n'a aucun impact sur la vie familiale"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q18",
+    "comprension-oral",
+    "Escuchas: Le chercheur precise lors de la conference que les resultats de son etude doivent etre interpretes avec prudence, car l'echantillon, bien que representatif, ne couvre que trois regions sur treize. Pourquoi appelle-t-il a la prudence?",
+    [
+      ["a", "Parce que les resultats sont entierement faux"],
+      ["b", "Parce que l'etude ne porte que sur une partie limitee du territoire"],
+      ["c", "Parce que la methode utilisee est obsolete"],
+      ["d", "Parce que d'autres chercheurs contestent ses conclusions"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q19",
+    "expressions-tournures",
+    "Lors d'une reunion, le manager dit a son collegue: Arrete de tourner autour du pot et dis-nous ce que tu penses vraiment. Que lui reproche-t-il?",
+    [
+      ["a", "De parler trop vite"],
+      ["b", "De ne pas aller droit au but, d'eviter le sujet principal"],
+      ["c", "De critiquer les autres ouvertement"],
+      ["d", "De repeter toujours la meme chose"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
+  makeQuestion(
+    "b2-q20",
+    "expressions-tournures",
+    "Que signifie l'expression noyer le poisson?",
+    [
+      ["a", "Resoudre un probleme de maniere efficace"],
+      ["b", "Embrouiller volontairement un sujet pour eviter de repondre clairement"],
+      ["c", "Abandonner un projet en cours"],
+      ["d", "Reveler un secret important"],
+    ],
+    "b",
+    "hard",
+    2,
+  ),
 ];
 
 const questionsC1: AssessmentQuestion[] = [
@@ -864,9 +1326,135 @@ const questionsC1: AssessmentQuestion[] = [
     "hard",
     3,
   ),
+  // New C1 questions
+  makeQuestion(
+    "c1-q11",
+    "gramatica-vocabulario",
+    "Identifiez le temps verbal dans la phrase suivante: Il traversa la place deserte et disparut dans la ruelle.",
+    [
+      ["a", "Imparfait de l'indicatif"],
+      ["b", "Passe compose"],
+      ["c", "Passe simple"],
+      ["d", "Plus-que-parfait"],
+    ],
+    "c",
+    "hard",
+    3,
+  ),
+  makeQuestion(
+    "c1-q12",
+    "gramatica-vocabulario",
+    "Completez avec la forme correcte (concordance des temps au discours indirect): Il affirma qu'il ___ la veille et qu'il ___ le lendemain.",
+    [
+      ["a", "est arrive / repartira"],
+      ["b", "etait arrive / repartirait"],
+      ["c", "a ete arrive / repartirait"],
+      ["d", "fut arrive / repartit"],
+    ],
+    "b",
+    "hard",
+    3,
+  ),
+  makeQuestion(
+    "c1-q13",
+    "comprension-escrita",
+    "Extrait d'un essai sociologique: L'auteur soutient que la democratisation de l'acces au savoir n'a pas reduit les inegalites epistemiques, car la capacite a hierarchiser l'information reste socialement determinee. Quelle est la these implicite?",
+    [
+      ["a", "L'acces a Internet suffit a eliminer les inegalites de connaissance"],
+      ["b", "Les inegalites de savoir persistent parce que l'esprit critique est inegalement distribue selon le milieu social"],
+      ["c", "La democratisation du savoir est un mythe car personne n'y a reellement acces"],
+      ["d", "Le savoir academique est devenu inutile face a l'information numerique"],
+    ],
+    "b",
+    "hard",
+    3,
+  ),
+  makeQuestion(
+    "c1-q14",
+    "comprension-oral",
+    "Escuchas: Dans cette conference, la linguiste explique que le declin du passe simple a l'oral ne signifie pas un appauvrissement de la langue, mais plutot une redistribution des fonctions narratives vers d'autres formes verbales. Elle ajoute neanmoins que la maitrise du passe simple reste un marqueur sociolinguistique fort. Quel paradoxe souleve-t-elle?",
+    [
+      ["a", "Le passe simple disparait completement et la langue s'appauvrit"],
+      ["b", "Le passe simple est linguistiquement dispensable mais socialement discriminant"],
+      ["c", "Le passe simple est la seule forme narrative possible en francais"],
+      ["d", "La linguiste considere que toutes les formes verbales sont equivalentes socialement"],
+    ],
+    "b",
+    "hard",
+    3,
+  ),
+  makeQuestion(
+    "c1-q15",
+    "comprension-oral",
+    "Escuchas: Le debat oppose deux experts. Le premier affirme que les politiques d'austerite ont structurellement affaibli les services publics. Le second retorque que sans assainissement budgetaire, la dette aurait rendu toute politique sociale impossible. La moderatrice conclut que les deux positions revelent un desaccord sur la temporalite des effets economiques. Que signifie l'intervention de la moderatrice?",
+    [
+      ["a", "Elle donne raison au premier expert"],
+      ["b", "Elle reformule le conflit comme une divergence sur le court terme versus le long terme"],
+      ["c", "Elle rejette les deux positions comme ideologiques"],
+      ["d", "Elle propose une troisieme voie economique"],
+    ],
+    "b",
+    "hard",
+    3,
+  ),
+  makeQuestion(
+    "c1-q16",
+    "comprension-oral",
+    "Escuchas: Dans ce documentaire radiophonique, le journaliste rapporte que les habitants du quartier contestent le projet de renovation urbaine. Il cite une residante qui declare: On nous parle de mixite sociale, mais en realite on nous demande de partir. Le journaliste precise ensuite que la mairie met en avant la revalorisation du patrimoine. Quel registre implicite le journaliste adopte-t-il?",
+    [
+      ["a", "Un registre militant qui soutient ouvertement les habitants"],
+      ["b", "Un registre neutre en apparence, mais qui, par la juxtaposition des discours, suggere un decalage entre le discours officiel et le vecu des habitants"],
+      ["c", "Un registre ironique qui se moque de la mairie"],
+      ["d", "Un registre purement informatif sans aucune strategie discursive"],
+    ],
+    "b",
+    "hard",
+    3,
+  ),
+  makeQuestion(
+    "c1-q17",
+    "expressions-tournures",
+    "Completez la phrase suivante avec l'expression appropriee: Les nouvelles decouvertes scientifiques ont ___ la theorie classique, obligeant les chercheurs a revoir leurs modeles.",
+    [
+      ["a", "fait long feu de"],
+      ["b", "battu en breche"],
+      ["c", "donne le change a"],
+      ["d", "coupe court a"],
+    ],
+    "b",
+    "hard",
+    3,
+  ),
+  makeQuestion(
+    "c1-q18",
+    "expressions-tournures",
+    "Que signifie l'expression a brule-pourpoint dans la phrase: Le journaliste lui a pose la question a brule-pourpoint?",
+    [
+      ["a", "Avec beaucoup de precautions oratoires"],
+      ["b", "De maniere brusque et inattendue, sans preparation"],
+      ["c", "En chuchotant pour ne pas etre entendu"],
+      ["d", "En repetant la question plusieurs fois"],
+    ],
+    "b",
+    "hard",
+    3,
+  ),
+  makeQuestion(
+    "c1-q19",
+    "expressions-tournures",
+    "Completez: ___, il a fini par accepter le compromis propose par la mediation.",
+    [
+      ["a", "A brule-pourpoint"],
+      ["b", "En avoir le coeur net"],
+      ["c", "De guerre lasse"],
+      ["d", "A son corps defendant"],
+    ],
+    "c",
+    "hard",
+    3,
+  ),
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const questionsC2: AssessmentQuestion[] = [
   makeQuestion(
     "c2-q1",
@@ -938,6 +1526,147 @@ const questionsC2: AssessmentQuestion[] = [
     "hard",
     4,
   ),
+  // New C2 questions
+  makeQuestion(
+    "c2-q6",
+    "gramatica-vocabulario",
+    "Identifiez la figure de style et le registre dans: A peine eut-il franchi le seuil que s'abattit sur lui le poids de ses remords. Quelle analyse est correcte?",
+    [
+      ["a", "Registre courant, metaphore simple"],
+      ["b", "Registre soutenu, inversion du sujet apres a peine avec passe anterieur et metaphore du poids moral"],
+      ["c", "Registre familier, hyperbole"],
+      ["d", "Registre neutre, passe compose avec comparaison"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q7",
+    "gramatica-vocabulario",
+    "Completez avec le subjonctif imparfait: Il eut fallu qu'il ___ davantage ses sources avant de publier un tel requisitoire.",
+    [
+      ["a", "verifie"],
+      ["b", "verificat"],
+      ["c", "verifiait"],
+      ["d", "verifierait"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q8",
+    "gramatica-vocabulario",
+    "Dans la prose classique, le ne dit expletif apparait dans certaines subordonnees. Identifiez la phrase ou le ne est purement expletif (sans valeur negative):",
+    [
+      ["a", "Il ne mange pas de viande"],
+      ["b", "Je crains qu'il ne pleuve"],
+      ["c", "Elle ne sait que faire"],
+      ["d", "Ils ne viendront jamais"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q9",
+    "comprension-escrita",
+    "Camus ecrit dans Le Mythe de Sisyphe: Il faut imaginer Sisyphe heureux. Quelle interpretation philosophique est la plus rigoureuse?",
+    [
+      ["a", "Sisyphe est heureux parce qu'il ignore sa condition"],
+      ["b", "Le bonheur reside dans l'acceptation lucide de l'absurde et dans la revolte silencieuse contre l'absence de sens"],
+      ["c", "Camus preconise le fatalisme et la resignation passive"],
+      ["d", "La phrase est ironique et Camus considere que le bonheur est impossible"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q10",
+    "comprension-escrita",
+    "De Beauvoir affirme dans Le Deuxieme Sexe: On ne nait pas femme, on le devient. Quel cadre epistemologique sous-tend cette assertion?",
+    [
+      ["a", "Le determinisme biologique selon lequel le sexe determine entierement le genre"],
+      ["b", "Le constructivisme social selon lequel l'identite de genre est le produit de normes, d'education et de structures sociales, et non d'une essence naturelle"],
+      ["c", "Le relativisme culturel pur qui nie toute difference biologique"],
+      ["d", "L'existentialisme religieux de Gabriel Marcel"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q11",
+    "comprension-escrita",
+    "Dans L'Etranger de Camus, le recit est mene a la premiere personne par Meursault avec un style volontairement depouille. Quel effet produit ce choix narratif sur la construction du sens?",
+    [
+      ["a", "Il cree une empathie immediate avec le lecteur grace a l'abondance de sentiments exprimes"],
+      ["b", "La focalisation interne combinee a l'atonalite affective contraint le lecteur a combler les lacunes emotionnelles, revelant ainsi l'ecart entre l'evenement et sa perception"],
+      ["c", "Le recit devient omniscient au fil du roman pour expliquer les motivations de Meursault"],
+      ["d", "Le style depouille reflete simplement le manque d'education du personnage"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q12",
+    "comprension-oral",
+    "Escuchas: Dans ce colloque de philosophie, l'intervenante soutient que la notion de verite chez Foucault ne releve pas de l'adequation entre l'enonce et le reel, mais d'un regime discursif historiquement situe. Elle precise que chaque epoque produit ses propres criteres de veridiction, ce qui ne conduit pas au relativisme mais a une genealogie des conditions de possibilite du vrai. Quelle distinction fondamentale opere-t-elle?",
+    [
+      ["a", "Elle oppose la verite scientifique a la verite religieuse"],
+      ["b", "Elle distingue la verite comme correspondance au reel de la verite comme effet de dispositifs discursifs et institutionnels, en refusant que cette historicisation equivaille a un relativisme"],
+      ["c", "Elle affirme que toutes les verites se valent"],
+      ["d", "Elle soutient que Foucault nie l'existence de toute forme de verite"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q13",
+    "comprension-oral",
+    "Escuchas: Le critique litteraire analyse la reception de Voyage au bout de la nuit de Celine. Il observe que le style oral de Celine a ete tantot celebre comme une revolution langagiere, tantot denonce comme une degradation de la prose francaise. Il en deduit que le jugement esthetique est indissociable des cadres ideologiques dans lesquels il s'inscrit, surtout au vu de l'engagement ulterieur de l'auteur. Quel argument implicite le critique avance-t-il?",
+    [
+      ["a", "Le style de Celine est objectivement superieur a la prose classique"],
+      ["b", "L'evaluation esthetique d'une oeuvre ne peut etre entierement dissociee de la reception ideologique et biographique de son auteur"],
+      ["c", "Le critique refuse d'emettre un jugement sur Celine"],
+      ["d", "Les qualites litteraires d'une oeuvre annulent les positions politiques de l'auteur"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q14",
+    "comprension-oral",
+    "Escuchas: L'analyste geopolitique explique que la multipolarite emergente ne reproduit pas le schema de la guerre froide. Il argumente que les nouveaux poles de puissance ne se definissent plus par une opposition ideologique binaire mais par des reseaux d'interdependance economique asymetrique. Il ajoute que cette configuration rend les conflits a la fois moins probables sous forme totale et plus frequents sous forme hybride. Quelle est la these centrale?",
+    [
+      ["a", "La multipolarite reproduit exactement le schema bipolaire de la guerre froide"],
+      ["b", "Le monde multipolaire se structure autour d'interdependances economiques asymetriques, generant une conflictualite diffuse et hybride plutot que des affrontements frontaux"],
+      ["c", "L'analyste predit la fin de tous les conflits grace a l'interdependance"],
+      ["d", "La multipolarite est un mythe et le monde reste unipolaire"],
+    ],
+    "b",
+    "hard",
+    4,
+  ),
+  makeQuestion(
+    "c2-q15",
+    "expressions-tournures",
+    "Dans un registre tres soutenu, completez: Le ministre, accuse de corruption, a du ___ devant la commission d'enquete, reconnaissant publiquement ses errements.",
+    [
+      ["a", "battre la chamade"],
+      ["b", "se gargariser de belles paroles"],
+      ["c", "faire amende honorable"],
+      ["d", "donner le change"],
+    ],
+    "c",
+    "hard",
+    4,
+  ),
 ];
 
 const withOralAudio = (questions: AssessmentQuestion[]): AssessmentQuestion[] => {
@@ -984,36 +1713,42 @@ const makeAssessment = (
 };
 
 const testGeneralQuestions: AssessmentQuestion[] = withOralAudio([
-  // 5 from A1 (diverse sections)
+  // 5 from A1 (all 4 sections)
   questionsA1[0],  // a1-q1 gramatica
   questionsA1[8],  // a1-q9 comprension-escrita
   questionsA1[14], // a1-q15 comprension-oral
+  questionsA1[20], // a1-q21 expressions-tournures
   questionsA1[2],  // a1-q3 gramatica
-  questionsA1[11], // a1-q12 comprension-escrita
-  // 5 from A2 (diverse sections)
+  // 5 from A2 (all 4 sections)
   questionsA2[0],  // a2-q1 gramatica
   questionsA2[3],  // a2-q4 comprension-escrita
-  questionsA2[5],  // a2-q6 comprension-oral
-  questionsA2[7],  // a2-q8 gramatica
-  questionsA2[9],  // a2-q10 comprension-escrita
-  // 5 from B1 (diverse sections)
+  questionsA2[13], // a2-q14 comprension-oral
+  questionsA2[16], // a2-q17 expressions-tournures
+  questionsA2[11], // a2-q12 comprension-escrita
+  // 5 from B1 (all 4 sections)
   questionsB1[0],  // b1-q1 gramatica
   questionsB1[2],  // b1-q3 comprension-escrita
-  questionsB1[4],  // b1-q5 comprension-oral
-  questionsB1[6],  // b1-q7 gramatica
-  questionsB1[8],  // b1-q9 comprension-escrita
-  // 5 from B2 (diverse sections including expressions-tournures)
+  questionsB1[13], // b1-q14 comprension-oral
+  questionsB1[15], // b1-q16 expressions-tournures
+  questionsB1[11], // b1-q12 comprension-escrita
+  // 5 from B2 (all 4 sections)
   questionsB2[0],  // b2-q1 gramatica
   questionsB2[2],  // b2-q3 comprension-escrita
-  questionsB2[3],  // b2-q4 comprension-oral
+  questionsB2[15], // b2-q16 comprension-oral
   questionsB2[4],  // b2-q5 expressions-tournures
-  questionsB2[9],  // b2-q10 expressions-tournures
-  // 5 from C1 (diverse sections including expressions-tournures)
+  questionsB2[10], // b2-q11 gramatica
+  // 5 from C1 (all 4 sections)
   questionsC1[0],  // c1-q1 gramatica
   questionsC1[1],  // c1-q2 comprension-escrita
-  questionsC1[4],  // c1-q5 comprension-oral
+  questionsC1[13], // c1-q14 comprension-oral
   questionsC1[2],  // c1-q3 expressions-tournures
-  questionsC1[6],  // c1-q7 expressions-tournures
+  questionsC1[10], // c1-q11 gramatica
+  // 5 from C2 (all 4 sections)
+  questionsC2[0],  // c2-q1 gramatica
+  questionsC2[1],  // c2-q2 comprension-escrita
+  questionsC2[3],  // c2-q4 comprension-oral
+  questionsC2[2],  // c2-q3 expressions-tournures
+  questionsC2[8],  // c2-q9 comprension-escrita
 ]);
 
 export const assessments: Assessment[] = [
@@ -1057,16 +1792,24 @@ export const assessments: Assessment[] = [
     30,
     questionsC1,
   ),
+  makeAssessment(
+    "c2-diagnostic",
+    "Prueba orientativa C2",
+    "Evaluacion de nivel superior para candidatos que aspiran al DALF C2.",
+    "C2",
+    35,
+    questionsC2,
+  ),
   {
     id: "test-general",
     slug: "test-general",
     title: "Test general de nivel",
     description:
-      "Evaluacion completa multinivel para determinar tu nivel CEFR de frances.",
+      "Evaluacion completa multinivel (A1-C2) para determinar tu nivel CEFR de frances.",
     simulationNotice:
       "Simulacion orientativa inspirada en formato oficial. No es un examen oficial FEI.",
     targetLevel: "B1",
-    durationMinutes: 40,
+    durationMinutes: 50,
     sections: baseSections,
     questions: testGeneralQuestions,
     createdAt: TIMESTAMP,
