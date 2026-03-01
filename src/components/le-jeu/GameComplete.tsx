@@ -13,11 +13,11 @@ interface GameCompleteProps {
 }
 
 function getPerformanceMessage(pct: number): { message: string; emoji: string } {
-  if (pct === 100) return { message: "Parfait ! Maitrise totale !", emoji: "\uD83C\uDF1F" };
-  if (pct >= 80) return { message: "Excellent ! Tres bien joue !", emoji: "\uD83C\uDF89" };
-  if (pct >= 60) return { message: "Bien joue ! Continue comme ca !", emoji: "\uD83D\uDC4F" };
+  if (pct === 100) return { message: "Parfait ! Maîtrise totale !", emoji: "\uD83C\uDF1F" };
+  if (pct >= 80) return { message: "Excellent ! Très bien joué !", emoji: "\uD83C\uDF89" };
+  if (pct >= 60) return { message: "Bien joué ! Continue comme ça !", emoji: "\uD83D\uDC4F" };
   if (pct >= 40) return { message: "Pas mal ! Tu progresses !", emoji: "\uD83D\uDCAA" };
-  return { message: "Courage ! Reessaye pour t'ameliorer !", emoji: "\uD83D\uDCDA" };
+  return { message: "Courage ! Réessaye pour t'améliorer !", emoji: "\uD83D\uDCDA" };
 }
 
 export default function GameComplete({ scenario, score, maxScore }: GameCompleteProps) {

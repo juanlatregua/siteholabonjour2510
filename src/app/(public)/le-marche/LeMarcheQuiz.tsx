@@ -31,7 +31,7 @@ export default function LeMarcheQuiz({ questions, weekNumber }: LeMarcheQuizProp
       return;
     }
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setFormError("Introduce un email valido");
+      setFormError("Introduce un email válido");
       return;
     }
 

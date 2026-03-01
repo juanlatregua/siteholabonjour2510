@@ -21,12 +21,12 @@ const levelOptions = [
   { value: "B1", label: "B1 - Intermedio" },
   { value: "B2", label: "B2 - Intermedio alto" },
   { value: "C1", label: "C1 - Avanzado" },
-  { value: "C2", label: "C2 - Maestria" },
+  { value: "C2", label: "C2 - Maestría" },
 ];
 
 const routeOptions = [
-  { value: "preparacion-examen", label: "Preparacion examen" },
-  { value: "conversacion", label: "Conversacion" },
+  { value: "preparacion-examen", label: "Preparación examen" },
+  { value: "conversacion", label: "Conversación" },
 ];
 
 export default function NuevoAlumnoForm() {
@@ -87,7 +87,7 @@ export default function NuevoAlumnoForm() {
           required: "El email es obligatorio",
           pattern: {
             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: "Email no valido",
+            message: "Email no válido",
           },
         })}
         error={errors.email?.message}
@@ -110,7 +110,7 @@ export default function NuevoAlumnoForm() {
       />
 
       <Input
-        label="Telefono"
+        label="Teléfono"
         type="tel"
         placeholder="+34 600 000 000"
         {...register("phone")}

@@ -98,7 +98,7 @@ export const social = {
 
 // ─── Contact ───
 export const contact = {
-  phone:    "685 07 03 04",
+  phone:    "685 070 304",
   email:    "hola@holabonjour.es",
   whatsapp: "https://wa.me/34685070304",
 } as const;

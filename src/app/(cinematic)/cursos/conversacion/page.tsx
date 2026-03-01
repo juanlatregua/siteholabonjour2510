@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const features = [
   {
     icon: "💬",
-    title: "Themes varies",
+    title: "Thèmes variés",
     description:
       "Actualidad, cultura francesa, debates eticos, cine, gastronomia y mucho mas. Temas adaptados a tus intereses.",
   },
@@ -173,7 +173,7 @@ export default function ConversacionPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Comment ca marche ?
+            Comment ça marche ?
           </h2>
           <div className="space-y-6">
             {[

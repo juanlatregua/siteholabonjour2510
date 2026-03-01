@@ -93,7 +93,7 @@ const levels = [
 const centers = ["Malaga", "Sevilla", "Granada", "Cadiz"];
 
 const steps = [
-  "Consulta las fechas de convocatoria en la web de tu centro examinador (Alliance Francaise o Institut Francais).",
+  "Consulta las fechas de convocatoria en la web de tu centro examinador (Alliance Française o Institut Français).",
   "Elige el nivel al que quieres presentarte segun tu preparacion.",
   "Rellena el formulario de inscripcion online del centro elegido.",
   "Realiza el pago de las tasas del examen.",
@@ -148,7 +148,7 @@ const skillTips = [
       "Escucha a diario podcasts en frances: RFI Savoirs, France Inter, France Culture.",
       "Mira documentales y noticias en TV5Monde con subtitulos en frances (no en espanol).",
       "Practica la toma de notas rapida: apunta palabras clave mientras escuchas.",
-      "Acostumbrate a diferentes acentos franceses (metropolitano, belga, suizo, quebecois).",
+      "Acostumbrate a diferentes acentos franceses (metropolitano, belga, suizo, québécois).",
       "Haz simulacros cronometrados: en el examen solo escucharas cada audio una o dos veces.",
     ],
   },
@@ -167,8 +167,8 @@ const skillTips = [
     skill: "Produccion escrita (PE)",
     icon: "\u270D\uFE0F",
     tips: [
-      "Domina la estructura clasica francesa: introduction - developpement - conclusion.",
-      "Memoriza conectores logicos: en revanche, neanmoins, par consequent, en outre, d\u2019ailleurs.",
+      "Domina la estructura clasica francesa: introduction - développement - conclusion.",
+      "Memoriza conectores logicos: en revanche, néanmoins, par conséquent, en outre, d\u2019ailleurs.",
       "Practica escribiendo cartas formales, ensayos argumentativos y articulos de opinion.",
       "Respeta siempre el numero de palabras exigido (suele indicarse en el enunciado).",
       "Haz que un profesor nativo corrija tus textos para identificar errores recurrentes.",
@@ -180,7 +180,7 @@ const skillTips = [
     icon: "\uD83C\uDFA4",
     tips: [
       "Grabate hablando y escuchate para identificar errores de pronunciacion y fluidez.",
-      "Practica el monologue argumente (B2+): da tu opinion, argumenta y concluye en 10-15 minutos.",
+      "Practica el monologue argumenté (B2+): da tu opinion, argumenta y concluye en 10-15 minutos.",
       "Prepara frases de transicion: je voudrais aborder..., en ce qui concerne..., pour conclure...",
       "Simula entrevistas con tu profesor: la interaccion con el jurado es parte de la nota.",
       "Trabaja la gestion del estres: respira, toma 10 segundos antes de responder, no te precipites.",
@@ -198,7 +198,7 @@ const faqs = [
   {
     question: "\u00BFPuedo presentarme por libre, sin academia?",
     answer:
-      "Si, puedes inscribirte como candidato libre directamente en un centro examinador autorizado (Alliance Francaise o Institut Francais). Sin embargo, prepararte con un profesor especializado aumenta significativamente tus probabilidades de exito, especialmente a partir de B2.",
+      "Si, puedes inscribirte como candidato libre directamente en un centro examinador autorizado (Alliance Française o Institut Français). Sin embargo, prepararte con un profesor especializado aumenta significativamente tus probabilidades de exito, especialmente a partir de B2.",
   },
   {
     question: "\u00BFCuanto cuesta el examen DELF/DALF?",
@@ -224,7 +224,7 @@ const faqs = [
     question:
       "\u00BFQue diferencia hay entre el DELF y el DALF?",
     answer:
-      "El DELF (Diplome d\u2019Etudes en Langue Francaise) cubre los niveles A1, A2, B1 y B2. El DALF (Diplome Approfondi de Langue Francaise) certifica los niveles C1 y C2, que corresponden a un dominio avanzado y experto del idioma. Ambos son emitidos por el Ministerio de Educacion frances.",
+      "El DELF (Diplôme d\u2019Études en Langue Française) cubre los niveles A1, A2, B1 y B2. El DALF (Diplôme Approfondi de Langue Française) certifica los niveles C1 y C2, que corresponden a un dominio avanzado y experto del idioma. Ambos son emitidos por el Ministerio de Educacion frances.",
   },
   {
     question: "\u00BFNecesito apostilla para usar el DELF en el extranjero?",
@@ -235,7 +235,7 @@ const faqs = [
     question:
       "\u00BFEl TCF vale igual que el DELF?",
     answer:
-      "No exactamente. El TCF (Test de Connaissance du Francais) es un examen de nivel que caduca a los 2 anos, mientras que el DELF/DALF son diplomas permanentes. El TCF puede servir para tramites puntuales (visados, universidad), pero el DELF es mas valioso a largo plazo porque no expira.",
+      "No exactamente. El TCF (Test de Connaissance du Français) es un examen de nivel que caduca a los 2 anos, mientras que el DELF/DALF son diplomas permanentes. El TCF puede servir para tramites puntuales (visados, universidad), pero el DELF es mas valioso a largo plazo porque no expira.",
   },
   {
     question: "\u00BFQue nota necesito para aprobar el DELF?",
@@ -245,7 +245,7 @@ const faqs = [
   {
     question: "\u00BFCuantas convocatorias hay al ano en Espana?",
     answer:
-      "Normalmente hay entre 2 y 4 convocatorias al ano, dependiendo del centro examinador. Las fechas mas habituales son en febrero-marzo, mayo-junio y noviembre-diciembre. Consulta la web de la Alliance Francaise o del Institut Francais de tu ciudad para conocer las fechas exactas.",
+      "Normalmente hay entre 2 y 4 convocatorias al ano, dependiendo del centro examinador. Las fechas mas habituales son en febrero-marzo, mayo-junio y noviembre-diciembre. Consulta la web de la Alliance Française o del Institut Français de tu ciudad para conocer las fechas exactas.",
   },
   {
     question:
@@ -263,7 +263,7 @@ const recursos = [
       "Pagina oficial con sujets d\u2019examen (examenes de ejemplo) de todos los niveles. Descarga gratis modelos de examenes anteriores con sus correcciones.",
   },
   {
-    nombre: "TV5Monde - Apprendre le francais",
+    nombre: "TV5Monde - Apprendre le français",
     url: "https://apprendre.tv5monde.com/",
     descripcion:
       "Miles de ejercicios interactivos clasificados por nivel (A1-C2). Ideal para trabajar comprension oral y escrita con videos autenticos.",
@@ -385,9 +385,9 @@ export default function GuiaDelfDalfPage() {
               style={{ color: "rgba(255,255,255,0.8)" }}
             >
               El <strong style={{ color: "var(--cin-gold)" }}>DELF</strong>{" "}
-              (Diplome d&apos;Etudes en Langue Francaise) y el{" "}
+              (Diplôme d&apos;Études en Langue Française) y el{" "}
               <strong style={{ color: "var(--cin-gold)" }}>DALF</strong>{" "}
-              (Diplome Approfondi de Langue Francaise) son los diplomas
+              (Diplôme Approfondi de Langue Française) son los diplomas
               oficiales del Ministerio de Educacion frances que certifican el
               nivel de frances de candidatos extranjeros.
             </p>
@@ -458,7 +458,7 @@ export default function GuiaDelfDalfPage() {
               color: "var(--cin-gold)",
             }}
           >
-            A quoi sert le DELF/DALF&nbsp;?
+            À quoi sert le DELF/DALF&nbsp;?
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
@@ -618,7 +618,7 @@ export default function GuiaDelfDalfPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Structure detaillee par niveau
+            Structure détaillée par niveau
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
@@ -995,7 +995,7 @@ export default function GuiaDelfDalfPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Ou se presenter en Andalousie&nbsp;?
+            Où se présenter en Andalousie&nbsp;?
           </h2>
           <GlassCard>
             <p
@@ -1003,7 +1003,7 @@ export default function GuiaDelfDalfPage() {
               style={{ color: "rgba(255,255,255,0.8)" }}
             >
               En Andalucia puedes presentarte al DELF/DALF en centros
-              autorizados como la Alliance Francaise y el Institut Francais.
+              autorizados como la Alliance Française y el Institut Français.
               Estos centros organizan convocatorias varias veces al ano
               (normalmente 2 a 4 convocatorias anuales).
             </p>
@@ -1094,7 +1094,7 @@ export default function GuiaDelfDalfPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Conseils pour reussir
+            Conseils pour réussir
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
@@ -1234,7 +1234,7 @@ export default function GuiaDelfDalfPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Questions frequentes
+            Questions fréquentes
           </h2>
           <div className="space-y-5">
             {faqs.map((faq) => (
@@ -1269,7 +1269,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl font-bold mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Pret a passer le DELF/DALF&nbsp;?
+            Prêt à passer le DELF/DALF&nbsp;?
           </h2>
           <p
             className="text-lg mb-4"

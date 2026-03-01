@@ -37,7 +37,7 @@ export default function ContactPage() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-900">Atencion directa</h2>
-          <p className="mt-2 text-sm text-gray-700">Telefono / WhatsApp: 685 07 03 04</p>
+          <p className="mt-2 text-sm text-gray-700">Telefono / WhatsApp: 685 070 304</p>
           <p className="text-sm text-gray-700">Email: hola@holabonjour.es</p>
           <p className="mt-3 text-sm text-gray-700">Rutas: preparacion DELF/DALF o conversacion.</p>
         </div>

@@ -67,7 +67,7 @@ export default async function ZonaAlumnoDashboard() {
           Bienvenido{user.name ? `, ${user.name.split(" ")[0]}` : ""}
         </h2>
         <p className="mt-1 text-sm text-gray-500">
-          Aqui tienes un resumen de tu actividad.
+          Aquí tienes un resumen de tu actividad.
         </p>
       </div>
 
@@ -76,7 +76,7 @@ export default async function ZonaAlumnoDashboard() {
         {/* Next lesson */}
         <Card>
           <CardHeader>
-            <CardTitle>Proxima clase</CardTitle>
+            <CardTitle>Próxima clase</CardTitle>
           </CardHeader>
           <CardContent>
             {nextLesson ? (
@@ -91,7 +91,7 @@ export default async function ZonaAlumnoDashboard() {
             ) : (
               <EmptyState
                 title="Sin clases programadas"
-                description="Reserva tu proxima clase para empezar."
+                description="Reserva tu próxima clase para empezar."
                 action={
                   <Link
                     href="/zona-alumno/reservar"
@@ -153,7 +153,7 @@ export default async function ZonaAlumnoDashboard() {
           ) : (
             <EmptyState
               title="Sin materiales"
-              description="Los materiales de tus clases apareceran aqui."
+              description="Los materiales de tus clases aparecerán aquí."
             />
           )}
         </CardContent>
@@ -161,7 +161,7 @@ export default async function ZonaAlumnoDashboard() {
 
       {/* Quick links */}
       <div>
-        <h3 className="mb-3 text-sm font-semibold text-gray-700">Acceso rapido</h3>
+        <h3 className="mb-3 text-sm font-semibold text-gray-700">Acceso rápido</h3>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {quickLinks.map((link) => (
             <Link

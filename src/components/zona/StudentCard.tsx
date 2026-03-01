@@ -106,7 +106,7 @@ export default function StudentCard({ student }: StudentCardProps) {
           {/* Next lesson */}
           {nextLessonDate && (
             <p className="mt-1 text-xs text-gray-500">
-              Proxima clase:{" "}
+              Próxima clase:{" "}
               <span className="font-medium text-gray-700">
                 {format(nextLessonDate, "d MMM yyyy, HH:mm", { locale: es })}
               </span>

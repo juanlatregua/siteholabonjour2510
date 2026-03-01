@@ -3,6 +3,7 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export default function SignInPage() {
   const searchParams = useSearchParams();
@@ -35,6 +36,12 @@ export default function SignInPage() {
 
   return (
     <div className="w-full max-w-md space-y-8">
+      <Link
+        href="/"
+        className="inline-flex items-center gap-1.5 text-sm text-white/50 transition hover:text-[#e8b865]"
+      >
+        <span aria-hidden="true">&larr;</span> Volver a HolaBonjour
+      </Link>
       {/* Student access */}
       <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
         <h2 className="mb-2 text-xl font-semibold text-white">Acceso alumno</h2>

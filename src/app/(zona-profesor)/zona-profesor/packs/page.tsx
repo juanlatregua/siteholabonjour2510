@@ -108,7 +108,13 @@ export default async function PacksPage() {
                       : item.status === "EXPIRED"
                         ? "warning"
                         : "danger";
-                  return <Badge variant={variant}>{item.status}</Badge>;
+                  const statusLabel: Record<string, string> = {
+                    ACTIVE: "Activo",
+                    EXPIRED: "Expirado",
+                    EXHAUSTED: "Agotado",
+                    CANCELLED: "Cancelado",
+                  };
+                  return <Badge variant={variant}>{statusLabel[item.status] || item.status}</Badge>;
                 },
               },
               {

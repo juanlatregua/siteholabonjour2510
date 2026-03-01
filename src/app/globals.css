@@ -110,8 +110,8 @@ h6 { font-size: 0.875rem; line-height: 1.5; font-weight: 600; }
 }
 
 @keyframes whatsappPulse {
-  0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.3); }
-  50% { box-shadow: 0 4px 16px rgba(37,211,102,0.3), 0 0 0 8px rgba(37,211,102,0.1); }
+  0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.3), 0 0 0 0 rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 4px 16px rgba(37,211,102,0.3), 0 0 0 12px rgba(37,211,102,0); }
 }
 
 /* ─── Cinematic scrollbar ─── */

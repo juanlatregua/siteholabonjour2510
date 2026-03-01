@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return NextResponse.json(
-      { ok: false, error: "INVALID_JSON", message: "Cuerpo invalido" },
+      { ok: false, error: "INVALID_JSON", message: "Cuerpo inválido" },
       { status: 400 }
     );
   }
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   const parsed = schema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { ok: false, error: "VALIDATION_ERROR", message: "Email invalido" },
+      { ok: false, error: "VALIDATION_ERROR", message: "Email inválido" },
       { status: 400 }
     );
   }
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
         data: { active: true },
       });
     }
-    return NextResponse.json({ ok: true, message: "Ya estas suscrito" });
+    return NextResponse.json({ ok: true, message: "Ya estás suscrito" });
   }
 
   await prisma.newsletterSubscriber.create({
@@ -49,5 +49,5 @@ export async function POST(request: Request) {
     },
   });
 
-  return NextResponse.json({ ok: true, message: "Suscripcion exitosa" });
+  return NextResponse.json({ ok: true, message: "Suscripción exitosa" });
 }

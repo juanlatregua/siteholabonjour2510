@@ -38,7 +38,7 @@ export default async function ResultadosPage() {
                 >
                   <div>
                     <p className="text-sm font-medium text-gray-900">
-                      Evaluacion {link.assessmentId}
+                      Evaluación {link.assessmentId}
                     </p>
                     <p className="text-xs text-gray-500">
                       {format(link.linkedAt, "d 'de' MMMM yyyy", {
@@ -62,7 +62,7 @@ export default async function ResultadosPage() {
         <EmptyState
           icon={<FiBarChart2 className="h-12 w-12" />}
           title="Sin evaluaciones"
-          description="Cuando completes una prueba de nivel, tus resultados apareceran aqui."
+          description="Cuando completes una prueba de nivel, tus resultados aparecerán aquí."
         />
       )}
     </div>

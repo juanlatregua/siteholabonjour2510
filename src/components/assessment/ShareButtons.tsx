@@ -14,8 +14,8 @@ export default function ShareButtons({ result }: ShareButtonsProps) {
   const shareText = `He obtenido nivel ${result.estimatedLevel} (${result.percentage}%) en la prueba de frances de HolaBonjour. Haz la tuya!`;
   const shareUrl =
     typeof window !== "undefined"
-      ? window.location.origin + "/prueba-nivel"
-      : "https://holabonjour.es/prueba-nivel";
+      ? window.location.origin + "/test-de-nivel"
+      : "https://holabonjour.es/test-de-nivel";
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);

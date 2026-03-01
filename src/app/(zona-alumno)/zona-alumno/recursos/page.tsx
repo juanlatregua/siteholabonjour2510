@@ -52,7 +52,7 @@ export default async function RecursosPage(props: {
         <EmptyState
           icon={<FiFolder className="h-12 w-12" />}
           title="Sin recursos"
-          description="Los materiales de tus clases apareceran aqui."
+          description="Los materiales de tus clases aparecerán aquí."
         />
       )}
     </div>

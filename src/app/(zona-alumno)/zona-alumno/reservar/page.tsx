@@ -90,7 +90,7 @@ export default function ReservarPage() {
     } catch {
       setMessage({
         type: "error",
-        text: "Error de conexion. Intentalo de nuevo.",
+        text: "Error de conexión. Inténtalo de nuevo.",
       });
     } finally {
       setSubmitting(false);
@@ -160,7 +160,7 @@ export default function ReservarPage() {
                   onChange={(e) => setFocus(e.target.value)}
                   className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#0b3c6f] focus:outline-none focus:ring-2 focus:ring-[#0b3c6f]/20"
                   rows={2}
-                  placeholder="Ej: Preparacion oral DELF B2"
+                  placeholder="Ej: Preparación oral DELF B2"
                 />
               </div>
 
@@ -173,7 +173,7 @@ export default function ReservarPage() {
                   onChange={(e) => setNotes(e.target.value)}
                   className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#0b3c6f] focus:outline-none focus:ring-2 focus:ring-[#0b3c6f]/20"
                   rows={2}
-                  placeholder="Cualquier informacion adicional para el profesor"
+                  placeholder="Cualquier información adicional para el profesor"
                 />
               </div>
 

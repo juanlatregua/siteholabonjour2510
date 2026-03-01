@@ -25,13 +25,13 @@ export const metadata: Metadata = {
 const courseTypes = [
   {
     icon: "☀️",
-    title: "Ete",
+    title: "Été",
     description:
       "Cursos de verano. Inmersion intensiva de julio a septiembre. Aprovecha las vacaciones para dar un salto de nivel.",
   },
   {
     icon: "📝",
-    title: "Pre-examen",
+    title: "Pré-examen",
     description:
       "Sprint de preparacion antes de tu convocatoria DELF/DALF. Simulacros intensivos y estrategia por prueba.",
   },
@@ -197,7 +197,7 @@ export default function IntensivosPage() {
                 text: "Evaluacion previa para disenar tu programa individual.",
               },
               {
-                title: "Materiel pedagogique",
+                title: "Matériel pédagogique",
                 text: "Todo el material digital incluido en el precio.",
               },
               {
@@ -238,7 +238,7 @@ export default function IntensivosPage() {
             className="text-3xl font-bold mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Pret pour l&apos;intensif ?
+            Prêt pour l&apos;intensif ?
           </h2>
           <p
             className="text-lg mb-8"
@@ -247,7 +247,7 @@ export default function IntensivosPage() {
             Reserva tu plaza ahora. Clases individuales con horarios flexibles.
           </p>
           <GoldButton href={CONTACT.whatsapp}>
-            Reserver mon intensif
+            Réserver mon intensif
           </GoldButton>
         </div>
       </CinematicSection>

@@ -11,7 +11,7 @@ interface SlotState {
   [key: string]: boolean; // key = "dayOfWeek-startTime", e.g. "1-09:00"
 }
 
-const DAY_LABELS = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
+const DAY_LABELS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 // dayOfWeek mapping: Monday=1, Tuesday=2, ..., Sunday=0
 const DAY_VALUES = [1, 2, 3, 4, 5, 6, 0];
 

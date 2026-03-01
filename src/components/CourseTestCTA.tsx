@@ -23,7 +23,7 @@ const CourseTestCTA = () => {
           </p>
         </div>
       </div>
-      <Link href="/prueba-nivel">
+      <Link href="/test-de-nivel">
         <a className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
           ¡Realiza la prueba!
         </a>

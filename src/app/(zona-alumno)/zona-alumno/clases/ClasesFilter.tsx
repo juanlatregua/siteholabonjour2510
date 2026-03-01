@@ -8,7 +8,7 @@ interface ClasesFilterProps {
 }
 
 const filters = [
-  { key: "upcoming", label: "Proximas" },
+  { key: "upcoming", label: "Próximas" },
   { key: "past", label: "Pasadas" },
 ];
 

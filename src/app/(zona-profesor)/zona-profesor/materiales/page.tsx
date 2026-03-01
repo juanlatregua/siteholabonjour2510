@@ -106,7 +106,7 @@ export default async function MaterialesPage() {
         <EmptyState
           icon={<FiFolder className="h-12 w-12" />}
           title="Sin materiales"
-          description="Aun no has subido materiales para tus alumnos."
+          description="Aún no has subido materiales para tus alumnos."
           action={
             <Link
               href="/zona-profesor/materiales/subir"

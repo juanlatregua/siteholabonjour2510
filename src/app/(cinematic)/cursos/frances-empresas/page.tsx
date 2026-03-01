@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const sectors = [
   {
     icon: "🏨",
-    title: "Tourisme & Hotellerie",
+    title: "Tourisme & Hôtellerie",
     description:
       "Atencion a clientes francofonos, vocabulario hotelero y turistico. Ideal para la Costa del Sol.",
   },
@@ -114,7 +114,7 @@ export default function FrancesEmpresasPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Francais pour entreprises
+            Français pour entreprises
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
@@ -172,7 +172,7 @@ export default function FrancesEmpresasPage() {
               }}
             >
               In-company ou en ligne &middot; Facturation entreprise &middot;
-              Possibilite Fundae
+              Possibilité Fundae
             </p>
             <p
               className="leading-relaxed"
@@ -205,7 +205,7 @@ export default function FrancesEmpresasPage() {
                 text: "Evaluamos el nivel de tu equipo y disenamos un programa a medida sin coste inicial.",
               },
               {
-                title: "Professeurs specialises",
+                title: "Professeurs spécialisés",
                 text: "Profesores nativos con experiencia en formacion corporativa y conocimiento sectorial.",
               },
               {

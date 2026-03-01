@@ -25,13 +25,13 @@ export const metadata: Metadata = {
 const benefits = [
   {
     icon: "📅",
-    title: "Flexibilite totale",
+    title: "Flexibilité totale",
     description:
       "Horarios que se adaptan a ti. Mananas, tardes o fines de semana. Tu eliges cuando aprender.",
   },
   {
     icon: "🎯",
-    title: "Contenu personnalise",
+    title: "Contenu personnalisé",
     description:
       "Cada clase disenada para tus necesidades especificas. Sin programas genericos.",
   },
@@ -172,7 +172,7 @@ export default function ClasesParticularesPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Comment ca fonctionne ?
+            Comment ça fonctionne ?
           </h2>
           <div className="space-y-6">
             {[
@@ -183,7 +183,7 @@ export default function ClasesParticularesPage() {
               },
               {
                 step: "02",
-                title: "Plan personnalise",
+                title: "Plan personnalisé",
                 text: "Disenamos un plan de estudio adaptado a tus objetivos, tu nivel y tu disponibilidad.",
               },
               {
@@ -225,7 +225,7 @@ export default function ClasesParticularesPage() {
             className="text-3xl font-bold mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Pret a commencer ?
+            Prêt à commencer ?
           </h2>
           <p
             className="text-lg mb-8"

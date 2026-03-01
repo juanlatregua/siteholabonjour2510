@@ -105,7 +105,7 @@ export default function NuevaClaseForm({ students }: NuevaClaseFormProps) {
 
       <Input
         label="Tema / Enfoque"
-        placeholder="Ej: Gramática subjuntivo, Conversación..."
+        placeholder="Ej: Subjonctif présent, Production orale DELF B2"
         {...register("focus")}
         error={errors.focus?.message}
       />

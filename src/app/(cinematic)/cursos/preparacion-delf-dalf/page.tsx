@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const levels = [
   {
     code: "A1",
-    name: "Decouverte",
+    name: "Découverte",
     evaluated: "Comprension y expresion basica",
     duration: "1h20",
   },
@@ -43,7 +43,7 @@ const levels = [
   },
   {
     code: "B2",
-    name: "Avance",
+    name: "Avancé",
     evaluated: "Argumentacion y comprension compleja",
     duration: "2h30",
   },
@@ -55,7 +55,7 @@ const levels = [
   },
   {
     code: "C2",
-    name: "Maitrise",
+    name: "Maîtrise",
     evaluated: "Nivel nativo",
     duration: "3h30",
   },
@@ -63,17 +63,17 @@ const levels = [
 
 const faqs = [
   {
-    question: "Combien coute le DELF ?",
+    question: "Combien coûte le DELF ?",
     answer:
       "Las tasas del DELF varian segun el nivel: A1 (108 EUR), A2 (130 EUR), B1 (160 EUR), B2 (190 EUR). El DALF C1 cuesta 205 EUR y el C2, 220 EUR. Los precios pueden variar ligeramente segun el centro examinador.",
   },
   {
-    question: "Ou passer le DELF en Andalousie ?",
+    question: "Où passer le DELF en Andalousie ?",
     answer:
       "En Andalucia puedes presentarte al DELF/DALF en centros acreditados de Malaga, Sevilla, Granada y Cadiz. La Alliance Francaise de Malaga es el centro mas cercano para la Costa del Sol.",
   },
   {
-    question: "Combien de temps pour se preparer ?",
+    question: "Combien de temps pour se préparer ?",
     answer:
       "El tiempo de preparacion depende de tu nivel actual y del nivel objetivo. Como referencia: de A1 a A2 necesitaras unas 100-120 horas, de B1 a B2 entre 150-200 horas. Recomendamos al menos 2-3 meses de preparacion especifica para el examen.",
   },
@@ -163,7 +163,7 @@ export default function PreparacionDelfDalfPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Preparation DELF/DALF
+            Préparation DELF/DALF
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
@@ -262,7 +262,7 @@ export default function PreparacionDelfDalfPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Questions frequentes
+            Questions fréquentes
           </h2>
           <div className="space-y-6">
             {faqs.map((faq) => (
@@ -295,7 +295,7 @@ export default function PreparacionDelfDalfPage() {
             className="text-3xl font-bold mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Pret a reussir ?
+            Prêt à réussir ?
           </h2>
           <p
             className="text-lg mb-8"
@@ -304,7 +304,7 @@ export default function PreparacionDelfDalfPage() {
             Empieza tu preparaci&oacute;n con profesoras examinadoras. Inf&oacute;rmate sin compromiso.
           </p>
           <GoldButton href={CONTACT.whatsapp}>
-            Commencer ma preparation
+            Commencer ma préparation
           </GoldButton>
         </div>
       </CinematicSection>

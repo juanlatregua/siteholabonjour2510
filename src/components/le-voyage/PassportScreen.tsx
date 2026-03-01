@@ -155,6 +155,14 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
                 </p>
               )}
 
+              <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+                Al enviar este formulario, aceptas nuestra{" "}
+                <a href="/politica-de-privacidad" style={{ color: "#e8b865", textDecoration: "underline" }}>
+                  politica de privacidad
+                </a>
+                . Tus datos se usaran exclusivamente para evaluar tu nivel y contactarte con los resultados.
+              </p>
+
               <button
                 type="submit"
                 disabled={isSubmitting}

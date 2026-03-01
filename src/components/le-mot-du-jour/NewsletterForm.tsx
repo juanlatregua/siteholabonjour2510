@@ -38,16 +38,16 @@ export default function NewsletterForm() {
 
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setServerMessage(json.message || "Ha ocurrido un error. Intentalo de nuevo.");
+        setServerMessage(json.message || "Ha ocurrido un error. Inténtalo de nuevo.");
         return;
       }
 
       setStatus("success");
-      setServerMessage(json.message || "Suscripcion exitosa!");
+      setServerMessage(json.message || "Suscripción exitosa!");
       reset();
     } catch {
       setStatus("error");
-      setServerMessage("Error de conexion. Intentalo de nuevo.");
+      setServerMessage("Error de conexión. Inténtalo de nuevo.");
     }
   };
 
@@ -88,7 +88,7 @@ export default function NewsletterForm() {
               required: "El email es obligatorio",
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Email invalido",
+                message: "Email inválido",
               },
             })}
           />

@@ -100,11 +100,11 @@ export default function WeeklyCountdown() {
         className="mb-3 text-center text-xs font-medium uppercase tracking-wider"
         style={{ color: "var(--vie-navy, #1e3a5f)" }}
       >
-        Proximo quiz en
+        Próximo quiz en
       </p>
       <div className="flex items-center justify-center gap-3">
         {[
-          { value: timeLeft.days, label: "dias" },
+          { value: timeLeft.days, label: "días" },
           { value: timeLeft.hours, label: "horas" },
           { value: timeLeft.minutes, label: "min" },
           { value: timeLeft.seconds, label: "seg" },

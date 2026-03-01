@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import GlassCard from "@/components/cinematic/GlassCard";
 import CinematicSection from "@/components/cinematic/CinematicSection";
 import GoldButton from "@/components/cinematic/GoldButton";
@@ -6,14 +7,14 @@ import Particles from "@/components/cinematic/Particles";
 import MorphBlob from "@/components/cinematic/MorphBlob";
 
 export const metadata: Metadata = {
-  title: "Descargas gratuitas de francés — Fichas y PDF — HolaBonjour",
+  title: "Recursos de francés — Guías, blog y herramientas — HolaBonjour",
   description:
-    "Descarga fichas de gramática, vocabulario y guías de preparación DELF/DALF gratuitas en PDF. Material para todos los niveles.",
+    "Recursos gratuitos para aprender francés: guía DELF/DALF, artículos de blog, test de nivel y enlaces útiles. Material para todos los niveles.",
   alternates: { canonical: "/recursos/descargas" },
   openGraph: {
-    title: "Descargas gratuitas de francés — Fichas y PDF — HolaBonjour",
+    title: "Recursos de francés — Guías, blog y herramientas — HolaBonjour",
     description:
-      "Descarga fichas de gramática, vocabulario y guías de preparación DELF/DALF gratuitas en PDF. Material para todos los niveles.",
+      "Recursos gratuitos para aprender francés: guía DELF/DALF, artículos de blog, test de nivel y enlaces útiles. Material para todos los niveles.",
     url: "https://holabonjour.es/recursos/descargas",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -23,28 +24,40 @@ export const metadata: Metadata = {
 
 const resources = [
   {
-    icon: "\u{1F4C4}",
-    title: "Fiches de grammaire",
-    description:
-      "Fichas de gramática por nivel. Conjugación, preposiciones, pronombres y más.",
-    badge: "A1-B2",
-    cta: "Prochainement",
-  },
-  {
-    icon: "\u{1F4DA}",
-    title: "Vocabulaire par niveau",
-    description:
-      "Listas de vocabulario temático organizadas por nivel CEFR.",
-    badge: "A1-C1",
-    cta: "Prochainement",
-  },
-  {
     icon: "\u{1F4CB}",
     title: "Guide DELF/DALF",
     description:
-      "Guía completa de preparación con consejos y ejercicios tipo.",
+      "Guía completa de preparación con estructura de cada examen, consejos por destreza y estrategias de estudio.",
     badge: "B1-C2",
-    cta: "Prochainement",
+    cta: "Ver la guía",
+    href: "/recursos/guia-delf-dalf",
+  },
+  {
+    icon: "\u{1F4DD}",
+    title: "Notre blog",
+    description:
+      "Artículos sobre gramática, expresiones, cultura francesa y preparación de exámenes oficiales.",
+    badge: "A1-C2",
+    cta: "Leer artículos",
+    href: "/recursos/blog",
+  },
+  {
+    icon: "\u{1F3AF}",
+    title: "Test de niveau",
+    description:
+      "Descubre tu nivel de francés con nuestro test gratuito y recibe recomendaciones personalizadas.",
+    badge: "A1-C2",
+    cta: "Hacer el test",
+    href: "/test-de-nivel",
+  },
+  {
+    icon: "\u{1F517}",
+    title: "Liens utiles",
+    description:
+      "Selección de recursos externos: diccionarios, conjugadores, medios francófonos y herramientas de estudio.",
+    badge: "Todos",
+    cta: "Ver enlaces",
+    href: "/recursos/enlaces-utiles",
   },
 ];
 
@@ -80,14 +93,14 @@ export default function DescargasPage() {
               color: "var(--cin-gold)",
             }}
           >
-            Ressources à télécharger
+            Ressources
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "rgba(255,255,255,0.7)" }}
           >
-            Material gratuito para complementar tu aprendizaje. Fichas,
-            vocabulario y guías.
+            Material gratuito para complementar tu aprendizaje. Guías,
+            artículos, herramientas y más.
           </p>
         </div>
       </section>
@@ -95,71 +108,77 @@ export default function DescargasPage() {
       {/* Resources grid */}
       <CinematicSection className="py-20 px-6">
         <div className="mx-auto max-w-5xl">
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             {resources.map((resource) => (
-              <GlassCard key={resource.title}>
-                <div className="text-3xl mb-4">{resource.icon}</div>
-                <div className="flex items-center gap-3 mb-3">
-                  <h2
-                    className="text-lg font-bold"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      color: "var(--cin-gold)",
-                    }}
+              <Link
+                key={resource.title}
+                href={resource.href}
+                style={{ textDecoration: "none" }}
+              >
+                <GlassCard className="h-full">
+                  <div className="text-3xl mb-4">{resource.icon}</div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <h2
+                      className="text-lg font-bold"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        color: "var(--cin-gold)",
+                      }}
+                    >
+                      {resource.title}
+                    </h2>
+                    <span
+                      className="text-xs font-semibold px-3 py-1 rounded-full shrink-0"
+                      style={{
+                        background: "rgba(232,184,101,0.15)",
+                        color: "var(--cin-gold)",
+                        border: "1px solid rgba(232,184,101,0.25)",
+                      }}
+                    >
+                      {resource.badge}
+                    </span>
+                  </div>
+                  <p
+                    className="text-sm leading-relaxed mb-5"
+                    style={{ color: "rgba(255,255,255,0.65)" }}
                   >
-                    {resource.title}
-                  </h2>
+                    {resource.description}
+                  </p>
                   <span
-                    className="text-xs font-semibold px-3 py-1 rounded-full shrink-0"
+                    className="inline-block text-sm font-medium px-4 py-2 rounded-lg"
                     style={{
-                      background: "rgba(232,184,101,0.15)",
-                      color: "var(--cin-gold)",
-                      border: "1px solid rgba(232,184,101,0.25)",
+                      background: "rgba(232,184,101,0.12)",
+                      border: "1px solid rgba(232,184,101,0.3)",
+                      color: "#e8b865",
                     }}
                   >
-                    {resource.badge}
+                    {resource.cta} &rarr;
                   </span>
-                </div>
-                <p
-                  className="text-sm leading-relaxed mb-5"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
-                >
-                  {resource.description}
-                </p>
-                <span
-                  className="inline-block text-sm font-medium px-4 py-2 rounded-lg"
-                  style={{
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "rgba(255,255,255,0.4)",
-                  }}
-                >
-                  {resource.cta}
-                </span>
-              </GlassCard>
+                </GlassCard>
+              </Link>
             ))}
           </div>
         </div>
       </CinematicSection>
 
-      {/* Note + CTA */}
+      {/* CTA */}
       <CinematicSection className="py-24 px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2
             className="text-2xl font-bold mb-4"
             style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
           >
-            Nos ressources arrivent bientôt
+            Besoin d&apos;aide personnalis&eacute;e ?
           </h2>
           <p
             className="text-lg mb-8"
             style={{ color: "rgba(255,255,255,0.65)" }}
           >
-            Mientras tanto, descubre tu nivel de francés con nuestro test
-            gratuito.
+            Nuestras profesoras nativas diseñan un plan de estudio adaptado a
+            tus objetivos.
           </p>
-          <GoldButton href="/test-de-nivel">
-            Faire le test de niveau
+          <GoldButton href="/contacto">
+            Contactar
           </GoldButton>
         </div>
       </CinematicSection>

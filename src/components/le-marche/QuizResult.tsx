@@ -24,10 +24,10 @@ export default function QuizResult({ score, total, timeMs, questions, userAnswer
 
   const getMessage = () => {
     if (percentage === 100) return "Parfait ! Puntuacion perfecta.";
-    if (percentage >= 80) return "Tres bien ! Gran resultado.";
+    if (percentage >= 80) return "Très bien ! Gran resultado.";
     if (percentage >= 60) return "Pas mal ! Buen trabajo.";
     if (percentage >= 40) return "Courage ! Puedes mejorar.";
-    return "Ne lache pas ! Sigue intentandolo.";
+    return "Ne lâche pas ! Sigue intentandolo.";
   };
 
   // Stroke calculations for the score circle

@@ -125,7 +125,7 @@ export default function ZonaSidebar({ links, user }: ZonaSidebarProps) {
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="fixed left-4 top-4 z-50 rounded-lg border border-gray-200 bg-white p-2 shadow-sm lg:hidden"
-        aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+        aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
       >
         {mobileOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
       </button>

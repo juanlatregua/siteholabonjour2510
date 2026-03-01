@@ -78,7 +78,7 @@ export default async function AlumnosPage() {
         <EmptyState
           icon={<FiUsers className="h-12 w-12" />}
           title="Sin alumnos"
-          description="Aun no tienes alumnos asignados."
+          description="Aún no tienes alumnos asignados."
           action={
             <Link
               href="/zona-profesor/alumnos/nuevo"

@@ -24,7 +24,7 @@ const contactMethods = [
   {
     title: "WhatsApp",
     description: "Respuesta rápida en horario laboral",
-    detail: "685 07 03 04",
+    detail: "685 070 304",
     href: "https://wa.me/34685070304",
     cta: "Écrire sur WhatsApp",
   },

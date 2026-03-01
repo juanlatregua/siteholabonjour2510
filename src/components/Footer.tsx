@@ -96,7 +96,7 @@ const Footer = () => {
           {/* Column 4: Contact + social */}
           <section>
             <p className={styles.sectionTitle}>Contact</p>
-            <p className={styles.text}>WhatsApp: +34 685 07 03 04</p>
+            <p className={styles.text}>WhatsApp: +34 685 070 304</p>
             <p className={styles.text}>Email: hola@holabonjour.es</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (

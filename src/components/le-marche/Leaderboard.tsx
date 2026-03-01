@@ -38,7 +38,7 @@ export default function Leaderboard({ weekNumber }: LeaderboardProps) {
 
         setEntries(json.results);
       } catch {
-        setError("Error de conexion");
+        setError("Error de conexión");
       } finally {
         setLoading(false);
       }

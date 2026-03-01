@@ -47,11 +47,11 @@ export default function FileUploader({ studentId, onUploadComplete }: FileUpload
     onDropRejected: (rejections) => {
       const rejection = rejections[0];
       if (rejection?.errors[0]?.code === "file-too-large") {
-        setError("El archivo supera el limite de 50MB.");
+        setError("El archivo supera el límite de 50MB.");
       } else if (rejection?.errors[0]?.code === "file-invalid-type") {
         setError("Tipo de archivo no permitido. Usa PDF, DOC, DOCX, MP3 o MP4.");
       } else {
-        setError("Archivo no valido.");
+        setError("Archivo no válido.");
       }
     },
   });
@@ -118,7 +118,7 @@ export default function FileUploader({ studentId, onUploadComplete }: FileUpload
         <input {...getInputProps()} />
         {isDragActive ? (
           <p className="text-sm font-medium text-[#0f5da0]">
-            Suelta el archivo aqui...
+            Suelta el archivo aquí...
           </p>
         ) : (
           <div>
@@ -157,7 +157,7 @@ export default function FileUploader({ studentId, onUploadComplete }: FileUpload
       {file && (
         <div>
           <label htmlFor="material-title" className="mb-1 block text-sm font-medium text-gray-700">
-            Titulo del material
+            Título del material
           </label>
           <input
             id="material-title"

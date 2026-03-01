@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
         destination: '/cursos/preparacion-delf-dalf',
         permanent: true,
       },
+      {
+        source: '/blog',
+        destination: '/recursos/blog',
+        permanent: true,
+      },
     ];
   },
 };

@@ -57,7 +57,7 @@ export default async function PagosPage() {
                     Importe
                   </th>
                   <th className="whitespace-nowrap px-4 py-3 font-medium text-gray-500">
-                    Metodo
+                    Método
                   </th>
                   <th className="whitespace-nowrap px-4 py-3 font-medium text-gray-500">
                     Estado
@@ -115,7 +115,7 @@ export default async function PagosPage() {
         <EmptyState
           icon={<FiCreditCard className="h-12 w-12" />}
           title="Sin pagos"
-          description="Aqui aparecera tu historial de pagos."
+          description="Aquí aparecerá tu historial de pagos."
         />
       )}
 

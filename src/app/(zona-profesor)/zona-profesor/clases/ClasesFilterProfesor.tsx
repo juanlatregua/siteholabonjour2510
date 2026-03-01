@@ -38,7 +38,7 @@ export default function ClasesFilterProfesor({ upcoming, past }: ClasesFilterPro
               : "text-gray-500 hover:text-gray-700"
           }`}
         >
-          Proximas ({upcoming.length})
+          Próximas ({upcoming.length})
         </button>
         <button
           onClick={() => setTab("past")}

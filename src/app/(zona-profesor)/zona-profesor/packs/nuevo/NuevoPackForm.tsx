@@ -90,7 +90,7 @@ export default function NuevoPackForm({ students }: NuevoPackFormProps) {
         placeholder="Ej: 10"
         {...register("hoursTotal", {
           required: "Las horas son obligatorias",
-          min: { value: 1, message: "Minimo 1 hora" },
+          min: { value: 1, message: "Mínimo 1 hora" },
         })}
         error={errors.hoursTotal?.message}
       />

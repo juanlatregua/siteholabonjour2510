@@ -90,7 +90,7 @@ export default async function ZonaProfesorDashboard() {
           Bienvenido{teacher?.name ? `, ${teacher.name.split(" ")[0]}` : ""}
         </h2>
         <p className="mt-1 text-sm text-gray-500">
-          Aqui tienes un resumen de tu actividad docente.
+          Aquí tienes un resumen de tu actividad docente.
         </p>
       </div>
 
@@ -110,7 +110,7 @@ export default async function ZonaProfesorDashboard() {
         </Card>
         <Card>
           <CardContent>
-            <p className="text-sm text-gray-500">Proximas clases</p>
+            <p className="text-sm text-gray-500">Próximas clases</p>
             <p className="mt-1 text-2xl font-bold text-gray-900">{upcomingLessons.length}</p>
           </CardContent>
         </Card>
@@ -155,7 +155,7 @@ export default async function ZonaProfesorDashboard() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Proximas clases</CardTitle>
+            <CardTitle>Próximas clases</CardTitle>
           </CardHeader>
           <CardContent>
             {upcomingLessons.length > 0 ? (
@@ -176,7 +176,7 @@ export default async function ZonaProfesorDashboard() {
             ) : (
               <EmptyState
                 title="Sin clases programadas"
-                description="No hay clases proximas."
+                description="No hay clases próximas."
               />
             )}
           </CardContent>
@@ -185,7 +185,7 @@ export default async function ZonaProfesorDashboard() {
 
       {/* Quick links */}
       <div>
-        <h3 className="mb-3 text-sm font-semibold text-gray-700">Acceso rapido</h3>
+        <h3 className="mb-3 text-sm font-semibold text-gray-700">Acceso rápido</h3>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {quickLinks.map((link) => (
             <Link

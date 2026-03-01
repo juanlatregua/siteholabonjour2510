@@ -1,7 +1,7 @@
 import React from "react";
 import { requireStudent } from "@/lib/auth-helpers";
 import { prisma } from "@/lib/prisma";
-import CalendarView from "@/components/zona/CalendarView";
+import CalendarioAlumnoClient from "./CalendarioAlumnoClient";
 
 export default async function CalendarioPage() {
   const session = await requireStudent();
@@ -12,6 +12,8 @@ export default async function CalendarioPage() {
       id: true,
       scheduledAt: true,
       status: true,
+      focus: true,
+      teacher: { select: { name: true, email: true } },
     },
     orderBy: { scheduledAt: "asc" },
   });
@@ -20,6 +22,8 @@ export default async function CalendarioPage() {
     id: l.id,
     scheduledAt: l.scheduledAt.toISOString(),
     status: l.status,
+    personName: l.teacher.name ?? l.teacher.email ?? "",
+    focus: l.focus,
   }));
 
   return (
@@ -31,7 +35,7 @@ export default async function CalendarioPage() {
         </p>
       </div>
 
-      <CalendarView lessons={serializedLessons} />
+      <CalendarioAlumnoClient lessons={serializedLessons} />
     </div>
   );
 }
