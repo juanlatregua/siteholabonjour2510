@@ -1,6 +1,6 @@
 .footer {
   margin-top: 3rem;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(135deg, #0a0f1a 0%, #0f1929 50%, #0a0f1a 100%);
   color: #e8f2ff;
 }
 
@@ -17,9 +17,23 @@
 
 .brand {
   margin: 0;
-  font-size: 1.22rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
   color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.brandAccent {
+  color: #e8b865;
+}
+
+.tagline {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .sectionTitle {
@@ -127,9 +141,25 @@
   margin: 0;
 }
 
+.synergy {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.synergy a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.synergy a:hover {
+  color: #e8b865;
+  text-decoration: underline;
+}
+
 @media (min-width: 860px) {
   .grid {
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
   }
 
   .bottom {

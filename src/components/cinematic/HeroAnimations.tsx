@@ -56,10 +56,10 @@ export default function HeroAnimations() {
             marginBottom: "1.5rem",
           }}
         >
-          <TypeWriter text="Aprende francés. Vive en francés." speed={50} />
+          <TypeWriter text="Apprends le français comme on vit en France" speed={50} />
         </h1>
 
-        <RevealText delay={1800}>
+        <RevealText delay={2400}>
           <p
             style={{
               fontSize: "clamp(1rem, 2vw, 1.3rem)",
@@ -69,13 +69,12 @@ export default function HeroAnimations() {
               marginBottom: "2.5rem",
             }}
           >
-            Academia online con profesores nativos. Clases en directo,
-            preparación DELF/DALF y método inmersivo basado en la cultura
-            francesa.
+            Academia de franc&eacute;s online con alma francesa. DELF, DALF,
+            conversaci&oacute;n, empresas.
           </p>
         </RevealText>
 
-        <RevealText delay={2200}>
+        <RevealText delay={2800}>
           <div
             style={{
               display: "flex",
@@ -84,13 +83,58 @@ export default function HeroAnimations() {
               justifyContent: "center",
             }}
           >
-            <GoldButton href="/test-de-nivel">Descubre tu nivel</GoldButton>
-            <GoldButton href="/cursos" variant="outline">
-              Ver cursos
+            <GoldButton href="/test-de-nivel">
+              Faire le test de niveau &rarr;
             </GoldButton>
+            <a
+              href="https://wa.me/34685070304"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "12px 28px",
+                borderRadius: 12,
+                background: "rgba(37, 211, 102, 0.15)",
+                border: "2px solid rgba(37, 211, 102, 0.5)",
+                color: "#25d366",
+                fontWeight: 700,
+                fontSize: "0.95rem",
+                textDecoration: "none",
+                transition: "background 0.25s ease",
+                fontFamily: "var(--font-heading)",
+                letterSpacing: "0.01em",
+                cursor: "pointer",
+              }}
+            >
+              Classe d&apos;essai gratuite
+            </a>
           </div>
         </RevealText>
+
+        {/* Scroll indicator */}
+        <div style={{
+          position: "absolute",
+          bottom: "2rem",
+          left: "50%",
+          transform: "translateX(-50%)",
+          animation: "fadeUp 1s ease infinite alternate",
+          opacity: 0.5,
+        }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2">
+            <path d="M7 13l5 5 5-5M7 7l5 5 5-5" />
+          </svg>
+        </div>
       </div>
+
+      {/* Keyframe for scroll indicator */}
+      <style>{`
+        @keyframes fadeUp {
+          from { transform: translateY(0); opacity: 0.3; }
+          to { transform: translateY(-8px); opacity: 0.7; }
+        }
+      `}</style>
     </div>
   );
 }

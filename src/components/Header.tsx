@@ -2,21 +2,25 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import styles from "./Header.module.css";
 
 const cursosLinks = [
-  { href: "/cursos", label: "Todos los cursos" },
-  { href: "/preparacion-delf-dalf", label: "Preparación DELF/DALF" },
-  { href: "/cursos#conversacion", label: "Conversación" },
-  { href: "/empresas", label: "Francés para empresas" },
+  { href: "/cursos", label: "Tous les cours" },
+  { href: "/cursos/preparacion-delf-dalf", label: "Préparation DELF/DALF" },
+  { href: "/cursos/conversacion", label: "Conversation" },
+  { href: "/cursos/frances-empresas", label: "Français entreprises" },
+  { href: "/cursos/intensivos", label: "Cours intensifs" },
+  { href: "/cursos/clases-particulares", label: "Cours particuliers" },
 ];
 
 const recursosLinks = [
-  { href: "/recursos/enlaces-utiles", label: "Enlaces útiles" },
-  { href: "/blog", label: "Blog" },
+  { href: "/recursos", label: "Toutes les ressources" },
+  { href: "/recursos/guia-delf-dalf", label: "Guide DELF/DALF" },
+  { href: "/recursos/enlaces-utiles", label: "Liens utiles" },
+  { href: "/recursos/descargas", label: "Téléchargements" },
+  { href: "/recursos/blog", label: "Blog" },
 ];
 
 const vieLinks = [
@@ -153,14 +157,15 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
       <div className={styles.inner}>
         <div className={styles.topBar}>
           <div className={styles.logo}>
-            <Link href="/" aria-label="Ir al inicio" onClick={closeMenu}>
-              <Image
-                src="/images/logo-holabonjour-01.svg"
-                alt="Logo HolaBonjour"
-                width={134}
-                height={48}
-                priority
-              />
+            <Link href="/" aria-label="Ir al inicio" onClick={closeMenu} style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "1.3rem",
+              fontWeight: 700,
+              color: isCinematic ? "#ffffff" : "#1f2937",
+              textDecoration: "none",
+              letterSpacing: "-0.01em",
+            }}>
+              Hola<span style={{ color: isCinematic ? "#e8b865" : "#0f5da0" }}>Bonjour</span>
             </Link>
           </div>
 

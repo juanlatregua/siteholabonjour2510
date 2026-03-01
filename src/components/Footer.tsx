@@ -3,13 +3,22 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 
-const quickLinks = [
-  { href: "/", label: "Accueil / Inicio" },
-  { href: "/test-de-nivel", label: "Test de niveau / Test de nivel" },
-  { href: "/cursos", label: "Cours / Cursos" },
-  { href: "/tarifas", label: "Tarifs / Tarifas" },
-  { href: "/sobre-nosotros", label: "À propos / Sobre nosotros" },
-  { href: "/contacto", label: "Contact / Contacto" },
+const navLinks = [
+  { href: "/cursos", label: "Cursos" },
+  { href: "/le-voyage", label: "Le Voyage" },
+  { href: "/le-cote-vie", label: "Le Cote Vie" },
+  { href: "/recursos", label: "Recursos" },
+  { href: "/tarifas", label: "Tarifs" },
+  { href: "/contacto", label: "Contact" },
+];
+
+const vieCultureLinks = [
+  { href: "/le-marche", label: "Le Marche" },
+  { href: "/la-carte", label: "La Carte" },
+  { href: "/le-cinema", label: "Le Cinema" },
+  { href: "/la-cuisine", label: "La Cuisine" },
+  { href: "/le-mot-du-jour", label: "Le Mot du Jour" },
+  { href: "/le-jeu", label: "Le Jeu" },
 ];
 
 const socialLinks = [
@@ -35,17 +44,21 @@ const socialLinks = [
   },
 ];
 
-const trustSignals = ["Méthode immersive", "Examens DELF/DALF", "Professeurs natifs", "Cours en direct"];
+const trustSignals = ["Methode immersive", "Examens DELF/DALF", "Professeurs natifs", "Cours en direct"];
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.grid}>
+          {/* Column 1: Brand + tagline + trust signals */}
           <section>
-            <p className={styles.brand}>HolaBonjour</p>
+            <p className={styles.brand}>
+              Hola<span className={styles.brandAccent}>Bonjour</span>
+            </p>
+            <p className={styles.tagline}>L&apos;aventure commence ici</p>
             <p className={styles.text}>
-              Académie en ligne de français / Academia online de francés: clases en directo con profesores nativos...
+              Academie en ligne de francais / Academia online de frances: clases en directo con profesores nativos.
             </p>
             <ul className={styles.trustList}>
               {trustSignals.map((item) => (
@@ -54,10 +67,11 @@ const Footer = () => {
             </ul>
           </section>
 
+          {/* Column 2: Navigation */}
           <section>
-            <p className={styles.sectionTitle}>Navigation / Navegación</p>
+            <p className={styles.sectionTitle}>Navigation</p>
             <ul className={styles.linkList}>
-              {quickLinks.map((item) => (
+              {navLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href}>{item.label}</Link>
                 </li>
@@ -65,13 +79,23 @@ const Footer = () => {
             </ul>
           </section>
 
+          {/* Column 3: Ecosysteme culturel */}
           <section>
-            <p className={styles.sectionTitle}>Contact et tarifs / Contacto y tarifas</p>
-            <p className={styles.text}>Teléfono / WhatsApp: 685 07 03 04</p>
+            <p className={styles.sectionTitle}>Ecosysteme culturel</p>
+            <ul className={styles.linkList}>
+              {vieCultureLinks.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Column 4: Contact + social */}
+          <section>
+            <p className={styles.sectionTitle}>Contact</p>
+            <p className={styles.text}>WhatsApp: +34 685 07 03 04</p>
             <p className={styles.text}>Email: info@holabonjour.es</p>
-            <p className={styles.text}>A1-B2: pack 4 horas por 140EUR</p>
-            <p className={styles.text}>C1-C2: pack 4 horas por 200EUR</p>
-            <p className={styles.text}>Pago activo: transferencia bancaria</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (
                 <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
@@ -89,8 +113,13 @@ const Footer = () => {
         </div>
 
         <div className={styles.bottom}>
-          <p>&copy; {new Date().getFullYear()} HolaBonjour.</p>
-          <p>Apprends le français. Vis en français.</p>
+          <p>&copy; 2026 HolaBonjour &middot; HBTJ Consultores Linguisticos S.L. &middot; Malaga</p>
+          <p className={styles.synergy}>
+            Sinergia / Traductions juridiques:{" "}
+            <a href="https://traduccionesjuradas.net" target="_blank" rel="noreferrer">traduccionesjuradas.net</a>
+            {" "}&middot;{" "}
+            <a href="https://traductorjurado.es" target="_blank" rel="noreferrer">traductorjurado.es</a>
+          </p>
         </div>
       </div>
     </footer>

@@ -8,4 +8,6 @@ export { default as GoldButton } from "./GoldButton";
 export { default as SceneGradient } from "./SceneGradient";
 export { default as CinematicSection } from "./CinematicSection";
 
+export { default as WhatsAppFloat } from "./WhatsAppFloat";
+
 export type { Scene } from "./SceneGradient";

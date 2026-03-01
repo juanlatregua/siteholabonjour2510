@@ -16,28 +16,35 @@ const courseTypes = [
     levels: "A1 – C2",
     description:
       "Preparación específica para cada nivel del examen oficial. Simulacros reales, correcciones detalladas y estrategia por prueba.",
-    href: "/preparacion-delf-dalf",
+    href: "/cursos/preparacion-delf-dalf",
   },
   {
     title: "Conversation",
     levels: "A2 – C2",
     description:
       "Práctica oral con profesores nativos. Temas de actualidad, debates, expresiones coloquiales y pronunciación.",
-    href: "/contacto",
+    href: "/cursos/conversacion",
   },
   {
     title: "Français pour entreprises",
     levels: "A1 – C1",
     description:
       "Programas corporativos adaptados: francés comercial, presentaciones, negociación y comunicación profesional.",
-    href: "/contacto",
+    href: "/cursos/frances-empresas",
   },
   {
     title: "Cours particuliers",
     levels: "A1 – C2",
     description:
       "Sesiones individuales con horarios flexibles. Contenido 100% adaptado a tus necesidades y ritmo.",
-    href: "/contacto",
+    href: "/cursos/clases-particulares",
+  },
+  {
+    title: "Cours intensifs",
+    levels: "A1 – C2",
+    description:
+      "Cursos sprint de 2-4 semanas para preparación de exámenes o inmersión rápida.",
+    href: "/cursos/intensivos",
   },
 ];
 

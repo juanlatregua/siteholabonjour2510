@@ -28,6 +28,21 @@ const nextConfig: NextConfig = {
         destination: '/test-de-nivel',
         permanent: true,
       },
+      {
+        source: '/test-de-niveau',
+        destination: '/test-de-nivel',
+        permanent: true,
+      },
+      {
+        source: '/frances-empresas',
+        destination: '/cursos/frances-empresas',
+        permanent: true,
+      },
+      {
+        source: '/preparacion-delf-dalf',
+        destination: '/cursos/preparacion-delf-dalf',
+        permanent: true,
+      },
     ];
   },
 };
