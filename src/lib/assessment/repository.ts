@@ -1,66 +1,56 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
-import { randomUUID } from "node:crypto";
+import { prisma } from "@/lib/prisma";
 import type {
   AssessmentAttemptAnswer,
   AssessmentAttemptWithResult,
   AssessmentResult,
 } from "./types.ts";
+import type { AssessmentAttempt as PrismaAttempt, AssessmentAttemptAnswer as PrismaAnswer } from "@/generated/prisma/client";
 
-interface StoreSnapshot {
-  attempts: Record<string, AssessmentAttemptWithResult>;
-  answers: Record<string, AssessmentAttemptAnswer[]>;
+// ── Helpers to convert between Prisma rows and app-level types ──
+
+function toAppAttempt(
+  row: PrismaAttempt & { answers?: PrismaAnswer[] },
+): AssessmentAttemptWithResult {
+  const attempt: AssessmentAttemptWithResult = {
+    id: row.id,
+    assessmentId: row.assessmentId,
+    attemptToken: row.attemptToken,
+    candidateId: row.candidateId,
+    status: row.status as AssessmentAttemptWithResult["status"],
+    startedAt: row.startedAt.toISOString(),
+    finishedAt: row.finishedAt?.toISOString(),
+    createdAt: row.createdAt.toISOString(),
+    updatedAt: row.updatedAt.toISOString(),
+  };
+
+  if (row.result) {
+    try {
+      attempt.result = JSON.parse(row.result) as AssessmentResult;
+    } catch {
+      // If the JSON is corrupt, leave result undefined
+    }
+  }
+
+  return attempt;
 }
 
-const DEFAULT_SNAPSHOT: StoreSnapshot = {
-  attempts: {},
-  answers: {},
-};
+function toAppAnswer(row: PrismaAnswer): AssessmentAttemptAnswer {
+  return {
+    id: row.id,
+    attemptId: row.attemptId,
+    questionId: row.questionId,
+    selectedOptionId: row.selectedOptionId,
+    isCorrect: row.isCorrect,
+    pointsAwarded: row.pointsAwarded,
+    clientSequence: row.clientSequence ?? undefined,
+    answeredAt: row.answeredAt.toISOString(),
+    updatedAt: row.updatedAt.toISOString(),
+  };
+}
 
-const DATA_DIR = path.join(process.cwd(), ".assessment-store");
-const DATA_FILE = path.join(DATA_DIR, "assessment-attempts.json");
+// ── Prisma-backed Assessment Repository ──
 
-class LocalAssessmentRepository {
-  private snapshot: StoreSnapshot = DEFAULT_SNAPSHOT;
-
-  private loadPromise: Promise<void> | null = null;
-
-  private persistenceEnabled = true;
-
-  private async ensureLoaded(): Promise<void> {
-    if (!this.loadPromise) {
-      this.loadPromise = this.load();
-    }
-
-    await this.loadPromise;
-  }
-
-  private async load(): Promise<void> {
-    try {
-      const raw = await readFile(DATA_FILE, "utf8");
-      const parsed = JSON.parse(raw) as StoreSnapshot;
-      this.snapshot = {
-        attempts: parsed.attempts ?? {},
-        answers: parsed.answers ?? {},
-      };
-    } catch {
-      this.snapshot = { ...DEFAULT_SNAPSHOT };
-    }
-  }
-
-  private async persist(): Promise<void> {
-    if (!this.persistenceEnabled) {
-      return;
-    }
-
-    try {
-      await mkdir(DATA_DIR, { recursive: true });
-      await writeFile(DATA_FILE, `${JSON.stringify(this.snapshot, null, 2)}\n`, "utf8");
-    } catch {
-      this.persistenceEnabled = false;
-    }
-  }
-
+class PrismaAssessmentRepository {
   async createAttempt({
     assessmentId,
     candidateId,
@@ -68,36 +58,32 @@ class LocalAssessmentRepository {
     assessmentId: string;
     candidateId: string;
   }): Promise<AssessmentAttemptWithResult> {
-    await this.ensureLoaded();
+    const row = await prisma.assessmentAttempt.create({
+      data: {
+        assessmentId,
+        candidateId,
+        status: "IN_PROGRESS",
+      },
+    });
 
-    const now = new Date().toISOString();
-    const attempt: AssessmentAttemptWithResult = {
-      id: randomUUID(),
-      assessmentId,
-      attemptToken: randomUUID(),
-      candidateId,
-      status: "IN_PROGRESS",
-      startedAt: now,
-      createdAt: now,
-      updatedAt: now,
-    };
-
-    this.snapshot.attempts[attempt.id] = attempt;
-    this.snapshot.answers[attempt.id] = [];
-
-    await this.persist();
-
-    return attempt;
+    return toAppAttempt(row);
   }
 
   async getAttempt(attemptId: string): Promise<AssessmentAttemptWithResult | undefined> {
-    await this.ensureLoaded();
-    return this.snapshot.attempts[attemptId];
+    const row = await prisma.assessmentAttempt.findUnique({
+      where: { id: attemptId },
+    });
+
+    return row ? toAppAttempt(row) : undefined;
   }
 
   async listAttemptAnswers(attemptId: string): Promise<AssessmentAttemptAnswer[]> {
-    await this.ensureLoaded();
-    return this.snapshot.answers[attemptId] ?? [];
+    const rows = await prisma.assessmentAttemptAnswer.findMany({
+      where: { attemptId },
+      orderBy: { answeredAt: "asc" },
+    });
+
+    return rows.map(toAppAnswer);
   }
 
   async upsertAnswer({
@@ -105,50 +91,70 @@ class LocalAssessmentRepository {
   }: {
     answer: AssessmentAttemptAnswer;
   }): Promise<{ answers: AssessmentAttemptAnswer[]; saved: boolean }> {
-    await this.ensureLoaded();
+    // Check for an existing answer with the same attemptId + questionId
+    const existing = await prisma.assessmentAttemptAnswer.findUnique({
+      where: {
+        attemptId_questionId: {
+          attemptId: answer.attemptId,
+          questionId: answer.questionId,
+        },
+      },
+    });
 
-    const currentAnswers = this.snapshot.answers[answer.attemptId] ?? [];
-    const existingIndex = currentAnswers.findIndex(
-      (entry) => entry.questionId === answer.questionId,
-    );
-
-    if (existingIndex >= 0) {
-      const existing = currentAnswers[existingIndex];
+    if (existing) {
       const incomingSequence = answer.clientSequence ?? 0;
       const existingSequence = existing.clientSequence ?? 0;
 
       if (incomingSequence < existingSequence) {
-        return {
-          answers: currentAnswers,
-          saved: false,
-        };
+        // Stale answer — return current answers without saving
+        const allRows = await prisma.assessmentAttemptAnswer.findMany({
+          where: { attemptId: answer.attemptId },
+          orderBy: { answeredAt: "asc" },
+        });
+        return { answers: allRows.map(toAppAnswer), saved: false };
       }
 
-      currentAnswers[existingIndex] = {
-        ...existing,
-        selectedOptionId: answer.selectedOptionId,
-        isCorrect: answer.isCorrect,
-        pointsAwarded: answer.pointsAwarded,
-        clientSequence: answer.clientSequence ?? existing.clientSequence,
-        updatedAt: answer.updatedAt,
-      };
+      // Update existing answer
+      await prisma.assessmentAttemptAnswer.update({
+        where: { id: existing.id },
+        data: {
+          selectedOptionId: answer.selectedOptionId,
+          isCorrect: answer.isCorrect,
+          pointsAwarded: answer.pointsAwarded,
+          clientSequence: answer.clientSequence ?? existing.clientSequence,
+          updatedAt: new Date(answer.updatedAt),
+        },
+      });
     } else {
-      currentAnswers.push(answer);
+      // Insert new answer
+      await prisma.assessmentAttemptAnswer.create({
+        data: {
+          id: answer.id,
+          attemptId: answer.attemptId,
+          questionId: answer.questionId,
+          selectedOptionId: answer.selectedOptionId,
+          isCorrect: answer.isCorrect,
+          pointsAwarded: answer.pointsAwarded,
+          clientSequence: answer.clientSequence ?? null,
+          answeredAt: new Date(answer.answeredAt),
+          // updatedAt is handled by @updatedAt in schema
+        },
+      });
     }
 
-    this.snapshot.answers[answer.attemptId] = currentAnswers;
+    // Update the attempt's updatedAt timestamp
+    await prisma.assessmentAttempt.update({
+      where: { id: answer.attemptId },
+      data: { updatedAt: new Date(answer.updatedAt) },
+    });
 
-    const attempt = this.snapshot.attempts[answer.attemptId];
-    if (attempt) {
-      attempt.updatedAt = answer.updatedAt;
-    }
+    // Return the full list of answers for this attempt
+    const allRows = await prisma.assessmentAttemptAnswer.findMany({
+      where: { attemptId: answer.attemptId },
+      orderBy: { answeredAt: "asc" },
+    });
 
-    await this.persist();
-
-    return {
-      answers: currentAnswers,
-      saved: true,
-    };
+    return { answers: allRows.map(toAppAnswer), saved: true };
   }
 
   async finishAttempt({
@@ -158,46 +164,35 @@ class LocalAssessmentRepository {
     attemptId: string;
     result: AssessmentResult;
   }): Promise<AssessmentAttemptWithResult | undefined> {
-    await this.ensureLoaded();
+    const existing = await prisma.assessmentAttempt.findUnique({
+      where: { id: attemptId },
+    });
 
-    const attempt = this.snapshot.attempts[attemptId];
-    if (!attempt) {
+    if (!existing) {
       return undefined;
     }
 
-    const now = new Date().toISOString();
-    attempt.status = "FINISHED";
-    attempt.finishedAt = now;
-    attempt.updatedAt = now;
-    attempt.result = result;
+    const now = new Date();
+    const row = await prisma.assessmentAttempt.update({
+      where: { id: attemptId },
+      data: {
+        status: "FINISHED",
+        finishedAt: now,
+        updatedAt: now,
+        result: JSON.stringify(result),
+      },
+    });
 
-    await this.persist();
-
-    return attempt;
+    return toAppAttempt(row);
   }
 
   async resetForTests(): Promise<void> {
-    this.snapshot = {
-      attempts: {},
-      answers: {},
-    };
-
-    await this.persist();
+    await prisma.assessmentAttemptAnswer.deleteMany();
+    await prisma.assessmentAttempt.deleteMany();
   }
 }
 
-type GlobalRepositoryStore = typeof globalThis & {
-  __hbAssessmentRepository?: LocalAssessmentRepository;
-};
-
-const globalRepositoryStore = globalThis as GlobalRepositoryStore;
-
-export const assessmentRepository =
-  globalRepositoryStore.__hbAssessmentRepository ?? new LocalAssessmentRepository();
-
-if (process.env.NODE_ENV !== "production") {
-  globalRepositoryStore.__hbAssessmentRepository = assessmentRepository;
-}
+export const assessmentRepository = new PrismaAssessmentRepository();
 
 export const resetAssessmentRepositoryForTests = async (): Promise<void> => {
   await assessmentRepository.resetForTests();

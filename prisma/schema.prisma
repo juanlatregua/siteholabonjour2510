@@ -261,3 +261,42 @@ model NewsletterSubscriber {
 
   @@map("newsletter_subscribers")
 }
+
+// ── Assessment Attempts ──
+
+model AssessmentAttempt {
+  id            String   @id @default(cuid())
+  assessmentId  String
+  attemptToken  String   @unique @default(cuid())
+  candidateId   String
+  status        String   @default("IN_PROGRESS") // IN_PROGRESS | FINISHED
+  startedAt     DateTime @default(now())
+  finishedAt    DateTime?
+  result        String?  // JSON string of AssessmentResult
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  answers AssessmentAttemptAnswer[]
+
+  @@index([assessmentId])
+  @@index([candidateId])
+  @@map("assessment_attempts")
+}
+
+model AssessmentAttemptAnswer {
+  id               String   @id @default(cuid())
+  attemptId        String
+  questionId       String
+  selectedOptionId String
+  isCorrect        Boolean
+  pointsAwarded    Float    @default(0)
+  clientSequence   Int?
+  answeredAt       DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  attempt AssessmentAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@unique([attemptId, questionId])
+  @@index([attemptId])
+  @@map("assessment_attempt_answers")
+}
