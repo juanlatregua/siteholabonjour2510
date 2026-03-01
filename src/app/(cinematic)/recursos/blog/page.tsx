@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
+import { blogPosts } from "@/data/blog-posts";
 import GlassCard from "@/components/cinematic/GlassCard";
 import CinematicSection from "@/components/cinematic/CinematicSection";
 import GoldButton from "@/components/cinematic/GoldButton";
@@ -22,35 +24,41 @@ export const metadata: Metadata = {
   },
 };
 
+/* ------------------------------------------------------------------ */
+/*  HELPERS                                                            */
+/* ------------------------------------------------------------------ */
+
+function formatDate(iso: string): string {
+  const d = new Date(iso);
+  return d.toLocaleDateString("es-ES", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+/* ------------------------------------------------------------------ */
+/*  CATEGORY FILTERS                                                   */
+/* ------------------------------------------------------------------ */
+
 const categories = [
-  {
-    icon: "\u{270D}\u{FE0F}",
-    title: "Grammaire",
-    description: "Reglas gramaticales explicadas con claridad.",
-  },
-  {
-    icon: "\u{1F1EB}\u{1F1F7}",
-    title: "Culture",
-    description: "Costumbres, tradiciones y curiosidades francesas.",
-  },
-  {
-    icon: "\u{1F393}",
-    title: "DELF/DALF",
-    description: "Consejos y estrategias para los exámenes oficiales.",
-  },
-  {
-    icon: "\u{1F4AC}",
-    title: "Expressions",
-    description: "Expresiones francesas para el día a día.",
-  },
+  { key: "all", icon: "📚", label: "Todos" },
+  { key: "delf-dalf", icon: "🎓", label: "DELF/DALF" },
+  { key: "gramatica", icon: "✏️", label: "Gramática" },
+  { key: "expresiones", icon: "💬", label: "Expresiones" },
+  { key: "cultura", icon: "🇫🇷", label: "Cultura" },
 ];
+
+/* ------------------------------------------------------------------ */
+/*  PAGE                                                               */
+/* ------------------------------------------------------------------ */
 
 export default function BlogPage() {
   return (
     <div>
       {/* Hero */}
       <section
-        className="relative overflow-hidden flex items-center justify-center min-h-[70vh] px-6"
+        className="relative overflow-hidden flex items-center justify-center min-h-[60vh] px-6"
         style={{
           background:
             "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
@@ -88,84 +96,133 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Coming soon */}
-      <CinematicSection className="py-20 px-6">
-        <div className="mx-auto max-w-2xl">
-          <GlassCard>
-            <p
-              className="text-xl font-semibold text-center mb-3"
+      {/* Category badges */}
+      <CinematicSection className="pt-14 pb-4 px-6">
+        <div className="mx-auto max-w-5xl flex items-center justify-center gap-3 flex-wrap">
+          {categories.map((cat) => (
+            <span
+              key={cat.key}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium"
               style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--cin-gold)",
+                background:
+                  cat.key === "all"
+                    ? "rgba(232,184,101,0.2)"
+                    : "rgba(255,255,255,0.06)",
+                color:
+                  cat.key === "all" ? "#e8b865" : "rgba(255,255,255,0.6)",
+                border:
+                  cat.key === "all"
+                    ? "1px solid rgba(232,184,101,0.4)"
+                    : "1px solid rgba(255,255,255,0.1)",
               }}
             >
-              Nous préparons des articles passionnants. Revenez bientôt !
-            </p>
-            <p
-              className="text-base text-center leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.65)" }}
-            >
-              Estamos preparando contenido de calidad. ¡Vuelve pronto!
-            </p>
-          </GlassCard>
+              {cat.icon} {cat.label}
+            </span>
+          ))}
         </div>
       </CinematicSection>
 
-      {/* Categories preview */}
-      <CinematicSection className="py-20 px-6">
-        <div className="mx-auto max-w-5xl">
-          <h2
-            className="text-3xl md:text-4xl font-bold text-center mb-14"
-            style={{
-              fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
-            }}
-          >
-            Catégories
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((cat) => (
-              <GlassCard key={cat.title}>
-                <div className="text-3xl mb-4">{cat.icon}</div>
-                <h3
+      {/* Article grid */}
+      <CinematicSection className="py-14 px-6">
+        <div className="mx-auto max-w-5xl grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {blogPosts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/recursos/blog/${post.slug}`}
+              style={{ textDecoration: "none" }}
+            >
+              <GlassCard>
+                <div className="text-3xl mb-4">{post.heroEmoji}</div>
+
+                {/* Badges row */}
+                <div className="flex items-center gap-2 mb-3 flex-wrap">
+                  <span
+                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold"
+                    style={{
+                      background: "rgba(232,184,101,0.15)",
+                      color: "#e8b865",
+                      border: "1px solid rgba(232,184,101,0.3)",
+                    }}
+                  >
+                    {post.categoryLabel}
+                  </span>
+                  <span
+                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold"
+                    style={{
+                      background: "rgba(59,130,246,0.15)",
+                      color: "#93bbfc",
+                      border: "1px solid rgba(59,130,246,0.3)",
+                    }}
+                  >
+                    {post.level}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h2
                   className="text-lg font-bold mb-2"
                   style={{
                     fontFamily: "var(--font-display)",
                     color: "var(--cin-gold)",
                   }}
                 >
-                  {cat.title}
-                </h3>
+                  {post.title}
+                </h2>
+
+                {/* Description */}
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-sm leading-relaxed mb-3"
                   style={{ color: "rgba(255,255,255,0.6)" }}
                 >
-                  {cat.description}
+                  {post.description.length > 120
+                    ? post.description.slice(0, 120) + "..."
+                    : post.description}
+                </p>
+
+                {/* Meta */}
+                <p
+                  className="text-xs"
+                  style={{ color: "rgba(255,255,255,0.4)" }}
+                >
+                  {post.readingMinutes} min de lectura &middot;{" "}
+                  {formatDate(post.publishedAt)}
                 </p>
               </GlassCard>
-            ))}
-          </div>
+            </Link>
+          ))}
         </div>
       </CinematicSection>
 
-      {/* Newsletter CTA */}
+      {/* CTA */}
       <CinematicSection className="py-24 px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2
-            className="text-3xl font-bold mb-4"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Le Mot du Jour
-          </h2>
-          <p
-            className="text-lg mb-8"
-            style={{ color: "rgba(255,255,255,0.65)" }}
-          >
-            Suscríbete al Mot du Jour y aprende una palabra nueva cada día.
-          </p>
-          <GoldButton href="/le-mot-du-jour">
-            Suscríbete al Mot du Jour
-          </GoldButton>
+          <GlassCard hover={false}>
+            <h2
+              className="text-2xl md:text-3xl font-bold mb-4"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--cin-gold)",
+              }}
+            >
+              &iquest;Quieres mejorar tu franc&eacute;s?
+            </h2>
+            <p
+              className="text-base mb-8 leading-relaxed max-w-xl mx-auto"
+              style={{ color: "rgba(255,255,255,0.65)" }}
+            >
+              Descubre tu nivel actual con nuestro test gratuito o ponte en
+              contacto con nosotros para diseñar un plan de estudio
+              personalizado.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <GoldButton href="/test-de-nivel">
+                Haz el test de nivel
+              </GoldButton>
+              <GoldButton href="/contacto" variant="outline">
+                Contáctanos
+              </GoldButton>
+            </div>
+          </GlassCard>
         </div>
       </CinematicSection>
     </div>

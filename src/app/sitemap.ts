@@ -1,9 +1,17 @@
 import type { MetadataRoute } from "next";
+import { blogPosts } from "@/data/blog-posts";
 
 const BASE_URL = "https://holabonjour.es";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+
+  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${BASE_URL}/recursos/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   return [
     // Main pages
@@ -23,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/recursos`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/recursos/guia-delf-dalf`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/recursos/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    ...blogEntries,
     { url: `${BASE_URL}/recursos/descargas`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/recursos/enlaces-utiles`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     // Le Côté Vie
