@@ -5,9 +5,11 @@ import styles from "./Footer.module.css";
 
 const quickLinks = [
   { href: "/", label: "Inicio" },
-  { href: "/prueba-nivel", label: "Prueba de nivel" },
-  { href: "/preparacion-delf-dalf", label: "Preparacion DELF/DALF" },
-  { href: "/contact", label: "Contacto" },
+  { href: "/test-de-nivel", label: "Test de nivel" },
+  { href: "/cursos", label: "Cursos" },
+  { href: "/tarifas", label: "Tarifas" },
+  { href: "/sobre-nosotros", label: "Sobre nosotros" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const socialLinks = [
@@ -33,7 +35,7 @@ const socialLinks = [
   },
 ];
 
-const trustSignals = ["Metodo online", "Enfoque DELF/DALF", "Seguimiento docente"];
+const trustSignals = ["Método inmersivo", "Exámenes DELF/DALF", "Profesores nativos", "Clases en directo"];
 
 const Footer = () => {
   return (
@@ -41,16 +43,10 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.grid}>
           <section>
-            <Image
-              src="/images/logo-holabonjour-01.svg"
-              alt="HolaBonjour"
-              width={120}
-              height={43}
-              className={styles.brandLogo}
-            />
+            <p className={styles.brand}>HolaBonjour</p>
             <p className={styles.text}>
-              Academia especializada en preparacion online DELF y DALF. Simulaciones orientativas,
-              plan por nivel y acompanamiento docente.
+              Academia online de francés: clases en directo con profesores nativos, preparación de
+              exámenes DELF/DALF y método inmersivo.
             </p>
             <ul className={styles.trustList}>
               {trustSignals.map((item) => (
@@ -60,7 +56,7 @@ const Footer = () => {
           </section>
 
           <section>
-            <p className={styles.sectionTitle}>Navegacion</p>
+            <p className={styles.sectionTitle}>Navegación</p>
             <ul className={styles.linkList}>
               {quickLinks.map((item) => (
                 <li key={item.href}>
@@ -71,9 +67,12 @@ const Footer = () => {
           </section>
 
           <section>
-            <p className={styles.sectionTitle}>Contacto</p>
-            <p className={styles.text}>Telefono / WhatsApp: 685 07 03 04</p>
+            <p className={styles.sectionTitle}>Contacto y tarifas</p>
+            <p className={styles.text}>Teléfono / WhatsApp: 685 07 03 04</p>
             <p className={styles.text}>Email: info@holabonjour.es</p>
+            <p className={styles.text}>A1-B2: pack 4 horas por 140EUR</p>
+            <p className={styles.text}>C1-C2: pack 4 horas por 200EUR</p>
+            <p className={styles.text}>Pago activo: transferencia bancaria</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (
                 <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
@@ -91,8 +90,8 @@ const Footer = () => {
         </div>
 
         <div className={styles.bottom}>
-          <p>© {new Date().getFullYear()} HolaBonjour.</p>
-          <p>Preparacion online para examenes oficiales DELF/DALF.</p>
+          <p>&copy; {new Date().getFullYear()} HolaBonjour.</p>
+          <p>Aprende francés. Vive en francés.</p>
         </div>
       </div>
     </footer>

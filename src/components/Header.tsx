@@ -4,14 +4,19 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import styles from "./Header.module.css";
 
-const proLinks = [
-  { href: "/prueba-nivel", label: "Prueba de nivel" },
+const cursosLinks = [
+  { href: "/cursos", label: "Todos los cursos" },
   { href: "/preparacion-delf-dalf", label: "Preparación DELF/DALF" },
-  { href: "/contact", label: "Contacto" },
+  { href: "/cursos#conversacion", label: "Conversación" },
+  { href: "/empresas", label: "Francés para empresas" },
+];
+
+const recursosLinks = [
+  { href: "/recursos/enlaces-utiles", label: "Enlaces útiles" },
+  { href: "/blog", label: "Blog" },
 ];
 
 const vieLinks = [
@@ -23,55 +28,162 @@ const vieLinks = [
   { href: "/le-jeu", label: "Le Jeu" },
 ];
 
-const Header = () => {
+const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
   const pathname = usePathname();
-  const { data: session } = useSession();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
-  const dropdownTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const isCinematic = variant === "cinematic";
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setOpenAccordion(null);
   };
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
+  const getBasePath = (href: string) => {
+    const [path] = href.split("#");
+    return path || "/";
+  };
 
-  const isGroupActive = (links: { href: string }[]) =>
-    links.some((link) => isActive(link.href));
+  const isActive = (href: string) => {
+    const basePath = getBasePath(href);
+
+    if (basePath === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === basePath || pathname.startsWith(`${basePath}/`);
+  };
+
+  const isDropdownActive = (links: { href: string }[]) => {
+    return links.some((link) => isActive(link.href));
+  };
 
   const handleDropdownEnter = (name: string) => {
-    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
     setOpenDropdown(name);
   };
 
   const handleDropdownLeave = () => {
-    dropdownTimerRef.current = setTimeout(() => setOpenDropdown(null), 150);
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 150);
   };
 
   useEffect(() => {
     return () => {
-      if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current);
+      }
     };
   }, []);
 
-  const ctaHref = session?.user
-    ? session.user.role === "TEACHER" || session.user.role === "ADMIN"
-      ? "/zona-profesor"
-      : "/zona-alumno"
-    : "/iniciar-sesion";
+  /* ─── Style helpers ─── */
 
-  const ctaLabel = session?.user
-    ? session.user.role === "TEACHER" || session.user.role === "ADMIN"
-      ? "Zona profesor"
-      : "Mi zona"
-    : "Iniciar sesión";
+  const linkClass = (href: string) => {
+    const active = isActive(href);
+    if (isCinematic) {
+      return `${styles.navLinkCinematic}${active ? ` ${styles.activeLinkCinematic}` : ""}`;
+    }
+    return active ? styles.activeLink : undefined;
+  };
+
+  const triggerClass = (links: { href: string }[]) => {
+    const active = isDropdownActive(links);
+    if (isCinematic) {
+      return `${styles.dropdownTriggerCinematic}${active ? ` ${styles.dropdownTriggerActiveCinematic}` : ""}`;
+    }
+    return `${styles.dropdownTrigger}${active ? ` ${styles.dropdownTriggerActive}` : ""}`;
+  };
+
+  const dropdownMenuClass = isCinematic ? styles.dropdownMenuCinematic : styles.dropdownMenu;
+
+  const dropdownItemClass = (href: string) => {
+    const active = isActive(href);
+    if (isCinematic) {
+      return `${styles.dropdownItemCinematic}${active ? ` ${styles.dropdownItemActiveCinematic}` : ""}`;
+    }
+    return `${styles.dropdownItem}${active ? ` ${styles.dropdownItemActive}` : ""}`;
+  };
+
+  /* ─── Dropdown renderer ─── */
+
+  const renderDropdown = (name: string, label: string, links: { href: string; label: string }[]) => (
+    <li
+      key={name}
+      onMouseEnter={() => handleDropdownEnter(name)}
+      onMouseLeave={handleDropdownLeave}
+    >
+      <button
+        className={triggerClass(links)}
+        onClick={() => setOpenDropdown(openDropdown === name ? null : name)}
+        aria-expanded={openDropdown === name}
+      >
+        {label}
+        <FiChevronDown
+          className={`${styles.chevron}${openDropdown === name ? ` ${styles.chevronOpen}` : ""}`}
+        />
+      </button>
+      {openDropdown === name && (
+        <ul className={dropdownMenuClass}>
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={dropdownItemClass(link.href)}
+                onClick={() => setOpenDropdown(null)}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+
+  /* ─── Mobile accordion renderer ─── */
+
+  const renderAccordion = (name: string, label: string, links: { href: string; label: string }[]) => (
+    <li key={name}>
+      <button
+        className={isCinematic ? styles.accordionCinematic : styles.accordion}
+        onClick={() => setOpenAccordion(openAccordion === name ? null : name)}
+        aria-expanded={openAccordion === name}
+      >
+        {label}
+        <FiChevronDown
+          className={`${styles.chevron}${openAccordion === name ? ` ${styles.chevronOpen}` : ""}`}
+        />
+      </button>
+      {openAccordion === name && (
+        <ul className={isCinematic ? styles.accordionContentCinematic : styles.accordionContent}>
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={isCinematic ? styles.accordionItemCinematic : styles.accordionItem}
+                onClick={closeMobileMenu}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  );
 
   return (
-    <header className={styles.header}>
-      <div className={styles.notice}>Formacion online para examenes oficiales DELF y DALF</div>
+    <header className={isCinematic ? styles.headerCinematic : styles.header}>
+      <div className={isCinematic ? styles.noticeCinematic : styles.notice}>
+        Clases online con profesores nativos · Preparación DELF/DALF · Test de nivel gratuito
+      </div>
 
       <div className={styles.inner}>
         <div className={styles.topBar}>
@@ -87,82 +199,47 @@ const Header = () => {
             </Link>
           </div>
 
-          <nav className={styles.desktopNav} aria-label="Navegacion principal">
+          <nav className={styles.desktopNav} aria-label="Navegación principal">
             <ul>
               <li>
-                <Link href="/" className={isActive("/") ? styles.activeLink : undefined}>
+                <Link href="/" className={linkClass("/")}>
                   Inicio
                 </Link>
               </li>
-
-              {/* Le Côté Pro dropdown */}
-              <li
-                className={styles.dropdown}
-                onMouseEnter={() => handleDropdownEnter("pro")}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <button
-                  type="button"
-                  className={`${styles.dropdownTrigger} ${isGroupActive(proLinks) ? styles.activeLink : ""}`}
-                  aria-expanded={openDropdown === "pro"}
-                >
-                  Le Côté Pro <FiChevronDown className={styles.chevron} />
-                </button>
-                {openDropdown === "pro" && (
-                  <div className={styles.dropdownMenu}>
-                    {proLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={`${styles.dropdownItem} ${isActive(link.href) ? styles.dropdownItemActive : ""}`}
-                        onClick={() => setOpenDropdown(null)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+              {renderDropdown("cursos", "Cursos", cursosLinks)}
+              <li>
+                <Link href="/test-de-nivel" className={linkClass("/test-de-nivel")}>
+                  Test de Nivel
+                </Link>
               </li>
-
-              {/* Le Côté Vie dropdown */}
-              <li
-                className={styles.dropdown}
-                onMouseEnter={() => handleDropdownEnter("vie")}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <button
-                  type="button"
-                  className={`${styles.dropdownTrigger} ${isGroupActive(vieLinks) ? styles.activeLink : ""}`}
-                  aria-expanded={openDropdown === "vie"}
-                >
-                  Le Côté Vie <FiChevronDown className={styles.chevron} />
-                </button>
-                {openDropdown === "vie" && (
-                  <div className={styles.dropdownMenu}>
-                    {vieLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={`${styles.dropdownItem} ${isActive(link.href) ? styles.dropdownItemActive : ""}`}
-                        onClick={() => setOpenDropdown(null)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+              {renderDropdown("vie", "Le Côté Vie", vieLinks)}
+              {renderDropdown("recursos", "Recursos", recursosLinks)}
+              <li>
+                <Link href="/tarifas" className={linkClass("/tarifas")}>
+                  Tarifas
+                </Link>
+              </li>
+              <li>
+                <Link href="/contacto" className={linkClass("/contacto")}>
+                  Contacto
+                </Link>
               </li>
             </ul>
           </nav>
 
           <div className={styles.actions}>
-            <Link href={ctaHref} className={styles.ctaButton}>
-              {ctaLabel}
+            <Link
+              href="/test-de-nivel"
+              className={isCinematic ? styles.ctaCinematic : styles.ctaButton}
+            >
+              Test de nivel
             </Link>
             <button
-              className={styles.mobileMenuButton}
+              className={isCinematic ? styles.mobileMenuButtonCinematic : styles.mobileMenuButton}
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              aria-label={mobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
+              aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
             >
               {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -171,77 +248,82 @@ const Header = () => {
       </div>
 
       {mobileMenuOpen && (
-        <nav className={styles.mobileNav} aria-label="Navegacion movil">
+        <nav
+          id="mobile-nav"
+          className={isCinematic ? styles.mobileNavCinematic : styles.mobileNav}
+          aria-label="Navegación móvil"
+        >
           <ul>
             <li>
               <Link
                 href="/"
                 onClick={closeMobileMenu}
-                className={isActive("/") ? styles.activeMobileLink : undefined}
+                className={
+                  isActive("/")
+                    ? isCinematic
+                      ? styles.activeMobileLinkCinematic
+                      : styles.activeMobileLink
+                    : undefined
+                }
               >
                 Inicio
               </Link>
             </li>
-
-            {/* Le Côté Pro accordion */}
+            {renderAccordion("cursos", "Cursos", cursosLinks)}
             <li>
-              <button
-                type="button"
-                className={`${styles.accordion} ${isGroupActive(proLinks) ? styles.activeMobileLink : ""}`}
-                onClick={() => setOpenAccordion(openAccordion === "pro" ? null : "pro")}
+              <Link
+                href="/test-de-nivel"
+                onClick={closeMobileMenu}
+                className={
+                  isActive("/test-de-nivel")
+                    ? isCinematic
+                      ? styles.activeMobileLinkCinematic
+                      : styles.activeMobileLink
+                    : undefined
+                }
               >
-                Le Côté Pro
-                <FiChevronDown
-                  className={`${styles.chevron} ${openAccordion === "pro" ? styles.chevronOpen : ""}`}
-                />
-              </button>
-              {openAccordion === "pro" && (
-                <div className={styles.accordionContent}>
-                  {proLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={closeMobileMenu}
-                      className={`${styles.accordionItem} ${isActive(link.href) ? styles.activeMobileLink : ""}`}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
+                Test de Nivel
+              </Link>
             </li>
-
-            {/* Le Côté Vie accordion */}
+            {renderAccordion("vie", "Le Côté Vie", vieLinks)}
+            {renderAccordion("recursos", "Recursos", recursosLinks)}
             <li>
-              <button
-                type="button"
-                className={`${styles.accordion} ${isGroupActive(vieLinks) ? styles.activeMobileLink : ""}`}
-                onClick={() => setOpenAccordion(openAccordion === "vie" ? null : "vie")}
+              <Link
+                href="/tarifas"
+                onClick={closeMobileMenu}
+                className={
+                  isActive("/tarifas")
+                    ? isCinematic
+                      ? styles.activeMobileLinkCinematic
+                      : styles.activeMobileLink
+                    : undefined
+                }
               >
-                Le Côté Vie
-                <FiChevronDown
-                  className={`${styles.chevron} ${openAccordion === "vie" ? styles.chevronOpen : ""}`}
-                />
-              </button>
-              {openAccordion === "vie" && (
-                <div className={styles.accordionContent}>
-                  {vieLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={closeMobileMenu}
-                      className={`${styles.accordionItem} ${isActive(link.href) ? styles.activeMobileLink : ""}`}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
+                Tarifas
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contacto"
+                onClick={closeMobileMenu}
+                className={
+                  isActive("/contacto")
+                    ? isCinematic
+                      ? styles.activeMobileLinkCinematic
+                      : styles.activeMobileLink
+                    : undefined
+                }
+              >
+                Contacto
+              </Link>
             </li>
           </ul>
-
-          <Link href={ctaHref} className={styles.mobileCta} onClick={closeMobileMenu}>
-            {ctaLabel}
+          <Link
+            href="/test-de-nivel"
+            className={isCinematic ? styles.mobileCtaCinematic : styles.mobileCta}
+            onClick={closeMobileMenu}
+          >
+            Test de nivel
           </Link>
         </nav>
       )}

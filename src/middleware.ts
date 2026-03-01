@@ -10,7 +10,13 @@ const PUBLIC_PATHS = [
   "/contact",
   "/courses",
   "/home",
+  "/home-legacy",
   "/test",
+  "/test-de-nivel",
+  "/contacto",
+  "/cursos",
+  "/empresas",
+  "/opiniones",
   "/preguntas-frecuentes",
   "/aviso-legal",
   "/politica-de-privacidad",
@@ -39,6 +45,7 @@ export async function middleware(request: NextRequest) {
     AUTH_PATHS.some((p) => pathname === p) ||
     pathname.startsWith("/api/auth") ||
     pathname.startsWith("/api/assessments") ||
+    pathname.startsWith("/api/leads") ||
     pathname.startsWith("/api/le-marche") ||
     pathname.startsWith("/api/le-mot-du-jour") ||
     pathname.startsWith("/_next") ||

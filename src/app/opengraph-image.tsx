@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "HolaBonjour — Preparación online DELF/DALF";
+export const alt = "HolaBonjour — Aprende francés. Vive en francés.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -16,7 +16,7 @@ export default function OGImage() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "linear-gradient(135deg, #0b3c6f 0%, #0f5da0 50%, #1b78c2 100%)",
+          background: "linear-gradient(135deg, #0a0e17 0%, #1a1028 50%, #0a0e17 100%)",
           fontFamily: "system-ui, sans-serif",
         }}
       >
@@ -41,13 +41,13 @@ export default function OGImage() {
           <div
             style={{
               fontSize: 28,
-              color: "#e8d9a0",
+              color: "#e8b865",
               fontWeight: 600,
               letterSpacing: "0.08em",
               textTransform: "uppercase" as const,
             }}
           >
-            Preparación online DELF / DALF
+            Aprende franc&eacute;s. Vive en franc&eacute;s.
           </div>
           <div
             style={{
@@ -56,7 +56,7 @@ export default function OGImage() {
               gap: 16,
             }}
           >
-            {["Prueba de nivel", "Clases en directo", "Exámenes oficiales"].map(
+            {["Test de nivel", "Profesores nativos", "Método inmersivo"].map(
               (item) => (
                 <div
                   key={item}

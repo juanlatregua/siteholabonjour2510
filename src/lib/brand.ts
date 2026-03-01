@@ -54,6 +54,17 @@ export const dashboard = {
   success:       "#22C55E",
 } as const;
 
+// ─── Cinematic (Le Voyage / marketing) ───
+export const cinematic = {
+  bg:         "#0a0e17",
+  bgCard:     "rgba(255,255,255,0.06)",
+  border:     "rgba(255,255,255,0.10)",
+  gold:       "#e8b865",
+  goldLight:  "#f0d08a",
+  text:       "#f1f5f9",
+  textMuted:  "rgba(255,255,255,0.5)",
+} as const;
+
 // ─── Font Families ───
 export const fonts = {
   display: "'Playfair Display', Georgia, serif",

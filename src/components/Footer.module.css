@@ -1,6 +1,6 @@
 .footer {
   margin-top: 3rem;
-  background: linear-gradient(120deg, #0b3c6f, #0e4f8d);
+  background: linear-gradient(135deg, #0a0e17 0%, #111827 50%, #0a0e17 100%);
   color: #e8f2ff;
 }
 
@@ -22,18 +22,13 @@
   color: #ffffff;
 }
 
-.brandLogo {
-  filter: brightness(0) invert(1);
-  margin-bottom: 0.5rem;
-}
-
 .sectionTitle {
   margin: 0;
   font-size: 0.83rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
-  color: #cde5ff;
+  color: #e8b865;
 }
 
 .text {
@@ -74,7 +69,8 @@
 }
 
 .linkList a:hover {
-  text-decoration: underline;
+  color: #e8b865;
+  text-decoration: none;
 }
 
 .social {
@@ -92,6 +88,11 @@
   justify-content: center;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
+  transition: background-color 0.18s ease;
+}
+
+.social a:hover {
+  background: rgba(232, 184, 101, 0.2);
 }
 
 .legalLinks {

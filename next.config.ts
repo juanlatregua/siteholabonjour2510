@@ -11,7 +11,25 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Otras configuraciones que puedas tener...
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        destination: '/contacto',
+        permanent: true,
+      },
+      {
+        source: '/courses',
+        destination: '/cursos',
+        permanent: true,
+      },
+      {
+        source: '/prueba-nivel',
+        destination: '/test-de-nivel',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
