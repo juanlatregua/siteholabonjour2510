@@ -6,9 +6,19 @@ import Particles from "@/components/cinematic/Particles";
 import MorphBlob from "@/components/cinematic/MorphBlob";
 
 export const metadata: Metadata = {
-  title: "Ressources — HolaBonjour",
+  title: "Recursos gratuitos para aprender francés — HolaBonjour",
   description:
-    "Recursos para aprender francés: guía DELF/DALF, enlaces útiles, descargas gratuitas y blog.",
+    "Recursos gratuitos de francés: guía DELF/DALF, fichas de gramática, enlaces útiles, descargas y blog educativo.",
+  alternates: { canonical: "/recursos" },
+  openGraph: {
+    title: "Recursos gratuitos para aprender francés — HolaBonjour",
+    description:
+      "Recursos gratuitos de francés: guía DELF/DALF, fichas de gramática, enlaces útiles, descargas y blog educativo.",
+    url: "https://holabonjour.es/recursos",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const resourceLinks = [

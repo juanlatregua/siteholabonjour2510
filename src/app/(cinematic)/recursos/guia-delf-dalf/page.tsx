@@ -6,9 +6,19 @@ import Particles from "@/components/cinematic/Particles";
 import MorphBlob from "@/components/cinematic/MorphBlob";
 
 export const metadata: Metadata = {
-  title: "Guía completa DELF DALF 2026 — HolaBonjour",
+  title: "Guía completa DELF y DALF 2026 — HolaBonjour",
   description:
-    "Todo sobre los exámenes DELF y DALF: qué son, niveles, cómo inscribirse, fechas en Andalucía, centros examinadores, precios y consejos de preparación.",
+    "Todo sobre DELF y DALF: niveles, estructura, fechas en España, centros examinadores, precios y cómo prepararte. Guía actualizada 2026.",
+  alternates: { canonical: "/recursos/guia-delf-dalf" },
+  openGraph: {
+    title: "Guía completa DELF y DALF 2026 — HolaBonjour",
+    description:
+      "Todo sobre DELF y DALF: niveles, estructura, fechas en España, centros examinadores, precios y cómo prepararte. Guía actualizada 2026.",
+    url: "https://holabonjour.es/recursos/guia-delf-dalf",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "article",
+  },
 };
 
 const levels = [

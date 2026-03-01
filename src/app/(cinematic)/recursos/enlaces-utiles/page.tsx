@@ -4,9 +4,19 @@ import GlassCard from "@/components/cinematic/GlassCard";
 import CinematicSection from "@/components/cinematic/CinematicSection";
 
 export const metadata: Metadata = {
-  title: "Enlaces útiles",
+  title: "Enlaces útiles para aprender francés — HolaBonjour",
   description:
-    "Recursos seleccionados para complementar tu aprendizaje de francés: medios, diccionarios, exámenes oficiales y cultura.",
+    "Recursos online seleccionados para aprender francés: TV5Monde, RFI, diccionarios, ejercicios y herramientas por nivel MCER.",
+  alternates: { canonical: "/recursos/enlaces-utiles" },
+  openGraph: {
+    title: "Enlaces útiles para aprender francés — HolaBonjour",
+    description:
+      "Recursos online seleccionados para aprender francés: TV5Monde, RFI, diccionarios, ejercicios y herramientas por nivel MCER.",
+    url: "https://holabonjour.es/recursos/enlaces-utiles",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 export default function EnlacesUtilesPage() {

@@ -5,9 +5,19 @@ import GoldButton from "@/components/cinematic/GoldButton";
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contacto",
+  title: "Contacto — Infórmate sobre cursos — HolaBonjour",
   description:
-    "Contacta con HolaBonjour: WhatsApp, email o formulario. Infórmate sobre nuestros cursos.",
+    "Contacta con HolaBonjour por WhatsApp, email o formulario. Te asesoramos sobre el mejor curso de francés para ti.",
+  alternates: { canonical: "/contacto" },
+  openGraph: {
+    title: "Contacto — Infórmate sobre cursos — HolaBonjour",
+    description:
+      "Contacta con HolaBonjour por WhatsApp, email o formulario. Te asesoramos sobre el mejor curso de francés para ti.",
+    url: "https://holabonjour.es/contacto",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const contactMethods = [

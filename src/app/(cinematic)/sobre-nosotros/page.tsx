@@ -5,9 +5,19 @@ import CinematicSection from "@/components/cinematic/CinematicSection";
 import GoldButton from "@/components/cinematic/GoldButton";
 
 export const metadata: Metadata = {
-  title: "Sobre nosotros",
+  title: "Sobre nosotros — Equipo y método — HolaBonjour",
   description:
-    "Conoce al equipo de HolaBonjour: profesores nativos franceses especializados en preparación DELF/DALF y tecnología educativa.",
+    "Conoce al equipo de HolaBonjour: profesoras nativas francesas, examinadoras DELF/DALF. Academia online de francés desde Málaga.",
+  alternates: { canonical: "/sobre-nosotros" },
+  openGraph: {
+    title: "Sobre nosotros — Equipo y método — HolaBonjour",
+    description:
+      "Conoce al equipo de HolaBonjour: profesoras nativas francesas, examinadoras DELF/DALF. Academia online de francés desde Málaga.",
+    url: "https://holabonjour.es/sobre-nosotros",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const methodologyPillars = [

@@ -6,9 +6,19 @@ import Particles from "@/components/cinematic/Particles";
 import MorphBlob from "@/components/cinematic/MorphBlob";
 
 export const metadata: Metadata = {
-  title: "Téléchargements gratuits — HolaBonjour",
+  title: "Descargas gratuitas de francés — Fichas y PDF — HolaBonjour",
   description:
-    "Descarga fichas de gramática, vocabulario por nivel y guías de preparación DELF/DALF gratuitas.",
+    "Descarga fichas de gramática, vocabulario y guías de preparación DELF/DALF gratuitas en PDF. Material para todos los niveles.",
+  alternates: { canonical: "/recursos/descargas" },
+  openGraph: {
+    title: "Descargas gratuitas de francés — Fichas y PDF — HolaBonjour",
+    description:
+      "Descarga fichas de gramática, vocabulario y guías de preparación DELF/DALF gratuitas en PDF. Material para todos los niveles.",
+    url: "https://holabonjour.es/recursos/descargas",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const resources = [

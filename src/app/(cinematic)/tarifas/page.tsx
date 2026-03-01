@@ -5,9 +5,19 @@ import CinematicSection from "@/components/cinematic/CinematicSection";
 import GoldButton from "@/components/cinematic/GoldButton";
 
 export const metadata: Metadata = {
-  title: "Tarifas",
+  title: "Precios de clases de francés online — HolaBonjour",
   description:
-    "Planes de preparación DELF/DALF adaptados a tu nivel. Desde 140€ por pack de 4 horas con profesores nativos franceses.",
+    "Tarifas de clases de francés: 35\u20AC/clase individual, pack 10 clases 300\u20AC. Profesoras nativas, 1h por Zoom.",
+  alternates: { canonical: "/tarifas" },
+  openGraph: {
+    title: "Precios de clases de francés online — HolaBonjour",
+    description:
+      "Tarifas de clases de francés: 35\u20AC/clase individual, pack 10 clases 300\u20AC. Profesoras nativas, 1h por Zoom.",
+    url: "https://holabonjour.es/tarifas",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 function CheckIcon() {

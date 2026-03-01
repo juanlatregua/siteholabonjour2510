@@ -7,9 +7,19 @@ import Particles from "@/components/cinematic/Particles";
 import MorphBlob from "@/components/cinematic/MorphBlob";
 
 export const metadata: Metadata = {
-  title: "Blog — HolaBonjour",
+  title: "Blog de francés — Gramática, cultura y DELF — HolaBonjour",
   description:
-    "Artículos sobre gramática francesa, cultura, preparación DELF/DALF, expresiones y vida en Francia.",
+    "Artículos sobre gramática francesa, expresiones, cultura, preparación DELF/DALF y vida en Francia. Contenido para todos los niveles.",
+  alternates: { canonical: "/recursos/blog" },
+  openGraph: {
+    title: "Blog de francés — Gramática, cultura y DELF — HolaBonjour",
+    description:
+      "Artículos sobre gramática francesa, expresiones, cultura, preparación DELF/DALF y vida en Francia. Contenido para todos los niveles.",
+    url: "https://holabonjour.es/recursos/blog",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const categories = [

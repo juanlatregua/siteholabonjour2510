@@ -7,9 +7,19 @@ import MorphBlob from "@/components/cinematic/MorphBlob";
 import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Francais pour entreprises — HolaBonjour",
+  title: "Francés para empresas — Formación online — HolaBonjour",
   description:
-    "Programas de frances para empresas: turismo, hosteleria, comercio internacional. Formacion in-company u online.",
+    "Formación de francés para empresas: turismo, hostelería, inmobiliario. Clases individuales online, bonificable Fundae.",
+  alternates: { canonical: "/cursos/frances-empresas" },
+  openGraph: {
+    title: "Francés para empresas — Formación online — HolaBonjour",
+    description:
+      "Formación de francés para empresas: turismo, hostelería, inmobiliario. Clases individuales online, bonificable Fundae.",
+    url: "https://holabonjour.es/cursos/frances-empresas",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const sectors = [

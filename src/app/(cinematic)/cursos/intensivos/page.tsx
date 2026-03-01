@@ -7,9 +7,19 @@ import MorphBlob from "@/components/cinematic/MorphBlob";
 import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Cours intensifs de francais — HolaBonjour",
+  title: "Cursos intensivos de francés online — HolaBonjour",
   description:
-    "Cursos intensivos de frances: verano, pre-examen, a medida. 2-4 semanas, 10-20 horas semanales.",
+    "Cursos intensivos de francés: verano, pre-examen DELF/DALF, a medida. Sesiones individuales diarias por Zoom.",
+  alternates: { canonical: "/cursos/intensivos" },
+  openGraph: {
+    title: "Cursos intensivos de francés online — HolaBonjour",
+    description:
+      "Cursos intensivos de francés: verano, pre-examen DELF/DALF, a medida. Sesiones individuales diarias por Zoom.",
+    url: "https://holabonjour.es/cursos/intensivos",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const courseTypes = [

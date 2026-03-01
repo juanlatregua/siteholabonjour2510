@@ -7,9 +7,19 @@ import MorphBlob from "@/components/cinematic/MorphBlob";
 import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Cours particuliers de francais — HolaBonjour",
+  title: "Clases particulares de francés online — HolaBonjour",
   description:
-    "Clases particulares de frances online. Horarios flexibles, contenido 100% adaptado a tus necesidades.",
+    "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. 35\u20AC/clase.",
+  alternates: { canonical: "/cursos/clases-particulares" },
+  openGraph: {
+    title: "Clases particulares de francés online — HolaBonjour",
+    description:
+      "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. 35\u20AC/clase.",
+    url: "https://holabonjour.es/cursos/clases-particulares",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const benefits = [

@@ -10,9 +10,19 @@ import SceneGradient from "@/components/cinematic/SceneGradient";
 import { team } from "@/data/team";
 
 export const metadata: Metadata = {
-  title: "Aprende francés online | HolaBonjour",
+  title: "Aprende francés online con nativos — HolaBonjour",
   description:
-    "Academia online de francés: clases en directo con profesores nativos, preparación DELF/DALF, y método inmersivo. Descubre tu nivel con nuestro test gratuito.",
+    "Clases individuales de francés online por Zoom con profesoras nativas. Preparación DELF/DALF, conversación y test de nivel gratuito.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Aprende francés online con nativos — HolaBonjour",
+    description:
+      "Clases individuales de francés online por Zoom con profesoras nativas. Preparación DELF/DALF, conversación y test de nivel gratuito.",
+    url: "https://holabonjour.es/",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 /* ─── Data ─── */

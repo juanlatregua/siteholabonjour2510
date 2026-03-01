@@ -7,9 +7,19 @@ import MorphBlob from "@/components/cinematic/MorphBlob";
 import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Preparation DELF/DALF — HolaBonjour",
+  title: "Preparación DELF/DALF con examinadoras oficiales — HolaBonjour",
   description:
-    "Preparacion especifica para cada nivel del examen oficial DELF y DALF. Profesoras examinadoras, simulacros reales y seguimiento personalizado.",
+    "Prepara tu examen DELF o DALF con profesoras examinadoras oficiales. Simulacros reales, corrección personalizada. Niveles A1 a C2.",
+  alternates: { canonical: "/cursos/preparacion-delf-dalf" },
+  openGraph: {
+    title: "Preparación DELF/DALF con examinadoras oficiales — HolaBonjour",
+    description:
+      "Prepara tu examen DELF o DALF con profesoras examinadoras oficiales. Simulacros reales, corrección personalizada. Niveles A1 a C2.",
+    url: "https://holabonjour.es/cursos/preparacion-delf-dalf",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const levels = [

@@ -5,9 +5,19 @@ import CinematicSection from "@/components/cinematic/CinematicSection";
 import GoldButton from "@/components/cinematic/GoldButton";
 
 export const metadata: Metadata = {
-  title: "Cursos de francés online",
+  title: "Cursos de francés online con nativos — HolaBonjour",
   description:
-    "Cursos de francés online con profesores nativos: preparación DELF/DALF, conversación, francés para empresas y clases particulares.",
+    "Cursos individuales de francés online: DELF/DALF, conversación, empresas, intensivos. 1h por Zoom con profesoras nativas francesas.",
+  alternates: { canonical: "/cursos" },
+  openGraph: {
+    title: "Cursos de francés online con nativos — HolaBonjour",
+    description:
+      "Cursos individuales de francés online: DELF/DALF, conversación, empresas, intensivos. 1h por Zoom con profesoras nativas francesas.",
+    url: "https://holabonjour.es/cursos",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const courseTypes = [

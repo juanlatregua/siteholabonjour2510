@@ -56,6 +56,37 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "HolaBonjour",
+  "legalName": "HBTJ Consultores Lingüísticos S.L.",
+  "url": "https://holabonjour.es",
+  "logo": "https://holabonjour.es/images/logo-holabonjour-01.svg",
+  "telephone": "+34685070304",
+  "email": "hola@holabonjour.es",
+  "description": "Academia online de francés con profesoras nativas. Clases individuales por Zoom: preparación DELF/DALF, conversación y francés para empresas.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Málaga",
+    "addressRegion": "Andalucía",
+    "addressCountry": "ES"
+  },
+  "sameAs": [
+    "https://www.facebook.com/holabonjourmalaga/",
+    "https://www.instagram.com/holabonjourmalaga/",
+    "https://twitter.com/Holabonjour_mlg",
+    "https://www.youtube.com/channel/UCSqK90F1Tm9iYLpZN0tFIGg"
+  ],
+  "foundingDate": "2023",
+  "knowsLanguage": ["fr", "es", "en"],
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 36.7213, "longitude": -4.4213 },
+    "geoRadius": "10000 km"
+  }
+};
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
   return (
@@ -64,6 +95,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={`${playfair.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${dmMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-white text-[#1f2937]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <SessionProvider session={session}>
           {children}
         </SessionProvider>

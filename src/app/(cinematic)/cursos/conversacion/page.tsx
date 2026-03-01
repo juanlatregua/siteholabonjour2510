@@ -7,9 +7,19 @@ import MorphBlob from "@/components/cinematic/MorphBlob";
 import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Conversation en francais — HolaBonjour",
+  title: "Clases de conversación en francés online — HolaBonjour",
   description:
-    "Clases individuales de conversacion en frances con profesores nativos. Temas de actualidad, debates y practica oral personalizada.",
+    "Practica tu francés hablado con profesoras nativas. Sesiones individuales de 1h por Zoom, 100% en francés desde el primer minuto.",
+  alternates: { canonical: "/cursos/conversacion" },
+  openGraph: {
+    title: "Clases de conversación en francés online — HolaBonjour",
+    description:
+      "Practica tu francés hablado con profesoras nativas. Sesiones individuales de 1h por Zoom, 100% en francés desde el primer minuto.",
+    url: "https://holabonjour.es/cursos/conversacion",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const features = [

@@ -6,9 +6,19 @@ import Particles from "@/components/cinematic/Particles";
 import MorphBlob from "@/components/cinematic/MorphBlob";
 
 export const metadata: Metadata = {
-  title: "Français pour entreprises — HolaBonjour",
+  title: "Francés corporativo para empresas — HolaBonjour",
   description:
-    "Formación de francés para empresas: turismo, hostelería, inmobiliario, comercio exterior. In-company u online, facturación directa.",
+    "Programas de francés para empresas: turismo, hostelería, comercio exterior. Formación in-company u online, facturación directa.",
+  alternates: { canonical: "/empresas" },
+  openGraph: {
+    title: "Francés corporativo para empresas — HolaBonjour",
+    description:
+      "Programas de francés para empresas: turismo, hostelería, comercio exterior. Formación in-company u online, facturación directa.",
+    url: "https://holabonjour.es/empresas",
+    siteName: "HolaBonjour",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 const sectors = [
