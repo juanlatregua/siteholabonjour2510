@@ -9,12 +9,13 @@ import styles from "./Header.module.css";
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/#equipo", label: "Equipo" },
+  { href: "/cursos", label: "Cursos" },
+  { href: "/precios", label: "Precios" },
+  { href: "/horarios", label: "Horarios" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
-  { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
-  { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
+  { href: "/nosotros", label: "Conócenos" },
+  { href: "/preguntas-frecuentes", label: "FAQ" },
   { href: "/zona-alumno", label: "Zona alumno" },
-  { href: "/zona-profesor", label: "Zona profesor" },
   { href: "/contact", label: "Contacto" },
 ];
 
@@ -42,7 +43,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.notice}>
-        Clases online con Isabelle Guitton · Pack 4 clases (55 min) desde 140EUR · Zoom + seguimiento personalizado
+        Clases online con Isabelle Guitton · Pack 4 clases (55 min) desde 150€ · Pago seguro con tarjeta
       </div>
 
       <div className={styles.inner}>

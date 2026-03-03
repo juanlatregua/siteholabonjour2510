@@ -53,7 +53,7 @@ export default async function PreparacionDelfDalfPage({
       <section className="mt-6 grid gap-4 md:grid-cols-2" id="tarifas">
         <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">Tarifa A1-B2</p>
-          <p className="mt-1 text-2xl font-bold text-gray-900">Pack 4 clases (55 min) · 140€</p>
+          <p className="mt-1 text-2xl font-bold text-gray-900">Pack 4 clases (55 min) · 150€</p>
           <p className="mt-2 text-sm text-gray-700">
             Valido para conversacion o preparacion DELF en niveles A1, A2, B1 y B2.
           </p>

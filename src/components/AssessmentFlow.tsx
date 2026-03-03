@@ -766,7 +766,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
           </div>
 
           <p className="mt-4 rounded-xl border border-emerald-200 bg-white px-4 py-3 text-sm text-emerald-900">
-            Siguiente paso: contratar pack y reservar agenda. Pago activo por transferencia.
+            Siguiente paso: contratar pack y reservar agenda. Pago seguro con tarjeta.
           </p>
 
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">

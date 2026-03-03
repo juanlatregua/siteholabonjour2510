@@ -7,7 +7,7 @@ import QuickHelpChat from "@/components/QuickHelpChat";
 export const metadata: Metadata = {
   title: "Academia de frances online | Preparacion DELF/DALF",
   description:
-    "HolaBonjour, academia de frances online dirigida por Isabelle Guitton: preparacion DELF/DALF y conversacion por Zoom. Pack 4 clases (55 min) A1-B2 140EUR, C1-C2 200EUR.",
+    "HolaBonjour, academia de frances online dirigida por Isabelle Guitton: preparacion DELF/DALF y conversacion por Zoom. Pack 4 clases (55 min) A1-B2 150€, C1-C2 200€.",
 };
 
 const highlights = [
@@ -35,7 +35,7 @@ const trustSignals = [
   "Direccion academica: Isabelle Guitton",
   "Proyecto docente activo desde 2017",
   "Modelo actual 100% online por Zoom",
-  "Pago activo por transferencia bancaria de empresa",
+  "Pago seguro con tarjeta (Stripe)",
 ];
 
 export default function HomePage() {
@@ -79,10 +79,10 @@ export default function HomePage() {
               Packs actuales
             </p>
             <ul className="mt-2 space-y-2 text-sm text-white">
-              <li>A1-B2: pack 4 clases (55 min) por 140EUR</li>
-              <li>C1-C2: pack 4 clases (55 min) por 200EUR</li>
+              <li>A1-B2: pack 4 clases (55 min) por 150€</li>
+              <li>C1-C2: pack 4 clases (55 min) por 200€</li>
               <li>Ruta examen o ruta conversacion</li>
-              <li>Confirmacion por transferencia bancaria</li>
+              <li>Pago seguro con tarjeta en la web</li>
             </ul>
           </aside>
         </div>
@@ -171,11 +171,11 @@ export default function HomePage() {
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <article className="rounded-xl border border-blue-200 bg-white p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">Niveles A1 a B2</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 clases (55 min) - 140EUR</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 clases (55 min) - 150€</p>
           </article>
           <article className="rounded-xl border border-blue-200 bg-white p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">Niveles C1 y C2</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 clases (55 min) - 200EUR</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 clases (55 min) - 200€</p>
           </article>
         </div>
         <Link

@@ -5,12 +5,13 @@ import styles from "./Footer.module.css";
 
 const quickLinks = [
   { href: "/", label: "Inicio" },
-  { href: "/#equipo", label: "Equipo" },
+  { href: "/cursos", label: "Cursos" },
+  { href: "/precios", label: "Precios" },
+  { href: "/horarios", label: "Horarios" },
   { href: "/prueba-nivel", label: "Prueba de nivel" },
-  { href: "/preparacion-delf-dalf", label: "Preparacion y conversacion" },
-  { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
+  { href: "/nosotros", label: "Conócenos" },
+  { href: "/preguntas-frecuentes", label: "FAQ" },
   { href: "/zona-alumno", label: "Zona alumno" },
-  { href: "/zona-profesor", label: "Zona profesor" },
   { href: "/contratar", label: "Contratar pack" },
   { href: "/contact", label: "Contacto" },
 ];
@@ -77,9 +78,9 @@ const Footer = () => {
             <p className={styles.sectionTitle}>Contacto y tarifas</p>
             <p className={styles.text}>Telefono / WhatsApp: 685 07 03 04</p>
             <p className={styles.text}>Email: info@holabonjour.es</p>
-            <p className={styles.text}>A1-B2: pack 4 clases (55 min) por 140EUR</p>
-            <p className={styles.text}>C1-C2: pack 4 clases (55 min) por 200EUR</p>
-            <p className={styles.text}>Pago activo: transferencia bancaria</p>
+            <p className={styles.text}>A1-B2: pack 4 clases (55 min) por 150€</p>
+            <p className={styles.text}>C1-C2: pack 4 clases (55 min) por 200€</p>
+            <p className={styles.text}>Pago seguro con tarjeta (Stripe)</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (
                 <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
