@@ -40,7 +40,7 @@ const Test = () => {
         rows={4}
       />
 
-      <button className="bg-[#0055A4] text-white px-6 py-2 rounded hover:bg-[#003b7a] transition">
+      <button className="bg-[#2563eb] text-white px-6 py-2 rounded hover:bg-[#1d4ed8] transition">
         Enviar
       </button>
     </div>

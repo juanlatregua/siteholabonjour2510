@@ -5,7 +5,7 @@ import { getStudentDashboard } from "@/lib/student-zone-db";
 export const metadata: Metadata = {
   title: "Zona alumno",
   description:
-    "Accede a apuntes, material y seguimiento de clases del alumno en entorno digital personalizado.",
+    "Accede a apuntes y seguimiento de clases del alumno en tu zona de alumno personalizada.",
   robots: {
     index: false,
     follow: false,
@@ -39,7 +39,7 @@ export default async function ZonaAlumnoPage({
         </p>
         <Link
           href="/contact"
-          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
+          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 text-sm font-semibold text-white transition hover:bg-[#1d4ed8]"
         >
           Solicitar acceso
         </Link>
@@ -59,7 +59,7 @@ export default async function ZonaAlumnoPage({
         </p>
         <Link
           href="/contact"
-          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
+          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 text-sm font-semibold text-white transition hover:bg-[#1d4ed8]"
         >
           Contactar soporte academico
         </Link>
@@ -71,7 +71,7 @@ export default async function ZonaAlumnoPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <section className="rounded-2xl bg-[#0b3c6f] px-6 py-8 text-white">
+      <section className="rounded-2xl bg-[#1e40af] px-6 py-8 text-white">
         <p className="text-xs uppercase tracking-[0.14em] text-blue-100">Zona alumno</p>
         <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{student.name}</h1>
         <p className="mt-3 max-w-3xl text-sm text-blue-100 sm:text-base">
@@ -81,21 +81,21 @@ export default async function ZonaAlumnoPage({
 
       <section className="mt-6 grid gap-4 md:grid-cols-3">
         <article className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-          <p className="text-xs uppercase tracking-wide text-[#0f5da0]">Alumno</p>
+          <p className="text-xs uppercase tracking-wide text-[#2563eb]">Alumno</p>
           <p className="mt-1 text-sm font-semibold text-gray-900">{student.name}</p>
           <p className="text-sm text-gray-700">{student.email}</p>
         </article>
         <article className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-          <p className="text-xs uppercase tracking-wide text-[#0f5da0]">Plan activo</p>
+          <p className="text-xs uppercase tracking-wide text-[#2563eb]">Plan activo</p>
           <p className="mt-1 text-sm font-semibold text-gray-900">
             {student.route === "preparacion-examen" ? "Preparacion DELF/DALF" : "Conversacion"}
           </p>
           <p className="text-sm text-gray-700">Nivel objetivo {student.level}</p>
         </article>
         <article className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-          <p className="text-xs uppercase tracking-wide text-[#0f5da0]">Clases registradas</p>
+          <p className="text-xs uppercase tracking-wide text-[#2563eb]">Clases registradas</p>
           <p className="mt-1 text-2xl font-bold text-gray-900">{lessons.length}</p>
-          <p className="text-sm text-gray-700">Apuntes y materiales por sesion.</p>
+          <p className="text-sm text-gray-700">Apuntes y notas por sesion.</p>
         </article>
       </section>
 
@@ -104,7 +104,7 @@ export default async function ZonaAlumnoPage({
           <article key={lesson.id} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-xl font-semibold text-gray-900">{lesson.focus}</h2>
-              <p className="text-sm font-medium text-[#0f5da0]">{formatDate(lesson.date)} · {lesson.durationMinutes} min · {lesson.mode}</p>
+              <p className="text-sm font-medium text-[#2563eb]">{formatDate(lesson.date)} · {lesson.durationMinutes} min · {lesson.mode}</p>
             </div>
 
             <p className="mt-3 text-sm text-gray-700">{lesson.notes}</p>
@@ -118,7 +118,7 @@ export default async function ZonaAlumnoPage({
                       href={material.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm font-medium text-[#0f5da0] underline"
+                      className="text-sm font-medium text-[#2563eb] underline"
                     >
                       {material.title}
                     </a>

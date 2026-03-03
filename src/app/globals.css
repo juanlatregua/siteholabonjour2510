@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #1f2937;
-  --focus-ring: #0f5da0;
+  --focus-ring: #2563eb;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
   left: -9999px;
   top: 8px;
   z-index: 2000;
-  background: #0f5da0;
+  background: #2563eb;
   color: #ffffff;
   border-radius: 0.5rem;
   padding: 0.55rem 0.85rem;

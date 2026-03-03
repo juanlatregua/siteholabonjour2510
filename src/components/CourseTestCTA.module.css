@@ -24,7 +24,7 @@
   }
   
   .ctaButton {
-	background-color: #0055A4;
+	background-color: #2563eb;
 	color: #fff;
 	padding: 0.75rem 1.5rem;
 	border: none;
@@ -35,6 +35,6 @@
   }
   
   .ctaButton:hover {
-	background-color: #003f7d;
+	background-color: #1d4ed8;
   }
   

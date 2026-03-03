@@ -41,7 +41,7 @@ const socialLinks = [
 const trustSignals = [
   "Isabelle Guitton: direccion academica y docente",
   "Proyecto docente activo desde 2017",
-  "Zoom + entorno de aprendizaje digital personalizado",
+  "Zoom + seguimiento personalizado",
 ];
 
 const Footer = () => {
@@ -77,8 +77,8 @@ const Footer = () => {
             <p className={styles.sectionTitle}>Contacto y tarifas</p>
             <p className={styles.text}>Telefono / WhatsApp: 685 07 03 04</p>
             <p className={styles.text}>Email: info@holabonjour.es</p>
-            <p className={styles.text}>A1-B2: pack 4 horas por 140EUR</p>
-            <p className={styles.text}>C1-C2: pack 4 horas por 200EUR</p>
+            <p className={styles.text}>A1-B2: pack 4 clases (55 min) por 140EUR</p>
+            <p className={styles.text}>C1-C2: pack 4 clases (55 min) por 200EUR</p>
             <p className={styles.text}>Pago activo: transferencia bancaria</p>
             <div className={styles.social}>
               {socialLinks.map((item) => (

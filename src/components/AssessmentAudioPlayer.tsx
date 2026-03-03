@@ -218,7 +218,7 @@ const AssessmentAudioPlayer = ({
   return (
     <div className="mt-3 rounded-xl border border-cyan-200/70 bg-cyan-50/40 p-3 shadow-sm sm:p-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#0f5da0]">
+        <p className="inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#2563eb]">
           Comprension oral
         </p>
         <p className="text-xs font-medium text-slate-600">{audio?.title || "Lector integrado"}</p>
@@ -234,7 +234,7 @@ const AssessmentAudioPlayer = ({
             <button
               type="button"
               onClick={() => void handleToggleAudio()}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-3.5 text-sm font-semibold text-white"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-3.5 text-sm font-semibold text-white"
               aria-label={isPlaying ? "Pausar audio" : "Reproducir audio"}
             >
               {isPlaying ? "Pausar" : "Reproducir"}
@@ -242,7 +242,7 @@ const AssessmentAudioPlayer = ({
             <button
               type="button"
               onClick={handleRewind}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300 bg-white px-3 text-sm font-semibold text-[#0f5da0]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300 bg-white px-3 text-sm font-semibold text-[#2563eb]"
               aria-label="Retroceder 10 segundos"
             >
               -10s
@@ -250,7 +250,7 @@ const AssessmentAudioPlayer = ({
             <button
               type="button"
               onClick={handleRateCycle}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300 bg-white px-3 text-sm font-semibold text-[#0f5da0]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300 bg-white px-3 text-sm font-semibold text-[#2563eb]"
               aria-label="Cambiar velocidad de reproduccion"
             >
               {playbackRate.toFixed(2).replace(".00", "")}x
@@ -258,7 +258,7 @@ const AssessmentAudioPlayer = ({
             <button
               type="button"
               onClick={handleToggleTts}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300 bg-white px-3 text-sm font-semibold text-[#0f5da0]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300 bg-white px-3 text-sm font-semibold text-[#2563eb]"
               aria-label={ttsPlaying ? "Detener lector" : "Leer en voz alta"}
             >
               {ttsPlaying ? "Detener lector" : "Lector FR"}
@@ -275,7 +275,7 @@ const AssessmentAudioPlayer = ({
             max={duration || 0}
             value={Math.min(currentTime, duration || 0)}
             onChange={(event) => handleSeek(event.target.value)}
-            className="w-full accent-[#0f5da0]"
+            className="w-full accent-[#2563eb]"
             disabled={!isReady}
           />
 

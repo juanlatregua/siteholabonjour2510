@@ -424,7 +424,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
 
   return (
     <div className="space-y-5">
-      <section className="rounded-2xl border border-cyan-200/80 bg-gradient-to-br from-[#0f4f8a] via-[#0f5da0] to-[#1b78c2] p-4 text-white shadow-[0_10px_26px_rgba(15,93,160,0.18)] sm:p-5">
+      <section className="rounded-2xl border border-cyan-200/80 bg-gradient-to-br from-[#1e40af] via-[#2563eb] to-[#60a5fa] p-4 text-white shadow-[0_10px_26px_rgba(15,93,160,0.18)] sm:p-5">
         <p className="inline-flex rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-cyan-100">
           Simulacion orientativa
         </p>
@@ -455,7 +455,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
             id="candidateId"
             value={candidateId}
             onChange={(event) => setCandidateId(event.target.value)}
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 text-sm shadow-sm focus:border-[#0f5da0] focus:outline-none focus:ring-2 focus:ring-[#0f5da0]/20"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 text-sm shadow-sm focus:border-[#2563eb] focus:outline-none focus:ring-2 focus:ring-[#2563eb]/20"
             placeholder="Ejemplo: maria.g"
           />
 
@@ -464,7 +464,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
               type="button"
               onClick={() => void startAttempt()}
               disabled={isSubmitting}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0b4d84] disabled:opacity-60"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1d4ed8] disabled:opacity-60"
             >
               {isSubmitting ? "Iniciando..." : "Empezar prueba"}
             </button>
@@ -486,7 +486,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
         <section className="space-y-3.5 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5">
           <div className="-mx-4 sticky top-[84px] z-20 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5">
             <div className="flex items-center justify-between gap-2">
-              <p className="inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0f5da0]">
+              <p className="inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#2563eb]">
                 Paso 2 de 4
               </p>
               <p className="text-xs font-medium text-slate-600">
@@ -503,7 +503,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
             </div>
             <div className="mt-2 h-2.5 w-full rounded-full bg-slate-200">
               <div
-                className="h-2.5 rounded-full bg-gradient-to-r from-[#0f5da0] to-cyan-500 transition-all"
+                className="h-2.5 rounded-full bg-gradient-to-r from-[#2563eb] to-cyan-500 transition-all"
                 style={{ width: `${overallProgress}%` }}
               />
             </div>
@@ -556,7 +556,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
                           key={option.id}
                           className={`flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border p-3 text-sm transition ${
                             checked
-                              ? "border-[#0f5da0] bg-cyan-50 shadow-sm"
+                              ? "border-[#2563eb] bg-cyan-50 shadow-sm"
                               : "border-slate-200 bg-white hover:border-slate-300"
                           }`}
                         >
@@ -616,7 +616,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
                     Math.min(sectionGroups.length - 1, value + 1),
                   )
                 }
-                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 py-2 text-sm font-semibold text-white"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white"
               >
                 Siguiente bloque
               </button>
@@ -652,7 +652,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
                       Math.min(sectionGroups.length - 1, value + 1),
                     )
                   }
-                  className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 text-sm font-semibold text-white"
+                  className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 text-sm font-semibold text-white"
                 >
                   Siguiente
                 </button>
@@ -672,7 +672,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
 
       {step === "review" && (
         <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5da0]">Paso 3 de 4</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#2563eb]">Paso 3 de 4</p>
           <h3 className="mt-1 text-lg font-semibold text-slate-900">Revision final</h3>
           <p className="mt-2 text-sm text-slate-700">
             Completadas: {answeredCount}/{totalQuestions}. Pendientes: {unansweredCount}.
@@ -707,7 +707,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
               type="button"
               onClick={() => void finishAttempt()}
               disabled={isSubmitting || hasPendingSaves}
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
             >
               {isSubmitting
                 ? "Calculando..."
@@ -732,7 +732,7 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
                 type="button"
                 onClick={() => void finishAttempt()}
                 disabled={isSubmitting || hasPendingSaves}
-                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 text-sm font-semibold text-white disabled:opacity-60"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 text-sm font-semibold text-white disabled:opacity-60"
               >
                 {isSubmitting ? "Calculando" : hasPendingSaves ? "Guardando" : "Finalizar"}
               </button>

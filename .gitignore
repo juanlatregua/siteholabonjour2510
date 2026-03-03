@@ -43,3 +43,5 @@ next-env.d.ts
 
 # local assessment data
 .assessment-store/
+
+/src/generated/prisma

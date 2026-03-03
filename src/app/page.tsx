@@ -7,7 +7,7 @@ import QuickHelpChat from "@/components/QuickHelpChat";
 export const metadata: Metadata = {
   title: "Academia de frances online | Preparacion DELF/DALF",
   description:
-    "HolaBonjour, academia de frances online dirigida por Isabelle Guitton: preparacion DELF/DALF y conversacion por Zoom. Pack 4h A1-B2 140EUR, C1-C2 200EUR.",
+    "HolaBonjour, academia de frances online dirigida por Isabelle Guitton: preparacion DELF/DALF y conversacion por Zoom. Pack 4 clases (55 min) A1-B2 140EUR, C1-C2 200EUR.",
 };
 
 const highlights = [
@@ -26,7 +26,7 @@ const highlights = [
   {
     title: "Entorno de alumno personalizado",
     detail:
-      "Seguimiento individual, materiales por sesion y trazabilidad del avance academico.",
+      "Seguimiento individual, apuntes por sesion y trazabilidad del avance academico.",
     icon: "/images/icons-zoom.svg",
   },
 ];
@@ -41,11 +41,14 @@ const trustSignals = [
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-      <section className="rounded-2xl bg-gradient-to-br from-[#0b3c6f] via-[#0f5da0] to-[#1b78c2] px-5 py-7 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:px-8 sm:py-9">
+      <section className="rounded-2xl bg-gradient-to-br from-[#1e40af] via-[#2563eb] to-[#60a5fa] px-5 py-7 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:px-8 sm:py-9">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start">
           <div>
             <p className="text-xs uppercase tracking-[0.17em] text-blue-100">
               HolaBonjour · Academia de frances online
+            </p>
+            <p className="mt-1 text-sm italic text-blue-200">
+              « Apprenez le français comme on vit en France »
             </p>
             <h1 className="mt-2 text-3xl font-bold leading-tight sm:text-4xl">
               Preparacion DELF/DALF y conversacion por Zoom
@@ -58,7 +61,7 @@ export default function HomePage() {
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
               <Link
                 href="/contratar"
-                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-white px-5 text-sm font-semibold text-[#0b3c6f] transition hover:bg-blue-50"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-white px-5 text-sm font-semibold text-[#1e40af] transition hover:bg-blue-50"
               >
                 Contratar pack
               </Link>
@@ -76,8 +79,8 @@ export default function HomePage() {
               Packs actuales
             </p>
             <ul className="mt-2 space-y-2 text-sm text-white">
-              <li>A1-B2: pack 4h por 140EUR</li>
-              <li>C1-C2: pack 4h por 200EUR</li>
+              <li>A1-B2: pack 4 clases (55 min) por 140EUR</li>
+              <li>C1-C2: pack 4 clases (55 min) por 200EUR</li>
               <li>Ruta examen o ruta conversacion</li>
               <li>Confirmacion por transferencia bancaria</li>
             </ul>
@@ -127,8 +130,8 @@ export default function HomePage() {
         </p>
         <p className="mt-3 text-sm text-slate-700 sm:text-base">
           La metodologia combina evaluacion inicial, plan por competencias, correccion continua y
-          seguimiento individual. El formato de clases es por Zoom, con materiales organizados en tu
-          entorno de alumno.
+          seguimiento individual. El formato de clases es por Zoom, con apuntes y seguimiento en tu
+          zona de alumno.
         </p>
       </section>
 
@@ -144,7 +147,7 @@ export default function HomePage() {
             />
           </div>
           <div>
-            <p className="text-xs uppercase tracking-[0.12em] text-[#0f5da0]">Equipo y experiencia</p>
+            <p className="text-xs uppercase tracking-[0.12em] text-[#2563eb]">Equipo y experiencia</p>
             <h2 className="mt-1 text-2xl font-bold text-slate-900">De academia presencial a operativa digital</h2>
             <p className="mt-3 text-sm text-slate-700 sm:text-base">
               El proyecto nacio en Malaga y se transformo al modelo online manteniendo criterio
@@ -164,20 +167,20 @@ export default function HomePage() {
       </section>
 
       <section id="tarifas" className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">
-        <h2 className="text-xl font-semibold text-[#0b3c6f]">Tarifas actuales por pack</h2>
+        <h2 className="text-xl font-semibold text-[#1e40af]">Tarifas actuales por pack</h2>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <article className="rounded-xl border border-blue-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Niveles A1 a B2</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 140EUR</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">Niveles A1 a B2</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 clases (55 min) - 140EUR</p>
           </article>
           <article className="rounded-xl border border-blue-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Niveles C1 y C2</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 horas - 200EUR</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">Niveles C1 y C2</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">Pack 4 clases (55 min) - 200EUR</p>
           </article>
         </div>
         <Link
           href="/contratar"
-          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
+          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 text-sm font-semibold text-white transition hover:bg-[#1d4ed8]"
         >
           Contratar pack
         </Link>

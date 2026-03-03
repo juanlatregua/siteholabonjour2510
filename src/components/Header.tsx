@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.notice}>
-        Clases online con Isabelle Guitton · Pack 4h desde 140EUR · Zoom + entorno digital
+        Clases online con Isabelle Guitton · Pack 4 clases (55 min) desde 140EUR · Zoom + seguimiento personalizado
       </div>
 
       <div className={styles.inner}>

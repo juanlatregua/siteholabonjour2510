@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PreguntasFrecuentesPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-      <section className="rounded-2xl bg-[#0b3c6f] px-6 py-8 text-white">
+      <section className="rounded-2xl bg-[#1e40af] px-6 py-8 text-white">
         <p className="text-xs uppercase tracking-[0.14em] text-blue-100">Preguntas frecuentes</p>
         <h1 className="mt-2 text-3xl font-bold sm:text-4xl">FAQ HolaBonjour</h1>
         <p className="mt-3 max-w-3xl text-sm text-blue-100 sm:text-base">
@@ -40,7 +40,7 @@ export default function PreguntasFrecuentesPage() {
         </p>
         <Link
           href="/contact"
-          className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white hover:bg-[#0b4d84]"
+          className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
         >
           Contactar ahora
         </Link>

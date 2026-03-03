@@ -10,7 +10,7 @@ import { feiAllLevels, getFeiLevelResources } from "@/lib/fei-resources";
 export const metadata: Metadata = {
   title: "Preparacion online DELF/DALF",
   description:
-    "Preparacion online dirigida por Isabelle Guitton: ruta examen oficial DELF/DALF o ruta conversacion, con tarifas por pack de 4 horas.",
+    "Preparacion online dirigida por Isabelle Guitton: ruta examen oficial DELF/DALF o ruta conversacion, con tarifas por pack de 4 clases de 55 min.",
   alternates: {
     canonical: "/preparacion-delf-dalf",
   },
@@ -42,7 +42,7 @@ export default async function PreparacionDelfDalfPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <section className="rounded-2xl bg-[#0b3c6f] px-6 py-8 text-white">
+      <section className="rounded-2xl bg-[#1e40af] px-6 py-8 text-white">
         <h1 className="text-3xl font-bold sm:text-4xl">Preparacion oficial DELF/DALF y conversacion</h1>
         <p className="mt-3 max-w-3xl text-sm text-blue-100 sm:text-base">
           Programa online con direccion academica de Isabelle Guitton. Puedes trabajar un objetivo de
@@ -52,15 +52,15 @@ export default async function PreparacionDelfDalfPage({
 
       <section className="mt-6 grid gap-4 md:grid-cols-2" id="tarifas">
         <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Tarifa A1-B2</p>
-          <p className="mt-1 text-2xl font-bold text-gray-900">Pack 4 horas · 140€</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">Tarifa A1-B2</p>
+          <p className="mt-1 text-2xl font-bold text-gray-900">Pack 4 clases (55 min) · 140€</p>
           <p className="mt-2 text-sm text-gray-700">
             Valido para conversacion o preparacion DELF en niveles A1, A2, B1 y B2.
           </p>
         </article>
         <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Tarifa C1-C2</p>
-          <p className="mt-1 text-2xl font-bold text-gray-900">Pack 4 horas · 200€</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">Tarifa C1-C2</p>
+          <p className="mt-1 text-2xl font-bold text-gray-900">Pack 4 clases (55 min) · 200€</p>
           <p className="mt-2 text-sm text-gray-700">
             Sesiones de exigencia alta para objetivos C1-C2 en ruta examen o conversacion avanzada.
           </p>
@@ -95,7 +95,7 @@ export default async function PreparacionDelfDalfPage({
                   : "border-gray-200 bg-white"
               }`}
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">Nivel {track.level}</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-[#2563eb]">Nivel {track.level}</p>
               <h2 className="mt-2 text-xl font-bold text-gray-900">{track.exam}</h2>
               <p className="mt-2 text-sm text-gray-700">{track.mode}</p>
               <p className="mt-1 text-sm text-gray-700">Carga recomendada: {track.weeklyLoad}</p>
@@ -135,7 +135,7 @@ export default async function PreparacionDelfDalfPage({
               open={Boolean(selectedLevel)}
               className="rounded-xl border border-blue-100 bg-blue-50/40 p-4"
             >
-              <summary className="cursor-pointer text-sm font-semibold text-[#0b3c6f]">
+              <summary className="cursor-pointer text-sm font-semibold text-[#1e40af]">
                 {group.level} · {group.exam} · {group.counts.total} recursos ({group.counts.documents} documentos / {group.counts.audios} audios)
               </summary>
 
@@ -158,7 +158,7 @@ export default async function PreparacionDelfDalfPage({
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-[#0f5da0] underline"
+                      className="font-medium text-[#2563eb] underline"
                     >
                       {resource.label}
                     </a>
@@ -183,7 +183,7 @@ export default async function PreparacionDelfDalfPage({
         <div className="mt-5 grid gap-3 md:grid-cols-3">
           {officialExamWindows.map((window) => (
             <article key={window.period} className="rounded-xl border border-blue-100 bg-blue-50/60 p-4">
-              <h3 className="text-sm font-semibold text-[#0b3c6f]">{window.period}</h3>
+              <h3 className="text-sm font-semibold text-[#1e40af]">{window.period}</h3>
               <p className="mt-1 text-sm text-gray-700">{window.note}</p>
             </article>
           ))}

@@ -39,7 +39,7 @@ export const faqItems: FaqItem[] = [
     id: "faq-pack",
     question: "Que pack ofrecemos ahora?",
     answer:
-      "Pack 4 horas A1-B2: 140EUR. Pack 4 horas C1-C2: 200EUR. Modalidad online por Zoom.",
+      "Pack 4 clases (55 min) A1-B2: 140EUR. Pack 4 clases (55 min) C1-C2: 200EUR. Modalidad online por Zoom.",
     source: "current",
   },
   {

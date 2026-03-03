@@ -12,13 +12,13 @@ const packs = [
     id: "a1-b2",
     title: "Pack A1-B2",
     price: "140EUR",
-    detail: "4 horas para conversacion o preparacion DELF A1, A2, B1 y B2.",
+    detail: "4 clases de 55 min para conversacion o preparacion DELF A1, A2, B1 y B2.",
   },
   {
     id: "c1-c2",
     title: "Pack C1-C2",
     price: "200EUR",
-    detail: "4 horas para conversacion avanzada o preparacion C1-C2.",
+    detail: "4 clases de 55 min para conversacion avanzada o preparacion C1-C2.",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function ContratarPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <section className="rounded-2xl bg-[#0b3c6f] px-6 py-8 text-white">
+      <section className="rounded-2xl bg-[#1e40af] px-6 py-8 text-white">
         <p className="text-xs uppercase tracking-[0.14em] text-blue-100">Contratacion online</p>
         <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
           Contrata tu pack con Isabelle Guitton
@@ -60,7 +60,7 @@ export default function ContratarPage() {
         {packs.map((pack) => (
           <article key={pack.id} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
             <h2 className="text-xl font-bold text-gray-900">{pack.title}</h2>
-            <p className="mt-1 text-3xl font-bold text-[#0f5da0]">{pack.price}</p>
+            <p className="mt-1 text-3xl font-bold text-[#2563eb]">{pack.price}</p>
             <p className="mt-2 text-sm text-gray-700">{pack.detail}</p>
           </article>
         ))}
@@ -80,14 +80,14 @@ export default function ContratarPage() {
               href={calendarUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 text-sm font-semibold text-white transition hover:bg-[#1d4ed8]"
             >
               Abrir calendario disponible
             </a>
           ) : (
             <Link
               href="/contact"
-              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b3c6f]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 text-sm font-semibold text-white transition hover:bg-[#1d4ed8]"
             >
               Reservar por WhatsApp o email
             </Link>
@@ -95,7 +95,7 @@ export default function ContratarPage() {
 
           <Link
             href="/contact"
-            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#0f5da0] px-5 text-sm font-semibold text-[#0f5da0] transition hover:bg-blue-100"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#2563eb] px-5 text-sm font-semibold text-[#2563eb] transition hover:bg-blue-100"
           >
             Reservar orientacion
           </Link>
