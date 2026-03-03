@@ -1,0 +1,89 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Aviso legal | HolaBonjour",
+  description:
+    "Información legal y datos del titular del sitio web holabonjour.es: responsabilidad, condiciones de uso y datos de contacto.",
+  alternates: { canonical: "https://www.holabonjour.es/aviso-legal" },
+};
+
+export default function AvisoLegalPage() {
+  return (
+    <main className="mx-auto max-w-3xl px-4 py-12 text-sm text-gray-700">
+      <h1 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+        Aviso legal
+      </h1>
+
+      <section className="mt-6 space-y-6">
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">1. Aviso Legal</h2>
+
+          <h3 className="mt-4 font-semibold text-gray-900">1.1 Información general</h3>
+          <p className="mt-2">
+            En cumplimiento de la Ley 34/2002, de Servicios de la Sociedad de la Información y del
+            Comercio Electrónico (LSSI-CE), se informa de los siguientes datos:
+          </p>
+          <ul className="mt-2 list-disc space-y-1 pl-5">
+            <li>
+              <strong>Titular:</strong> HBTJ Consultores Lingüísticos S.L.
+            </li>
+            <li>
+              <strong>CIF:</strong> B93712784
+            </li>
+            <li>
+              <strong>Nombre comercial:</strong> HolaBonjour
+            </li>
+            <li>
+              <strong>Actividad:</strong> Formación en lengua francesa, preparación DELF/DALF y
+              clases de francés online por Zoom
+            </li>
+            <li>
+              <strong>Correo electrónico:</strong>{" "}
+              <a className="text-[#2563eb] underline" href="mailto:info@holabonjour.es">
+                info@holabonjour.es
+              </a>
+            </li>
+            <li>
+              <strong>Domicilio:</strong> Calle Esperanto, 9 — 29007 Málaga (España)
+            </li>
+          </ul>
+
+          <h3 className="mt-6 font-semibold text-gray-900">1.2 Objeto</h3>
+          <p className="mt-2">
+            Este sitio web tiene como objeto facilitar información sobre los servicios de formación
+            en lengua francesa ofrecidos por HBTJ Consultores Lingüísticos S.L. bajo la marca
+            HolaBonjour, así como permitir el contacto, la reserva de clases y el pago online.
+          </p>
+
+          <h3 className="mt-6 font-semibold text-gray-900">1.3 Condiciones de uso</h3>
+          <p className="mt-2">
+            El acceso y uso del sitio web atribuye la condición de usuario, implicando la aceptación
+            plena del contenido del presente aviso. El usuario se compromete a hacer un uso adecuado
+            y lícito del sitio web.
+          </p>
+
+          <h3 className="mt-6 font-semibold text-gray-900">1.4 Propiedad intelectual e industrial</h3>
+          <p className="mt-2">
+            Todos los contenidos del sitio web (textos, imágenes, diseños, logotipos, estructura,
+            código fuente, etc.) son titularidad de HBTJ Consultores Lingüísticos S.L. o de terceros
+            autorizados, quedando prohibida su reproducción sin autorización expresa.
+          </p>
+
+          <h3 className="mt-6 font-semibold text-gray-900">1.5 Responsabilidad</h3>
+          <p className="mt-2">
+            HBTJ Consultores Lingüísticos S.L. no se hace responsable del mal uso que se realice del
+            sitio web ni de los daños derivados del acceso o uso de la información publicada.
+          </p>
+
+          <h3 className="mt-6 font-semibold text-gray-900">1.6 Política de anulación de clases</h3>
+          <p className="mt-2">
+            Las clases contratadas pueden anularse con un mínimo de 48 horas de antelación.
+            En caso contrario, la sesión se descontará del bono adquirido. Excepción:
+            enfermedad debidamente justificada con certificado médico presentado en las 24 horas
+            siguientes a la clase.
+          </p>
+        </div>
+      </section>
+    </main>
+  );
+}
