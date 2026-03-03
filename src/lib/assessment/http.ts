@@ -26,6 +26,8 @@ export const toErrorResponse = (error: unknown): NextResponse => {
     );
   }
 
+  console.error("[assessment] Unhandled error:", error);
+
   return NextResponse.json(
     {
       ok: false,

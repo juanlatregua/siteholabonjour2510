@@ -56,6 +56,7 @@ export const toPublicAssessment = (assessment: Assessment): PublicAssessment => 
       id: question.id,
       sectionId: question.sectionId,
       prompt: question.prompt,
+      contextImage: question.contextImage,
       difficulty: question.difficulty,
       points: question.points,
       options: question.options,

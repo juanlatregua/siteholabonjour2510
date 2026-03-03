@@ -11,7 +11,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Otras configuraciones que puedas tener...
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'holabonjour.es' }],
+        destination: 'https://www.holabonjour.es/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

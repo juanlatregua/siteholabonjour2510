@@ -537,6 +537,17 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
                     <AssessmentAudioPlayer audio={question.audio} fallbackText={question.prompt} />
                   )}
 
+                  {question.contextImage && (
+                    <div className="mt-3 overflow-hidden rounded-lg border border-slate-200">
+                      <img
+                        src={question.contextImage}
+                        alt=""
+                        className="w-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
                   <div className="mt-3 space-y-2">
                     {question.options.map((option) => {
                       const checked = answers[question.id] === option.id;
@@ -556,7 +567,17 @@ const AssessmentFlow = ({ assessment }: { assessment: PublicAssessment }) => {
                             name={question.id}
                             className="mt-1"
                           />
-                          <span className="text-slate-700">{option.text}</span>
+                          <span className="text-slate-700">
+                            {option.text}
+                            {option.image && (
+                              <img
+                                src={option.image}
+                                alt={option.text}
+                                className="mt-1 max-h-24 rounded"
+                                loading="lazy"
+                              />
+                            )}
+                          </span>
                         </label>
                       );
                     })}

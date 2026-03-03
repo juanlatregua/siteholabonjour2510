@@ -10,6 +10,7 @@ export type AssessmentDifficulty = "easy" | "medium" | "hard";
 export interface AssessmentOption {
   id: string;
   text: string;
+  image?: string;
 }
 
 export interface AssessmentQuestionAudio {
@@ -31,6 +32,7 @@ export interface AssessmentQuestion {
   id: string;
   sectionId: AssessmentSectionId;
   prompt: string;
+  contextImage?: string;
   difficulty: AssessmentDifficulty;
   points: number;
   options: AssessmentOption[];
@@ -56,6 +58,7 @@ export interface PublicAssessmentQuestion {
   id: string;
   sectionId: AssessmentSectionId;
   prompt: string;
+  contextImage?: string;
   difficulty: AssessmentDifficulty;
   points: number;
   options: AssessmentOption[];
