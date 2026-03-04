@@ -1,9 +1,5 @@
-// lib/email.ts — Emails transaccionales HolaBonjour via SendGrid
-import sgMail from "@sendgrid/mail";
-
-const NO_CLICK_TRACKING = {
-  clickTracking: { enable: false, enableText: false },
-};
+// lib/email.ts — Transactional emails via Microsoft Graph API (Azure AD)
+import { sendMail } from "@/lib/azure-mail";
 
 const BRAND_HOME_URL = "https://www.holabonjour.es";
 
@@ -29,24 +25,13 @@ function wrapEmailHtml(content: string) {
   `;
 }
 
-function getEmailConfig() {
-  const apiKey = process.env.SENDGRID_API_KEY;
-  if (!apiKey) throw new Error("Missing SENDGRID_API_KEY");
-  const from = process.env.SENDGRID_FROM || process.env.EMAIL_FROM || "hola@holabonjour.es";
-  sgMail.setApiKey(apiKey);
-  return { from };
-}
-
 export async function sendPaymentConfirmationEmail(data: {
   toEmail: string;
   customerName: string;
   levelRange: string;
   totalEur: string;
 }) {
-  const { from } = getEmailConfig();
   const subject = `Pago confirmado — Pack clases ${data.levelRange}`;
-
-  const text = `Hola ${data.customerName},\n\nPago de ${data.totalEur} EUR confirmado.\nPack: 4 clases de 55 min (${data.levelRange}) por Zoom.\n\nAccede a tu zona de alumno: ${BRAND_HOME_URL}/zona-alumno\n\nEquipo HolaBonjour`;
 
   const html = `
     <h2>Pago confirmado</h2>
@@ -63,12 +48,9 @@ export async function sendPaymentConfirmationEmail(data: {
     <p>Equipo HolaBonjour</p>
   `;
 
-  await sgMail.send({
-    trackingSettings: NO_CLICK_TRACKING,
+  await sendMail({
     to: data.toEmail,
-    from: { email: from, name: "HolaBonjour" },
     subject,
-    text,
     html: wrapEmailHtml(html),
   });
 }
@@ -80,11 +62,7 @@ export async function sendClassReminderEmail(data: {
   time: string;
   zoomLink?: string;
 }) {
-  const { from } = getEmailConfig();
   const subject = `Recordatorio: clase de francés mañana ${data.date}`;
-
-  const zoomLine = data.zoomLink ? `Enlace Zoom: ${data.zoomLink}` : "Te enviaremos el enlace de Zoom antes de la clase.";
-  const text = `Hola ${data.customerName},\n\nRecordatorio: tu clase es mañana ${data.date} a las ${data.time}.\n${zoomLine}\n\nAnulación: 48h antes.\n\nÀ demain !\nEquipo HolaBonjour`;
 
   const zoomHtml = data.zoomLink
     ? `<p><a href="${data.zoomLink}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Unirse a la clase por Zoom</a></p>`
@@ -103,12 +81,9 @@ export async function sendClassReminderEmail(data: {
     <p>À demain !<br/>Equipo HolaBonjour</p>
   `;
 
-  await sgMail.send({
-    trackingSettings: NO_CLICK_TRACKING,
+  await sendMail({
     to: data.toEmail,
-    from: { email: from, name: "HolaBonjour" },
     subject,
-    text,
     html: wrapEmailHtml(html),
   });
 }
@@ -121,11 +96,8 @@ export async function sendNewBookingStaffEmail(data: {
   totalEur: string;
   packId: string;
 }) {
-  const { from } = getEmailConfig();
-  const staffTo = process.env.STAFF_NOTIFICATION_TO || from;
+  const staffTo = process.env.STAFF_NOTIFICATION_TO || process.env.EMAIL_FROM || "hola@holabonjour.es";
   const subject = `Nueva reserva: ${data.customerName} — ${data.levelRange} (${data.totalEur} EUR)`;
-
-  const text = `Nueva reserva.\n\nAlumno: ${data.customerName}\nEmail: ${data.customerEmail}\nTeléfono: ${data.customerPhone || "-"}\nNivel: ${data.levelRange}\nImporte: ${data.totalEur} EUR\nPack ID: ${data.packId}`;
 
   const html = `
     <h2>Nueva reserva</h2>
@@ -139,13 +111,10 @@ export async function sendNewBookingStaffEmail(data: {
     <p><a href="${BRAND_HOME_URL}/zona-profesor" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Abrir zona profesor</a></p>
   `;
 
-  await sgMail.send({
-    trackingSettings: NO_CLICK_TRACKING,
+  await sendMail({
     to: staffTo,
-    from: { email: from, name: "HolaBonjour" },
     subject,
-    text,
-    html,
+    html: wrapEmailHtml(html),
   });
 }
 
@@ -154,10 +123,7 @@ export async function sendLateCancellationEmail(data: {
   customerName: string;
   date: string;
 }) {
-  const { from } = getEmailConfig();
   const subject = `Clase anulada fuera de plazo — ${data.date}`;
-
-  const text = `Hola ${data.customerName},\n\nLa clase del ${data.date} fue anulada con menos de 48h. Se descuenta del bono.\nExcepción: justificante médico en 24h.\n\nEquipo HolaBonjour`;
 
   const html = `
     <h2>Clase anulada fuera de plazo</h2>
@@ -167,12 +133,9 @@ export async function sendLateCancellationEmail(data: {
     <p>Equipo HolaBonjour</p>
   `;
 
-  await sgMail.send({
-    trackingSettings: NO_CLICK_TRACKING,
+  await sendMail({
     to: data.toEmail,
-    from: { email: from, name: "HolaBonjour" },
     subject,
-    text,
     html: wrapEmailHtml(html),
   });
 }

@@ -296,9 +296,37 @@ export default function PreparacionDelfDalfPage() {
         </div>
       </CinematicSection>
 
-      {/* AI Correction + Exam Calendar */}
+      {/* Exam simulation + AI Correction + Calendar */}
       <CinematicSection className="py-16 px-6">
-        <div className="mx-auto max-w-4xl grid gap-6 md:grid-cols-2">
+        <div className="mx-auto max-w-4xl grid gap-6 sm:grid-cols-2">
+          <GlassCard className="p-6">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+            >
+              Examen DELF A1 complet
+            </h3>
+            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Simulation complète avec audios, textes et correction IA de la production écrite. Comme le jour de l&apos;examen.
+            </p>
+            <GoldButton href="/examen-delf-a1" variant="outline">
+              Passer l&apos;examen A1
+            </GoldButton>
+          </GlassCard>
+          <GlassCard className="p-6">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+            >
+              Examen DELF A2 complet
+            </h3>
+            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Simulation complète du DELF A2 avec audios, textes et correction IA de la production écrite. Entraîne-toi comme au vrai examen.
+            </p>
+            <GoldButton href="/examen-delf-a2" variant="outline">
+              Passer l&apos;examen A2
+            </GoldButton>
+          </GlassCard>
           <GlassCard className="p-6">
             <h3
               className="text-xl font-bold mb-2"

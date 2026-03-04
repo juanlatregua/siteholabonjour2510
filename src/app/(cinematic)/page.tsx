@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import HeroAnimations from "@/components/cinematic/HeroAnimations";
 import GlassCard from "@/components/cinematic/GlassCard";
 import PassportStamp from "@/components/cinematic/PassportStamp";
@@ -490,25 +491,41 @@ const CinematicHomePage = () => {
                     marginBottom: "1rem",
                   }}
                 >
-                  {/* Circular avatar with initials */}
-                  <div
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: "50%",
-                      background: teamColors[idx % teamColors.length],
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontWeight: 700,
-                      fontSize: "1.1rem",
-                      color: "#1e2d4a",
-                      flexShrink: 0,
-                      fontFamily: "'Playfair Display', serif",
-                    }}
-                  >
-                    {getInitials(member.name)}
-                  </div>
+                  {/* Avatar: photo or initials */}
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={56}
+                      height={56}
+                      style={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        flexShrink: 0,
+                      }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: "50%",
+                        background: teamColors[idx % teamColors.length],
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontWeight: 700,
+                        fontSize: "1.1rem",
+                        color: "#1e2d4a",
+                        flexShrink: 0,
+                        fontFamily: "'Playfair Display', serif",
+                      }}
+                    >
+                      {getInitials(member.name)}
+                    </div>
+                  )}
                   <div>
                     <h3
                       style={{

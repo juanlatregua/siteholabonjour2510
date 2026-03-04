@@ -148,6 +148,13 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
 
   return (
     <header className={isCinematic ? styles.headerCinematic : styles.header}>
+      {/* Skip to content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-[#E50046] focus:text-white focus:rounded-lg focus:text-sm focus:font-semibold"
+      >
+        Ir al contenido principal
+      </a>
       {/* ─── Notice bar ─── */}
       <div className={isCinematic ? styles.noticeCinematic : styles.notice}>
         Cours en ligne avec professeurs natifs &middot; Préparation DELF/DALF
@@ -219,6 +226,28 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
                 onClick={closeMenu}
               >
                 Corrección IA
+              </Link>
+            </li>
+
+            {/* Examen DELF A1 */}
+            <li className={styles.menuItem}>
+              <Link
+                href="/examen-delf-a1"
+                className={menuLinkClass("/examen-delf-a1")}
+                onClick={closeMenu}
+              >
+                Examen DELF A1
+              </Link>
+            </li>
+
+            {/* Examen DELF A2 */}
+            <li className={styles.menuItem}>
+              <Link
+                href="/examen-delf-a2"
+                className={menuLinkClass("/examen-delf-a2")}
+                onClick={closeMenu}
+              >
+                Examen DELF A2
               </Link>
             </li>
 

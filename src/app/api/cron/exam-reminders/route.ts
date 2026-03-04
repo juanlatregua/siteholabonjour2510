@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import sgMail from "@sendgrid/mail";
+import { sendMail } from "@/lib/azure-mail";
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
@@ -76,14 +76,6 @@ export async function POST(req: NextRequest) {
   });
   const userMap = new Map(users.map((u) => [u.id, u]));
 
-  // Configure SendGrid
-  const apiKey = process.env.SENDGRID_API_KEY;
-  if (!apiKey) {
-    return NextResponse.json({ error: "SendGrid not configured" }, { status: 500 });
-  }
-  sgMail.setApiKey(apiKey);
-  const from = process.env.SENDGRID_FROM || process.env.EMAIL_FROM || "hola@holabonjour.es";
-
   let sent = 0;
 
   for (const reminder of reminders) {
@@ -113,11 +105,9 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      await sgMail.send({
+      await sendMail({
         to: user.email,
-        from: { email: from, name: "HolaBonjour" },
         subject,
-        text: `Hola ${user.name?.split(" ")[0] || ""}!\n\n${message}\n\nCalendario de exámenes: https://www.holabonjour.es/calendario-examenes\n\nEquipo HolaBonjour`,
         html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px;">
           <h2 style="color:#395D9F;">${subject}</h2>
           <p>Hola ${user.name?.split(" ")[0] || ""}!</p>

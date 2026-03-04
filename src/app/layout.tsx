@@ -47,12 +47,21 @@ export const metadata: Metadata = {
     siteName: "HolaBonjour",
     title: "Preparación online DELF/DALF | HolaBonjour",
     description: "Plataforma online de francés orientada a exámenes oficiales DELF y DALF.",
+    images: [
+      {
+        url: "/images/og-holabonjour.jpg",
+        width: 1200,
+        height: 630,
+        alt: "HolaBonjour — Academia de francés online",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@Holabonjour_mlg",
     title: "Preparación online DELF/DALF | HolaBonjour",
     description: "Plataforma online de francés orientada a exámenes oficiales DELF y DALF.",
+    images: ["/images/og-holabonjour.jpg"],
   },
 };
 
@@ -100,7 +109,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <SessionProvider session={session}>
-          {children}
+          <main id="main-content">
+            {children}
+          </main>
         </SessionProvider>
       </body>
     </html>

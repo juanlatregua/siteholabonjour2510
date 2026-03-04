@@ -1,18 +1,35 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { faqItems } from "@/lib/faq-content";
 import CinematicSection from "@/components/cinematic/CinematicSection";
 import GoldButton from "@/components/cinematic/GoldButton";
 
 export const metadata: Metadata = {
-  title: "Preguntas frecuentes",
+  title: "Preguntas frecuentes — HolaBonjour",
   description:
-    "FAQ de HolaBonjour: preparacion DELF/DALF, conversacion online, precios y proceso de contratacion.",
+    "Resuelve tus dudas sobre clases de francés online, preparación DELF/DALF, precios, anulaciones y cómo funcionan nuestros cursos.",
+  alternates: { canonical: "/preguntas-frecuentes" },
 };
 
 export default function PreguntasFrecuentesPage() {
   return (
     <div style={{ background: "#1e2d4a", color: "#f1f5f9", minHeight: "100vh" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqItems.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.answer,
+              },
+            })),
+          }),
+        }}
+      />
       {/* Hero */}
       <CinematicSection className="py-16 px-6">
         <div className="mx-auto max-w-3xl text-center">
