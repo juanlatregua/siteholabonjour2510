@@ -51,7 +51,7 @@ export default function MaterialItem({
         href={downloadHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium text-[#0b3c6f] transition-colors hover:bg-[#0b3c6f]/5"
+        className="flex-shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium text-[#1e40af] transition-colors hover:bg-[#1e40af]/5"
       >
         Descargar
       </a>

@@ -14,7 +14,7 @@ export default function AnimatedGauge({
   percentage,
   size = 160,
   strokeWidth = 12,
-  color = "#0f5da0",
+  color = "#2563eb",
   label,
 }: AnimatedGaugeProps) {
   const [animatedPercentage, setAnimatedPercentage] = useState(0);

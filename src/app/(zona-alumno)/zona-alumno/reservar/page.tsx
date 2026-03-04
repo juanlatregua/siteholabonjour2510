@@ -116,7 +116,7 @@ export default function ReservarPage() {
             <select
               value={selectedTeacherId}
               onChange={(e) => setSelectedTeacherId(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#0b3c6f] focus:outline-none focus:ring-2 focus:ring-[#0b3c6f]/20"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e40af] focus:outline-none focus:ring-2 focus:ring-[#1e40af]/20"
             >
               {teachers.map((t) => (
                 <option key={t.id} value={t.id}>
@@ -158,7 +158,7 @@ export default function ReservarPage() {
                 <textarea
                   value={focus}
                   onChange={(e) => setFocus(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#0b3c6f] focus:outline-none focus:ring-2 focus:ring-[#0b3c6f]/20"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e40af] focus:outline-none focus:ring-2 focus:ring-[#1e40af]/20"
                   rows={2}
                   placeholder="Ej: Preparación oral DELF B2"
                 />
@@ -171,7 +171,7 @@ export default function ReservarPage() {
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#0b3c6f] focus:outline-none focus:ring-2 focus:ring-[#0b3c6f]/20"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e40af] focus:outline-none focus:ring-2 focus:ring-[#1e40af]/20"
                   rows={2}
                   placeholder="Cualquier información adicional para el profesor"
                 />

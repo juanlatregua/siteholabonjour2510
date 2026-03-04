@@ -228,6 +228,17 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
               </Link>
             </li>
 
+            {/* Contratar */}
+            <li className={styles.menuItem}>
+              <Link
+                href="/contratar"
+                className={menuLinkClass("/contratar")}
+                onClick={closeMenu}
+              >
+                Contratar
+              </Link>
+            </li>
+
             {/* Contacto */}
             <li className={styles.menuItem}>
               <Link

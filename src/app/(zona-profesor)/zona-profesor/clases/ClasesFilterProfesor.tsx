@@ -34,7 +34,7 @@ export default function ClasesFilterProfesor({ upcoming, past }: ClasesFilterPro
           onClick={() => setTab("upcoming")}
           className={`px-4 py-2 text-sm font-medium transition-colors ${
             tab === "upcoming"
-              ? "border-b-2 border-[#0b3c6f] text-[#0b3c6f]"
+              ? "border-b-2 border-[#1e40af] text-[#1e40af]"
               : "text-gray-500 hover:text-gray-700"
           }`}
         >
@@ -44,7 +44,7 @@ export default function ClasesFilterProfesor({ upcoming, past }: ClasesFilterPro
           onClick={() => setTab("past")}
           className={`px-4 py-2 text-sm font-medium transition-colors ${
             tab === "past"
-              ? "border-b-2 border-[#0b3c6f] text-[#0b3c6f]"
+              ? "border-b-2 border-[#1e40af] text-[#1e40af]"
               : "text-gray-500 hover:text-gray-700"
           }`}
         >

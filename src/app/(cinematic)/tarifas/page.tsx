@@ -7,12 +7,12 @@ import GoldButton from "@/components/cinematic/GoldButton";
 export const metadata: Metadata = {
   title: "Precios de clases de francés online — HolaBonjour",
   description:
-    "Tarifas de clases de francés: pack A1-B2 desde 140\u20AC por 4 horas, pack C1-C2 200\u20AC por 4 horas. Clases individuales con profesoras nativas por Zoom.",
+    "Tarifas de clases de francés: pack A1-B2 desde 150\u20AC por 4 clases de 55 min, pack C1-C2 200\u20AC por 4 clases de 55 min. Clases individuales con profesoras nativas por Zoom.",
   alternates: { canonical: "/tarifas" },
   openGraph: {
     title: "Precios de clases de francés online — HolaBonjour",
     description:
-      "Tarifas de clases de francés: pack A1-B2 desde 140\u20AC por 4 horas, pack C1-C2 200\u20AC por 4 horas. Clases individuales con profesoras nativas por Zoom.",
+      "Tarifas de clases de francés: pack A1-B2 desde 150\u20AC por 4 clases de 55 min, pack C1-C2 200\u20AC por 4 clases de 55 min. Clases individuales con profesoras nativas por Zoom.",
     url: "https://holabonjour.es/tarifas",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -134,7 +134,7 @@ export default function TarifasPage() {
                     className="text-sm mt-1"
                     style={{ color: "rgba(255,255,255,0.5)" }}
                   >
-                    {tier.hours} horas de clase
+                    {tier.hours} clases de 55 min
                   </p>
                 </div>
 

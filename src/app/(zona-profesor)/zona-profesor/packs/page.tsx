@@ -53,7 +53,7 @@ export default async function PacksPage() {
         </div>
         <Link
           href="/zona-profesor/packs/nuevo"
-          className="inline-flex items-center gap-1.5 rounded-lg bg-[#0b3c6f] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0e4f8d]"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-[#1e40af] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
         >
           <FiPlus className="h-4 w-4" />
           Nuevo pack
@@ -140,7 +140,7 @@ export default async function PacksPage() {
           action={
             <Link
               href="/zona-profesor/packs/nuevo"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-[#0b3c6f] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0e4f8d]"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#1e40af] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
             >
               <FiPlus className="h-4 w-4" />
               Crear pack

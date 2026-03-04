@@ -9,15 +9,15 @@ export const metadata: Metadata = {
 const faqItems = [
   {
     q: "Que incluye el pack?",
-    a: "Clases por Zoom, objetivos por sesion y material en tu entorno digital.",
+    a: "Clases por Zoom, objetivos por sesion y apuntes en tu zona de alumno.",
   },
   {
     q: "Que precio tiene?",
-    a: "A1-B2: pack 4 horas por 140EUR. C1-C2: pack 4 horas por 200EUR.",
+    a: "A1-B2: pack 4 clases de 55 min por 150EUR. C1-C2: pack 4 clases de 55 min por 200EUR.",
   },
   {
     q: "Como se paga ahora?",
-    a: "Ahora por transferencia bancaria a la cuenta de empresa. Bizum y tarjeta en stand by.",
+    a: "Pago seguro con tarjeta a través de Stripe en holabonjour.es/contratar.",
   },
   {
     q: "Que necesitamos para orientarte?",
@@ -44,8 +44,8 @@ export default function ContactPage() {
 
         <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-900">Tarifas vigentes</h2>
-          <p className="mt-2 text-sm text-gray-700">A1-B2: pack 4 horas por 140EUR</p>
-          <p className="text-sm text-gray-700">C1-C2: pack 4 horas por 200EUR</p>
+          <p className="mt-2 text-sm text-gray-700">A1-B2: pack 4 clases de 55 min por 150EUR</p>
+          <p className="text-sm text-gray-700">C1-C2: pack 4 clases de 55 min por 200EUR</p>
           <p className="mt-3 text-sm text-gray-700">Siguiente paso: te proponemos ruta y plan en 24h laborables.</p>
         </div>
       </div>

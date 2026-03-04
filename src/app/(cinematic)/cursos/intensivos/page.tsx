@@ -171,8 +171,8 @@ export default function IntensivosPage() {
               className="leading-relaxed"
               style={{ color: "rgba(255,255,255,0.6)" }}
             >
-              Sesiones individuales diarias de 1 hora por Zoom con profesores nativos.
-              Material incluido y seguimiento personalizado.
+              Sesiones individuales diarias de 55 minutos por Zoom con profesores nativos.
+              Apuntes y seguimiento personalizado.
             </p>
           </GlassCard>
         </div>
@@ -198,7 +198,7 @@ export default function IntensivosPage() {
               },
               {
                 title: "Matériel pédagogique",
-                text: "Todo el material digital incluido en el precio.",
+                text: "Apuntes y seguimiento personalizado incluidos en el precio.",
               },
               {
                 title: "Suivi quotidien",

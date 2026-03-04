@@ -17,13 +17,13 @@ export default function ResultScreen({ result, assessment, onRestart }: ResultSc
   const levelColorMap: Record<string, string> = {
     A1: "#22c55e",
     A2: "#16a34a",
-    B1: "#0f5da0",
-    B2: "#0b3c6f",
+    B1: "#2563eb",
+    B2: "#1e40af",
     C1: "#7c3aed",
     C2: "#6d28d9",
   };
 
-  const gaugeColor = levelColorMap[result.estimatedLevel] ?? "#0f5da0";
+  const gaugeColor = levelColorMap[result.estimatedLevel] ?? "#2563eb";
 
   return (
     <section className="space-y-6">
@@ -67,7 +67,7 @@ export default function ResultScreen({ result, assessment, onRestart }: ResultSc
               </div>
               <div className="mt-2 h-2 w-full rounded-full bg-slate-200">
                 <div
-                  className="h-2 rounded-full bg-[#0f5da0] transition-all duration-1000"
+                  className="h-2 rounded-full bg-[#2563eb] transition-all duration-1000"
                   style={{ width: `${section.percentage}%` }}
                 />
               </div>
@@ -78,7 +78,7 @@ export default function ResultScreen({ result, assessment, onRestart }: ResultSc
 
       {/* Recommendations */}
       <div className="rounded-2xl border border-blue-100 bg-blue-50/50 p-5">
-        <h4 className="text-lg font-semibold text-[#0b3c6f]">Recomendaciones</h4>
+        <h4 className="text-lg font-semibold text-[#1e40af]">Recomendaciones</h4>
         <ul className="mt-3 space-y-2 text-sm text-slate-700">
           {result.sectionScores
             .filter((s) => s.percentage < 60)

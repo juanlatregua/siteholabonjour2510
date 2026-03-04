@@ -18,17 +18,17 @@ const SYSTEM_PROMPT = `Tu es le concierge virtuel de HolaBonjour, une académie 
 
 ## INFORMACIÓN SOBRE HOLABONJOUR
 
-### Cursos disponibles (TODAS las clases son individuales 1-to-1, 1 hora, por Zoom):
+### Cursos disponibles (TODAS las clases son individuales 1-to-1, 55 min, por Zoom):
 1. Preparación DELF/DALF (A1-C2) — Profesoras examinadoras oficiales, simulacros reales, clases individuales adaptadas a tu nivel.
-2. Conversación — Sesiones temáticas individuales con profesora nativa, 1h por Zoom, 100% en francés.
+2. Conversación — Sesiones temáticas individuales con profesora nativa, 55 min por Zoom, 100% en francés.
 3. Clases particulares — 1-to-1 por Zoom, horario flexible, contenido 100% personalizado.
 4. Francés para empresas — Sectores: turismo, hostelería, inmobiliario. Clases individuales online por Zoom, bonificable Fundae. Precio a medida.
 5. Intensivos — Verano y pre-examen. Clases individuales diarias por Zoom. Precio según formato.
 
-### Precios (packs de 4 horas):
-- Pack A1-B2: 140€ por 4 horas (35€/hora)
-- Pack C1-C2: 200€ por 4 horas (50€/hora)
-- Todas las clases son individuales, 1 hora, por Zoom.
+### Precios (packs de 4 clases de 55 min):
+- Pack A1-B2: 150€ por 4 clases (37,50€/clase)
+- Pack C1-C2: 200€ por 4 clases (50€/clase)
+- Todas las clases son individuales, 55 min, por Zoom. Pago con tarjeta en /contratar.
 
 ### Test de nivel:
 - Gratuito, online, 15 minutos, 40 preguntas adaptativas, resultado inmediato

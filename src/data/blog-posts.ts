@@ -123,10 +123,10 @@ export const blogPosts: BlogPost[] = [
   <li><strong>No respetar el formato pedido.</strong> Si te piden una carta formal, necesitas encabezado, fórmula de tratamiento (<em>Madame, Monsieur</em>) y fórmula de despedida (<em>Veuillez agréer...</em>).</li>
   <li><strong>Escribir demasiado.</strong> Más de 320 palabras no suma puntos y sí multiplica los errores gramaticales.</li>
   <li><strong>Usar español disfrazado de francés.</strong> Los <em>faux amis</em> son una trampa constante: <em>actuellement</em> no significa «actualmente» (sino «en este momento»), <em>assister</em> no significa «asistir» (sino «presenciar»).</li>
-  <li><strong>No practicar la oral con un nativo.</strong> La producción oral es la prueba donde más alumnos fallan por falta de práctica real. Una clase individual por Zoom de 1 hora a la semana marca una diferencia enorme.</li>
+  <li><strong>No practicar la oral con un nativo.</strong> La producción oral es la prueba donde más alumnos fallan por falta de práctica real. Una clase individual por Zoom de 55 minutos a la semana marca una diferencia enorme.</li>
   <li><strong>Estudiar solo con libros.</strong> El DELF evalúa comunicación real, no conocimientos teóricos. Combina manual + audios + conversación.</li>
 </ul>
-<p>Si quieres prepararte con examinadoras oficiales que conocen los criterios de corrección por dentro, escríbenos por <strong>WhatsApp al 685 070 304</strong>. Nuestras clases son individuales, de 1 hora, por Zoom, y se adaptan 100 % a tu nivel y objetivos.</p>`,
+<p>Si quieres prepararte con examinadoras oficiales que conocen los criterios de corrección por dentro, escríbenos por <strong>WhatsApp al 685 070 304</strong>. Nuestras clases son individuales, de 55 minutos, por Zoom, y se adaptan 100 % a tu nivel y objetivos.</p>`,
       },
     ],
   },
@@ -248,7 +248,7 @@ export const blogPosts: BlogPost[] = [
   <li>4. <em>fumait</em> (imparfait: hábito) / <em>a décidé</em> (PC: acción puntual que cambia la situación)</li>
   <li>5. <em>dormaient</em> (imparfait: acción en curso) / <em>a sonné</em> (PC: interrupción)</li>
 </ul>
-<p>Si quieres practicar la gramática francesa con una profesora nativa que te corrija en tiempo real, nuestras clases individuales de 1 hora por Zoom son la forma más eficaz. Escríbenos por <strong>WhatsApp al 685 070 304</strong>.</p>`,
+<p>Si quieres practicar la gramática francesa con una profesora nativa que te corrija en tiempo real, nuestras clases individuales de 55 minutos por Zoom son la forma más eficaz. Escríbenos por <strong>WhatsApp al 685 070 304</strong>.</p>`,
       },
     ],
   },
@@ -479,7 +479,7 @@ export const blogPosts: BlogPost[] = [
   <li><strong>No traduzcas palabra por palabra.</strong> El hecho de que una palabra se parezca al español no significa que signifique lo mismo. Ante la duda, busca en un diccionario fiable como <em>WordReference</em> o <em>Le Robert</em>.</li>
   <li><strong>Haz una lista personalizada.</strong> Anota cada falso amigo que encuentres en tus lecturas o clases. Revísala periódicamente.</li>
   <li><strong>Aprende las palabras en contexto.</strong> En vez de memorizar «<em>attendre</em> = esperar», memoriza una frase completa: <em>«J'attends le bus depuis 20 minutes»</em>.</li>
-  <li><strong>Practica con un nativo.</strong> Un profesor nativo te corregirá en el acto cuando uses un falso amigo. En nuestras clases individuales de 1 hora por Zoom, nuestras profesoras francesas nativas (y examinadoras DELF/DALF) están atentas a estos errores.</li>
+  <li><strong>Practica con un nativo.</strong> Un profesor nativo te corregirá en el acto cuando uses un falso amigo. En nuestras clases individuales de 55 minutos por Zoom, nuestras profesoras francesas nativas (y examinadoras DELF/DALF) están atentas a estos errores.</li>
 </ul>
 <p>¿Quieres trabajar los falsos amigos y otros errores típicos de hispanohablantes con una profesora nativa? Haz nuestro <a href="/test-de-nivel">test de nivel</a> y escríbenos por <strong>WhatsApp al 685 070 304</strong> para empezar.</p>`,
       },

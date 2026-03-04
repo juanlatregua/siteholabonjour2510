@@ -119,8 +119,8 @@ export default function BookingSlotPicker({
                           onClick={() => handleSlotClick(dateStr, time)}
                           className={`w-full rounded-lg border px-2 py-1.5 text-xs font-medium transition-colors ${
                             isSelected
-                              ? "border-[#0b3c6f] bg-[#0b3c6f] text-white"
-                              : "border-gray-200 text-gray-700 hover:border-[#0b3c6f] hover:bg-[#0b3c6f]/5"
+                              ? "border-[#1e40af] bg-[#1e40af] text-white"
+                              : "border-gray-200 text-gray-700 hover:border-[#1e40af] hover:bg-[#1e40af]/5"
                           }`}
                         >
                           {time}

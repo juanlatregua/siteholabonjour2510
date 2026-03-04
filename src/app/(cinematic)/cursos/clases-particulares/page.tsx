@@ -9,12 +9,12 @@ import { CONTACT } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Clases particulares de francés online — HolaBonjour",
   description:
-    "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
+    "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4 clases de 55 min desde 150€.",
   alternates: { canonical: "/cursos/clases-particulares" },
   openGraph: {
     title: "Clases particulares de francés online — HolaBonjour",
     description:
-      "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
+      "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4 clases de 55 min desde 150€.",
     url: "https://holabonjour.es/cursos/clases-particulares",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -60,7 +60,7 @@ export default function ClasesParticularesPage() {
             "@type": "Course",
             "name": "Clases Particulares de Francés Online",
             "description":
-              "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
+              "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4 clases de 55 min desde 150€.",
             "provider": {
               "@type": "EducationalOrganization",
               "name": "HolaBonjour",

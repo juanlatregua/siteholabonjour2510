@@ -39,14 +39,14 @@ export const faqItems: FaqItem[] = [
     id: "faq-pack",
     question: "Que pack ofrecemos ahora?",
     answer:
-      "Pack 4 horas A1-B2: 140EUR. Pack 4 horas C1-C2: 200EUR. Modalidad online por Zoom.",
+      "Pack 4 clases de 55 min A1-B2: 150EUR. Pack 4 clases de 55 min C1-C2: 200EUR. Modalidad online por Zoom.",
     source: "current",
   },
   {
     id: "faq-pago",
     question: "Como se confirma el pago ahora?",
     answer:
-      "Actualmente por transferencia bancaria a HBTJ Consultores Linguisticos S.L. Bizum y tarjeta quedan en stand by.",
+      "Pago seguro con tarjeta a través de Stripe. Contrata en holabonjour.es/contratar.",
     source: "current",
   },
   {

@@ -9,10 +9,10 @@
 
 // ─── Main Brand ───
 export const brand = {
-  navy:       "#0b3c6f",
-  blue:       "#0f5da0",
-  blueLight:  "#1b78c2",
-  blueHover:  "#0e4f8d",
+  navy:       "#1e40af",
+  blue:       "#2563eb",
+  blueLight:  "#60a5fa",
+  blueHover:  "#1d4ed8",
   gold:       "#c9a84c",
   goldLight:  "#e8d9a0",
   white:      "#ffffff",

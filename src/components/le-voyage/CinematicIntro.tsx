@@ -43,7 +43,7 @@ export default function CinematicIntro({ onStart }: CinematicIntroProps) {
         <MorphBlob color="#e8b865" size={320} />
       </div>
       <div className="pointer-events-none absolute bottom-[10%] right-[-8%] z-0 opacity-30">
-        <MorphBlob color="#0f5da0" size={260} />
+        <MorphBlob color="#2563eb" size={260} />
       </div>
       <div className="pointer-events-none absolute right-[20%] top-[5%] z-0 opacity-20">
         <MorphBlob color="#e8b865" size={180} />

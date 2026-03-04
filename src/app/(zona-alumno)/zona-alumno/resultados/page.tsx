@@ -48,7 +48,7 @@ export default async function ResultadosPage() {
                   </div>
                   <a
                     href={`/resultados/${link.attemptId}`}
-                    className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-[#0b3c6f] transition-colors hover:bg-[#0b3c6f]/5"
+                    className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-[#1e40af] transition-colors hover:bg-[#1e40af]/5"
                   >
                     Ver resultados
                     <FiExternalLink className="h-3.5 w-3.5" />

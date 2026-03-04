@@ -453,7 +453,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
         className={
           cinematic
             ? "rounded-2xl border border-white/10 bg-[#1a1a2e] p-4 text-white shadow-[0_10px_26px_rgba(232,184,101,0.1)] sm:p-5"
-            : "rounded-2xl border border-cyan-200/80 bg-gradient-to-br from-[#0f4f8a] via-[#0f5da0] to-[#1b78c2] p-4 text-white shadow-[0_10px_26px_rgba(15,93,160,0.18)] sm:p-5"
+            : "rounded-2xl border border-cyan-200/80 bg-gradient-to-br from-[#1d4ed8] via-[#2563eb] to-[#60a5fa] p-4 text-white shadow-[0_10px_26px_rgba(15,93,160,0.18)] sm:p-5"
         }
       >
         <p
@@ -504,7 +504,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
             className={
               cinematic
                 ? "mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-sm text-white shadow-sm placeholder:text-white/30 focus:border-[#e8b865] focus:outline-none focus:ring-2 focus:ring-[#e8b865]/20"
-                : "mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 text-sm shadow-sm focus:border-[#0f5da0] focus:outline-none focus:ring-2 focus:ring-[#0f5da0]/20"
+                : "mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 text-sm shadow-sm focus:border-[#2563eb] focus:outline-none focus:ring-2 focus:ring-[#2563eb]/20"
             }
             placeholder="Ejemplo: maria.g"
           />
@@ -517,7 +517,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               className={
                 cinematic
                   ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-5 py-3 text-sm font-semibold text-[#1a1a2e] transition hover:bg-[#d4a555] disabled:opacity-60"
-                  : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0b4d84] disabled:opacity-60"
+                  : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1d4ed8] disabled:opacity-60"
               }
             >
               {isSubmitting ? "Iniciando..." : "Empezar prueba"}
@@ -560,7 +560,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 className={
                   cinematic
                     ? "inline-flex rounded-full bg-[#e8b865]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#e8b865]"
-                    : "inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0f5da0]"
+                    : "inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#2563eb]"
                 }
               >
                 Paso 2 de 4
@@ -582,7 +582,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 className={
                   cinematic
                     ? "h-2.5 rounded-full bg-gradient-to-r from-[#e8b865] to-[#d4a555] transition-all"
-                    : "h-2.5 rounded-full bg-gradient-to-r from-[#0f5da0] to-cyan-500 transition-all"
+                    : "h-2.5 rounded-full bg-gradient-to-r from-[#2563eb] to-cyan-500 transition-all"
                 }
                 style={{ width: `${overallProgress}%` }}
               />
@@ -639,7 +639,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                                 ? "border-[#e8b865] bg-[#e8b865]/10 shadow-sm"
                                 : "border-white/10 bg-white/5 hover:border-white/20"
                               : checked
-                                ? "border-[#0f5da0] bg-cyan-50 shadow-sm"
+                                ? "border-[#2563eb] bg-cyan-50 shadow-sm"
                                 : "border-slate-200 bg-white hover:border-slate-300"
                           }`}
                         >
@@ -697,7 +697,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 className={
                   cinematic
                     ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 py-2 text-sm font-semibold text-[#1a1a2e]"
-                    : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 py-2 text-sm font-semibold text-white"
+                    : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white"
                 }
               >
                 Siguiente bloque
@@ -749,7 +749,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                   className={
                     cinematic
                       ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 text-sm font-semibold text-[#1a1a2e]"
-                      : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 text-sm font-semibold text-white"
+                      : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 text-sm font-semibold text-white"
                   }
                 >
                   Siguiente
@@ -780,7 +780,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               : "rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5"
           }
         >
-          <p className={cinematic ? "text-xs font-semibold uppercase tracking-[0.08em] text-[#e8b865]" : "text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5da0]"}>Paso 3 de 4</p>
+          <p className={cinematic ? "text-xs font-semibold uppercase tracking-[0.08em] text-[#e8b865]" : "text-xs font-semibold uppercase tracking-[0.08em] text-[#2563eb]"}>Paso 3 de 4</p>
           <h3 className={cinematic ? "mt-1 text-lg font-semibold text-[#f1f5f9]" : "mt-1 text-lg font-semibold text-slate-900"}>Revision final</h3>
           <p className={cinematic ? "mt-2 text-sm text-[#f1f5f9]/80" : "mt-2 text-sm text-slate-700"}>
             Completadas: {answeredCount}/{totalQuestions}. Pendientes: {unansweredCount}.
@@ -828,7 +828,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               className={
                 cinematic
                   ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 py-2 text-sm font-semibold text-[#1a1a2e] disabled:opacity-60"
-                  : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
+                  : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
               }
             >
               {isSubmitting
@@ -865,7 +865,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 className={
                   cinematic
                     ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-4 text-sm font-semibold text-[#1a1a2e] disabled:opacity-60"
-                    : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-4 text-sm font-semibold text-white disabled:opacity-60"
+                    : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 text-sm font-semibold text-white disabled:opacity-60"
                 }
               >
                 {isSubmitting ? "Calculando" : hasPendingSaves ? "Guardando" : "Finalizar"}
