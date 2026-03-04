@@ -31,7 +31,7 @@ function CheckIcon() {
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ color: "var(--cin-gold)", flexShrink: 0 }}
+      style={{ color: "var(--cin-accent)", flexShrink: 0 }}
       aria-hidden="true"
     >
       <polyline points="20 6 9 17 4 12" />
@@ -64,7 +64,7 @@ export default function TarifasPage() {
         <div className="mx-auto max-w-4xl text-center">
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Nos tarifs
           </h1>
@@ -84,14 +84,14 @@ export default function TarifasPage() {
             {pricingTiers.map((tier) => (
               <GlassCard
                 key={tier.name}
-                glow={tier.popular ? "rgba(232,184,101,0.15)" : undefined}
+                glow={tier.popular ? "rgba(229,0,70,0.15)" : undefined}
                 className="flex flex-col relative"
               >
                 {tier.popular && (
                   <span
                     className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-4 py-1 rounded-full"
                     style={{
-                      background: "var(--cin-gold)",
+                      background: "var(--cin-accent)",
                       color: "var(--cin-bg)",
                     }}
                   >
@@ -109,9 +109,9 @@ export default function TarifasPage() {
                   <span
                     className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4"
                     style={{
-                      background: "rgba(232,184,101,0.12)",
-                      color: "var(--cin-gold-light)",
-                      border: "1px solid rgba(232,184,101,0.2)",
+                      background: "rgba(229,0,70,0.12)",
+                      color: "var(--cin-accent-light)",
+                      border: "1px solid rgba(229,0,70,0.2)",
                     }}
                   >
                     {tier.levels}
@@ -119,7 +119,7 @@ export default function TarifasPage() {
                   <div className="flex items-baseline justify-center gap-1">
                     <span
                       className="text-4xl font-bold"
-                      style={{ color: "var(--cin-gold)" }}
+                      style={{ color: "var(--cin-accent)" }}
                     >
                       {tier.price}€
                     </span>
@@ -153,11 +153,11 @@ export default function TarifasPage() {
                 </ul>
 
                 <GoldButton
-                  href="/contacto"
+                  href="/contratar"
                   variant={tier.popular ? "solid" : "outline"}
                   className="w-full text-center"
                 >
-                  Commencer
+                  Contratar pack
                 </GoldButton>
               </GlassCard>
             ))}
@@ -178,7 +178,7 @@ export default function TarifasPage() {
         <div className="mx-auto max-w-3xl">
           <h2
             className="text-3xl md:text-4xl font-bold text-center mb-14"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Questions fréquentes
           </h2>
@@ -208,7 +208,7 @@ export default function TarifasPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className="transition-transform duration-300 group-open:rotate-180"
-                    style={{ color: "var(--cin-gold)", flexShrink: 0 }}
+                    style={{ color: "var(--cin-accent)", flexShrink: 0 }}
                     aria-hidden="true"
                   >
                     <polyline points="6 9 12 15 18 9" />

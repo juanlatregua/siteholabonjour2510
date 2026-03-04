@@ -125,7 +125,7 @@ const coteVieItems = [
     title: "Le Mot du Jour",
     description: "Una palabra nueva cada día para ampliar tu vocabulario.",
     href: "/le-mot-du-jour",
-    accent: "#e8b865",
+    accent: "#c9a84c",
   },
   {
     title: "Le Jeu",
@@ -136,7 +136,7 @@ const coteVieItems = [
 ];
 
 /* Team avatar color palette */
-const teamColors = ["#e8b865", "#6ec6ca", "#c77dba", "#f0a500"];
+const teamColors = ["#E50046", "#395D9F", "#c77dba", "#f0a500"];
 
 function getInitials(name: string) {
   return name
@@ -152,7 +152,7 @@ const CinematicHomePage = () => {
   return (
     <div
       style={{
-        background: "#1a1a2e",
+        background: "#1e2d4a",
         color: "#f1f5f9",
         minHeight: "100vh",
       }}
@@ -181,7 +181,7 @@ const CinematicHomePage = () => {
               color: "#f1f5f9",
             }}
           >
-            Pourquoi choisir <span style={{ color: "#e8b865" }}>HolaBonjour</span>
+            Pourquoi choisir <span style={{ color: "#E50046" }}>HolaBonjour</span>
           </h2>
 
           <div
@@ -198,7 +198,7 @@ const CinematicHomePage = () => {
                     fontFamily: "'Playfair Display', serif",
                     fontSize: "1.25rem",
                     fontWeight: 700,
-                    color: "#e8b865",
+                    color: "#E50046",
                     marginBottom: "0.75rem",
                   }}
                 >
@@ -257,7 +257,7 @@ const CinematicHomePage = () => {
                 fontWeight: 600,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#e8b865",
+                color: "#E50046",
                 marginBottom: "0.5rem",
               }}
             >
@@ -314,7 +314,7 @@ const CinematicHomePage = () => {
               color: "#f1f5f9",
             }}
           >
-            Nos <span style={{ color: "#e8b865", fontStyle: "italic" }}>formations</span>
+            Nos <span style={{ color: "#E50046", fontStyle: "italic" }}>formations</span>
           </h2>
 
           <div
@@ -344,7 +344,7 @@ const CinematicHomePage = () => {
                       fontFamily: "'Playfair Display', serif",
                       fontSize: "1.15rem",
                       fontWeight: 700,
-                      color: "#e8b865",
+                      color: "#E50046",
                       marginBottom: "0.5rem",
                     }}
                   >
@@ -387,7 +387,7 @@ const CinematicHomePage = () => {
             }}
           >
             Ce qu&apos;ils disent{" "}
-            <span style={{ color: "#e8b865" }}>de nous</span>
+            <span style={{ color: "#E50046" }}>de nous</span>
           </h2>
 
           <div
@@ -401,7 +401,7 @@ const CinematicHomePage = () => {
               <GlassCard key={testimonial.author}>
                 <div
                   style={{
-                    color: "#e8b865",
+                    color: "#E50046",
                     fontSize: "1.1rem",
                     letterSpacing: "0.1em",
                     marginBottom: "0.75rem",
@@ -427,7 +427,7 @@ const CinematicHomePage = () => {
                     margin: 0,
                     fontSize: "0.88rem",
                     fontWeight: 600,
-                    color: "#e8b865",
+                    color: "#E50046",
                   }}
                 >
                   &mdash; {testimonial.author}
@@ -445,7 +445,7 @@ const CinematicHomePage = () => {
               color: "rgba(241, 245, 249, 0.6)",
             }}
           >
-            <span style={{ color: "#e8b865" }}>{"\u2605"}</span> 4.5/5 &middot;
+            <span style={{ color: "#E50046" }}>{"\u2605"}</span> 4.5/5 &middot;
             Google Reviews
           </p>
         </div>
@@ -470,7 +470,7 @@ const CinematicHomePage = () => {
               color: "#f1f5f9",
             }}
           >
-            Votre <span style={{ color: "#e8b865" }}>équipe</span>
+            Votre <span style={{ color: "#E50046" }}>équipe</span>
           </h2>
 
           <div
@@ -502,7 +502,7 @@ const CinematicHomePage = () => {
                       justifyContent: "center",
                       fontWeight: 700,
                       fontSize: "1.1rem",
-                      color: "#1a1a2e",
+                      color: "#1e2d4a",
                       flexShrink: 0,
                       fontFamily: "'Playfair Display', serif",
                     }}
@@ -524,7 +524,7 @@ const CinematicHomePage = () => {
                     <p
                       style={{
                         fontSize: "0.85rem",
-                        color: "#e8b865",
+                        color: "#E50046",
                         margin: 0,
                         fontWeight: 600,
                       }}
@@ -553,7 +553,7 @@ const CinematicHomePage = () => {
                         borderRadius: "999px",
                         background: "rgba(232, 184, 101, 0.12)",
                         border: "1px solid rgba(232, 184, 101, 0.25)",
-                        color: "#e8b865",
+                        color: "#E50046",
                         whiteSpace: "nowrap",
                       }}
                     >
@@ -599,7 +599,7 @@ const CinematicHomePage = () => {
             }}
           >
             Apprendre le fran&ccedil;ais, c&apos;est{" "}
-            <span style={{ color: "#e8b865" }}>vivre la France</span>
+            <span style={{ color: "#c9a84c" }}>vivre la France</span>
           </h2>
           <p
             style={{
@@ -720,7 +720,7 @@ const CinematicHomePage = () => {
             }}
           >
             Pr&ecirc;t &agrave; commencer{" "}
-            <span style={{ color: "#e8b865" }}>?</span>
+            <span style={{ color: "#E50046" }}>?</span>
           </h2>
           <p
             style={{
@@ -792,7 +792,7 @@ const CinematicHomePage = () => {
               Email:{" "}
               <a
                 href="mailto:hola@holabonjour.es"
-                style={{ color: "#e8b865", textDecoration: "none" }}
+                style={{ color: "#E50046", textDecoration: "none" }}
               >
                 hola@holabonjour.es
               </a>

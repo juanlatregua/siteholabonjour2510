@@ -36,7 +36,7 @@ const trustSignals = [
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-      <section className="rounded-2xl bg-gradient-to-br from-[#1e40af] via-[#2563eb] to-[#60a5fa] px-5 py-7 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:px-8 sm:py-9">
+      <section className="rounded-2xl bg-gradient-to-br from-[#395D9F] via-[#E50046] to-[#60a5fa] px-5 py-7 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:px-8 sm:py-9">
         <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start">
           <div>
             <p className="text-xs uppercase tracking-[0.17em] text-blue-100">HolaBonjour · DELF/DALF</p>
@@ -50,7 +50,7 @@ export default function HomePage() {
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
               <Link
                 href="/prueba-nivel"
-                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-white px-5 text-sm font-semibold text-[#1e40af] transition hover:bg-blue-50"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-white px-5 text-sm font-semibold text-[#395D9F] transition hover:bg-blue-50"
               >
                 Empezar prueba de nivel
               </Link>
@@ -106,7 +106,7 @@ export default function HomePage() {
       </section>
 
       <section className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/70 p-5 sm:p-6">
-        <h2 className="text-xl font-semibold text-[#1e40af]">Base academica y fuentes oficiales</h2>
+        <h2 className="text-xl font-semibold text-[#395D9F]">Base academica y fuentes oficiales</h2>
         <p className="mt-2 text-sm text-slate-700">
           El itinerario se apoya en el marco CEFR y en modelos de examen publicados por France
           Education international. Esta plataforma ofrece simulaciones orientativas para ayudarte a

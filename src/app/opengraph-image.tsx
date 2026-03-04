@@ -16,7 +16,7 @@ export default function OGImage() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "linear-gradient(135deg, #1a1a2e 0%, #1a1028 50%, #1a1a2e 100%)",
+          background: "linear-gradient(135deg, #1e2d4a 0%, #253d5e 50%, #1e2d4a 100%)",
           fontFamily: "system-ui, sans-serif",
         }}
       >
@@ -41,7 +41,7 @@ export default function OGImage() {
           <div
             style={{
               fontSize: 28,
-              color: "#e8b865",
+              color: "#E50046",
               fontWeight: 600,
               letterSpacing: "0.08em",
               textTransform: "uppercase" as const,

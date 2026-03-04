@@ -98,7 +98,7 @@ export default function AvailabilityGrid({}: AvailabilityGridProps) {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <span className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-[#1e40af] border-t-transparent" />
+        <span className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-[#1e2d4a] border-t-transparent" />
       </div>
     );
   }
@@ -135,7 +135,7 @@ export default function AvailabilityGrid({}: AvailabilityGridProps) {
                         onClick={() => toggleSlot(dayOfWeek, time)}
                         className={`h-8 w-full rounded text-xs font-medium transition-colors ${
                           isActive
-                            ? "bg-[#2563eb] text-white"
+                            ? "bg-[#395D9F] text-white"
                             : "bg-gray-100 text-gray-400 hover:bg-gray-200"
                         }`}
                         aria-label={`${DAY_LABELS[idx]} ${time} - ${isActive ? "Activo" : "Inactivo"}`}

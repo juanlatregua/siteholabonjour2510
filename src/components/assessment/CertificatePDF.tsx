@@ -87,7 +87,7 @@ export default function CertificatePDF({ result, assessmentTitle }: CertificateP
     <button
       type="button"
       onClick={() => void generatePDF()}
-      className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#2563eb] px-5 py-2.5 text-sm font-semibold text-[#2563eb] transition hover:bg-blue-50"
+      className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E50046] px-5 py-2.5 text-sm font-semibold text-[#E50046] transition hover:bg-blue-50"
     >
       Descargar certificado PDF
     </button>

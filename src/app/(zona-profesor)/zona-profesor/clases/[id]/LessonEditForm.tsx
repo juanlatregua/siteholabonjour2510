@@ -83,7 +83,7 @@ export default function LessonEditForm({
             setSuccess(false);
           }}
           rows={4}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e40af] focus:outline-none focus:ring-2 focus:ring-[#1e40af]/20"
+          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e2d4a] focus:outline-none focus:ring-2 focus:ring-[#1e2d4a]/20"
           placeholder="Notas sobre la clase..."
         />
       </div>
@@ -99,7 +99,7 @@ export default function LessonEditForm({
             setSuccess(false);
           }}
           rows={4}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e40af] focus:outline-none focus:ring-2 focus:ring-[#1e40af]/20"
+          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e2d4a] focus:outline-none focus:ring-2 focus:ring-[#1e2d4a]/20"
           placeholder="Feedback para el alumno..."
         />
       </div>

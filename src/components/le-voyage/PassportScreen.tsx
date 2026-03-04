@@ -66,7 +66,7 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
       className="flex min-h-screen items-center justify-center px-4 py-12"
       style={{
         background:
-          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+          "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
       }}
     >
       <div className="w-full max-w-md">
@@ -102,7 +102,7 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#e8b865] focus:outline-none focus:ring-2 focus:ring-[#e8b865]/20"
+                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#E50046] focus:outline-none focus:ring-2 focus:ring-[#E50046]/20"
                   placeholder="Tu nombre"
                 />
               </div>
@@ -120,7 +120,7 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#e8b865] focus:outline-none focus:ring-2 focus:ring-[#e8b865]/20"
+                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#E50046] focus:outline-none focus:ring-2 focus:ring-[#E50046]/20"
                   placeholder="tu@email.com"
                 />
               </div>
@@ -139,7 +139,7 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
                       }
                       className={`rounded-full border px-3.5 py-2 text-sm transition ${
                         objetivo === opt.label
-                          ? "border-[#e8b865] bg-[#e8b865]/20 text-[#e8b865]"
+                          ? "border-[#E50046] bg-[#E50046]/20 text-[#E50046]"
                           : "border-white/15 bg-white/5 text-[#f1f5f9]/70 hover:border-white/30 hover:bg-white/10"
                       }`}
                     >
@@ -157,7 +157,7 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
 
               <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
                 Al enviar este formulario, aceptas nuestra{" "}
-                <a href="/politica-de-privacidad" style={{ color: "#e8b865", textDecoration: "underline" }}>
+                <a href="/politica-de-privacidad" style={{ color: "#E50046", textDecoration: "underline" }}>
                   politica de privacidad
                 </a>
                 . Tus datos se usaran exclusivamente para evaluar tu nivel y contactarte con los resultados.
@@ -166,7 +166,7 @@ export default function PassportScreen({ onComplete }: PassportScreenProps) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-xl bg-[#e8b865] px-5 py-3 text-sm font-semibold text-[#1a1a2e] transition hover:bg-[#d4a555] disabled:opacity-60"
+                className="w-full rounded-xl bg-[#E50046] px-5 py-3 text-sm font-semibold text-[#1e2d4a] transition hover:bg-[#d4a555] disabled:opacity-60"
               >
                 {isSubmitting ? "Embarquement..." : "Embarquer →"}
               </button>

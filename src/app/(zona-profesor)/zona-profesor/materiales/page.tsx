@@ -53,7 +53,7 @@ export default async function MaterialesPage() {
         </div>
         <Link
           href="/zona-profesor/materiales/subir"
-          className="inline-flex items-center gap-1.5 rounded-lg bg-[#1e40af] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-[#1e2d4a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2e4d8a]"
         >
           <FiPlus className="h-4 w-4" />
           Subir material
@@ -110,7 +110,7 @@ export default async function MaterialesPage() {
           action={
             <Link
               href="/zona-profesor/materiales/subir"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-[#1e40af] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#1e2d4a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2e4d8a]"
             >
               <FiPlus className="h-4 w-4" />
               Subir material

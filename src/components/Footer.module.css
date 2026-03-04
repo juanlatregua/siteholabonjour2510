@@ -1,6 +1,6 @@
 .footer {
   margin-top: 3rem;
-  background: linear-gradient(135deg, #0a0f1a 0%, #0f1929 50%, #0a0f1a 100%);
+  background: linear-gradient(135deg, #1e2d4a 0%, #253d5e 50%, #1e2d4a 100%);
   color: #e8f2ff;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .brandAccent {
-  color: #e8b865;
+  color: #E50046;
 }
 
 .tagline {
@@ -42,7 +42,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
-  color: #e8b865;
+  color: #E50046;
 }
 
 .text {
@@ -83,7 +83,7 @@
 }
 
 .linkList a:hover {
-  color: #e8b865;
+  color: #E50046;
   text-decoration: none;
 }
 
@@ -172,7 +172,7 @@
 }
 
 .ecosystemLinks a:hover {
-  color: #e8b865;
+  color: #E50046;
   text-decoration: underline;
 }
 

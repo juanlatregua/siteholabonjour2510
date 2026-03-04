@@ -78,7 +78,7 @@ export default function SobreNosotrosPage() {
         <div className="mx-auto max-w-4xl text-center">
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             À propos de nous
           </h1>
@@ -101,13 +101,13 @@ export default function SobreNosotrosPage() {
                 <div>
                   <h2
                     className="text-2xl font-bold mb-1"
-                    style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+                    style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
                   >
                     {member.name}
                   </h2>
                   <p
                     className="text-sm font-medium mb-4"
-                    style={{ color: "var(--cin-gold-light)" }}
+                    style={{ color: "var(--cin-accent-light)" }}
                   >
                     {member.role}
                   </p>
@@ -124,9 +124,9 @@ export default function SobreNosotrosPage() {
                       key={credential}
                       className="text-xs font-medium px-3 py-1 rounded-full"
                       style={{
-                        background: "rgba(232,184,101,0.12)",
-                        color: "var(--cin-gold-light)",
-                        border: "1px solid rgba(232,184,101,0.2)",
+                        background: "rgba(229,0,70,0.12)",
+                        color: "var(--cin-accent-light)",
+                        border: "1px solid rgba(229,0,70,0.2)",
                       }}
                     >
                       {credential}
@@ -144,7 +144,7 @@ export default function SobreNosotrosPage() {
         <div className="mx-auto max-w-5xl">
           <h2
             className="text-3xl md:text-4xl font-bold text-center mb-14"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Notre méthode
           </h2>

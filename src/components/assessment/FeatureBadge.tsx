@@ -10,7 +10,7 @@ export default function FeatureBadge({ icon, label, variant = "light" }: Feature
   const classes =
     variant === "dark"
       ? "border-white/25 bg-white/10 text-cyan-100"
-      : "border-blue-200 bg-blue-50 text-[#2563eb]";
+      : "border-blue-200 bg-blue-50 text-[#E50046]";
 
   return (
     <div

@@ -33,7 +33,7 @@ export default function EnlacesUtilesPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Liens utiles
@@ -55,7 +55,7 @@ export default function EnlacesUtilesPage() {
               className="text-2xl font-bold mb-8"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "var(--cin-gold)",
+                color: "var(--cin-accent)",
               }}
             >
               {category}

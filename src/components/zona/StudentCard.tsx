@@ -66,7 +66,7 @@ export default function StudentCard({ student }: StudentCardProps) {
               className="h-10 w-10 rounded-full object-cover"
             />
           ) : (
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1e40af] text-sm font-semibold text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1e2d4a] text-sm font-semibold text-white">
               {initials}
             </div>
           )}

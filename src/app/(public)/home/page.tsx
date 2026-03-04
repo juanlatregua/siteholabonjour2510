@@ -10,7 +10,7 @@ const Home = () => {
 
       <div className="flex justify-center">
         <Link href="/courses">
-          <button className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white py-2 px-6 rounded-lg transition-colors">
+          <button className="bg-[#E50046] hover:bg-[#c7003b] text-white py-2 px-6 rounded-lg transition-colors">
             Ver cursos
           </button>
         </Link>

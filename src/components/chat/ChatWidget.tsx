@@ -78,12 +78,12 @@ function formatContent(text: string): string {
     // links
     .replace(
       /(https?:\/\/[^\s)<]+)/g,
-      '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#e8b865;text-decoration:underline">$1</a>',
+      '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#E50046;text-decoration:underline">$1</a>',
     )
     // prices (XX€)
     .replace(
       /(\d+(?:[.,]\d+)?\s*\u20AC)/g,
-      '<span style="color:#e8b865;font-weight:600">$1</span>',
+      '<span style="color:#E50046;font-weight:600">$1</span>',
     )
     // WhatsApp mentions
     .replace(
@@ -422,27 +422,27 @@ export default function ChatWidget() {
             width: 62,
             height: 62,
             borderRadius: "50%",
-            border: "3px solid #e8b865",
+            border: "3px solid #E50046",
             cursor: "pointer",
-            background: "linear-gradient(135deg, #1a1a2e, #16213e)",
+            background: "linear-gradient(135deg, #1e2d4a, #16213e)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             padding: 0,
             overflow: "hidden",
-            boxShadow: "0 4px 20px rgba(232,184,101,0.35)",
+            boxShadow: "0 4px 20px rgba(229,0,70,0.35)",
             transition: "transform 0.25s ease, box-shadow 0.25s ease",
             animation: "chatPulse 3s ease-in-out infinite",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "scale(1.08)";
             e.currentTarget.style.boxShadow =
-              "0 6px 28px rgba(232,184,101,0.55)";
+              "0 6px 28px rgba(229,0,70,0.55)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = "scale(1)";
             e.currentTarget.style.boxShadow =
-              "0 4px 20px rgba(232,184,101,0.35)";
+              "0 4px 20px rgba(229,0,70,0.35)";
           }}
         >
           <Image
@@ -470,7 +470,7 @@ export default function ChatWidget() {
             zIndex: 950,
             display: "flex",
             flexDirection: "column",
-            background: "linear-gradient(180deg, #1a1a2e, #16213e)",
+            background: "linear-gradient(180deg, #1e2d4a, #16213e)",
             border: isMobile ? "none" : "1px solid rgba(255,255,255,0.08)",
             borderRadius: isMobile ? 0 : 20,
             backdropFilter: "blur(20px)",
@@ -502,7 +502,7 @@ export default function ChatWidget() {
                   width: 40,
                   height: 40,
                   borderRadius: "50%",
-                  border: "2px solid #e8b865",
+                  border: "2px solid #E50046",
                   overflow: "hidden",
                   flexShrink: 0,
                 }}
@@ -528,7 +528,7 @@ export default function ChatWidget() {
                     style={{
                       fontFamily: "'Playfair Display', serif",
                       fontStyle: "italic",
-                      color: "#e8b865",
+                      color: "#E50046",
                     }}
                   >
                     {gender ? CONCIERGE_NAMES[gender] : "Le Concierge"}
@@ -552,7 +552,7 @@ export default function ChatWidget() {
                       width: 6,
                       height: 6,
                       borderRadius: "50%",
-                      background: "#e8b865",
+                      background: "#E50046",
                       display: "inline-block",
                       animation: "chatPulse 2s ease-in-out infinite",
                     }}
@@ -680,7 +680,7 @@ export default function ChatWidget() {
                   fontFamily: "'Playfair Display', serif",
                   fontStyle: "italic",
                   fontSize: 18,
-                  color: "#e8b865",
+                  color: "#E50046",
                   margin: 0,
                   textAlign: "center",
                 }}
@@ -716,8 +716,8 @@ export default function ChatWidget() {
                       transition: "all 0.25s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(232,184,101,0.5)";
-                      e.currentTarget.style.background = "rgba(232,184,101,0.08)";
+                      e.currentTarget.style.borderColor = "rgba(229,0,70,0.5)";
+                      e.currentTarget.style.background = "rgba(229,0,70,0.08)";
                       e.currentTarget.style.transform = "translateY(-2px)";
                     }}
                     onMouseLeave={(e) => {
@@ -732,7 +732,7 @@ export default function ChatWidget() {
                         height: 90,
                         borderRadius: "50%",
                         overflow: "hidden",
-                        border: "3px solid #e8b865",
+                        border: "3px solid #E50046",
                       }}
                     >
                       <Image
@@ -747,7 +747,7 @@ export default function ChatWidget() {
                       style={{
                         fontFamily: "'Playfair Display', serif",
                         fontStyle: "italic",
-                        color: "#e8b865",
+                        color: "#E50046",
                         fontSize: 15,
                         fontWeight: 600,
                       }}
@@ -795,12 +795,12 @@ export default function ChatWidget() {
                     ...(msg.role === "assistant"
                       ? {
                           background: "rgba(255,255,255,0.06)",
-                          borderLeft: "2px solid #e8b865",
+                          borderLeft: "2px solid #E50046",
                           borderRadius: "4px 16px 16px 16px",
                         }
                       : {
-                          background: "rgba(232,184,101,0.15)",
-                          border: "1px solid rgba(232,184,101,0.2)",
+                          background: "rgba(229,0,70,0.15)",
+                          border: "1px solid rgba(229,0,70,0.2)",
                           borderRadius: "16px 4px 16px 16px",
                         }),
                   }}
@@ -833,7 +833,7 @@ export default function ChatWidget() {
                     gap: 4,
                     padding: "10px 14px",
                     background: "rgba(255,255,255,0.06)",
-                    borderLeft: "2px solid #e8b865",
+                    borderLeft: "2px solid #E50046",
                     borderRadius: "4px 16px 16px 16px",
                     width: "fit-content",
                   }}
@@ -845,7 +845,7 @@ export default function ChatWidget() {
                         width: 7,
                         height: 7,
                         borderRadius: "50%",
-                        background: "#e8b865",
+                        background: "#E50046",
                         display: "inline-block",
                         animation: "chatDotWave 1.2s ease-in-out infinite",
                         animationDelay: `${i * 0.15}s`,
@@ -889,9 +889,9 @@ export default function ChatWidget() {
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background =
-                        "rgba(232,184,101,0.1)";
+                        "rgba(229,0,70,0.1)";
                       e.currentTarget.style.borderColor =
-                        "rgba(232,184,101,0.3)";
+                        "rgba(229,0,70,0.3)";
                       e.currentTarget.style.color = "rgba(255,255,255,0.95)";
                     }}
                     onMouseLeave={(e) => {
@@ -974,9 +974,9 @@ export default function ChatWidget() {
                 border: "none",
                 background:
                   isStreaming || rateLimited || !input.trim()
-                    ? "rgba(232,184,101,0.3)"
-                    : "#e8b865",
-                color: "#1a1a2e",
+                    ? "rgba(229,0,70,0.3)"
+                    : "#E50046",
+                color: "#1e2d4a",
                 cursor:
                   isStreaming || rateLimited || !input.trim()
                     ? "not-allowed"

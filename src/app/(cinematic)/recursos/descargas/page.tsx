@@ -69,14 +69,14 @@ export default function DescargasPage() {
         className="relative overflow-hidden flex items-center justify-center min-h-[70vh] px-6"
         style={{
           background:
-            "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+            "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
           color: "var(--cin-text)",
         }}
       >
-        <Particles count={40} color="#e8b865" />
+        <Particles count={40} color="#E50046" />
         <MorphBlob
           size={400}
-          color="#e8b865"
+          color="#E50046"
           position={{ top: "-10%", left: "-5%" }}
         />
         <MorphBlob
@@ -90,7 +90,7 @@ export default function DescargasPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Ressources
@@ -122,7 +122,7 @@ export default function DescargasPage() {
                       className="text-lg font-bold"
                       style={{
                         fontFamily: "var(--font-display)",
-                        color: "var(--cin-gold)",
+                        color: "var(--cin-accent)",
                       }}
                     >
                       {resource.title}
@@ -130,9 +130,9 @@ export default function DescargasPage() {
                     <span
                       className="text-xs font-semibold px-3 py-1 rounded-full shrink-0"
                       style={{
-                        background: "rgba(232,184,101,0.15)",
-                        color: "var(--cin-gold)",
-                        border: "1px solid rgba(232,184,101,0.25)",
+                        background: "rgba(229,0,70,0.15)",
+                        color: "var(--cin-accent)",
+                        border: "1px solid rgba(229,0,70,0.25)",
                       }}
                     >
                       {resource.badge}
@@ -147,9 +147,9 @@ export default function DescargasPage() {
                   <span
                     className="inline-block text-sm font-medium px-4 py-2 rounded-lg"
                     style={{
-                      background: "rgba(232,184,101,0.12)",
-                      border: "1px solid rgba(232,184,101,0.3)",
-                      color: "#e8b865",
+                      background: "rgba(229,0,70,0.12)",
+                      border: "1px solid rgba(229,0,70,0.3)",
+                      color: "#E50046",
                     }}
                   >
                     {resource.cta} &rarr;
@@ -166,7 +166,7 @@ export default function DescargasPage() {
         <div className="mx-auto max-w-3xl text-center">
           <h2
             className="text-2xl font-bold mb-4"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Besoin d&apos;aide personnalis&eacute;e ?
           </h2>

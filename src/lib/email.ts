@@ -13,7 +13,7 @@ function wrapEmailHtml(content: string) {
       <div style="max-width:640px; margin:0 auto; background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:22px;">
         <div style="margin-bottom:14px;">
           <a href="${BRAND_HOME_URL}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer">
-            <strong style="font-size:20px; color:#1e40af;">HolaBonjour</strong>
+            <strong style="font-size:20px; color:#395D9F;">HolaBonjour</strong>
           </a>
         </div>
         <div style="font-family:Arial, sans-serif; color:#0f172a; font-size:15px; line-height:1.45;">
@@ -22,7 +22,7 @@ function wrapEmailHtml(content: string) {
         <hr style="margin:18px 0 12px 0; border:0; border-top:1px solid #e2e8f0;" />
         <p style="margin:0; font-family:Arial, sans-serif; font-size:12px; color:#64748b;">
           HolaBonjour · Academia de francés online · Málaga ·
-          <a href="mailto:hola@holabonjour.es" style="color:#2563eb; text-decoration:none;">hola@holabonjour.es</a>
+          <a href="mailto:hola@holabonjour.es" style="color:#E50046; text-decoration:none;">hola@holabonjour.es</a>
         </p>
       </div>
     </div>
@@ -59,7 +59,7 @@ export async function sendPaymentConfirmationEmail(data: {
     <p style="padding:10px; background:#fef3c7; border:1px solid #fbbf24; border-radius:8px; font-size:13px;">
       <strong>Política de anulación:</strong> 48h de antelación. Excepción: justificante médico en 24h.
     </p>
-    <p><a href="${BRAND_HOME_URL}/zona-alumno" style="display:inline-block; background:#2563eb; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ir a mi zona de alumno</a></p>
+    <p><a href="${BRAND_HOME_URL}/zona-alumno" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ir a mi zona de alumno</a></p>
     <p>Equipo HolaBonjour</p>
   `;
 
@@ -87,7 +87,7 @@ export async function sendClassReminderEmail(data: {
   const text = `Hola ${data.customerName},\n\nRecordatorio: tu clase es mañana ${data.date} a las ${data.time}.\n${zoomLine}\n\nAnulación: 48h antes.\n\nÀ demain !\nEquipo HolaBonjour`;
 
   const zoomHtml = data.zoomLink
-    ? `<p><a href="${data.zoomLink}" style="display:inline-block; background:#2563eb; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Unirse a la clase por Zoom</a></p>`
+    ? `<p><a href="${data.zoomLink}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Unirse a la clase por Zoom</a></p>`
     : `<p>Te enviaremos el enlace de Zoom antes de la clase.</p>`;
 
   const html = `
@@ -136,7 +136,7 @@ export async function sendNewBookingStaffEmail(data: {
       <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Nivel</td><td>${data.levelRange}</td></tr>
       <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Importe</td><td>${data.totalEur} EUR</td></tr>
     </table>
-    <p><a href="${BRAND_HOME_URL}/zona-profesor" style="display:inline-block; background:#2563eb; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Abrir zona profesor</a></p>
+    <p><a href="${BRAND_HOME_URL}/zona-profesor" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Abrir zona profesor</a></p>
   `;
 
   await sgMail.send({

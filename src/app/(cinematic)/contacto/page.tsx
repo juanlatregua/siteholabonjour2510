@@ -88,7 +88,7 @@ export default function ContactoPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Contact
@@ -112,7 +112,7 @@ export default function ContactoPage() {
                   className="text-xl font-bold mb-2"
                   style={{
                     fontFamily: "var(--font-display)",
-                    color: "var(--cin-gold)",
+                    color: "var(--cin-accent)",
                   }}
                 >
                   {method.title}

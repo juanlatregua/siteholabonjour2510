@@ -122,8 +122,8 @@ export default function CalendarView({ lessons, onDayClick, selectedDate }: Cale
               title={hasLessons ? tooltip : undefined}
               className={`relative flex min-h-[48px] flex-col items-center rounded-lg p-1 text-sm transition-colors ${
                 inMonth ? "text-gray-900" : "text-gray-300"
-              } ${today ? "bg-[#1e40af]/5 font-semibold" : ""} ${
-                isSelected ? "ring-2 ring-[#1e40af] bg-[#1e40af]/10" : ""
+              } ${today ? "bg-[#1e2d4a]/5 font-semibold" : ""} ${
+                isSelected ? "ring-2 ring-[#1e2d4a] bg-[#1e2d4a]/10" : ""
               } ${hasLessons ? "cursor-pointer hover:bg-gray-50" : "cursor-default"}`}
             >
               <span className="text-xs">{format(day, "d")}</span>

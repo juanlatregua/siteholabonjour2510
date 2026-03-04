@@ -78,7 +78,7 @@ export default function BookingFunnel() {
       <div className="flex items-center gap-2 text-sm">
         {[1, 2, 3].map((s) => (
           <div key={s} className="flex items-center gap-2">
-            <span className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold ${step === s ? "bg-[#2563eb] text-white" : step > s ? "bg-emerald-500 text-white" : "bg-gray-200 text-gray-500"}`}>
+            <span className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold ${step === s ? "bg-[#E50046] text-white" : step > s ? "bg-emerald-500 text-white" : "bg-gray-200 text-gray-500"}`}>
               {step > s ? "✓" : s}
             </span>
             <span className={`hidden sm:inline ${step === s ? "font-semibold text-gray-900" : "text-gray-500"}`}>
@@ -97,7 +97,7 @@ export default function BookingFunnel() {
             <p className="text-sm text-gray-600">Clases individuales (1 a 1) por Zoom, 55 minutos.</p>
             <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-6">
               {LEVELS.map((l) => (
-                <button key={l} type="button" onClick={() => setLevel(l)} className={`rounded-xl border p-3 text-center transition ${level === l ? "border-[#2563eb] bg-blue-50 text-[#2563eb]" : "border-gray-200 text-gray-700 hover:border-gray-300"}`}>
+                <button key={l} type="button" onClick={() => setLevel(l)} className={`rounded-xl border p-3 text-center transition ${level === l ? "border-[#E50046] bg-blue-50 text-[#E50046]" : "border-gray-200 text-gray-700 hover:border-gray-300"}`}>
                   <span className="block text-lg font-bold">{l}</span>
                 </button>
               ))}
@@ -109,7 +109,7 @@ export default function BookingFunnel() {
             <h3 className="text-lg font-semibold text-gray-900">Día preferido</h3>
             <div className="mt-3 flex flex-wrap gap-2">
               {DAYS.map((d) => (
-                <button key={d.value} type="button" onClick={() => setDayOfWeek(d.value)} className={`rounded-xl border px-4 py-2 text-sm font-medium transition ${dayOfWeek === d.value ? "border-[#2563eb] bg-blue-50 text-[#2563eb]" : "border-gray-200 text-gray-700 hover:border-gray-300"}`}>
+                <button key={d.value} type="button" onClick={() => setDayOfWeek(d.value)} className={`rounded-xl border px-4 py-2 text-sm font-medium transition ${dayOfWeek === d.value ? "border-[#E50046] bg-blue-50 text-[#E50046]" : "border-gray-200 text-gray-700 hover:border-gray-300"}`}>
                   {d.label}
                 </button>
               ))}
@@ -120,14 +120,14 @@ export default function BookingFunnel() {
             <h3 className="text-lg font-semibold text-gray-900">Hora preferida</h3>
             <div className="mt-3 grid grid-cols-4 gap-2">
               {TIME_SLOTS.map((t) => (
-                <button key={t} type="button" onClick={() => setTimeSlot(t)} className={`rounded-xl border px-3 py-2 text-sm font-medium transition ${timeSlot === t ? "border-[#2563eb] bg-blue-50 text-[#2563eb]" : "border-gray-200 text-gray-700 hover:border-gray-300"}`}>
+                <button key={t} type="button" onClick={() => setTimeSlot(t)} className={`rounded-xl border px-3 py-2 text-sm font-medium transition ${timeSlot === t ? "border-[#E50046] bg-blue-50 text-[#E50046]" : "border-gray-200 text-gray-700 hover:border-gray-300"}`}>
                   {t}
                 </button>
               ))}
             </div>
           </div>
 
-          <button type="button" disabled={!canProceedStep1} onClick={() => setStep(2)} className="w-full rounded-xl bg-[#2563eb] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1d4ed8] disabled:opacity-50">
+          <button type="button" disabled={!canProceedStep1} onClick={() => setStep(2)} className="w-full rounded-xl bg-[#E50046] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#c7003b] disabled:opacity-50">
             Continuar
           </button>
         </div>
@@ -136,7 +136,7 @@ export default function BookingFunnel() {
       {/* STEP 2 */}
       {step === 2 && (
         <div className="space-y-4">
-          <button type="button" onClick={() => setStep(1)} className="text-sm text-[#2563eb] hover:underline">← Volver</button>
+          <button type="button" onClick={() => setStep(1)} className="text-sm text-[#E50046] hover:underline">← Volver</button>
           <div>
             <label htmlFor="booking-name" className="block text-sm font-medium text-gray-900">Nombre completo *</label>
             <input id="booking-name" type="text" value={name} onChange={(e) => setName(e.target.value)} className="mt-1 w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm" placeholder="Tu nombre" />
@@ -149,7 +149,7 @@ export default function BookingFunnel() {
             <label htmlFor="booking-phone" className="block text-sm font-medium text-gray-900">Teléfono (para WhatsApp)</label>
             <input id="booking-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} className="mt-1 w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm" placeholder="+34 600 123 456" />
           </div>
-          <button type="button" disabled={!canProceedStep2} onClick={() => setStep(3)} className="w-full rounded-xl bg-[#2563eb] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1d4ed8] disabled:opacity-50">
+          <button type="button" disabled={!canProceedStep2} onClick={() => setStep(3)} className="w-full rounded-xl bg-[#E50046] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#c7003b] disabled:opacity-50">
             Continuar al pago
           </button>
         </div>
@@ -158,7 +158,7 @@ export default function BookingFunnel() {
       {/* STEP 3 */}
       {step === 3 && pack && (
         <div className="space-y-4">
-          <button type="button" onClick={() => setStep(2)} className="text-sm text-[#2563eb] hover:underline">← Volver</button>
+          <button type="button" onClick={() => setStep(2)} className="text-sm text-[#E50046] hover:underline">← Volver</button>
           <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
             <h3 className="text-lg font-semibold text-gray-900">Resumen</h3>
             <div className="mt-3 space-y-2 text-sm text-gray-700">
@@ -171,7 +171,7 @@ export default function BookingFunnel() {
               {phone && <p><strong>Teléfono:</strong> {phone}</p>}
             </div>
             <div className="mt-4 rounded-xl bg-blue-50 p-4">
-              <p className="text-2xl font-bold text-[#2563eb]">{pack.totalEur} €</p>
+              <p className="text-2xl font-bold text-[#E50046]">{pack.totalEur} €</p>
               <p className="text-sm text-gray-600">{pack.perSession.toFixed(2)} €/sesión · IVA incluido</p>
             </div>
           </div>

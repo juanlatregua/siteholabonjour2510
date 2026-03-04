@@ -63,7 +63,7 @@ export default function PackCard({
         </div>
         <div className="h-2.5 w-full overflow-hidden rounded-full bg-gray-100">
           <div
-            className="h-full rounded-full bg-[#1e40af] transition-all"
+            className="h-full rounded-full bg-[#1e2d4a] transition-all"
             style={{ width: `${pct}%` }}
           />
         </div>

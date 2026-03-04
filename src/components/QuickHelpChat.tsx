@@ -22,7 +22,7 @@ const QuickHelpChat = () => {
       className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
       aria-label="Asistente de preguntas frecuentes"
     >
-      <p className="text-xs font-semibold uppercase tracking-[0.09em] text-[#2563eb]">
+      <p className="text-xs font-semibold uppercase tracking-[0.09em] text-[#E50046]">
         Asistente rapido
       </p>
       <h2 className="mt-1 text-xl font-bold text-slate-900 sm:text-2xl">
@@ -42,7 +42,7 @@ const QuickHelpChat = () => {
               onClick={() => setSelectedId(item.id)}
               className={`min-h-11 rounded-xl border px-3 py-2 text-left text-sm font-medium transition ${
                 active
-                  ? "border-[#2563eb] bg-blue-50 text-[#2563eb]"
+                  ? "border-[#E50046] bg-blue-50 text-[#E50046]"
                   : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
               }`}
             >
@@ -60,13 +60,13 @@ const QuickHelpChat = () => {
       <div className="mt-4 flex flex-wrap gap-3">
         <Link
           href="/preguntas-frecuentes"
-          className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#2563eb] px-4 text-sm font-semibold text-[#2563eb] hover:bg-blue-100"
+          className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E50046] px-4 text-sm font-semibold text-[#E50046] hover:bg-blue-100"
         >
           Ver FAQ completa
         </Link>
         <Link
           href="/contacto"
-          className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#2563eb] px-4 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+          className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-white hover:bg-[#c7003b]"
         >
           Aun tengo dudas: contactar
         </Link>

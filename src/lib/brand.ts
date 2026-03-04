@@ -7,16 +7,18 @@
  * 3. HBTJ Dashboard (dark, data-driven)
  */
 
-// ─── Main Brand ───
+// ─── Main Brand (derived from logo: bleu #395D9F, rouge #E50046, blanc #FFF) ───
 export const brand = {
-  navy:       "#1e40af",
-  blue:       "#2563eb",
-  blueLight:  "#60a5fa",
-  blueHover:  "#1d4ed8",
-  gold:       "#c9a84c",
-  goldLight:  "#e8d9a0",
-  white:      "#ffffff",
+  bleu:       "#395D9F",
+  bleuDark:   "#1e2d4a",
+  bleuLight:  "#5a7fbf",
+  bleuHover:  "#2e4d8a",
+  rouge:      "#E50046",
+  rougeLight: "#ff3366",
+  rougeHover: "#c7003b",
+  blanc:      "#ffffff",
   offWhite:   "#f8fafc",
+  cream:      "#faf7f2",
   text:       "#1f2937",
   textLight:  "#475569",
   textMuted:  "#94a3b8",
@@ -56,21 +58,21 @@ export const dashboard = {
 
 // ─── Cinematic (Le Voyage / marketing) ───
 export const cinematic = {
-  bg:         "#1a1a2e",
+  bg:         "#1e2d4a",
   bgCard:     "rgba(255,255,255,0.06)",
   border:     "rgba(255,255,255,0.10)",
-  gold:       "#e8b865",
-  goldLight:  "#f0d08a",
+  accent:     "#E50046",
+  accentLight:"#ff3366",
   text:       "#f1f5f9",
   textMuted:  "rgba(255,255,255,0.5)",
 } as const;
 
 // ─── City scenes (Le Voyage) ───
 export const scenes = {
-  paris:     { bg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)", accent: "#e8b865", particleColor: "rgba(232,184,101,0.6)" },
-  lyon:      { bg: "linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 50%, #462255 100%)", accent: "#c77dba", particleColor: "rgba(199,125,186,0.5)" },
-  bordeaux:  { bg: "linear-gradient(135deg, #1b2838 0%, #0d1b2a 50%, #1b3a4b 100%)", accent: "#6ec6ca", particleColor: "rgba(110,198,202,0.5)" },
-  marseille: { bg: "linear-gradient(135deg, #0c1821 0%, #1b2838 50%, #324a5f 100%)", accent: "#f0a500", particleColor: "rgba(240,165,0,0.5)" },
+  paris:     { bg: "linear-gradient(135deg, #1e2d4a 0%, #253d5e 50%, #1a3a6b 100%)", accent: "#E50046", particleColor: "rgba(229,0,70,0.5)" },
+  lyon:      { bg: "linear-gradient(135deg, #2d1b4e 0%, #1e2d4a 50%, #462255 100%)", accent: "#c77dba", particleColor: "rgba(199,125,186,0.5)" },
+  bordeaux:  { bg: "linear-gradient(135deg, #1b2838 0%, #1e2d4a 50%, #1b3a4b 100%)", accent: "#6ec6ca", particleColor: "rgba(110,198,202,0.5)" },
+  marseille: { bg: "linear-gradient(135deg, #1a2740 0%, #1e2d4a 50%, #324a5f 100%)", accent: "#f0a500", particleColor: "rgba(240,165,0,0.5)" },
 } as const;
 
 // ─── Font Families ───

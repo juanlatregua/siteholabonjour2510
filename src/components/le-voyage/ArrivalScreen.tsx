@@ -25,7 +25,7 @@ export default function ArrivalScreen({
       className="min-h-screen px-4 py-12"
       style={{
         background:
-          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+          "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
       }}
     >
       <div className="mx-auto max-w-3xl space-y-8">
@@ -52,11 +52,11 @@ export default function ArrivalScreen({
           </h2>
           <p className="mt-2 text-[#f1f5f9]/60">
             Tu nivel estimado es{" "}
-            <span className="font-semibold text-[#e8b865]">
+            <span className="font-semibold text-[#E50046]">
               {result.estimatedLevel}
             </span>{" "}
             con una puntuación de{" "}
-            <span className="font-semibold text-[#e8b865]">
+            <span className="font-semibold text-[#E50046]">
               {result.totalScore}/{result.maxScore}
             </span>{" "}
             ({result.percentage}%)
@@ -82,7 +82,7 @@ export default function ArrivalScreen({
                 >
                   Résultat global
                 </h3>
-                <span className="rounded-full border border-[#e8b865]/30 bg-[#e8b865]/10 px-3 py-1 text-sm font-semibold text-[#e8b865]">
+                <span className="rounded-full border border-[#E50046]/30 bg-[#E50046]/10 px-3 py-1 text-sm font-semibold text-[#E50046]">
                   {result.estimatedLevel}
                 </span>
               </div>
@@ -128,14 +128,14 @@ export default function ArrivalScreen({
                       <span className="text-sm font-medium text-[#f1f5f9]/80">
                         {section.sectionTitle}
                       </span>
-                      <span className="text-sm font-semibold text-[#e8b865]">
+                      <span className="text-sm font-semibold text-[#E50046]">
                         {section.score}/{section.maxScore} ({section.percentage}
                         %)
                       </span>
                     </div>
                     <div className="mt-2 h-2 w-full rounded-full bg-white/10">
                       <div
-                        className="h-2 rounded-full bg-gradient-to-r from-[#e8b865] to-[#d4a555] transition-all duration-1000"
+                        className="h-2 rounded-full bg-gradient-to-r from-[#E50046] to-[#d4a555] transition-all duration-1000"
                         style={{ width: `${section.percentage}%` }}
                       />
                     </div>
@@ -172,7 +172,7 @@ export default function ArrivalScreen({
                       key={s.sectionId}
                       className="flex items-start gap-2"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e8b865]" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E50046]" />
                       Refuerza tu {s.sectionTitle.toLowerCase()} — obtuviste{" "}
                       {s.percentage}% en esta sección.
                     </li>
@@ -219,7 +219,7 @@ export default function ArrivalScreen({
 
           <Link
             href={`/cursos/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
-            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#e8b865] px-5 py-2.5 text-sm font-semibold text-[#1a1a2e] transition hover:bg-[#d4a555]"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-5 py-2.5 text-sm font-semibold text-[#1e2d4a] transition hover:bg-[#d4a555]"
           >
             Voir le plan recommandé
           </Link>

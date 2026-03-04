@@ -26,9 +26,9 @@ const DESTINATIONS: Destination[] = [
     description:
       "Tu primer viaje. Gramática, vocabulario y comprensión desde cero hasta las alturas.",
     emoji: "\uD83C\uDDEB\uD83C\uDDF7",
-    accent: "#e8b865",
-    badgeBg: "rgba(232,184,101,0.1)",
-    badgeBorder: "rgba(232,184,101,0.3)",
+    accent: "#E50046",
+    badgeBg: "rgba(229,0,70,0.1)",
+    badgeBorder: "rgba(229,0,70,0.3)",
   },
   {
     city: "Lyon",
@@ -80,7 +80,7 @@ export default function DestinationScreen({
       className="flex min-h-screen items-center justify-center px-4 py-12"
       style={{
         background:
-          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+          "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
       }}
     >
       <div className="w-full max-w-4xl">
@@ -89,7 +89,7 @@ export default function DestinationScreen({
             className="text-lg text-[#f1f5f9]/60"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Bienvenue, <span style={{ color: "#e8b865" }}>voyageur</span>
+            Bienvenue, <span style={{ color: "#E50046" }}>voyageur</span>
           </p>
           <h2
             className="mt-2 text-2xl font-bold text-white sm:text-3xl"
@@ -172,7 +172,7 @@ export default function DestinationScreen({
                           className="w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition hover:brightness-110"
                           style={{
                             backgroundColor: dest.accent,
-                            color: "#1a1a2e",
+                            color: "#1e2d4a",
                           }}
                         >
                           Commencer le voyage

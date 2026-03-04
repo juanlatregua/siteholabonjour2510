@@ -321,14 +321,14 @@ export default function GuiaDelfDalfPage() {
         className="relative overflow-hidden flex items-center justify-center min-h-[70vh] px-6"
         style={{
           background:
-            "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+            "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
           color: "var(--cin-text)",
         }}
       >
-        <Particles count={40} color="#e8b865" />
+        <Particles count={40} color="#E50046" />
         <MorphBlob
           size={400}
-          color="#e8b865"
+          color="#E50046"
           position={{ top: "-10%", left: "-5%" }}
         />
         <MorphBlob
@@ -342,7 +342,7 @@ export default function GuiaDelfDalfPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Guia completa DELF/DALF 2026
@@ -374,7 +374,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-10"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Qu&apos;est-ce que le DELF/DALF&nbsp;?
@@ -384,9 +384,9 @@ export default function GuiaDelfDalfPage() {
               className="text-base leading-relaxed mb-4"
               style={{ color: "rgba(255,255,255,0.8)" }}
             >
-              El <strong style={{ color: "var(--cin-gold)" }}>DELF</strong>{" "}
+              El <strong style={{ color: "var(--cin-accent)" }}>DELF</strong>{" "}
               (Diplôme d&apos;Études en Langue Française) y el{" "}
-              <strong style={{ color: "var(--cin-gold)" }}>DALF</strong>{" "}
+              <strong style={{ color: "var(--cin-accent)" }}>DALF</strong>{" "}
               (Diplôme Approfondi de Langue Française) son los diplomas
               oficiales del Ministerio de Educacion frances que certifican el
               nivel de frances de candidatos extranjeros.
@@ -407,7 +407,7 @@ export default function GuiaDelfDalfPage() {
             >
               Son los unicos diplomas de frances reconocidos internacionalmente
               y{" "}
-              <strong style={{ color: "var(--cin-gold)" }}>no caducan</strong>.
+              <strong style={{ color: "var(--cin-accent)" }}>no caducan</strong>.
               Una vez obtenidos, son validos de por vida en mas de 170 paises.
             </p>
             <p
@@ -415,19 +415,19 @@ export default function GuiaDelfDalfPage() {
               style={{ color: "rgba(255,255,255,0.8)" }}
             >
               Cada nivel evalua cuatro competencias linguisticas:{" "}
-              <strong style={{ color: "var(--cin-gold)" }}>
+              <strong style={{ color: "var(--cin-accent)" }}>
                 comprension oral
               </strong>
               ,{" "}
-              <strong style={{ color: "var(--cin-gold)" }}>
+              <strong style={{ color: "var(--cin-accent)" }}>
                 comprension escrita
               </strong>
               ,{" "}
-              <strong style={{ color: "var(--cin-gold)" }}>
+              <strong style={{ color: "var(--cin-accent)" }}>
                 produccion escrita
               </strong>{" "}
               y{" "}
-              <strong style={{ color: "var(--cin-gold)" }}>
+              <strong style={{ color: "var(--cin-accent)" }}>
                 produccion oral
               </strong>
               . Para aprobar necesitas un minimo de 50/100, sin bajar de 5/25 en
@@ -455,7 +455,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-10"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             À quoi sert le DELF/DALF&nbsp;?
@@ -476,7 +476,7 @@ export default function GuiaDelfDalfPage() {
                 className="text-xl font-bold mb-3"
                 style={{
                   fontFamily: "var(--font-display)",
-                  color: "var(--cin-gold)",
+                  color: "var(--cin-accent)",
                 }}
               >
                 Oposiciones en Espana
@@ -486,7 +486,7 @@ export default function GuiaDelfDalfPage() {
                 style={{ color: "rgba(255,255,255,0.75)" }}
               >
                 La mayoria de las oposiciones que valoran idiomas exigen un{" "}
-                <strong style={{ color: "var(--cin-gold)" }}>
+                <strong style={{ color: "var(--cin-accent)" }}>
                   minimo de B2
                 </strong>{" "}
                 para acreditar el frances. Un nivel C1 o C2 suele otorgar
@@ -509,7 +509,7 @@ export default function GuiaDelfDalfPage() {
                 className="text-xl font-bold mb-3"
                 style={{
                   fontFamily: "var(--font-display)",
-                  color: "var(--cin-gold)",
+                  color: "var(--cin-accent)",
                 }}
               >
                 Estudios en Francia, Belgica, Suiza y Canada
@@ -519,11 +519,11 @@ export default function GuiaDelfDalfPage() {
                 style={{ color: "rgba(255,255,255,0.75)" }}
               >
                 Las universidades francesas y francofonas exigen un{" "}
-                <strong style={{ color: "var(--cin-gold)" }}>
+                <strong style={{ color: "var(--cin-accent)" }}>
                   minimo de B2
                 </strong>{" "}
                 para los grados y un{" "}
-                <strong style={{ color: "var(--cin-gold)" }}>C1</strong> para
+                <strong style={{ color: "var(--cin-accent)" }}>C1</strong> para
                 la mayoria de masters y doctorados.
               </p>
               <p
@@ -543,7 +543,7 @@ export default function GuiaDelfDalfPage() {
                 className="text-xl font-bold mb-3"
                 style={{
                   fontFamily: "var(--font-display)",
-                  color: "var(--cin-gold)",
+                  color: "var(--cin-accent)",
                 }}
               >
                 Inmigracion y ciudadania
@@ -553,7 +553,7 @@ export default function GuiaDelfDalfPage() {
                 style={{ color: "rgba(255,255,255,0.75)" }}
               >
                 Para obtener la{" "}
-                <strong style={{ color: "var(--cin-gold)" }}>
+                <strong style={{ color: "var(--cin-accent)" }}>
                   ciudadania francesa
                 </strong>{" "}
                 necesitas al menos un B1 en produccion oral. Para residir en
@@ -576,7 +576,7 @@ export default function GuiaDelfDalfPage() {
                 className="text-xl font-bold mb-3"
                 style={{
                   fontFamily: "var(--font-display)",
-                  color: "var(--cin-gold)",
+                  color: "var(--cin-accent)",
                 }}
               >
                 Trabajo y desarrollo profesional
@@ -595,7 +595,7 @@ export default function GuiaDelfDalfPage() {
                 style={{ color: "rgba(255,255,255,0.75)" }}
               >
                 Sectores que mas valoran el frances:{" "}
-                <strong style={{ color: "var(--cin-gold)" }}>
+                <strong style={{ color: "var(--cin-accent)" }}>
                   turismo, hosteleria, diplomacia, ONG, comercio internacional,
                   lujo, moda, gastronomia y cooperacion al desarrollo
                 </strong>
@@ -615,7 +615,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-4"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Structure détaillée par niveau
@@ -652,7 +652,7 @@ export default function GuiaDelfDalfPage() {
                         <th
                           key={h}
                           className="py-3 px-3 text-xs font-semibold uppercase tracking-wider"
-                          style={{ color: "var(--cin-gold)" }}
+                          style={{ color: "var(--cin-accent)" }}
                         >
                           {h}
                         </th>
@@ -669,7 +669,7 @@ export default function GuiaDelfDalfPage() {
                       >
                         <td
                           className="py-3 px-3 font-bold text-lg"
-                          style={{ color: "var(--cin-gold)" }}
+                          style={{ color: "var(--cin-accent)" }}
                         >
                           {l.nivel}
                         </td>
@@ -711,7 +711,7 @@ export default function GuiaDelfDalfPage() {
                         </td>
                         <td
                           className="py-3 px-3 text-sm font-semibold"
-                          style={{ color: "var(--cin-gold)" }}
+                          style={{ color: "var(--cin-accent)" }}
                         >
                           {l.precio}
                         </td>
@@ -737,16 +737,16 @@ export default function GuiaDelfDalfPage() {
                 <div className="flex items-center gap-3 mb-4">
                   <span
                     className="text-3xl font-bold"
-                    style={{ color: "var(--cin-gold)" }}
+                    style={{ color: "var(--cin-accent)" }}
                   >
                     {l.nivel}
                   </span>
                   <span
                     className="text-xs uppercase tracking-wider px-2 py-1 rounded-full"
                     style={{
-                      background: "rgba(232,184,101,0.15)",
-                      color: "var(--cin-gold)",
-                      border: "1px solid rgba(232,184,101,0.25)",
+                      background: "rgba(229,0,70,0.15)",
+                      color: "var(--cin-accent)",
+                      border: "1px solid rgba(229,0,70,0.25)",
                     }}
                   >
                     {l.diploma}
@@ -807,7 +807,7 @@ export default function GuiaDelfDalfPage() {
                   </span>
                   <span
                     className="font-bold"
-                    style={{ color: "var(--cin-gold)" }}
+                    style={{ color: "var(--cin-accent)" }}
                   >
                     {l.precio}
                   </span>
@@ -847,7 +847,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-4"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Combien de temps faut-il&nbsp;?
@@ -880,7 +880,7 @@ export default function GuiaDelfDalfPage() {
                         <th
                           key={h}
                           className="py-3 px-4 text-sm font-semibold"
-                          style={{ color: "var(--cin-gold)" }}
+                          style={{ color: "var(--cin-accent)" }}
                         >
                           {h}
                         </th>
@@ -903,7 +903,7 @@ export default function GuiaDelfDalfPage() {
                         </td>
                         <td
                           className="py-3 px-4 font-bold"
-                          style={{ color: "var(--cin-gold)" }}
+                          style={{ color: "var(--cin-accent)" }}
                         >
                           {row.objetivo}
                         </td>
@@ -947,7 +947,7 @@ export default function GuiaDelfDalfPage() {
                 </p>
                 <p
                   className="text-2xl font-bold mb-2"
-                  style={{ color: "var(--cin-gold)" }}
+                  style={{ color: "var(--cin-accent)" }}
                 >
                   {row.objetivo}
                 </p>
@@ -992,7 +992,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-10"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Où se présenter en Andalousie&nbsp;?
@@ -1013,9 +1013,9 @@ export default function GuiaDelfDalfPage() {
                   key={center}
                   className="rounded-xl py-3 px-4 text-center text-sm font-medium"
                   style={{
-                    background: "rgba(232,184,101,0.1)",
-                    border: "1px solid rgba(232,184,101,0.2)",
-                    color: "var(--cin-gold)",
+                    background: "rgba(229,0,70,0.1)",
+                    border: "1px solid rgba(229,0,70,0.2)",
+                    color: "var(--cin-accent)",
                   }}
                 >
                   {center}
@@ -1042,7 +1042,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-10"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Comment s&apos;inscrire&nbsp;?
@@ -1058,9 +1058,9 @@ export default function GuiaDelfDalfPage() {
                   <span
                     className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold"
                     style={{
-                      background: "rgba(232,184,101,0.15)",
-                      color: "var(--cin-gold)",
-                      border: "1px solid rgba(232,184,101,0.3)",
+                      background: "rgba(229,0,70,0.15)",
+                      color: "var(--cin-accent)",
+                      border: "1px solid rgba(229,0,70,0.3)",
                     }}
                   >
                     {i + 1}
@@ -1091,7 +1091,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-4"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Conseils pour réussir
@@ -1111,7 +1111,7 @@ export default function GuiaDelfDalfPage() {
                   className="text-lg font-bold mb-4"
                   style={{
                     fontFamily: "var(--font-display)",
-                    color: "var(--cin-gold)",
+                    color: "var(--cin-accent)",
                   }}
                 >
                   <span className="mr-2">{s.icon}</span>
@@ -1126,7 +1126,7 @@ export default function GuiaDelfDalfPage() {
                     >
                       <span
                         className="mt-1 shrink-0"
-                        style={{ color: "var(--cin-gold)" }}
+                        style={{ color: "var(--cin-accent)" }}
                       >
                         &#9733;
                       </span>
@@ -1149,7 +1149,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-4"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Ressources gratuites
@@ -1169,14 +1169,14 @@ export default function GuiaDelfDalfPage() {
                   className="text-base font-bold mb-2"
                   style={{
                     fontFamily: "var(--font-display)",
-                    color: "var(--cin-gold)",
+                    color: "var(--cin-accent)",
                   }}
                 >
                   {r.url.startsWith("/") ? (
                     <a
                       href={r.url}
                       style={{
-                        color: "var(--cin-gold)",
+                        color: "var(--cin-accent)",
                         textDecoration: "none",
                       }}
                     >
@@ -1188,7 +1188,7 @@ export default function GuiaDelfDalfPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        color: "var(--cin-gold)",
+                        color: "var(--cin-accent)",
                         textDecoration: "none",
                       }}
                     >
@@ -1231,7 +1231,7 @@ export default function GuiaDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-10"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Questions fréquentes
@@ -1243,7 +1243,7 @@ export default function GuiaDelfDalfPage() {
                   className="text-lg font-bold mb-3"
                   style={{
                     fontFamily: "var(--font-display)",
-                    color: "var(--cin-gold)",
+                    color: "var(--cin-accent)",
                   }}
                 >
                   {faq.question}
@@ -1286,14 +1286,14 @@ export default function GuiaDelfDalfPage() {
             WhatsApp:{" "}
             <a
               href="https://wa.me/34685070304"
-              style={{ color: "var(--cin-gold)", textDecoration: "none" }}
+              style={{ color: "var(--cin-accent)", textDecoration: "none" }}
             >
               685 070 304
             </a>{" "}
             &middot; Email:{" "}
             <a
               href="mailto:hola@holabonjour.es"
-              style={{ color: "var(--cin-gold)", textDecoration: "none" }}
+              style={{ color: "var(--cin-accent)", textDecoration: "none" }}
             >
               hola@holabonjour.es
             </a>

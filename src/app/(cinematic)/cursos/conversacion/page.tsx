@@ -89,7 +89,7 @@ export default function ConversacionPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 50%, #462255 100%)",
+              "linear-gradient(135deg, #2d1b4e 0%, #1e2d4a 50%, #462255 100%)",
           }}
         />
         <Particles color="#c77dba" />
@@ -108,7 +108,7 @@ export default function ConversacionPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Conversation
@@ -172,7 +172,7 @@ export default function ConversacionPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-14"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Comment ça marche ?

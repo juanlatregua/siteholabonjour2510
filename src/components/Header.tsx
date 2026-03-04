@@ -239,6 +239,17 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
               </Link>
             </li>
 
+            {/* Sobre nosotros */}
+            <li className={styles.menuItem}>
+              <Link
+                href="/sobre-nosotros"
+                className={menuLinkClass("/sobre-nosotros")}
+                onClick={closeMenu}
+              >
+                Sobre nosotros
+              </Link>
+            </li>
+
             {/* Contacto */}
             <li className={styles.menuItem}>
               <Link
