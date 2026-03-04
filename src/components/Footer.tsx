@@ -116,6 +116,18 @@ const Footer = () => {
           </section>
         </div>
 
+        <div className={styles.ecosystem}>
+          <div>
+            <p className={styles.ecosystemTitle}>Ecosistema HBTJ</p>
+            <p className={styles.ecosystemLinks}>
+              <a href="https://www.traduccionesjuradas.net" target="_blank" rel="noreferrer">
+                traduccionesjuradas.net
+              </a>{" "}
+              &mdash; Traducciones juradas de francés
+            </p>
+          </div>
+        </div>
+
         <div className={styles.legalLinks}>
           <Link href="/aviso-legal">Aviso legal</Link>
           <Link href="/politica-de-privacidad">Privacidad</Link>
