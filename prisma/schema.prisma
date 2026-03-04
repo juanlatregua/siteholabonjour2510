@@ -302,3 +302,107 @@ model AssessmentAttemptAnswer {
   @@index([attemptId])
   @@map("assessment_attempt_answers")
 }
+
+// ── AI Writing Correction ──
+
+model WritingCorrection {
+  id              String   @id @default(cuid())
+  userId          String?
+  candidateEmail  String
+  level           String   // CEFR: A1, A2, B1, B2, C1, C2
+  taskType        String   // e.g. "lettre_formelle", "essai", "carte_postale"
+  taskPrompt      String?
+  inputText       String
+  wordCount       Int
+  globalScore     Float?
+  maxScore        Float?
+  criterionScores String?  // JSON: { criterion: { score, max, comment } }
+  annotations     String?  // JSON: [{ start, end, type, original, correction, explanation }]
+  correctedText   String?
+  overallFeedback String?
+  estimatedLevel  String?
+  nextSteps       String?  // JSON: string[]
+  modelUsed       String?
+  inputTokens     Int?
+  outputTokens    Int?
+  latencyMs       Int?
+  status          String   @default("PENDING") // PENDING | PROCESSING | COMPLETED | ERROR
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  teacherAnnotations TeacherAnnotation[]
+
+  @@index([candidateEmail])
+  @@index([userId])
+  @@map("writing_corrections")
+}
+
+model CorrectionQuota {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  freeUsed      Int      @default(0)
+  freeLimit     Int      @default(3)
+  paidRemaining Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("correction_quotas")
+}
+
+model TeacherAnnotation {
+  id             String   @id @default(cuid())
+  correctionId   String
+  teacherId      String
+  content        String
+  scoreOverride  String?  // JSON: { criterion: newScore }
+  createdAt      DateTime @default(now())
+
+  correction WritingCorrection @relation(fields: [correctionId], references: [id], onDelete: Cascade)
+
+  @@map("teacher_annotations")
+}
+
+// ── Exam Calendar ──
+
+model ExamSession {
+  id                   String    @id @default(cuid())
+  examType             String    // "DELF" | "DALF" | "EOI"
+  level                String    // CEFR level
+  center               String
+  centerType           String    // "ALLIANCE_FRANCAISE" | "INSTITUT_FRANCAIS" | "EOI"
+  city                 String
+  province             String
+  autonomousCommunity  String
+  registrationStart    DateTime?
+  registrationEnd      DateTime?
+  writtenExamDate      DateTime?
+  oralExamStart        DateTime?
+  oralExamEnd          DateTime?
+  resultsDate          DateTime?
+  fee                  Float?
+  sourceUrl            String?
+  notes                String?
+  verified             Boolean   @default(false)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  reminders ExamReminder[]
+
+  @@index([examType, level])
+  @@index([autonomousCommunity])
+  @@map("exam_sessions")
+}
+
+model ExamReminder {
+  id            String    @id @default(cuid())
+  userId        String
+  examSessionId String
+  reminderType  String    // "REGISTRATION_OPEN" | "REGISTRATION_CLOSING" | "EXAM_WEEK"
+  sentAt        DateTime?
+  createdAt     DateTime  @default(now())
+
+  examSession ExamSession @relation(fields: [examSessionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, examSessionId, reminderType])
+  @@map("exam_reminders")
+}

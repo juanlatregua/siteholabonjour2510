@@ -3,13 +3,14 @@ import { redirect } from "next/navigation";
 import { requireTeacher, getCurrentUser } from "@/lib/auth-helpers";
 import ZonaSidebar from "@/components/zona/ZonaSidebar";
 import ZonaTopbar from "@/components/zona/ZonaTopbar";
-import { FiHome, FiUsers, FiBook, FiCalendar, FiFolder, FiClock, FiPackage, FiCreditCard } from "react-icons/fi";
+import { FiHome, FiUsers, FiBook, FiCalendar, FiFolder, FiClock, FiPackage, FiCreditCard, FiEdit3 } from "react-icons/fi";
 
 const teacherLinks = [
   { href: "/zona-profesor", label: "Dashboard", icon: <FiHome /> },
   { href: "/zona-profesor/alumnos", label: "Alumnos", icon: <FiUsers /> },
   { href: "/zona-profesor/clases", label: "Clases", icon: <FiBook /> },
   { href: "/zona-profesor/calendario", label: "Calendario", icon: <FiCalendar /> },
+  { href: "/zona-profesor/correcciones", label: "Correcciones", icon: <FiEdit3 /> },
   { href: "/zona-profesor/materiales", label: "Materiales", icon: <FiFolder /> },
   { href: "/zona-profesor/disponibilidad", label: "Disponibilidad", icon: <FiClock /> },
   { href: "/zona-profesor/packs", label: "Packs", icon: <FiPackage /> },

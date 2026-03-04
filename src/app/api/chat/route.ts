@@ -30,6 +30,19 @@ const SYSTEM_PROMPT = `Tu es le concierge virtuel de HolaBonjour, une académie 
 - Pack C1-C2: 200€ por 4 clases (50€/clase)
 - Todas las clases son individuales, 55 min, por Zoom. Pago con tarjeta en /contratar.
 
+### Corrección IA de expresión escrita:
+- Corrección automática con las rúbricas oficiales DELF/DALF de France Éducation International
+- 3 correcciones gratuitas para probar, ilimitadas con pack de clases activo
+- Puntuación por criterio, errores anotados, texto corregido y consejos
+- URL: /correccion-ia
+- También disponible: packs de 10 correcciones (19€) o corrección suelta (2,90€)
+
+### Calendario de exámenes:
+- Base de datos de fechas DELF/DALF y EOI en toda España
+- Filtros por nivel, comunidad autónoma y centro
+- Recordatorios por email de matrícula y fechas de examen
+- URL: /calendario-examenes
+
 ### Test de nivel:
 - Gratuito, online, 15 minutos, 40 preguntas adaptativas, resultado inmediato
 - URL: /test-de-nivel (Le Voyage)

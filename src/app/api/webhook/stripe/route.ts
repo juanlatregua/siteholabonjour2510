@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { sendPaymentConfirmationEmail, sendNewBookingStaffEmail } from "@/lib/email";
 import { sendNotification } from "@/lib/sms";
 import { smsPagoConfirmado } from "@/lib/sms-templates";
+import { addPaidCorrections } from "@/lib/correction/quota";
 import type Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -24,6 +25,25 @@ export async function POST(req: NextRequest) {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
+
+    // Handle correction pack purchases
+    if (session.metadata?.type === "correction_pack") {
+      const email = session.metadata.customerEmail;
+      const count = parseInt(session.metadata.correctionCount || "0", 10);
+
+      if (email && count > 0) {
+        try {
+          await addPaidCorrections(email, count);
+          console.log(`[stripe-webhook] Added ${count} corrections for ${email}`);
+        } catch (err) {
+          console.error("[stripe-webhook] Error adding corrections:", err);
+          return NextResponse.json({ error: "Processing error" }, { status: 500 });
+        }
+      }
+
+      return NextResponse.json({ received: true });
+    }
+
     const packId = session.metadata?.packId;
 
     if (!packId) {

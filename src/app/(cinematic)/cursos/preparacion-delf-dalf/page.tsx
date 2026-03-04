@@ -296,6 +296,42 @@ export default function PreparacionDelfDalfPage() {
         </div>
       </CinematicSection>
 
+      {/* AI Correction + Exam Calendar */}
+      <CinematicSection className="py-16 px-6">
+        <div className="mx-auto max-w-4xl grid gap-6 md:grid-cols-2">
+          <GlassCard className="p-6">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+            >
+              Correction IA de tes écrits
+            </h3>
+            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Entraîne-toi entre les séances. Notre IA corrige ta production écrite avec les
+              mêmes critères que les examinateurs DELF/DALF.
+            </p>
+            <GoldButton href="/correccion-ia" variant="outline">
+              Essayer gratuitement
+            </GoldButton>
+          </GlassCard>
+          <GlassCard className="p-6">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+            >
+              Calendrier des examens
+            </h3>
+            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Toutes les dates DELF/DALF en Espagne : Alliance Française, Institut Français, EOI.
+              Active un rappel pour ne rater aucun délai.
+            </p>
+            <GoldButton href="/calendario-examenes" variant="outline">
+              Voir les dates
+            </GoldButton>
+          </GlassCard>
+        </div>
+      </CinematicSection>
+
       {/* CTA */}
       <CinematicSection className="py-20 px-6">
         <div className="mx-auto max-w-3xl text-center">

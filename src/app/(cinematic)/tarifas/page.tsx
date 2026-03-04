@@ -170,6 +170,26 @@ export default function TarifasPage() {
             Todos los packs son mensuales. Puedes renovar o cambiar de nivel en
             cualquier momento.
           </p>
+
+          {/* AI Correction bonus */}
+          <GlassCard className="mt-10 p-6 text-center">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
+            >
+              Incluido con tu pack: Corrección IA ilimitada
+            </h3>
+            <p
+              className="text-sm mb-4"
+              style={{ color: "rgba(255,255,255,0.65)" }}
+            >
+              Practica tu expresión escrita entre clases. Corrección automática con rúbricas oficiales DELF/DALF,
+              errores anotados, texto corregido y consejos personalizados.
+            </p>
+            <GoldButton href="/correccion-ia" variant="outline">
+              Probar gratis (3 correcciones)
+            </GoldButton>
+          </GlassCard>
         </div>
       </CinematicSection>
 

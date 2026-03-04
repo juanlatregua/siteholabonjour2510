@@ -211,6 +211,28 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
               </Link>
             </li>
 
+            {/* Corrección IA */}
+            <li className={styles.menuItem}>
+              <Link
+                href="/correccion-ia"
+                className={menuLinkClass("/correccion-ia")}
+                onClick={closeMenu}
+              >
+                Corrección IA
+              </Link>
+            </li>
+
+            {/* Calendario Exámenes */}
+            <li className={styles.menuItem}>
+              <Link
+                href="/calendario-examenes"
+                className={menuLinkClass("/calendario-examenes")}
+                onClick={closeMenu}
+              >
+                Exámenes
+              </Link>
+            </li>
+
             {/* Le Côté Vie accordion */}
             {renderAccordion("vie", "Le Côté Vie", vieLinks)}
 

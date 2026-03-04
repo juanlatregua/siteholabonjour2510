@@ -71,6 +71,60 @@ export async function createCheckoutSession(params: {
   return session;
 }
 
+// ── Correction Packs ──
+
+export const CORRECTION_PACK_PRICES: Record<string, { count: number; totalEur: number }> = {
+  "10-corrections": { count: 10, totalEur: 19 },
+  "1-correction": { count: 1, totalEur: 2.90 },
+};
+
+export async function createCorrectionCheckoutSession(params: {
+  packKey: string;
+  customerEmail: string;
+  idempotencyKey?: string;
+}) {
+  const stripe = getStripe();
+  const baseUrl = process.env.NEXTAUTH_URL || "https://www.holabonjour.es";
+  const pack = CORRECTION_PACK_PRICES[params.packKey];
+  if (!pack) throw new Error(`Invalid correction pack: ${params.packKey}`);
+
+  const totalCents = Math.round(pack.totalEur * 100);
+
+  const session = await stripe.checkout.sessions.create(
+    {
+      mode: "payment",
+      payment_method_types: ["card"],
+      customer_email: params.customerEmail,
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            unit_amount: totalCents,
+            product_data: {
+              name: `Pack ${pack.count} corrección${pack.count > 1 ? "es" : ""} IA`,
+              description: `${pack.count} corrección${pack.count > 1 ? "es" : ""} de expresión escrita con IA (rúbricas DELF/DALF)`,
+            },
+          },
+          quantity: 1,
+        },
+      ],
+      metadata: {
+        type: "correction_pack",
+        packKey: params.packKey,
+        correctionCount: String(pack.count),
+        customerEmail: params.customerEmail,
+      },
+      success_url: `${baseUrl}/correccion-ia?purchased=true`,
+      cancel_url: `${baseUrl}/correccion-ia`,
+    },
+    params.idempotencyKey
+      ? { idempotencyKey: params.idempotencyKey }
+      : undefined,
+  );
+
+  return session;
+}
+
 export function verifyWebhookSignature(payload: string | Buffer, signature: string) {
   const stripe = getStripe();
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
