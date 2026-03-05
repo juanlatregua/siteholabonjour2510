@@ -30,7 +30,7 @@ export default function CinematicIntro({ onStart }: CinematicIntroProps) {
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+          "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
       }}
     >
       {/* Particles background */}
@@ -40,13 +40,13 @@ export default function CinematicIntro({ onStart }: CinematicIntroProps) {
 
       {/* Decorative blobs */}
       <div className="pointer-events-none absolute left-[-10%] top-[15%] z-0 opacity-40">
-        <MorphBlob color="#e8b865" size={320} />
+        <MorphBlob color="#E50046" size={320} />
       </div>
       <div className="pointer-events-none absolute bottom-[10%] right-[-8%] z-0 opacity-30">
-        <MorphBlob color="#0f5da0" size={260} />
+        <MorphBlob color="#E50046" size={260} />
       </div>
       <div className="pointer-events-none absolute right-[20%] top-[5%] z-0 opacity-20">
-        <MorphBlob color="#e8b865" size={180} />
+        <MorphBlob color="#E50046" size={180} />
       </div>
 
       {/* Main content */}

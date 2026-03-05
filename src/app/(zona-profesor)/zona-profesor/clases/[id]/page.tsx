@@ -76,6 +76,7 @@ export default async function ClaseDetailPage({
             initialNotes={lesson.notes || ""}
             initialFeedback={lesson.studentFeedback || ""}
             initialStatus={lesson.status}
+            scheduledAt={lesson.scheduledAt.toISOString()}
           />
         </CardContent>
       </Card>

@@ -32,7 +32,7 @@ export default function CinematicSection({
         <>
           <MorphBlob
             size={400}
-            color="#e8b865"
+            color="#E50046"
             position={{ top: "-10%", left: "-5%" }}
           />
           <MorphBlob

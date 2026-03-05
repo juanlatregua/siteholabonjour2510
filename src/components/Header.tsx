@@ -4,24 +4,23 @@ import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 import styles from "./Header.module.css";
 
 const cursosLinks = [
-  { href: "/cursos", label: "Tous les cours" },
-  { href: "/cursos/preparacion-delf-dalf", label: "Préparation DELF/DALF" },
-  { href: "/cursos/conversacion", label: "Conversation" },
-  { href: "/cursos/frances-empresas", label: "Français entreprises" },
-  { href: "/cursos/intensivos", label: "Cours intensifs" },
-  { href: "/cursos/clases-particulares", label: "Cours particuliers" },
+  { href: "/cursos", label: "Todos los cursos" },
+  { href: "/cursos/preparacion-delf-dalf", label: "Preparación DELF/DALF" },
+  { href: "/cursos/conversacion", label: "Conversación" },
+  { href: "/cursos/frances-empresas", label: "Francés para empresas" },
+  { href: "/cursos/intensivos", label: "Cursos intensivos" },
+  { href: "/cursos/clases-particulares", label: "Clases particulares" },
 ];
 
-const recursosLinks = [
-  { href: "/recursos", label: "Toutes les ressources" },
-  { href: "/recursos/guia-delf-dalf", label: "Guide DELF/DALF" },
-  { href: "/recursos/enlaces-utiles", label: "Liens utiles" },
-  { href: "/recursos/descargas", label: "Téléchargements" },
-  { href: "/recursos/blog", label: "Blog" },
+const examenesLinks = [
+  { href: "/examen-delf-a1", label: "Simulacro DELF A1" },
+  { href: "/examen-delf-a2", label: "Simulacro DELF A2" },
+  { href: "/calendario-examenes", label: "Calendario de exámenes" },
 ];
 
 const vieLinks = [
@@ -35,6 +34,7 @@ const vieLinks = [
 
 const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
   const pathname = usePathname();
+  const { data: session, status } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
@@ -93,6 +93,53 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
     return `${styles.menuLink}${active ? ` ${styles.menuLinkActive}` : ""}`;
   };
 
+  /* ─── Auth link ─── */
+
+  const renderAuthLink = () => {
+    if (status === "loading") return null;
+
+    if (!session) {
+      return (
+        <li className={`${styles.menuItem} ${styles.authMenuItem}`}>
+          <Link
+            href="/iniciar-sesion"
+            className={menuLinkClass("/iniciar-sesion")}
+            onClick={closeMenu}
+          >
+            Acceder
+          </Link>
+        </li>
+      );
+    }
+
+    const role = (session.user as { role?: string })?.role;
+    if (role === "TEACHER" || role === "ADMIN") {
+      return (
+        <li className={`${styles.menuItem} ${styles.authMenuItem}`}>
+          <Link
+            href="/zona-profesor"
+            className={menuLinkClass("/zona-profesor")}
+            onClick={closeMenu}
+          >
+            Zona profesor
+          </Link>
+        </li>
+      );
+    }
+
+    return (
+      <li className={`${styles.menuItem} ${styles.authMenuItem}`}>
+        <Link
+          href="/zona-alumno"
+          className={menuLinkClass("/zona-alumno")}
+          onClick={closeMenu}
+        >
+          Mi zona
+        </Link>
+      </li>
+    );
+  };
+
   /* ─── Accordion renderer for sub-sections ─── */
 
   const renderAccordion = (
@@ -148,10 +195,17 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
 
   return (
     <header className={isCinematic ? styles.headerCinematic : styles.header}>
+      {/* Skip to content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-[#E50046] focus:text-white focus:rounded-lg focus:text-sm focus:font-semibold"
+      >
+        Ir al contenido principal
+      </a>
       {/* ─── Notice bar ─── */}
       <div className={isCinematic ? styles.noticeCinematic : styles.notice}>
-        Cours en ligne avec professeurs natifs &middot; Préparation DELF/DALF
-        &middot; Test de niveau gratuit
+        Clases online con profesoras nativas &middot; Preparación DELF/DALF
+        &middot; Test de nivel gratuito
       </div>
 
       {/* ─── Top bar: logo + burger ─── */}
@@ -197,10 +251,9 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
           aria-label="Navegación principal"
         >
           <ul className={styles.menuList}>
-            {/* Cursos accordion */}
+            {/* ── APRENDER ── */}
             {renderAccordion("cursos", "Cursos", cursosLinks)}
 
-            {/* Test de Nivel */}
             <li className={styles.menuItem}>
               <Link
                 href="/test-de-nivel"
@@ -211,13 +264,32 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
               </Link>
             </li>
 
-            {/* Le Côté Vie accordion */}
+            <li className={styles.menuItem}>
+              <Link
+                href="/correccion-ia"
+                className={menuLinkClass("/correccion-ia")}
+                onClick={closeMenu}
+              >
+                Corrección IA
+              </Link>
+            </li>
+
+            {/* ── Separador ── */}
+            <li className={styles.menuGroupSeparator} aria-hidden="true" />
+
+            {/* ── EXÁMENES ── */}
+            {renderAccordion("examenes", "Exámenes DELF", examenesLinks)}
+
+            {/* ── Separador ── */}
+            <li className={styles.menuGroupSeparator} aria-hidden="true" />
+
+            {/* ── DÉCOUVRIR ── */}
             {renderAccordion("vie", "Le Côté Vie", vieLinks)}
 
-            {/* Recursos accordion */}
-            {renderAccordion("recursos", "Recursos", recursosLinks)}
+            {/* ── Separador ── */}
+            <li className={styles.menuGroupSeparator} aria-hidden="true" />
 
-            {/* Tarifas */}
+            {/* ── INFO ── */}
             <li className={styles.menuItem}>
               <Link
                 href="/tarifas"
@@ -228,7 +300,16 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
               </Link>
             </li>
 
-            {/* Contacto */}
+            <li className={styles.menuItem}>
+              <Link
+                href="/sobre-nosotros"
+                className={menuLinkClass("/sobre-nosotros")}
+                onClick={closeMenu}
+              >
+                Sobre nosotros
+              </Link>
+            </li>
+
             <li className={styles.menuItem}>
               <Link
                 href="/contacto"
@@ -238,6 +319,9 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
                 Contacto
               </Link>
             </li>
+
+            {/* ── AUTH ── */}
+            {renderAuthLink()}
           </ul>
 
           {/* CTA at the bottom */}
@@ -246,7 +330,7 @@ const Header = ({ variant = "light" }: { variant?: "light" | "cinematic" }) => {
             className={isCinematic ? styles.overlayCta : styles.overlayCtaLight}
             onClick={closeMenu}
           >
-            Commencer le voyage
+            Hacer el test de nivel
           </Link>
         </nav>
       </div>

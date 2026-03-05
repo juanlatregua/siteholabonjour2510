@@ -83,7 +83,7 @@ export default function ZonaTopbar({ title, user }: ZonaTopbarProps) {
             className="h-8 w-8 rounded-full object-cover"
           />
         ) : (
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0b3c6f] text-xs font-semibold text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1e2d4a] text-xs font-semibold text-white">
             {initials}
           </div>
         )}

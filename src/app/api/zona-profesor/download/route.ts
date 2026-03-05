@@ -13,6 +13,14 @@ export async function GET(request: Request) {
     );
   }
 
+  // Only teachers and admins can download materials
+  if (session.user.role !== "TEACHER" && session.user.role !== "ADMIN") {
+    return NextResponse.json(
+      { ok: false, error: "FORBIDDEN", message: "No autorizado" },
+      { status: 403 }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
   const path = searchParams.get("path");
 

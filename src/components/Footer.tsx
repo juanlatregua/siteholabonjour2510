@@ -1,52 +1,27 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "./Footer.module.css";
 
 const navLinks = [
   { href: "/cursos", label: "Cursos" },
   { href: "/test-de-nivel", label: "Test de nivel" },
-  { href: "/le-marche", label: "Le Côté Vie" },
-  { href: "/recursos", label: "Recursos" },
-  { href: "/tarifas", label: "Tarifs" },
-  { href: "/contacto", label: "Contact" },
+  { href: "/correccion-ia", label: "Corrección IA" },
+  { href: "/tarifas", label: "Tarifas" },
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
-  { href: "/empresas", label: "Empresas" },
+  { href: "/contacto", label: "Contacto" },
+  { href: "/iniciar-sesion", label: "Acceder" },
 ];
 
 const vieCultureLinks = [
-  { href: "/le-marche", label: "Le Marche" },
+  { href: "/le-marche", label: "Le Marché" },
   { href: "/la-carte", label: "La Carte" },
-  { href: "/le-cinema", label: "Le Cinema" },
+  { href: "/le-cinema", label: "Le Cinéma" },
   { href: "/la-cuisine", label: "La Cuisine" },
   { href: "/le-mot-du-jour", label: "Le Mot du Jour" },
   { href: "/le-jeu", label: "Le Jeu" },
 ];
 
-const socialLinks = [
-  {
-    href: "https://www.facebook.com/holabonjourmalaga/",
-    icon: "/images/icons-facebook.svg",
-    label: "Facebook",
-  },
-  {
-    href: "https://twitter.com/Holabonjour_mlg",
-    icon: "/images/icons-x.svg",
-    label: "X",
-  },
-  {
-    href: "https://www.instagram.com/holabonjourmalaga/",
-    icon: "/images/icons-instagram.svg",
-    label: "Instagram",
-  },
-  {
-    href: "https://www.youtube.com/channel/UCSqK90F1Tm9iYLpZN0tFIGg",
-    icon: "/images/icons-youtube.svg",
-    label: "YouTube",
-  },
-];
-
-const trustSignals = ["Methode immersive", "Examens DELF/DALF", "Professeurs natifs", "Cours en direct"];
+const trustSignals = ["Método inmersivo", "Exámenes DELF/DALF", "Profesoras nativas", "Clases en directo"];
 
 const Footer = () => {
   return (
@@ -60,7 +35,7 @@ const Footer = () => {
             </p>
             <p className={styles.tagline}>L&apos;aventure commence ici</p>
             <p className={styles.text}>
-              Académie en ligne de français / Academia online de francés: clases en directo con profesores nativos.
+              Academia online de francés: clases en directo con profesoras nativas.
             </p>
             <ul className={styles.trustList}>
               {trustSignals.map((item) => (
@@ -71,7 +46,7 @@ const Footer = () => {
 
           {/* Column 2: Navigation */}
           <section>
-            <p className={styles.sectionTitle}>Navigation</p>
+            <p className={styles.sectionTitle}>Navegación</p>
             <ul className={styles.linkList}>
               {navLinks.map((item) => (
                 <li key={item.href}>
@@ -81,9 +56,9 @@ const Footer = () => {
             </ul>
           </section>
 
-          {/* Column 3: Ecosysteme culturel */}
+          {/* Column 3: Ecosystème culturel */}
           <section>
-            <p className={styles.sectionTitle}>Ecosysteme culturel</p>
+            <p className={styles.sectionTitle}>Le Côté Vie</p>
             <ul className={styles.linkList}>
               {vieCultureLinks.map((item) => (
                 <li key={item.href}>
@@ -93,9 +68,9 @@ const Footer = () => {
             </ul>
           </section>
 
-          {/* Column 4: Contact + social */}
+          {/* Column 4: Contact */}
           <section>
-            <p className={styles.sectionTitle}>Contact</p>
+            <p className={styles.sectionTitle}>Contacto</p>
             <p className={styles.text}>
               <a href="https://wa.me/34685070304?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20los%20cursos." target="_blank" rel="noreferrer" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>
                 WhatsApp: +34 685 070 304
@@ -106,14 +81,24 @@ const Footer = () => {
                 hola@holabonjour.es
               </a>
             </p>
-            <div className={styles.social}>
-              {socialLinks.map((item) => (
-                <a key={item.href} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
-                  <Image src={item.icon} alt={item.label} width={32} height={32} />
-                </a>
-              ))}
-            </div>
+            <p className={styles.text} style={{ marginTop: "0.6rem" }}>
+              <Link href="/recursos/blog" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                Blog
+              </Link>
+            </p>
           </section>
+        </div>
+
+        <div className={styles.ecosystem}>
+          <div>
+            <p className={styles.ecosystemTitle}>Ecosistema HBTJ</p>
+            <p className={styles.ecosystemLinks}>
+              <a href="https://www.traduccionesjuradas.net" target="_blank" rel="noreferrer">
+                traduccionesjuradas.net
+              </a>{" "}
+              &mdash; Traducciones juradas de francés
+            </p>
+          </div>
         </div>
 
         <div className={styles.legalLinks}>

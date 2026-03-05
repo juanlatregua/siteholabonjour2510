@@ -28,7 +28,7 @@
 /* ─── Notice bar ─── */
 
 .notice {
-  background: linear-gradient(90deg, #0b3c6f, #0f5da0);
+  background: linear-gradient(90deg, #395D9F, #E50046);
   color: #e7f3ff;
   text-align: center;
   font-size: 0.76rem;
@@ -38,8 +38,8 @@
 }
 
 .noticeCinematic {
-  background: linear-gradient(90deg, #1a1a2e, #16213e);
-  color: #e8b865;
+  background: linear-gradient(90deg, #1e2d4a, #16213e);
+  color: #E50046;
   text-align: center;
   font-size: 0.76rem;
   font-weight: 600;
@@ -79,14 +79,14 @@
   border-radius: 0.72rem;
   border: 1px solid #d7e3ef;
   background: #ffffff;
-  color: #0f5da0;
+  color: #E50046;
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .burgerButton:hover {
   background: #eff6ff;
-  border-color: #0f5da0;
+  border-color: #E50046;
 }
 
 .burgerButtonCinematic {
@@ -98,7 +98,7 @@
   border-radius: 0.72rem;
   border: 1px solid rgba(232, 184, 101, 0.25);
   background: rgba(232, 184, 101, 0.08);
-  color: #e8b865;
+  color: #E50046;
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -175,20 +175,38 @@
 /* ─── Menu item (each row) ─── */
 
 .menuItem {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .overlayCinematic .menuItem {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Group separator (visual gap between sections) ─── */
+
+.menuGroupSeparator {
+  height: 0.6rem;
+  border-bottom: none;
+}
+
+/* ─── Auth menu item (top border separator) ─── */
+
+.authMenuItem {
+  border-top: 2px solid rgba(229, 0, 70, 0.2);
+  margin-top: 0.4rem;
+}
+
+.overlayCinematic .authMenuItem {
+  border-top: 2px solid rgba(229, 0, 70, 0.3);
 }
 
 /* ─── Menu link (top-level plain links) ─── */
 
 .menuLink {
   display: block;
-  padding: 1.1rem 0.5rem;
+  padding: 1rem 0.5rem;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #1f2937;
   letter-spacing: 0.01em;
@@ -196,12 +214,12 @@
 }
 
 .menuLink:hover {
-  color: #0f5da0;
+  color: #E50046;
   padding-left: 1rem;
 }
 
 .menuLinkActive {
-  color: #0f5da0;
+  color: #E50046;
 }
 
 .menuLinkCinematic {
@@ -209,12 +227,12 @@
 }
 
 .menuLinkCinematic:hover {
-  color: #e8b865;
+  color: #E50046;
   padding-left: 1rem;
 }
 
 .menuLinkActiveCinematic {
-  color: #e8b865;
+  color: #E50046;
 }
 
 /* ─── Chevron ─── */
@@ -241,10 +259,10 @@
   border: none;
   background: none;
   cursor: pointer;
-  padding: 1.1rem 0.5rem;
+  padding: 1rem 0.5rem;
   text-decoration: none;
   color: #1f2937;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   font-family: inherit;
   letter-spacing: 0.01em;
@@ -252,7 +270,7 @@
 }
 
 .accordionTrigger:hover {
-  color: #0f5da0;
+  color: #E50046;
   padding-left: 1rem;
 }
 
@@ -261,7 +279,7 @@
 }
 
 .accordionTriggerCinematic:hover {
-  color: #e8b865;
+  color: #E50046;
   padding-left: 1rem;
 }
 
@@ -283,37 +301,37 @@
   list-style: none;
   margin: 0 0 0.6rem 0.75rem;
   padding: 0.3rem 0 0.3rem 1rem;
-  border-left: 3px solid #0f5da0;
+  border-left: 3px solid #E50046;
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
 }
 
 .accordionListCinematic {
-  border-left-color: #e8b865;
+  border-left-color: #E50046;
 }
 
 /* ─── Accordion item (sub-link) ─── */
 
 .accordionItem {
   display: block;
-  padding: 0.65rem 0.75rem;
+  padding: 0.55rem 0.75rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: #374151;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 500;
   transition: background-color 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
 }
 
 .accordionItem:hover {
   background: rgba(15, 93, 160, 0.06);
-  color: #0f5da0;
+  color: #E50046;
   padding-left: 1.1rem;
 }
 
 .accordionItemActive {
-  color: #0f5da0;
+  color: #E50046;
   background: rgba(15, 93, 160, 0.08);
 }
 
@@ -323,12 +341,12 @@
 
 .accordionItemCinematic:hover {
   background: rgba(232, 184, 101, 0.1);
-  color: #e8b865;
+  color: #E50046;
   padding-left: 1.1rem;
 }
 
 .accordionItemActiveCinematic {
-  color: #e8b865;
+  color: #E50046;
   background: rgba(232, 184, 101, 0.1);
 }
 
@@ -345,8 +363,8 @@
   margin-top: 2rem;
   min-height: 52px;
   border-radius: 0.75rem;
-  background: linear-gradient(135deg, #e8b865, #d4a24c);
-  color: #1a1a2e;
+  background: linear-gradient(135deg, #E50046, #d4a24c);
+  color: #1e2d4a;
   text-decoration: none;
   font-size: 1.05rem;
   font-weight: 700;
@@ -356,7 +374,7 @@
 }
 
 .overlayCta:hover {
-  background: linear-gradient(135deg, #f0d08a, #e8b865);
+  background: linear-gradient(135deg, #ff3366, #E50046);
   box-shadow: 0 6px 28px rgba(232, 184, 101, 0.4);
   transform: translateY(-1px);
 }
@@ -370,7 +388,7 @@
   margin-top: 2rem;
   min-height: 52px;
   border-radius: 0.75rem;
-  background: linear-gradient(135deg, #0f5da0, #0b4d84);
+  background: linear-gradient(135deg, #E50046, #c7003b);
   color: #ffffff;
   text-decoration: none;
   font-size: 1.05rem;
@@ -381,7 +399,7 @@
 }
 
 .overlayCtaLight:hover {
-  background: linear-gradient(135deg, #1472c4, #0f5da0);
+  background: linear-gradient(135deg, #3b82f6, #E50046);
   box-shadow: 0 6px 28px rgba(15, 93, 160, 0.35);
   transform: translateY(-1px);
 }
@@ -407,12 +425,12 @@
 
   .menuLink,
   .accordionTrigger {
-    font-size: 1.15rem;
-    padding: 1rem 0.4rem;
+    font-size: 1rem;
+    padding: 0.85rem 0.4rem;
   }
 
   .accordionItem {
-    font-size: 0.98rem;
+    font-size: 0.88rem;
   }
 }
 
@@ -423,13 +441,13 @@
 
   .menuLink,
   .accordionTrigger {
-    font-size: 1.4rem;
-    padding: 1.25rem 0.5rem;
+    font-size: 1.1rem;
+    padding: 1rem 0.5rem;
   }
 
   .accordionItem {
-    font-size: 1.1rem;
-    padding: 0.75rem 0.85rem;
+    font-size: 0.95rem;
+    padding: 0.65rem 0.85rem;
   }
 
   .overlayCta,

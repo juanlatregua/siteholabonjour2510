@@ -61,7 +61,7 @@ const TrustReviews = ({
         href={reviewsUrl}
         target="_blank"
         rel="noreferrer"
-        className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b4d84]"
+        className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-5 text-sm font-semibold text-white transition hover:bg-[#c7003b]"
       >
         Ver resenas reales en Google
       </a>

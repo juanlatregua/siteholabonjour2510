@@ -21,7 +21,7 @@ export default function ClasesFilter({ active }: ClasesFilterProps) {
           href={`/zona-alumno/clases?filter=${f.key}`}
           className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
             active === f.key
-              ? "bg-[#0b3c6f] text-white"
+              ? "bg-[#1e2d4a] text-white"
               : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"
           }`}
         >

@@ -44,7 +44,7 @@ function UserAvatar({ user }: { user: ZonaSidebarProps["user"] }) {
   }
 
   return (
-    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0b3c6f] text-sm font-semibold text-white">
+    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1e2d4a] text-sm font-semibold text-white">
       {initials}
     </div>
   );
@@ -95,7 +95,7 @@ export default function ZonaSidebar({ links, user }: ZonaSidebarProps) {
               onClick={() => setMobileOpen(false)}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-[#0b3c6f]/10 text-[#0b3c6f]"
+                  ? "bg-[#1e2d4a]/10 text-[#1e2d4a]"
                   : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
               }`}
             >

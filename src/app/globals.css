@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  /* ─── Main Brand ─── */
-  --color-navy:        #0b3c6f;
-  --color-blue:        #0f5da0;
-  --color-blue-light:  #1b78c2;
-  --color-blue-hover:  #0e4f8d;
-  --color-gold:        #c9a84c;
-  --color-gold-light:  #e8d9a0;
+  /* ─── Main Brand (from logo: bleu/rouge/blanc) ─── */
+  --color-bleu:        #395D9F;
+  --color-bleu-dark:   #1e2d4a;
+  --color-bleu-light:  #5a7fbf;
+  --color-bleu-hover:  #2e4d8a;
+  --color-rouge:       #E50046;
+  --color-rouge-light: #ff3366;
+  --color-rouge-hover: #c7003b;
   --color-success:     #22c55e;
   --color-danger:      #ef4444;
   --color-warning:     #f59e0b;
@@ -29,11 +30,11 @@
   --vie-rose:       #d4a5a5;
 
   /* ─── Cinematic palette ─── */
-  --cin-bg:           #1a1a2e;
+  --cin-bg:           #1e2d4a;
   --cin-bg-card:      rgba(255,255,255,0.06);
   --cin-border:       rgba(255,255,255,0.10);
-  --cin-gold:         #e8b865;
-  --cin-gold-light:   #f0d08a;
+  --cin-accent:       #E50046;
+  --cin-accent-light: #ff3366;
   --cin-text:         #f1f5f9;
   --cin-text-muted:   rgba(255,255,255,0.5);
 

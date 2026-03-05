@@ -44,15 +44,6 @@ const contactMethods = [
   },
 ];
 
-const socialLinks = [
-  { name: "Facebook", href: "https://www.facebook.com/holabonjourmalaga/" },
-  { name: "Instagram", href: "https://www.instagram.com/holabonjourmalaga/" },
-  { name: "X (Twitter)", href: "https://twitter.com/Holabonjour_mlg" },
-  {
-    name: "YouTube",
-    href: "https://www.youtube.com/channel/UCSqK90F1Tm9iYLpZN0tFIGg",
-  },
-];
 
 export default function ContactoPage() {
   return (
@@ -88,7 +79,7 @@ export default function ContactoPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Contact
@@ -112,7 +103,7 @@ export default function ContactoPage() {
                   className="text-xl font-bold mb-2"
                   style={{
                     fontFamily: "var(--font-display)",
-                    color: "var(--cin-gold)",
+                    color: "var(--cin-accent)",
                   }}
                 >
                   {method.title}
@@ -148,34 +139,22 @@ export default function ContactoPage() {
         </div>
       </CinematicSection>
 
-      {/* Social + location */}
+      {/* Blog + location */}
       <CinematicSection className="py-16 px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2
             className="text-2xl font-bold mb-6"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Suivez-nous
+            Nuestro blog
           </h2>
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium px-5 py-2.5 rounded-full transition-colors"
-                style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.10)",
-                  color: "rgba(255,255,255,0.8)",
-                }}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-          <p style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.7)" }}>
+            Consejos, cultura francesa y recursos para preparar tus exámenes DELF/DALF.
+          </p>
+          <GoldButton href="/recursos/blog" variant="outline">
+            Ir al blog
+          </GoldButton>
+          <p className="mt-8" style={{ color: "rgba(255,255,255,0.5)" }}>
             Clases 100% online. Alumnos en España, Francia y Latinoamérica.
           </p>
         </div>

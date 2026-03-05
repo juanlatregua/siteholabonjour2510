@@ -70,7 +70,7 @@ export default function LessonCard({
             href={zoomLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-[#0f5da0] px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#0b3c6f]"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-[#395D9F] px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#1e2d4a]"
           >
             Unirse a Zoom
           </a>

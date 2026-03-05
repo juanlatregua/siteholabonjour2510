@@ -75,7 +75,7 @@ export default function CursosPage() {
         <div className="mx-auto max-w-4xl text-center">
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Nos cours de français en ligne
           </h1>
@@ -110,9 +110,9 @@ export default function CursosPage() {
                     <span
                       className="text-xs font-semibold px-3 py-1 rounded-full"
                       style={{
-                        background: "rgba(232,184,101,0.15)",
-                        color: "var(--cin-gold)",
-                        border: "1px solid rgba(232,184,101,0.25)",
+                        background: "rgba(229,0,70,0.15)",
+                        color: "var(--cin-accent)",
+                        border: "1px solid rgba(229,0,70,0.25)",
                       }}
                     >
                       {course.levels}
@@ -133,7 +133,7 @@ export default function CursosPage() {
         <div className="mx-auto max-w-4xl">
           <h2
             className="text-3xl md:text-4xl font-bold text-center mb-14"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Niveaux CECR
           </h2>
@@ -149,7 +149,7 @@ export default function CursosPage() {
               >
                 <p
                   className="text-2xl font-bold mb-1"
-                  style={{ color: "var(--cin-gold)" }}
+                  style={{ color: "var(--cin-accent)" }}
                 >
                   {item.level}
                 </p>

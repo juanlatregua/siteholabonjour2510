@@ -35,11 +35,11 @@ const proseStyles = `
     margin-bottom: 0.5rem;
   }
   .prose-legal strong {
-    color: #e8b865;
+    color: #E50046;
     font-weight: 600;
   }
   .prose-legal a {
-    color: #e8b865;
+    color: #E50046;
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color 0.2s ease;
@@ -48,7 +48,7 @@ const proseStyles = `
     color: #f0c97a;
   }
   .prose-legal h2 {
-    color: #e8b865;
+    color: #E50046;
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 700;
@@ -70,8 +70,8 @@ const proseStyles = `
   .prose-legal th {
     text-align: left;
     padding: 0.75rem 1rem;
-    border-bottom: 2px solid rgba(232,184,101,0.4);
-    color: #e8b865;
+    border-bottom: 2px solid rgba(229,0,70,0.4);
+    color: #E50046;
     font-weight: 600;
     font-size: 0.9rem;
   }
@@ -93,7 +93,7 @@ export default function PoliticaDeCookiesPage() {
         <div className="mx-auto max-w-4xl text-center">
           <h1
             className="text-4xl md:text-5xl font-bold mb-6"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Pol&iacute;tica de Cookies
           </h1>

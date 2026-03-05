@@ -40,7 +40,7 @@ export default async function CalendarioPage() {
         </div>
         <Link
           href="/zona-profesor/clases"
-          className="text-sm font-medium text-[#0b3c6f] hover:underline"
+          className="text-sm font-medium text-[#1e2d4a] hover:underline"
         >
           Ver todas las clases
         </Link>

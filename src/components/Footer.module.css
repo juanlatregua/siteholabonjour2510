@@ -1,6 +1,6 @@
 .footer {
   margin-top: 3rem;
-  background: linear-gradient(135deg, #0a0f1a 0%, #0f1929 50%, #0a0f1a 100%);
+  background: linear-gradient(135deg, #1e2d4a 0%, #253d5e 50%, #1e2d4a 100%);
   color: #e8f2ff;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .brandAccent {
-  color: #e8b865;
+  color: #E50046;
 }
 
 .tagline {
@@ -42,7 +42,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
-  color: #e8b865;
+  color: #E50046;
 }
 
 .text {
@@ -83,30 +83,8 @@
 }
 
 .linkList a:hover {
-  color: #e8b865;
+  color: #E50046;
   text-decoration: none;
-}
-
-.social {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-top: 0.7rem;
-}
-
-.social a {
-  display: inline-flex;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  transition: background-color 0.18s ease;
-}
-
-.social a:hover {
-  background: rgba(232, 184, 101, 0.2);
 }
 
 .legalLinks {
@@ -172,7 +150,7 @@
 }
 
 .ecosystemLinks a:hover {
-  color: #e8b865;
+  color: #E50046;
   text-decoration: underline;
 }
 

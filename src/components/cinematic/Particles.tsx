@@ -16,7 +16,7 @@ interface Particle {
   opacity: number;
 }
 
-export default function Particles({ count = 40, color = "#e8b865" }: ParticlesProps) {
+export default function Particles({ count = 40, color = "rgba(229,0,70,0.7)" }: ParticlesProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number>(0);

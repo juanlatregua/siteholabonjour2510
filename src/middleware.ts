@@ -32,6 +32,10 @@ const PUBLIC_PATHS = [
   "/frances-empresas",
   "/blog",
   "/sobre-nosotros",
+  "/correccion-ia",
+  "/examen-delf-a1",
+  "/examen-delf-a2",
+  "/calendario-examenes",
 ];
 
 const AUTH_PATHS = ["/iniciar-sesion", "/verificar-email", "/error"];
@@ -48,6 +52,8 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/leads") ||
     pathname.startsWith("/api/le-marche") ||
     pathname.startsWith("/api/le-mot-du-jour") ||
+    pathname.startsWith("/api/corrections") ||
+    pathname.startsWith("/api/exams") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/images") ||
     pathname.startsWith("/assets") ||

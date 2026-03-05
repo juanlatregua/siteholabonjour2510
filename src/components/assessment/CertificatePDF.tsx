@@ -14,7 +14,7 @@ export default function CertificatePDF({ result, assessmentTitle }: CertificateP
     const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
 
     // Background
-    doc.setFillColor(11, 60, 111); // navy
+    doc.setFillColor(30, 64, 175); // blue-800
     doc.rect(0, 0, 297, 210, "F");
 
     // White inner card
@@ -29,7 +29,7 @@ export default function CertificatePDF({ result, assessmentTitle }: CertificateP
     // Title
     doc.setFont("helvetica", "bold");
     doc.setFontSize(28);
-    doc.setTextColor(11, 60, 111);
+    doc.setTextColor(30, 64, 175);
     doc.text("HolaBonjour", 148.5, 50, { align: "center" });
 
     doc.setFontSize(16);
@@ -38,7 +38,7 @@ export default function CertificatePDF({ result, assessmentTitle }: CertificateP
 
     // Level
     doc.setFontSize(48);
-    doc.setTextColor(15, 93, 160);
+    doc.setTextColor(37, 99, 235);
     doc.text(result.estimatedLevel, 148.5, 95, { align: "center" });
 
     // Score
@@ -87,7 +87,7 @@ export default function CertificatePDF({ result, assessmentTitle }: CertificateP
     <button
       type="button"
       onClick={() => void generatePDF()}
-      className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#0f5da0] px-5 py-2.5 text-sm font-semibold text-[#0f5da0] transition hover:bg-blue-50"
+      className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E50046] px-5 py-2.5 text-sm font-semibold text-[#E50046] transition hover:bg-blue-50"
     >
       Descargar certificado PDF
     </button>

@@ -143,7 +143,7 @@ export default function PreparacionDelfDalfPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 50%, #462255 100%)",
+              "linear-gradient(135deg, #2d1b4e 0%, #1e2d4a 50%, #462255 100%)",
           }}
         />
         <Particles color="#c77dba" />
@@ -162,7 +162,7 @@ export default function PreparacionDelfDalfPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Préparation DELF/DALF
@@ -190,7 +190,7 @@ export default function PreparacionDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-14"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Les niveaux DELF &amp; DALF
@@ -241,7 +241,7 @@ export default function PreparacionDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Nos professeurs sont examinateurs DELF/DALF
@@ -267,7 +267,7 @@ export default function PreparacionDelfDalfPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-14"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Questions fréquentes
@@ -293,6 +293,70 @@ export default function PreparacionDelfDalfPage() {
               </GlassCard>
             ))}
           </div>
+        </div>
+      </CinematicSection>
+
+      {/* Exam simulation + AI Correction + Calendar */}
+      <CinematicSection className="py-16 px-6">
+        <div className="mx-auto max-w-4xl grid gap-6 sm:grid-cols-2">
+          <GlassCard className="p-6">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+            >
+              Examen DELF A1 complet
+            </h3>
+            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Simulation complète avec audios, textes et correction IA de la production écrite. Comme le jour de l&apos;examen.
+            </p>
+            <GoldButton href="/examen-delf-a1" variant="outline">
+              Passer l&apos;examen A1
+            </GoldButton>
+          </GlassCard>
+          <GlassCard className="p-6">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+            >
+              Examen DELF A2 complet
+            </h3>
+            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Simulation complète du DELF A2 avec audios, textes et correction IA de la production écrite. Entraîne-toi comme au vrai examen.
+            </p>
+            <GoldButton href="/examen-delf-a2" variant="outline">
+              Passer l&apos;examen A2
+            </GoldButton>
+          </GlassCard>
+          <GlassCard className="p-6">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+            >
+              Correction IA de tes écrits
+            </h3>
+            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Entraîne-toi entre les séances. Notre IA corrige ta production écrite avec les
+              mêmes critères que les examinateurs DELF/DALF.
+            </p>
+            <GoldButton href="/correccion-ia" variant="outline">
+              Essayer gratuitement
+            </GoldButton>
+          </GlassCard>
+          <GlassCard className="p-6">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+            >
+              Calendrier des examens
+            </h3>
+            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Toutes les dates DELF/DALF en Espagne : Alliance Française, Institut Français, EOI.
+              Active un rappel pour ne rater aucun délai.
+            </p>
+            <GoldButton href="/calendario-examenes" variant="outline">
+              Voir les dates
+            </GoldButton>
+          </GlassCard>
         </div>
       </CinematicSection>
 

@@ -9,12 +9,12 @@ import { CONTACT } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Clases particulares de francés online — HolaBonjour",
   description:
-    "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
+    "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4 clases de 55 min desde 150€.",
   alternates: { canonical: "/cursos/clases-particulares" },
   openGraph: {
     title: "Clases particulares de francés online — HolaBonjour",
     description:
-      "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
+      "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4 clases de 55 min desde 150€.",
     url: "https://holabonjour.es/cursos/clases-particulares",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -60,7 +60,7 @@ export default function ClasesParticularesPage() {
             "@type": "Course",
             "name": "Clases Particulares de Francés Online",
             "description":
-              "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4h desde 140€.",
+              "Clases particulares de francés 1 a 1 por Zoom. Horarios flexibles, contenido personalizado, profesoras nativas. Pack 4 clases de 55 min desde 150€.",
             "provider": {
               "@type": "EducationalOrganization",
               "name": "HolaBonjour",
@@ -96,7 +96,7 @@ export default function ClasesParticularesPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 50%, #462255 100%)",
+              "linear-gradient(135deg, #2d1b4e 0%, #1e2d4a 50%, #462255 100%)",
           }}
         />
         <Particles color="#c77dba" />
@@ -115,7 +115,7 @@ export default function ClasesParticularesPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Cours particuliers
@@ -137,7 +137,7 @@ export default function ClasesParticularesPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-14"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Vos avantages
@@ -171,7 +171,7 @@ export default function ClasesParticularesPage() {
             className="text-3xl md:text-4xl font-bold text-center mb-14"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Comment ça fonctionne ?

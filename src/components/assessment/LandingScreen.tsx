@@ -10,7 +10,7 @@ interface LandingScreenProps {
 export default function LandingScreen({ assessments }: LandingScreenProps) {
   return (
     <div className="space-y-8">
-      <section className="rounded-2xl bg-gradient-to-br from-[#0b3c6f] via-[#0f5da0] to-[#1b78c2] p-6 text-white shadow-lg sm:p-8">
+      <section className="rounded-2xl bg-gradient-to-br from-[#395D9F] via-[#E50046] to-[#60a5fa] p-6 text-white shadow-lg sm:p-8">
         <h1 className="text-3xl font-bold leading-tight sm:text-4xl">
           Prueba de Nivel de Frances
         </h1>

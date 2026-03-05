@@ -18,7 +18,7 @@ export default function PruebaNivelIndexPage() {
   return (
     <div className="bg-slate-50">
       <div className="mx-auto max-w-6xl px-4 py-7 sm:px-6 sm:py-9 lg:px-8">
-        <section className="rounded-2xl border border-cyan-200/60 bg-gradient-to-br from-[#0d3f78] via-[#0f5da0] to-[#1277c2] p-5 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:p-7">
+        <section className="rounded-2xl border border-cyan-200/60 bg-gradient-to-br from-[#395D9F] via-[#E50046] to-[#1277c2] p-5 text-white shadow-[0_14px_34px_rgba(15,93,160,0.22)] sm:p-7">
           <p className="inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-cyan-100">
             Simulacion orientativa
           </p>
@@ -60,7 +60,7 @@ export default function PruebaNivelIndexPage() {
               className="group rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_20px_rgba(15,23,42,0.06)] transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-[0_12px_24px_rgba(15,93,160,0.14)]"
             >
               <div className="flex items-center justify-between gap-2">
-                <p className="inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-[#0f5da0]">
+                <p className="inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-[#E50046]">
                   Nivel {assessment.targetLevel}
                 </p>
                 <p className="text-xs font-semibold text-slate-500">{assessment.durationMinutes} min</p>
@@ -79,7 +79,7 @@ export default function PruebaNivelIndexPage() {
 
               <Link
                 href={`/prueba-nivel/${assessment.id}`}
-                className="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-[#0f5da0] px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-[#0b4d84]"
+                className="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-[#E50046] px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-[#c7003b]"
               >
                 Empezar prueba
               </Link>
@@ -94,7 +94,7 @@ export default function PruebaNivelIndexPage() {
           </p>
           <Link
             href="/contratar"
-            className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f5da0] px-5 text-sm font-semibold text-white transition hover:bg-[#0b4d84]"
+            className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-5 text-sm font-semibold text-white transition hover:bg-[#c7003b]"
           >
             Contratar pack ahora
           </Link>

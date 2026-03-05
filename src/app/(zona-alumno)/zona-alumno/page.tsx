@@ -15,12 +15,14 @@ import {
   FiCreditCard,
   FiBarChart2,
   FiFolder,
+  FiEdit3,
 } from "react-icons/fi";
 
 const quickLinks = [
   { href: "/zona-alumno/clases", label: "Clases", icon: <FiBook className="h-5 w-5" />, color: "bg-blue-50 text-blue-600" },
   { href: "/zona-alumno/calendario", label: "Calendario", icon: <FiCalendar className="h-5 w-5" />, color: "bg-purple-50 text-purple-600" },
   { href: "/zona-alumno/reservar", label: "Reservar", icon: <FiPlus className="h-5 w-5" />, color: "bg-green-50 text-green-600" },
+  { href: "/zona-alumno/correcciones", label: "Correcciones IA", icon: <FiEdit3 className="h-5 w-5" />, color: "bg-rose-50 text-rose-600" },
   { href: "/zona-alumno/pack", label: "Mi Pack", icon: <FiPackage className="h-5 w-5" />, color: "bg-amber-50 text-amber-600" },
   { href: "/zona-alumno/pagos", label: "Pagos", icon: <FiCreditCard className="h-5 w-5" />, color: "bg-pink-50 text-pink-600" },
   { href: "/zona-alumno/resultados", label: "Resultados", icon: <FiBarChart2 className="h-5 w-5" />, color: "bg-indigo-50 text-indigo-600" },
@@ -59,6 +61,12 @@ export default async function ZonaAlumnoDashboard() {
     take: 5,
   });
 
+  // Latest correction
+  const latestCorrection = await prisma.writingCorrection.findFirst({
+    where: { userId: user.id, status: "COMPLETED" },
+    orderBy: { createdAt: "desc" },
+  });
+
   return (
     <div className="space-y-6">
       {/* Welcome */}
@@ -95,7 +103,7 @@ export default async function ZonaAlumnoDashboard() {
                 action={
                   <Link
                     href="/zona-alumno/reservar"
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#0b3c6f] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0e4f8d]"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#1e2d4a] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2e4d8a]"
                   >
                     <FiPlus className="h-4 w-4" />
                     Reservar clase
@@ -129,6 +137,37 @@ export default async function ZonaAlumnoDashboard() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Latest correction */}
+      {latestCorrection && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Última corrección IA</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-900">
+                  {latestCorrection.level} — {latestCorrection.taskType.replace(/_/g, " ")}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {latestCorrection.globalScore != null && latestCorrection.maxScore != null
+                    ? `${latestCorrection.globalScore}/${latestCorrection.maxScore} puntos`
+                    : "Procesando..."}
+                  {" · "}{latestCorrection.wordCount} palabras
+                </p>
+              </div>
+              <Link
+                href={`/zona-alumno/correcciones/${latestCorrection.id}`}
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-[#1e2d4a] transition-colors hover:bg-[#1e2d4a]/5"
+              >
+                Ver detalle
+                <FiBarChart2 className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Recent materials */}
       <Card>

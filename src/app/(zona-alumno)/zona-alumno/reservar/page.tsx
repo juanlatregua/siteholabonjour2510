@@ -116,7 +116,7 @@ export default function ReservarPage() {
             <select
               value={selectedTeacherId}
               onChange={(e) => setSelectedTeacherId(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#0b3c6f] focus:outline-none focus:ring-2 focus:ring-[#0b3c6f]/20"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e2d4a] focus:outline-none focus:ring-2 focus:ring-[#1e2d4a]/20"
             >
               {teachers.map((t) => (
                 <option key={t.id} value={t.id}>
@@ -151,6 +151,16 @@ export default function ReservarPage() {
                 </span>
               </div>
 
+              <div className="rounded-lg bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-800">
+                <p className="font-semibold mb-1">Política de cancelación</p>
+                <ul className="list-disc pl-4 space-y-0.5 text-xs text-amber-700">
+                  <li>Las clases no se pueden cambiar sin consultar previamente con la profesora.</li>
+                  <li>Cancelación: al menos <strong>48 horas</strong> de antelación.</li>
+                  <li>Si se cancela con menos de 48h, <strong>la clase se descuenta del bono</strong>.</li>
+                  <li>Excepción: justificante médico presentado en 24h.</li>
+                </ul>
+              </div>
+
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700">
                   Tema / enfoque (opcional)
@@ -158,7 +168,7 @@ export default function ReservarPage() {
                 <textarea
                   value={focus}
                   onChange={(e) => setFocus(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#0b3c6f] focus:outline-none focus:ring-2 focus:ring-[#0b3c6f]/20"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e2d4a] focus:outline-none focus:ring-2 focus:ring-[#1e2d4a]/20"
                   rows={2}
                   placeholder="Ej: Preparación oral DELF B2"
                 />
@@ -171,7 +181,7 @@ export default function ReservarPage() {
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#0b3c6f] focus:outline-none focus:ring-2 focus:ring-[#0b3c6f]/20"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1e2d4a] focus:outline-none focus:ring-2 focus:ring-[#1e2d4a]/20"
                   rows={2}
                   placeholder="Cualquier información adicional para el profesor"
                 />

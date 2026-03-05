@@ -4,6 +4,13 @@ import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
+import { format } from "date-fns";
+import { es } from "date-fns/locale/es";
+import { sendLateCancellationEmail } from "@/lib/email";
+import { sendSMS } from "@/lib/sms";
+import { smsAnulacionTardia } from "@/lib/sms-templates";
+
+const CANCELLATION_WINDOW_MS = 48 * 60 * 60 * 1000; // 48 hours
 
 const updateLessonSchema = z.object({
   status: z.string().optional(),
@@ -33,7 +40,12 @@ export async function PATCH(
 
   const { id } = await params;
 
-  const lesson = await prisma.lesson.findUnique({ where: { id } });
+  const lesson = await prisma.lesson.findUnique({
+    where: { id },
+    include: {
+      student: { select: { id: true, name: true, email: true, phone: true } },
+    },
+  });
   if (!lesson) {
     return NextResponse.json(
       { ok: false, error: "NOT_FOUND", message: "Clase no encontrada" },
@@ -83,6 +95,11 @@ export async function PATCH(
   const statusChanged = newStatus !== undefined && newStatus !== oldStatus;
   const hoursDelta = lesson.durationMinutes / 60;
 
+  // Determine if this is a late cancellation (<48h before class)
+  const isCancelling = statusChanged && (newStatus === "CANCELLED" || newStatus === "NO_SHOW");
+  const msUntilClass = lesson.scheduledAt.getTime() - Date.now();
+  const isLateCancellation = isCancelling && msUntilClass < CANCELLATION_WINDOW_MS;
+
   // Use a transaction to update lesson and pack.hoursUsed atomically
   const updated = await prisma.$transaction(async (tx) => {
     const updatedLesson = await tx.lesson.update({
@@ -103,10 +120,48 @@ export async function PATCH(
           data: { hoursUsed: { decrement: hoursDelta } },
         });
       }
+
+      // Late cancellation / no-show: deduct hours from pack (class counts)
+      if (isLateCancellation && oldStatus !== "COMPLETED") {
+        await tx.pack.update({
+          where: { id: lesson.packId },
+          data: { hoursUsed: { increment: hoursDelta } },
+        });
+      }
     }
 
     return updatedLesson;
   });
 
-  return NextResponse.json({ ok: true, lesson: updated });
+  // Send notifications for late cancellation (fire-and-forget, don't block response)
+  if (isLateCancellation && lesson.student) {
+    const dateStr = format(lesson.scheduledAt, "EEEE d 'de' MMMM, HH:mm", { locale: es });
+
+    // Email notification
+    sendLateCancellationEmail({
+      toEmail: lesson.student.email || "",
+      customerName: lesson.student.name || "alumno/a",
+      date: dateStr,
+    }).catch(() => { /* non-blocking */ });
+
+    // SMS notification
+    if (lesson.student.phone) {
+      const phone = lesson.student.phone.startsWith("+")
+        ? lesson.student.phone
+        : `+34${lesson.student.phone.replace(/\s/g, "")}`;
+      sendSMS({
+        to: phone,
+        body: smsAnulacionTardia({
+          nombre: lesson.student.name || "alumno/a",
+          fecha: dateStr,
+        }),
+      }).catch(() => { /* non-blocking */ });
+    }
+  }
+
+  return NextResponse.json({
+    ok: true,
+    lesson: updated,
+    lateCancellation: isLateCancellation || false,
+  });
 }

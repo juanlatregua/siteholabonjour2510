@@ -22,7 +22,7 @@ export default function AuthErrorPage() {
       <p className="mb-6 text-sm text-white/50">{message}</p>
       <Link
         href="/iniciar-sesion"
-        className="inline-block rounded-xl bg-gradient-to-r from-[#e8b865] to-[#c8a55a] px-6 py-3 text-sm font-bold text-[#1a1a2e] transition hover:-translate-y-0.5"
+        className="inline-block rounded-xl bg-gradient-to-r from-[#E50046] to-[#c8a55a] px-6 py-3 text-sm font-bold text-[#1e2d4a] transition hover:-translate-y-0.5"
       >
         Volver a intentar
       </Link>

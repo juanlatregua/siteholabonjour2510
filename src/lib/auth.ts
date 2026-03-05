@@ -4,6 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 import Nodemailer from "next-auth/providers/nodemailer";
 import { prisma } from "@/lib/prisma";
 import { TEACHER_EMAILS } from "@/lib/constants";
+import { sendMail } from "@/lib/azure-mail";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma) as never,
@@ -14,17 +15,44 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: "/error",
   },
   providers: [
-    // Magic link for students (and teachers)
+    // Magic link for students (and teachers) — sent via Microsoft Graph
     Nodemailer({
-      server: {
-        host: process.env.EMAIL_SERVER_HOST,
-        port: Number(process.env.EMAIL_SERVER_PORT || 465),
-        auth: {
-          user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD,
-        },
+      // Server config is required by the provider type but we override sendVerificationRequest
+      server: { host: "localhost", port: 25, auth: { user: "", pass: "" } },
+      from: process.env.EMAIL_FROM || "HolaBonjour <hola@holabonjour.es>",
+      async sendVerificationRequest({ identifier: email, url }) {
+        const brandUrl = process.env.NEXTAUTH_URL || "https://holabonjour.es";
+        await sendMail({
+          to: email,
+          subject: "Accede a HolaBonjour — Tu enlace de acceso",
+          html: `
+            <div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;">
+              <div style="margin-bottom:16px;">
+                <a href="${brandUrl}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer">
+                  <strong style="font-size:20px;color:#395D9F;">HolaBonjour</strong>
+                </a>
+              </div>
+              <h2 style="color:#1e2d4a;margin-bottom:8px;">Tu enlace de acceso</h2>
+              <p style="color:#334155;font-size:15px;line-height:1.5;">
+                Haz clic en el siguiente botón para acceder a tu cuenta:
+              </p>
+              <p style="margin:24px 0;">
+                <a href="${url}" style="display:inline-block;background:#E50046;color:#ffffff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;">
+                  Acceder a mi cuenta
+                </a>
+              </p>
+              <p style="color:#64748b;font-size:13px;line-height:1.4;">
+                Si no solicitaste este enlace, puedes ignorar este email. El enlace caduca en 24 horas.
+              </p>
+              <hr style="margin:24px 0 12px;border:0;border-top:1px solid #e2e8f0;" />
+              <p style="color:#94a3b8;font-size:12px;">
+                HolaBonjour · Academia de francés online · Málaga ·
+                <a href="mailto:hola@holabonjour.es" style="color:#E50046;text-decoration:none;">hola@holabonjour.es</a>
+              </p>
+            </div>
+          `,
+        });
       },
-      from: process.env.EMAIL_FROM || "HolaBonjour <noreply@holabonjour.es>",
     }),
     // Password credentials for teachers only
     Credentials({

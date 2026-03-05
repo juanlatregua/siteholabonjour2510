@@ -85,7 +85,7 @@ const proseStyles = `
     margin-bottom: 0.5rem;
   }
   .prose-content strong {
-    color: #e8b865;
+    color: #E50046;
     font-weight: 600;
   }
   .prose-content em {
@@ -93,7 +93,7 @@ const proseStyles = `
     font-style: italic;
   }
   .prose-content a {
-    color: #e8b865;
+    color: #E50046;
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color 0.2s ease;
@@ -102,10 +102,10 @@ const proseStyles = `
     color: #f0c97a;
   }
   .prose-content blockquote {
-    border-left: 4px solid #e8b865;
+    border-left: 4px solid #E50046;
     padding: 1rem 1.25rem;
     margin: 1.5rem 0;
-    background: rgba(232,184,101,0.06);
+    background: rgba(229,0,70,0.06);
     border-radius: 0 12px 12px 0;
     color: rgba(255,255,255,0.75);
     font-style: italic;
@@ -118,8 +118,8 @@ const proseStyles = `
   .prose-content th {
     text-align: left;
     padding: 0.75rem 1rem;
-    border-bottom: 2px solid rgba(232,184,101,0.4);
-    color: #e8b865;
+    border-bottom: 2px solid rgba(229,0,70,0.4);
+    color: #E50046;
     font-weight: 600;
     font-size: 0.9rem;
   }
@@ -130,7 +130,7 @@ const proseStyles = `
     font-size: 0.95rem;
   }
   .prose-content h3 {
-    color: #e8b865;
+    color: #E50046;
     font-family: var(--font-display);
     font-size: 1.35rem;
     font-weight: 700;
@@ -227,14 +227,14 @@ export default async function BlogArticlePage({ params }: Props) {
         className="relative overflow-hidden flex items-center justify-center min-h-[60vh] px-6"
         style={{
           background:
-            "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+            "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
           color: "var(--cin-text)",
         }}
       >
-        <Particles count={40} color="#e8b865" />
+        <Particles count={40} color="#E50046" />
         <MorphBlob
           size={400}
-          color="#e8b865"
+          color="#E50046"
           position={{ top: "-10%", left: "-5%" }}
         />
         <MorphBlob
@@ -296,9 +296,9 @@ export default async function BlogArticlePage({ params }: Props) {
             <span
               className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold"
               style={{
-                background: "rgba(232,184,101,0.15)",
-                color: "#e8b865",
-                border: "1px solid rgba(232,184,101,0.3)",
+                background: "rgba(229,0,70,0.15)",
+                color: "#E50046",
+                border: "1px solid rgba(229,0,70,0.3)",
               }}
             >
               {post.categoryLabel}
@@ -338,7 +338,7 @@ export default async function BlogArticlePage({ params }: Props) {
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             {post.title}
@@ -365,7 +365,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 className="text-2xl md:text-3xl font-bold mb-6"
                 style={{
                   fontFamily: "var(--font-display)",
-                  color: "var(--cin-gold)",
+                  color: "var(--cin-accent)",
                 }}
               >
                 {section.heading}
@@ -389,7 +389,7 @@ export default async function BlogArticlePage({ params }: Props) {
               className="text-3xl md:text-4xl font-bold text-center mb-14"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "var(--cin-gold)",
+                color: "var(--cin-accent)",
               }}
             >
               Más artículos
@@ -407,9 +407,9 @@ export default async function BlogArticlePage({ params }: Props) {
                       <span
                         className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold"
                         style={{
-                          background: "rgba(232,184,101,0.15)",
-                          color: "#e8b865",
-                          border: "1px solid rgba(232,184,101,0.3)",
+                          background: "rgba(229,0,70,0.15)",
+                          color: "#E50046",
+                          border: "1px solid rgba(229,0,70,0.3)",
                         }}
                       >
                         {relPost.categoryLabel}
@@ -429,7 +429,7 @@ export default async function BlogArticlePage({ params }: Props) {
                       className="text-lg font-bold mb-2"
                       style={{
                         fontFamily: "var(--font-display)",
-                        color: "var(--cin-gold)",
+                        color: "var(--cin-accent)",
                       }}
                     >
                       {relPost.title}
@@ -467,7 +467,7 @@ export default async function BlogArticlePage({ params }: Props) {
               className="text-2xl md:text-3xl font-bold mb-4"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "var(--cin-gold)",
+                color: "var(--cin-accent)",
               }}
             >
               &iquest;Quieres mejorar tu franc&eacute;s?

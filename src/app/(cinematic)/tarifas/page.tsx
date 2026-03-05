@@ -7,12 +7,12 @@ import GoldButton from "@/components/cinematic/GoldButton";
 export const metadata: Metadata = {
   title: "Precios de clases de francés online — HolaBonjour",
   description:
-    "Tarifas de clases de francés: pack A1-B2 desde 140\u20AC por 4 horas, pack C1-C2 200\u20AC por 4 horas. Clases individuales con profesoras nativas por Zoom.",
+    "Tarifas de clases de francés: pack A1-B2 desde 150\u20AC por 4 clases de 55 min, pack C1-C2 200\u20AC por 4 clases de 55 min. Clases individuales con profesoras nativas por Zoom.",
   alternates: { canonical: "/tarifas" },
   openGraph: {
     title: "Precios de clases de francés online — HolaBonjour",
     description:
-      "Tarifas de clases de francés: pack A1-B2 desde 140\u20AC por 4 horas, pack C1-C2 200\u20AC por 4 horas. Clases individuales con profesoras nativas por Zoom.",
+      "Tarifas de clases de francés: pack A1-B2 desde 150\u20AC por 4 clases de 55 min, pack C1-C2 200\u20AC por 4 clases de 55 min. Clases individuales con profesoras nativas por Zoom.",
     url: "https://holabonjour.es/tarifas",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -31,7 +31,7 @@ function CheckIcon() {
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ color: "var(--cin-gold)", flexShrink: 0 }}
+      style={{ color: "var(--cin-accent)", flexShrink: 0 }}
       aria-hidden="true"
     >
       <polyline points="20 6 9 17 4 12" />
@@ -64,7 +64,7 @@ export default function TarifasPage() {
         <div className="mx-auto max-w-4xl text-center">
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Nos tarifs
           </h1>
@@ -84,14 +84,14 @@ export default function TarifasPage() {
             {pricingTiers.map((tier) => (
               <GlassCard
                 key={tier.name}
-                glow={tier.popular ? "rgba(232,184,101,0.15)" : undefined}
+                glow={tier.popular ? "rgba(229,0,70,0.15)" : undefined}
                 className="flex flex-col relative"
               >
                 {tier.popular && (
                   <span
                     className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-4 py-1 rounded-full"
                     style={{
-                      background: "var(--cin-gold)",
+                      background: "var(--cin-accent)",
                       color: "var(--cin-bg)",
                     }}
                   >
@@ -109,9 +109,9 @@ export default function TarifasPage() {
                   <span
                     className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4"
                     style={{
-                      background: "rgba(232,184,101,0.12)",
-                      color: "var(--cin-gold-light)",
-                      border: "1px solid rgba(232,184,101,0.2)",
+                      background: "rgba(229,0,70,0.12)",
+                      color: "var(--cin-accent-light)",
+                      border: "1px solid rgba(229,0,70,0.2)",
                     }}
                   >
                     {tier.levels}
@@ -119,7 +119,7 @@ export default function TarifasPage() {
                   <div className="flex items-baseline justify-center gap-1">
                     <span
                       className="text-4xl font-bold"
-                      style={{ color: "var(--cin-gold)" }}
+                      style={{ color: "var(--cin-accent)" }}
                     >
                       {tier.price}€
                     </span>
@@ -134,7 +134,7 @@ export default function TarifasPage() {
                     className="text-sm mt-1"
                     style={{ color: "rgba(255,255,255,0.5)" }}
                   >
-                    {tier.hours} horas de clase
+                    {tier.hours} clases de 55 min
                   </p>
                 </div>
 
@@ -153,11 +153,11 @@ export default function TarifasPage() {
                 </ul>
 
                 <GoldButton
-                  href="/contacto"
+                  href="/contratar"
                   variant={tier.popular ? "solid" : "outline"}
                   className="w-full text-center"
                 >
-                  Commencer
+                  Contratar pack
                 </GoldButton>
               </GlassCard>
             ))}
@@ -170,6 +170,26 @@ export default function TarifasPage() {
             Todos los packs son mensuales. Puedes renovar o cambiar de nivel en
             cualquier momento.
           </p>
+
+          {/* AI Correction bonus */}
+          <GlassCard className="mt-10 p-6 text-center">
+            <h3
+              className="text-xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
+            >
+              Incluido con tu pack: Corrección IA ilimitada
+            </h3>
+            <p
+              className="text-sm mb-4"
+              style={{ color: "rgba(255,255,255,0.65)" }}
+            >
+              Practica tu expresión escrita entre clases. Corrección automática con rúbricas oficiales DELF/DALF,
+              errores anotados, texto corregido y consejos personalizados.
+            </p>
+            <GoldButton href="/correccion-ia" variant="outline">
+              Probar gratis (3 correcciones)
+            </GoldButton>
+          </GlassCard>
         </div>
       </CinematicSection>
 
@@ -178,7 +198,7 @@ export default function TarifasPage() {
         <div className="mx-auto max-w-3xl">
           <h2
             className="text-3xl md:text-4xl font-bold text-center mb-14"
-            style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+            style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
           >
             Questions fréquentes
           </h2>
@@ -208,7 +228,7 @@ export default function TarifasPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className="transition-transform duration-300 group-open:rotate-180"
-                    style={{ color: "var(--cin-gold)", flexShrink: 0 }}
+                    style={{ color: "var(--cin-accent)", flexShrink: 0 }}
                     aria-hidden="true"
                   >
                     <polyline points="6 9 12 15 18 9" />

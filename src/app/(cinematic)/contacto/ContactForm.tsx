@@ -89,7 +89,7 @@ export default function ContactForm() {
         </div>
         <h3
           className="text-2xl font-bold mb-3"
-          style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+          style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
         >
           Message envoyé
         </h3>
@@ -113,7 +113,7 @@ export default function ContactForm() {
     >
       <h3
         className="text-2xl font-bold mb-2"
-        style={{ fontFamily: "var(--font-display)", color: "var(--cin-gold)" }}
+        style={{ fontFamily: "var(--font-display)", color: "var(--cin-accent)" }}
       >
         Écrivez-nous
       </h3>
@@ -131,7 +131,7 @@ export default function ContactForm() {
           placeholder="Tu nombre"
           style={inputStyles}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "#e8b865";
+            e.currentTarget.style.borderColor = "#E50046";
           }}
           onBlur={(e) => {
             e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
@@ -152,7 +152,7 @@ export default function ContactForm() {
           placeholder="tu@email.com"
           style={inputStyles}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "#e8b865";
+            e.currentTarget.style.borderColor = "#E50046";
           }}
           onBlur={(e) => {
             e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
@@ -179,7 +179,7 @@ export default function ContactForm() {
             backgroundPosition: "right 16px center",
           }}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "#e8b865";
+            e.currentTarget.style.borderColor = "#E50046";
           }}
           onBlur={(e) => {
             e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
@@ -208,7 +208,7 @@ export default function ContactForm() {
           placeholder="Cuéntanos qué necesitas..."
           style={{ ...inputStyles, resize: "vertical" }}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "#e8b865";
+            e.currentTarget.style.borderColor = "#E50046";
           }}
           onBlur={(e) => {
             e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
@@ -232,11 +232,11 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="mt-2 font-semibold cursor-pointer transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_24px_rgba(232,184,101,0.35)] disabled:opacity-50 disabled:cursor-not-allowed"
+        className="mt-2 font-semibold cursor-pointer transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_24px_rgba(229,0,70,0.35)] disabled:opacity-50 disabled:cursor-not-allowed"
         style={{
           padding: "14px 28px",
           borderRadius: 12,
-          background: "var(--cin-gold)",
+          background: "var(--cin-accent)",
           color: "var(--cin-bg)",
           border: "none",
           fontSize: "0.95rem",

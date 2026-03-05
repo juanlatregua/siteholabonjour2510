@@ -22,7 +22,7 @@ const QuestionCard = ({
 }) => {
   return (
     <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-      <p className="text-xs font-medium uppercase tracking-wide text-[#0f5da0]">{question.skill}</p>
+      <p className="text-xs font-medium uppercase tracking-wide text-[#E50046]">{question.skill}</p>
       <h3 className="mt-2 text-base font-semibold text-gray-900">{question.prompt}</h3>
       <p className="mt-1 text-xs text-gray-500">Referencia: {question.officialReference}</p>
 
@@ -34,7 +34,7 @@ const QuestionCard = ({
             <label
               key={option.id}
               className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3 text-sm transition ${
-                checked ? "border-[#0f5da0] bg-blue-50" : "border-gray-200 hover:border-gray-300"
+                checked ? "border-[#E50046] bg-blue-50" : "border-gray-200 hover:border-gray-300"
               }`}
             >
               <input
@@ -95,7 +95,7 @@ const PlacementTest = () => {
 
         <button
           type="submit"
-          className="w-full rounded-xl bg-[#0f5da0] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0b4d84]"
+          className="w-full rounded-xl bg-[#E50046] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#c7003b]"
         >
           Ver mi nivel estimado
         </button>

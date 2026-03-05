@@ -60,14 +60,14 @@ export default function RecursosPage() {
         className="relative overflow-hidden flex items-center justify-center min-h-[70vh] px-6"
         style={{
           background:
-            "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+            "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
           color: "var(--cin-text)",
         }}
       >
-        <Particles count={40} color="#e8b865" />
+        <Particles count={40} color="#E50046" />
         <MorphBlob
           size={400}
-          color="#e8b865"
+          color="#E50046"
           position={{ top: "-10%", left: "-5%" }}
         />
         <MorphBlob
@@ -81,7 +81,7 @@ export default function RecursosPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--cin-gold)",
+              color: "var(--cin-accent)",
             }}
           >
             Ressources
@@ -111,7 +111,7 @@ export default function RecursosPage() {
                     className="text-xl font-bold mb-3"
                     style={{
                       fontFamily: "var(--font-display)",
-                      color: "var(--cin-gold)",
+                      color: "var(--cin-accent)",
                     }}
                   >
                     {resource.title}

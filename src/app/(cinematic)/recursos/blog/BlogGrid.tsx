@@ -61,11 +61,11 @@ export default function BlogGrid({ blogPosts }: BlogGridProps) {
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer"
                 style={{
                   background: isActive
-                    ? "rgba(232,184,101,0.2)"
+                    ? "rgba(229,0,70,0.2)"
                     : "rgba(255,255,255,0.06)",
-                  color: isActive ? "#e8b865" : "rgba(255,255,255,0.6)",
+                  color: isActive ? "#E50046" : "rgba(255,255,255,0.6)",
                   border: isActive
-                    ? "1px solid rgba(232,184,101,0.4)"
+                    ? "1px solid rgba(229,0,70,0.4)"
                     : "1px solid rgba(255,255,255,0.1)",
                 }}
               >
@@ -101,9 +101,9 @@ export default function BlogGrid({ blogPosts }: BlogGridProps) {
                     <span
                       className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold"
                       style={{
-                        background: "rgba(232,184,101,0.15)",
-                        color: "#e8b865",
-                        border: "1px solid rgba(232,184,101,0.3)",
+                        background: "rgba(229,0,70,0.15)",
+                        color: "#E50046",
+                        border: "1px solid rgba(229,0,70,0.3)",
                       }}
                     >
                       {post.categoryLabel}
@@ -125,7 +125,7 @@ export default function BlogGrid({ blogPosts }: BlogGridProps) {
                     className="text-lg font-bold mb-2"
                     style={{
                       fontFamily: "var(--font-display)",
-                      color: "var(--cin-gold)",
+                      color: "var(--cin-accent)",
                     }}
                   >
                     {post.title}

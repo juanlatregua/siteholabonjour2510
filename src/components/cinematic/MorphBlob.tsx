@@ -13,7 +13,7 @@ interface MorphBlobProps {
 
 export default function MorphBlob({
   size = 300,
-  color = "#e8b865",
+  color = "#E50046",
   position,
 }: MorphBlobProps) {
   return (

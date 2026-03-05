@@ -17,13 +17,13 @@ export default function ResultScreen({ result, assessment, onRestart }: ResultSc
   const levelColorMap: Record<string, string> = {
     A1: "#22c55e",
     A2: "#16a34a",
-    B1: "#0f5da0",
-    B2: "#0b3c6f",
+    B1: "#E50046",
+    B2: "#395D9F",
     C1: "#7c3aed",
     C2: "#6d28d9",
   };
 
-  const gaugeColor = levelColorMap[result.estimatedLevel] ?? "#0f5da0";
+  const gaugeColor = levelColorMap[result.estimatedLevel] ?? "#E50046";
 
   return (
     <section className="space-y-6">
@@ -67,7 +67,7 @@ export default function ResultScreen({ result, assessment, onRestart }: ResultSc
               </div>
               <div className="mt-2 h-2 w-full rounded-full bg-slate-200">
                 <div
-                  className="h-2 rounded-full bg-[#0f5da0] transition-all duration-1000"
+                  className="h-2 rounded-full bg-[#E50046] transition-all duration-1000"
                   style={{ width: `${section.percentage}%` }}
                 />
               </div>
@@ -78,7 +78,7 @@ export default function ResultScreen({ result, assessment, onRestart }: ResultSc
 
       {/* Recommendations */}
       <div className="rounded-2xl border border-blue-100 bg-blue-50/50 p-5">
-        <h4 className="text-lg font-semibold text-[#0b3c6f]">Recomendaciones</h4>
+        <h4 className="text-lg font-semibold text-[#395D9F]">Recomendaciones</h4>
         <ul className="mt-3 space-y-2 text-sm text-slate-700">
           {result.sectionScores
             .filter((s) => s.percentage < 60)
@@ -96,6 +96,30 @@ export default function ResultScreen({ result, assessment, onRestart }: ResultSc
             </li>
           )}
         </ul>
+      </div>
+
+      {/* AI Correction CTA */}
+      <div className="rounded-2xl border border-rose-100 bg-gradient-to-r from-rose-50 to-white p-5">
+        <div className="flex items-start gap-4">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-rose-600 text-lg">
+            ✍️
+          </div>
+          <div className="flex-1">
+            <h4 className="text-base font-semibold text-slate-900">
+              Practica tu expresión escrita con IA
+            </h4>
+            <p className="mt-1 text-sm text-slate-600">
+              Corrección automática con las rúbricas oficiales {result.estimatedLevel.startsWith("C") ? "DALF" : "DELF"} {result.estimatedLevel}.
+              3 correcciones gratuitas.
+            </p>
+            <Link
+              href="/correccion-ia"
+              className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-[#E50046] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#c7003b]"
+            >
+              Probar corrección IA gratis
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* Actions */}

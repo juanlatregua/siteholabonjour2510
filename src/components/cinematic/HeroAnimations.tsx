@@ -25,7 +25,7 @@ export default function HeroAnimations() {
         />
         <MorphBlob
           size={300}
-          color="#e8b865"
+          color="#395D9F"
           position={{ bottom: "15%", left: "10%" }}
         />
       </div>

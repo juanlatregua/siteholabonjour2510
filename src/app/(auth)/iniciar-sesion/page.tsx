@@ -38,7 +38,7 @@ export default function SignInPage() {
     <div className="w-full max-w-md space-y-8">
       <Link
         href="/"
-        className="inline-flex items-center gap-1.5 text-sm text-white/50 transition hover:text-[#e8b865]"
+        className="inline-flex items-center gap-1.5 text-sm text-white/50 transition hover:text-[#E50046]"
       >
         <span aria-hidden="true">&larr;</span> Volver a HolaBonjour
       </Link>
@@ -49,7 +49,7 @@ export default function SignInPage() {
           Introduce tu email y te enviaremos un enlace de acceso.
         </p>
         {sent ? (
-          <p className="text-center text-sm text-[#e8b865]">
+          <p className="text-center text-sm text-[#E50046]">
             Revisa tu bandeja de entrada. Te hemos enviado un enlace.
           </p>
         ) : (
@@ -60,12 +60,12 @@ export default function SignInPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="tu@email.com"
               required
-              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/25 outline-none focus:border-[#e8b865]/50 focus:ring-1 focus:ring-[#e8b865]/20"
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/25 outline-none focus:border-[#E50046]/50 focus:ring-1 focus:ring-[#E50046]/20"
             />
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-xl bg-gradient-to-r from-[#e8b865] to-[#c8a55a] px-4 py-3 text-sm font-bold text-[#1a1a2e] transition hover:-translate-y-0.5 disabled:opacity-50"
+              className="w-full rounded-xl bg-gradient-to-r from-[#E50046] to-[#c8a55a] px-4 py-3 text-sm font-bold text-[#1e2d4a] transition hover:-translate-y-0.5 disabled:opacity-50"
             >
               {loading ? "Enviando..." : "Enviar enlace de acceso"}
             </button>
@@ -86,7 +86,7 @@ export default function SignInPage() {
             onChange={(e) => setTeacherEmail(e.target.value)}
             placeholder="email@holabonjour.es"
             required
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/25 outline-none focus:border-[#e8b865]/50 focus:ring-1 focus:ring-[#e8b865]/20"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/25 outline-none focus:border-[#E50046]/50 focus:ring-1 focus:ring-[#E50046]/20"
           />
           <input
             type="password"
@@ -94,7 +94,7 @@ export default function SignInPage() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Contraseña"
             required
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/25 outline-none focus:border-[#e8b865]/50 focus:ring-1 focus:ring-[#e8b865]/20"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/25 outline-none focus:border-[#E50046]/50 focus:ring-1 focus:ring-[#E50046]/20"
           />
           <button
             type="submit"

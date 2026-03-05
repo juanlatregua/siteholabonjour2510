@@ -1,0 +1,71 @@
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+import { sendNotification } from "@/lib/sms";
+import { smsRecordatorioClase } from "@/lib/sms-templates";
+import { sendClassReminderEmail } from "@/lib/email";
+
+// Vercel cron: daily at 10:00 UTC — sends reminders for tomorrow's lessons
+
+export async function GET(req: NextRequest) {
+  const authHeader = req.headers.get("authorization");
+  const cronSecret = process.env.CRON_SECRET;
+
+  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const now = new Date();
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  const startOfTomorrow = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate());
+  const endOfTomorrow = new Date(startOfTomorrow);
+  endOfTomorrow.setDate(endOfTomorrow.getDate() + 1);
+
+  try {
+    const lessons = await prisma.lesson.findMany({
+      where: {
+        scheduledAt: { gte: startOfTomorrow, lt: endOfTomorrow },
+        status: "SCHEDULED",
+      },
+      include: { student: true },
+    });
+
+    let sent = 0;
+    for (const lesson of lessons) {
+      const student = lesson.student;
+      const dateLabel = startOfTomorrow.toLocaleDateString("es-ES", {
+        weekday: "long", day: "numeric", month: "long",
+      });
+      const timeLabel = lesson.scheduledAt.toLocaleTimeString("es-ES", {
+        hour: "2-digit", minute: "2-digit",
+      });
+
+      if (student.phone) {
+        await sendNotification({
+          to: student.phone,
+          body: smsRecordatorioClase({
+            nombre: (student.name || "").split(" ")[0] || "Alumno",
+            fecha: dateLabel,
+            hora: timeLabel,
+          }),
+        });
+      }
+
+      await sendClassReminderEmail({
+        toEmail: student.email,
+        customerName: student.name || "Alumno",
+        date: dateLabel,
+        time: timeLabel,
+        zoomLink: lesson.zoomLink || undefined,
+      });
+
+      sent++;
+    }
+
+    return NextResponse.json({ ok: true, reminders: sent });
+  } catch (err) {
+    console.error("[cron/class-reminders]", err);
+    return NextResponse.json({ error: "Internal error" }, { status: 500 });
+  }
+}
