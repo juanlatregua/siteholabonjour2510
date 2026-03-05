@@ -175,20 +175,38 @@
 /* ─── Menu item (each row) ─── */
 
 .menuItem {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .overlayCinematic .menuItem {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Group separator (visual gap between sections) ─── */
+
+.menuGroupSeparator {
+  height: 0.6rem;
+  border-bottom: none;
+}
+
+/* ─── Auth menu item (top border separator) ─── */
+
+.authMenuItem {
+  border-top: 2px solid rgba(229, 0, 70, 0.2);
+  margin-top: 0.4rem;
+}
+
+.overlayCinematic .authMenuItem {
+  border-top: 2px solid rgba(229, 0, 70, 0.3);
 }
 
 /* ─── Menu link (top-level plain links) ─── */
 
 .menuLink {
   display: block;
-  padding: 1.1rem 0.5rem;
+  padding: 1rem 0.5rem;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #1f2937;
   letter-spacing: 0.01em;
@@ -241,10 +259,10 @@
   border: none;
   background: none;
   cursor: pointer;
-  padding: 1.1rem 0.5rem;
+  padding: 1rem 0.5rem;
   text-decoration: none;
   color: #1f2937;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   font-family: inherit;
   letter-spacing: 0.01em;
@@ -297,11 +315,11 @@
 
 .accordionItem {
   display: block;
-  padding: 0.65rem 0.75rem;
+  padding: 0.55rem 0.75rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: #374151;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 500;
   transition: background-color 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
 }
@@ -407,12 +425,12 @@
 
   .menuLink,
   .accordionTrigger {
-    font-size: 1.15rem;
-    padding: 1rem 0.4rem;
+    font-size: 1rem;
+    padding: 0.85rem 0.4rem;
   }
 
   .accordionItem {
-    font-size: 0.98rem;
+    font-size: 0.88rem;
   }
 }
 
@@ -423,13 +441,13 @@
 
   .menuLink,
   .accordionTrigger {
-    font-size: 1.4rem;
-    padding: 1.25rem 0.5rem;
+    font-size: 1.1rem;
+    padding: 1rem 0.5rem;
   }
 
   .accordionItem {
-    font-size: 1.1rem;
-    padding: 0.75rem 0.85rem;
+    font-size: 0.95rem;
+    padding: 0.65rem 0.85rem;
   }
 
   .overlayCta,

@@ -47,7 +47,7 @@ export default async function ResultadosPage() {
                     </p>
                   </div>
                   <a
-                    href={`/resultados/${link.attemptId}`}
+                    href={`/zona-alumno/resultados/${link.attemptId}`}
                     className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-[#1e2d4a] transition-colors hover:bg-[#1e2d4a]/5"
                   >
                     Ver resultados

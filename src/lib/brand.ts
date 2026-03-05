@@ -90,14 +90,6 @@ export const logo = {
   height: 48,
 } as const;
 
-// ─── Social Links ───
-export const social = {
-  facebook:  "https://www.facebook.com/holabonjourmalaga/",
-  twitter:   "https://twitter.com/Holabonjour_mlg",
-  instagram: "https://www.instagram.com/holabonjourmalaga/",
-  youtube:   "https://www.youtube.com/channel/UCSqK90F1Tm9iYLpZN0tFIGg",
-} as const;
-
 // ─── Contact ───
 export const contact = {
   phone:    "685 070 304",

@@ -151,6 +151,16 @@ export default function ReservarPage() {
                 </span>
               </div>
 
+              <div className="rounded-lg bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-800">
+                <p className="font-semibold mb-1">Política de cancelación</p>
+                <ul className="list-disc pl-4 space-y-0.5 text-xs text-amber-700">
+                  <li>Las clases no se pueden cambiar sin consultar previamente con la profesora.</li>
+                  <li>Cancelación: al menos <strong>48 horas</strong> de antelación.</li>
+                  <li>Si se cancela con menos de 48h, <strong>la clase se descuenta del bono</strong>.</li>
+                  <li>Excepción: justificante médico presentado en 24h.</li>
+                </ul>
+              </div>
+
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700">
                   Tema / enfoque (opcional)

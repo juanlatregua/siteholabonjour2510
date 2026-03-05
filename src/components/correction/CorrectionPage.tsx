@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Link from "next/link";
 import CorrectionInput from "./CorrectionInput";
 import CorrectionResult from "./CorrectionResult";
 import type { CEFRLevel } from "@/lib/correction/rubrics";
@@ -126,20 +127,36 @@ export default function CorrectionPage() {
           <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
             {error}
             {error.includes("agotado") && (
-              <button
-                onClick={() => {
-                  fetch("/api/corrections/purchase", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ packKey: "10-corrections", email: lastEmail }),
-                  })
-                    .then((r) => r.json())
-                    .then((d) => { if (d.url) window.location.href = d.url; });
-                }}
-                className="block mt-2 text-[#E50046] font-semibold hover:underline"
-              >
-                Comprar 10 correcciones — 19 €
-              </button>
+              <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="bg-white rounded-lg border border-red-100 p-4">
+                  <p className="font-semibold text-gray-800 text-sm mb-1">Pack correcciones sueltas</p>
+                  <p className="text-xs text-gray-500 mb-3">10 correcciones por 19 € — sin compromiso</p>
+                  <button
+                    onClick={() => {
+                      fetch("/api/corrections/purchase", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ packKey: "10-corrections", email: lastEmail }),
+                      })
+                        .then((r) => r.json())
+                        .then((d) => { if (d.url) window.location.href = d.url; });
+                    }}
+                    className="w-full py-2 rounded-lg bg-[#E50046] text-white text-sm font-semibold hover:bg-[#c7003b] transition-colors"
+                  >
+                    Comprar 10 correcciones — 19 €
+                  </button>
+                </div>
+                <div className="bg-white rounded-lg border border-red-100 p-4">
+                  <p className="font-semibold text-gray-800 text-sm mb-1">Pack de clases + correcciones ilimitadas</p>
+                  <p className="text-xs text-gray-500 mb-3">Desde 150 € — clases en directo con profesora nativa</p>
+                  <Link
+                    href="/contratar"
+                    className="block w-full py-2 rounded-lg bg-[#395D9F] text-white text-sm font-semibold hover:bg-[#2e4d85] transition-colors text-center"
+                  >
+                    Ver packs de clases
+                  </Link>
+                </div>
+              </div>
             )}
           </div>
         )}

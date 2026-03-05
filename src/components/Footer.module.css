@@ -87,28 +87,6 @@
   text-decoration: none;
 }
 
-.social {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-top: 0.7rem;
-}
-
-.social a {
-  display: inline-flex;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  transition: background-color 0.18s ease;
-}
-
-.social a:hover {
-  background: rgba(232, 184, 101, 0.2);
-}
-
 .legalLinks {
   margin-top: 1rem;
   display: flex;

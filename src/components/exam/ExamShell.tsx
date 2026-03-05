@@ -6,6 +6,7 @@ import type {
   ExamSection,
   ExamExercise,
 } from "@/data/delf-a1-exam";
+import Link from "next/link";
 import AudioPlayer from "./AudioPlayer";
 import ExamMCQ from "./ExamMCQ";
 import ExamTextInput from "./ExamTextInput";
@@ -252,19 +253,33 @@ export default function ExamShell({
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="bg-[#1e2d4a] rounded-xl p-6 text-center text-white">
-          <h3 className="text-lg font-bold mb-2">Prepárate con profesoras examinadoras</h3>
-          <p className="text-sm text-blue-200 mb-4">
+        {/* CTAs */}
+        <div className="bg-[#1e2d4a] rounded-xl p-6 text-white">
+          <h3 className="text-lg font-bold mb-2 text-center">Prepárate con profesoras examinadoras</h3>
+          <p className="text-sm text-blue-200 mb-5 text-center">
             Nuestras profesoras son examinadoras oficiales DELF/DALF.
             Te preparan con simulacros reales y correcciones detalladas.
           </p>
-          <a
-            href="https://wa.me/34685070304"
-            className="inline-block px-6 py-3 rounded-lg bg-[#E50046] text-white font-semibold hover:bg-[#c70040] transition-colors"
-          >
-            Reservar clase de prueba
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/tarifas"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#E50046] text-white font-semibold hover:bg-[#c70040] transition-colors text-sm"
+            >
+              Ver tarifas y packs
+            </Link>
+            <Link
+              href="/correccion-ia"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-sm"
+            >
+              Prueba la corrección IA gratis
+            </Link>
+            <a
+              href="https://wa.me/34685070304"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#25d366] text-white font-semibold hover:bg-[#1fb855] transition-colors text-sm"
+            >
+              Reservar clase de prueba
+            </a>
+          </div>
         </div>
 
         {/* Retry */}
