@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/lib/auth";
-import { Playfair_Display, DM_Sans, Space_Grotesk, DM_Mono } from "next/font/google";
+import { Playfair_Display, DM_Sans, Space_Grotesk, DM_Mono, Nunito, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -27,6 +27,18 @@ const dmMono = DM_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-dm-mono",
+  display: "swap",
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -94,7 +106,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang="es"
-      className={`${playfair.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${dmMono.variable}`}
+      className={`${playfair.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${dmMono.variable} ${nunito.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-white text-[#1f2937]">
         <script

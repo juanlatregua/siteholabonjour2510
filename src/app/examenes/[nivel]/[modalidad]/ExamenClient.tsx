@@ -21,19 +21,27 @@ interface ExamenClientProps {
 
 type Estado = "intro" | "en-curso" | "resultado";
 
-// Light theme palette
+// Light theme palette (smoke test reference)
 const C = {
   bleu: "#1471B3",
   bleuDark: "#395D9F",
   rouge: "#E50046",
   violet: "#6B3FA0",
   bg: "#F5F7FF",
+  bg3: "#EEF3FB",
   card: "#FFFFFF",
-  border: "#E2E8F0",
+  border: "#DDE5F0",
   borderLight: "#F1F5F9",
-  text: "#1a1a2e",
-  textMuted: "#6b7280",
-  textSecondary: "#374151",
+  bleuLight: "#E8F2FC",
+  bleuMid: "#C2D9F0",
+  text: "#1a1f36",
+  textMuted: "#4a5568",
+  textSecondary: "#4a5568",
+  text3: "#9aabbf",
+  green: "#0E9F6E",
+  greenLight: "#ECFDF5",
+  shadow: "0 2px 12px rgba(20,113,179,0.08)",
+  mono: "var(--font-jetbrains-mono), 'JetBrains Mono', monospace",
 };
 
 const SECCION_ICONS: Record<string, string> = {
@@ -380,7 +388,7 @@ export default function ExamenClient({ examen, config }: ExamenClientProps) {
         ) : (
           /* Exercises */
           <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            {seccion.ejercicios.map((ej) => (
+            {seccion.ejercicios.map((ej, ejIdx) => (
               <EjercicioCard
                 key={ej.id}
                 ejercicio={ej}
@@ -389,6 +397,7 @@ export default function ExamenClient({ examen, config }: ExamenClientProps) {
                 onRespuesta={handleRespuesta}
                 onTexto={handleTexto}
                 wordCount={wordCount}
+                index={ejIdx}
               />
             ))}
           </div>
@@ -426,61 +435,101 @@ export default function ExamenClient({ examen, config }: ExamenClientProps) {
   const aprobado = totalPts >= examen.puntuacionMinTotal;
 
   return (
-    <div style={{ maxWidth: 800, margin: "0 auto", padding: "4rem 1rem" }}>
-      <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.8rem", fontWeight: 700, marginBottom: "1rem", color: C.text }}>
-          Résultats — {config.diploma} {config.nivel}
-        </h2>
-        <div style={{ fontSize: "3.5rem", fontWeight: 800, fontFamily: "'Playfair Display', serif", color: aprobado ? "#16a34a" : "#dc2626" }}>
-          {totalPts}
-          <span style={{ fontSize: "1.5rem", color: C.textMuted, fontWeight: 400 }}>/100</span>
-        </div>
-        <div style={{ maxWidth: 300, margin: "1rem auto", height: 8, borderRadius: 4, background: "#E2E8F0", overflow: "hidden" }}>
-          <div style={{ height: "100%", width: `${totalPts}%`, background: aprobado ? "#16a34a" : "#dc2626", borderRadius: 4 }} />
-        </div>
-        <p style={{ fontSize: "1rem", color: aprobado ? "#16a34a" : "#dc2626", fontWeight: 600 }}>
-          {aprobado ? "Félicitations ! Vous auriez réussi l'examen." : `Il faut ${examen.puntuacionMinTotal}/100 pour réussir.`}
-        </p>
-      </div>
-
-      {/* Section scores */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem", marginBottom: "2.5rem" }}>
-        {puntuaciones.map(({ seccion: s, pts, esProduccion }) => (
-          <div key={s.id} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: "0.75rem", padding: "1.25rem" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
-              <span>{SECCION_ICONS[s.codigo]}</span>
-              <span style={{ fontSize: "0.8rem", fontWeight: 600, color: C.textMuted }}>{s.codigo}</span>
-            </div>
-            {esProduccion ? (
-              <p style={{ fontSize: "0.8rem", color: "#d97706", margin: 0, fontStyle: "italic" }}>Pendiente de revisión</p>
-            ) : (
-              <>
-                <div style={{ fontSize: "1.5rem", fontWeight: 700, color: C.text }}>
-                  {pts}<span style={{ fontSize: "0.9rem", color: C.textMuted, fontWeight: 400 }}>/{s.puntuacionTotal}</span>
-                </div>
-                <div style={{ height: 4, borderRadius: 2, background: "#E2E8F0", overflow: "hidden", marginTop: "0.5rem" }}>
-                  <div style={{ height: "100%", width: `${(pts / s.puntuacionTotal) * 100}%`, background: pts >= s.puntuacionTotal / 2 ? C.bleu : "#dc2626", borderRadius: 2 }} />
-                </div>
-              </>
-            )}
+    <div style={{ maxWidth: 800, margin: "0 auto", padding: "3rem 1rem" }}>
+      {/* Hero result */}
+      <div
+        style={{
+          background: `linear-gradient(135deg, ${C.bleuLight} 0%, white 60%)`,
+          border: `1.5px solid ${C.bleuMid}`,
+          borderRadius: "0.875rem",
+          padding: "1.75rem 2rem",
+          marginBottom: "1.5rem",
+          display: "flex",
+          alignItems: "center",
+          gap: "2rem",
+          boxShadow: "0 4px 24px rgba(20,113,179,0.12)",
+          flexWrap: "wrap",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <div style={{
+            width: 100, height: 100, borderRadius: "50%", flexShrink: 0,
+            background: "white", border: `3px solid ${aprobado ? C.green : C.rouge}`,
+            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+            boxShadow: `0 0 0 6px ${aprobado ? C.greenLight : "rgba(229,0,70,0.08)"}`,
+          }}>
+            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.4rem", fontWeight: 700, color: aprobado ? C.green : C.rouge, lineHeight: 1 }}>{totalPts}</div>
+            <div style={{ fontSize: "0.75rem", fontWeight: 700, color: C.text3 }}>/ 100</div>
           </div>
-        ))}
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: "0.35rem",
+            background: aprobado ? C.greenLight : "rgba(229,0,70,0.06)",
+            color: aprobado ? C.green : C.rouge,
+            border: `1px solid ${aprobado ? "#a7f3d0" : "rgba(229,0,70,0.2)"}`,
+            borderRadius: "1.25rem", fontSize: "0.75rem", fontWeight: 700,
+            padding: "0.25rem 0.85rem", marginTop: "0.75rem",
+          }}>
+            {aprobado ? "DIPLÔME OBTENU" : "NON OBTENU"}
+          </div>
+        </div>
+
+        {/* Section scores grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.6rem", flex: 1, minWidth: 240 }}>
+          {puntuaciones.map(({ seccion: s, pts, esProduccion }) => (
+            <div key={s.id} style={{
+              background: "white", border: `1px solid ${C.border}`, borderRadius: "0.625rem", padding: "0.75rem 0.85rem",
+            }}>
+              <div style={{ fontSize: "0.65rem", fontWeight: 700, color: C.text3, textTransform: "uppercase" as const, letterSpacing: "0.06em", marginBottom: "0.2rem" }}>
+                {SECCION_ICONS[s.codigo]} {s.codigo}
+              </div>
+              {esProduccion ? (
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 700, color: C.text3 }}>
+                  — <span style={{ fontSize: "0.75rem", fontWeight: 400 }}>en attente</span>
+                </div>
+              ) : (
+                <>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 700, color: pts >= s.puntuacionTotal / 2 ? C.green : C.rouge }}>
+                    {pts} <span style={{ fontSize: "0.75rem", fontWeight: 400, color: C.text3 }}>/ {s.puntuacionTotal}</span>
+                  </div>
+                  <div style={{ height: 4, background: C.bg3, borderRadius: 2, marginTop: "0.35rem", overflow: "hidden" }}>
+                    <div style={{ height: "100%", borderRadius: 2, background: `linear-gradient(90deg, ${C.green}, #34d399)`, width: `${(pts / s.puntuacionTotal) * 100}%` }} />
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* CTAs */}
-      <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-        <Link href="/tarifas" style={{ padding: "0.75rem 1.5rem", borderRadius: "0.5rem", background: C.rouge, color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none" }}>
-          Ver tarifas y packs
+      {/* CTA cards */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+        <Link href="/correccion-ia" style={{
+          background: "white", border: `1px solid ${C.border}`, borderTop: `3px solid ${C.bleu}`,
+          borderRadius: "0.875rem", padding: "1.5rem", textAlign: "center", textDecoration: "none",
+          boxShadow: C.shadow, transition: "all 0.2s",
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>✍️</div>
+          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: C.text, marginBottom: "0.35rem" }}>Correction IA</div>
+          <div style={{ fontSize: "0.8rem", color: C.textMuted, marginBottom: "0.85rem" }}>Corrigez votre production écrite avec les critères officiels</div>
+          <span style={{ padding: "0.5rem 1.25rem", borderRadius: "1.5rem", background: `linear-gradient(135deg, ${C.bleu}, ${C.bleuDark})`, color: "white", fontSize: "0.85rem", fontWeight: 700, boxShadow: "0 2px 8px rgba(20,113,179,0.3)" }}>
+            Corriger
+          </span>
         </Link>
-        <Link href="/correccion-ia" style={{ padding: "0.75rem 1.5rem", borderRadius: "0.5rem", background: C.bleu, color: "#fff", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none" }}>
-          Prueba la corrección IA
-        </Link>
-        <button
+        <div
           onClick={() => { setRespuestas({}); setTextos({}); setSeccionIdx(0); setEstado("intro"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-          style={{ padding: "0.75rem 1.5rem", borderRadius: "0.5rem", border: `1.5px solid ${C.border}`, background: "transparent", color: C.textSecondary, fontWeight: 600, fontSize: "0.9rem", cursor: "pointer" }}
+          style={{
+            background: "white", border: `1px solid ${C.border}`, borderTop: `3px solid ${C.rouge}`,
+            borderRadius: "0.875rem", padding: "1.5rem", textAlign: "center",
+            boxShadow: C.shadow, cursor: "pointer", transition: "all 0.2s",
+          }}
         >
-          Recommencer
-        </button>
+          <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>🔄</div>
+          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: C.text, marginBottom: "0.35rem" }}>Réessayer l&apos;examen</div>
+          <div style={{ fontSize: "0.8rem", color: C.textMuted, marginBottom: "0.85rem" }}>Améliorez votre score à votre rythme</div>
+          <span style={{ padding: "0.5rem 1.25rem", borderRadius: "1.5rem", border: `1.5px solid ${C.border}`, fontSize: "0.85rem", fontWeight: 600, color: C.textSecondary }}>
+            Recommencer
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -495,6 +544,7 @@ function EjercicioCard({
   onRespuesta,
   onTexto,
   wordCount,
+  index,
 }: {
   ejercicio: Ejercicio;
   respuestas: Respuestas;
@@ -502,74 +552,146 @@ function EjercicioCard({
   onRespuesta: (id: string, val: string | boolean) => void;
   onTexto: (id: string, val: string) => void;
   wordCount: (t: string) => number;
+  index: number;
 }) {
   return (
     <div
       style={{
         background: C.card,
         border: `1px solid ${C.border}`,
-        borderRadius: "0.75rem",
-        padding: "1.5rem",
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: C.shadow,
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.75rem" }}>
-        <h3 style={{ fontWeight: 700, fontSize: "1rem", color: C.text }}>{ejercicio.titulo}</h3>
-        <span style={{ fontSize: "0.75rem", color: C.textMuted }}>{ejercicio.puntuacionTotal} pts</span>
+      {/* Card header */}
+      <div
+        style={{
+          padding: "0.85rem 1.25rem",
+          borderBottom: `1px solid ${C.border}`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          background: C.bg3,
+        }}
+      >
+        <div>
+          <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: C.bleu, marginBottom: "0.1rem" }}>
+            Exercice {index + 1}
+          </div>
+          <div style={{ fontSize: "0.95rem", fontWeight: 700, color: C.text }}>{ejercicio.titulo}</div>
+        </div>
+        <span
+          style={{
+            background: "white",
+            border: `1px solid ${C.border}`,
+            padding: "0.2rem 0.65rem",
+            borderRadius: "1.25rem",
+            fontSize: "0.75rem",
+            fontWeight: 700,
+            fontFamily: C.mono,
+            color: C.bleuDark,
+          }}
+        >
+          {ejercicio.puntuacionTotal} pts
+        </span>
       </div>
 
-      <p style={{ fontSize: "0.88rem", color: C.textSecondary, lineHeight: 1.6, marginBottom: "1rem" }}>
-        {ejercicio.instrucciones}
-      </p>
-
-      {/* Reading text */}
-      {ejercicio.texto && (
+      {/* Card body */}
+      <div style={{ padding: "1.25rem" }}>
+        {/* Instructions */}
         <div
           style={{
-            background: "#F8FAFC",
-            border: `1px solid ${C.borderLight}`,
-            borderRadius: "0.5rem",
-            padding: "1rem",
-            marginBottom: "1rem",
-            fontSize: "0.9rem",
+            fontSize: "0.88rem",
             color: C.textSecondary,
-            lineHeight: 1.7,
-            whiteSpace: "pre-line",
-          }}
-        >
-          {ejercicio.texto}
-        </div>
-      )}
-
-      {/* Audio */}
-      {ejercicio.audio && (
-        <div
-          style={{
-            background: "rgba(20,113,179,0.06)",
-            border: "1px solid rgba(20,113,179,0.15)",
-            borderRadius: "0.5rem",
-            padding: "0.75rem 1rem",
+            fontStyle: "italic",
             marginBottom: "1rem",
-            fontSize: "0.85rem",
-            color: C.bleu,
+            padding: "0.65rem 0.85rem",
+            borderLeft: `3px solid ${C.bleuMid}`,
+            background: C.bleuLight,
+            borderRadius: "0 0.5rem 0.5rem 0",
+            lineHeight: 1.6,
           }}
         >
-          🎧 Audio: {ejercicio.numEscuchas || 2} écoute(s) — {ejercicio.audio}
+          {ejercicio.instrucciones}
         </div>
-      )}
 
-      {/* Questions */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-        {ejercicio.preguntas.map((p) => (
-          <PreguntaRender
-            key={p.id}
-            pregunta={p}
-            respuesta={respuestas[p.id]}
-            texto={textos[p.id] || ""}
-            onRespuesta={onRespuesta}
-            onTexto={onTexto}
-            wordCount={wordCount}
-          />
-        ))}
+        {/* Reading text */}
+        {ejercicio.texto && (
+          <div
+            style={{
+              background: C.bg3,
+              border: `1px solid ${C.border}`,
+              borderRadius: "0.75rem",
+              padding: "1rem 1.25rem",
+              marginBottom: "1rem",
+              fontSize: "0.9rem",
+              color: C.text,
+              lineHeight: 1.75,
+              whiteSpace: "pre-line",
+              maxHeight: 240,
+              overflowY: "auto" as const,
+            }}
+          >
+            {ejercicio.texto}
+          </div>
+        )}
+
+        {/* Audio player */}
+        {ejercicio.audio && (
+          <div
+            style={{
+              background: C.bleuLight,
+              border: `1px solid ${C.bleuMid}`,
+              borderRadius: "0.75rem",
+              padding: "0.85rem 1rem",
+              marginBottom: "1rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.85rem",
+            }}
+          >
+            <div style={{ fontSize: "1.25rem", flexShrink: 0 }}>🎧</div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.35rem" }}>
+                <span style={{ fontSize: "0.8rem", fontWeight: 600, color: C.bleuDark }}>Audio</span>
+                <span style={{
+                  background: "white",
+                  border: `1px solid ${C.bleuMid}`,
+                  color: C.bleu,
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  padding: "0.15rem 0.5rem",
+                  borderRadius: "0.5rem",
+                  whiteSpace: "nowrap" as const,
+                }}>
+                  🔁 {ejercicio.numEscuchas || 2} écoute(s)
+                </span>
+              </div>
+              <audio
+                controls
+                src={ejercicio.audio}
+                style={{ width: "100%", height: 36, borderRadius: 8 }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Questions */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+          {ejercicio.preguntas.map((p, pIdx) => (
+            <PreguntaRender
+              key={p.id}
+              pregunta={p}
+              respuesta={respuestas[p.id]}
+              texto={textos[p.id] || ""}
+              onRespuesta={onRespuesta}
+              onTexto={onTexto}
+              wordCount={wordCount}
+              index={pIdx}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -584,6 +706,7 @@ function PreguntaRender({
   onRespuesta,
   onTexto,
   wordCount,
+  index,
 }: {
   pregunta: Pregunta;
   respuesta: string | boolean | undefined;
@@ -591,16 +714,18 @@ function PreguntaRender({
   onRespuesta: (id: string, val: string | boolean) => void;
   onTexto: (id: string, val: string) => void;
   wordCount: (t: string) => number;
+  index: number;
 }) {
   // QCM
   if (p.tipo === "qcm" && p.opciones) {
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
-          <p style={{ fontSize: "0.9rem", color: C.text, margin: 0 }}>{p.enunciado}</p>
-          <span style={{ fontSize: "0.75rem", color: C.textMuted, whiteSpace: "nowrap", marginLeft: "0.5rem" }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", marginBottom: "0.6rem" }}>
+          <div style={{ width: 24, height: 24, borderRadius: "50%", flexShrink: 0, background: C.bleu, color: "white", fontSize: "0.7rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 }}>{index + 1}</div>
+          <p style={{ fontSize: "0.9rem", color: C.text, margin: 0, flex: 1, fontWeight: 600 }}>{p.enunciado}</p>
+          <span style={{ fontSize: "0.7rem", fontFamily: C.mono, color: C.text3, fontWeight: 600, whiteSpace: "nowrap", paddingTop: 3 }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem", paddingLeft: 34 }}>
           {p.opciones.map((o) => {
             const sel = respuesta === o.letra;
             return (
@@ -609,14 +734,15 @@ function PreguntaRender({
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "0.6rem",
-                  padding: "0.55rem 0.85rem",
-                  borderRadius: "0.4rem",
+                  gap: "0.75rem",
+                  padding: "0.6rem 0.85rem",
+                  borderRadius: "0.625rem",
                   border: sel ? `1.5px solid ${C.bleu}` : `1.5px solid ${C.border}`,
-                  background: sel ? "rgba(20,113,179,0.08)" : "transparent",
+                  background: sel ? C.bleuLight : "white",
                   cursor: "pointer",
                   fontSize: "0.88rem",
-                  color: sel ? C.text : C.textSecondary,
+                  fontWeight: 500,
+                  color: sel ? C.bleu : C.textSecondary,
                   transition: "all 0.15s",
                 }}
               >
@@ -627,7 +753,14 @@ function PreguntaRender({
                   onChange={() => onRespuesta(p.id, o.letra)}
                   style={{ display: "none" }}
                 />
-                <span style={{ fontWeight: 700, color: C.bleu, minWidth: 18 }}>{o.letra}.</span>
+                <span style={{
+                  width: 24, height: 24, borderRadius: "0.4rem", flexShrink: 0,
+                  border: sel ? `1.5px solid ${C.bleu}` : `1.5px solid ${C.border}`,
+                  fontFamily: C.mono, fontSize: "0.7rem", fontWeight: 700,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  color: sel ? C.bleu : C.text3,
+                  transition: "all 0.15s",
+                }}>{o.letra}</span>
                 {o.texto}
               </label>
             );
@@ -641,11 +774,12 @@ function PreguntaRender({
   if (p.tipo === "vrai-faux") {
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
-          <p style={{ fontSize: "0.9rem", color: C.text, margin: 0 }}>{p.enunciado}</p>
-          <span style={{ fontSize: "0.75rem", color: C.textMuted, whiteSpace: "nowrap", marginLeft: "0.5rem" }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", marginBottom: "0.6rem" }}>
+          <div style={{ width: 24, height: 24, borderRadius: "50%", flexShrink: 0, background: C.bleu, color: "white", fontSize: "0.7rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 }}>{index + 1}</div>
+          <p style={{ fontSize: "0.9rem", color: C.text, margin: 0, flex: 1, fontWeight: 600 }}>{p.enunciado}</p>
+          <span style={{ fontSize: "0.7rem", fontFamily: C.mono, color: C.text3, fontWeight: 600, whiteSpace: "nowrap", paddingTop: 3 }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
         </div>
-        <div style={{ display: "flex", gap: "0.5rem" }}>
+        <div style={{ display: "flex", gap: "0.6rem", paddingLeft: 34 }}>
           {[true, false].map((val) => {
             const sel = respuesta === val;
             return (
@@ -653,15 +787,21 @@ function PreguntaRender({
                 key={String(val)}
                 onClick={() => onRespuesta(p.id, val)}
                 style={{
-                  flex: 1,
-                  padding: "0.55rem",
-                  borderRadius: "0.4rem",
-                  border: sel ? `1.5px solid ${C.bleu}` : `1.5px solid ${C.border}`,
-                  background: sel ? "rgba(20,113,179,0.08)" : "transparent",
-                  color: sel ? C.text : C.textSecondary,
+                  padding: "0.5rem 1.4rem",
+                  borderRadius: "0.625rem",
+                  border: sel
+                    ? `1.5px solid ${val ? "#6ee7b7" : C.rouge}`
+                    : `1.5px solid ${C.border}`,
+                  background: sel
+                    ? val ? C.greenLight : "rgba(229,0,70,0.06)"
+                    : "white",
+                  color: sel
+                    ? val ? C.green : C.rouge
+                    : C.textSecondary,
                   fontWeight: 600,
                   fontSize: "0.88rem",
                   cursor: "pointer",
+                  transition: "all 0.15s",
                 }}
               >
                 {val ? "Vrai" : "Faux"}
@@ -710,9 +850,10 @@ function PreguntaRender({
   if (p.tipo === "grille" && p.criterios && p.opcionesGrille) {
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
-          <p style={{ fontSize: "0.9rem", color: C.text, margin: 0 }}>{p.enunciado}</p>
-          <span style={{ fontSize: "0.75rem", color: C.textMuted, whiteSpace: "nowrap", marginLeft: "0.5rem" }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", marginBottom: "0.6rem" }}>
+          <div style={{ width: 24, height: 24, borderRadius: "50%", flexShrink: 0, background: C.bleu, color: "white", fontSize: "0.7rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 }}>{index + 1}</div>
+          <p style={{ fontSize: "0.9rem", color: C.text, margin: 0, flex: 1, fontWeight: 600 }}>{p.enunciado}</p>
+          <span style={{ fontSize: "0.7rem", fontFamily: C.mono, color: C.text3, fontWeight: 600, whiteSpace: "nowrap", paddingTop: 3 }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
         </div>
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
@@ -759,9 +900,10 @@ function PreguntaRender({
   if (p.tipo === "reponse-libre") {
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
-          <p style={{ fontSize: "0.9rem", color: C.text, margin: 0 }}>{p.enunciado}</p>
-          <span style={{ fontSize: "0.75rem", color: C.textMuted, whiteSpace: "nowrap", marginLeft: "0.5rem" }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", marginBottom: "0.6rem" }}>
+          <div style={{ width: 24, height: 24, borderRadius: "50%", flexShrink: 0, background: C.bleu, color: "white", fontSize: "0.7rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 }}>{index + 1}</div>
+          <p style={{ fontSize: "0.9rem", color: C.text, margin: 0, flex: 1, fontWeight: 600 }}>{p.enunciado}</p>
+          <span style={{ fontSize: "0.7rem", fontFamily: C.mono, color: C.text3, fontWeight: 600, whiteSpace: "nowrap", paddingTop: 3 }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
         </div>
         <input
           type="text"

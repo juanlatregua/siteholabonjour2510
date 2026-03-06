@@ -9,26 +9,31 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
 
-  const body = await req.json();
-  const { examenId, nivel } = body;
+  try {
+    const body = await req.json();
+    const { examenId, nivel } = body;
 
-  if (!examenId || !nivel) {
-    return NextResponse.json(
-      { error: "Faltan campos: examenId, nivel" },
-      { status: 400 },
-    );
+    if (!examenId || !nivel) {
+      return NextResponse.json(
+        { error: "Faltan campos: examenId, nivel" },
+        { status: 400 },
+      );
+    }
+
+    const attempt = await prisma.examAttempt.create({
+      data: {
+        userId: session.user.id,
+        examenId,
+        nivel,
+        status: "in_progress",
+      },
+    });
+
+    return NextResponse.json(attempt, { status: 201 });
+  } catch (err) {
+    console.error("[exam-attempts] POST error:", err);
+    return NextResponse.json({ error: "Error al crear intento" }, { status: 500 });
   }
-
-  const attempt = await prisma.examAttempt.create({
-    data: {
-      userId: session.user.id,
-      examenId,
-      nivel,
-      status: "in_progress",
-    },
-  });
-
-  return NextResponse.json(attempt, { status: 201 });
 }
 
 // GET — List my exam attempts
@@ -38,11 +43,16 @@ export async function GET() {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
 
-  const attempts = await prisma.examAttempt.findMany({
-    where: { userId: session.user.id },
-    orderBy: { createdAt: "desc" },
-    take: 50,
-  });
+  try {
+    const attempts = await prisma.examAttempt.findMany({
+      where: { userId: session.user.id },
+      orderBy: { createdAt: "desc" },
+      take: 50,
+    });
 
-  return NextResponse.json(attempts);
+    return NextResponse.json(attempts);
+  } catch (err) {
+    console.error("[exam-attempts] GET error:", err);
+    return NextResponse.json({ error: "Error al obtener intentos" }, { status: 500 });
+  }
 }
