@@ -1,28 +1,22 @@
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import Credentials from "next-auth/providers/credentials";
-import Nodemailer from "next-auth/providers/nodemailer";
+import type { EmailConfig } from "next-auth/providers";
 import { prisma } from "@/lib/prisma";
 import { TEACHER_EMAILS } from "@/lib/constants";
 import { sendMail } from "@/lib/azure-mail";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma) as never,
-  session: { strategy: "jwt" },
-  pages: {
-    signIn: "/iniciar-sesion",
-    verifyRequest: "/verificar-email",
-    error: "/error",
-  },
-  providers: [
-    // Magic link for students (and teachers) — sent via Microsoft Graph
-    Nodemailer({
-      // Server config is required by the provider type but we override sendVerificationRequest
-      server: { host: "localhost", port: 25, auth: { user: "", pass: "" } },
-      from: process.env.EMAIL_FROM || "HolaBonjour <hola@holabonjour.es>",
-      async sendVerificationRequest({ identifier: email, url }) {
-        const brandUrl = process.env.NEXTAUTH_URL || "https://holabonjour.es";
-        try {
+// Custom email provider using Azure Graph (no nodemailer dependency)
+function AzureEmailProvider(): EmailConfig {
+  return {
+    id: "email",
+    type: "email",
+    name: "Email",
+    from: process.env.EMAIL_FROM || "HolaBonjour <hola@holabonjour.es>",
+    maxAge: 24 * 60 * 60,
+    async sendVerificationRequest({ identifier: email, url }) {
+      const brandUrl = process.env.NEXTAUTH_URL || "https://holabonjour.es";
+      try {
         await sendMail({
           to: email,
           subject: "Accede a HolaBonjour — Tu enlace de acceso",
@@ -53,12 +47,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             </div>
           `,
         });
-        } catch (err) {
-          console.error("[auth] sendVerificationRequest FAILED:", err);
-          throw err;
-        }
-      },
-    }),
+      } catch (err) {
+        console.error("[auth] sendVerificationRequest FAILED:", err);
+        throw err;
+      }
+    },
+    options: {},
+  };
+}
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  adapter: PrismaAdapter(prisma) as never,
+  session: { strategy: "jwt" },
+  pages: {
+    signIn: "/iniciar-sesion",
+    verifyRequest: "/verificar-email",
+    error: "/error",
+  },
+  providers: [
+    // Magic link for students — sent via Azure Graph (no SMTP/nodemailer)
+    AzureEmailProvider(),
     // Password credentials for teachers only
     Credentials({
       id: "teacher-credentials",

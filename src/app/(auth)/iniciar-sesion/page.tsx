@@ -17,7 +17,7 @@ export default function SignInPage() {
   const handleMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await signIn("nodemailer", { email, callbackUrl, redirect: true });
+    await signIn("email", { email, callbackUrl, redirect: true });
     setSent(true);
     setLoading(false);
   };
