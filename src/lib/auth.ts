@@ -22,6 +22,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       from: process.env.EMAIL_FROM || "HolaBonjour <hola@holabonjour.es>",
       async sendVerificationRequest({ identifier: email, url }) {
         const brandUrl = process.env.NEXTAUTH_URL || "https://holabonjour.es";
+        try {
         await sendMail({
           to: email,
           subject: "Accede a HolaBonjour — Tu enlace de acceso",
@@ -52,6 +53,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             </div>
           `,
         });
+        } catch (err) {
+          console.error("[auth] sendVerificationRequest FAILED:", err);
+          throw err;
+        }
       },
     }),
     // Password credentials for teachers only
