@@ -1,0 +1,88 @@
+import { ConfigNivel } from './types'
+
+export const CONFIG_NIVELES: Record<string, ConfigNivel> = {
+  A1: {
+    nivel: 'A1',
+    diploma: 'DELF',
+    descripcion: 'Découverte',
+    descripcionEs: 'Nivel básico de descubrimiento',
+    colorClase: 'emerald',
+    duracionTotalMinutos: 70,
+    secciones: [
+      { codigo: 'CO', titulo: "Compréhension de l'oral", duracion: 20, descripcionCorta: 'Écoute et compréhension' },
+      { codigo: 'CE', titulo: 'Compréhension des écrits', duracion: 30, descripcionCorta: 'Lecture et compréhension' },
+      { codigo: 'PE', titulo: 'Production écrite', duracion: 25, descripcionCorta: 'Écriture guidée' },
+      { codigo: 'PO', titulo: 'Production orale', duracion: 10, descripcionCorta: 'Expression orale' },
+    ],
+  },
+  A2: {
+    nivel: 'A2',
+    diploma: 'DELF',
+    descripcion: 'Survie',
+    descripcionEs: 'Nivel de supervivencia',
+    colorClase: 'emerald',
+    duracionTotalMinutos: 100,
+    secciones: [
+      { codigo: 'CO', titulo: "Compréhension de l'oral", duracion: 25, descripcionCorta: 'Écoute et compréhension' },
+      { codigo: 'CE', titulo: 'Compréhension des écrits', duracion: 30, descripcionCorta: 'Lecture et compréhension' },
+      { codigo: 'PE', titulo: 'Production écrite', duracion: 45, descripcionCorta: 'Écriture guidée' },
+      { codigo: 'PO', titulo: 'Production orale', duracion: 10, descripcionCorta: 'Expression orale' },
+    ],
+  },
+  B1: {
+    nivel: 'B1',
+    diploma: 'DELF',
+    descripcion: 'Seuil',
+    descripcionEs: 'Nivel umbral — independencia básica',
+    colorClase: 'blue',
+    duracionTotalMinutos: 115,
+    secciones: [
+      { codigo: 'CO', titulo: "Compréhension de l'oral", duracion: 25, descripcionCorta: '3 documents, 2 écoutes' },
+      { codigo: 'CE', titulo: 'Compréhension des écrits', duracion: 45, descripcionCorta: '2 exercices de lecture' },
+      { codigo: 'PE', titulo: 'Production écrite', duracion: 45, descripcionCorta: 'Texte personnel, 160 mots min.' },
+      { codigo: 'PO', titulo: 'Production orale', duracion: 15, descripcionCorta: 'Entretien + interaction + point de vue' },
+    ],
+  },
+  B2: {
+    nivel: 'B2',
+    diploma: 'DELF',
+    descripcion: 'Avancé',
+    descripcionEs: 'Nivel avanzado — independencia plena',
+    colorClase: 'blue',
+    duracionTotalMinutos: 135,
+    secciones: [
+      { codigo: 'CO', titulo: "Compréhension de l'oral", duracion: 30, descripcionCorta: 'Documents variés, 2 écoutes' },
+      { codigo: 'CE', titulo: 'Compréhension des écrits', duracion: 35, descripcionCorta: 'Textes argumentatifs' },
+      { codigo: 'PE', titulo: 'Production écrite', duracion: 45, descripcionCorta: 'Texte argumenté, 250 mots min.' },
+      { codigo: 'PO', titulo: 'Production orale', duracion: 20, descripcionCorta: 'Exposé + débat' },
+    ],
+  },
+  C1: {
+    nivel: 'C1',
+    diploma: 'DALF',
+    descripcion: 'Autonome',
+    descripcionEs: 'Nivel experto — dominio efectivo',
+    colorClase: 'amber',
+    duracionTotalMinutos: 165,
+    secciones: [
+      { codigo: 'CO', titulo: "Compréhension de l'oral", duracion: 40, descripcionCorta: 'Documents longs et complexes' },
+      { codigo: 'CE', titulo: 'Compréhension des écrits', duracion: 50, descripcionCorta: 'Textes spécialisés' },
+      { codigo: 'PE', titulo: 'Production écrite', duracion: 60, descripcionCorta: 'Synthèse + prise de position' },
+      { codigo: 'PO', titulo: 'Production orale', duracion: 30, descripcionCorta: 'Exposé formel + entretien' },
+    ],
+  },
+  C2: {
+    nivel: 'C2',
+    diploma: 'DALF',
+    descripcion: 'Maîtrise',
+    descripcionEs: 'Dominio completo — nivel nativo',
+    colorClase: 'amber',
+    duracionTotalMinutos: 195,
+    secciones: [
+      { codigo: 'CO', titulo: "Compréhension de l'oral", duracion: 45, descripcionCorta: 'Documents authentiques complexes' },
+      { codigo: 'CE', titulo: 'Compréhension des écrits', duracion: 60, descripcionCorta: 'Textes académiques et littéraires' },
+      { codigo: 'PE', titulo: 'Production écrite', duracion: 90, descripcionCorta: 'Essai argumenté, 700 mots min.' },
+      { codigo: 'PO', titulo: 'Production orale', duracion: 30, descripcionCorta: 'Conférence + débat' },
+    ],
+  },
+}
