@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import CinematicSection from "@/components/cinematic/CinematicSection";
 import BookingFunnel from "@/components/BookingFunnel";
 
@@ -44,7 +45,9 @@ export default function ContratarPage() {
 
       <CinematicSection className="pb-10 px-6">
         <div className="mx-auto max-w-3xl">
-          <BookingFunnel />
+          <Suspense fallback={<div style={{ textAlign: "center", padding: "2rem", color: "rgba(255,255,255,0.5)" }}>Cargando...</div>}>
+            <BookingFunnel />
+          </Suspense>
         </div>
       </CinematicSection>
 

@@ -2,13 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { createCheckoutSession, getLevelRange, PACK_PRICES, type PackLevel } from "@/lib/stripe";
 import { formatPhoneSpain } from "@/lib/sms";
+import { getDefaultTeacher } from "@/lib/teacher";
 
 const VALID_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { level, name, email, phone } = body;
+    const { level, name, email, phone, selectedDate, selectedTime, producto } = body;
 
     if (!level || !VALID_LEVELS.has(level)) {
       return NextResponse.json({ error: "Nivel no válido." }, { status: 400 });
@@ -20,9 +21,53 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email no válido." }, { status: 400 });
     }
 
+    const isDiagnostico = producto === "diagnostico";
     const packLevel = level as PackLevel;
-    const levelRange = getLevelRange(packLevel);
+    const levelRange = isDiagnostico ? "diagnostico" : getLevelRange(packLevel);
     const packPrice = PACK_PRICES[levelRange];
+
+    if (!packPrice) {
+      return NextResponse.json({ error: "Producto no válido." }, { status: 400 });
+    }
+
+    // Validate slot if date/time provided
+    let teacher: { id: string; name: string | null; email: string } | null = null;
+    if (selectedDate && selectedTime) {
+      teacher = await getDefaultTeacher();
+
+      // Check availability exists for this day/time
+      const slotDate = new Date(`${selectedDate}T${selectedTime}:00`);
+      if (isNaN(slotDate.getTime()) || slotDate <= new Date()) {
+        return NextResponse.json({ error: "Horario no válido." }, { status: 400 });
+      }
+
+      const dayOfWeek = slotDate.getDay();
+      const availability = await prisma.availability.findFirst({
+        where: {
+          teacherId: teacher.id,
+          dayOfWeek,
+          startTime: selectedTime,
+          active: true,
+        },
+      });
+
+      if (!availability) {
+        return NextResponse.json({ error: "Este horario no está disponible." }, { status: 409 });
+      }
+
+      // Check no existing lesson at this time
+      const existingLesson = await prisma.lesson.findFirst({
+        where: {
+          teacherId: teacher.id,
+          scheduledAt: slotDate,
+          status: { in: ["SCHEDULED", "PENDING_PAYMENT"] },
+        },
+      });
+
+      if (existingLesson) {
+        return NextResponse.json({ error: "Este horario ya está reservado." }, { status: 409 });
+      }
+    }
 
     // Upsert user (student)
     const emailNorm = email.trim().toLowerCase();
@@ -53,7 +98,7 @@ export async function POST(req: NextRequest) {
     const pack = await prisma.pack.create({
       data: {
         studentId: user.id,
-        hoursTotal: 4,
+        hoursTotal: isDiagnostico ? 1 : 4,
         hoursUsed: 0,
         price: packPrice.totalEur,
         levelRange,
@@ -72,6 +117,22 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // Create PENDING_PAYMENT lesson if slot selected
+    if (selectedDate && selectedTime && teacher) {
+      const scheduledAt = new Date(`${selectedDate}T${selectedTime}:00`);
+      await prisma.lesson.create({
+        data: {
+          studentId: user.id,
+          teacherId: teacher.id,
+          packId: pack.id,
+          scheduledAt,
+          durationMinutes: isDiagnostico ? 30 : 60,
+          status: "PENDING_PAYMENT",
+          focus: isDiagnostico ? "Sesión diagnóstico DELF/DALF" : null,
+        },
+      });
+    }
+
     // Create Stripe Checkout session
     const session = await createCheckoutSession({
       packId: pack.id,
@@ -79,6 +140,9 @@ export async function POST(req: NextRequest) {
       customerEmail: user.email,
       customerName: user.name || undefined,
       idempotencyKey: `pack-${pack.id}`,
+      selectedDate,
+      selectedTime,
+      producto: isDiagnostico ? "diagnostico" : undefined,
     });
 
     // Store Stripe session ID

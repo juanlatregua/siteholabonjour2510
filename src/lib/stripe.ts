@@ -17,6 +17,7 @@ export type PackLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 export const PACK_PRICES: Record<string, { levelRange: string; sessions: number; totalEur: number; perSessionEur: number }> = {
   "A1-B2": { levelRange: "A1-B2", sessions: 4, totalEur: 150, perSessionEur: 37.5 },
   "C1-C2": { levelRange: "C1-C2", sessions: 4, totalEur: 200, perSessionEur: 50 },
+  "diagnostico": { levelRange: "diagnostico", sessions: 1, totalEur: 25, perSessionEur: 25 },
 };
 
 export function getLevelRange(level: PackLevel): string {
@@ -29,6 +30,9 @@ export async function createCheckoutSession(params: {
   customerEmail: string;
   customerName?: string;
   idempotencyKey?: string;
+  selectedDate?: string;
+  selectedTime?: string;
+  producto?: string;
 }) {
   const stripe = getStripe();
   const baseUrl = process.env.NEXTAUTH_URL || "https://www.holabonjour.es";
@@ -36,6 +40,14 @@ export async function createCheckoutSession(params: {
   if (!pack) throw new Error(`Invalid levelRange: ${params.levelRange}`);
 
   const totalCents = Math.round(pack.totalEur * 100);
+
+  const isDiagnostico = params.producto === "diagnostico";
+  const productName = isDiagnostico
+    ? "Sesión diagnóstico DELF/DALF · 30 min"
+    : `Pack 4 clases de francés · ${params.levelRange}`;
+  const productDescription = isDiagnostico
+    ? "1 sesión individual de 30 min por Zoom — diagnóstico de nivel y plan de preparación"
+    : `4 sesiones individuales de 55 min por Zoom (${pack.perSessionEur.toFixed(2)} €/sesión)`;
 
   const session = await stripe.checkout.sessions.create(
     {
@@ -48,8 +60,8 @@ export async function createCheckoutSession(params: {
             currency: "eur",
             unit_amount: totalCents,
             product_data: {
-              name: `Pack 4 clases de francés · ${params.levelRange}`,
-              description: `4 sesiones individuales de 55 min por Zoom (${pack.perSessionEur.toFixed(2)} €/sesión)`,
+              name: productName,
+              description: productDescription,
             },
           },
           quantity: 1,
@@ -59,6 +71,9 @@ export async function createCheckoutSession(params: {
         packId: params.packId,
         levelRange: params.levelRange,
         customerName: params.customerName || "",
+        ...(params.selectedDate && { selectedDate: params.selectedDate }),
+        ...(params.selectedTime && { selectedTime: params.selectedTime }),
+        ...(params.producto && { producto: params.producto }),
       },
       success_url: `${baseUrl}/confirmacion?pack=${params.packId}`,
       cancel_url: `${baseUrl}/contratar`,

@@ -530,6 +530,30 @@ export default function ExamenClient({ examen, config }: ExamenClientProps) {
             Recommencer
           </span>
         </div>
+        <Link href={`/contratar?producto=diagnostico&nivel=${examen.nivel}`} style={{
+          background: "white", border: `1px solid ${C.border}`, borderTop: `3px solid ${C.violet}`,
+          borderRadius: "0.875rem", padding: "1.5rem", textAlign: "center", textDecoration: "none",
+          boxShadow: C.shadow, transition: "all 0.2s",
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>🎯</div>
+          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: C.text, marginBottom: "0.35rem" }}>Session diagnostic</div>
+          <div style={{ fontSize: "0.8rem", color: C.textMuted, marginBottom: "0.85rem" }}>30 min avec une préparatrice — 25 €</div>
+          <span style={{ padding: "0.5rem 1.25rem", borderRadius: "1.5rem", background: `linear-gradient(135deg, ${C.violet}, #5a2d91)`, color: "white", fontSize: "0.85rem", fontWeight: 700, boxShadow: "0 2px 8px rgba(107,63,160,0.3)" }}>
+            Réserver
+          </span>
+        </Link>
+        <Link href={`/contratar?nivel=${examen.nivel}`} style={{
+          background: "white", border: `1px solid ${C.border}`, borderTop: `3px solid ${C.green}`,
+          borderRadius: "0.875rem", padding: "1.5rem", textAlign: "center", textDecoration: "none",
+          boxShadow: C.shadow, transition: "all 0.2s",
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>📚</div>
+          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: C.text, marginBottom: "0.35rem" }}>Pack préparation</div>
+          <div style={{ fontSize: "0.8rem", color: C.textMuted, marginBottom: "0.85rem" }}>4 séances individuelles — dès 150 €</div>
+          <span style={{ padding: "0.5rem 1.25rem", borderRadius: "1.5rem", background: `linear-gradient(135deg, ${C.green}, #0d8c61)`, color: "white", fontSize: "0.85rem", fontWeight: 700, boxShadow: "0 2px 8px rgba(14,159,110,0.3)" }}>
+            Voir les packs
+          </span>
+        </Link>
       </div>
     </div>
   );

@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
     where: {
       teacherId,
       scheduledAt,
-      status: { in: ["SCHEDULED"] },
+      status: { in: ["SCHEDULED", "PENDING_PAYMENT"] },
     },
   });
 
@@ -130,6 +130,18 @@ export async function POST(request: NextRequest) {
     orderBy: { purchasedAt: "desc" },
   });
 
+  // Validate pack has remaining hours
+  if (activePack && activePack.hoursUsed + 1 > activePack.hoursTotal) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "PACK_EXHAUSTED",
+        message: "Tu pack no tiene horas disponibles. Contrata un nuevo pack para seguir reservando.",
+      },
+      { status: 400 }
+    );
+  }
+
   // Create the lesson
   const lesson = await prisma.lesson.create({
     data: {
@@ -143,6 +155,14 @@ export async function POST(request: NextRequest) {
       notes: notes || null,
     },
   });
+
+  // Increment hours used on the pack
+  if (activePack) {
+    await prisma.pack.update({
+      where: { id: activePack.id },
+      data: { hoursUsed: { increment: 1 } },
+    });
+  }
 
   return NextResponse.json({ ok: true, lesson }, { status: 201 });
 }
