@@ -1,137 +1,255 @@
 /* ═══════════════════════════════════════════════════
-   Header — burger-menu-only at ALL breakpoints
-   "Desfile de elección" (parade of choices) pattern
+   Header — horizontal desktop nav + mobile burger
    ═══════════════════════════════════════════════════ */
 
-/* ─── Header bar (light) ─── */
+/* ─── Base header ─── */
 
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid #d7e3ef;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* ─── Header bar (cinematic) ─── */
 
 .headerCinematic {
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(26, 26, 46, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ─── Notice bar ─── */
-
-.notice {
-  background: linear-gradient(90deg, #395D9F, #E50046);
-  color: #e7f3ff;
-  text-align: center;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 0.36rem 1rem;
+.headerScrolled {
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.12);
 }
 
-.noticeCinematic {
-  background: linear-gradient(90deg, #1e2d4a, #16213e);
-  color: #E50046;
-  text-align: center;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 0.36rem 1rem;
+.headerCinematic.headerScrolled {
+  background: rgba(10, 10, 10, 0.92);
 }
 
-/* ─── Inner layout ─── */
+/* ─── Inner container ─── */
 
 .inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.25rem;
 }
 
 .topBar {
-  min-height: 68px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.7rem;
+  gap: 1rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
-/* ─── Burger button (ALWAYS visible) ─── */
+/* ═══════════════════════════════════════════════════
+   Desktop nav — hidden on mobile
+   ═══════════════════════════════════════════════════ */
+
+.desktopNav {
+  display: none;
+}
+
+.desktopActions {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .desktopActions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+}
+
+.desktopLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.header .desktopLink {
+  color: #374151;
+}
+
+.desktopLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.header .desktopLink:hover {
+  color: #E50046;
+  background: rgba(229, 0, 70, 0.06);
+}
+
+.desktopLinkActive {
+  color: #E50046 !important;
+}
+
+.desktopLinkActive::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: #E50046;
+  border-radius: 1px;
+}
+
+/* ─── Badge "NUEVO" ─── */
+
+.badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+  background: #E50046;
+  color: #fff;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════════
+   Action buttons (shared desktop + mobile)
+   ═══════════════════════════════════════════════════ */
+
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.header .btnOutline {
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+.btnOutline:hover {
+  border-color: #E50046;
+  color: #E50046;
+  background: rgba(229, 0, 70, 0.06);
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  background: #E50046;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.btnPrimary:hover {
+  background: #c70040;
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════
+   Burger — visible only on mobile
+   ═══════════════════════════════════════════════════ */
 
 .burgerButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 0.72rem;
-  border: 1px solid #d7e3ef;
-  background: #ffffff;
-  color: #E50046;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease;
+}
+
+.header .burgerButton {
+  border-color: #d1d5db;
+  color: #374151;
 }
 
 .burgerButton:hover {
-  background: #eff6ff;
-  border-color: #E50046;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.burgerButtonCinematic {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 0.72rem;
-  border: 1px solid rgba(232, 184, 101, 0.25);
-  background: rgba(232, 184, 101, 0.08);
-  color: #E50046;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+.header .burgerButton:hover {
+  background: rgba(0, 0, 0, 0.04);
 }
 
-.burgerButtonCinematic:hover {
-  background: rgba(232, 184, 101, 0.15);
-  border-color: rgba(232, 184, 101, 0.5);
+@media (min-width: 768px) {
+  .burgerButton {
+    display: none;
+  }
 }
 
 /* ═══════════════════════════════════════════════════
-   Full-screen overlay menu
+   Mobile overlay menu
    ═══════════════════════════════════════════════════ */
 
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100dvh;
+  inset: 0;
   z-index: 999;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(10, 10, 10, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 
-  /* Transition */
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-12px);
+  transform: translateY(-8px);
   transition:
-    opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
   pointer-events: none;
 }
 
@@ -142,318 +260,95 @@
   pointer-events: auto;
 }
 
-.overlayCinematic {
-  background: rgba(26, 26, 46, 0.95);
-}
-
-/* ─── Overlay inner scroll container ─── */
-
 .overlayInner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 6rem 2rem 3rem;
+  padding: 5rem 2rem 3rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-/* ─── Menu list ─── */
-
-.menuList {
+.mobileList {
   list-style: none;
   margin: 0;
   padding: 0;
   width: 100%;
-  max-width: 480px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-/* ─── Menu item (each row) ─── */
-
-.menuItem {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.overlayCinematic .menuItem {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-/* ─── Group separator (visual gap between sections) ─── */
-
-.menuGroupSeparator {
-  height: 0.6rem;
-  border-bottom: none;
-}
-
-/* ─── Auth menu item (top border separator) ─── */
-
-.authMenuItem {
-  border-top: 2px solid rgba(229, 0, 70, 0.2);
-  margin-top: 0.4rem;
-}
-
-.overlayCinematic .authMenuItem {
-  border-top: 2px solid rgba(229, 0, 70, 0.3);
-}
-
-/* ─── Menu link (top-level plain links) ─── */
-
-.menuLink {
-  display: block;
-  padding: 1rem 0.5rem;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1f2937;
-  letter-spacing: 0.01em;
-  transition: color 0.2s ease, padding-left 0.2s ease;
-}
-
-.menuLink:hover {
-  color: #E50046;
-  padding-left: 1rem;
-}
-
-.menuLinkActive {
-  color: #E50046;
-}
-
-.menuLinkCinematic {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.menuLinkCinematic:hover {
-  color: #E50046;
-  padding-left: 1rem;
-}
-
-.menuLinkActiveCinematic {
-  color: #E50046;
-}
-
-/* ─── Chevron ─── */
-
-.chevron {
-  font-size: 0.75rem;
-  transition: transform 0.25s ease;
-  flex-shrink: 0;
-}
-
-.chevronOpen {
-  transform: rotate(180deg);
-}
-
-/* ═══════════════════════════════════════════════════
-   Accordion (expandable sub-sections)
-   ═══════════════════════════════════════════════════ */
-
-.accordionTrigger {
+.mobileLink {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  border: none;
-  background: none;
-  cursor: pointer;
+  gap: 0.5rem;
   padding: 1rem 0.5rem;
   text-decoration: none;
-  color: #1f2937;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
-  font-family: inherit;
-  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
-.accordionTrigger:hover {
+.mobileLink:hover {
   color: #E50046;
-  padding-left: 1rem;
+  padding-left: 0.75rem;
 }
 
-.accordionTriggerCinematic {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.accordionTriggerCinematic:hover {
+.mobileLinkActive {
   color: #E50046;
-  padding-left: 1rem;
 }
 
-/* ─── Accordion body (animated open/close) ─── */
-
-.accordionBody {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.accordionBodyOpen {
-  max-height: 600px;
-}
-
-/* ─── Accordion list (sub-items container) ─── */
-
-.accordionList {
-  list-style: none;
-  margin: 0 0 0.6rem 0.75rem;
-  padding: 0.3rem 0 0.3rem 1rem;
-  border-left: 3px solid #E50046;
+.mobileCtas {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 2rem;
 }
 
-.accordionListCinematic {
-  border-left-color: #E50046;
-}
-
-/* ─── Accordion item (sub-link) ─── */
-
-.accordionItem {
-  display: block;
-  padding: 0.55rem 0.75rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  color: #374151;
+.mobileCtas .btnOutline,
+.mobileCtas .btnPrimary {
+  width: 100%;
+  justify-content: center;
+  padding: 0.85rem 1rem;
   font-size: 0.95rem;
-  font-weight: 500;
-  transition: background-color 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
 }
 
-.accordionItem:hover {
-  background: rgba(15, 93, 160, 0.06);
-  color: #E50046;
-  padding-left: 1.1rem;
-}
-
-.accordionItemActive {
-  color: #E50046;
-  background: rgba(15, 93, 160, 0.08);
-}
-
-.accordionItemCinematic {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.accordionItemCinematic:hover {
-  background: rgba(232, 184, 101, 0.1);
-  color: #E50046;
-  padding-left: 1.1rem;
-}
-
-.accordionItemActiveCinematic {
-  color: #E50046;
-  background: rgba(232, 184, 101, 0.1);
-}
-
-/* ═══════════════════════════════════════════════════
-   CTA button at the bottom of the overlay
-   ═══════════════════════════════════════════════════ */
-
-.overlayCta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 480px;
-  margin-top: 2rem;
-  min-height: 52px;
-  border-radius: 0.75rem;
-  background: linear-gradient(135deg, #E50046, #d4a24c);
-  color: #1e2d4a;
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
-  box-shadow: 0 4px 20px rgba(232, 184, 101, 0.25);
-}
-
-.overlayCta:hover {
-  background: linear-gradient(135deg, #ff3366, #E50046);
-  box-shadow: 0 6px 28px rgba(232, 184, 101, 0.4);
-  transform: translateY(-1px);
-}
-
-.overlayCtaLight {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 480px;
-  margin-top: 2rem;
-  min-height: 52px;
-  border-radius: 0.75rem;
-  background: linear-gradient(135deg, #E50046, #c7003b);
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
-  box-shadow: 0 4px 20px rgba(15, 93, 160, 0.2);
-}
-
-.overlayCtaLight:hover {
-  background: linear-gradient(135deg, #3b82f6, #E50046);
-  box-shadow: 0 6px 28px rgba(15, 93, 160, 0.35);
-  transform: translateY(-1px);
+.mobileCtas .btnOutline {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ═══════════════════════════════════════════════════
    Responsive fine-tuning
    ═══════════════════════════════════════════════════ */
 
-@media (max-width: 540px) {
-  .notice,
-  .noticeCinematic {
-    font-size: 0.72rem;
-    padding: 0.34rem 0.7rem;
-  }
-
-  .topBar {
-    min-height: 64px;
-  }
-
-  .overlayInner {
-    padding: 5rem 1.25rem 2rem;
-  }
-
-  .menuLink,
-  .accordionTrigger {
-    font-size: 1rem;
-    padding: 0.85rem 0.4rem;
-  }
-
-  .accordionItem {
-    font-size: 0.88rem;
+@media (min-width: 768px) {
+  .overlay {
+    display: none;
   }
 }
 
-@media (min-width: 768px) {
-  .overlayInner {
-    padding: 7rem 3rem 3rem;
+@media (min-width: 1024px) {
+  .desktopLink {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.9rem;
   }
 
-  .menuLink,
-  .accordionTrigger {
-    font-size: 1.1rem;
-    padding: 1rem 0.5rem;
+  .btnOutline {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
   }
 
-  .accordionItem {
-    font-size: 0.95rem;
-    padding: 0.65rem 0.85rem;
-  }
-
-  .overlayCta,
-  .overlayCtaLight {
-    font-size: 1.12rem;
-    min-height: 56px;
-    margin-top: 2.5rem;
+  .btnPrimary {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.85rem;
   }
 }

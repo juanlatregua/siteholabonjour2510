@@ -58,7 +58,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@holabonjour_es",
     title: "Preparación online DELF/DALF | HolaBonjour",
     description: "Plataforma online de francés orientada a exámenes oficiales DELF y DALF.",
     images: ["/images/og-holabonjour.jpg"],
