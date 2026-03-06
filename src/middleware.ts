@@ -37,6 +37,8 @@ const PUBLIC_PATHS = [
   "/examen-delf-a2",
   "/examenes",
   "/calendario-examenes",
+  "/preparateurs",
+  "/unirse",
 ];
 
 const AUTH_PATHS = ["/iniciar-sesion", "/verificar-email", "/error"];
@@ -57,6 +59,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api/exams") ||
     pathname.startsWith("/api/examenes") ||
     pathname.startsWith("/api/debug") ||
+    pathname.startsWith("/api/public") ||
     pathname.startsWith("/api/webhook") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/images") ||

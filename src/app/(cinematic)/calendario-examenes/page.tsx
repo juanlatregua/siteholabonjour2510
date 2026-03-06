@@ -21,12 +21,12 @@ export default function CalendarioExamenesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-[#1e2d4a] text-white py-12">
+      <section className="bg-[#faf7f2] text-[#1e2d4a] py-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">
             Calendario de exámenes de francés en España
           </h1>
-          <p className="text-lg text-blue-200 max-w-2xl mx-auto">
+          <p className="text-lg text-[#3d4a5c] max-w-2xl mx-auto">
             Fechas actualizadas de DELF, DALF y EOI. Filtra por nivel, comunidad
             autónoma y centro. Activa recordatorios para no perder los plazos.
           </p>
@@ -57,7 +57,7 @@ export default function CalendarioExamenesPage() {
             </a>
             <a
               href="/contratar"
-              className="inline-block bg-[#1e2d4a] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#2e4d8a] transition-colors"
+              className="inline-block border border-[#1e2d4a] text-[#1e2d4a] hover:bg-[#1e2d4a]/5 font-semibold py-3 px-6 rounded-lg transition-colors"
             >
               Contratar pack de clases
             </a>

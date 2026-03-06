@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function PreguntasFrecuentesPage() {
   return (
-    <div style={{ background: "#1e2d4a", color: "#f1f5f9", minHeight: "100vh" }}>
+    <div style={{ background: "#faf7f2", color: "#1e2d4a", minHeight: "100vh" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -45,7 +45,7 @@ export default function PreguntasFrecuentesPage() {
           >
             FAQ HolaBonjour
           </h1>
-          <p className="mt-3 text-sm sm:text-base" style={{ color: "rgba(255,255,255,0.7)" }}>
+          <p className="mt-3 text-sm sm:text-base" style={{ color: "#3d4a5c" }}>
             Recopilación adaptada de nuestra web histórica publicada y de la operativa online actual.
           </p>
         </div>
@@ -59,14 +59,14 @@ export default function PreguntasFrecuentesPage() {
               key={item.id}
               className="group"
               style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "#ffffff",
+                border: "1px solid rgba(30,45,74,0.08)",
                 borderRadius: 16,
               }}
             >
               <summary
                 className="cursor-pointer list-none flex items-center justify-between gap-4 px-6 py-5 font-semibold select-none"
-                style={{ color: "#f1f5f9" }}
+                style={{ color: "#1e2d4a" }}
               >
                 <span>{item.question}</span>
                 <svg
@@ -87,13 +87,13 @@ export default function PreguntasFrecuentesPage() {
               </summary>
               <div
                 className="px-6 pb-5 leading-relaxed text-sm"
-                style={{ color: "rgba(255,255,255,0.65)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 {item.answer}
               </div>
               <div
                 className="px-6 pb-4 text-xs uppercase tracking-wide"
-                style={{ color: "rgba(255,255,255,0.35)" }}
+                style={{ color: "#9ca3af" }}
               >
                 Fuente: {item.source === "legacy" ? "Web histórica 2017+" : "Operativa actual online"}
               </div>
@@ -106,10 +106,10 @@ export default function PreguntasFrecuentesPage() {
       <CinematicSection className="pb-16 px-6">
         <div
           className="mx-auto max-w-3xl rounded-2xl p-6 text-center"
-          style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
+          style={{ background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)" }}
         >
           <h2 className="text-xl font-semibold">¿No ves tu caso?</h2>
-          <p className="mt-2 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+          <p className="mt-2 text-sm" style={{ color: "#3d4a5c" }}>
             Escríbenos y te orientamos en menos de 24h laborables con ruta, nivel y siguiente paso.
           </p>
           <div className="mt-4">

@@ -68,8 +68,7 @@ export default function DescargasPage() {
       <section
         className="relative overflow-hidden flex items-center justify-center min-h-[70vh] px-6"
         style={{
-          background:
-            "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
+          background: "#faf7f2",
           color: "var(--cin-text)",
         }}
       >
@@ -97,7 +96,7 @@ export default function DescargasPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Material gratuito para complementar tu aprendizaje. Guías,
             artículos, herramientas y más.
@@ -140,7 +139,7 @@ export default function DescargasPage() {
                   </div>
                   <p
                     className="text-sm leading-relaxed mb-5"
-                    style={{ color: "rgba(255,255,255,0.65)" }}
+                    style={{ color: "#6b7280" }}
                   >
                     {resource.description}
                   </p>
@@ -172,7 +171,7 @@ export default function DescargasPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{ color: "#6b7280" }}
           >
             Nuestras profesoras nativas diseñan un plan de estudio adaptado a
             tus objetivos.

@@ -63,7 +63,7 @@ export async function GET(request: NextRequest) {
   const bookedLessons = await prisma.lesson.findMany({
     where: {
       teacherId,
-      status: "SCHEDULED",
+      status: { in: ["SCHEDULED", "PENDING_PAYMENT"] },
       scheduledAt: {
         gte: weekStart,
         lt: weekEnd,

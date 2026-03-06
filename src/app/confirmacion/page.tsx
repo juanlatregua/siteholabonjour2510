@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ConfirmacionPage() {
   return (
-    <div style={{ background: "#1e2d4a", color: "#f1f5f9", minHeight: "100vh" }}>
+    <div style={{ background: "#faf7f2", color: "#1e2d4a", minHeight: "100vh" }}>
       <CinematicSection className="py-20 px-6">
         <div className="mx-auto max-w-2xl text-center">
           <div
@@ -28,10 +28,10 @@ export default function ConfirmacionPage() {
           >
             Pago confirmado
           </h1>
-          <p className="mt-4 text-lg" style={{ color: "rgba(255,255,255,0.75)" }}>
+          <p className="mt-4 text-lg" style={{ color: "#3d4a5c" }}>
             Tu pack de clases ha sido activado. Recibirás un email de confirmación con los detalles.
           </p>
-          <p className="mt-2 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="mt-2 text-sm" style={{ color: "#6b7280" }}>
             Nos pondremos en contacto contigo para organizar tus clases.
           </p>
 

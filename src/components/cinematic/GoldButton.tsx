@@ -37,8 +37,8 @@ const solidStyles: React.CSSProperties = {
 const outlineStyles: React.CSSProperties = {
   ...baseStyles,
   backgroundColor: "transparent",
-  color: "#ffffff",
-  border: "2px solid rgba(255,255,255,0.5)",
+  color: "#1e2d4a",
+  border: "2px solid rgba(30,45,74,0.3)",
 };
 
 export default function GoldButton({
@@ -53,7 +53,7 @@ export default function GoldButton({
   const hoverClass =
     variant === "solid"
       ? "hover:shadow-[0_0_24px_rgba(229,0,70,0.4)] hover:brightness-110"
-      : "hover:bg-[rgba(255,255,255,0.1)]";
+      : "hover:bg-[rgba(30,45,74,0.05)]";
 
   if (href) {
     return (

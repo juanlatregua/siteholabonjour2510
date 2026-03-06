@@ -5,6 +5,7 @@ import { sendPaymentConfirmationEmail, sendNewBookingStaffEmail } from "@/lib/em
 import { sendNotification } from "@/lib/sms";
 import { smsPagoConfirmado } from "@/lib/sms-templates";
 import { addPaidCorrections } from "@/lib/correction/quota";
+import { getDefaultTeacher } from "@/lib/teacher";
 import type Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -73,6 +74,43 @@ export async function POST(req: NextRequest) {
         where: { id: packId },
         data: { status: "ACTIVE", purchasedAt: new Date() },
       });
+
+      // Confirm PENDING_PAYMENT lesson → SCHEDULED
+      const pendingLesson = await prisma.lesson.findFirst({
+        where: { packId, status: "PENDING_PAYMENT" },
+      });
+
+      if (pendingLesson) {
+        await prisma.lesson.update({
+          where: { id: pendingLesson.id },
+          data: { status: "SCHEDULED" },
+        });
+        console.log(`[stripe-webhook] Confirmed lesson ${pendingLesson.id} for pack ${packId}`);
+      } else if (session.metadata?.selectedDate && session.metadata?.selectedTime) {
+        // Fallback: create lesson from metadata if PENDING_PAYMENT was cleaned up
+        try {
+          const teacher = await getDefaultTeacher();
+          const scheduledAt = new Date(
+            `${session.metadata.selectedDate}T${session.metadata.selectedTime}:00`
+          );
+          const isDiagnostico = session.metadata.producto === "diagnostico";
+
+          await prisma.lesson.create({
+            data: {
+              studentId: pack.studentId,
+              teacherId: teacher.id,
+              packId: pack.id,
+              scheduledAt,
+              durationMinutes: isDiagnostico ? 30 : 60,
+              status: "SCHEDULED",
+              focus: isDiagnostico ? "Sesión diagnóstico DELF/DALF" : null,
+            },
+          });
+          console.log(`[stripe-webhook] Created fallback lesson for pack ${packId}`);
+        } catch (lessonErr) {
+          console.error("[stripe-webhook] Fallback lesson creation failed:", lessonErr);
+        }
+      }
 
       const user = await prisma.user.findUnique({ where: { id: pack.studentId } });
       if (!user) return NextResponse.json({ received: true });

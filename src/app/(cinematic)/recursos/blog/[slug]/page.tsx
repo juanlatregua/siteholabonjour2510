@@ -69,14 +69,14 @@ function formatDate(iso: string): string {
 
 const proseStyles = `
   .prose-content p {
-    color: rgba(255,255,255,0.82);
+    color: #3d4a5c;
     line-height: 1.8;
     margin-bottom: 1.25rem;
     font-size: 1.05rem;
   }
   .prose-content ul,
   .prose-content ol {
-    color: rgba(255,255,255,0.82);
+    color: #3d4a5c;
     margin-bottom: 1.25rem;
     padding-left: 1.5rem;
     line-height: 1.8;
@@ -89,7 +89,7 @@ const proseStyles = `
     font-weight: 600;
   }
   .prose-content em {
-    color: rgba(255,255,255,0.9);
+    color: #1e2d4a;
     font-style: italic;
   }
   .prose-content a {
@@ -99,15 +99,15 @@ const proseStyles = `
     transition: color 0.2s ease;
   }
   .prose-content a:hover {
-    color: #f0c97a;
+    color: #E50046;
   }
   .prose-content blockquote {
     border-left: 4px solid #E50046;
     padding: 1rem 1.25rem;
     margin: 1.5rem 0;
-    background: rgba(229,0,70,0.06);
+    background: rgba(229,0,70,0.04);
     border-radius: 0 12px 12px 0;
-    color: rgba(255,255,255,0.75);
+    color: #6b7280;
     font-style: italic;
   }
   .prose-content table {
@@ -125,8 +125,8 @@ const proseStyles = `
   }
   .prose-content td {
     padding: 0.65rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(30,45,74,0.08);
+    color: #3d4a5c;
     font-size: 0.95rem;
   }
   .prose-content h3 {
@@ -138,21 +138,21 @@ const proseStyles = `
     margin-bottom: 0.75rem;
   }
   .prose-content h4 {
-    color: rgba(255,255,255,0.9);
+    color: #1e2d4a;
     font-weight: 600;
     font-size: 1.1rem;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
   }
   .prose-content code {
-    background: rgba(255,255,255,0.08);
+    background: rgba(30,45,74,0.06);
     padding: 0.15rem 0.4rem;
     border-radius: 4px;
     font-size: 0.9em;
-    color: #f0c97a;
+    color: #E50046;
   }
   .prose-content pre {
-    background: rgba(0,0,0,0.3);
+    background: rgba(30,45,74,0.04);
     padding: 1rem 1.25rem;
     border-radius: 12px;
     overflow-x: auto;
@@ -226,8 +226,7 @@ export default async function BlogArticlePage({ params }: Props) {
       <section
         className="relative overflow-hidden flex items-center justify-center min-h-[60vh] px-6"
         style={{
-          background:
-            "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
+          background: "#faf7f2",
           color: "var(--cin-text)",
         }}
       >
@@ -247,7 +246,7 @@ export default async function BlogArticlePage({ params }: Props) {
           {/* Breadcrumbs */}
           <nav
             className="mb-8 text-sm"
-            style={{ color: "rgba(255,255,255,0.5)" }}
+            style={{ color: "#6b7280" }}
             aria-label="Breadcrumb"
           >
             <ol className="flex items-center justify-center gap-2 flex-wrap">
@@ -255,7 +254,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 <Link
                   href="/"
                   className="hover:underline"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   HolaBonjour
                 </Link>
@@ -265,7 +264,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 <Link
                   href="/recursos"
                   className="hover:underline"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   Recursos
                 </Link>
@@ -275,13 +274,13 @@ export default async function BlogArticlePage({ params }: Props) {
                 <Link
                   href="/recursos/blog"
                   className="hover:underline"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   Blog
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li style={{ color: "rgba(255,255,255,0.75)" }}>
+              <li style={{ color: "#3d4a5c" }}>
                 {post.title}
               </li>
             </ol>
@@ -308,9 +307,9 @@ export default async function BlogArticlePage({ params }: Props) {
             <span
               className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold"
               style={{
-                background: "rgba(59,130,246,0.15)",
-                color: "#93bbfc",
-                border: "1px solid rgba(59,130,246,0.3)",
+                background: "rgba(57,93,159,0.08)",
+                color: "#395D9F",
+                border: "1px solid rgba(57,93,159,0.2)",
               }}
             >
               {post.level}
@@ -319,7 +318,7 @@ export default async function BlogArticlePage({ params }: Props) {
             {/* Reading time */}
             <span
               className="text-xs"
-              style={{ color: "rgba(255,255,255,0.5)" }}
+              style={{ color: "#6b7280" }}
             >
               {post.readingMinutes} min de lectura
             </span>
@@ -327,7 +326,7 @@ export default async function BlogArticlePage({ params }: Props) {
             {/* Date */}
             <span
               className="text-xs"
-              style={{ color: "rgba(255,255,255,0.5)" }}
+              style={{ color: "#6b7280" }}
             >
               {formatDate(post.publishedAt)}
             </span>
@@ -347,7 +346,7 @@ export default async function BlogArticlePage({ params }: Props) {
           {/* Description */}
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             {post.description}
           </p>
@@ -417,9 +416,9 @@ export default async function BlogArticlePage({ params }: Props) {
                       <span
                         className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold"
                         style={{
-                          background: "rgba(59,130,246,0.15)",
-                          color: "#93bbfc",
-                          border: "1px solid rgba(59,130,246,0.3)",
+                          background: "rgba(57,93,159,0.08)",
+                          color: "#395D9F",
+                          border: "1px solid rgba(57,93,159,0.2)",
                         }}
                       >
                         {relPost.level}
@@ -436,7 +435,7 @@ export default async function BlogArticlePage({ params }: Props) {
                     </h3>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ color: "rgba(255,255,255,0.6)" }}
+                      style={{ color: "#6b7280" }}
                     >
                       {relPost.description.length > 120
                         ? relPost.description.slice(0, 120) + "..."
@@ -444,7 +443,7 @@ export default async function BlogArticlePage({ params }: Props) {
                     </p>
                     <p
                       className="text-xs mt-3"
-                      style={{ color: "rgba(255,255,255,0.4)" }}
+                      style={{ color: "#9ca3af" }}
                     >
                       {relPost.readingMinutes} min &middot;{" "}
                       {formatDate(relPost.publishedAt)}
@@ -474,7 +473,7 @@ export default async function BlogArticlePage({ params }: Props) {
             </h2>
             <p
               className="text-base mb-8 leading-relaxed max-w-xl mx-auto"
-              style={{ color: "rgba(255,255,255,0.65)" }}
+              style={{ color: "#6b7280" }}
             >
               Descubre tu nivel actual con nuestro test gratuito o ponte en
               contacto con nosotros para diseñar un plan de estudio

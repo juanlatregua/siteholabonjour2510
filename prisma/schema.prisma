@@ -81,8 +81,9 @@ model User {
   teacherAvailability Availability[]
   uploadedMaterials   Material[]     @relation("UploadedMaterials")
 
-  assessmentLinks AssessmentLink[]
-  examAttempts    ExamAttempt[]
+  assessmentLinks     AssessmentLink[]
+  examAttempts        ExamAttempt[]
+  preparateurProfile  PreparateurProfile?
 
   @@map("users")
 }
@@ -438,4 +439,67 @@ model ExamAttempt {
   @@index([userId])
   @@index([examenId])
   @@map("exam_attempts")
+}
+
+// ── Marketplace Préparateurs ──
+
+model PreparateurProfile {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  user                  User     @relation(fields: [userId], references: [id])
+  slug                  String   @unique
+  displayName           String
+  bio                   String
+  photo                 String?
+  languages             String[]
+  specialties           String[]
+  levels                String[]
+  hourlyRate            Int      // cents: 3500 = 35.00 €
+  feiCertification      String?
+  certificationVerified Boolean  @default(false)
+  verifiedBy            String?
+  verifiedAt            DateTime?
+  status                String   @default("PENDING") // PENDING | ACTIVE | SUSPENDED
+  stripeCustomerId      String?
+  stripeSubscriptionId  String?
+  subscriptionStatus    String?
+  totalClasses          Int      @default(0)
+  avgRating             Float?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  reviews PreparateurReview[]
+
+  @@map("preparateur_profiles")
+}
+
+model PreparateurReview {
+  id            String   @id @default(cuid())
+  preparateurId String
+  studentId     String
+  lessonId      String   @unique
+  rating        Int      // 1-5
+  comment       String?
+  source        String   @default("platform") // "platform" | "google"
+  createdAt     DateTime @default(now())
+
+  preparateur PreparateurProfile @relation(fields: [preparateurId], references: [id])
+
+  @@index([preparateurId])
+  @@map("preparateur_reviews")
+}
+
+model PreparateurApplication {
+  id         String   @id @default(cuid())
+  name       String
+  email      String
+  levels     String[]
+  experience Int
+  hourlyRate Int
+  message    String?
+  cvUrl      String?
+  status     String   @default("PENDING") // PENDING | APPROVED | REJECTED
+  createdAt  DateTime @default(now())
+
+  @@map("preparateur_applications")
 }

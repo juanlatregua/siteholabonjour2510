@@ -35,8 +35,7 @@ export default function BlogPage() {
       <section
         className="relative overflow-hidden flex items-center justify-center min-h-[60vh] px-6"
         style={{
-          background:
-            "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
+          background: "#faf7f2",
           color: "var(--cin-text)",
         }}
       >
@@ -64,7 +63,7 @@ export default function BlogPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Artículos sobre gramática, cultura, exámenes y vida en Francia.
           </p>
@@ -89,7 +88,7 @@ export default function BlogPage() {
             </h2>
             <p
               className="text-base mb-8 leading-relaxed max-w-xl mx-auto"
-              style={{ color: "rgba(255,255,255,0.65)" }}
+              style={{ color: "#6b7280" }}
             >
               Descubre tu nivel actual con nuestro test gratuito o ponte en
               contacto con nosotros para diseñar un plan de estudio

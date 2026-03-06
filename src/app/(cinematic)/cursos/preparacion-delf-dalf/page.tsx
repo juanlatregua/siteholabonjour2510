@@ -142,19 +142,18 @@ export default function PreparacionDelfDalfPage() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(135deg, #2d1b4e 0%, #1e2d4a 50%, #462255 100%)",
+            background: "#faf7f2",
           }}
         />
-        <Particles color="#c77dba" />
+        <Particles color="#6B3FA0" />
         <MorphBlob
           size={400}
-          color="#c77dba"
+          color="#6B3FA0"
           position={{ top: "-10%", left: "-5%" }}
         />
         <MorphBlob
           size={300}
-          color="#c77dba"
+          color="#6B3FA0"
           position={{ bottom: "-10%", right: "-5%" }}
         />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
@@ -169,14 +168,14 @@ export default function PreparacionDelfDalfPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Preparación específica para cada nivel del examen oficial. Simulacros
             reales, correcciones detalladas y estrategia por prueba.
           </p>
           <p
             className="text-sm mt-4 tracking-wide"
-            style={{ color: "rgba(255,255,255,0.5)" }}
+            style={{ color: "#6b7280" }}
           >
             Cours individuel &middot; 1h par séance &middot; 100% en ligne par Zoom
           </p>
@@ -197,20 +196,20 @@ export default function PreparacionDelfDalfPage() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {levels.map((level) => (
-              <GlassCard key={level.code} glow="rgba(199,125,186,0.2)">
+              <GlassCard key={level.code} glow="rgba(107,63,160,0.2)">
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className="text-3xl font-bold"
-                    style={{ color: "#c77dba" }}
+                    style={{ color: "#6B3FA0" }}
                   >
                     {level.code}
                   </span>
                   <span
                     className="text-xs font-semibold px-3 py-1 rounded-full"
                     style={{
-                      background: "rgba(199,125,186,0.15)",
-                      color: "#c77dba",
-                      border: "1px solid rgba(199,125,186,0.3)",
+                      background: "rgba(107,63,160,0.15)",
+                      color: "#6B3FA0",
+                      border: "1px solid rgba(107,63,160,0.3)",
                     }}
                   >
                     {level.duration}
@@ -224,7 +223,7 @@ export default function PreparacionDelfDalfPage() {
                 </h3>
                 <p
                   className="text-sm"
-                  style={{ color: "rgba(255,255,255,0.6)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   {level.evaluated}
                 </p>
@@ -246,10 +245,10 @@ export default function PreparacionDelfDalfPage() {
           >
             Nos professeurs sont examinateurs DELF/DALF
           </h2>
-          <GlassCard glow="rgba(199,125,186,0.15)">
+          <GlassCard glow="rgba(107,63,160,0.15)">
             <p
               className="text-lg leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.75)" }}
+              style={{ color: "#3d4a5c" }}
             >
               Nuestras profesoras son examinadoras oficiales DELF/DALF. Conocen
               los criterios de evaluacion de primera mano y te preparan con
@@ -279,14 +278,14 @@ export default function PreparacionDelfDalfPage() {
                   className="text-lg font-bold mb-3"
                   style={{
                     fontFamily: "var(--font-display)",
-                    color: "#c77dba",
+                    color: "#6B3FA0",
                   }}
                 >
                   {faq.question}
                 </h3>
                 <p
                   className="leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   {faq.answer}
                 </p>
@@ -302,11 +301,11 @@ export default function PreparacionDelfDalfPage() {
           <GlassCard className="p-6">
             <h3
               className="text-xl font-bold mb-2"
-              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+              style={{ fontFamily: "var(--font-display)", color: "#6B3FA0" }}
             >
               Examen DELF A1 complet
             </h3>
-            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+            <p className="text-sm mb-4" style={{ color: "#6b7280" }}>
               Simulation complète avec audios, textes et correction IA de la production écrite. Comme le jour de l&apos;examen.
             </p>
             <GoldButton href="/examen-delf-a1" variant="outline">
@@ -316,11 +315,11 @@ export default function PreparacionDelfDalfPage() {
           <GlassCard className="p-6">
             <h3
               className="text-xl font-bold mb-2"
-              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+              style={{ fontFamily: "var(--font-display)", color: "#6B3FA0" }}
             >
               Examen DELF A2 complet
             </h3>
-            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+            <p className="text-sm mb-4" style={{ color: "#6b7280" }}>
               Simulation complète du DELF A2 avec audios, textes et correction IA de la production écrite. Entraîne-toi comme au vrai examen.
             </p>
             <GoldButton href="/examen-delf-a2" variant="outline">
@@ -330,11 +329,11 @@ export default function PreparacionDelfDalfPage() {
           <GlassCard className="p-6">
             <h3
               className="text-xl font-bold mb-2"
-              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+              style={{ fontFamily: "var(--font-display)", color: "#6B3FA0" }}
             >
               Correction IA de tes écrits
             </h3>
-            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+            <p className="text-sm mb-4" style={{ color: "#6b7280" }}>
               Entraîne-toi entre les séances. Notre IA corrige ta production écrite avec les
               mêmes critères que les examinateurs DELF/DALF.
             </p>
@@ -345,11 +344,11 @@ export default function PreparacionDelfDalfPage() {
           <GlassCard className="p-6">
             <h3
               className="text-xl font-bold mb-2"
-              style={{ fontFamily: "var(--font-display)", color: "#c77dba" }}
+              style={{ fontFamily: "var(--font-display)", color: "#6B3FA0" }}
             >
               Calendrier des examens
             </h3>
-            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+            <p className="text-sm mb-4" style={{ color: "#6b7280" }}>
               Toutes les dates DELF/DALF en Espagne : Alliance Française, Institut Français, EOI.
               Active un rappel pour ne rater aucun délai.
             </p>
@@ -371,7 +370,7 @@ export default function PreparacionDelfDalfPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{ color: "#6b7280" }}
           >
             Empieza tu preparaci&oacute;n con profesoras examinadoras. Inf&oacute;rmate sin compromiso.
           </p>

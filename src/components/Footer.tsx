@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
   { href: "/contacto", label: "Contacto" },
   { href: "/iniciar-sesion", label: "Acceder" },
+  { href: "/unirse", label: "¿Eres profesor?" },
 ];
 
 const vieCultureLinks = [

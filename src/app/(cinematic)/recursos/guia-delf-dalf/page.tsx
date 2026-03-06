@@ -320,9 +320,8 @@ export default function GuiaDelfDalfPage() {
       <section
         className="relative overflow-hidden flex items-center justify-center min-h-[70vh] px-6"
         style={{
-          background:
-            "linear-gradient(135deg, #1e2d4a 0%, #16213e 50%, #0f3460 100%)",
-          color: "var(--cin-text)",
+          background: "#faf7f2",
+          color: "#1e2d4a",
         }}
       >
         <Particles count={40} color="#E50046" />
@@ -349,7 +348,7 @@ export default function GuiaDelfDalfPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-4"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Todo lo que necesitas saber sobre los examenes oficiales de frances:
             niveles, estructura detallada, precios, inscripcion, preparacion y
@@ -357,7 +356,7 @@ export default function GuiaDelfDalfPage() {
           </p>
           <p
             className="text-sm max-w-xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.45)" }}
+            style={{ color: "#6b7280" }}
           >
             Guia actualizada para 2026 &mdash; por HolaBonjour, academia de
             frances en Malaga.
@@ -382,7 +381,7 @@ export default function GuiaDelfDalfPage() {
           <GlassCard>
             <p
               className="text-base leading-relaxed mb-4"
-              style={{ color: "rgba(255,255,255,0.8)" }}
+              style={{ color: "#3d4a5c" }}
             >
               El <strong style={{ color: "var(--cin-accent)" }}>DELF</strong>{" "}
               (Diplôme d&apos;Études en Langue Française) y el{" "}
@@ -393,7 +392,7 @@ export default function GuiaDelfDalfPage() {
             </p>
             <p
               className="text-base leading-relaxed mb-4"
-              style={{ color: "rgba(255,255,255,0.8)" }}
+              style={{ color: "#3d4a5c" }}
             >
               El DELF cubre los niveles A1 a B2 (usuario basico e
               independiente), mientras que el DALF certifica los niveles C1 y
@@ -403,7 +402,7 @@ export default function GuiaDelfDalfPage() {
             </p>
             <p
               className="text-base leading-relaxed mb-4"
-              style={{ color: "rgba(255,255,255,0.8)" }}
+              style={{ color: "#3d4a5c" }}
             >
               Son los unicos diplomas de frances reconocidos internacionalmente
               y{" "}
@@ -412,7 +411,7 @@ export default function GuiaDelfDalfPage() {
             </p>
             <p
               className="text-base leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.8)" }}
+              style={{ color: "#3d4a5c" }}
             >
               Cada nivel evalua cuatro competencias linguisticas:{" "}
               <strong style={{ color: "var(--cin-accent)" }}>
@@ -462,7 +461,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{ color: "#6b7280" }}
           >
             El DELF y el DALF abren puertas en muchos ambitos profesionales,
             academicos y administrativos. Estas son las principales razones
@@ -483,7 +482,7 @@ export default function GuiaDelfDalfPage() {
               </h3>
               <p
                 className="text-sm leading-relaxed mb-3"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 La mayoria de las oposiciones que valoran idiomas exigen un{" "}
                 <strong style={{ color: "var(--cin-accent)" }}>
@@ -494,7 +493,7 @@ export default function GuiaDelfDalfPage() {
               </p>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 El DELF/DALF es el diploma mas aceptado por las
                 administraciones publicas espanolas: Administracion General del
@@ -516,7 +515,7 @@ export default function GuiaDelfDalfPage() {
               </h3>
               <p
                 className="text-sm leading-relaxed mb-3"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 Las universidades francesas y francofonas exigen un{" "}
                 <strong style={{ color: "var(--cin-accent)" }}>
@@ -528,7 +527,7 @@ export default function GuiaDelfDalfPage() {
               </p>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 Con un DELF B2 o superior, estas exento del examen de frances
                 previo a la inscripcion universitaria (procesos Campus France,
@@ -550,7 +549,7 @@ export default function GuiaDelfDalfPage() {
               </h3>
               <p
                 className="text-sm leading-relaxed mb-3"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 Para obtener la{" "}
                 <strong style={{ color: "var(--cin-accent)" }}>
@@ -562,7 +561,7 @@ export default function GuiaDelfDalfPage() {
               </p>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 El DELF es la opcion preferida frente al TCF porque no caduca:
                 una vez aprobado, no tendras que repetirlo antes de que expire,
@@ -583,7 +582,7 @@ export default function GuiaDelfDalfPage() {
               </h3>
               <p
                 className="text-sm leading-relaxed mb-3"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 El frances es idioma oficial en mas de 30 paises y lengua de
                 trabajo en organismos internacionales (ONU, UE, OTAN, Cruz
@@ -592,7 +591,7 @@ export default function GuiaDelfDalfPage() {
               </p>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.75)" }}
+                style={{ color: "#3d4a5c" }}
               >
                 Sectores que mas valoran el frances:{" "}
                 <strong style={{ color: "var(--cin-accent)" }}>
@@ -622,7 +621,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.55)" }}
+            style={{ color: "#6b7280" }}
           >
             Duracion de cada prueba, duracion total del examen y precio
             orientativo para todos los niveles del DELF y DALF.
@@ -636,7 +635,7 @@ export default function GuiaDelfDalfPage() {
                   <thead>
                     <tr
                       style={{
-                        borderBottom: "1px solid rgba(255,255,255,0.15)",
+                        borderBottom: "1px solid rgba(30,45,74,0.12)",
                       }}
                     >
                       {[
@@ -664,7 +663,7 @@ export default function GuiaDelfDalfPage() {
                       <tr
                         key={l.nivel}
                         style={{
-                          borderBottom: "1px solid rgba(255,255,255,0.05)",
+                          borderBottom: "1px solid rgba(30,45,74,0.06)",
                         }}
                       >
                         <td
@@ -675,37 +674,37 @@ export default function GuiaDelfDalfPage() {
                         </td>
                         <td
                           className="py-3 px-3 text-sm"
-                          style={{ color: "rgba(255,255,255,0.6)" }}
+                          style={{ color: "#6b7280" }}
                         >
                           {l.diploma}
                         </td>
                         <td
                           className="py-3 px-3 text-sm"
-                          style={{ color: "rgba(255,255,255,0.7)" }}
+                          style={{ color: "#3d4a5c" }}
                         >
                           {l.co}
                         </td>
                         <td
                           className="py-3 px-3 text-sm"
-                          style={{ color: "rgba(255,255,255,0.7)" }}
+                          style={{ color: "#3d4a5c" }}
                         >
                           {l.ce}
                         </td>
                         <td
                           className="py-3 px-3 text-sm"
-                          style={{ color: "rgba(255,255,255,0.7)" }}
+                          style={{ color: "#3d4a5c" }}
                         >
                           {l.pe}
                         </td>
                         <td
                           className="py-3 px-3 text-sm"
-                          style={{ color: "rgba(255,255,255,0.7)" }}
+                          style={{ color: "#3d4a5c" }}
                         >
                           {l.po}
                         </td>
                         <td
                           className="py-3 px-3 text-sm font-medium"
-                          style={{ color: "rgba(255,255,255,0.85)" }}
+                          style={{ color: "#3d4a5c" }}
                         >
                           {l.duracion}
                         </td>
@@ -722,7 +721,7 @@ export default function GuiaDelfDalfPage() {
               </div>
               <p
                 className="text-xs mt-4"
-                style={{ color: "rgba(255,255,255,0.4)" }}
+                style={{ color: "#6b7280" }}
               >
                 * Los precios son orientativos y pueden variar segun el centro
                 examinador. Fuente: France Education International 2025-2026.
@@ -756,53 +755,53 @@ export default function GuiaDelfDalfPage() {
                   <div>
                     <span
                       className="text-xs block"
-                      style={{ color: "rgba(255,255,255,0.5)" }}
+                      style={{ color: "#6b7280" }}
                     >
                       Comp. oral
                     </span>
-                    <span style={{ color: "rgba(255,255,255,0.8)" }}>
+                    <span style={{ color: "#3d4a5c" }}>
                       {l.co}
                     </span>
                   </div>
                   <div>
                     <span
                       className="text-xs block"
-                      style={{ color: "rgba(255,255,255,0.5)" }}
+                      style={{ color: "#6b7280" }}
                     >
                       Comp. escrita
                     </span>
-                    <span style={{ color: "rgba(255,255,255,0.8)" }}>
+                    <span style={{ color: "#3d4a5c" }}>
                       {l.ce}
                     </span>
                   </div>
                   <div>
                     <span
                       className="text-xs block"
-                      style={{ color: "rgba(255,255,255,0.5)" }}
+                      style={{ color: "#6b7280" }}
                     >
                       Prod. escrita
                     </span>
-                    <span style={{ color: "rgba(255,255,255,0.8)" }}>
+                    <span style={{ color: "#3d4a5c" }}>
                       {l.pe}
                     </span>
                   </div>
                   <div>
                     <span
                       className="text-xs block"
-                      style={{ color: "rgba(255,255,255,0.5)" }}
+                      style={{ color: "#6b7280" }}
                     >
                       Prod. oral
                     </span>
-                    <span style={{ color: "rgba(255,255,255,0.8)" }}>
+                    <span style={{ color: "#3d4a5c" }}>
                       {l.po}
                     </span>
                   </div>
                 </div>
                 <div
                   className="flex justify-between mt-4 pt-3"
-                  style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+                  style={{ borderTop: "1px solid rgba(30,45,74,0.08)" }}
                 >
-                  <span style={{ color: "rgba(255,255,255,0.7)" }}>
+                  <span style={{ color: "#3d4a5c" }}>
                     {l.duracion}
                   </span>
                   <span
@@ -823,7 +822,7 @@ export default function GuiaDelfDalfPage() {
         <div className="mx-auto max-w-3xl text-center">
           <p
             className="text-base mb-5"
-            style={{ color: "rgba(255,255,255,0.6)" }}
+            style={{ color: "#6b7280" }}
           >
             No sabes a que nivel presentarte? Haz nuestro test gratuito.
           </p>
@@ -854,7 +853,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.55)" }}
+            style={{ color: "#6b7280" }}
           >
             Estimacion del tiempo de preparacion segun tu nivel actual y tu
             objetivo. Las horas incluyen clases, estudio personal y practica.
@@ -868,7 +867,7 @@ export default function GuiaDelfDalfPage() {
                   <thead>
                     <tr
                       style={{
-                        borderBottom: "1px solid rgba(255,255,255,0.15)",
+                        borderBottom: "1px solid rgba(30,45,74,0.12)",
                       }}
                     >
                       {[
@@ -892,12 +891,12 @@ export default function GuiaDelfDalfPage() {
                       <tr
                         key={row.objetivo}
                         style={{
-                          borderBottom: "1px solid rgba(255,255,255,0.05)",
+                          borderBottom: "1px solid rgba(30,45,74,0.06)",
                         }}
                       >
                         <td
                           className="py-3 px-4 text-sm"
-                          style={{ color: "rgba(255,255,255,0.7)" }}
+                          style={{ color: "#3d4a5c" }}
                         >
                           {row.actual}
                         </td>
@@ -909,13 +908,13 @@ export default function GuiaDelfDalfPage() {
                         </td>
                         <td
                           className="py-3 px-4 text-sm"
-                          style={{ color: "rgba(255,255,255,0.8)" }}
+                          style={{ color: "#3d4a5c" }}
                         >
                           {row.horas}
                         </td>
                         <td
                           className="py-3 px-4 text-sm"
-                          style={{ color: "rgba(255,255,255,0.8)" }}
+                          style={{ color: "#3d4a5c" }}
                         >
                           {row.meses}
                         </td>
@@ -926,7 +925,7 @@ export default function GuiaDelfDalfPage() {
               </div>
               <p
                 className="text-xs mt-4"
-                style={{ color: "rgba(255,255,255,0.4)" }}
+                style={{ color: "#6b7280" }}
               >
                 * Estimacion basada en el MCER. El tiempo real depende de
                 factores como tu lengua materna, tu dedicacion y si cuentas con
@@ -941,7 +940,7 @@ export default function GuiaDelfDalfPage() {
               <GlassCard key={row.objetivo}>
                 <p
                   className="text-xs mb-1"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   De {row.actual} a
                 </p>
@@ -953,13 +952,13 @@ export default function GuiaDelfDalfPage() {
                 </p>
                 <p
                   className="text-sm"
-                  style={{ color: "rgba(255,255,255,0.7)" }}
+                  style={{ color: "#3d4a5c" }}
                 >
                   {row.horas}
                 </p>
                 <p
                   className="text-xs"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   {row.meses}
                 </p>
@@ -970,7 +969,7 @@ export default function GuiaDelfDalfPage() {
           <div className="text-center mt-8">
             <p
               className="text-sm mb-4"
-              style={{ color: "rgba(255,255,255,0.55)" }}
+              style={{ color: "#6b7280" }}
             >
               Con clases individuales 1 a 1 por Zoom puedes acelerar tu
               preparacion significativamente: cada sesion se adapta 100% a tus
@@ -1000,7 +999,7 @@ export default function GuiaDelfDalfPage() {
           <GlassCard>
             <p
               className="text-base leading-relaxed mb-6"
-              style={{ color: "rgba(255,255,255,0.8)" }}
+              style={{ color: "#3d4a5c" }}
             >
               En Andalucia puedes presentarte al DELF/DALF en centros
               autorizados como la Alliance Française y el Institut Français.
@@ -1024,7 +1023,7 @@ export default function GuiaDelfDalfPage() {
             </div>
             <p
               className="text-xs mt-4"
-              style={{ color: "rgba(255,255,255,0.4)" }}
+              style={{ color: "#6b7280" }}
             >
               Consulta la web de cada centro para ver las fechas exactas de
               convocatoria, plazos de inscripcion y tasas vigentes.
@@ -1053,7 +1052,7 @@ export default function GuiaDelfDalfPage() {
                 <li
                   key={i}
                   className="flex items-start gap-4 text-base"
-                  style={{ color: "rgba(255,255,255,0.8)" }}
+                  style={{ color: "#3d4a5c" }}
                 >
                   <span
                     className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold"
@@ -1098,7 +1097,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.55)" }}
+            style={{ color: "#6b7280" }}
           >
             Consejos practicos organizados por cada competencia del examen.
             Aplicarlos desde el primer dia de preparacion marca la diferencia.
@@ -1122,7 +1121,7 @@ export default function GuiaDelfDalfPage() {
                     <li
                       key={i}
                       className="flex items-start gap-2 text-sm"
-                      style={{ color: "rgba(255,255,255,0.75)" }}
+                      style={{ color: "#3d4a5c" }}
                     >
                       <span
                         className="mt-1 shrink-0"
@@ -1156,7 +1155,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.55)" }}
+            style={{ color: "#6b7280" }}
           >
             Webs y herramientas gratuitas para complementar tu preparacion.
             Usarlas a diario es la mejor inversion de tiempo.
@@ -1198,7 +1197,7 @@ export default function GuiaDelfDalfPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.7)" }}
+                  style={{ color: "#3d4a5c" }}
                 >
                   {r.descripcion}
                 </p>
@@ -1250,7 +1249,7 @@ export default function GuiaDelfDalfPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.7)" }}
+                  style={{ color: "#3d4a5c" }}
                 >
                   {faq.answer}
                 </p>
@@ -1273,7 +1272,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-lg mb-4"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{ color: "#6b7280" }}
           >
             Preparate con clases individuales 1 a 1 por Zoom, adaptadas a tu
             nivel y a las exigencias del examen. Profesores nativos
@@ -1281,7 +1280,7 @@ export default function GuiaDelfDalfPage() {
           </p>
           <p
             className="text-sm mb-8"
-            style={{ color: "rgba(255,255,255,0.45)" }}
+            style={{ color: "#6b7280" }}
           >
             WhatsApp:{" "}
             <a

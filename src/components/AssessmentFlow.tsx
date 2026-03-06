@@ -57,13 +57,13 @@ const getQuestionSaveLabel = (state: QuestionSaveState): string => {
 const getQuestionSaveClassName = (state: QuestionSaveState, cinematic: boolean): string => {
   if (cinematic) {
     if (state === "saving") {
-      return "border-[#E50046]/30 bg-[#E50046]/10 text-[#E50046]";
+      return "border-[#E50046]/20 bg-[#E50046]/5 text-[#E50046]";
     }
     if (state === "saved") {
-      return "border-emerald-400/30 bg-emerald-400/10 text-emerald-300";
+      return "border-emerald-200 bg-emerald-50 text-emerald-800";
     }
     if (state === "error") {
-      return "border-amber-400/30 bg-amber-400/10 text-amber-300";
+      return "border-amber-200 bg-amber-50 text-amber-800";
     }
     return "";
   }
@@ -452,47 +452,47 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
       <section
         className={
           cinematic
-            ? "rounded-2xl border border-white/10 bg-[#1e2d4a] p-4 text-white shadow-[0_10px_26px_rgba(229,0,70,0.1)] sm:p-5"
+            ? "rounded-2xl border border-gray-200 bg-white p-4 text-[#1e2d4a] shadow-sm sm:p-5"
             : "rounded-2xl border border-cyan-200/80 bg-gradient-to-br from-[#c7003b] via-[#E50046] to-[#60a5fa] p-4 text-white shadow-[0_10px_26px_rgba(15,93,160,0.18)] sm:p-5"
         }
       >
         <p
           className={
             cinematic
-              ? "inline-flex rounded-full border border-[#E50046]/30 bg-[#E50046]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#E50046]"
+              ? "inline-flex rounded-full border border-[#E50046]/20 bg-[#E50046]/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#E50046]"
               : "inline-flex rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-cyan-100"
           }
         >
           Simulacion orientativa
         </p>
         <h2 className="mt-2 text-2xl font-bold leading-tight">{assessment.title}</h2>
-        <p className={cinematic ? "mt-2 text-sm text-[#f1f5f9]/80" : "mt-2 text-sm text-cyan-50/95"}>{assessment.description}</p>
-        <p className={cinematic ? "mt-3 text-xs text-[#f1f5f9]/60" : "mt-3 text-xs text-cyan-100/90"}>{assessment.simulationNotice}</p>
+        <p className={cinematic ? "mt-2 text-sm text-[#3d4a5c]" : "mt-2 text-sm text-cyan-50/95"}>{assessment.description}</p>
+        <p className={cinematic ? "mt-3 text-xs text-[#3d4a5c]/80" : "mt-3 text-xs text-cyan-100/90"}>{assessment.simulationNotice}</p>
       </section>
 
       {step === "intro" && (
         <section
           className={
             cinematic
-              ? "rounded-2xl border border-white/10 bg-[#1e2d4a] p-4 shadow-[0_6px_18px_rgba(229,0,70,0.07)] sm:p-5"
+              ? "rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5"
               : "rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5"
           }
         >
-          <h3 className={cinematic ? "text-lg font-semibold text-[#f1f5f9]" : "text-lg font-semibold text-slate-900"}>1. Antes de empezar</h3>
+          <h3 className={cinematic ? "text-lg font-semibold text-[#1e2d4a]" : "text-lg font-semibold text-slate-900"}>1. Antes de empezar</h3>
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
-            <p className={cinematic ? "rounded-xl bg-white/5 px-3 py-2 text-sm text-[#f1f5f9]/80" : "rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-700"}>
+            <p className={cinematic ? "rounded-xl bg-[#faf7f2] px-3 py-2 text-sm text-[#3d4a5c]" : "rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-700"}>
               Duracion estimada: <strong>{assessment.durationMinutes} min</strong>
             </p>
-            <p className={cinematic ? "rounded-xl bg-white/5 px-3 py-2 text-sm text-[#f1f5f9]/80" : "rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-700"}>
+            <p className={cinematic ? "rounded-xl bg-[#faf7f2] px-3 py-2 text-sm text-[#3d4a5c]" : "rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-700"}>
               Preguntas: <strong>{assessment.totalQuestions}</strong>
             </p>
-            <p className={cinematic ? "rounded-xl bg-white/5 px-3 py-2 text-sm text-[#f1f5f9]/80" : "rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-700"}>
+            <p className={cinematic ? "rounded-xl bg-[#faf7f2] px-3 py-2 text-sm text-[#3d4a5c]" : "rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-700"}>
               Resultado: <strong>nota + nivel + plan</strong>
             </p>
           </div>
 
           <label
-            className={cinematic ? "mt-5 block text-sm font-medium text-[#f1f5f9]/80" : "mt-5 block text-sm font-medium text-slate-700"}
+            className={cinematic ? "mt-5 block text-sm font-medium text-[#3d4a5c]" : "mt-5 block text-sm font-medium text-slate-700"}
             htmlFor="candidateId"
           >
             Nombre o alias (opcional)
@@ -503,7 +503,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
             onChange={(event) => setCandidateId(event.target.value)}
             className={
               cinematic
-                ? "mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-sm text-white shadow-sm placeholder:text-white/30 focus:border-[#E50046] focus:outline-none focus:ring-2 focus:ring-[#E50046]/20"
+                ? "mt-1 w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-[#1e2d4a] shadow-sm placeholder:text-gray-400 focus:border-[#E50046] focus:outline-none focus:ring-2 focus:ring-[#E50046]/20"
                 : "mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 text-sm shadow-sm focus:border-[#E50046] focus:outline-none focus:ring-2 focus:ring-[#E50046]/20"
             }
             placeholder="Ejemplo: maria.g"
@@ -516,7 +516,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               disabled={isSubmitting}
               className={
                 cinematic
-                  ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-5 py-3 text-sm font-semibold text-[#1e2d4a] transition hover:bg-[#d4a555] disabled:opacity-60"
+                  ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#c7003b] disabled:opacity-60"
                   : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#c7003b] disabled:opacity-60"
               }
             >
@@ -529,7 +529,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 onClick={() => setStep(result ? "result" : "questions")}
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-[#f1f5f9] transition hover:bg-white/5"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-gray-300 px-5 py-3 text-sm font-semibold text-[#1e2d4a] transition hover:bg-[#faf7f2]"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
                 }
               >
@@ -544,14 +544,14 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
         <section
           className={
             cinematic
-              ? "space-y-3.5 rounded-2xl border border-white/10 bg-[#1e2d4a] p-4 shadow-[0_6px_18px_rgba(229,0,70,0.07)] sm:p-5"
+              ? "space-y-3.5 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5"
               : "space-y-3.5 rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5"
           }
         >
           <div
             className={
               cinematic
-                ? "-mx-4 sticky top-0 z-20 border-b border-white/10 bg-[#1e2d4a]/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5"
+                ? "-mx-4 sticky top-0 z-20 border-b border-gray-200 bg-white/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5"
                 : "-mx-4 sticky top-[84px] z-20 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5"
             }
           >
@@ -559,17 +559,17 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               <p
                 className={
                   cinematic
-                    ? "inline-flex rounded-full bg-[#E50046]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#E50046]"
+                    ? "inline-flex rounded-full bg-[#E50046]/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#E50046]"
                     : "inline-flex rounded-full bg-cyan-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#E50046]"
                 }
               >
                 Paso 2 de 4
               </p>
-              <p className={cinematic ? "text-xs font-medium text-[#f1f5f9]/60" : "text-xs font-medium text-slate-600"}>
+              <p className={cinematic ? "text-xs font-medium text-[#3d4a5c]" : "text-xs font-medium text-slate-600"}>
                 Bloque {currentSectionIndex + 1}/{sectionGroups.length}
               </p>
             </div>
-            <div className={cinematic ? "mt-2 flex items-center justify-between text-xs text-[#f1f5f9]/60" : "mt-2 flex items-center justify-between text-xs text-slate-600"}>
+            <div className={cinematic ? "mt-2 flex items-center justify-between text-xs text-[#3d4a5c]" : "mt-2 flex items-center justify-between text-xs text-slate-600"}>
               <span>
                 Progreso total: {answeredCount}/{totalQuestions}
               </span>
@@ -577,11 +577,11 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 Bloque: {currentSectionAnsweredCount}/{currentSectionQuestions.length}
               </span>
             </div>
-            <div className={cinematic ? "mt-2 h-2.5 w-full rounded-full bg-white/10" : "mt-2 h-2.5 w-full rounded-full bg-slate-200"}>
+            <div className={cinematic ? "mt-2 h-2.5 w-full rounded-full bg-gray-200" : "mt-2 h-2.5 w-full rounded-full bg-slate-200"}>
               <div
                 className={
                   cinematic
-                    ? "h-2.5 rounded-full bg-gradient-to-r from-[#E50046] to-[#d4a555] transition-all"
+                    ? "h-2.5 rounded-full bg-gradient-to-r from-[#E50046] to-[#395D9F] transition-all"
                     : "h-2.5 rounded-full bg-gradient-to-r from-[#E50046] to-cyan-500 transition-all"
                 }
                 style={{ width: `${overallProgress}%` }}
@@ -590,10 +590,10 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
           </div>
 
           <div className="pt-1">
-            <h3 className={cinematic ? "text-lg font-semibold text-[#f1f5f9]" : "text-lg font-semibold text-slate-900"}>
+            <h3 className={cinematic ? "text-lg font-semibold text-[#1e2d4a]" : "text-lg font-semibold text-slate-900"}>
               2. Preguntas por bloques · {currentSection.section.title}
             </h3>
-            <p className={cinematic ? "mt-1 text-sm text-[#f1f5f9]/60" : "mt-1 text-sm text-slate-600"}>{currentSection.section.description}</p>
+            <p className={cinematic ? "mt-1 text-sm text-[#3d4a5c]" : "mt-1 text-sm text-slate-600"}>{currentSection.section.description}</p>
           </div>
 
           <div className="space-y-4">
@@ -604,18 +604,18 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                   key={question.id}
                   className={
                     cinematic
-                      ? "rounded-xl border border-white/10 bg-white/5 p-3.5 shadow-[0_3px_10px_rgba(0,0,0,0.2)]"
+                      ? "rounded-xl border border-gray-200 bg-[#faf7f2] p-3.5 shadow-sm"
                       : "rounded-xl border border-slate-200 bg-slate-50/40 p-3.5 shadow-[0_3px_10px_rgba(15,23,42,0.04)]"
                   }
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <p className={cinematic ? "text-sm font-semibold leading-relaxed text-[#f1f5f9]" : "text-sm font-semibold leading-relaxed text-slate-900"}>
+                    <p className={cinematic ? "text-sm font-semibold leading-relaxed text-[#1e2d4a]" : "text-sm font-semibold leading-relaxed text-slate-900"}>
                       {index + 1}. {question.prompt}
                     </p>
                     <span
                       className={
                         cinematic
-                          ? "shrink-0 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-semibold text-[#E50046]"
+                          ? "shrink-0 rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs font-semibold text-[#E50046]"
                           : "shrink-0 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600"
                       }
                     >
@@ -636,8 +636,8 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                           className={`flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border p-3 text-sm transition ${
                             cinematic
                               ? checked
-                                ? "border-[#E50046] bg-[#E50046]/10 shadow-sm"
-                                : "border-white/10 bg-white/5 hover:border-white/20"
+                                ? "border-[#E50046] bg-[#E50046]/5 shadow-sm"
+                                : "border-gray-200 bg-white hover:border-gray-300"
                               : checked
                                 ? "border-[#E50046] bg-cyan-50 shadow-sm"
                                 : "border-slate-200 bg-white hover:border-slate-300"
@@ -650,7 +650,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                             name={question.id}
                             className="mt-1"
                           />
-                          <span className={cinematic ? "text-[#f1f5f9]" : "text-slate-700"}>{option.text}</span>
+                          <span className={cinematic ? "text-[#1e2d4a]" : "text-slate-700"}>{option.text}</span>
                         </label>
                       );
                     })}
@@ -679,7 +679,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               disabled={currentSectionIndex === 0}
               className={
                 cinematic
-                  ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold text-[#f1f5f9] disabled:opacity-40"
+                  ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-[#1e2d4a] disabled:opacity-40"
                   : "inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 disabled:opacity-40"
               }
             >
@@ -696,7 +696,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 }
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 py-2 text-sm font-semibold text-[#1e2d4a]"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 py-2 text-sm font-semibold text-white"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 py-2 text-sm font-semibold text-white"
                 }
               >
@@ -708,7 +708,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 onClick={() => setStep("review")}
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 py-2 text-sm font-semibold text-[#1e2d4a]"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 py-2 text-sm font-semibold text-white"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-700 px-4 py-2 text-sm font-semibold text-white"
                 }
               >
@@ -720,7 +720,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
           <div
             className={
               cinematic
-                ? "sticky bottom-0 z-10 mt-3 rounded-xl border border-white/10 bg-[#1e2d4a]/95 p-2.5 shadow-[0_-4px_14px_rgba(229,0,70,0.1)] backdrop-blur sm:hidden"
+                ? "sticky bottom-0 z-10 mt-3 rounded-xl border border-gray-200 bg-white/95 p-2.5 shadow-[0_-4px_14px_rgba(0,0,0,0.06)] backdrop-blur sm:hidden"
                 : "sticky bottom-0 z-10 mt-3 rounded-xl border border-slate-200 bg-white/95 p-2.5 shadow-[0_-4px_14px_rgba(15,93,160,0.1)] sm:hidden"
             }
           >
@@ -731,7 +731,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 disabled={currentSectionIndex === 0}
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-white/20 bg-white/5 px-4 text-sm font-semibold text-[#f1f5f9] disabled:opacity-40"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-gray-300 bg-white px-4 text-sm font-semibold text-[#1e2d4a] disabled:opacity-40"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-700 disabled:opacity-40"
                 }
               >
@@ -748,7 +748,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                   }
                   className={
                     cinematic
-                      ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-[#1e2d4a]"
+                      ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-white"
                       : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-white"
                   }
                 >
@@ -760,7 +760,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                   onClick={() => setStep("review")}
                   className={
                     cinematic
-                      ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-[#1e2d4a]"
+                      ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-white"
                       : "inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-700 px-4 text-sm font-semibold text-white"
                   }
                 >
@@ -776,21 +776,21 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
         <section
           className={
             cinematic
-              ? "rounded-2xl border border-white/10 bg-[#1e2d4a] p-4 shadow-[0_6px_18px_rgba(229,0,70,0.07)] sm:p-5"
+              ? "rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5"
               : "rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.07)] sm:p-5"
           }
         >
           <p className={cinematic ? "text-xs font-semibold uppercase tracking-[0.08em] text-[#E50046]" : "text-xs font-semibold uppercase tracking-[0.08em] text-[#E50046]"}>Paso 3 de 4</p>
-          <h3 className={cinematic ? "mt-1 text-lg font-semibold text-[#f1f5f9]" : "mt-1 text-lg font-semibold text-slate-900"}>Revision final</h3>
-          <p className={cinematic ? "mt-2 text-sm text-[#f1f5f9]/80" : "mt-2 text-sm text-slate-700"}>
+          <h3 className={cinematic ? "mt-1 text-lg font-semibold text-[#1e2d4a]" : "mt-1 text-lg font-semibold text-slate-900"}>Revision final</h3>
+          <p className={cinematic ? "mt-2 text-sm text-[#3d4a5c]" : "mt-2 text-sm text-slate-700"}>
             Completadas: {answeredCount}/{totalQuestions}. Pendientes: {unansweredCount}.
           </p>
 
-          <ul className={cinematic ? "mt-4 space-y-2 text-sm text-[#f1f5f9]/80" : "mt-4 space-y-2 text-sm text-slate-700"}>
+          <ul className={cinematic ? "mt-4 space-y-2 text-sm text-[#3d4a5c]" : "mt-4 space-y-2 text-sm text-slate-700"}>
             {sectionGroups.map((entry) => {
               const done = entry.questionIds.filter((id) => answers[id]).length;
               return (
-                <li key={entry.section.id} className={cinematic ? "rounded-lg bg-white/5 px-3 py-2" : "rounded-lg bg-slate-50 px-3 py-2"}>
+                <li key={entry.section.id} className={cinematic ? "rounded-lg bg-[#faf7f2] px-3 py-2" : "rounded-lg bg-slate-50 px-3 py-2"}>
                   {entry.section.title}: {done}/{entry.questionIds.length}
                 </li>
               );
@@ -801,7 +801,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
             <p
               className={
                 cinematic
-                  ? "mt-4 rounded-lg border border-[#E50046]/30 bg-[#E50046]/10 px-3 py-2 text-sm text-[#E50046]"
+                  ? "mt-4 rounded-lg border border-[#E50046]/20 bg-[#E50046]/5 px-3 py-2 text-sm text-[#E50046]"
                   : "mt-4 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm text-blue-800"
               }
             >
@@ -815,7 +815,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               onClick={() => setStep("questions")}
               className={
                 cinematic
-                  ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold text-[#f1f5f9]"
+                  ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-[#1e2d4a]"
                   : "inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700"
               }
             >
@@ -827,7 +827,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
               disabled={isSubmitting || hasPendingSaves}
               className={
                 cinematic
-                  ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 py-2 text-sm font-semibold text-[#1e2d4a] disabled:opacity-60"
+                  ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
                   : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
               }
             >
@@ -842,7 +842,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
           <div
             className={
               cinematic
-                ? "sticky bottom-0 z-10 mt-3 rounded-xl border border-white/10 bg-[#1e2d4a]/95 p-2.5 shadow-[0_-4px_14px_rgba(229,0,70,0.1)] backdrop-blur sm:hidden"
+                ? "sticky bottom-0 z-10 mt-3 rounded-xl border border-gray-200 bg-white/95 p-2.5 shadow-[0_-4px_14px_rgba(0,0,0,0.06)] backdrop-blur sm:hidden"
                 : "sticky bottom-0 z-10 mt-3 rounded-xl border border-slate-200 bg-white/95 p-2.5 shadow-[0_-4px_14px_rgba(15,93,160,0.1)] sm:hidden"
             }
           >
@@ -852,7 +852,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 onClick={() => setStep("questions")}
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-white/20 px-4 text-sm font-semibold text-[#f1f5f9]"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl border border-gray-300 px-4 text-sm font-semibold text-[#1e2d4a]"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 px-4 text-sm font-semibold text-slate-700"
                 }
               >
@@ -864,7 +864,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
                 disabled={isSubmitting || hasPendingSaves}
                 className={
                   cinematic
-                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-[#1e2d4a] disabled:opacity-60"
+                    ? "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-white disabled:opacity-60"
                     : "inline-flex min-h-11 items-center justify-center rounded-xl bg-[#E50046] px-4 text-sm font-semibold text-white disabled:opacity-60"
                 }
               >
@@ -931,7 +931,7 @@ const AssessmentFlow = ({ assessment, theme = "default", onResult }: AssessmentF
         <p
           className={
             cinematic
-              ? "rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-sm text-amber-300"
+              ? "rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800"
               : "rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800"
           }
         >

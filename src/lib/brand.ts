@@ -56,15 +56,19 @@ export const dashboard = {
   success:       "#22C55E",
 } as const;
 
-// ─── Cinematic (Le Voyage / marketing) ───
+// ─── Cinematic (Variante C — light public pages) ───
 export const cinematic = {
-  bg:         "#1e2d4a",
-  bgCard:     "rgba(255,255,255,0.06)",
-  border:     "rgba(255,255,255,0.10)",
+  bg:         "#faf7f2",
+  bgAlt:      "#f0ede6",
+  bgCard:     "#ffffff",
+  border:     "rgba(30,45,74,0.10)",
   accent:     "#E50046",
   accentLight:"#ff3366",
-  text:       "#f1f5f9",
-  textMuted:  "rgba(255,255,255,0.5)",
+  text:       "#1e2d4a",
+  textBody:   "#3d4a5c",
+  textMuted:  "#6b7280",
+  navBg:      "#1e2d4a",
+  navText:    "#f1f5f9",
 } as const;
 
 // ─── City scenes (Le Voyage) ───
