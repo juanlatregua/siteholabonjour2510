@@ -1,24 +1,19 @@
 import type { Metadata } from "next";
-import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import HeroAnimations from "@/components/cinematic/HeroAnimations";
 import GlassCard from "@/components/cinematic/GlassCard";
-import PassportStamp from "@/components/cinematic/PassportStamp";
 import GoldButton from "@/components/cinematic/GoldButton";
 import CinematicSection from "@/components/cinematic/CinematicSection";
 import SceneGradient from "@/components/cinematic/SceneGradient";
-import { team } from "@/data/team";
 
 export const metadata: Metadata = {
-  title: "Aprende francés online con nativos — HolaBonjour",
+  title: "Prepara tu DELF o DALF — HolaBonjour | Simuladores oficiales",
   description:
-    "Clases individuales de francés online por Zoom con profesoras nativas. Preparación DELF/DALF, conversación y test de nivel gratuito.",
+    "Simuladores oficiales DELF/DALF con temporizador, profesores nativos y metodología exclusiva. Haz tu examen de prueba gratis.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Aprende francés online con nativos — HolaBonjour",
+    title: "Prepara tu DELF o DALF — HolaBonjour",
     description:
-      "Clases individuales de francés online por Zoom con profesoras nativas. Preparación DELF/DALF, conversación y test de nivel gratuito.",
+      "Simuladores oficiales DELF/DALF con temporizador, profesores nativos y metodología exclusiva.",
     url: "https://holabonjour.es/",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -28,146 +23,229 @@ export const metadata: Metadata = {
 
 /* ─── Data ─── */
 
-const valueProps = [
+const trustStats = [
+  { value: "+500", label: "alumnos preparados" },
+  { value: "A1 – C2", label: "todos los niveles DELF/DALF" },
+  { value: "100%", label: "simuladores con temporizador oficial" },
+];
+
+const levels = [
   {
-    title: "Examens officiels DELF/DALF",
-    description:
-      "Preparación específica para cada nivel del examen oficial con simulaciones y seguimiento docente.",
+    nivel: "A1",
+    title: "Découverte",
+    desc: "Comprende y usa expresiones cotidianas básicas.",
+    color: "#22c55e",
+    free: true,
   },
   {
-    title: "Apprentissage immersif",
-    description:
-      "Le Côté Vie: aprende francés a través del cine, la gastronomía, los juegos y la cultura.",
+    nivel: "A2",
+    title: "Survie",
+    desc: "Comunícate en tareas simples y habituales.",
+    color: "#22c55e",
+    free: true,
   },
   {
-    title: "Cours en direct",
-    description:
-      "Clases individuales online con profesores nativos franceses. 55 min por Zoom, 100% personalizadas.",
+    nivel: "B1",
+    title: "Seuil",
+    desc: "Desenvuélvete en situaciones de viaje y trabajo.",
+    color: "#3b82f6",
+    free: true,
+  },
+  {
+    nivel: "B2",
+    title: "Avancé",
+    desc: "Argumenta con fluidez y comprende textos complejos.",
+    color: "#3b82f6",
+    free: true,
+  },
+  {
+    nivel: "C1",
+    title: "Autonome",
+    desc: "Usa el francés de forma flexible y eficaz.",
+    color: "#c9a84c",
+    free: false,
+  },
+  {
+    nivel: "C2",
+    title: "Maîtrise",
+    desc: "Dominio prácticamente nativo del idioma.",
+    color: "#c9a84c",
+    free: false,
   },
 ];
 
-const courseTypes = [
+const steps = [
   {
-    emoji: "\uD83C\uDF93",
-    title: "Préparation DELF/DALF",
-    description: "Todos los niveles, de A1 a C2",
-    href: "/cursos/preparacion-delf-dalf",
+    num: "1",
+    title: "Elige tu nivel",
+    desc: "Selecciona entre A1 y C2 según tu objetivo.",
   },
   {
-    emoji: "\uD83D\uDCAC",
-    title: "Conversation",
-    description: "Practica con profesores nativos",
-    href: "/cursos/conversacion",
+    num: "2",
+    title: "Haz el simulador",
+    desc: "Examen real con temporizador y corrección automática.",
   },
   {
-    emoji: "\uD83D\uDCBC",
-    title: "Français pour entreprises",
-    description: "Programas corporativos a medida",
-    href: "/cursos/frances-empresas",
-  },
-  {
-    emoji: "\u26A1",
-    title: "Intensifs",
-    description: "Programas intensivos para avanzar rápido",
-    href: "/cursos/intensivos",
-  },
-  {
-    emoji: "\uD83C\uDFAF",
-    title: "Cours particuliers",
-    description: "Sesiones individuales adaptadas",
-    href: "/cursos/clases-particulares",
+    num: "3",
+    title: "Recibe tu resultado",
+    desc: "Puntuación detallada y plan de mejora personalizado.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "La prueba me dio un nivel realista y supe exactamente qué preparar para presentarme al DELF B1.",
+      "Aprobé el DELF B2 con 78/100 tras prepararme con los simuladores y las clases.",
     author: "Elena M.",
+    level: "DELF B2",
+    score: "78/100",
   },
   {
     quote:
-      "Me gustó que todo fuese online y con pasos claros. Pasé de dudas a plan de estudio en el mismo día.",
+      "El simulador es idéntico al examen real. Me quitó todos los nervios el día del examen.",
     author: "Carlos R.",
+    level: "DELF B1",
+    score: "85/100",
   },
   {
     quote:
-      "El enfoque en exámenes oficiales y simulacros con tiempo real marca la diferencia.",
+      "Las correcciones de producción escrita con IA son increíblemente detalladas.",
     author: "Laura P.",
+    level: "DALF C1",
+    score: "72/100",
   },
 ];
-
-const coteVieItems = [
-  {
-    title: "Le Marché",
-    description: "Vocabulario práctico del mercado y la vida cotidiana.",
-    href: "/le-marche",
-    accent: "#f0a500",
-  },
-  {
-    title: "La Carte",
-    description: "Explora la geografía y cultura de Francia.",
-    href: "/la-carte",
-    accent: "#6ec6ca",
-  },
-  {
-    title: "Le Cinéma",
-    description: "Aprende francés a través del cine francófono.",
-    href: "/le-cinema",
-    accent: "#c77dba",
-  },
-  {
-    title: "La Cuisine",
-    description: "Recetas y vocabulario gastronómico francés.",
-    href: "/la-cuisine",
-    accent: "#6ec6ca",
-  },
-  {
-    title: "Le Mot du Jour",
-    description: "Una palabra nueva cada día para ampliar tu vocabulario.",
-    href: "/le-mot-du-jour",
-    accent: "#c9a84c",
-  },
-  {
-    title: "Le Jeu",
-    description: "Juegos interactivos para practicar jugando.",
-    href: "/le-jeu",
-    accent: "#f0a500",
-  },
-];
-
-/* Team avatar color palette */
-const teamColors = ["#E50046", "#395D9F", "#c77dba", "#f0a500"];
-
-function getInitials(name: string) {
-  return name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase();
-}
 
 /* ─── Page ─── */
 
-const CinematicHomePage = () => {
+export default function HomePage() {
   return (
-    <div
-      style={{
-        background: "#1e2d4a",
-        color: "#f1f5f9",
-        minHeight: "100vh",
-      }}
-    >
-      {/* ── Section 1: Hero ── */}
-      <section>
-        <HeroAnimations />
+    <div style={{ background: "#0a0a0a", color: "#f5f5f5", minHeight: "100vh" }}>
+      {/* ── HERO ── */}
+      <section
+        style={{
+          position: "relative",
+          padding: "6rem 1rem 5rem",
+          textAlign: "center",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(229,0,70,0.15) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            zIndex: 1,
+            maxWidth: 800,
+            margin: "0 auto",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.8rem",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#E50046",
+              marginBottom: "1rem",
+            }}
+          >
+            Academia online de francés
+          </p>
+          <h1
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(2rem, 5vw, 3.2rem)",
+              fontWeight: 700,
+              lineHeight: 1.15,
+              marginBottom: "1.25rem",
+              color: "#f5f5f5",
+            }}
+          >
+            Prepara tu DELF o DALF con la academia que mejores resultados obtiene
+          </h1>
+          <p
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.2rem)",
+              lineHeight: 1.6,
+              color: "#9ca3af",
+              marginBottom: "2.5rem",
+              maxWidth: 600,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Simuladores oficiales, profesores nativos y metodología exclusiva
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <GoldButton href="/examenes">
+              Hacer examen de prueba gratis
+            </GoldButton>
+            <GoldButton href="/cursos" variant="outline">
+              Ver cursos
+            </GoldButton>
+          </div>
+        </div>
       </section>
 
-      {/* ── Section 2: Value Props ── */}
+      {/* ── TRUST BAND ── */}
+      <section
+        style={{
+          borderTop: "1px solid #1f1f1f",
+          borderBottom: "1px solid #1f1f1f",
+          padding: "2rem 1rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 900,
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "1.5rem",
+            textAlign: "center",
+          }}
+        >
+          {trustStats.map((stat) => (
+            <div key={stat.label}>
+              <div
+                style={{
+                  fontSize: "1.75rem",
+                  fontWeight: 700,
+                  fontFamily: "'Playfair Display', serif",
+                  color: "#E50046",
+                  marginBottom: "0.25rem",
+                }}
+              >
+                {stat.value}
+              </div>
+              <div style={{ fontSize: "0.9rem", color: "#9ca3af" }}>
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── EXÁMENES POR NIVEL ── */}
       <CinematicSection>
         <div
           style={{
-            maxWidth: "1100px",
+            maxWidth: 1100,
             margin: "0 auto",
             padding: "5rem 1rem",
           }}
@@ -178,189 +256,109 @@ const CinematicHomePage = () => {
               fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
               fontWeight: 700,
               textAlign: "center",
-              marginBottom: "3rem",
-              color: "#f1f5f9",
+              marginBottom: "1rem",
+              color: "#f5f5f5",
             }}
           >
-            Pourquoi choisir <span style={{ color: "#E50046" }}>HolaBonjour</span>
+            Simuladores disponibles
           </h2>
+          <p
+            style={{
+              textAlign: "center",
+              color: "#9ca3af",
+              fontSize: "1rem",
+              marginBottom: "3rem",
+              maxWidth: 500,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Elige tu nivel y empieza con una prueba gratuita
+          </p>
 
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "1.5rem",
-            }}
-          >
-            {valueProps.map((prop) => (
-              <GlassCard key={prop.title}>
-                <h3
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "1.25rem",
-                    fontWeight: 700,
-                    color: "#E50046",
-                    marginBottom: "0.75rem",
-                  }}
-                >
-                  {prop.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "0.95rem",
-                    lineHeight: 1.6,
-                    color: "rgba(241, 245, 249, 0.8)",
-                    margin: 0,
-                  }}
-                >
-                  {prop.description}
-                </p>
-              </GlassCard>
-            ))}
-          </div>
-        </div>
-      </CinematicSection>
-
-      {/* ── Section 3: Le Voyage Teaser ── */}
-      <CinematicSection>
-        <div
-          style={{
-            maxWidth: "720px",
-            margin: "0 auto",
-            padding: "4rem 1rem",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              position: "relative",
-              background: "rgba(20, 24, 37, 0.8)",
-              border: "1px solid rgba(232, 184, 101, 0.3)",
-              borderRadius: "1.2rem",
-              padding: "3rem 2rem",
-              backdropFilter: "blur(12px)",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: "1.5rem",
-                right: "1.5rem",
-                opacity: 0.6,
-              }}
-            >
-              <PassportStamp level="B1" animated={false} />
-            </div>
-
-            <p
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 600,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "#E50046",
-                marginBottom: "0.5rem",
-              }}
-            >
-              Test de nivel
-            </p>
-
-            <h2
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-                fontWeight: 700,
-                color: "#f1f5f9",
-                marginBottom: "1rem",
-              }}
-            >
-              Le Voyage
-            </h2>
-
-            <p
-              style={{
-                fontSize: "1.05rem",
-                lineHeight: 1.6,
-                color: "rgba(241, 245, 249, 0.75)",
-                marginBottom: "2rem",
-                maxWidth: "480px",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-            >
-              Descubre tu nivel de francés con nuestro test inmersivo
-            </p>
-
-            <GoldButton href="/test-de-nivel">Empezar el viaje</GoldButton>
-          </div>
-        </div>
-      </CinematicSection>
-
-      {/* ── Section 4: Course Overview ── */}
-      <CinematicSection>
-        <div
-          style={{
-            maxWidth: "1100px",
-            margin: "0 auto",
-            padding: "5rem 1rem",
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
-              fontWeight: 700,
-              textAlign: "center",
-              marginBottom: "3rem",
-              color: "#f1f5f9",
-            }}
-          >
-            Nos <span style={{ color: "#E50046", fontStyle: "italic" }}>formations</span>
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
               gap: "1.25rem",
             }}
           >
-            {courseTypes.map((course) => (
+            {levels.map((l) => (
               <Link
-                key={course.title}
-                href={course.href}
+                key={l.nivel}
+                href={`/examenes/${l.nivel.toLowerCase()}/demo`}
                 style={{ textDecoration: "none" }}
               >
                 <GlassCard>
                   <div
                     style={{
-                      fontSize: "1.8rem",
-                      marginBottom: "0.5rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginBottom: "0.75rem",
                     }}
                   >
-                    {course.emoji}
+                    <span
+                      style={{
+                        fontSize: "1.5rem",
+                        fontWeight: 800,
+                        fontFamily: "'Playfair Display', serif",
+                        color: l.color,
+                      }}
+                    >
+                      {l.nivel}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.65rem",
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        padding: "0.2rem 0.6rem",
+                        borderRadius: 999,
+                        background: l.free
+                          ? "rgba(34, 197, 94, 0.15)"
+                          : "rgba(201, 168, 76, 0.15)",
+                        border: l.free
+                          ? "1px solid rgba(34, 197, 94, 0.3)"
+                          : "1px solid rgba(201, 168, 76, 0.3)",
+                        color: l.free ? "#22c55e" : "#c9a84c",
+                      }}
+                    >
+                      {l.free ? "Gratis" : "Premium"}
+                    </span>
                   </div>
                   <h3
                     style={{
                       fontFamily: "'Playfair Display', serif",
-                      fontSize: "1.15rem",
+                      fontSize: "1.1rem",
                       fontWeight: 700,
-                      color: "#E50046",
+                      color: "#f5f5f5",
                       marginBottom: "0.5rem",
                     }}
                   >
-                    {course.title}
+                    {l.title}
                   </h3>
                   <p
                     style={{
                       fontSize: "0.9rem",
                       lineHeight: 1.5,
-                      color: "rgba(241, 245, 249, 0.7)",
+                      color: "rgba(245, 245, 245, 0.6)",
                       margin: 0,
+                      marginBottom: "1rem",
                     }}
                   >
-                    {course.description}
+                    {l.desc}
                   </p>
+                  <span
+                    style={{
+                      fontSize: "0.85rem",
+                      fontWeight: 600,
+                      color: "#E50046",
+                    }}
+                  >
+                    Empezar prueba &rarr;
+                  </span>
                 </GlassCard>
               </Link>
             ))}
@@ -368,11 +366,80 @@ const CinematicHomePage = () => {
         </div>
       </CinematicSection>
 
-      {/* ── Section 5: Testimonials ── */}
+      {/* ── CÓMO FUNCIONA ── */}
+      <section style={{ padding: "5rem 1rem" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <h2
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+              fontWeight: 700,
+              textAlign: "center",
+              marginBottom: "3rem",
+              color: "#f5f5f5",
+            }}
+          >
+            Cómo funciona
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: "2rem",
+            }}
+          >
+            {steps.map((s) => (
+              <div key={s.num} style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    width: 56,
+                    height: 56,
+                    borderRadius: "50%",
+                    background: "rgba(229, 0, 70, 0.12)",
+                    border: "2px solid rgba(229, 0, 70, 0.3)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto 1rem",
+                    fontSize: "1.25rem",
+                    fontWeight: 800,
+                    color: "#E50046",
+                    fontFamily: "'Playfair Display', serif",
+                  }}
+                >
+                  {s.num}
+                </div>
+                <h3
+                  style={{
+                    fontSize: "1.1rem",
+                    fontWeight: 700,
+                    marginBottom: "0.5rem",
+                    color: "#f5f5f5",
+                  }}
+                >
+                  {s.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    lineHeight: 1.6,
+                    color: "#9ca3af",
+                    margin: 0,
+                  }}
+                >
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIOS ── */}
       <CinematicSection>
         <div
           style={{
-            maxWidth: "1100px",
+            maxWidth: 1100,
             margin: "0 auto",
             padding: "5rem 1rem",
           }}
@@ -384,11 +451,10 @@ const CinematicHomePage = () => {
               fontWeight: 700,
               textAlign: "center",
               marginBottom: "3rem",
-              color: "#f1f5f9",
+              color: "#f5f5f5",
             }}
           >
-            Ce qu&apos;ils disent{" "}
-            <span style={{ color: "#E50046" }}>de nous</span>
+            Lo que dicen nuestros alumnos
           </h2>
 
           <div
@@ -398,30 +464,50 @@ const CinematicHomePage = () => {
               gap: "1.5rem",
             }}
           >
-            {testimonials.map((testimonial) => (
-              <GlassCard key={testimonial.author}>
+            {testimonials.map((t) => (
+              <GlassCard key={t.author}>
                 <div
                   style={{
-                    color: "#E50046",
-                    fontSize: "1.1rem",
-                    letterSpacing: "0.1em",
-                    marginBottom: "0.75rem",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "1rem",
                   }}
                 >
-                  {"\u2605\u2605\u2605\u2605\u2605"}
+                  <span
+                    style={{
+                      fontSize: "0.75rem",
+                      fontWeight: 700,
+                      padding: "0.2rem 0.6rem",
+                      borderRadius: 999,
+                      background: "rgba(59, 130, 246, 0.15)",
+                      border: "1px solid rgba(59, 130, 246, 0.3)",
+                      color: "#3b82f6",
+                    }}
+                  >
+                    {t.level}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.85rem",
+                      fontWeight: 700,
+                      color: "#22c55e",
+                    }}
+                  >
+                    {t.score}
+                  </span>
                 </div>
                 <blockquote
                   style={{
                     margin: 0,
-                    padding: 0,
                     fontSize: "1rem",
                     lineHeight: 1.65,
-                    color: "rgba(241, 245, 249, 0.85)",
+                    color: "rgba(245, 245, 245, 0.85)",
                     fontStyle: "italic",
                     marginBottom: "1.25rem",
                   }}
                 >
-                  &ldquo;{testimonial.quote}&rdquo;
+                  &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <p
                   style={{
@@ -431,164 +517,7 @@ const CinematicHomePage = () => {
                     color: "#E50046",
                   }}
                 >
-                  &mdash; {testimonial.author}
-                </p>
-              </GlassCard>
-            ))}
-          </div>
-
-          {/* Google Reviews badge */}
-          <p
-            style={{
-              textAlign: "center",
-              marginTop: "2rem",
-              fontSize: "0.95rem",
-              color: "rgba(241, 245, 249, 0.6)",
-            }}
-          >
-            <span style={{ color: "#E50046" }}>{"\u2605"}</span> 4.5/5 &middot;
-            Google Reviews
-          </p>
-        </div>
-      </CinematicSection>
-
-      {/* ── Section 6: Votre équipe ── */}
-      <CinematicSection>
-        <div
-          style={{
-            maxWidth: "900px",
-            margin: "0 auto",
-            padding: "5rem 1rem",
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
-              fontWeight: 700,
-              textAlign: "center",
-              marginBottom: "3rem",
-              color: "#f1f5f9",
-            }}
-          >
-            Votre <span style={{ color: "#E50046" }}>équipe</span>
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-              gap: "1.5rem",
-            }}
-          >
-            {team.map((member, idx) => (
-              <GlassCard key={member.name}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  {/* Avatar: photo or initials */}
-                  {member.image ? (
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={56}
-                      height={56}
-                      style={{
-                        width: 56,
-                        height: 56,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        flexShrink: 0,
-                      }}
-                    />
-                  ) : (
-                    <div
-                      style={{
-                        width: 56,
-                        height: 56,
-                        borderRadius: "50%",
-                        background: teamColors[idx % teamColors.length],
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontWeight: 700,
-                        fontSize: "1.1rem",
-                        color: "#1e2d4a",
-                        flexShrink: 0,
-                        fontFamily: "'Playfair Display', serif",
-                      }}
-                    >
-                      {getInitials(member.name)}
-                    </div>
-                  )}
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Playfair Display', serif",
-                        fontSize: "1.15rem",
-                        fontWeight: 700,
-                        color: "#f1f5f9",
-                        marginBottom: "0.15rem",
-                      }}
-                    >
-                      {member.name}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: "0.85rem",
-                        color: "#E50046",
-                        margin: 0,
-                        fontWeight: 600,
-                      }}
-                    >
-                      {member.role}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Credentials badges */}
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "0.4rem",
-                    marginBottom: "0.75rem",
-                  }}
-                >
-                  {member.credentials.map((cred) => (
-                    <span
-                      key={cred}
-                      style={{
-                        fontSize: "0.72rem",
-                        fontWeight: 600,
-                        padding: "0.2rem 0.6rem",
-                        borderRadius: "999px",
-                        background: "rgba(232, 184, 101, 0.12)",
-                        border: "1px solid rgba(232, 184, 101, 0.25)",
-                        color: "#E50046",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {cred}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Bio */}
-                <p
-                  style={{
-                    fontSize: "0.9rem",
-                    lineHeight: 1.6,
-                    color: "rgba(241, 245, 249, 0.75)",
-                    margin: 0,
-                  }}
-                >
-                  {member.bio}
+                  &mdash; {t.author}
                 </p>
               </GlassCard>
             ))}
@@ -596,130 +525,12 @@ const CinematicHomePage = () => {
         </div>
       </CinematicSection>
 
-      {/* ── Section 7: Le Côté Vie Preview ── */}
-      <CinematicSection>
-        <div
-          style={{
-            maxWidth: "1100px",
-            margin: "0 auto",
-            padding: "5rem 1rem",
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
-              fontWeight: 700,
-              textAlign: "center",
-              marginBottom: "0.75rem",
-              color: "#f1f5f9",
-            }}
-          >
-            Apprendre le fran&ccedil;ais, c&apos;est{" "}
-            <span style={{ color: "#c9a84c" }}>vivre la France</span>
-          </h2>
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "1.05rem",
-              color: "rgba(241, 245, 249, 0.7)",
-              marginBottom: "3rem",
-              maxWidth: "560px",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            Vive el francés más allá de las clases. Cultura, cine, gastronomía y
-            juegos.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-              gap: "1rem",
-            }}
-          >
-            {coteVieItems.map((item) => (
-              <Link
-                key={item.title}
-                href={item.href}
-                style={{ textDecoration: "none" }}
-              >
-                <div
-                  style={{
-                    position: "relative",
-                    background: "rgba(30, 28, 24, 0.6)",
-                    border: `1px solid ${item.accent}33`,
-                    borderRadius: "0.9rem",
-                    padding: "1.5rem 1.2rem",
-                    backdropFilter: "blur(8px)",
-                    transition:
-                      "border-color 0.2s ease, transform 0.2s ease",
-                    cursor: "pointer",
-                  }}
-                >
-                  {/* Gratuit badge */}
-                  <span
-                    style={{
-                      position: "absolute",
-                      top: "0.75rem",
-                      right: "0.75rem",
-                      fontSize: "0.65rem",
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      padding: "0.15rem 0.5rem",
-                      borderRadius: "999px",
-                      background: `${item.accent}22`,
-                      border: `1px solid ${item.accent}44`,
-                      color: item.accent,
-                    }}
-                  >
-                    Gratuit
-                  </span>
-
-                  <h3
-                    style={{
-                      fontFamily: "'Playfair Display', serif",
-                      fontSize: "1rem",
-                      fontWeight: 700,
-                      color: item.accent,
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "0.85rem",
-                      lineHeight: 1.5,
-                      color: "rgba(241, 245, 249, 0.65)",
-                      margin: 0,
-                    }}
-                  >
-                    {item.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* CTA below grid */}
-          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
-            <GoldButton href="/le-marche" variant="outline">
-              Explorer l&apos;&eacute;cosyst&egrave;me &rarr;
-            </GoldButton>
-          </div>
-        </div>
-      </CinematicSection>
-
-      {/* ── Section 8: Final CTA ── */}
+      {/* ── CTA FINAL ── */}
       <CinematicSection>
         <SceneGradient />
         <div
           style={{
-            maxWidth: "720px",
+            maxWidth: 720,
             margin: "0 auto",
             padding: "5rem 1rem",
             textAlign: "center",
@@ -730,95 +541,32 @@ const CinematicHomePage = () => {
           <h2
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
               fontWeight: 700,
               marginBottom: "1rem",
-              color: "#f1f5f9",
+              color: "#f5f5f5",
             }}
           >
-            Pr&ecirc;t &agrave; commencer{" "}
-            <span style={{ color: "#E50046" }}>?</span>
+            ¿Listo para empezar?
           </h2>
           <p
             style={{
-              fontSize: "1.05rem",
+              fontSize: "1.1rem",
               lineHeight: 1.6,
-              color: "rgba(241, 245, 249, 0.75)",
+              color: "#9ca3af",
               marginBottom: "2.5rem",
-              maxWidth: "520px",
+              maxWidth: 520,
               marginLeft: "auto",
               marginRight: "auto",
             }}
           >
-            Descubre tu nivel, explora nuestros recursos gratuitos o
-            escr&iacute;benos por WhatsApp.
+            Haz un examen de prueba gratuito y descubre tu nivel real
           </p>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "1rem",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                gap: "1rem",
-                flexWrap: "wrap",
-                justifyContent: "center",
-              }}
-            >
-              <GoldButton href="/test-de-nivel">
-                Faire le test de niveau &rarr;
-              </GoldButton>
-              <a
-                href="https://wa.me/34685070304"
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "12px 28px",
-                  borderRadius: 12,
-                  background: "rgba(37, 211, 102, 0.15)",
-                  border: "2px solid rgba(37, 211, 102, 0.5)",
-                  color: "#25d366",
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  textDecoration: "none",
-                  transition: "background 0.25s ease",
-                  fontFamily: "var(--font-heading)",
-                  letterSpacing: "0.01em",
-                  cursor: "pointer",
-                }}
-              >
-                Inf&oacute;rmate por WhatsApp
-              </a>
-            </div>
-
-            <p
-              style={{
-                fontSize: "0.9rem",
-                color: "rgba(241, 245, 249, 0.6)",
-                marginTop: "0.5rem",
-              }}
-            >
-              Email:{" "}
-              <a
-                href="mailto:hola@holabonjour.es"
-                style={{ color: "#E50046", textDecoration: "none" }}
-              >
-                hola@holabonjour.es
-              </a>
-            </p>
-          </div>
+          <GoldButton href="/examenes">
+            Hacer examen de prueba gratis
+          </GoldButton>
         </div>
       </CinematicSection>
     </div>
   );
-};
-
-export default CinematicHomePage;
+}

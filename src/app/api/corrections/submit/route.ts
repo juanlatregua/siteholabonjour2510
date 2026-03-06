@@ -12,7 +12,7 @@ const anthropic = new Anthropic();
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, level, taskType, taskPrompt, inputText } = body;
+    const { email, level, taskType, taskPrompt, inputText, attemptId } = body;
 
     // Validate required fields
     if (!email || !level || !taskType || !inputText) {
@@ -70,6 +70,7 @@ export async function POST(req: NextRequest) {
         inputText,
         wordCount,
         status: "PROCESSING",
+        ...(attemptId && { attemptId }),
       },
     });
 
