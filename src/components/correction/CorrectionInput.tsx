@@ -171,7 +171,7 @@ export default function CorrectionInput({
       <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
         <span>
           {wordCount} palabras
-          <span className="text-gray-400">
+          <span className="text-gray-600">
             {" "}
             (recomendado: {limits.min}–{limits.max})
           </span>

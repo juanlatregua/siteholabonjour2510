@@ -221,7 +221,7 @@ export default function ExamCalendar() {
 
                 <div className="mt-3 pt-3 border-t flex items-center justify-between">
                   {isDone ? (
-                    <span className="text-xs text-green-600 font-medium">
+                    <span className="text-xs text-green-700 font-medium">
                       Recordatorio activado
                     </span>
                   ) : (

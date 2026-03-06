@@ -76,23 +76,31 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Contraseña", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
+        try {
+          if (!credentials?.email || !credentials?.password) return null;
 
-        const email = (credentials.email as string).toLowerCase().trim();
-        if (!TEACHER_EMAILS.includes(email as typeof TEACHER_EMAILS[number])) return null;
+          const email = (credentials.email as string).toLowerCase().trim();
+          if (!TEACHER_EMAILS.includes(email as typeof TEACHER_EMAILS[number])) return null;
 
-        const user = await prisma.user.findUnique({ where: { email } });
-        if (!user || (user.role !== "TEACHER" && user.role !== "ADMIN")) return null;
+          const user = await prisma.user.findUnique({ where: { email } });
+          if (!user || (user.role !== "TEACHER" && user.role !== "ADMIN")) return null;
 
-        const bcrypt = await import("bcryptjs");
-        const envKey = `TEACHER_PASSWORD_HASH_${email.split("@")[0].toUpperCase().replace(/[^A-Z]/g, "")}`;
-        const storedHash = process.env[envKey];
-        if (!storedHash) return null;
+          const bcrypt = await import("bcryptjs");
+          const envKey = `TEACHER_PASSWORD_HASH_${email.split("@")[0].toUpperCase().replace(/[^A-Z]/g, "")}`;
+          const storedHash = process.env[envKey];
+          if (!storedHash) {
+            console.error(`[auth] Missing env var: ${envKey}`);
+            return null;
+          }
 
-        const valid = await bcrypt.compare(credentials.password as string, storedHash);
-        if (!valid) return null;
+          const valid = await bcrypt.compare(credentials.password as string, storedHash);
+          if (!valid) return null;
 
-        return { id: user.id, email: user.email, name: user.name, role: user.role };
+          return { id: user.id, email: user.email, name: user.name, role: user.role };
+        } catch (err) {
+          console.error("[auth] authorize error:", err);
+          return null;
+        }
       },
     }),
   ],
@@ -112,11 +120,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
     async signIn({ user }) {
-      if (user.id) {
-        const dbUser = await prisma.user.findUnique({ where: { id: user.id } });
-        if (dbUser && !dbUser.active) return false;
+      try {
+        if (user.id) {
+          const dbUser = await prisma.user.findUnique({ where: { id: user.id } });
+          if (dbUser && !dbUser.active) return false;
+        }
+        return true;
+      } catch (err) {
+        console.error("[auth] signIn callback error:", err);
+        return true; // allow sign-in even if DB check fails
       }
-      return true;
     },
   },
 });

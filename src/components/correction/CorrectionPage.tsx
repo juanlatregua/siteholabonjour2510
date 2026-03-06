@@ -188,7 +188,7 @@ export default function CorrectionPage() {
                   <p className="text-gray-500 text-sm">
                     Analizando tu texto con IA...
                   </p>
-                  <p className="text-gray-400 text-xs mt-1">
+                  <p className="text-gray-600 text-xs mt-1">
                     Esto puede tardar 10-20 segundos
                   </p>
                 </div>
@@ -199,7 +199,7 @@ export default function CorrectionPage() {
               <div className="flex-1 flex items-center justify-center text-center">
                 <div>
                   <div className="text-5xl mb-4 opacity-30">✍️</div>
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-gray-600 text-sm">
                     Escribe tu texto y pulsa &quot;Corriger mon texte&quot; para
                     recibir tu corrección
                   </p>

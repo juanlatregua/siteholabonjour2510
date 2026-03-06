@@ -86,7 +86,7 @@ export default function ContactoPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             ¿Tienes preguntas? Estamos aquí para ayudarte.
           </p>
@@ -110,7 +110,7 @@ export default function ContactoPage() {
                 </h2>
                 <p
                   className="text-sm mb-1"
-                  style={{ color: "rgba(255,255,255,0.6)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   {method.description}
                 </p>
@@ -148,13 +148,13 @@ export default function ContactoPage() {
           >
             Nuestro blog
           </h2>
-          <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.7)" }}>
+          <p className="text-sm mb-6" style={{ color: "#3d4a5c" }}>
             Consejos, cultura francesa y recursos para preparar tus exámenes DELF/DALF.
           </p>
           <GoldButton href="/recursos/blog" variant="outline">
             Ir al blog
           </GoldButton>
-          <p className="mt-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="mt-8" style={{ color: "#6b7280" }}>
             Clases 100% online. Alumnos en España, Francia y Latinoamérica.
           </p>
         </div>

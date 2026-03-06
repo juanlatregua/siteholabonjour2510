@@ -15,10 +15,10 @@ const objectiveOptions = [
 const inputStyles: React.CSSProperties = {
   width: "100%",
   padding: "12px 16px",
-  background: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.12)",
+  background: "#ffffff",
+  border: "1px solid rgba(30,45,74,0.15)",
   borderRadius: 12,
-  color: "var(--cin-text)",
+  color: "#1e2d4a",
   fontSize: "0.95rem",
   outline: "none",
   transition: "border-color 0.2s ease",
@@ -29,7 +29,7 @@ const labelStyles: React.CSSProperties = {
   marginBottom: 6,
   fontSize: "0.875rem",
   fontWeight: 500,
-  color: "rgba(255,255,255,0.7)",
+  color: "#3d4a5c",
 };
 
 export default function ContactForm() {
@@ -79,8 +79,8 @@ export default function ContactForm() {
       <div
         className="text-center py-12 px-6"
         style={{
-          background: "rgba(255,255,255,0.04)",
-          border: "1px solid rgba(255,255,255,0.08)",
+          background: "rgba(30,45,74,0.03)",
+          border: "1px solid rgba(30,45,74,0.08)",
           borderRadius: 24,
         }}
       >
@@ -93,7 +93,7 @@ export default function ContactForm() {
         >
           Message envoyé
         </h3>
-        <p style={{ color: "rgba(255,255,255,0.65)" }}>
+        <p style={{ color: "#3d4a5c" }}>
           Te responderemos en menos de 24 horas. Merci !
         </p>
       </div>
@@ -105,8 +105,8 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       className="flex flex-col gap-5"
       style={{
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        background: "rgba(30,45,74,0.03)",
+        border: "1px solid rgba(30,45,74,0.08)",
         borderRadius: 24,
         padding: "32px",
       }}
@@ -134,7 +134,7 @@ export default function ContactForm() {
             e.currentTarget.style.borderColor = "#E50046";
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+            e.currentTarget.style.borderColor = "rgba(30,45,74,0.15)";
           }}
         />
       </div>
@@ -155,7 +155,7 @@ export default function ContactForm() {
             e.currentTarget.style.borderColor = "#E50046";
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+            e.currentTarget.style.borderColor = "rgba(30,45,74,0.15)";
           }}
         />
       </div>
@@ -182,7 +182,7 @@ export default function ContactForm() {
             e.currentTarget.style.borderColor = "#E50046";
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+            e.currentTarget.style.borderColor = "rgba(30,45,74,0.15)";
           }}
         >
           {objectiveOptions.map((opt) => (
@@ -211,7 +211,7 @@ export default function ContactForm() {
             e.currentTarget.style.borderColor = "#E50046";
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+            e.currentTarget.style.borderColor = "rgba(30,45,74,0.15)";
           }}
         />
       </div>
@@ -220,9 +220,9 @@ export default function ContactForm() {
         <p
           className="text-sm px-4 py-3 rounded-xl"
           style={{
-            background: "rgba(239,68,68,0.1)",
+            background: "rgba(239,68,68,0.08)",
             border: "1px solid rgba(239,68,68,0.3)",
-            color: "#fca5a5",
+            color: "#991b1b",
           }}
         >
           {error}
@@ -237,7 +237,7 @@ export default function ContactForm() {
           padding: "14px 28px",
           borderRadius: 12,
           background: "var(--cin-accent)",
-          color: "var(--cin-bg)",
+          color: "#ffffff",
           border: "none",
           fontSize: "0.95rem",
           fontFamily: "var(--font-heading)",

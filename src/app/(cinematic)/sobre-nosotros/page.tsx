@@ -107,7 +107,7 @@ export default function SobreNosotrosPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Dos apasionados del franc&eacute;s con una misi&oacute;n: hacer que aprender
             franc&eacute;s sea una experiencia, no solo una clase.
@@ -126,7 +126,7 @@ export default function SobreNosotrosPage() {
               >
                 {n.value}
               </div>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+              <p className="text-sm" style={{ color: "#6b7280" }}>
                 {n.label}
               </p>
             </div>
@@ -172,7 +172,7 @@ export default function SobreNosotrosPage() {
                 </p>
                 <p
                   className="leading-relaxed mb-4"
-                  style={{ color: "rgba(255,255,255,0.75)" }}
+                  style={{ color: "#3d4a5c" }}
                 >
                   {team[0].bioLong}
                 </p>
@@ -183,7 +183,7 @@ export default function SobreNosotrosPage() {
                       className="text-xs font-medium px-3 py-1 rounded-full"
                       style={{
                         background: "rgba(229,0,70,0.12)",
-                        color: "var(--cin-accent-light)",
+                        color: "#E50046",
                         border: "1px solid rgba(229,0,70,0.2)",
                       }}
                     >
@@ -227,7 +227,7 @@ export default function SobreNosotrosPage() {
                 </p>
                 <p
                   className="leading-relaxed mb-3"
-                  style={{ color: "rgba(255,255,255,0.75)" }}
+                  style={{ color: "#3d4a5c" }}
                 >
                   {team[1].bioLong}
                 </p>
@@ -238,7 +238,7 @@ export default function SobreNosotrosPage() {
                       className="text-xs font-medium px-3 py-1 rounded-full"
                       style={{
                         background: "rgba(229,0,70,0.12)",
-                        color: "var(--cin-accent-light)",
+                        color: "#E50046",
                         border: "1px solid rgba(229,0,70,0.2)",
                       }}
                     >
@@ -262,7 +262,7 @@ export default function SobreNosotrosPage() {
             Notre histoire
           </h2>
           <GlassCard>
-            <div className="space-y-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
+            <div className="space-y-4 leading-relaxed" style={{ color: "#3d4a5c" }}>
               <p>
                 HolaBonjour naci&oacute; de la convicci&oacute;n de que aprender franc&eacute;s va mucho m&aacute;s all&aacute;
                 de la gram&aacute;tica. Isabelle, profesora nativa y examinadora DELF/DALF, y Juan,
@@ -309,7 +309,7 @@ export default function SobreNosotrosPage() {
                 </h3>
                 <p
                   className="leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
+                  style={{ color: "#3d4a5c" }}
                 >
                   {pillar.description}
                 </p>
@@ -333,7 +333,7 @@ export default function SobreNosotrosPage() {
               <h3 className="font-bold mb-2" style={{ color: "#E50046" }}>
                 Examinadora oficial
               </h3>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+              <p className="text-sm" style={{ color: "#3d4a5c" }}>
                 Isabelle est&aacute; habilitada por France &Eacute;ducation International.
                 Conoce los criterios exactos de evaluaci&oacute;n porque ella misma corrige ex&aacute;menes DELF y DALF.
               </p>
@@ -342,7 +342,7 @@ export default function SobreNosotrosPage() {
               <h3 className="font-bold mb-2" style={{ color: "#E50046" }}>
                 Correcci&oacute;n IA + humana
               </h3>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+              <p className="text-sm" style={{ color: "#3d4a5c" }}>
                 Practica con nuestra correcci&oacute;n por inteligencia artificial con r&uacute;bricas
                 oficiales y recibe feedback de tu profesora en cada sesi&oacute;n.
               </p>
@@ -351,7 +351,7 @@ export default function SobreNosotrosPage() {
               <h3 className="font-bold mb-2" style={{ color: "#E50046" }}>
                 Simulacros reales
               </h3>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+              <p className="text-sm" style={{ color: "#3d4a5c" }}>
                 Simulaciones completas de examen con audios, tiempos y condiciones reales.
                 El d&iacute;a del examen no hay sorpresas.
               </p>
@@ -360,7 +360,7 @@ export default function SobreNosotrosPage() {
               <h3 className="font-bold mb-2" style={{ color: "#E50046" }}>
                 Plataforma propia
               </h3>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+              <p className="text-sm" style={{ color: "#3d4a5c" }}>
                 Portal del alumno con seguimiento, materiales, calendario de ex&aacute;menes
                 y recursos culturales gratuitos.
               </p>
@@ -380,7 +380,7 @@ export default function SobreNosotrosPage() {
           </h2>
           <p
             className="mb-10 text-lg"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Escr&iacute;benos por WhatsApp o descubre tu nivel con nuestro test gratuito.
           </p>

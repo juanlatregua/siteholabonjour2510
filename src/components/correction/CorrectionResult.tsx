@@ -79,7 +79,7 @@ export default function CorrectionResult({
               {result.estimatedLevel}
             </span>
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-600">
             {result.wordCount} palabras · {result.annotations.length} errores
           </p>
         </div>

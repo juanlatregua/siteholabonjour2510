@@ -70,7 +70,7 @@ export default function TarifasPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Planes de preparación adaptados a tu nivel y objetivo.
           </p>
@@ -92,7 +92,7 @@ export default function TarifasPage() {
                     className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-4 py-1 rounded-full"
                     style={{
                       background: "var(--cin-accent)",
-                      color: "var(--cin-bg)",
+                      color: "#ffffff",
                     }}
                   >
                     Le plus populaire
@@ -110,7 +110,7 @@ export default function TarifasPage() {
                     className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4"
                     style={{
                       background: "rgba(229,0,70,0.12)",
-                      color: "var(--cin-accent-light)",
+                      color: "#E50046",
                       border: "1px solid rgba(229,0,70,0.2)",
                     }}
                   >
@@ -125,14 +125,14 @@ export default function TarifasPage() {
                     </span>
                     <span
                       className="text-sm"
-                      style={{ color: "rgba(255,255,255,0.5)" }}
+                      style={{ color: "#6b7280" }}
                     >
                       / pack
                     </span>
                   </div>
                   <p
                     className="text-sm mt-1"
-                    style={{ color: "rgba(255,255,255,0.5)" }}
+                    style={{ color: "#6b7280" }}
                   >
                     {tier.hours} clases de 55 min
                   </p>
@@ -144,7 +144,7 @@ export default function TarifasPage() {
                       <CheckIcon />
                       <span
                         className="text-sm leading-relaxed"
-                        style={{ color: "rgba(255,255,255,0.75)" }}
+                        style={{ color: "#3d4a5c" }}
                       >
                         {feature}
                       </span>
@@ -165,7 +165,7 @@ export default function TarifasPage() {
 
           <p
             className="text-center mt-10 text-sm"
-            style={{ color: "rgba(255,255,255,0.5)" }}
+            style={{ color: "#6b7280" }}
           >
             Todos los packs son mensuales. Puedes renovar o cambiar de nivel en
             cualquier momento.
@@ -181,7 +181,7 @@ export default function TarifasPage() {
             </h3>
             <p
               className="text-sm mb-4"
-              style={{ color: "rgba(255,255,255,0.65)" }}
+              style={{ color: "#3d4a5c" }}
             >
               Practica tu expresión escrita entre clases. Corrección automática con rúbricas oficiales DELF/DALF,
               errores anotados, texto corregido y consejos personalizados.
@@ -208,8 +208,8 @@ export default function TarifasPage() {
                 key={item.question}
                 className="group"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(30,45,74,0.03)",
+                  border: "1px solid rgba(30,45,74,0.08)",
                   borderRadius: 16,
                 }}
               >
@@ -236,7 +236,7 @@ export default function TarifasPage() {
                 </summary>
                 <div
                   className="px-6 pb-5 leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
+                  style={{ color: "#3d4a5c" }}
                 >
                   {item.answer}
                 </div>
@@ -257,7 +257,7 @@ export default function TarifasPage() {
           </h2>
           <p
             className="mb-10 text-lg"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Hablemos de tus objetivos y diseñamos un plan a medida.
           </p>

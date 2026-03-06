@@ -208,7 +208,7 @@ export default function PreparacionDelfDalfPage() {
                     className="text-xs font-semibold px-3 py-1 rounded-full"
                     style={{
                       background: "rgba(107,63,160,0.15)",
-                      color: "#6B3FA0",
+                      color: "#4A2870",
                       border: "1px solid rgba(107,63,160,0.3)",
                     }}
                   >

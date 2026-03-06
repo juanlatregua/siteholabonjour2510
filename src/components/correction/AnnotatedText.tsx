@@ -23,7 +23,7 @@ const TYPE_COLORS: Record<string, { bg: string; border: string; text: string }> 
   syntaxe: { bg: "bg-blue-50", border: "border-blue-300", text: "text-blue-700" },
   ponctuation: { bg: "bg-gray-50", border: "border-gray-300", text: "text-gray-700" },
   registre: { bg: "bg-teal-50", border: "border-teal-300", text: "text-teal-700" },
-  "cohérence": { bg: "bg-yellow-50", border: "border-yellow-300", text: "text-yellow-700" },
+  "cohérence": { bg: "bg-yellow-100", border: "border-yellow-300", text: "text-yellow-800" },
 };
 
 const TYPE_LABELS: Record<string, string> = {
