@@ -17,7 +17,8 @@ export default function SignInPage() {
   const handleMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await signIn("email", { email, callbackUrl, redirect: true });
+    const studentCallback = callbackUrl === "/" ? "/zona-alumno" : callbackUrl;
+    await signIn("email", { email, callbackUrl: studentCallback, redirect: true });
     setSent(true);
     setLoading(false);
   };
@@ -25,10 +26,11 @@ export default function SignInPage() {
   const handleTeacherLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    const teacherCallback = callbackUrl === "/" ? "/zona-profesor" : callbackUrl;
     await signIn("teacher-credentials", {
       email: teacherEmail,
       password,
-      callbackUrl,
+      callbackUrl: teacherCallback,
       redirect: true,
     });
     setLoading(false);

@@ -81,13 +81,28 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(signInUrl);
   }
 
+  // Authenticated user on auth pages → redirect to their zone
+  if (AUTH_PATHS.some((p) => pathname === p)) {
+    const dest = token.role === "TEACHER" || token.role === "ADMIN"
+      ? "/zona-profesor"
+      : "/zona-alumno";
+    return NextResponse.redirect(new URL(dest, request.url));
+  }
+
+  // Authenticated user on zona-alumno or zona-profesor root → allow
+  // but redirect if callbackUrl is just "/"
+  if (pathname === "/zona-alumno" || pathname === "/zona-profesor") {
+    // Already going to the right place
+    return NextResponse.next();
+  }
+
   // Teacher zone: must be TEACHER or ADMIN
   if (
     pathname.startsWith("/zona-profesor") ||
     pathname.startsWith("/api/zona-profesor")
   ) {
     if (token.role !== "TEACHER" && token.role !== "ADMIN") {
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/zona-alumno", request.url));
     }
   }
 

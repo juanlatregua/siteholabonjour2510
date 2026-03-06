@@ -107,7 +107,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role;
+        token.role = user.role ?? "STUDENT";
         token.userId = user.id!;
       }
       return token;
@@ -119,6 +119,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // After sign-in, redirect based on role stored in the JWT
+      // NextAuth calls this after signIn — we check the URL for callbackUrl
+      if (url.startsWith(baseUrl)) {
+        // If already going to a specific page (not just /), let it through
+        const path = url.replace(baseUrl, "");
+        if (path && path !== "/" && !path.startsWith("/iniciar-sesion") && !path.startsWith("/verificar-email") && !path.startsWith("/api/auth")) {
+          return url;
+        }
+      }
+      // Default: redirect will be handled by middleware + client-side
+      return url.startsWith("/") ? `${baseUrl}${url}` : url.startsWith(baseUrl) ? url : baseUrl;
+    },
     async signIn({ user }) {
       try {
         if (user.id) {
@@ -128,7 +141,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         return true;
       } catch (err) {
         console.error("[auth] signIn callback error:", err);
-        return true; // allow sign-in even if DB check fails
+        return true;
       }
     },
   },
