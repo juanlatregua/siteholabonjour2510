@@ -85,19 +85,18 @@ export default function IntensivosPage() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(135deg, #2d1b4e 0%, #1e2d4a 50%, #462255 100%)",
+            background: "#faf7f2",
           }}
         />
-        <Particles color="#c77dba" />
+        <Particles color="#6B3FA0" />
         <MorphBlob
           size={400}
-          color="#c77dba"
+          color="#6B3FA0"
           position={{ top: "-10%", left: "-5%" }}
         />
         <MorphBlob
           size={300}
-          color="#c77dba"
+          color="#6B3FA0"
           position={{ bottom: "-10%", right: "-5%" }}
         />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
@@ -112,7 +111,7 @@ export default function IntensivosPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Cursos sprint de 2-4 semanas. Ideal para preparacion de examenes,
             viajes o inmersion rapida.
@@ -134,7 +133,7 @@ export default function IntensivosPage() {
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {courseTypes.map((course) => (
-              <GlassCard key={course.title} glow="rgba(199,125,186,0.2)">
+              <GlassCard key={course.title} glow="rgba(107,63,160,0.2)">
                 <div className="text-4xl mb-4">{course.icon}</div>
                 <h3
                   className="text-xl font-bold mb-3"
@@ -144,7 +143,7 @@ export default function IntensivosPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   {course.description}
                 </p>
@@ -157,19 +156,19 @@ export default function IntensivosPage() {
       {/* Format */}
       <CinematicSection className="py-16 px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <GlassCard glow="rgba(199,125,186,0.15)">
+          <GlassCard glow="rgba(107,63,160,0.15)">
             <p
               className="text-xl md:text-2xl font-bold mb-4"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "#c77dba",
+                color: "#6B3FA0",
               }}
             >
               10-20h/semaine &middot; 2-4 semaines &middot; En ligne
             </p>
             <p
               className="leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.6)" }}
+              style={{ color: "#6b7280" }}
             >
               Sesiones individuales diarias de 55 minutos por Zoom con profesores nativos.
               Apuntes y seguimiento personalizado.
@@ -214,14 +213,14 @@ export default function IntensivosPage() {
                   className="text-lg font-bold mb-2"
                   style={{
                     fontFamily: "var(--font-display)",
-                    color: "#c77dba",
+                    color: "#6B3FA0",
                   }}
                 >
                   {item.title}
                 </h3>
                 <p
                   className="text-sm"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   {item.text}
                 </p>
@@ -242,7 +241,7 @@ export default function IntensivosPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{ color: "#6b7280" }}
           >
             Reserva tu plaza ahora. Clases individuales con horarios flexibles.
           </p>

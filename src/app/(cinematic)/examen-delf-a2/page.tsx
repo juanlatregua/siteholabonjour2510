@@ -42,7 +42,7 @@ export default function ExamenDelfA2Page() {
       />
 
       {/* Hero */}
-      <section className="bg-[#1e2d4a] text-white py-10">
+      <section className="bg-[#faf7f2] text-[#1e2d4a] py-10">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <div className="inline-block px-3 py-1 rounded-full bg-[#E50046] text-xs font-semibold mb-4">
             DELF A2
@@ -50,11 +50,11 @@ export default function ExamenDelfA2Page() {
           <h1 className="text-3xl md:text-4xl font-bold mb-3">
             Simulation d&apos;examen DELF A2
           </h1>
-          <p className="text-blue-200 max-w-xl mx-auto">
+          <p className="text-[#3d4a5c] max-w-xl mx-auto">
             Examen complet avec les 4 épreuves : compréhension orale et écrite,
             production écrite (corrigée par IA) et production orale.
           </p>
-          <div className="flex justify-center gap-4 mt-4 text-xs text-blue-300">
+          <div className="flex justify-center gap-4 mt-4 text-xs text-[#6b7280]">
             <span>4 sections</span>
             <span>&middot;</span>
             <span>100 points</span>

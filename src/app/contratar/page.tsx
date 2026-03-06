@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function ContratarPage() {
   return (
-    <div style={{ background: "#1e2d4a", color: "#f1f5f9", minHeight: "100vh" }}>
+    <div style={{ background: "#faf7f2", color: "#1e2d4a", minHeight: "100vh" }}>
       <CinematicSection className="py-16 px-6">
         <div className="mx-auto max-w-3xl text-center">
           <p
@@ -36,7 +36,7 @@ export default function ContratarPage() {
           >
             Contrata tu pack de clases
           </h1>
-          <p className="mt-3 max-w-2xl mx-auto text-sm sm:text-base" style={{ color: "rgba(255,255,255,0.7)" }}>
+          <p className="mt-3 max-w-2xl mx-auto text-sm sm:text-base" style={{ color: "#3d4a5c" }}>
             Clases individuales (1 a 1) de 55 minutos por Zoom con profesora nativa francesa.
             Pago seguro con tarjeta.
           </p>
@@ -45,7 +45,7 @@ export default function ContratarPage() {
 
       <CinematicSection className="pb-10 px-6">
         <div className="mx-auto max-w-3xl">
-          <Suspense fallback={<div style={{ textAlign: "center", padding: "2rem", color: "rgba(255,255,255,0.5)" }}>Cargando...</div>}>
+          <Suspense fallback={<div style={{ textAlign: "center", padding: "2rem", color: "#6b7280" }}>Cargando...</div>}>
             <BookingFunnel />
           </Suspense>
         </div>
@@ -54,10 +54,10 @@ export default function ContratarPage() {
       <CinematicSection className="pb-10 px-6">
         <div
           className="mx-auto max-w-3xl rounded-2xl p-6"
-          style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
+          style={{ background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)" }}
         >
           <h2 className="text-xl font-semibold">Qué incluye el pack</h2>
-          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm" style={{ color: "#3d4a5c" }}>
             <li>4 clases individuales de 55 minutos por Zoom.</li>
             <li>Apuntes y seguimiento personalizado en tu zona de alumno.</li>
             <li>Acceso a Le Côté Vie: cine, gastronomía, juegos y cultura francesa.</li>

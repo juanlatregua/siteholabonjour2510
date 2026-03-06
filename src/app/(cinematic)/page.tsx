@@ -3,7 +3,6 @@ import Link from "next/link";
 import GlassCard from "@/components/cinematic/GlassCard";
 import GoldButton from "@/components/cinematic/GoldButton";
 import CinematicSection from "@/components/cinematic/CinematicSection";
-import SceneGradient from "@/components/cinematic/SceneGradient";
 
 export const metadata: Metadata = {
   title: "Prepara el DELF o DALF — HolaBonjour | Simulacros oficiales gratis",
@@ -120,7 +119,7 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    <div style={{ background: "#0a0a0a", color: "#f5f5f5", minHeight: "100vh" }}>
+    <div style={{ background: "#faf7f2", color: "#1e2d4a", minHeight: "100vh" }}>
       {/* ── HERO ── */}
       <section
         style={{
@@ -135,7 +134,7 @@ export default function HomePage() {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(ellipse at 50% 0%, rgba(229,0,70,0.15) 0%, transparent 70%)",
+              "radial-gradient(ellipse at 50% 0%, rgba(229,0,70,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           }}
         />
@@ -166,7 +165,7 @@ export default function HomePage() {
               fontWeight: 700,
               lineHeight: 1.15,
               marginBottom: "1.25rem",
-              color: "#f5f5f5",
+              color: "#1e2d4a",
             }}
           >
             Prepara el DELF o DALF con simulacros oficiales de France Éducation Internationale
@@ -175,7 +174,7 @@ export default function HomePage() {
             style={{
               fontSize: "clamp(1rem, 2vw, 1.2rem)",
               lineHeight: 1.6,
-              color: "#9ca3af",
+              color: "#6b7280",
               marginBottom: "2.5rem",
               maxWidth: 600,
               marginLeft: "auto",
@@ -202,9 +201,10 @@ export default function HomePage() {
       {/* ── TRUST BAND ── */}
       <section
         style={{
-          borderTop: "1px solid #1f1f1f",
-          borderBottom: "1px solid #1f1f1f",
+          borderTop: "1px solid rgba(30,45,74,0.08)",
+          borderBottom: "1px solid rgba(30,45,74,0.08)",
           padding: "2rem 1rem",
+          background: "#f0ede6",
         }}
       >
         <div
@@ -230,7 +230,7 @@ export default function HomePage() {
               >
                 {stat.value}
               </div>
-              <div style={{ fontSize: "0.9rem", color: "#9ca3af" }}>
+              <div style={{ fontSize: "0.9rem", color: "#6b7280" }}>
                 {stat.label}
               </div>
             </div>
@@ -254,7 +254,7 @@ export default function HomePage() {
               fontWeight: 700,
               textAlign: "center",
               marginBottom: "1rem",
-              color: "#f5f5f5",
+              color: "#1e2d4a",
             }}
           >
             Simuladores disponibles
@@ -262,7 +262,7 @@ export default function HomePage() {
           <p
             style={{
               textAlign: "center",
-              color: "#9ca3af",
+              color: "#6b7280",
               fontSize: "1rem",
               marginBottom: "3rem",
               maxWidth: 500,
@@ -314,12 +314,12 @@ export default function HomePage() {
                         padding: "0.2rem 0.6rem",
                         borderRadius: 999,
                         background: l.free
-                          ? "rgba(34, 197, 94, 0.15)"
-                          : "rgba(201, 168, 76, 0.15)",
+                          ? "rgba(34, 197, 94, 0.08)"
+                          : "rgba(201, 168, 76, 0.08)",
                         border: l.free
-                          ? "1px solid rgba(34, 197, 94, 0.3)"
-                          : "1px solid rgba(201, 168, 76, 0.3)",
-                        color: l.free ? "#22c55e" : "#c9a84c",
+                          ? "1px solid rgba(34, 197, 94, 0.2)"
+                          : "1px solid rgba(201, 168, 76, 0.2)",
+                        color: l.free ? "#16a34a" : "#a16207",
                       }}
                     >
                       {l.free ? "Gratis" : "Premium"}
@@ -330,7 +330,7 @@ export default function HomePage() {
                       fontFamily: "'Playfair Display', serif",
                       fontSize: "1.1rem",
                       fontWeight: 700,
-                      color: "#f5f5f5",
+                      color: "#1e2d4a",
                       marginBottom: "0.5rem",
                     }}
                   >
@@ -340,7 +340,7 @@ export default function HomePage() {
                     style={{
                       fontSize: "0.9rem",
                       lineHeight: 1.5,
-                      color: "rgba(245, 245, 245, 0.6)",
+                      color: "#6b7280",
                       margin: 0,
                       marginBottom: "1rem",
                     }}
@@ -364,7 +364,7 @@ export default function HomePage() {
       </CinematicSection>
 
       {/* ── CÓMO FUNCIONA ── */}
-      <section style={{ padding: "5rem 1rem" }}>
+      <section style={{ padding: "5rem 1rem", background: "#f0ede6" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <h2
             style={{
@@ -373,7 +373,7 @@ export default function HomePage() {
               fontWeight: 700,
               textAlign: "center",
               marginBottom: "3rem",
-              color: "#f5f5f5",
+              color: "#1e2d4a",
             }}
           >
             Cómo funciona
@@ -392,8 +392,8 @@ export default function HomePage() {
                     width: 56,
                     height: 56,
                     borderRadius: "50%",
-                    background: "rgba(229, 0, 70, 0.12)",
-                    border: "2px solid rgba(229, 0, 70, 0.3)",
+                    background: "rgba(229, 0, 70, 0.06)",
+                    border: "2px solid rgba(229, 0, 70, 0.2)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -411,7 +411,7 @@ export default function HomePage() {
                     fontSize: "1.1rem",
                     fontWeight: 700,
                     marginBottom: "0.5rem",
-                    color: "#f5f5f5",
+                    color: "#1e2d4a",
                   }}
                 >
                   {s.title}
@@ -420,7 +420,7 @@ export default function HomePage() {
                   style={{
                     fontSize: "0.9rem",
                     lineHeight: 1.6,
-                    color: "#9ca3af",
+                    color: "#6b7280",
                     margin: 0,
                   }}
                 >
@@ -448,7 +448,7 @@ export default function HomePage() {
               fontWeight: 700,
               textAlign: "center",
               marginBottom: "3rem",
-              color: "#f5f5f5",
+              color: "#1e2d4a",
             }}
           >
             Lo que dicen nuestros alumnos
@@ -477,9 +477,9 @@ export default function HomePage() {
                       fontWeight: 700,
                       padding: "0.2rem 0.6rem",
                       borderRadius: 999,
-                      background: "rgba(59, 130, 246, 0.15)",
-                      border: "1px solid rgba(59, 130, 246, 0.3)",
-                      color: "#3b82f6",
+                      background: "rgba(57, 93, 159, 0.08)",
+                      border: "1px solid rgba(57, 93, 159, 0.2)",
+                      color: "#395D9F",
                     }}
                   >
                     {t.level}
@@ -488,7 +488,7 @@ export default function HomePage() {
                     style={{
                       fontSize: "0.85rem",
                       fontWeight: 700,
-                      color: "#22c55e",
+                      color: "#16a34a",
                     }}
                   >
                     {t.score}
@@ -499,7 +499,7 @@ export default function HomePage() {
                     margin: 0,
                     fontSize: "1rem",
                     lineHeight: 1.65,
-                    color: "rgba(245, 245, 245, 0.85)",
+                    color: "#3d4a5c",
                     fontStyle: "italic",
                     marginBottom: "1.25rem",
                   }}
@@ -523,8 +523,11 @@ export default function HomePage() {
       </CinematicSection>
 
       {/* ── CTA FINAL ── */}
-      <CinematicSection>
-        <SceneGradient />
+      <section
+        style={{
+          background: "#f0ede6",
+        }}
+      >
         <div
           style={{
             maxWidth: 720,
@@ -541,7 +544,7 @@ export default function HomePage() {
               fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
               fontWeight: 700,
               marginBottom: "1rem",
-              color: "#f5f5f5",
+              color: "#1e2d4a",
             }}
           >
             ¿Listo para empezar?
@@ -550,7 +553,7 @@ export default function HomePage() {
             style={{
               fontSize: "1.1rem",
               lineHeight: 1.6,
-              color: "#9ca3af",
+              color: "#6b7280",
               marginBottom: "2.5rem",
               maxWidth: 520,
               marginLeft: "auto",
@@ -563,7 +566,7 @@ export default function HomePage() {
             Hacer examen de prueba gratis
           </GoldButton>
         </div>
-      </CinematicSection>
+      </section>
     </div>
   );
 }

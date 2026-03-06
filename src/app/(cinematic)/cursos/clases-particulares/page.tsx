@@ -95,19 +95,18 @@ export default function ClasesParticularesPage() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(135deg, #2d1b4e 0%, #1e2d4a 50%, #462255 100%)",
+            background: "#faf7f2",
           }}
         />
-        <Particles color="#c77dba" />
+        <Particles color="#6B3FA0" />
         <MorphBlob
           size={400}
-          color="#c77dba"
+          color="#6B3FA0"
           position={{ top: "-10%", left: "-5%" }}
         />
         <MorphBlob
           size={300}
-          color="#c77dba"
+          color="#6B3FA0"
           position={{ bottom: "-10%", right: "-5%" }}
         />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
@@ -122,7 +121,7 @@ export default function ClasesParticularesPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#3d4a5c" }}
           >
             Sesiones individuales 1-to-1 con profesores nativos. Contenido 100%
             adaptado a tu ritmo y objetivos.
@@ -144,7 +143,7 @@ export default function ClasesParticularesPage() {
           </h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {benefits.map((benefit) => (
-              <GlassCard key={benefit.title} glow="rgba(199,125,186,0.2)">
+              <GlassCard key={benefit.title} glow="rgba(107,63,160,0.2)">
                 <div className="text-4xl mb-4">{benefit.icon}</div>
                 <h3
                   className="text-xl font-bold mb-3"
@@ -154,7 +153,7 @@ export default function ClasesParticularesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
+                  style={{ color: "#6b7280" }}
                 >
                   {benefit.description}
                 </p>
@@ -198,7 +197,7 @@ export default function ClasesParticularesPage() {
                 <div className="flex items-start gap-4">
                   <span
                     className="text-2xl font-bold shrink-0"
-                    style={{ color: "#c77dba" }}
+                    style={{ color: "#6B3FA0" }}
                   >
                     {item.step}
                   </span>
@@ -209,7 +208,7 @@ export default function ClasesParticularesPage() {
                     >
                       {item.title}
                     </h3>
-                    <p style={{ color: "rgba(255,255,255,0.65)" }}>
+                    <p style={{ color: "#6b7280" }}>
                       {item.text}
                     </p>
                   </div>
@@ -231,7 +230,7 @@ export default function ClasesParticularesPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{ color: "#6b7280" }}
           >
             Inf&oacute;rmate sin compromiso. Te asesoramos sobre el programa ideal para ti.
           </p>

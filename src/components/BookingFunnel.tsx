@@ -131,7 +131,8 @@ export default function BookingFunnel() {
         <div style={{
           display: "flex", alignItems: "center", gap: "0.75rem",
           padding: "0.75rem 1rem", borderRadius: "0.75rem",
-          background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
+          background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)",
+          boxShadow: "0 2px 8px rgba(30,45,74,0.04)",
         }}>
           {prepInfo.photo && (
             <img
@@ -140,12 +141,12 @@ export default function BookingFunnel() {
             />
           )}
           <div>
-            <p style={{ fontWeight: 700, fontSize: "0.9rem" }}>
+            <p style={{ fontWeight: 700, fontSize: "0.9rem", color: "#1e2d4a" }}>
               {teacherDisplayName}
               {prepInfo.certificationVerified && (
                 <span style={{
                   marginLeft: "0.5rem", fontSize: "0.7rem", padding: "0.15rem 0.5rem",
-                  background: "rgba(14,159,110,0.15)", color: "#10b981",
+                  background: "rgba(14,159,110,0.1)", color: "#10b981",
                   borderRadius: "1rem", fontWeight: 600,
                 }}>
                   Verificada FEI
@@ -153,7 +154,7 @@ export default function BookingFunnel() {
               )}
             </p>
             {prepInfo.levels.length > 0 && (
-              <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.5)" }}>
+              <p style={{ fontSize: "0.75rem", color: "#6b7280" }}>
                 Niveles: {prepInfo.levels.join(", ")}
               </p>
             )}
@@ -168,10 +169,10 @@ export default function BookingFunnel() {
             <span className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold ${step === s ? "bg-[#E50046] text-white" : step > s ? "bg-emerald-500 text-white" : "bg-gray-200 text-gray-500"}`}>
               {step > s ? "✓" : s}
             </span>
-            <span className={`hidden sm:inline ${step === s ? "font-semibold text-white" : "text-gray-400"}`}>
+            <span className={`hidden sm:inline ${step === s ? "font-semibold text-[#1e2d4a]" : "text-gray-400"}`}>
               {s === 1 ? "Elige horario" : s === 2 ? "Tus datos" : "Pago"}
             </span>
-            {s < 3 && <span className="mx-1 text-gray-500">→</span>}
+            {s < 3 && <span className="mx-1 text-gray-400">→</span>}
           </div>
         ))}
       </div>
@@ -182,11 +183,11 @@ export default function BookingFunnel() {
           {/* Diagnostico header card */}
           {isDiagnostico && (
             <div style={{
-              background: "rgba(229,0,70,0.08)", border: "1px solid rgba(229,0,70,0.25)",
+              background: "rgba(229,0,70,0.04)", border: "1px solid rgba(229,0,70,0.2)",
               borderRadius: "1rem", padding: "1.25rem",
             }}>
-              <p style={{ fontWeight: 700, fontSize: "1.05rem" }}>Sesión diagnóstico</p>
-              <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.65)", marginTop: "0.25rem" }}>
+              <p style={{ fontWeight: 700, fontSize: "1.05rem", color: "#1e2d4a" }}>Sesión diagnóstico</p>
+              <p style={{ fontSize: "0.85rem", color: "#6b7280", marginTop: "0.25rem" }}>
                 30 min por Zoom — Evaluamos tu nivel real y te damos un plan de preparación personalizado.
               </p>
               <p style={{ fontSize: "1.5rem", fontWeight: 800, color: "#E50046", marginTop: "0.5rem" }}>25 €</p>
@@ -196,8 +197,8 @@ export default function BookingFunnel() {
           {/* Level selector (pack mode only) */}
           {!isDiagnostico && (
             <div>
-              <h3 style={{ fontSize: "1.1rem", fontWeight: 700 }}>Nivel de francés</h3>
-              <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", marginTop: "0.15rem" }}>
+              <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>Nivel de francés</h3>
+              <p style={{ fontSize: "0.85rem", color: "#6b7280", marginTop: "0.15rem" }}>
                 Clases individuales (1 a 1) por Zoom, 55 minutos.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "0.5rem", marginTop: "0.75rem" }}>
@@ -206,9 +207,9 @@ export default function BookingFunnel() {
                     key={l} type="button" onClick={() => setLevel(l)}
                     style={{
                       padding: "0.75rem", borderRadius: "0.75rem", textAlign: "center",
-                      border: level === l ? "2px solid #E50046" : "1px solid rgba(255,255,255,0.15)",
-                      background: level === l ? "rgba(229,0,70,0.15)" : "rgba(255,255,255,0.06)",
-                      color: level === l ? "#E50046" : "rgba(255,255,255,0.8)",
+                      border: level === l ? "2px solid #E50046" : "1px solid rgba(30,45,74,0.12)",
+                      background: level === l ? "rgba(229,0,70,0.06)" : "#ffffff",
+                      color: level === l ? "#E50046" : "#1e2d4a",
                       fontWeight: 700, fontSize: "1rem", cursor: "pointer", transition: "all 0.15s",
                     }}
                   >
@@ -217,7 +218,7 @@ export default function BookingFunnel() {
                 ))}
               </div>
               {pack && (
-                <p style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.6)" }}>
+                <p style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#6b7280" }}>
                   Pack {pack.levelRange}: {pack.totalEur} € ({pack.perSession.toFixed(2)} €/sesión)
                 </p>
               )}
@@ -226,7 +227,7 @@ export default function BookingFunnel() {
 
           {/* Slot picker */}
           <div>
-            <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.75rem" }}>
+            <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.75rem", color: "#1e2d4a" }}>
               Elige fecha y hora
             </h3>
             <PublicSlotPicker onSelect={handleSlotSelect} slug={prepInfo?.slug} />
@@ -261,41 +262,41 @@ export default function BookingFunnel() {
         <div className="space-y-4">
           <button type="button" onClick={() => setStep(1)} style={{ fontSize: "0.85rem", color: "#E50046", background: "none", border: "none", cursor: "pointer" }}>← Volver</button>
           <div>
-            <label htmlFor="booking-name" style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.25rem" }}>Nombre completo *</label>
+            <label htmlFor="booking-name" style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.25rem", color: "#1e2d4a" }}>Nombre completo *</label>
             <input
               id="booking-name" type="text" value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Tu nombre"
               style={{
                 width: "100%", padding: "0.65rem 1rem", borderRadius: "0.75rem",
-                border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.08)",
-                color: "white", fontSize: "0.9rem",
+                border: "1px solid rgba(30,45,74,0.15)", background: "#ffffff",
+                color: "#1e2d4a", fontSize: "0.9rem",
               }}
             />
           </div>
           <div>
-            <label htmlFor="booking-email" style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.25rem" }}>Email *</label>
+            <label htmlFor="booking-email" style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.25rem", color: "#1e2d4a" }}>Email *</label>
             <input
               id="booking-email" type="email" value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="tu@email.com"
               style={{
                 width: "100%", padding: "0.65rem 1rem", borderRadius: "0.75rem",
-                border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.08)",
-                color: "white", fontSize: "0.9rem",
+                border: "1px solid rgba(30,45,74,0.15)", background: "#ffffff",
+                color: "#1e2d4a", fontSize: "0.9rem",
               }}
             />
           </div>
           <div>
-            <label htmlFor="booking-phone" style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.25rem" }}>Teléfono (para WhatsApp)</label>
+            <label htmlFor="booking-phone" style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.25rem", color: "#1e2d4a" }}>Teléfono (para WhatsApp)</label>
             <input
               id="booking-phone" type="tel" value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="+34 600 123 456"
               style={{
                 width: "100%", padding: "0.65rem 1rem", borderRadius: "0.75rem",
-                border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.08)",
-                color: "white", fontSize: "0.9rem",
+                border: "1px solid rgba(30,45,74,0.15)", background: "#ffffff",
+                color: "#1e2d4a", fontSize: "0.9rem",
               }}
             />
           </div>
@@ -318,46 +319,47 @@ export default function BookingFunnel() {
         <div className="space-y-4">
           <button type="button" onClick={() => setStep(2)} style={{ fontSize: "0.85rem", color: "#E50046", background: "none", border: "none", cursor: "pointer" }}>← Volver</button>
           <div style={{
-            background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)",
+            background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)",
             borderRadius: "1rem", padding: "1.5rem",
+            boxShadow: "0 2px 12px rgba(30,45,74,0.06)",
           }}>
-            <h3 style={{ fontSize: "1.1rem", fontWeight: 700 }}>Resumen</h3>
-            <div style={{ marginTop: "0.75rem", fontSize: "0.9rem", lineHeight: 1.8, color: "rgba(255,255,255,0.75)" }}>
+            <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>Resumen</h3>
+            <div style={{ marginTop: "0.75rem", fontSize: "0.9rem", lineHeight: 1.8, color: "#3d4a5c" }}>
               {isDiagnostico ? (
-                <p><strong style={{ color: "white" }}>Producto:</strong> Sesión diagnóstico (30 min por Zoom)</p>
+                <p><strong style={{ color: "#1e2d4a" }}>Producto:</strong> Sesión diagnóstico (30 min por Zoom)</p>
               ) : (
                 <>
-                  <p><strong style={{ color: "white" }}>Nivel:</strong> {level} ({pack.levelRange})</p>
-                  <p><strong style={{ color: "white" }}>Pack:</strong> 4 clases de 55 min por Zoom</p>
+                  <p><strong style={{ color: "#1e2d4a" }}>Nivel:</strong> {level} ({pack.levelRange})</p>
+                  <p><strong style={{ color: "#1e2d4a" }}>Pack:</strong> 4 clases de 55 min por Zoom</p>
                 </>
               )}
-              <p><strong style={{ color: "white" }}>Profesora:</strong> {teacherDisplayName}</p>
-              <p><strong style={{ color: "white" }}>Fecha:</strong> {displayDate}</p>
-              <p><strong style={{ color: "white" }}>Hora:</strong> {selectedTime}h</p>
-              <p><strong style={{ color: "white" }}>Nombre:</strong> {name}</p>
-              <p><strong style={{ color: "white" }}>Email:</strong> {email}</p>
-              {phone && <p><strong style={{ color: "white" }}>Teléfono:</strong> {phone}</p>}
+              <p><strong style={{ color: "#1e2d4a" }}>Profesora:</strong> {teacherDisplayName}</p>
+              <p><strong style={{ color: "#1e2d4a" }}>Fecha:</strong> {displayDate}</p>
+              <p><strong style={{ color: "#1e2d4a" }}>Hora:</strong> {selectedTime}h</p>
+              <p><strong style={{ color: "#1e2d4a" }}>Nombre:</strong> {name}</p>
+              <p><strong style={{ color: "#1e2d4a" }}>Email:</strong> {email}</p>
+              {phone && <p><strong style={{ color: "#1e2d4a" }}>Teléfono:</strong> {phone}</p>}
             </div>
             <div style={{
               marginTop: "1rem", padding: "1rem", borderRadius: "0.75rem",
-              background: "rgba(229,0,70,0.1)", border: "1px solid rgba(229,0,70,0.2)",
+              background: "rgba(229,0,70,0.04)", border: "1px solid rgba(229,0,70,0.15)",
             }}>
               <p style={{ fontSize: "1.75rem", fontWeight: 800, color: "#E50046" }}>{pack.totalEur} €</p>
-              <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.6)" }}>
+              <p style={{ fontSize: "0.8rem", color: "#6b7280" }}>
                 {isDiagnostico ? "Sesión diagnóstico · IVA incluido" : `${pack.perSession.toFixed(2)} €/sesión · IVA incluido`}
               </p>
             </div>
           </div>
           <div style={{
             borderRadius: "0.75rem", padding: "1rem", fontSize: "0.85rem",
-            background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.25)", color: "#f59e0b",
+            background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.2)", color: "#b45309",
           }}>
             <strong>Anulación:</strong> 48h antes. Si no, se descuenta del bono. Excepción: justificante médico en 24h.
           </div>
           {error && (
             <p style={{
               borderRadius: "0.75rem", padding: "0.75rem", fontSize: "0.85rem", fontWeight: 600,
-              background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.25)", color: "#ef4444",
+              background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.2)", color: "#ef4444",
             }}>
               {error}
             </p>
@@ -373,7 +375,7 @@ export default function BookingFunnel() {
           >
             {loading ? "Procesando..." : `Pagar ${pack.totalEur} € con tarjeta`}
           </button>
-          <p style={{ textAlign: "center", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)" }}>
+          <p style={{ textAlign: "center", fontSize: "0.75rem", color: "#9ca3af" }}>
             Serás redirigido a Stripe para completar el pago.
           </p>
         </div>

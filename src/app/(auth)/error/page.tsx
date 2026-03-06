@@ -16,13 +16,13 @@ export default function AuthErrorPage() {
   const message = ERROR_MESSAGES[error] || ERROR_MESSAGES.Default;
 
   return (
-    <div className="w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-xl">
+    <div className="w-full max-w-md rounded-2xl border border-[#1e2d4a]/10 bg-white p-8 text-center shadow-sm">
       <div className="mb-4 text-4xl">⚠️</div>
-      <h2 className="mb-2 text-xl font-semibold text-white">Error de acceso</h2>
-      <p className="mb-6 text-sm text-white/50">{message}</p>
+      <h2 className="mb-2 text-xl font-semibold text-[#1e2d4a]">Error de acceso</h2>
+      <p className="mb-6 text-sm text-[#3d4a5c]">{message}</p>
       <Link
         href="/iniciar-sesion"
-        className="inline-block rounded-xl bg-gradient-to-r from-[#E50046] to-[#c8a55a] px-6 py-3 text-sm font-bold text-[#1e2d4a] transition hover:-translate-y-0.5"
+        className="inline-block rounded-xl bg-gradient-to-r from-[#E50046] to-[#c8a55a] px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5"
       >
         Volver a intentar
       </Link>

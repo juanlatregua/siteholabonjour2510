@@ -51,7 +51,7 @@ export default async function PreparateurPage({ params }: Props) {
   const hourlyEur = (profile.hourlyRate / 100).toFixed(0);
 
   return (
-    <div style={{ background: "#1e2d4a", color: "#f1f5f9", minHeight: "100vh" }}>
+    <div style={{ background: "#faf7f2", color: "#1e2d4a", minHeight: "100vh" }}>
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "3rem 1.5rem" }}>
 
         {/* Hero */}
@@ -99,13 +99,13 @@ export default async function PreparateurPage({ params }: Props) {
               )}
               <span style={{
                 fontSize: "0.75rem", padding: "0.2rem 0.65rem",
-                background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)",
+                background: "rgba(57,93,159,0.08)", color: "#395D9F",
                 borderRadius: "1rem", fontWeight: 600,
               }}>
                 {hourlyEur} €/h
               </span>
             </div>
-            <p style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.75)", marginTop: "0.75rem", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "0.95rem", color: "#3d4a5c", marginTop: "0.75rem", lineHeight: 1.6 }}>
               {profile.bio}
             </p>
           </div>
@@ -115,10 +115,10 @@ export default async function PreparateurPage({ params }: Props) {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "2rem" }}>
           {/* Niveles */}
           <div style={{
-            background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
+            background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)",
             borderRadius: "0.875rem", padding: "1.25rem",
           }}>
-            <p style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "0.5rem" }}>Niveles</p>
+            <p style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.5rem" }}>Niveles</p>
             <div style={{ display: "flex", gap: "0.35rem", flexWrap: "wrap" }}>
               {profile.levels.map((l) => (
                 <span key={l} style={{
@@ -134,16 +134,16 @@ export default async function PreparateurPage({ params }: Props) {
 
           {/* Idiomas */}
           <div style={{
-            background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
+            background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)",
             borderRadius: "0.875rem", padding: "1.25rem",
           }}>
-            <p style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "0.5rem" }}>Idiomas</p>
+            <p style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.5rem" }}>Idiomas</p>
             <div style={{ display: "flex", gap: "0.35rem", flexWrap: "wrap" }}>
               {profile.languages.map((lang) => (
                 <span key={lang} style={{
                   padding: "0.25rem 0.65rem", borderRadius: "0.5rem",
-                  background: "rgba(255,255,255,0.08)",
-                  fontSize: "0.8rem", fontWeight: 600, color: "rgba(255,255,255,0.75)",
+                  background: "rgba(57,93,159,0.08)",
+                  fontSize: "0.8rem", fontWeight: 600, color: "#395D9F",
                 }}>
                   {lang === "es" ? "Español" : lang === "fr" ? "Français" : lang}
                 </span>
@@ -160,7 +160,7 @@ export default async function PreparateurPage({ params }: Props) {
               {profile.specialties.map((s) => (
                 <span key={s} style={{
                   padding: "0.3rem 0.8rem", borderRadius: "1.5rem",
-                  background: "rgba(107,63,160,0.15)", color: "#a78bfa",
+                  background: "rgba(107,63,160,0.08)", color: "#6B3FA0",
                   fontSize: "0.8rem", fontWeight: 600,
                 }}>
                   {s}
@@ -179,7 +179,7 @@ export default async function PreparateurPage({ params }: Props) {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {profile.reviews.map((r) => (
                 <div key={r.id} style={{
-                  background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
+                  background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)",
                   borderRadius: "0.875rem", padding: "1rem",
                 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.35rem" }}>
@@ -189,7 +189,7 @@ export default async function PreparateurPage({ params }: Props) {
                     {r.source === "google" && (
                       <span style={{
                         fontSize: "0.65rem", padding: "0.1rem 0.4rem",
-                        background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.5)",
+                        background: "rgba(57,93,159,0.08)", color: "#6b7280",
                         borderRadius: "0.25rem", fontWeight: 600,
                       }}>
                         Google
@@ -197,7 +197,7 @@ export default async function PreparateurPage({ params }: Props) {
                     )}
                   </div>
                   {r.comment && (
-                    <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>
+                    <p style={{ fontSize: "0.85rem", color: "#3d4a5c", lineHeight: 1.5 }}>
                       {r.comment}
                     </p>
                   )}
@@ -215,7 +215,7 @@ export default async function PreparateurPage({ params }: Props) {
           <h2 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: "0.5rem" }}>
             Reserva tu clase con {profile.displayName.split(" ")[0]}
           </h2>
-          <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", marginBottom: "1rem" }}>
+          <p style={{ fontSize: "0.85rem", color: "#6b7280", marginBottom: "1rem" }}>
             Pack de 4 clases individuales por Zoom · Desde {hourlyEur} €/h
           </p>
           <Link

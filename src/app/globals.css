@@ -29,14 +29,19 @@
   --vie-bleu:       #2d5f8a;
   --vie-rose:       #d4a5a5;
 
-  /* ─── Cinematic palette ─── */
-  --cin-bg:           #1e2d4a;
-  --cin-bg-card:      rgba(255,255,255,0.06);
-  --cin-border:       rgba(255,255,255,0.10);
+  /* ─── Cinematic palette (Variante C — light) ─── */
+  --cin-bg:           #faf7f2;
+  --cin-bg-alt:       #f0ede6;
+  --cin-bg-card:      #ffffff;
+  --cin-border:       rgba(30,45,74,0.10);
   --cin-accent:       #E50046;
   --cin-accent-light: #ff3366;
-  --cin-text:         #f1f5f9;
-  --cin-text-muted:   rgba(255,255,255,0.5);
+  --cin-text:         #1e2d4a;
+  --cin-text-body:    #3d4a5c;
+  --cin-text-muted:   #6b7280;
+  /* Navy reserved for nav/footer only */
+  --cin-nav-bg:       #1e2d4a;
+  --cin-nav-text:     #f1f5f9;
 
   /* ─── Typography ─── */
   --font-display: var(--font-playfair), Georgia, serif;
@@ -115,7 +120,7 @@ h6 { font-size: 0.875rem; line-height: 1.5; font-weight: 600; }
   50% { box-shadow: 0 4px 16px rgba(37,211,102,0.3), 0 0 0 12px rgba(37,211,102,0); }
 }
 
-/* ─── Cinematic scrollbar ─── */
+/* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(30,45,74,0.15); border-radius: 3px; }

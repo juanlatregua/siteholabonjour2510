@@ -102,16 +102,16 @@ export default function CorrectionPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-[#1e2d4a] text-white py-12">
+      <section className="bg-[#faf7f2] text-[#1e2d4a] py-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3">
             Corrección IA de expresión escrita
           </h1>
-          <p className="text-lg text-blue-200 max-w-2xl mx-auto">
+          <p className="text-lg text-[#3d4a5c] max-w-2xl mx-auto">
             Escribe tu texto en francés y recibe una corrección detallada con las rúbricas oficiales DELF/DALF.
             Puntuación, errores anotados, texto corregido y consejos personalizados.
           </p>
-          <div className="flex justify-center gap-4 mt-4 text-sm text-blue-300">
+          <div className="flex justify-center gap-4 mt-4 text-sm text-[#6b7280]">
             <span>3 correcciones gratis</span>
             <span>·</span>
             <span>Rúbricas oficiales FEI</span>
