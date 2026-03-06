@@ -5,14 +5,14 @@ import GoldButton from "@/components/cinematic/GoldButton";
 import CinematicSection from "@/components/cinematic/CinematicSection";
 
 export const metadata: Metadata = {
-  title: "Prepara el DELF o DALF — HolaBonjour | Simulacros oficiales gratis",
+  title: "HolaBonjour — El 100% de nuestros alumnos aprueba el DELF/DALF",
   description:
-    "Simulacros oficiales DELF/DALF de France Éducation Internationale con corrección IA inmediata. A2, B1, B2, C1, C2 disponibles gratis.",
+    "Practica con situaciones de examen reales y corrección IA inmediata. Simulacros DELF/DALF A2, B1, B2, C1, C2 disponibles gratis.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Prepara el DELF o DALF — HolaBonjour",
+    title: "HolaBonjour — El 100% de nuestros alumnos aprueba el DELF/DALF",
     description:
-      "Simulacros oficiales DELF/DALF de France Éducation Internationale con corrección IA inmediata.",
+      "Practica con situaciones de examen reales y corrección IA inmediata.",
     url: "https://holabonjour.es/",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -168,7 +168,7 @@ export default function HomePage() {
               color: "#1e2d4a",
             }}
           >
-            Prepara el DELF o DALF con simulacros oficiales de France Éducation Internationale
+            El 100% de nuestros alumnos aprueba el DELF/DALF
           </h1>
           <p
             style={{
@@ -181,7 +181,7 @@ export default function HomePage() {
               marginRight: "auto",
             }}
           >
-            Simulacros oficiales DELF/DALF con corrección IA inmediata
+            Practica con situaciones de examen reales y corrección IA inmediata
           </p>
           <div
             style={{
