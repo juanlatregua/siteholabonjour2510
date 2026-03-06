@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { createCheckoutSession, getLevelRange, PACK_PRICES, type PackLevel } from "@/lib/stripe";
 import { formatPhoneSpain } from "@/lib/sms";
-import { getDefaultTeacher } from "@/lib/teacher";
+import { getTeacherBySlugOrDefault } from "@/lib/teacher";
 
 const VALID_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { level, name, email, phone, selectedDate, selectedTime, producto } = body;
+    const { level, name, email, phone, selectedDate, selectedTime, producto, preparateurSlug } = body;
 
     if (!level || !VALID_LEVELS.has(level)) {
       return NextResponse.json({ error: "Nivel no válido." }, { status: 400 });
@@ -30,11 +30,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Producto no válido." }, { status: 400 });
     }
 
-    // Validate slot if date/time provided
-    let teacher: { id: string; name: string | null; email: string } | null = null;
-    if (selectedDate && selectedTime) {
-      teacher = await getDefaultTeacher();
+    // Resolve teacher from slug or default
+    const { teacher, profile } = await getTeacherBySlugOrDefault(preparateurSlug);
 
+    // Validate slot if date/time provided
+    if (selectedDate && selectedTime) {
       // Check availability exists for this day/time
       const slotDate = new Date(`${selectedDate}T${selectedTime}:00`);
       if (isNaN(slotDate.getTime()) || slotDate <= new Date()) {
@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
     });
 
     // Create PENDING_PAYMENT lesson if slot selected
-    if (selectedDate && selectedTime && teacher) {
+    if (selectedDate && selectedTime) {
       const scheduledAt = new Date(`${selectedDate}T${selectedTime}:00`);
       await prisma.lesson.create({
         data: {
@@ -143,6 +143,7 @@ export async function POST(req: NextRequest) {
       selectedDate,
       selectedTime,
       producto: isDiagnostico ? "diagnostico" : undefined,
+      preparateurSlug: profile?.slug || undefined,
     });
 
     // Store Stripe session ID

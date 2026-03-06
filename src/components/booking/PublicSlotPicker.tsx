@@ -17,9 +17,10 @@ interface SlotsByDay {
 
 interface PublicSlotPickerProps {
   onSelect: (date: string, time: string) => void;
+  slug?: string | null;
 }
 
-export default function PublicSlotPicker({ onSelect }: PublicSlotPickerProps) {
+export default function PublicSlotPicker({ onSelect, slug }: PublicSlotPickerProps) {
   const [weekStart, setWeekStart] = useState(() =>
     startOfWeek(new Date(), { weekStartsOn: 1 })
   );
@@ -34,7 +35,10 @@ export default function PublicSlotPicker({ onSelect }: PublicSlotPickerProps) {
   const fetchSlots = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/public/disponibilidad");
+      const url = slug
+        ? `/api/public/disponibilidad?slug=${encodeURIComponent(slug)}`
+        : "/api/public/disponibilidad";
+      const res = await fetch(url);
       const data = await res.json();
       if (data.ok) {
         setAllSlots(data.slots ?? {});
@@ -50,7 +54,7 @@ export default function PublicSlotPicker({ onSelect }: PublicSlotPickerProps) {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
     fetchSlots();

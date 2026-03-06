@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import PublicSlotPicker from "@/components/booking/PublicSlotPicker";
 
@@ -13,10 +13,20 @@ const LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 
 type Step = 1 | 2 | 3;
 
+interface PreparateurInfo {
+  teacherName: string;
+  photo: string | null;
+  slug: string | null;
+  hourlyRate: number | null; // cents
+  levels: string[];
+  certificationVerified: boolean;
+}
+
 export default function BookingFunnel() {
   const searchParams = useSearchParams();
   const productoParam = searchParams.get("producto"); // "diagnostico" or null
   const nivelParam = searchParams.get("nivel");       // e.g. "B2"
+  const preparateurSlug = searchParams.get("preparateur"); // e.g. "isabelle-guitton"
   const isDiagnostico = productoParam === "diagnostico";
 
   const [step, setStep] = useState<Step>(1);
@@ -28,6 +38,29 @@ export default function BookingFunnel() {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [prepInfo, setPrepInfo] = useState<PreparateurInfo | null>(null);
+
+  // Fetch preparateur info
+  useEffect(() => {
+    const url = preparateurSlug
+      ? `/api/public/preparateur?slug=${encodeURIComponent(preparateurSlug)}`
+      : "/api/public/preparateur";
+    fetch(url)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.ok) setPrepInfo(data);
+      })
+      .catch(() => {});
+  }, [preparateurSlug]);
+
+  // Compute pack prices — use preparateur hourlyRate if available
+  const customHourly = prepInfo?.hourlyRate ? prepInfo.hourlyRate / 100 : null;
+  const packPrices = customHourly
+    ? [
+        { levelRange: "A1-B2", totalEur: customHourly * 4, perSession: customHourly, levels: "A1, A2, B1, B2" },
+        { levelRange: "C1-C2", totalEur: customHourly * 4, perSession: customHourly, levels: "C1, C2" },
+      ]
+    : PACKS;
 
   const levelRange = isDiagnostico
     ? "diagnostico"
@@ -35,7 +68,7 @@ export default function BookingFunnel() {
 
   const pack = isDiagnostico
     ? { levelRange: "diagnostico", totalEur: 25, perSession: 25, levels: "" }
-    : level ? PACKS.find((p) => p.levelRange === levelRange) : null;
+    : level ? packPrices.find((p) => p.levelRange === levelRange) : null;
 
   const canProceedStep1 = (isDiagnostico || level) && selectedDate && selectedTime;
   const canProceedStep2 = name.trim() && email.trim();
@@ -63,6 +96,7 @@ export default function BookingFunnel() {
           selectedDate,
           selectedTime,
           producto: isDiagnostico ? "diagnostico" : undefined,
+          preparateurSlug: prepInfo?.slug || undefined,
         }),
       });
 
@@ -88,8 +122,45 @@ export default function BookingFunnel() {
       })
     : "";
 
+  const teacherDisplayName = prepInfo?.teacherName || "Isabelle";
+
   return (
     <div className="space-y-6">
+      {/* Preparateur badge */}
+      {prepInfo && (
+        <div style={{
+          display: "flex", alignItems: "center", gap: "0.75rem",
+          padding: "0.75rem 1rem", borderRadius: "0.75rem",
+          background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
+        }}>
+          {prepInfo.photo && (
+            <img
+              src={prepInfo.photo} alt={teacherDisplayName}
+              style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }}
+            />
+          )}
+          <div>
+            <p style={{ fontWeight: 700, fontSize: "0.9rem" }}>
+              {teacherDisplayName}
+              {prepInfo.certificationVerified && (
+                <span style={{
+                  marginLeft: "0.5rem", fontSize: "0.7rem", padding: "0.15rem 0.5rem",
+                  background: "rgba(14,159,110,0.15)", color: "#10b981",
+                  borderRadius: "1rem", fontWeight: 600,
+                }}>
+                  Verificada FEI
+                </span>
+              )}
+            </p>
+            {prepInfo.levels.length > 0 && (
+              <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.5)" }}>
+                Niveles: {prepInfo.levels.join(", ")}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Progress */}
       <div className="flex items-center gap-2 text-sm">
         {[1, 2, 3].map((s) => (
@@ -158,7 +229,7 @@ export default function BookingFunnel() {
             <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.75rem" }}>
               Elige fecha y hora
             </h3>
-            <PublicSlotPicker onSelect={handleSlotSelect} />
+            <PublicSlotPicker onSelect={handleSlotSelect} slug={prepInfo?.slug} />
             {selectedDate && selectedTime && (
               <p style={{
                 marginTop: "0.75rem", fontSize: "0.9rem", fontWeight: 600, color: "#E50046",
@@ -260,6 +331,7 @@ export default function BookingFunnel() {
                   <p><strong style={{ color: "white" }}>Pack:</strong> 4 clases de 55 min por Zoom</p>
                 </>
               )}
+              <p><strong style={{ color: "white" }}>Profesora:</strong> {teacherDisplayName}</p>
               <p><strong style={{ color: "white" }}>Fecha:</strong> {displayDate}</p>
               <p><strong style={{ color: "white" }}>Hora:</strong> {selectedTime}h</p>
               <p><strong style={{ color: "white" }}>Nombre:</strong> {name}</p>

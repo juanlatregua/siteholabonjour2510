@@ -1,16 +1,18 @@
 export const runtime = "nodejs";
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getDefaultTeacher } from "@/lib/teacher";
+import { getTeacherBySlugOrDefault } from "@/lib/teacher";
 import { addDays, format, startOfWeek, addWeeks } from "date-fns";
 
 const WEEKS_AHEAD = 4;
 const PENDING_PAYMENT_EXPIRY_MINUTES = 30;
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const slug = request.nextUrl.searchParams.get("slug");
+
   try {
-    const teacher = await getDefaultTeacher();
+    const { teacher, profile } = await getTeacherBySlugOrDefault(slug);
 
     // Clean up expired PENDING_PAYMENT lessons
     const expiryThreshold = new Date(
@@ -86,7 +88,8 @@ export async function GET() {
 
     return NextResponse.json({
       ok: true,
-      teacherName: teacher.name || "Isabelle",
+      teacherName: profile?.displayName || teacher.name || "Isabelle",
+      slug: profile?.slug || null,
       slots,
     });
   } catch (err) {

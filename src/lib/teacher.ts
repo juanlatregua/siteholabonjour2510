@@ -19,3 +19,34 @@ export async function getDefaultTeacher() {
 
   return teacher;
 }
+
+/** Look up a PreparateurProfile by slug. Returns null if not found or inactive. */
+export async function getPreparateurBySlug(slug: string) {
+  return prisma.preparateurProfile.findFirst({
+    where: { slug, status: "ACTIVE" },
+    include: {
+      user: { select: { id: true, name: true, email: true } },
+      reviews: { orderBy: { createdAt: "desc" } },
+    },
+  });
+}
+
+/** Get PreparateurProfile + teacher User for a slug, or fall back to Isabelle. */
+export async function getTeacherBySlugOrDefault(slug?: string | null) {
+  if (slug) {
+    const profile = await getPreparateurBySlug(slug);
+    if (profile) {
+      return {
+        teacher: profile.user,
+        profile,
+      };
+    }
+  }
+  // Fallback: Isabelle
+  const teacher = await getDefaultTeacher();
+  const profile = await prisma.preparateurProfile.findFirst({
+    where: { userId: teacher.id, status: "ACTIVE" },
+    include: { reviews: { orderBy: { createdAt: "desc" } } },
+  });
+  return { teacher, profile };
+}

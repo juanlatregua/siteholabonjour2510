@@ -37,6 +37,8 @@ const PUBLIC_PATHS = [
   "/examen-delf-a2",
   "/examenes",
   "/calendario-examenes",
+  "/preparateurs",
+  "/unirse",
 ];
 
 const AUTH_PATHS = ["/iniciar-sesion", "/verificar-email", "/error"];

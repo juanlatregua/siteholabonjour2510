@@ -33,6 +33,7 @@ export async function createCheckoutSession(params: {
   selectedDate?: string;
   selectedTime?: string;
   producto?: string;
+  preparateurSlug?: string;
 }) {
   const stripe = getStripe();
   const baseUrl = process.env.NEXTAUTH_URL || "https://www.holabonjour.es";
@@ -74,6 +75,7 @@ export async function createCheckoutSession(params: {
         ...(params.selectedDate && { selectedDate: params.selectedDate }),
         ...(params.selectedTime && { selectedTime: params.selectedTime }),
         ...(params.producto && { producto: params.producto }),
+        ...(params.preparateurSlug && { preparateurSlug: params.preparateurSlug }),
       },
       success_url: `${baseUrl}/confirmacion?pack=${params.packId}`,
       cancel_url: `${baseUrl}/contratar`,
