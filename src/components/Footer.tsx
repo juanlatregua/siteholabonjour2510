@@ -3,9 +3,10 @@ import Link from "next/link";
 import styles from "./Footer.module.css";
 
 const navLinks = [
-  { href: "/cursos", label: "Cursos" },
-  { href: "/test-de-nivel", label: "Test de nivel" },
+  { href: "/examenes", label: "Exámenes DELF/DALF" },
+  { href: "/calendario-examenes", label: "Calendario de exámenes" },
   { href: "/correccion-ia", label: "Corrección IA" },
+  { href: "/preparacion-delf-dalf", label: "Preparación DELF/DALF" },
   { href: "/tarifas", label: "Tarifas" },
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
   { href: "/contacto", label: "Contacto" },
@@ -13,12 +14,7 @@ const navLinks = [
 ];
 
 const vieCultureLinks = [
-  { href: "/le-marche", label: "Le Marché" },
-  { href: "/la-carte", label: "La Carte" },
-  { href: "/le-cinema", label: "Le Cinéma" },
-  { href: "/la-cuisine", label: "La Cuisine" },
-  { href: "/le-mot-du-jour", label: "Le Mot du Jour" },
-  { href: "/le-jeu", label: "Le Jeu" },
+  { href: "/le-marche", label: "Contenido cultural →" },
 ];
 
 const trustSignals = ["Método inmersivo", "Exámenes DELF/DALF", "Profesoras nativas", "Clases en directo"];

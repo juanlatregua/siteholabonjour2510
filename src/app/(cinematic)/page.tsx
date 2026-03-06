@@ -6,14 +6,14 @@ import CinematicSection from "@/components/cinematic/CinematicSection";
 import SceneGradient from "@/components/cinematic/SceneGradient";
 
 export const metadata: Metadata = {
-  title: "Prepara tu DELF o DALF — HolaBonjour | Simuladores oficiales",
+  title: "Prepara el DELF o DALF — HolaBonjour | Simulacros oficiales gratis",
   description:
-    "Simuladores oficiales DELF/DALF con temporizador, profesores nativos y metodología exclusiva. Haz tu examen de prueba gratis.",
+    "Simulacros oficiales DELF/DALF de France Éducation Internationale con corrección IA inmediata. A2, B1, B2, C1, C2 disponibles gratis.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Prepara tu DELF o DALF — HolaBonjour",
+    title: "Prepara el DELF o DALF — HolaBonjour",
     description:
-      "Simuladores oficiales DELF/DALF con temporizador, profesores nativos y metodología exclusiva.",
+      "Simulacros oficiales DELF/DALF de France Éducation Internationale con corrección IA inmediata.",
     url: "https://holabonjour.es/",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
 /* ─── Data ─── */
 
 const trustStats = [
-  { value: "+500", label: "alumnos preparados" },
-  { value: "A1 – C2", label: "todos los niveles DELF/DALF" },
-  { value: "100%", label: "simuladores con temporizador oficial" },
+  { value: "A2 · B1 · B2 · C1 · C2", label: "niveles disponibles" },
+  { value: "10", label: "simulacros completos con audio oficial" },
+  { value: "24/7", label: "corrección IA con criterios oficiales" },
 ];
 
 const levels = [
@@ -62,15 +62,15 @@ const levels = [
     nivel: "C1",
     title: "Autonome",
     desc: "Usa el francés de forma flexible y eficaz.",
-    color: "#c9a84c",
-    free: false,
+    color: "#6B3FA0",
+    free: true,
   },
   {
     nivel: "C2",
     title: "Maîtrise",
     desc: "Dominio prácticamente nativo del idioma.",
-    color: "#c9a84c",
-    free: false,
+    color: "#6B3FA0",
+    free: true,
   },
 ];
 
@@ -88,7 +88,7 @@ const steps = [
   {
     num: "3",
     title: "Recibe tu resultado",
-    desc: "Puntuación detallada y plan de mejora personalizado.",
+    desc: "Resultado detallado por sección con tu puntuación real.",
   },
 ];
 
@@ -169,7 +169,7 @@ export default function HomePage() {
               color: "#f5f5f5",
             }}
           >
-            Prepara tu DELF o DALF con la academia que mejores resultados obtiene
+            Prepara el DELF o DALF con simulacros oficiales de France Éducation Internationale
           </h1>
           <p
             style={{
@@ -182,7 +182,7 @@ export default function HomePage() {
               marginRight: "auto",
             }}
           >
-            Simuladores oficiales, profesores nativos y metodología exclusiva
+            Simulacros oficiales DELF/DALF con corrección IA inmediata
           </p>
           <div
             style={{
@@ -193,10 +193,7 @@ export default function HomePage() {
             }}
           >
             <GoldButton href="/examenes">
-              Hacer examen de prueba gratis
-            </GoldButton>
-            <GoldButton href="/cursos" variant="outline">
-              Ver cursos
+              Hacer simulacro gratis
             </GoldButton>
           </div>
         </div>
@@ -286,7 +283,7 @@ export default function HomePage() {
             {levels.map((l) => (
               <Link
                 key={l.nivel}
-                href={`/examenes/${l.nivel.toLowerCase()}/demo`}
+                href={`/examenes/${l.nivel.toLowerCase()}/1`}
                 style={{ textDecoration: "none" }}
               >
                 <GlassCard>
