@@ -9,9 +9,8 @@ import { FiMenu, FiX } from "react-icons/fi";
 import styles from "./Header.module.css";
 
 const navLinks = [
-  { href: "/cursos", label: "Cursos" },
   { href: "/examenes", label: "Exámenes", badge: "NUEVO" },
-  { href: "/correccion-ia", label: "Corrección IA" },
+  { href: "/preparacion-delf-dalf", label: "Preparación DELF/DALF" },
   { href: "/tarifas", label: "Tarifas" },
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
   { href: "/contacto", label: "Contacto" },
