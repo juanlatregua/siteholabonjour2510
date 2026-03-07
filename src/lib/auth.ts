@@ -5,6 +5,7 @@ import type { EmailConfig } from "next-auth/providers";
 import { prisma } from "@/lib/prisma";
 import { TEACHER_EMAILS } from "@/lib/constants";
 import { sendMail } from "@/lib/azure-mail";
+import { authConfig } from "@/lib/auth.config";
 
 function AzureEmailProvider(): EmailConfig {
   return {
@@ -57,14 +58,8 @@ function AzureEmailProvider(): EmailConfig {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   adapter: PrismaAdapter(prisma) as never,
-  trustHost: true,
-  session: { strategy: "jwt" },
-  pages: {
-    signIn: "/iniciar-sesion",
-    verifyRequest: "/verificar-email",
-    error: "/error",
-  },
   providers: [
     // Magic link for students — sent via Azure Graph
     AzureEmailProvider(),
@@ -106,28 +101,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.role = user.role ?? "STUDENT";
-        token.userId = user.id!;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.role = token.role;
-        session.user.id = token.userId;
-      }
-      return session;
-    },
+    ...authConfig.callbacks,
     async redirect({ url, baseUrl }) {
-      if (url.startsWith(baseUrl)) {
-        const path = url.replace(baseUrl, "");
-        if (path && path !== "/" && !path.startsWith("/iniciar-sesion") && !path.startsWith("/verificar-email") && !path.startsWith("/api/auth")) {
-          return url;
-        }
+      // After magic link or credentials → redirect to zone
+      if (url.includes("callbackUrl") || url === baseUrl || url === `${baseUrl}/`) {
+        return `${baseUrl}/zona-alumno`;
       }
-      return url.startsWith("/") ? `${baseUrl}${url}` : url.startsWith(baseUrl) ? url : baseUrl;
+      // Same domain → respect
+      if (url.startsWith(baseUrl)) return url;
+      // Relative path
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      return `${baseUrl}/zona-alumno`;
     },
     async signIn({ user }) {
       try {
