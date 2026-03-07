@@ -103,14 +103,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     ...authConfig.callbacks,
     async redirect({ url, baseUrl }) {
-      // After magic link or credentials → redirect to zone
-      if (url.includes("callbackUrl") || url === baseUrl || url === `${baseUrl}/`) {
-        return `${baseUrl}/zona-alumno`;
+      // Same domain with specific path → respect it (e.g. /zona-profesor)
+      if (url.startsWith(baseUrl)) {
+        const path = url.replace(baseUrl, "");
+        if (path && path !== "/" && !path.startsWith("/iniciar-sesion") && !path.startsWith("/verificar-email")) {
+          return url;
+        }
       }
-      // Same domain → respect
-      if (url.startsWith(baseUrl)) return url;
-      // Relative path
-      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      // Relative path with specific destination → respect it
+      if (url.startsWith("/") && url !== "/") {
+        return `${baseUrl}${url}`;
+      }
+      // Default fallback → zona-alumno
       return `${baseUrl}/zona-alumno`;
     },
     async signIn({ user }) {

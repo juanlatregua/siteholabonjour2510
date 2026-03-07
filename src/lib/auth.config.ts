@@ -68,6 +68,16 @@ export const authConfig = {
         return true; // allow auth page for unauthenticated
       }
 
+      // Teacher zone: must be TEACHER or ADMIN
+      if (pathname.startsWith("/zona-profesor") || pathname.startsWith("/api/zona-profesor")) {
+        if (!isLoggedIn) return false;
+        const role = (auth?.user as { role?: string })?.role;
+        if (role !== "TEACHER" && role !== "ADMIN") {
+          return Response.redirect(new URL("/zona-alumno", nextUrl));
+        }
+        return true;
+      }
+
       // Protected routes require login
       return isLoggedIn;
     },
