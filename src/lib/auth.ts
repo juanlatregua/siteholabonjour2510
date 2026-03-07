@@ -4,11 +4,9 @@ import Credentials from "next-auth/providers/credentials";
 import type { EmailConfig } from "next-auth/providers";
 import { prisma } from "@/lib/prisma";
 import { TEACHER_EMAILS } from "@/lib/constants";
-import { Resend } from "resend";
+import { sendMail } from "@/lib/azure-mail";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-function ResendEmailProvider(): EmailConfig {
+function AzureEmailProvider(): EmailConfig {
   return {
     id: "email",
     type: "email",
@@ -18,8 +16,7 @@ function ResendEmailProvider(): EmailConfig {
     async sendVerificationRequest({ identifier: email, url }) {
       const brandUrl = process.env.NEXTAUTH_URL || "https://holabonjour.es";
       try {
-        const { error } = await resend.emails.send({
-          from: "HolaBonjour <info@holabonjour.es>",
+        await sendMail({
           to: email,
           subject: "Accede a tu cuenta HolaBonjour",
           html: `
@@ -50,9 +47,6 @@ function ResendEmailProvider(): EmailConfig {
             </div>
           `,
         });
-        if (error) {
-          throw new Error(`Resend error: ${error.message}`);
-        }
       } catch (err) {
         console.error("[auth] sendVerificationRequest FAILED:", err);
         throw err;
@@ -72,8 +66,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: "/error",
   },
   providers: [
-    // Magic link for students — sent via Resend
-    ResendEmailProvider(),
+    // Magic link for students — sent via Azure Graph
+    AzureEmailProvider(),
     // Password credentials for teachers only
     Credentials({
       id: "teacher-credentials",
