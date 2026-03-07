@@ -219,6 +219,7 @@ export const FEI_B1: FEINivelSpec = {
 
   grillePE: [
     { criterio: 'Respect de la consigne', maxPuntos: 2, descripteurs: ['0 : Ne respecte pas la consigne', '0.5 : Respecte partiellement', '1 : Respecte dans l\'ensemble', '1.5 : Respecte bien', '2 : Respecte pleinement'] },
+    { criterio: 'Correction sociolinguistique', maxPuntos: 1, descripteurs: ['0 : Inadéquate', '0.5 : Partiellement adéquate', '1 : Adéquate'] },
     { criterio: 'Capacité à présenter des faits', maxPuntos: 4, descripteurs: ['0-1 : Peut décrire quelques faits de manière simple', '1.5-2.5 : Peut décrire des faits avec détails', '3-4 : Peut décrire des faits de manière précise et développée'] },
     { criterio: 'Capacité à exprimer sa pensée', maxPuntos: 4, descripteurs: ['0-1 : Peut exprimer un point de vue très simple', '1.5-2.5 : Peut exprimer et justifier partiellement', '3-4 : Peut exprimer et argumenter de manière claire'] },
     { criterio: 'Cohérence et cohésion', maxPuntos: 3, descripteurs: ['0-1 : Juxtaposition d\'idées', '1.5-2 : Utilise des connecteurs simples', '2.5-3 : Texte bien structuré avec connecteurs variés'] },
