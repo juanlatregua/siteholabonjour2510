@@ -4,22 +4,24 @@ import Credentials from "next-auth/providers/credentials";
 import type { EmailConfig } from "next-auth/providers";
 import { prisma } from "@/lib/prisma";
 import { TEACHER_EMAILS } from "@/lib/constants";
-import { sendMail } from "@/lib/azure-mail";
+import { Resend } from "resend";
 
-// Custom email provider using Azure Graph (no nodemailer dependency)
-function AzureEmailProvider(): EmailConfig {
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+function ResendEmailProvider(): EmailConfig {
   return {
     id: "email",
     type: "email",
     name: "Email",
     from: process.env.EMAIL_FROM || "HolaBonjour <info@holabonjour.es>",
-    maxAge: 24 * 60 * 60,
+    maxAge: 10 * 60, // 10 minutes
     async sendVerificationRequest({ identifier: email, url }) {
       const brandUrl = process.env.NEXTAUTH_URL || "https://holabonjour.es";
       try {
-        await sendMail({
+        const { error } = await resend.emails.send({
+          from: "HolaBonjour <info@holabonjour.es>",
           to: email,
-          subject: "Accede a HolaBonjour — Tu enlace de acceso",
+          subject: "Accede a tu cuenta HolaBonjour",
           html: `
             <div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;">
               <div style="margin-bottom:16px;">
@@ -37,7 +39,8 @@ function AzureEmailProvider(): EmailConfig {
                 </a>
               </p>
               <p style="color:#64748b;font-size:13px;line-height:1.4;">
-                Si no solicitaste este enlace, puedes ignorar este email. El enlace caduca en 24 horas.
+                Si no solicitaste este enlace, puedes ignorar este email.
+                El enlace caduca en 10 minutos.
               </p>
               <hr style="margin:24px 0 12px;border:0;border-top:1px solid #e2e8f0;" />
               <p style="color:#94a3b8;font-size:12px;">
@@ -47,6 +50,9 @@ function AzureEmailProvider(): EmailConfig {
             </div>
           `,
         });
+        if (error) {
+          throw new Error(`Resend error: ${error.message}`);
+        }
       } catch (err) {
         console.error("[auth] sendVerificationRequest FAILED:", err);
         throw err;
@@ -66,8 +72,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: "/error",
   },
   providers: [
-    // Magic link for students — sent via Azure Graph (no SMTP/nodemailer)
-    AzureEmailProvider(),
+    // Magic link for students — sent via Resend
+    ResendEmailProvider(),
     // Password credentials for teachers only
     Credentials({
       id: "teacher-credentials",
@@ -121,16 +127,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // After sign-in, redirect based on role stored in the JWT
-      // NextAuth calls this after signIn — we check the URL for callbackUrl
       if (url.startsWith(baseUrl)) {
-        // If already going to a specific page (not just /), let it through
         const path = url.replace(baseUrl, "");
         if (path && path !== "/" && !path.startsWith("/iniciar-sesion") && !path.startsWith("/verificar-email") && !path.startsWith("/api/auth")) {
           return url;
         }
       }
-      // Default: redirect will be handled by middleware + client-side
       return url.startsWith("/") ? `${baseUrl}${url}` : url.startsWith(baseUrl) ? url : baseUrl;
     },
     async signIn({ user }) {

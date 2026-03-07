@@ -1,48 +1,10 @@
-// lib/azure-mail.ts — Send emails via Microsoft Graph API (Azure AD)
-// No SMTP, no SendGrid. Uses client_credentials OAuth2 flow.
-// Requires Azure AD app with Mail.Send application permission.
+// lib/azure-mail.ts — Send emails via Resend
+// Migrated from Azure Graph API to Resend (2026-03-07)
+// Interface unchanged: sendMail({ to, subject, html })
 
-let cachedToken: { token: string; expiresAt: number } | null = null;
+import { Resend } from "resend";
 
-async function getAccessToken(): Promise<string> {
-  if (cachedToken && Date.now() < cachedToken.expiresAt - 60_000) {
-    return cachedToken.token;
-  }
-
-  const tenantId = process.env.AZURE_TENANT_ID;
-  const clientId = process.env.AZURE_CLIENT_ID;
-  const clientSecret = process.env.AZURE_CLIENT_SECRET;
-
-  if (!tenantId || !clientId || !clientSecret) {
-    throw new Error("Missing AZURE_TENANT_ID, AZURE_CLIENT_ID, or AZURE_CLIENT_SECRET");
-  }
-
-  const res = await fetch(
-    `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        client_id: clientId,
-        client_secret: clientSecret,
-        scope: "https://graph.microsoft.com/.default",
-        grant_type: "client_credentials",
-      }),
-    },
-  );
-
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Azure token error ${res.status}: ${text}`);
-  }
-
-  const data = await res.json();
-  cachedToken = {
-    token: data.access_token,
-    expiresAt: Date.now() + data.expires_in * 1000,
-  };
-  return cachedToken.token;
-}
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface SendMailOptions {
   to: string;
@@ -51,36 +13,17 @@ interface SendMailOptions {
   text?: string;
 }
 
-export async function sendMail({ to, subject, html, text }: SendMailOptions) {
-  const from = process.env.EMAIL_FROM || "info@holabonjour.es";
-  const token = await getAccessToken();
+export async function sendMail({ to, subject, html }: SendMailOptions) {
+  const from = process.env.EMAIL_FROM || "HolaBonjour <info@holabonjour.es>";
 
-  const message = {
-    message: {
-      subject,
-      body: {
-        contentType: "HTML",
-        content: html,
-      },
-      toRecipients: [{ emailAddress: { address: to } }],
-    },
-    saveToSentItems: false,
-  };
+  const { error } = await resend.emails.send({
+    from,
+    to,
+    subject,
+    html,
+  });
 
-  const res = await fetch(
-    `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(from)}/sendMail`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(message),
-    },
-  );
-
-  if (!res.ok) {
-    const errorBody = await res.text();
-    throw new Error(`Graph sendMail error ${res.status}: ${errorBody}`);
+  if (error) {
+    throw new Error(`Resend error: ${error.message}`);
   }
 }

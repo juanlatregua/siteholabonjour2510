@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { sendMail } from "@/lib/azure-mail";
 
 // GET /api/debug/email-test?to=your@email.com
-// Quick diagnostic to check if Azure Graph email is working
+// Quick diagnostic to check if Resend email is working
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const to = searchParams.get("to");
@@ -12,19 +12,15 @@ export async function GET(req: Request) {
   }
 
   const env = {
-    AZURE_TENANT_ID: !!process.env.AZURE_TENANT_ID,
-    AZURE_CLIENT_ID: !!process.env.AZURE_CLIENT_ID,
-    AZURE_CLIENT_SECRET: !!process.env.AZURE_CLIENT_SECRET,
+    RESEND_API_KEY: !!process.env.RESEND_API_KEY,
     EMAIL_FROM: process.env.EMAIL_FROM || "(not set)",
-    NEXTAUTH_SECRET: !!process.env.NEXTAUTH_SECRET,
-    DATABASE_URL: !!process.env.DATABASE_URL,
   };
 
   try {
     await sendMail({
       to,
       subject: "HolaBonjour — Test de email",
-      html: "<p>Si ves este email, Azure Graph funciona correctamente.</p>",
+      html: "<p>Si ves este email, Resend funciona correctamente.</p>",
     });
     return NextResponse.json({ ok: true, env, message: `Email enviado a ${to}` });
   } catch (err: unknown) {
