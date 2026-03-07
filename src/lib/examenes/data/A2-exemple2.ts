@@ -55,11 +55,11 @@ export const examen_A2_exemple2: Examen = {
               imageUrl: '/examenes/a2/images/strips/a2-ex2-co1-q2.jpg',
               opciones: [
                 { letra: 'A', texto: 'La neige (image : flocons de neige)' },
-                { letra: 'B', texto: 'L\'orage (image : nuages avec pluie et éclairs)' },
+                { letra: 'B', texto: 'La pluie (image : nuages avec pluie)' },
                 { letra: 'C', texto: 'Le vent (image : manche à air)' },
               ],
               respuestaCorrecta: 'B',
-              descripcionImagen: 'A : flocons de neige — B : nuages avec pluie et éclairs — C : manche à air (vent)',
+              descripcionImagen: 'A : flocons de neige — B : nuages avec pluie — C : manche à air (vent)',
             },
             {
               id: 'A2-e2-CO-ex1-p3',
@@ -85,10 +85,10 @@ export const examen_A2_exemple2: Examen = {
               opciones: [
                 { letra: 'A', texto: 'Aller au comptoir (image : comptoir d\'accueil avec employée)' },
                 { letra: 'B', texto: 'Regarder le panneau d\'affichage (image : écrans d\'information)' },
-                { letra: 'C', texto: 'Aller dehors (image : personne devant l\'aéroport)' },
+                { letra: 'C', texto: 'Téléphoner (image : femme parlant au téléphone)' },
               ],
               respuestaCorrecta: 'A',
-              descripcionImagen: 'A : comptoir d\'accueil à l\'aéroport — B : écrans d\'affichage — C : extérieur de l\'aéroport',
+              descripcionImagen: 'A : comptoir d\'accueil à l\'aéroport — B : passagers consultant des informations — C : femme parlant au téléphone',
             },
             {
               id: 'A2-e2-CO-ex1-p5',
@@ -123,12 +123,12 @@ export const examen_A2_exemple2: Examen = {
               esImagen: true,
               imageUrl: '/examenes/a2/images/strips/a2-ex2-co2-q1.jpg',
               opciones: [
-                { letra: 'A', texto: 'Des chaussures (image : chaussures)' },
-                { letra: 'B', texto: 'Des vêtements (image : vêtements sur cintre)' },
+                { letra: 'A', texto: 'Des sandwichs (image : sandwich baguette)' },
+                { letra: 'B', texto: 'Des chaises (image : chaise de bureau)' },
                 { letra: 'C', texto: 'Des pantalons (image : pantalon)' },
               ],
               respuestaCorrecta: 'B',
-              descripcionImagen: 'A : paire de chaussures — B : vêtements sur cintre — C : pantalon',
+              descripcionImagen: 'A : sandwich baguette — B : chaise de bureau — C : pantalon',
             },
             {
               id: 'A2-e2-CO-ex2-p2',
@@ -484,12 +484,12 @@ export const examen_A2_exemple2: Examen = {
               esImagen: true,
               imageUrl: '/examenes/a2/images/strips/a2-ex2-ce3-q3.jpg',
               opciones: [
-                { letra: 'A', texto: 'Une famille (image : famille avec enfants devant ordinateur)' },
-                { letra: 'B', texto: 'Un voyageur (image : personne avec valise et ordinateur)' },
-                { letra: 'C', texto: 'Un gamer (image : personne jouant aux jeux vidéo)' },
+                { letra: 'A', texto: 'Un voyageur (image : homme en tenue de vacances avec valises)' },
+                { letra: 'B', texto: 'Un employé de bureau (image : homme travaillant à un bureau avec ordinateur)' },
+                { letra: 'C', texto: 'Un gamer (image : enfant jouant aux jeux vidéo)' },
               ],
               respuestaCorrecta: 'A',
-              descripcionImagen: 'A : famille avec enfants — B : voyageur avec valise — C : personne jouant aux jeux vidéo',
+              descripcionImagen: 'A : homme en tenue de vacances avec valises — B : homme travaillant à un bureau avec ordinateur — C : enfant jouant aux jeux vidéo',
             },
             {
               id: 'A2-e2-CE-ex3-p4',

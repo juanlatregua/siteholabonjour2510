@@ -69,7 +69,7 @@ export default function ContratarPage() {
       <CinematicSection className="pb-16 px-6">
         <div
           className="mx-auto max-w-3xl rounded-xl p-4 text-sm"
-          style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.25)", color: "#f59e0b" }}
+          style={{ background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.25)", color: "#92400e" }}
         >
           <strong>Política de anulación:</strong> al menos 48h de antelación. Si no, se descuenta del bono.
           Excepción: justificante médico presentado en 24h.

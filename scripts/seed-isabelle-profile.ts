@@ -27,21 +27,21 @@ const GOOGLE_REVIEWS = [
     studentName: "Reena Huet",
     rating: 5,
     comment:
-      "Isabelle is very welcoming and understanding, has lots of patience to teach french. For me she is the number one.",
+      "Isabelle is very welcoming and understanding, has lots of patience. For me she is the number one.",
     createdAt: "2018-09-20",
   },
   {
     studentName: "MJ Cano",
     rating: 5,
     comment:
-      "La mejor opción para prepararte a tu ritmo. La enseñanza es personalizada, adaptada a tus necesidades.",
+      "La mejor opción para prepararte a tu ritmo. Enseñanza personalizada y adaptada.",
     createdAt: "2018-12-17",
   },
   {
     studentName: "Rosa Cabrera",
     rating: 5,
     comment:
-      "El método y las profesoras son excepcionales. Súper recomendada tras mi experiencia con HolaBonjour.",
+      "El método y las profesoras son excepcionales. Súper recomendada.",
     createdAt: "2019-12-01",
   },
 ];

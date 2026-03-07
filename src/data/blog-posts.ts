@@ -485,4 +485,253 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+
+  // ─── Article 6: Cuánto cuesta preparar DELF/DALF ──────────────────────
+  {
+    slug: "cuanto-cuesta-preparar-delf-dalf",
+    title: "¿Cuánto cuesta preparar el DELF o el DALF en 2026?",
+    description:
+      "Guía completa de costes: academias, plataformas online, clases particulares y simulacros gratuitos.",
+    category: "delf-dalf",
+    categoryLabel: "DELF/DALF",
+    level: "Todos",
+    author: "Isabelle Guitton",
+    publishedAt: "2026-03-07",
+    readingMinutes: 8,
+    heroEmoji: "💶",
+    sections: [
+      {
+        heading: "Simulacros gratuitos: el punto de partida",
+        content: `<p>Antes de gastar un solo euro, lo primero que deberías hacer es evaluar tu nivel real. Muchos candidatos se matriculan en un nivel incorrecto — demasiado alto o demasiado bajo — y pierden tiempo y dinero.</p>
+<p>En HolaBonjour ofrecemos <a href="/examenes">simulacros gratuitos de examen DELF/DALF</a> que reproducen las condiciones reales del examen: tiempos, audios oficiales, tipos de preguntas y corrección automática para las destrezas de comprensión. Es la forma más eficaz de saber dónde estás antes de invertir en preparación.</p>
+<p>Hacer un simulacro completo te permite identificar tu destreza más débil (normalmente la Production écrite o la Production orale) y concentrar tu inversión justo ahí, en lugar de pagar por un curso genérico que repasa todo por igual.</p>`,
+      },
+      {
+        heading: "Clases particulares: de 25€ a 60€/hora",
+        content: `<p>El rango de precios de las clases particulares de francés varía mucho según el perfil del profesor:</p>
+<ul>
+  <li><strong>Profesor generalista (25-35€/h):</strong> Profesores de francés con experiencia general. Válido para mejorar tu nivel, pero no están especializados en la estructura específica del DELF o DALF.</li>
+  <li><strong>Préparateur especializado (35-60€/h):</strong> Profesores que conocen a fondo las rúbricas de evaluación de France Éducation International. Saben exactamente qué buscan los examinadores y cómo ganar puntos en cada destreza.</li>
+</ul>
+<p>La diferencia entre un profesor genérico y un <em>préparateur</em> especializado es comparable a la diferencia entre un médico de cabecera y un especialista: ambos son buenos, pero cuando necesitas aprobar un examen concreto, el especialista te ahorra meses de preparación.</p>
+<p>En HolaBonjour, Isabelle Guitton ha preparado alumnos desde B1 hasta C2 con un <strong>100% de aprobados</strong>. Sus clases son de 55 minutos por Zoom a 35€/clase en pack de 4.</p>`,
+      },
+      {
+        heading: "Academias presenciales: 300€ a 800€ por curso",
+        content: `<p>Las academias presenciales suelen ofrecer cursos intensivos de 2-3 meses con clases grupales de 6-12 alumnos. Los precios oscilan entre 300€ y 800€ por curso, dependiendo de la ciudad y la duración.</p>
+<p><strong>Ventaja:</strong> disciplina de horario fijo y contacto presencial con compañeros. <strong>Limitación:</strong> el ritmo es el del grupo, no el tuyo. Si tu comprensión oral es fuerte pero tu producción escrita es débil, igualmente dedicarás el mismo tiempo a ambas.</p>
+<p>Además, muchas academias usan profesores que no son examinadores oficiales, lo que significa que no conocen de primera mano los criterios reales de corrección. Pregunta siempre si el profesor tiene habilitación de France Éducation International.</p>`,
+      },
+      {
+        heading: "Plataformas online: desde gratis hasta 200€",
+        content: `<p>Las plataformas online de preparación DELF/DALF han crecido mucho en los últimos años. El rango va desde contenido gratuito (vídeos de YouTube, blogs con consejos) hasta plataformas de pago con ejercicios interactivos y tutorías (100-200€ por acceso trimestral).</p>
+<p>Lo importante es no confundir «contenido de francés general» con «preparación específica al examen». Un vídeo que explica el subjuntivo no te prepara para escribir una <em>lettre formelle</em> bajo presión de tiempo con los criterios FEI.</p>
+<p>Lo ideal es combinar una plataforma con ejercicios específicos y clases con un préparateur que pueda corregir tus producciones escritas y orales con las rúbricas reales.</p>`,
+      },
+      {
+        heading: "¿Cuánto necesito para aprobar el DELF B2?",
+        content: `<p>La respuesta honesta: <strong>depende de tu nivel actual</strong>. Un alumno que parte de un B1 sólido puede estar listo en 8-12 semanas con 2 clases semanales. Uno que parte de un A2 necesitará al menos 4-6 meses.</p>
+<p>Por eso, la inversión más rentable que puedes hacer es una <strong>sesión de diagnóstico</strong> con un préparateur especializado. En 55 minutos, Isabelle evalúa tu nivel real en las 4 destrezas y te dice exactamente cuántas sesiones necesitas y dónde concentrar tu esfuerzo.</p>
+<p>La sesión de diagnóstico en HolaBonjour cuesta <strong>25€</strong> — y si luego contratas un pack de clases, se descuenta del primer pack.</p>
+<p style="text-align:center;margin-top:1.5rem;"><a href="/contratar?producto=diagnostico" style="background:#E50046;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;">Reservar sesión diagnóstico — 25€</a></p>`,
+      },
+    ],
+  },
+
+  // ─── Article 7: DELF B2 para funcionarios ──────────────────────────────
+  {
+    slug: "delf-b2-funcionarios-oposiciones",
+    title: "DELF B2 para funcionarios: puntos en oposiciones con el francés",
+    description:
+      "Cómo conseguir el DELF B2 para sumar puntos en oposiciones. Requisitos, plazos y plan de preparación.",
+    category: "delf-dalf",
+    categoryLabel: "DELF/DALF",
+    level: "B1-B2",
+    author: "Isabelle Guitton",
+    publishedAt: "2026-03-07",
+    readingMinutes: 9,
+    heroEmoji: "🏛️",
+    sections: [
+      {
+        heading: "¿Qué es el DELF B2 y por qué lo piden las oposiciones?",
+        content: `<p>El <strong>DELF B2</strong> es un diploma oficial de francés expedido por el Ministerio de Educación de Francia a través de France Éducation International. A diferencia de otros certificados, <strong>no caduca nunca</strong>, lo que lo convierte en una inversión a largo plazo para cualquier opositor.</p>
+<p>Las convocatorias de oposiciones en España valoran los idiomas como mérito puntuable. Un DELF B2 suele aportar entre <strong>1 y 2 puntos</strong> en el baremo de méritos, lo que puede marcar la diferencia entre conseguir la plaza o quedarse en lista de espera. Esto aplica a cuerpos como maestros, profesores de secundaria, administrativos del Estado, diplomáticos y muchos más.</p>
+<p>El nivel B2 certifica que eres un <strong>usuario independiente</strong>: puedes argumentar, expresar matices y defender un punto de vista con soltura. Es el nivel más demandado en convocatorias públicas, porque demuestra competencia real — no solo conocimiento básico.</p>`,
+      },
+      {
+        heading: "¿Cuándo se celebran los exámenes DELF en España?",
+        content: `<p>Los exámenes DELF/DALF se celebran en varias convocatorias al año en centros acreditados por la Embajada de Francia en España (Instituto Francés y Alianza Francesa, principalmente). Las fechas habituales son:</p>
+<ul>
+  <li><strong>Febrero-marzo:</strong> convocatoria de invierno</li>
+  <li><strong>Mayo-junio:</strong> convocatoria de primavera (la más popular)</li>
+  <li><strong>Octubre-noviembre:</strong> convocatoria de otoño</li>
+</ul>
+<p>La inscripción suele cerrar <strong>6-8 semanas antes</strong> del examen. Es fundamental planificar con antelación, sobre todo si tu oposición tiene fecha fija y necesitas tener el diploma antes.</p>
+<p>Consulta nuestro <a href="/calendario-examenes">calendario de exámenes DELF/DALF actualizado</a> con fechas, centros de examen y plazos de inscripción en España.</p>`,
+      },
+      {
+        heading: "¿Cuánto tiempo necesito para prepararme?",
+        content: `<p>Depende de tu nivel actual. Aquí tienes una estimación realista basada en nuestra experiencia con cientos de candidatos:</p>
+<table style="width:100%;border-collapse:collapse;margin:1rem 0;">
+  <thead>
+    <tr style="border-bottom:2px solid #e5e7eb;">
+      <th style="text-align:left;padding:0.5rem;">Nivel actual</th>
+      <th style="text-align:left;padding:0.5rem;">Tiempo estimado</th>
+      <th style="text-align:left;padding:0.5rem;">Clases recomendadas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;">A2</td>
+      <td style="padding:0.5rem;">6-9 meses</td>
+      <td style="padding:0.5rem;">2-3 clases/semana</td>
+    </tr>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;">B1</td>
+      <td style="padding:0.5rem;">3-5 meses</td>
+      <td style="padding:0.5rem;">2 clases/semana</td>
+    </tr>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;">B2 parcial</td>
+      <td style="padding:0.5rem;">1-2 meses</td>
+      <td style="padding:0.5rem;">1-2 clases/semana</td>
+    </tr>
+  </tbody>
+</table>
+<p>Estas estimaciones asumen que también trabajas por tu cuenta entre clases: lectura, escucha de podcasts, ejercicios de escritura, etc.</p>`,
+      },
+      {
+        heading: "El punto crítico: la Production écrite",
+        content: `<p>Según estadísticas de France Éducation International, <strong>la producción escrita es la destreza donde más candidatos pierden puntos</strong>. En el B2, se pide redactar un texto argumentativo de al menos 250 palabras (carta formal, artículo de opinión, correo de reclamación) con una estructura clara y conectores lógicos.</p>
+<p>Los errores más frecuentes:</p>
+<ul>
+  <li>No respetar el formato solicitado (escribir una carta cuando se pide un artículo)</li>
+  <li>Argumentación débil o sin ejemplos concretos</li>
+  <li>Falta de conectores: <em>en revanche, par ailleurs, en définitive</em></li>
+  <li>Errores gramaticales recurrentes: concordancia, subjuntivo, relativos</li>
+</ul>
+<p>La buena noticia: la producción escrita es la destreza que más mejora con práctica y corrección. Nuestra <a href="/correccion-ia">corrección con inteligencia artificial</a> evalúa tus textos con las rúbricas oficiales FEI y te da feedback inmediato sobre cada criterio.</p>`,
+      },
+      {
+        heading: "Plan de preparación en 8 semanas",
+        content: `<p>Si ya tienes un nivel B1 sólido, aquí tienes un plan realista de 8 semanas para el B2:</p>
+<ul>
+  <li><strong>Semanas 1-2:</strong> Diagnóstico + foco en comprensión oral. Escucha diaria de France Inter (15 min). 1 simulacro CO.</li>
+  <li><strong>Semanas 3-4:</strong> Comprensión escrita. Lectura de artículos Le Monde/Courrier International. Técnica de análisis de textos argumentativos.</li>
+  <li><strong>Semanas 5-6:</strong> Producción escrita intensiva. 2 textos/semana con corrección. Memorización de conectores y estructuras.</li>
+  <li><strong>Semanas 7-8:</strong> Producción oral + simulacros completos. Práctica de monólogo argumentado + debate con tu préparatrice.</li>
+</ul>
+<p>Empieza con un simulacro completo para saber dónde estás:</p>
+<p style="text-align:center;margin-top:1.5rem;"><a href="/examenes/b2/1" style="background:#E50046;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;">Hacer simulacro DELF B2 gratuito</a></p>`,
+      },
+    ],
+  },
+
+  // ─── Article 8: Diferencia DELF DALF ──────────────────────────────────
+  {
+    slug: "diferencia-delf-dalf",
+    title: "DELF o DALF: ¿cuál necesitas y en qué se diferencian?",
+    description:
+      "Diferencias entre DELF y DALF: niveles, estructura, quién los necesita y cómo elegir el certificado correcto.",
+    category: "delf-dalf",
+    categoryLabel: "DELF/DALF",
+    level: "Todos",
+    author: "Isabelle Guitton",
+    publishedAt: "2026-03-07",
+    readingMinutes: 7,
+    heroEmoji: "📜",
+    sections: [
+      {
+        heading: "¿Qué es el DELF? (niveles A1-B2)",
+        content: `<p>El <strong>DELF</strong> (<em>Diplôme d'Études en Langue Française</em>) es un diploma oficial de francés expedido por el Ministerio de Educación Nacional de Francia. Cubre los cuatro primeros niveles del Marco Común Europeo de Referencia (MCER):</p>
+<ul>
+  <li><strong>DELF A1:</strong> Usuario elemental. Puede presentarse, hacer preguntas sencillas y entender instrucciones básicas.</li>
+  <li><strong>DELF A2:</strong> Usuario elemental avanzado. Puede describir su entorno, hacer compras y entender conversaciones cotidianas.</li>
+  <li><strong>DELF B1:</strong> Usuario independiente. Puede expresar opiniones, contar experiencias y desenvolverse en viajes.</li>
+  <li><strong>DELF B2:</strong> Usuario independiente avanzado. Puede argumentar, debatir y redactar textos complejos. Es el nivel más demandado para universidades y oposiciones.</li>
+</ul>
+<p>Cada diploma es independiente: puedes presentarte directamente al nivel que quieras, sin haber obtenido los anteriores. Y una vez aprobado, <strong>no caduca nunca</strong>.</p>`,
+      },
+      {
+        heading: "¿Qué es el DALF? (niveles C1-C2)",
+        content: `<p>El <strong>DALF</strong> (<em>Diplôme Approfondi de Langue Française</em>) certifica los niveles avanzados C1 y C2:</p>
+<ul>
+  <li><strong>DALF C1:</strong> Usuario competente. Puede expresarse con fluidez y espontaneidad, utilizar la lengua con fines académicos y profesionales, y producir textos claros y bien estructurados sobre temas complejos.</li>
+  <li><strong>DALF C2:</strong> Dominio. Se acerca al nivel de un hablante nativo educado. Puede resumir y sintetizar información de múltiples fuentes y argumentar con matices sutiles.</li>
+</ul>
+<p>El DALF C1 es el nivel que exigen la mayoría de programas de máster y doctorado en universidades francesas. El DALF C2, más raro, es necesario para ciertos puestos académicos, de traducción o de diplomacia.</p>
+<p>Al igual que el DELF, el DALF <strong>no caduca nunca</strong> y cada nivel puede obtenerse de forma independiente.</p>`,
+      },
+      {
+        heading: "Tabla comparativa DELF vs DALF",
+        content: `<table style="width:100%;border-collapse:collapse;margin:1rem 0;">
+  <thead>
+    <tr style="border-bottom:2px solid #e5e7eb;">
+      <th style="text-align:left;padding:0.5rem;"></th>
+      <th style="text-align:left;padding:0.5rem;">DELF</th>
+      <th style="text-align:left;padding:0.5rem;">DALF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;font-weight:600;">Niveles</td>
+      <td style="padding:0.5rem;">A1, A2, B1, B2</td>
+      <td style="padding:0.5rem;">C1, C2</td>
+    </tr>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;font-weight:600;">Caducidad</td>
+      <td style="padding:0.5rem;">No caduca</td>
+      <td style="padding:0.5rem;">No caduca</td>
+    </tr>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;font-weight:600;">Pruebas</td>
+      <td style="padding:0.5rem;">CO + CE + PE + PO (4 pruebas separadas)</td>
+      <td style="padding:0.5rem;">C1: 4 pruebas. C2: 2 pruebas combinadas</td>
+    </tr>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;font-weight:600;">Puntuación</td>
+      <td style="padding:0.5rem;">100 puntos (mín. 50 para aprobar)</td>
+      <td style="padding:0.5rem;">100 puntos (mín. 50 para aprobar)</td>
+    </tr>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;font-weight:600;">Duración total</td>
+      <td style="padding:0.5rem;">A1: 1h20 → B2: 2h30</td>
+      <td style="padding:0.5rem;">C1: 4h → C2: 3h30</td>
+    </tr>
+    <tr style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:0.5rem;font-weight:600;">Uso habitual</td>
+      <td style="padding:0.5rem;">Universidades, oposiciones, CV</td>
+      <td style="padding:0.5rem;">Másteres, doctorados, puestos académicos</td>
+    </tr>
+  </tbody>
+</table>`,
+      },
+      {
+        heading: "¿Cuál necesito yo? Casos de uso concretos",
+        content: `<p>Aquí tienes los casos más habituales que vemos en HolaBonjour:</p>
+<ul>
+  <li><strong>Oposiciones en España:</strong> DELF B2 (la mayoría de convocatorias puntúan a partir de B2).</li>
+  <li><strong>Universidad en Francia (grado):</strong> DELF B2 (requisito mínimo en la mayoría de universidades).</li>
+  <li><strong>Máster o doctorado en Francia:</strong> DALF C1 (algunas universidades aceptan B2, pero C1 es lo habitual).</li>
+  <li><strong>Trabajo en empresa francófona:</strong> Depende del puesto. B2 para puestos operativos, C1 para dirección o comunicación.</li>
+  <li><strong>Emigrar a Canadá (Quebec):</strong> DELF B2 mínimo para la mayoría de programas de inmigración.</li>
+  <li><strong>Satisfacción personal / reto:</strong> El nivel que tú quieras. Muchos de nuestros alumnos se presentan al C2 simplemente porque quieren demostrar su dominio.</li>
+</ul>`,
+      },
+      {
+        heading: "¿Puedo presentarme directamente al nivel que quiero?",
+        content: `<p><strong>Sí.</strong> No necesitas tener el DELF A1 para presentarte al B2, ni el B2 para presentarte al C1. Cada diploma es completamente independiente. Puedes matricularte directamente en el nivel que consideres apropiado.</p>
+<p>Dicho esto, presentarte a un nivel demasiado alto supone un riesgo real de suspenso (y perder la tasa de inscripción, que ronda los 100-150€ dependiendo del nivel). Por eso es fundamental saber cuál es tu nivel real antes de inscribirte.</p>`,
+      },
+      {
+        heading: "¿Cómo sé cuál es mi nivel real?",
+        content: `<p>Hay dos formas fiables de evaluar tu nivel:</p>
+<ol>
+  <li><strong>Simulacro de examen:</strong> Haz un examen completo en condiciones reales. En HolaBonjour ofrecemos <a href="/examenes">simulacros gratuitos</a> para todos los niveles con corrección automática de las destrezas de comprensión.</li>
+  <li><strong>Test de nivel online:</strong> Nuestro <a href="/test-de-nivel">test de nivel</a> evalúa tu gramática, vocabulario y comprensión en 15-20 minutos y te da una estimación de tu nivel MCER.</li>
+</ol>
+<p>Si tienes dudas entre dos niveles (por ejemplo, «no sé si soy B1 fuerte o B2 débil»), la mejor opción es una sesión de diagnóstico con una préparatrice especializada. En 55 minutos, Isabelle evalúa tus 4 destrezas y te recomienda el nivel exacto al que deberías presentarte.</p>`,
+      },
+    ],
+  },
 ];

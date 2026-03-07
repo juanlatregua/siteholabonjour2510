@@ -72,8 +72,8 @@ export const examen_A2_exemple1: Examen = {
               esImagen: true,
               imageUrl: '/examenes/a2/images/strips/a2-ex1-co1-q3.jpg',
               opciones: [
-                { letra: 'A', texto: 'Par Internet (image : écran d\'ordinateur avec une page web)' },
-                { letra: 'B', texto: 'Par ordinateur (image : ordinateur de bureau)' },
+                { letra: 'A', texto: 'À l\'accueil (image : guichet d\'accueil avec employée)' },
+                { letra: 'B', texto: 'Par Internet (image : écran d\'ordinateur avec page web)' },
                 { letra: 'C', texto: 'Par téléphone (image : téléphone fixe)' },
               ],
               respuestaCorrecta: 'B',
@@ -103,10 +103,10 @@ export const examen_A2_exemple1: Examen = {
               opciones: [
                 { letra: 'A', texto: 'Prendre l\'avion (image : avion et passagers)' },
                 { letra: 'B', texto: 'Aller à la porte d\'embarquement (image : salle d\'attente aéroport)' },
-                { letra: 'C', texto: 'Rester assis (image : personne assise dans avion)' },
+                { letra: 'C', texto: 'Rester assis (image : passagers attendant à la porte d\'embarquement)' },
               ],
               respuestaCorrecta: 'B',
-              descripcionImagen: 'A : avion avec passagers — B : porte d\'embarquement à l\'aéroport — C : passager assis dans l\'avion',
+              descripcionImagen: 'A : passagers montant dans l\'avion — B : zone d\'embarquement avec tapis à bagages — C : passagers attendant à la porte d\'embarquement (Porte A)',
             },
             {
               id: 'A2-e1-CO-ex1-p6',
@@ -263,11 +263,11 @@ export const examen_A2_exemple1: Examen = {
               imageUrl: '/examenes/a2/images/strips/a2-ex1-co3-q2.jpg',
               opciones: [
                 { letra: 'A', texto: 'Un gâteau au chocolat (image : gâteau chocolat)' },
-                { letra: 'B', texto: 'Un gâteau nature (image : gâteau marbré)' },
+                { letra: 'B', texto: 'Un mille-feuille (image : mille-feuille feuilleté)' },
                 { letra: 'C', texto: 'Un gâteau aux fruits (image : tarte aux fruits)' },
               ],
               respuestaCorrecta: 'C',
-              descripcionImagen: 'A : gâteau au chocolat — B : gâteau marbré/nature — C : tarte aux fruits frais',
+              descripcionImagen: 'A : gâteau au chocolat — B : mille-feuille feuilleté — C : tarte aux fruits frais',
             },
             {
               id: 'A2-e1-CO-ex3-p3',
