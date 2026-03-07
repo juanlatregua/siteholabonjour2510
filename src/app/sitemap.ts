@@ -17,12 +17,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Main pages
     { url: BASE_URL, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
     { url: `${BASE_URL}/cursos`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${BASE_URL}/cursos/preparacion-delf-dalf`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/preparacion-delf-dalf`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/preparacion-delf-dalf/a1`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/preparacion-delf-dalf/a2`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/preparacion-delf-dalf/b1`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/preparacion-delf-dalf/b2`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/preparacion-delf-dalf/c1`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/preparacion-delf-dalf/c2`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/cursos/conversacion`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/cursos/frances-empresas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/cursos/intensivos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/cursos/clases-particulares`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/empresas`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/empresas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/test-de-nivel`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/tarifas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/contacto`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
@@ -34,8 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/examen-delf-a2`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/correccion-ia`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/calendario-examenes`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    // DELF/DALF prep (public route)
-    { url: `${BASE_URL}/preparacion-delf-dalf`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // DELF/DALF prep (moved — old /preparacion-delf-dalf entry removed, now under /cursos above)
     // Recursos
     { url: `${BASE_URL}/recursos`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/recursos/guia-delf-dalf`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },

@@ -228,7 +228,7 @@ export default function PoliticaDeCookiesPage() {
             en contacto con nosotros a trav&eacute;s de:
           </p>
           <ul>
-            <li><strong>Correo electr&oacute;nico:</strong> <a href="mailto:hola@holabonjour.es">hola@holabonjour.es</a></li>
+            <li><strong>Correo electr&oacute;nico:</strong> <a href="mailto:info@holabonjour.es">info@holabonjour.es</a></li>
             <li><strong>Tel&eacute;fono:</strong> 685 070 304</li>
           </ul>
 

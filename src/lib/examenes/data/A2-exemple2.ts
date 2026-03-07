@@ -52,6 +52,7 @@ export const examen_A2_exemple2: Examen = {
               enunciado: 'Quelle est la cause de ce retard ?',
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex2-co1-q2.jpg',
               opciones: [
                 { letra: 'A', texto: 'La neige (image : flocons de neige)' },
                 { letra: 'B', texto: 'L\'orage (image : nuages avec pluie et éclairs)' },
@@ -80,6 +81,7 @@ export const examen_A2_exemple2: Examen = {
               enunciado: "Pour avoir plus d'informations, que faut-il faire ?",
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex2-co1-q4.jpg',
               opciones: [
                 { letra: 'A', texto: 'Aller au comptoir (image : comptoir d\'accueil avec employée)' },
                 { letra: 'B', texto: 'Regarder le panneau d\'affichage (image : écrans d\'information)' },
@@ -119,6 +121,7 @@ export const examen_A2_exemple2: Examen = {
               enunciado: 'Le magasin vend…',
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex2-co2-q1.jpg',
               opciones: [
                 { letra: 'A', texto: 'Des chaussures (image : chaussures)' },
                 { letra: 'B', texto: 'Des vêtements (image : vêtements sur cintre)' },
@@ -213,6 +216,7 @@ export const examen_A2_exemple2: Examen = {
               enunciado: "Quelle est la spécialité du salon présentée dans l'émission ?",
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex2-co3-q2.jpg',
               opciones: [
                 { letra: 'A', texto: 'La pâtisserie (image : cupcakes décorés)' },
                 { letra: 'B', texto: 'La cuisine/salade (image : salade composée)' },
@@ -478,6 +482,7 @@ export const examen_A2_exemple2: Examen = {
               enunciado: 'Le petit Ordi est idéal pour les personnes comme…',
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex2-ce3-q3.jpg',
               opciones: [
                 { letra: 'A', texto: 'Une famille (image : famille avec enfants devant ordinateur)' },
                 { letra: 'B', texto: 'Un voyageur (image : personne avec valise et ordinateur)' },

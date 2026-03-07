@@ -97,6 +97,6 @@ export const logo = {
 // ─── Contact ───
 export const contact = {
   phone:    "685 070 304",
-  email:    "hola@holabonjour.es",
+  email:    "info@holabonjour.es",
   whatsapp: "https://wa.me/34685070304",
 } as const;

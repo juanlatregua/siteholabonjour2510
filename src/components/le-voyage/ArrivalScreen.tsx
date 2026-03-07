@@ -208,7 +208,7 @@ export default function ArrivalScreen({
           </Link>
 
           <Link
-            href={`/cursos/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
+            href={`/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
             className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#E50046]/40 bg-[#E50046]/10 px-5 py-2.5 text-sm font-semibold text-[#f1f5f9] transition hover:bg-[#E50046]/20"
           >
             Ver el plan recomendado

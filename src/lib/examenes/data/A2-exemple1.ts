@@ -70,6 +70,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: 'Comment est-ce que vous pouvez avoir des informations ?',
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-co1-q3.jpg',
               opciones: [
                 { letra: 'A', texto: 'Par Internet (image : écran d\'ordinateur avec une page web)' },
                 { letra: 'B', texto: 'Par ordinateur (image : ordinateur de bureau)' },
@@ -98,6 +99,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: "Qu'est-ce que vous devez faire ?",
               puntos: 0.5,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-co1-q5.jpg',
               opciones: [
                 { letra: 'A', texto: 'Prendre l\'avion (image : avion et passagers)' },
                 { letra: 'B', texto: 'Aller à la porte d\'embarquement (image : salle d\'attente aéroport)' },
@@ -113,6 +115,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: "Qu'est-ce qui est moins cher aujourd'hui ?",
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-co1-q6.jpg',
               opciones: [
                 { letra: 'A', texto: 'Le poulet (image : poulet rôti)' },
                 { letra: 'B', texto: 'Les fruits et légumes (image : panier de fruits et légumes)' },
@@ -144,6 +147,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: 'De quelle activité parle la journaliste ?',
               puntos: 0.5,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-co2-q1.jpg',
               opciones: [
                 { letra: 'A', texto: 'Du cinéma (image : salle de cinéma)' },
                 { letra: 'B', texto: 'De la musique (image : pianiste en concert)' },
@@ -211,6 +215,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: 'Quelle activité est proposée ?',
               puntos: 0.5,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-co2-q6.jpg',
               opciones: [
                 { letra: 'A', texto: 'Du cinéma (image : salle de projection)' },
                 { letra: 'B', texto: 'De la piscine (image : piscine extérieure)' },
@@ -255,6 +260,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: 'Quel gâteau Mme Fortin voudrait-elle ?',
               puntos: 2,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-co3-q2.jpg',
               opciones: [
                 { letra: 'A', texto: 'Un gâteau au chocolat (image : gâteau chocolat)' },
                 { letra: 'B', texto: 'Un gâteau nature (image : gâteau marbré)' },
@@ -270,6 +276,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: "Qu'est-ce que Mme Fortin souhaite mettre sur les gâteaux ?",
               puntos: 0.5,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-co3-q3.jpg',
               opciones: [
                 { letra: 'A', texto: 'Des animaux en sucre (image : décorations animaux)' },
                 { letra: 'B', texto: 'Des étoiles (image : étoiles décoratives)' },
@@ -481,6 +488,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: 'Que devez-vous apporter ?',
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-ce2-q4.jpg',
               opciones: [
                 { letra: 'A', texto: 'Des boissons (image : bouteilles de jus)' },
                 { letra: 'B', texto: 'Un gâteau (image : gâteau au chocolat)' },
@@ -496,6 +504,7 @@ export const examen_A2_exemple1: Examen = {
               enunciado: "Qu'est-ce qui est interdit pendant la fête ?",
               puntos: 1,
               esImagen: true,
+              imageUrl: '/examenes/a2/images/strips/a2-ex1-ce2-q5.jpg',
               opciones: [
                 { letra: 'A', texto: 'Les animaux (image : chat et chien)' },
                 { letra: 'B', texto: 'La musique (image : radio avec notes de musique)' },

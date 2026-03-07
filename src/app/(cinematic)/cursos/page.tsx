@@ -26,7 +26,7 @@ const courseTypes = [
     levels: "A1 – C2",
     description:
       "Preparación específica para cada nivel del examen oficial. Simulacros reales, correcciones detalladas y estrategia por prueba.",
-    href: "/cursos/preparacion-delf-dalf",
+    href: "/preparacion-delf-dalf",
   },
   {
     title: "Conversation",

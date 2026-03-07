@@ -98,7 +98,7 @@ export default function PoliticaDePrivacidadPage() {
             <li><strong>Denominaci&oacute;n social:</strong> HBTJ Consultores Ling&uuml;&iacute;sticos S.L.</li>
             <li><strong>CIF:</strong> [CIF de la empresa]</li>
             <li><strong>Domicilio:</strong> [Direcci&oacute;n fiscal de la empresa]</li>
-            <li><strong>Correo electr&oacute;nico:</strong> <a href="mailto:hola@holabonjour.es">hola@holabonjour.es</a></li>
+            <li><strong>Correo electr&oacute;nico:</strong> <a href="mailto:info@holabonjour.es">info@holabonjour.es</a></li>
             <li><strong>Tel&eacute;fono:</strong> 685 070 304</li>
           </ul>
 
@@ -149,7 +149,7 @@ export default function PoliticaDePrivacidadPage() {
           <p>
             Para ejercer cualquiera de estos derechos, puedes dirigirte a nosotros a
             trav&eacute;s del correo electr&oacute;nico{" "}
-            <a href="mailto:hola@holabonjour.es">hola@holabonjour.es</a>, indicando
+            <a href="mailto:info@holabonjour.es">info@holabonjour.es</a>, indicando
             tu nombre completo y el derecho que deseas ejercer. Responderemos en un
             plazo m&aacute;ximo de 30 d&iacute;as.
           </p>

@@ -84,7 +84,7 @@ const organizationSchema = {
   "url": "https://holabonjour.es",
   "logo": "https://holabonjour.es/images/logo-holabonjour-01.svg",
   "telephone": "+34685070304",
-  "email": "hola@holabonjour.es",
+  "email": "info@holabonjour.es",
   "description": "Academia online de francés con profesoras nativas. Clases individuales por Zoom: preparación DELF/DALF, conversación y francés para empresas.",
   "address": {
     "@type": "PostalAddress",

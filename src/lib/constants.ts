@@ -21,5 +21,5 @@ export const TEACHER_EMAILS = [
 export const CONTACT = {
   phone: "685 070 304",
   whatsapp: "https://wa.me/34685070304",
-  email: "hola@holabonjour.es",
+  email: "info@holabonjour.es",
 } as const;

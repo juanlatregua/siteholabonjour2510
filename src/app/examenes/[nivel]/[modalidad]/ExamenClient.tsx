@@ -749,6 +749,15 @@ function PreguntaRender({
           <p style={{ fontSize: "0.9rem", color: C.text, margin: 0, flex: 1, fontWeight: 600 }}>{p.enunciado}</p>
           <span style={{ fontSize: "0.7rem", fontFamily: C.mono, color: C.text3, fontWeight: 600, whiteSpace: "nowrap", paddingTop: 3 }}>{p.puntos} pt{p.puntos > 1 ? "s" : ""}</span>
         </div>
+        {p.imageUrl && (
+          <div style={{ paddingLeft: 34, marginBottom: "0.6rem" }}>
+            <img
+              src={p.imageUrl}
+              alt={p.descripcionImagen || p.enunciado}
+              style={{ maxWidth: "100%", borderRadius: "0.5rem", border: `1px solid ${C.border}` }}
+            />
+          </div>
+        )}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem", paddingLeft: 34 }}>
           {p.opciones.map((o) => {
             const sel = respuesta === o.letra;

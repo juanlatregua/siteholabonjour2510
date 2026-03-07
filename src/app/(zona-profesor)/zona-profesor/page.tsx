@@ -15,6 +15,7 @@ import {
   FiClock,
   FiPackage,
   FiCreditCard,
+  FiFileText,
 } from "react-icons/fi";
 
 const quickLinks = [
@@ -25,6 +26,7 @@ const quickLinks = [
   { href: "/zona-profesor/disponibilidad", label: "Disponibilidad", icon: <FiClock className="h-5 w-5" />, color: "bg-pink-50 text-pink-600" },
   { href: "/zona-profesor/packs", label: "Packs", icon: <FiPackage className="h-5 w-5" />, color: "bg-indigo-50 text-indigo-600" },
   { href: "/zona-profesor/pagos", label: "Pagos", icon: <FiCreditCard className="h-5 w-5" />, color: "bg-teal-50 text-teal-600" },
+  { href: "/zona-profesor/examenes", label: "Mis exámenes", icon: <FiFileText className="h-5 w-5" />, color: "bg-rose-50 text-rose-600" },
 ];
 
 export default async function ZonaProfesorDashboard() {

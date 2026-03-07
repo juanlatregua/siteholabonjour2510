@@ -18,7 +18,7 @@ function wrapEmailHtml(content: string) {
         <hr style="margin:18px 0 12px 0; border:0; border-top:1px solid #e2e8f0;" />
         <p style="margin:0; font-family:Arial, sans-serif; font-size:12px; color:#64748b;">
           HolaBonjour · Academia de francés online · Málaga ·
-          <a href="mailto:hola@holabonjour.es" style="color:#E50046; text-decoration:none;">hola@holabonjour.es</a>
+          <a href="mailto:info@holabonjour.es" style="color:#E50046; text-decoration:none;">info@holabonjour.es</a>
         </p>
       </div>
     </div>
@@ -96,7 +96,7 @@ export async function sendNewBookingStaffEmail(data: {
   totalEur: string;
   packId: string;
 }) {
-  const staffTo = process.env.STAFF_NOTIFICATION_TO || process.env.EMAIL_FROM || "hola@holabonjour.es";
+  const staffTo = process.env.STAFF_NOTIFICATION_TO || process.env.EMAIL_FROM || "info@holabonjour.es";
   const subject = `Nueva reserva: ${data.customerName} — ${data.levelRange} (${data.totalEur} EUR)`;
 
   const html = `
@@ -109,6 +109,33 @@ export async function sendNewBookingStaffEmail(data: {
       <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Importe</td><td>${data.totalEur} EUR</td></tr>
     </table>
     <p><a href="${BRAND_HOME_URL}/zona-profesor" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Abrir zona profesor</a></p>
+  `;
+
+  await sendMail({
+    to: staffTo,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendExamReviewEmail(data: {
+  profesorName: string;
+  titulo: string;
+  nivel: string;
+  previewUrl: string;
+}) {
+  const staffTo = process.env.STAFF_NOTIFICATION_TO || process.env.EMAIL_FROM || "info@holabonjour.es";
+  const subject = `Nuevo modelo de examen para revisión — ${data.nivel} "${data.titulo}"`;
+
+  const html = `
+    <h2>Nuevo modelo de examen para revisión</h2>
+    <p><strong>${data.profesorName}</strong> ha enviado un modelo de examen para revisión:</p>
+    <table style="border-collapse:collapse; margin:12px 0;">
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Título</td><td>${data.titulo}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Nivel</td><td>${data.nivel}</td></tr>
+    </table>
+    <p><a href="${data.previewUrl}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ver preview del examen</a></p>
+    <p>Equipo HolaBonjour</p>
   `;
 
   await sendMail({

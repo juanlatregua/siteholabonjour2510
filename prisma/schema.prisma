@@ -84,6 +84,7 @@ model User {
   assessmentLinks     AssessmentLink[]
   examAttempts        ExamAttempt[]
   preparateurProfile  PreparateurProfile?
+  examenModelos       ExamenModelo[]
 
   @@map("users")
 }
@@ -487,6 +488,28 @@ model PreparateurReview {
 
   @@index([preparateurId])
   @@map("preparateur_reviews")
+}
+
+// ── Exam Builder ──
+
+model ExamenModelo {
+  id         String   @id @default(cuid())
+  titulo     String
+  nivel      String   // A2|B1|B2|C1|C2
+  diploma    String   // DELF|DALF
+  numero     Int
+  status     String   @default("DRAFT") // DRAFT|REVIEW|PUBLISHED
+  esPago     Boolean  @default(true)
+  precio     Int?     // céntimos, null = gratis
+  creadoPor  String
+  profesor   User     @relation(fields: [creadoPor], references: [id])
+  secciones  Json     // SeccionExamen[] completa
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([creadoPor])
+  @@index([nivel, status])
+  @@map("examen_modelos")
 }
 
 model PreparateurApplication {

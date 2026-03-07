@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import GlassCard from "@/components/cinematic/GlassCard";
 import CinematicSection from "@/components/cinematic/CinematicSection";
 import GoldButton from "@/components/cinematic/GoldButton";
-import Particles from "@/components/cinematic/Particles";
-import MorphBlob from "@/components/cinematic/MorphBlob";
 
 export const metadata: Metadata = {
-  title: "Francés corporativo para empresas — HolaBonjour",
+  title: "Francés profesional para empresas | HolaBonjour",
   description:
-    "Programas de francés para empresas: turismo, hostelería, comercio exterior. Formación in-company u online, facturación directa.",
+    "Clases de francés profesional para equipos que trabajan con Francia y los países francófonos. Oracle, ALISS y otras empresas confían en HolaBonjour.",
   alternates: { canonical: "/empresas" },
   openGraph: {
-    title: "Francés corporativo para empresas — HolaBonjour",
+    title: "Francés profesional para empresas | HolaBonjour",
     description:
-      "Programas de francés para empresas: turismo, hostelería, comercio exterior. Formación in-company u online, facturación directa.",
+      "Clases de francés profesional para equipos que trabajan con Francia y los países francófonos. Oracle, ALISS y otras empresas confían en HolaBonjour.",
     url: "https://holabonjour.es/empresas",
     siteName: "HolaBonjour",
     locale: "es_ES",
@@ -21,112 +20,271 @@ export const metadata: Metadata = {
   },
 };
 
-const sectors = [
+const caseStudies = [
   {
-    icon: "\u{1F3E8}",
-    title: "Tourisme Costa del Sol",
+    company: "Oracle",
+    logo: "/images/logo-oracle.png",
+    logoWidth: 120,
+    logoHeight: 67,
+    badge: "Tecnología · Francia",
+    title: "Francés para entornos corporativos internacionales",
     description:
-      "Atención a clientes francófonos en hoteles, restaurantes, actividades turísticas y ocio.",
+      "Preparación lingüística para profesionales que trabajan con equipos, clientes o proveedores en Francia. Vocabulario técnico, reuniones, presentaciones y negociación.",
   },
   {
-    icon: "\u{1F3E0}",
-    title: "Immobilier",
+    company: "ALISS",
+    logo: "/images/logo-aliss.jpg",
+    logoWidth: 80,
+    logoHeight: 80,
+    badge: "Alimentación · Caribe francés",
+    title: "Francés para mercados del Caribe francés",
     description:
-      "Vocabulario inmobiliario para agencias, contratos, visitas a propiedades y negociación.",
-  },
-  {
-    icon: "\u{1F30D}",
-    title: "Commerce extérieur",
-    description:
-      "Presentaciones corporativas, negociación internacional, correspondencia comercial.",
-  },
-  {
-    icon: "\u{1F4CB}",
-    title: "Programme sur mesure",
-    description:
-      "Diseñamos un programa 100% a medida para las necesidades de tu equipo.",
+      "Comunicación profesional adaptada al contexto de Martinica, Guadalupe y Reunión — negociación comercial, correspondencia y atención a clientes francófonos del Caribe.",
   },
 ];
 
-const benefits = [
-  "Facturation directe à l'entreprise",
-  "Possibilité bonification Fundae",
-  "Horaires flexibles",
-  "Suivi et rapports de progression",
-  "Professeurs natifs spécialisés B2B",
+const programFeatures = [
+  {
+    title: "Diagnóstico del equipo",
+    description: "Evaluamos el nivel real de cada persona con un test adaptativo y entrevista oral.",
+  },
+  {
+    title: "Contenido sectorial",
+    description: "Vocabulario y situaciones reales de tu sector: tecnología, alimentación, turismo, comercio exterior.",
+  },
+  {
+    title: "Clases en directo",
+    description: "Por Zoom, con horario flexible. Formato individual o en grupo reducido (máx. 4 personas).",
+  },
+  {
+    title: "Seguimiento y progreso",
+    description: "Informes periódicos para RR.HH. con evolución por competencia y asistencia.",
+  },
 ];
 
 export default function EmpresasPage() {
   return (
-    <div>
-      {/* Hero — fullscreen with marine gradient, Particles + MorphBlob turquoise */}
+    <div style={{ background: "#faf7f2", color: "#1e2d4a" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Francés profesional para empresas",
+            description:
+              "Clases de francés profesional para equipos que trabajan con Francia y los países francófonos.",
+            provider: {
+              "@type": "EducationalOrganization",
+              name: "HolaBonjour",
+              url: "https://holabonjour.es",
+            },
+            areaServed: "ES",
+            serviceType: "Formación de idiomas para empresas",
+          }),
+        }}
+      />
+
+      {/* ── HERO ── */}
       <section
-        className="relative overflow-hidden flex items-center justify-center min-h-screen px-6"
         style={{
-          background:
-            "linear-gradient(135deg, #1b2838 0%, #0d1b2a 50%, #1b3a4b 100%)",
-          color: "var(--cin-text)",
+          position: "relative",
+          padding: "6rem 1.5rem 5rem",
+          textAlign: "center",
+          overflow: "hidden",
         }}
       >
-        <Particles count={50} color="#6ec6ca" />
-        <MorphBlob
-          size={450}
-          color="#6ec6ca"
-          position={{ top: "-10%", left: "-5%" }}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(57,93,159,0.06) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
         />
-        <MorphBlob
-          size={320}
-          color="#6ec6ca"
-          position={{ bottom: "-10%", right: "-8%" }}
-        />
-
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+        <div style={{ position: "relative", zIndex: 1, maxWidth: 800, margin: "0 auto" }}>
+          <p
             style={{
-              fontFamily: "var(--font-display)",
-              color: "#6ec6ca",
+              fontSize: "0.8rem",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#395D9F",
+              marginBottom: "1rem",
             }}
           >
-            Français pour votre entreprise
+            Formación para empresas
+          </p>
+          <h1
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 5vw, 3.2rem)",
+              fontWeight: 700,
+              lineHeight: 1.15,
+              marginBottom: "1.25rem",
+              color: "#1e2d4a",
+            }}
+          >
+            Francés profesional para tu equipo
           </h1>
           <p
-            className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.75)" }}
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.15rem)",
+              lineHeight: 1.65,
+              color: "#3d4a5c",
+              marginBottom: "2.5rem",
+              maxWidth: 640,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
           >
-            Programas de francés corporativo adaptados a tu sector. Formación
-            in-company u online, facturación directa a empresa.
+            Clases online adaptadas al sector y los países con los que trabaja tu empresa
+            — Francia, Bélgica, Caribe francés, Magreb, África francófona
           </p>
+          <GoldButton href="/contacto?tipo=empresa">Solicitar información</GoldButton>
         </div>
       </section>
 
-      {/* Sectors */}
-      <CinematicSection className="py-20 px-6" scene="bordeaux">
-        <div className="mx-auto max-w-5xl">
+      {/* ── CASOS DE USO REALES ── */}
+      <section style={{ padding: "5rem 1.5rem", background: "#f0ede6" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <h2
-            className="text-3xl md:text-4xl font-bold text-center mb-14"
-            style={{ fontFamily: "var(--font-display)", color: "#6ec6ca" }}
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+              fontWeight: 700,
+              textAlign: "center",
+              marginBottom: "1rem",
+              color: "#1e2d4a",
+            }}
           >
-            Secteurs d&apos;activité
+            Empresas que confían en nosotros
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {sectors.map((sector) => (
-              <GlassCard key={sector.title} glow="rgba(110,198,202,0.15)">
-                <div className="text-3xl mb-4">{sector.icon}</div>
-                <h3
-                  className="text-xl font-bold mb-3"
+          <p
+            style={{
+              textAlign: "center",
+              color: "#6b7280",
+              fontSize: "1rem",
+              marginBottom: "3rem",
+              maxWidth: 500,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Casos reales de formación en francés profesional
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+              gap: "1.5rem",
+            }}
+          >
+            {caseStudies.map((cs) => (
+              <GlassCard key={cs.company}>
+                <div
                   style={{
-                    fontFamily: "var(--font-display)",
-                    color: "#6ec6ca",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: "1.25rem",
                   }}
                 >
-                  {sector.title}
+                  <Image
+                    src={cs.logo}
+                    alt={cs.company}
+                    width={cs.logoWidth}
+                    height={cs.logoHeight}
+                    style={{ objectFit: "contain" }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 600,
+                      padding: "0.25rem 0.7rem",
+                      borderRadius: 999,
+                      background: "rgba(57,93,159,0.08)",
+                      border: "1px solid rgba(57,93,159,0.15)",
+                      color: "#395D9F",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {cs.badge}
+                  </span>
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.1rem",
+                    fontWeight: 700,
+                    color: "#1e2d4a",
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  {cs.title}
                 </h3>
                 <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
+                  style={{
+                    fontSize: "0.9rem",
+                    lineHeight: 1.65,
+                    color: "#3d4a5c",
+                    margin: 0,
+                  }}
                 >
-                  {sector.description}
+                  {cs.description}
+                </p>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── QUÉ INCLUYE EL PROGRAMA ── */}
+      <CinematicSection>
+        <div style={{ maxWidth: 1000, margin: "0 auto", padding: "5rem 1.5rem" }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+              fontWeight: 700,
+              textAlign: "center",
+              marginBottom: "3rem",
+              color: "#1e2d4a",
+            }}
+          >
+            ¿Qué incluye el programa para empresas?
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: "1.25rem",
+            }}
+          >
+            {programFeatures.map((feat) => (
+              <GlassCard key={feat.title}>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.05rem",
+                    fontWeight: 700,
+                    color: "#1e2d4a",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {feat.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.88rem",
+                    lineHeight: 1.6,
+                    color: "#6b7280",
+                    margin: 0,
+                  }}
+                >
+                  {feat.description}
                 </p>
               </GlassCard>
             ))}
@@ -134,60 +292,103 @@ export default function EmpresasPage() {
         </div>
       </CinematicSection>
 
-      {/* Benefits */}
-      <CinematicSection className="py-20 px-6" scene="bordeaux">
-        <div className="mx-auto max-w-3xl">
+      {/* ── NIVELES Y MODALIDADES ── */}
+      <section style={{ padding: "5rem 1.5rem", background: "#f0ede6" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <h2
-            className="text-3xl md:text-4xl font-bold text-center mb-10"
-            style={{ fontFamily: "var(--font-display)", color: "#6ec6ca" }}
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+              fontWeight: 700,
+              textAlign: "center",
+              marginBottom: "2.5rem",
+              color: "#1e2d4a",
+            }}
           >
-            Avantages
+            Niveles y modalidades
           </h2>
-          <GlassCard glow="rgba(110,198,202,0.12)">
-            <ul className="space-y-4">
-              {benefits.map((benefit) => (
-                <li
-                  key={benefit}
-                  className="flex items-start gap-3 text-base"
-                  style={{ color: "rgba(255,255,255,0.8)" }}
-                >
-                  <span style={{ color: "#6ec6ca", flexShrink: 0 }}>
-                    &#10003;
-                  </span>
-                  {benefit}
-                </li>
-              ))}
-            </ul>
+          <GlassCard>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "2rem",
+              }}
+            >
+              <div>
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.4rem" }}>
+                  Niveles
+                </p>
+                <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>
+                  Desde A1 hasta C1
+                </p>
+              </div>
+              <div>
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.4rem" }}>
+                  Formato
+                </p>
+                <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>
+                  Individual o grupo (máx. 4)
+                </p>
+              </div>
+              <div>
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.4rem" }}>
+                  Mínimo
+                </p>
+                <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>
+                  10 horas por persona
+                </p>
+              </div>
+              <div>
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.4rem" }}>
+                  Precio
+                </p>
+                <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>
+                  Desde 45 €/hora (grupos)
+                </p>
+              </div>
+            </div>
           </GlassCard>
         </div>
-      </CinematicSection>
+      </section>
 
-      {/* B2B CTA */}
-      <CinematicSection className="py-24 px-6" scene="bordeaux">
-        <div className="mx-auto max-w-3xl text-center">
+      {/* ── CTA FINAL ── */}
+      <CinematicSection>
+        <div
+          style={{
+            maxWidth: 720,
+            margin: "0 auto",
+            padding: "5rem 1.5rem",
+            textAlign: "center",
+          }}
+        >
           <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ fontFamily: "var(--font-display)", color: "#6ec6ca" }}
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+              fontWeight: 700,
+              marginBottom: "1rem",
+              color: "#1e2d4a",
+            }}
           >
-            Demandez votre proposition
+            ¿Tu empresa trabaja con Francia o países francófonos?
           </h2>
           <p
-            className="text-lg mb-10 max-w-xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.65)" }}
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: 1.6,
+              color: "#3d4a5c",
+              marginBottom: "2.5rem",
+              maxWidth: 520,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
           >
-            Envíanos los datos de tu empresa y te preparamos una propuesta a
-            medida.
+            Cuéntanos tu caso y diseñamos un programa a medida
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <GoldButton
-              href="https://wa.me/34685070304?text=Bonjour%2C%20je%20voudrais%20une%20proposition%20pour%20mon%20entreprise"
-            >
-              Solicitar propuesta
-            </GoldButton>
-            <GoldButton href="mailto:hola@holabonjour.es" variant="outline">
-              Écrire par email
-            </GoldButton>
-          </div>
+          <GoldButton href="/contacto?tipo=empresa">
+            Solicitar propuesta
+          </GoldButton>
         </div>
       </CinematicSection>
     </div>

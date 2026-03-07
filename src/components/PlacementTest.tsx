@@ -119,7 +119,7 @@ const PlacementTest = () => {
 
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <Link
-              href={`/cursos/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
+              href={`/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
               className="inline-flex items-center justify-center rounded-xl bg-emerald-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-800"
             >
               Ver plan recomendado

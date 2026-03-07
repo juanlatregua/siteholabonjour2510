@@ -52,7 +52,7 @@ interface SendMailOptions {
 }
 
 export async function sendMail({ to, subject, html, text }: SendMailOptions) {
-  const from = process.env.EMAIL_FROM || "hola@holabonjour.es";
+  const from = process.env.EMAIL_FROM || "info@holabonjour.es";
   const token = await getAccessToken();
 
   const message = {

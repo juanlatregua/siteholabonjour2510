@@ -388,8 +388,8 @@ export default function SobreNosotrosPage() {
             <GoldButton href="https://wa.me/34685070304">
               WhatsApp
             </GoldButton>
-            <GoldButton href="mailto:hola@holabonjour.es" variant="outline">
-              hola@holabonjour.es
+            <GoldButton href="mailto:info@holabonjour.es" variant="outline">
+              info@holabonjour.es
             </GoldButton>
           </div>
         </div>

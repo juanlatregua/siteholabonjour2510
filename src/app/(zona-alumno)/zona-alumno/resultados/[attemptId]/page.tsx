@@ -143,7 +143,7 @@ export default async function ResultadoDetailPage({
           Ver tarifas y contratar
         </Link>
         <Link
-          href={`/cursos/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
+          href={`/preparacion-delf-dalf?nivel=${result.estimatedLevel}`}
           className="inline-flex items-center justify-center rounded-lg border border-[#1e2d4a] px-5 py-2.5 text-sm font-semibold text-[#1e2d4a] hover:bg-[#1e2d4a]/5 transition-colors"
         >
           Ver plan recomendado

@@ -195,6 +195,11 @@ export default async function PreparateurPage({ params }: Props) {
                         Google
                       </span>
                     )}
+                    {r.source === "google" && r.studentId && !r.studentId.startsWith("google-review") && (
+                      <span style={{ fontSize: "0.8rem", color: "#6b7280", fontWeight: 500 }}>
+                        — {r.studentId}
+                      </span>
+                    )}
                   </div>
                   {r.comment && (
                     <p style={{ fontSize: "0.85rem", color: "#3d4a5c", lineHeight: 1.5 }}>

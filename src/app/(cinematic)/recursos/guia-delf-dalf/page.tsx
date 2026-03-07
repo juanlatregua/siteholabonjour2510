@@ -439,7 +439,7 @@ export default function GuiaDelfDalfPage() {
       {/* CTA 1 */}
       <CinematicSection className="py-10 px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <GoldButton href="/cursos/preparacion-delf-dalf">
+          <GoldButton href="/preparacion-delf-dalf">
             Preparate con nosotros
           </GoldButton>
         </div>
@@ -830,7 +830,7 @@ export default function GuiaDelfDalfPage() {
             <GoldButton href="/test-de-nivel">
               Haz el test de nivel
             </GoldButton>
-            <GoldButton href="/cursos/preparacion-delf-dalf" variant="outline">
+            <GoldButton href="/preparacion-delf-dalf" variant="outline">
               Ver curso de preparacion
             </GoldButton>
           </div>
@@ -975,7 +975,7 @@ export default function GuiaDelfDalfPage() {
               preparacion significativamente: cada sesion se adapta 100% a tus
               puntos debiles.
             </p>
-            <GoldButton href="/cursos/preparacion-delf-dalf">
+            <GoldButton href="/preparacion-delf-dalf">
               Descubre nuestro curso de preparacion
             </GoldButton>
           </div>
@@ -1075,7 +1075,7 @@ export default function GuiaDelfDalfPage() {
       {/* CTA 3 */}
       <CinematicSection className="py-10 px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <GoldButton href="/cursos/preparacion-delf-dalf">
+          <GoldButton href="/preparacion-delf-dalf">
             Preparate con nosotros
           </GoldButton>
         </div>
@@ -1214,7 +1214,7 @@ export default function GuiaDelfDalfPage() {
             <GoldButton href="/test-de-nivel">
               Haz el test de nivel
             </GoldButton>
-            <GoldButton href="/cursos/preparacion-delf-dalf" variant="outline">
+            <GoldButton href="/preparacion-delf-dalf" variant="outline">
               Ver curso de preparacion
             </GoldButton>
           </div>
@@ -1291,14 +1291,14 @@ export default function GuiaDelfDalfPage() {
             </a>{" "}
             &middot; Email:{" "}
             <a
-              href="mailto:hola@holabonjour.es"
+              href="mailto:info@holabonjour.es"
               style={{ color: "var(--cin-accent)", textDecoration: "none" }}
             >
-              hola@holabonjour.es
+              info@holabonjour.es
             </a>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <GoldButton href="/cursos/preparacion-delf-dalf">
+            <GoldButton href="/preparacion-delf-dalf">
               Ver curso de preparacion
             </GoldButton>
             <GoldButton href="/test-de-nivel" variant="outline">

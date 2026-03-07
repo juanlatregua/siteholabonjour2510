@@ -31,8 +31,8 @@ const contactMethods = [
   {
     title: "Courriel",
     description: "Te respondemos en menos de 24 horas",
-    detail: "hola@holabonjour.es",
-    href: "mailto:hola@holabonjour.es",
+    detail: "info@holabonjour.es",
+    href: "mailto:info@holabonjour.es",
     cta: "Envoyer un courriel",
   },
   {
@@ -61,7 +61,7 @@ export default function ContactoPage() {
               "name": "HolaBonjour",
               "url": "https://holabonjour.es",
               "telephone": "+34685070304",
-              "email": "hola@holabonjour.es",
+              "email": "info@holabonjour.es",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Málaga",

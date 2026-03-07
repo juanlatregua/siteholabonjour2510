@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import GlassCard from "@/components/cinematic/GlassCard";
 import GoldButton from "@/components/cinematic/GoldButton";
 import CinematicSection from "@/components/cinematic/CinematicSection";
@@ -521,6 +522,96 @@ export default function HomePage() {
           </div>
         </div>
       </CinematicSection>
+
+      {/* ── EMPRESAS ── */}
+      <section style={{ padding: "5rem 1rem", background: "#f0ede6" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+          <h2
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+              fontWeight: 700,
+              marginBottom: "1rem",
+              color: "#1e2d4a",
+            }}
+          >
+            También formamos equipos de empresa
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.6,
+              color: "#6b7280",
+              marginBottom: "2rem",
+              maxWidth: 520,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Francés profesional para empresas que trabajan con Francia y el mundo francófono
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: "2rem",
+              justifyContent: "center",
+              alignItems: "center",
+              flexWrap: "wrap",
+              marginBottom: "2rem",
+            }}
+          >
+            <div
+              style={{
+                padding: "0.75rem 1.5rem",
+                borderRadius: "0.75rem",
+                background: "white",
+                border: "1px solid rgba(30,45,74,0.08)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                src="/images/logo-oracle.png"
+                alt="Oracle"
+                width={100}
+                height={56}
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+            <div
+              style={{
+                padding: "0.75rem 1.5rem",
+                borderRadius: "0.75rem",
+                background: "white",
+                border: "1px solid rgba(30,45,74,0.08)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                src="/images/logo-aliss.jpg"
+                alt="ALISS Alimentos Saludables"
+                width={60}
+                height={60}
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+          </div>
+          <Link
+            href="/empresas"
+            style={{
+              fontSize: "0.95rem",
+              fontWeight: 600,
+              color: "#395D9F",
+              textDecoration: "none",
+            }}
+          >
+            Ver programa para empresas &rarr;
+          </Link>
+        </div>
+      </section>
 
       {/* ── CTA FINAL ── */}
       <section

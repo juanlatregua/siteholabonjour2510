@@ -10,19 +10,39 @@ const ISABELLE_EMAIL =
 
 const GOOGLE_REVIEWS = [
   {
+    studentName: "Alessia Bo",
     rating: 5,
     comment:
-      "Isabelle es una profesora excepcional. Su método de preparación para el DELF B2 es muy eficaz. Aprobé a la primera gracias a su orientación.",
+      "Clases online para la preparación al DALF C2. La profesora Isabelle fue muy amable y profesional.",
+    createdAt: "2024-09-01",
   },
   {
+    studentName: "Irene Sogorb",
     rating: 5,
     comment:
-      "Excelente preparación para el DALF C1. Isabelle conoce perfectamente los criterios del examen y sabe exactamente qué necesitas mejorar.",
+      "He estado un año con Isabelle preparándome para el examen oficial. Isabelle es maravillosa.",
+    createdAt: "2024-09-01",
   },
   {
+    studentName: "Reena Huet",
     rating: 5,
     comment:
-      "Muy recomendable. Clases dinámicas y bien estructuradas. Aprobé el DELF B1 con nota alta después de solo 4 sesiones.",
+      "Isabelle is very welcoming and understanding, has lots of patience to teach french. For me she is the number one.",
+    createdAt: "2018-09-20",
+  },
+  {
+    studentName: "MJ Cano",
+    rating: 5,
+    comment:
+      "La mejor opción para prepararte a tu ritmo. La enseñanza es personalizada, adaptada a tus necesidades.",
+    createdAt: "2018-12-17",
+  },
+  {
+    studentName: "Rosa Cabrera",
+    rating: 5,
+    comment:
+      "El método y las profesoras son excepcionales. Súper recomendada tras mi experiencia con HolaBonjour.",
+    createdAt: "2019-12-01",
   },
 ];
 
@@ -98,26 +118,29 @@ async function main() {
       where: { preparateurId: profile.id, source: "google" },
     });
 
-    if (existingReviews === 0) {
-      for (let i = 0; i < GOOGLE_REVIEWS.length; i++) {
-        const review = GOOGLE_REVIEWS[i];
-        await prisma.preparateurReview.create({
-          data: {
-            preparateurId: profile.id,
-            studentId: "google-review",
-            lessonId: `google-review-${i + 1}`,
-            rating: review.rating,
-            comment: review.comment,
-            source: "google",
-          },
-        });
-      }
-      console.log(`Created ${GOOGLE_REVIEWS.length} Google reviews`);
-    } else {
-      console.log(
-        `Skipped reviews: ${existingReviews} Google reviews already exist`
-      );
+    // Delete existing Google reviews and recreate with real data
+    const deleted = await prisma.preparateurReview.deleteMany({
+      where: { preparateurId: profile.id, source: "google" },
+    });
+    if (deleted.count > 0) {
+      console.log(`Deleted ${deleted.count} old Google reviews`);
     }
+
+    for (let i = 0; i < GOOGLE_REVIEWS.length; i++) {
+      const review = GOOGLE_REVIEWS[i];
+      await prisma.preparateurReview.create({
+        data: {
+          preparateurId: profile.id,
+          studentId: review.studentName,
+          lessonId: `google-review-${review.studentName.toLowerCase().replace(/\s+/g, "-")}`,
+          rating: review.rating,
+          comment: review.comment,
+          source: "google",
+          createdAt: new Date(review.createdAt),
+        },
+      });
+    }
+    console.log(`Created ${GOOGLE_REVIEWS.length} Google reviews`);
 
     console.log("Done!");
   } finally {

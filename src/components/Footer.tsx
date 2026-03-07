@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/correccion-ia", label: "Corrección IA" },
   { href: "/preparacion-delf-dalf", label: "Preparación DELF/DALF" },
   { href: "/tarifas", label: "Tarifas" },
+  { href: "/empresas", label: "Empresas" },
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
   { href: "/contacto", label: "Contacto" },
   { href: "/iniciar-sesion", label: "Acceder" },
@@ -74,8 +75,8 @@ const Footer = () => {
               </a>
             </p>
             <p className={styles.text}>
-              <a href="mailto:hola@holabonjour.es" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-                hola@holabonjour.es
+              <a href="mailto:info@holabonjour.es" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                info@holabonjour.es
               </a>
             </p>
             <p className={styles.text} style={{ marginTop: "0.6rem" }}>

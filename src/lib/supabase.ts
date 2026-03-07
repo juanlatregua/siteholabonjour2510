@@ -40,3 +40,29 @@ export async function deleteMaterial(path: string): Promise<void> {
   const { error } = await getSupabaseAdmin().storage.from(BUCKET).remove([path]);
   if (error) throw new Error(`Delete failed: ${error.message}`);
 }
+
+// ── Generic bucket helpers (for examenes-audio, etc.) ──
+
+export async function uploadFile(
+  file: Buffer,
+  path: string,
+  bucket = BUCKET
+): Promise<{ path: string }> {
+  const { data, error } = await getSupabaseAdmin().storage
+    .from(bucket)
+    .upload(path, file, { upsert: true });
+  if (error) throw new Error(`Upload failed: ${error.message}`);
+  return { path: data.path };
+}
+
+export async function getSignedUrlFromBucket(
+  path: string,
+  bucket = BUCKET,
+  expiresIn = 3600
+): Promise<string> {
+  const { data, error } = await getSupabaseAdmin().storage
+    .from(bucket)
+    .createSignedUrl(path, expiresIn);
+  if (error) throw new Error(`Signed URL failed: ${error.message}`);
+  return data.signedUrl;
+}

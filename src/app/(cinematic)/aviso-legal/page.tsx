@@ -97,7 +97,7 @@ export default function AvisoLegalPage() {
             <li><strong>Denominaci&oacute;n social:</strong> HBTJ Consultores Ling&uuml;&iacute;sticos S.L.</li>
             <li><strong>CIF:</strong> [CIF de la empresa]</li>
             <li><strong>Domicilio social:</strong> [Direcci&oacute;n fiscal de la empresa]</li>
-            <li><strong>Correo electr&oacute;nico:</strong> <a href="mailto:hola@holabonjour.es">hola@holabonjour.es</a></li>
+            <li><strong>Correo electr&oacute;nico:</strong> <a href="mailto:info@holabonjour.es">info@holabonjour.es</a></li>
             <li><strong>Tel&eacute;fono:</strong> 685 070 304</li>
             <li><strong>Sitio web:</strong> <a href="https://holabonjour.es">holabonjour.es</a></li>
             <li><strong>Datos registrales:</strong> [Datos del Registro Mercantil]</li>

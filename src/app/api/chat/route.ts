@@ -67,7 +67,7 @@ const SYSTEM_PROMPT = `Tu es le concierge virtuel de HolaBonjour, une académie 
 
 ### Contacto:
 - WhatsApp: +34 685 070 304
-- Email: hola@holabonjour.es
+- Email: info@holabonjour.es
 - Web: holabonjour.es
 
 ## REGLAS

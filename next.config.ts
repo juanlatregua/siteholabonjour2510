@@ -39,8 +39,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/preparacion-delf-dalf',
-        destination: '/cursos/preparacion-delf-dalf',
+        source: '/cursos/preparacion-delf-dalf',
+        destination: '/preparacion-delf-dalf',
         permanent: true,
       },
       {
@@ -56,7 +56,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/cursos-frances-malaga.html',
-        destination: '/cursos/preparacion-delf-dalf',
+        destination: '/preparacion-delf-dalf',
         permanent: true,
       },
       {

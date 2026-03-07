@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/examenes", label: "Exámenes", badge: "NUEVO" },
   { href: "/preparacion-delf-dalf", label: "Preparación DELF/DALF" },
   { href: "/tarifas", label: "Tarifas" },
+  { href: "/empresas", label: "Empresas" },
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
   { href: "/contacto", label: "Contacto" },
 ];

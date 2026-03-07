@@ -12,7 +12,7 @@ function AzureEmailProvider(): EmailConfig {
     id: "email",
     type: "email",
     name: "Email",
-    from: process.env.EMAIL_FROM || "HolaBonjour <hola@holabonjour.es>",
+    from: process.env.EMAIL_FROM || "HolaBonjour <info@holabonjour.es>",
     maxAge: 24 * 60 * 60,
     async sendVerificationRequest({ identifier: email, url }) {
       const brandUrl = process.env.NEXTAUTH_URL || "https://holabonjour.es";
@@ -42,7 +42,7 @@ function AzureEmailProvider(): EmailConfig {
               <hr style="margin:24px 0 12px;border:0;border-top:1px solid #e2e8f0;" />
               <p style="color:#94a3b8;font-size:12px;">
                 HolaBonjour · Academia de francés online · Málaga ·
-                <a href="mailto:hola@holabonjour.es" style="color:#E50046;text-decoration:none;">hola@holabonjour.es</a>
+                <a href="mailto:info@holabonjour.es" style="color:#E50046;text-decoration:none;">info@holabonjour.es</a>
               </p>
             </div>
           `,

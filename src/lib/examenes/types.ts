@@ -49,6 +49,7 @@ export interface Pregunta {
   // Imagen (CO ejercicios de dibujos)
   esImagen?: boolean
   descripcionImagen?: string
+  imageUrl?: string
   // PO: sujetos alternativos
   sujetosAlternativos?: string[]
   // Contexto adicional
