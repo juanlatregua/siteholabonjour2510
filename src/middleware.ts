@@ -46,10 +46,9 @@ const AUTH_PATHS = ["/iniciar-sesion", "/verificar-email", "/error"];
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Allow public pages, static files, API auth routes, and assessment API
+  // Allow public pages, static files, API auth routes, and public APIs
   if (
     PUBLIC_PATHS.some((p) => pathname === p || pathname.startsWith(`${p}/`)) ||
-    AUTH_PATHS.some((p) => pathname === p) ||
     pathname.startsWith("/api/auth") ||
     pathname.startsWith("/api/assessments") ||
     pathname.startsWith("/api/leads") ||
@@ -69,31 +68,28 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const token = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET,
-  });
+  // Resolve auth token — use both AUTH_SECRET and NEXTAUTH_SECRET for v5 compat
+  const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
+  const token = await getToken({ req: request, secret });
 
-  // Redirect unauthenticated users
+  // Auth pages (login, verify-email, error)
+  if (AUTH_PATHS.some((p) => pathname === p)) {
+    if (token) {
+      // Authenticated user on auth page → redirect to their zone
+      const dest = token.role === "TEACHER" || token.role === "ADMIN"
+        ? "/zona-profesor"
+        : "/zona-alumno";
+      return NextResponse.redirect(new URL(dest, request.url));
+    }
+    // Unauthenticated → allow the auth page to render
+    return NextResponse.next();
+  }
+
+  // Unauthenticated on protected page → redirect to login
   if (!token) {
     const signInUrl = new URL("/iniciar-sesion", request.url);
     signInUrl.searchParams.set("callbackUrl", pathname);
     return NextResponse.redirect(signInUrl);
-  }
-
-  // Authenticated user on auth pages → redirect to their zone
-  if (AUTH_PATHS.some((p) => pathname === p)) {
-    const dest = token.role === "TEACHER" || token.role === "ADMIN"
-      ? "/zona-profesor"
-      : "/zona-alumno";
-    return NextResponse.redirect(new URL(dest, request.url));
-  }
-
-  // Authenticated user on zona-alumno or zona-profesor root → allow
-  // but redirect if callbackUrl is just "/"
-  if (pathname === "/zona-alumno" || pathname === "/zona-profesor") {
-    // Already going to the right place
-    return NextResponse.next();
   }
 
   // Teacher zone: must be TEACHER or ADMIN
