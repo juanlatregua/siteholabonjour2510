@@ -7,7 +7,7 @@ import { BANK } from "@/lib/constants";
 import Card, { CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import EmptyState from "@/components/ui/EmptyState";
-import { FiCreditCard } from "react-icons/fi";
+import { FiCreditCard, FiDownload } from "react-icons/fi";
 
 const statusVariant: Record<string, "warning" | "success" | "danger"> = {
   PENDING: "warning",
@@ -22,6 +22,7 @@ const statusLabel: Record<string, string> = {
 };
 
 const methodLabel: Record<string, string> = {
+  STRIPE: "Tarjeta",
   TRANSFER: "Transferencia",
   BIZUM: "Bizum",
   OTHER: "Otro",
@@ -33,6 +34,7 @@ export default async function PagosPage() {
   const payments = await prisma.payment.findMany({
     where: { studentId: session.user.id },
     orderBy: { createdAt: "desc" },
+    include: { invoice: { select: { id: true, number: true } } },
   });
 
   return (
@@ -67,6 +69,9 @@ export default async function PagosPage() {
                   </th>
                   <th className="whitespace-nowrap px-4 py-3 font-medium text-gray-500">
                     Confirmado
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-3 font-medium text-gray-500">
+                    Factura
                   </th>
                 </tr>
               </thead>
@@ -104,6 +109,21 @@ export default async function PagosPage() {
                             locale: es,
                           })
                         : "-"}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-3">
+                      {payment.invoice ? (
+                        <a
+                          href={`/api/zona-alumno/facturas/${payment.invoice.id}/pdf`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-sm font-medium text-[#E50046] hover:underline"
+                        >
+                          <FiDownload className="h-3.5 w-3.5" />
+                          {payment.invoice.number}
+                        </a>
+                      ) : (
+                        <span className="text-gray-400">-</span>
+                      )}
                     </td>
                   </tr>
                 ))}

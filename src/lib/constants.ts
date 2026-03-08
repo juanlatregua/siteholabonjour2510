@@ -3,11 +3,12 @@ export const BANK = {
   holder: "HBTJ Consultores Lingüísticos S.L.",
   iban: "ES66 0182 3370 67 0201616991",
   bic: "BBVAESMM",
+  bizumPhone: "654 366 320",
 } as const;
 
 // Pack pricing
 export const PRICING = {
-  "A1-B2": { hours: 4, price: 140 },
+  "A1-B2": { hours: 4, price: 150 },
   "C1-C2": { hours: 4, price: 200 },
 } as const;
 

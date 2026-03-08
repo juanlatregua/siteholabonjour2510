@@ -133,6 +133,15 @@ export async function PATCH(
     return updatedLesson;
   });
 
+  // Delete Zoom meeting if lesson is cancelled and has a zoomMeetingId
+  if (isCancelling && lesson.zoomMeetingId) {
+    import("@/lib/zoom").then(({ deleteZoomMeeting }) => {
+      deleteZoomMeeting(lesson.zoomMeetingId!).catch((err) =>
+        console.error("[clases] Zoom delete failed:", err)
+      );
+    });
+  }
+
   // Send notifications for late cancellation (fire-and-forget, don't block response)
   if (isLateCancellation && lesson.student) {
     const dateStr = format(lesson.scheduledAt, "EEEE d 'de' MMMM, HH:mm", { locale: es });

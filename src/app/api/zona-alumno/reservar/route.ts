@@ -130,8 +130,19 @@ export async function POST(request: NextRequest) {
     orderBy: { purchasedAt: "desc" },
   });
 
+  if (!activePack) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "NO_ACTIVE_PACK",
+        message: "Necesitas un pack activo para reservar clases.",
+      },
+      { status: 400 }
+    );
+  }
+
   // Validate pack has remaining hours
-  if (activePack && activePack.hoursUsed + 1 > activePack.hoursTotal) {
+  if (activePack.hoursUsed + 1 > activePack.hoursTotal) {
     return NextResponse.json(
       {
         ok: false,
@@ -143,11 +154,11 @@ export async function POST(request: NextRequest) {
   }
 
   // Create the lesson
-  const lesson = await prisma.lesson.create({
+  let lesson = await prisma.lesson.create({
     data: {
       studentId: session.user.id,
       teacherId,
-      packId: activePack?.id ?? null,
+      packId: activePack.id,
       scheduledAt,
       durationMinutes: 60,
       status: "SCHEDULED",
@@ -157,10 +168,50 @@ export async function POST(request: NextRequest) {
   });
 
   // Increment hours used on the pack
-  if (activePack) {
-    await prisma.pack.update({
-      where: { id: activePack.id },
-      data: { hoursUsed: { increment: 1 } },
+  await prisma.pack.update({
+    where: { id: activePack.id },
+    data: { hoursUsed: { increment: 1 } },
+  });
+
+  // Create Zoom meeting (non-blocking — class still created if Zoom fails)
+  try {
+    const { createZoomMeeting } = await import("@/lib/zoom");
+    const studentData = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      select: { name: true },
+    });
+    const zoom = await createZoomMeeting({
+      topic: `Clase HolaBonjour — ${studentData?.name || "Alumno"}`,
+      startTime: scheduledAt,
+      durationMinutes: 60,
+    });
+    lesson = await prisma.lesson.update({
+      where: { id: lesson.id },
+      data: {
+        zoomLink: zoom.joinUrl,
+        zoomMeetingId: zoom.meetingId,
+        zoomStartUrl: zoom.startUrl,
+      },
+    });
+  } catch (err) {
+    console.error("[reservar] Zoom meeting creation failed:", err);
+  }
+
+  // Send confirmation email (fire-and-forget)
+  const student = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { email: true, name: true },
+  });
+
+  if (student?.email) {
+    import("@/lib/email").then(({ sendClassReminderEmail }) => {
+      sendClassReminderEmail({
+        toEmail: student.email,
+        customerName: student.name || "Alumno",
+        date,
+        time,
+        zoomLink: lesson.zoomLink || undefined,
+      }).catch(() => {});
     });
   }
 

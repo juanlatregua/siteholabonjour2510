@@ -81,6 +81,7 @@ model User {
   teacherAvailability Availability[]
   uploadedMaterials   Material[]     @relation("UploadedMaterials")
 
+  invoices            Invoice[]
   assessmentLinks     AssessmentLink[]
   examAttempts        ExamAttempt[]
   preparateurProfile  PreparateurProfile?
@@ -117,7 +118,9 @@ model Lesson {
   scheduledAt     DateTime
   durationMinutes Int      @default(60)
   zoomLink        String?
-  status          String   @default("SCHEDULED") // SCHEDULED | COMPLETED | CANCELLED | NO_SHOW
+  zoomMeetingId   String?
+  zoomStartUrl    String?
+  status          String   @default("SCHEDULED") // SCHEDULED | COMPLETED | CANCELLED | NO_SHOW | PENDING_PAYMENT
   focus           String?
   notes           String?
   studentFeedback String?
@@ -171,11 +174,35 @@ model Payment {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
-  student User  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  pack    Pack? @relation(fields: [packId], references: [id])
+  student User     @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  pack    Pack?    @relation(fields: [packId], references: [id])
+  invoice Invoice?
 
   @@index([studentId])
   @@map("payments")
+}
+
+model Invoice {
+  id           String   @id @default(cuid())
+  number       String   @unique // HB-2026-0001
+  paymentId    String   @unique
+  studentId    String
+  studentName  String
+  studentEmail String
+  concept      String
+  baseAmount   Float
+  ivaRate      Float    @default(21)
+  ivaAmount    Float
+  totalAmount  Float
+  storagePath  String?
+  issuedAt     DateTime @default(now())
+  createdAt    DateTime @default(now())
+
+  payment Payment @relation(fields: [paymentId], references: [id])
+  student User    @relation(fields: [studentId], references: [id])
+
+  @@index([studentId])
+  @@map("invoices")
 }
 
 model Availability {

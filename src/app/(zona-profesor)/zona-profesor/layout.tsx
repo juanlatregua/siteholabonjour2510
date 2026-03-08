@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { requireTeacher, getCurrentUser } from "@/lib/auth-helpers";
 import ZonaSidebar from "@/components/zona/ZonaSidebar";
 import ZonaTopbar from "@/components/zona/ZonaTopbar";
-import { FiHome, FiUsers, FiBook, FiCalendar, FiFolder, FiClock, FiPackage, FiCreditCard, FiEdit3, FiFileText } from "react-icons/fi";
+import { FiHome, FiUsers, FiBook, FiCalendar, FiFolder, FiClock, FiPackage, FiCreditCard, FiEdit3, FiFileText, FiBarChart2 } from "react-icons/fi";
 
 const teacherLinks = [
   { href: "/zona-profesor", label: "Dashboard", icon: <FiHome /> },
@@ -16,6 +16,7 @@ const teacherLinks = [
   { href: "/zona-profesor/disponibilidad", label: "Disponibilidad", icon: <FiClock /> },
   { href: "/zona-profesor/packs", label: "Packs", icon: <FiPackage /> },
   { href: "/zona-profesor/pagos", label: "Pagos", icon: <FiCreditCard /> },
+  { href: "/zona-profesor/contabilidad", label: "Contabilidad", icon: <FiBarChart2 /> },
 ];
 
 export default async function ZonaProfesorLayout({ children }: { children: React.ReactNode }) {

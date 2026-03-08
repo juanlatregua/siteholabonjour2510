@@ -16,6 +16,7 @@ import {
   FiPackage,
   FiCreditCard,
   FiFileText,
+  FiBarChart2,
 } from "react-icons/fi";
 
 const quickLinks = [
@@ -26,6 +27,7 @@ const quickLinks = [
   { href: "/zona-profesor/disponibilidad", label: "Disponibilidad", icon: <FiClock className="h-5 w-5" />, color: "bg-pink-50 text-pink-600" },
   { href: "/zona-profesor/packs", label: "Packs", icon: <FiPackage className="h-5 w-5" />, color: "bg-indigo-50 text-indigo-600" },
   { href: "/zona-profesor/pagos", label: "Pagos", icon: <FiCreditCard className="h-5 w-5" />, color: "bg-teal-50 text-teal-600" },
+  { href: "/zona-profesor/contabilidad", label: "Contabilidad", icon: <FiBarChart2 className="h-5 w-5" />, color: "bg-orange-50 text-orange-600" },
   { href: "/zona-profesor/examenes", label: "Mis exámenes", icon: <FiFileText className="h-5 w-5" />, color: "bg-rose-50 text-rose-600" },
 ];
 
@@ -41,7 +43,7 @@ export default async function ZonaProfesorDashboard() {
   const todayEnd = new Date();
   todayEnd.setHours(23, 59, 59, 999);
 
-  const [studentCount, todayLessons, upcomingLessons, weekLessons] = await Promise.all([
+  const [studentCount, todayLessons, upcomingLessons, weekLessons, pendingPayments] = await Promise.all([
     prisma.user.count({
       where: { coachId: teacherId },
     }),
@@ -75,6 +77,12 @@ export default async function ZonaProfesorDashboard() {
           lte: todayEnd,
         },
         status: "COMPLETED",
+      },
+    }),
+    prisma.payment.count({
+      where: {
+        status: "PENDING",
+        method: { in: ["BIZUM", "TRANSFER"] },
       },
     }),
   ]);
@@ -122,6 +130,21 @@ export default async function ZonaProfesorDashboard() {
             <p className="mt-1 text-2xl font-bold text-gray-900">{weekLessons}</p>
           </CardContent>
         </Card>
+        {pendingPayments > 0 && (
+          <Link href="/zona-profesor/pagos">
+            <Card>
+              <CardContent>
+                <p className="text-sm text-gray-500">Pagos pendientes</p>
+                <div className="mt-1 flex items-center gap-2">
+                  <p className="text-2xl font-bold text-amber-600">{pendingPayments}</p>
+                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
+                    Pendiente
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        )}
       </div>
 
       {/* Today's lessons + Upcoming */}
