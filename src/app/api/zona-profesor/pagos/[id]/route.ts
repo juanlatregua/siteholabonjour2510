@@ -33,20 +33,16 @@ export async function PATCH(
 
   const payment = await prisma.payment.findUnique({
     where: { id },
-    include: { student: { select: { coachId: true } } },
+    include: {
+      student: { select: { id: true, name: true, email: true, phone: true, coachId: true } },
+      pack: true,
+    },
   });
 
   if (!payment) {
     return NextResponse.json(
       { ok: false, error: "NOT_FOUND", message: "Pago no encontrado" },
       { status: 404 }
-    );
-  }
-
-  if (payment.student.coachId !== session.user.id) {
-    return NextResponse.json(
-      { ok: false, error: "FORBIDDEN", message: "No tienes permiso para editar este pago" },
-      { status: 403 }
     );
   }
 
@@ -73,15 +69,123 @@ export async function PATCH(
     );
   }
 
-  const data: Record<string, unknown> = { status: parsed.data.status };
   if (parsed.data.status === "CONFIRMED") {
-    data.confirmedAt = new Date();
+    // Update payment
+    const updated = await prisma.payment.update({
+      where: { id },
+      data: { status: "CONFIRMED", confirmedAt: new Date() },
+    });
+
+    // Activate pack
+    if (payment.packId) {
+      await prisma.pack.update({
+        where: { id: payment.packId },
+        data: { status: "ACTIVE", purchasedAt: new Date() },
+      });
+
+      // Confirm PENDING_PAYMENT lessons → SCHEDULED
+      const pendingLessons = await prisma.lesson.findMany({
+        where: { packId: payment.packId, status: "PENDING_PAYMENT" },
+      });
+
+      for (const lesson of pendingLessons) {
+        await prisma.lesson.update({
+          where: { id: lesson.id },
+          data: { status: "SCHEDULED" },
+        });
+
+        // Create Zoom meeting if lesson has no link
+        if (!lesson.zoomLink) {
+          try {
+            const { createZoomMeeting } = await import("@/lib/zoom");
+            const zoom = await createZoomMeeting({
+              topic: `Clase HolaBonjour — ${payment.student.name || "Alumno"}`,
+              startTime: lesson.scheduledAt,
+              durationMinutes: lesson.durationMinutes,
+            });
+            await prisma.lesson.update({
+              where: { id: lesson.id },
+              data: {
+                zoomLink: zoom.joinUrl,
+                zoomMeetingId: zoom.meetingId,
+                zoomStartUrl: zoom.startUrl,
+              },
+            });
+          } catch (err) {
+            console.error("[pagos] Zoom creation failed:", err);
+          }
+        }
+      }
+    }
+
+    // Generate invoice (non-blocking)
+    import("@/lib/factura").then(({ createAndStoreInvoice }) => {
+      createAndStoreInvoice(payment.id).catch((err: unknown) =>
+        console.error("[pagos] Invoice generation failed:", err)
+      );
+    });
+
+    // Email + SMS confirmation to student (fire-and-forget)
+    const levelRange = payment.pack?.levelRange || "Pack";
+    const totalEur = payment.amount.toFixed(2);
+
+    Promise.allSettled([
+      import("@/lib/email").then(({ sendPaymentConfirmationEmail }) =>
+        sendPaymentConfirmationEmail({
+          toEmail: payment.student.email,
+          customerName: payment.student.name || "Alumno",
+          levelRange,
+          totalEur,
+        })
+      ),
+      payment.student.phone
+        ? import("@/lib/sms").then(({ sendNotification }) =>
+            import("@/lib/sms-templates").then(({ smsPagoConfirmado }) =>
+              sendNotification({
+                to: payment.student.phone!,
+                body: smsPagoConfirmado({
+                  nombre: (payment.student.name || "").split(" ")[0] || "Alumno",
+                  nivel: levelRange,
+                  importe: totalEur,
+                }),
+              })
+            )
+          )
+        : Promise.resolve(),
+    ]).catch(() => {});
+
+    return NextResponse.json({ ok: true, payment: updated });
   }
 
-  const updated = await prisma.payment.update({
-    where: { id },
-    data,
-  });
+  if (parsed.data.status === "REJECTED") {
+    const updated = await prisma.payment.update({
+      where: { id },
+      data: { status: "REJECTED" },
+    });
 
-  return NextResponse.json({ ok: true, payment: updated });
+    // Cancel pack
+    if (payment.packId) {
+      await prisma.pack.update({
+        where: { id: payment.packId },
+        data: { status: "CANCELLED" },
+      });
+
+      // Delete PENDING_PAYMENT lessons
+      await prisma.lesson.deleteMany({
+        where: { packId: payment.packId, status: "PENDING_PAYMENT" },
+      });
+    }
+
+    // Notify student (fire-and-forget)
+    import("@/lib/email").then(({ sendPaymentRejectedEmail }) => {
+      sendPaymentRejectedEmail({
+        toEmail: payment.student.email,
+        customerName: payment.student.name || "Alumno",
+      }).catch(() => {});
+    });
+
+    return NextResponse.json({ ok: true, payment: updated });
+  }
+
+  return NextResponse.json({ ok: false, error: "INVALID_STATUS" }, { status: 400 });
 }

@@ -80,8 +80,10 @@ export async function POST(req: NextRequest) {
         where: { packId, status: "PENDING_PAYMENT" },
       });
 
+      let confirmedLesson: { id: string; scheduledAt: Date; durationMinutes: number; zoomLink: string | null; studentId: string } | null = null;
+
       if (pendingLesson) {
-        await prisma.lesson.update({
+        confirmedLesson = await prisma.lesson.update({
           where: { id: pendingLesson.id },
           data: { status: "SCHEDULED" },
         });
@@ -95,7 +97,7 @@ export async function POST(req: NextRequest) {
           );
           const isDiagnostico = session.metadata.producto === "diagnostico";
 
-          await prisma.lesson.create({
+          confirmedLesson = await prisma.lesson.create({
             data: {
               studentId: pack.studentId,
               teacherId: teacher.id,
@@ -110,6 +112,42 @@ export async function POST(req: NextRequest) {
         } catch (lessonErr) {
           console.error("[stripe-webhook] Fallback lesson creation failed:", lessonErr);
         }
+      }
+
+      // Create Zoom meeting if lesson has no link yet
+      if (confirmedLesson && !confirmedLesson.zoomLink) {
+        try {
+          const { createZoomMeeting } = await import("@/lib/zoom");
+          const studentUser = await prisma.user.findUnique({
+            where: { id: confirmedLesson.studentId },
+            select: { name: true },
+          });
+          const zoom = await createZoomMeeting({
+            topic: `Clase HolaBonjour — ${studentUser?.name || "Alumno"}`,
+            startTime: confirmedLesson.scheduledAt,
+            durationMinutes: confirmedLesson.durationMinutes,
+          });
+          await prisma.lesson.update({
+            where: { id: confirmedLesson.id },
+            data: {
+              zoomLink: zoom.joinUrl,
+              zoomMeetingId: zoom.meetingId,
+              zoomStartUrl: zoom.startUrl,
+            },
+          });
+          console.log(`[stripe-webhook] Zoom meeting created for lesson ${confirmedLesson.id}`);
+        } catch (zoomErr) {
+          console.error("[stripe-webhook] Zoom creation failed:", zoomErr);
+        }
+      }
+
+      // Generate invoice (non-blocking)
+      if (payment) {
+        import("@/lib/factura").then(({ createAndStoreInvoice }) => {
+          createAndStoreInvoice(payment.id).catch((err: unknown) =>
+            console.error("[stripe-webhook] Invoice generation failed:", err)
+          );
+        });
       }
 
       const user = await prisma.user.findUnique({ where: { id: pack.studentId } });

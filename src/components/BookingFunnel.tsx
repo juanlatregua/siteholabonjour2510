@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import PublicSlotPicker from "@/components/booking/PublicSlotPicker";
 
 const PACKS = [
@@ -22,8 +22,18 @@ interface PreparateurInfo {
   certificationVerified: boolean;
 }
 
+type PaymentMethod = "card" | "bizum" | "transfer";
+
+const BANK_INFO = {
+  holder: "HBTJ Consultores Lingüísticos S.L.",
+  iban: "ES66 0182 3370 67 0201616991",
+  bic: "BBVAESMM",
+  bizumPhone: "654 366 320",
+};
+
 export default function BookingFunnel() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const productoParam = searchParams.get("producto"); // "diagnostico" or null
   const nivelParam = searchParams.get("nivel");       // e.g. "B2"
   const preparateurSlug = searchParams.get("preparateur"); // e.g. "isabelle-guitton"
@@ -39,6 +49,8 @@ export default function BookingFunnel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [prepInfo, setPrepInfo] = useState<PreparateurInfo | null>(null);
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card");
+  const [manualReference, setManualReference] = useState("");
 
   // Fetch preparateur info
   useEffect(() => {
@@ -108,6 +120,43 @@ export default function BookingFunnel() {
       if (data.checkoutUrl) {
         window.location.href = data.checkoutUrl;
       }
+    } catch {
+      setError("Error de conexión. Inténtalo de nuevo.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleManualPayment = async () => {
+    if (!canProceedStep2) return;
+    if (!isDiagnostico && !level) return;
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/booking/manual", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          level: isDiagnostico ? (level || "B1") : level,
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim() || undefined,
+          selectedDate,
+          selectedTime,
+          method: paymentMethod === "bizum" ? "BIZUM" : "TRANSFER",
+          reference: manualReference.trim() || undefined,
+          producto: isDiagnostico ? "diagnostico" : undefined,
+          preparateurSlug: prepInfo?.slug || undefined,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Error al registrar el pago.");
+        return;
+      }
+      router.push("/confirmacion?pending=true");
     } catch {
       setError("Error de conexión. Inténtalo de nuevo.");
     } finally {
@@ -350,6 +399,84 @@ export default function BookingFunnel() {
               </p>
             </div>
           </div>
+
+          {/* Payment method selector */}
+          <div>
+            <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#1e2d4a", marginBottom: "0.5rem" }}>Método de pago</h3>
+            <div style={{ display: "flex", gap: "0.5rem" }}>
+              {(["card", "bizum", "transfer"] as const).map((m) => (
+                <button
+                  key={m} type="button" onClick={() => setPaymentMethod(m)}
+                  style={{
+                    flex: 1, padding: "0.6rem 0.5rem", borderRadius: "0.75rem", textAlign: "center",
+                    border: paymentMethod === m ? "2px solid #E50046" : "1px solid rgba(30,45,74,0.12)",
+                    background: paymentMethod === m ? "rgba(229,0,70,0.06)" : "#ffffff",
+                    color: paymentMethod === m ? "#E50046" : "#3d4a5c",
+                    fontWeight: 600, fontSize: "0.85rem", cursor: "pointer",
+                  }}
+                >
+                  {m === "card" ? "Tarjeta" : m === "bizum" ? "Bizum" : "Transferencia"}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Bizum info */}
+          {paymentMethod === "bizum" && (
+            <div style={{
+              borderRadius: "0.75rem", padding: "1rem", fontSize: "0.85rem",
+              background: "rgba(57,93,159,0.04)", border: "1px solid rgba(57,93,159,0.15)",
+            }}>
+              <p style={{ fontWeight: 700, color: "#1e2d4a", marginBottom: "0.5rem" }}>Envía el Bizum a:</p>
+              <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#395D9F", letterSpacing: "0.05em" }}>{BANK_INFO.bizumPhone}</p>
+              <p style={{ color: "#6b7280", marginTop: "0.25rem" }}>Concepto: tu nombre + email</p>
+              <div style={{ marginTop: "0.75rem" }}>
+                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "#1e2d4a", marginBottom: "0.25rem" }}>
+                  Referencia Bizum (opcional)
+                </label>
+                <input
+                  type="text" value={manualReference} onChange={(e) => setManualReference(e.target.value)}
+                  placeholder="Referencia o nº operación"
+                  style={{
+                    width: "100%", padding: "0.5rem 0.75rem", borderRadius: "0.5rem",
+                    border: "1px solid rgba(30,45,74,0.15)", fontSize: "0.85rem",
+                  }}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Transfer info */}
+          {paymentMethod === "transfer" && (
+            <div style={{
+              borderRadius: "0.75rem", padding: "1rem", fontSize: "0.85rem",
+              background: "rgba(57,93,159,0.04)", border: "1px solid rgba(57,93,159,0.15)",
+            }}>
+              <p style={{ fontWeight: 700, color: "#1e2d4a", marginBottom: "0.5rem" }}>Datos bancarios:</p>
+              <table style={{ fontSize: "0.85rem", borderCollapse: "collapse" }}>
+                <tbody>
+                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#6b7280" }}>Titular:</td><td style={{ color: "#1e2d4a" }}>{BANK_INFO.holder}</td></tr>
+                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#6b7280" }}>IBAN:</td><td style={{ fontFamily: "monospace", color: "#1e2d4a" }}>{BANK_INFO.iban}</td></tr>
+                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#6b7280" }}>BIC:</td><td style={{ fontFamily: "monospace", color: "#1e2d4a" }}>{BANK_INFO.bic}</td></tr>
+                </tbody>
+              </table>
+              <p style={{ color: "#6b7280", marginTop: "0.5rem" }}>Concepto: tu nombre + email</p>
+              <div style={{ marginTop: "0.75rem" }}>
+                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "#1e2d4a", marginBottom: "0.25rem" }}>
+                  Referencia transferencia (opcional)
+                </label>
+                <input
+                  type="text" value={manualReference} onChange={(e) => setManualReference(e.target.value)}
+                  placeholder="Referencia bancaria"
+                  style={{
+                    width: "100%", padding: "0.5rem 0.75rem", borderRadius: "0.5rem",
+                    border: "1px solid rgba(30,45,74,0.15)", fontSize: "0.85rem",
+                  }}
+                />
+              </div>
+            </div>
+          )}
+
           <div style={{
             borderRadius: "0.75rem", padding: "1rem", fontSize: "0.85rem",
             background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.2)", color: "#b45309",
@@ -364,20 +491,42 @@ export default function BookingFunnel() {
               {error}
             </p>
           )}
-          <button
-            type="button" disabled={loading} onClick={handleCheckout}
-            style={{
-              width: "100%", padding: "0.8rem", borderRadius: "0.75rem",
-              background: loading ? "rgba(16,185,129,0.4)" : "#10b981",
-              color: "white", border: "none", fontWeight: 700, fontSize: "0.95rem",
-              cursor: loading ? "default" : "pointer",
-            }}
-          >
-            {loading ? "Procesando..." : `Pagar ${pack.totalEur} € con tarjeta`}
-          </button>
-          <p style={{ textAlign: "center", fontSize: "0.75rem", color: "#9ca3af" }}>
-            Serás redirigido a Stripe para completar el pago.
-          </p>
+
+          {paymentMethod === "card" ? (
+            <>
+              <button
+                type="button" disabled={loading} onClick={handleCheckout}
+                style={{
+                  width: "100%", padding: "0.8rem", borderRadius: "0.75rem",
+                  background: loading ? "rgba(16,185,129,0.4)" : "#10b981",
+                  color: "white", border: "none", fontWeight: 700, fontSize: "0.95rem",
+                  cursor: loading ? "default" : "pointer",
+                }}
+              >
+                {loading ? "Procesando..." : `Pagar ${pack.totalEur} € con tarjeta`}
+              </button>
+              <p style={{ textAlign: "center", fontSize: "0.75rem", color: "#9ca3af" }}>
+                Serás redirigido a Stripe para completar el pago.
+              </p>
+            </>
+          ) : (
+            <>
+              <button
+                type="button" disabled={loading} onClick={handleManualPayment}
+                style={{
+                  width: "100%", padding: "0.8rem", borderRadius: "0.75rem",
+                  background: loading ? "rgba(57,93,159,0.4)" : "#395D9F",
+                  color: "white", border: "none", fontWeight: 700, fontSize: "0.95rem",
+                  cursor: loading ? "default" : "pointer",
+                }}
+              >
+                {loading ? "Procesando..." : paymentMethod === "bizum" ? "He pagado por Bizum" : "He realizado la transferencia"}
+              </button>
+              <p style={{ textAlign: "center", fontSize: "0.75rem", color: "#9ca3af" }}>
+                Confirmaremos tu pago en menos de 24h.
+              </p>
+            </>
+          )}
         </div>
       )}
     </div>

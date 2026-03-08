@@ -95,9 +95,16 @@ export async function sendNewBookingStaffEmail(data: {
   levelRange: string;
   totalEur: string;
   packId: string;
+  zoomJoinUrl?: string;
+  zoomStartUrl?: string;
 }) {
   const staffTo = process.env.STAFF_NOTIFICATION_TO || process.env.EMAIL_FROM || "info@holabonjour.es";
   const subject = `Nueva reserva: ${data.customerName} — ${data.levelRange} (${data.totalEur} EUR)`;
+
+  const zoomHtml = data.zoomStartUrl
+    ? `<tr><td style="padding:4px 12px 4px 0; font-weight:600;">Zoom (host)</td><td><a href="${data.zoomStartUrl}" style="color:#E50046;">Iniciar reunión</a></td></tr>
+       <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Zoom (alumno)</td><td><a href="${data.zoomJoinUrl}" style="color:#395D9F;">${data.zoomJoinUrl}</a></td></tr>`
+    : "";
 
   const html = `
     <h2>Nueva reserva</h2>
@@ -107,12 +114,68 @@ export async function sendNewBookingStaffEmail(data: {
       <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Teléfono</td><td>${data.customerPhone || "-"}</td></tr>
       <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Nivel</td><td>${data.levelRange}</td></tr>
       <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Importe</td><td>${data.totalEur} EUR</td></tr>
+      ${zoomHtml}
     </table>
     <p><a href="${BRAND_HOME_URL}/zona-profesor" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Abrir zona profesor</a></p>
   `;
 
   await sendMail({
     to: staffTo,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendManualPaymentPendingEmail(data: {
+  customerName: string;
+  customerEmail: string;
+  method: string;
+  reference?: string;
+  totalEur: string;
+  levelRange: string;
+}) {
+  const staffTo = process.env.STAFF_NOTIFICATION_TO || process.env.EMAIL_FROM || "info@holabonjour.es";
+  const subject = `Pago manual pendiente: ${data.customerName} — ${data.method} (${data.totalEur} EUR)`;
+
+  const html = `
+    <h2>Nuevo pago manual pendiente</h2>
+    <table style="border-collapse:collapse; margin:12px 0;">
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Alumno</td><td>${data.customerName}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Email</td><td>${data.customerEmail}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Método</td><td>${data.method}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Referencia</td><td>${data.reference || "-"}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Nivel</td><td>${data.levelRange}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Importe</td><td>${data.totalEur} EUR</td></tr>
+    </table>
+    <p style="padding:10px; background:#fef3c7; border:1px solid #fbbf24; border-radius:8px; font-size:13px;">
+      <strong>Acción requerida:</strong> Confirma el pago desde la zona profesor → Pagos.
+    </p>
+    <p><a href="${BRAND_HOME_URL}/zona-profesor/pagos" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ir a Pagos</a></p>
+  `;
+
+  await sendMail({
+    to: staffTo,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendPaymentRejectedEmail(data: {
+  toEmail: string;
+  customerName: string;
+  reason?: string;
+}) {
+  const subject = "Pago no verificado — HolaBonjour";
+  const html = `
+    <h2>Pago no verificado</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>No hemos podido verificar tu pago. ${data.reason || "Por favor, contacta con nosotros para más información."}</p>
+    <p><a href="mailto:info@holabonjour.es" style="color:#E50046; font-weight:600;">info@holabonjour.es</a></p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
     subject,
     html: wrapEmailHtml(html),
   });
