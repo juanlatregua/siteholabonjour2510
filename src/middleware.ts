@@ -4,6 +4,33 @@ import { authConfig } from "@/lib/auth.config";
 
 const { auth } = NextAuth(authConfig);
 
+// Legacy .html and prefix redirects — handled before auth
+const LEGACY_REDIRECTS: [RegExp | string, string][] = [
+  ["/phone/", "/"],
+  ["/tablet/", "/"],
+  ["/horarios-clases-frances-malaga.html", "/contratar"],
+  ["/cursos-frances-malaga.html", "/preparacion-delf-dalf"],
+  ["/precios-curso-frances-malaga.html", "/contratar"],
+  ["/aprende-frances-conocenos.html", "/sobre-nosotros"],
+  ["/preguntas-frecuentes.html", "/preguntas-frecuentes"],
+  ["/envio-ok.html", "/"],
+  ["/politica-de-privacidad.html", "/politica-de-privacidad"],
+  ["/aviso-legal.html", "/aviso-legal"],
+  ["/testdelfa1.html", "/examenes/a1/1"],
+  ["/contacto.html", "/contacto"],
+];
+
+function matchLegacyRedirect(pathname: string): string | null {
+  for (const [source, dest] of LEGACY_REDIRECTS) {
+    if (typeof source === "string" && (pathname === source || pathname.startsWith(source))) {
+      return dest;
+    }
+  }
+  // Catch-all: any remaining .html → home
+  if (pathname.endsWith(".html")) return "/";
+  return null;
+}
+
 const PUBLIC_PATHS = [
   "/", "/prueba-nivel", "/preparacion-delf-dalf", "/contratar",
   "/contact", "/courses", "/home", "/home-legacy", "/test",
@@ -14,13 +41,19 @@ const PUBLIC_PATHS = [
   "/le-mot-du-jour", "/le-jeu", "/tarifas", "/frances-empresas",
   "/blog", "/sobre-nosotros", "/correccion-ia", "/examen-delf-a1",
   "/examen-delf-a2", "/examenes", "/calendario-examenes",
-  "/preparateurs", "/unirse",
+  "/preparateurs", "/unirse", "/confirmacion",
 ];
 
 const AUTH_PATHS = ["/iniciar-sesion", "/verificar-email", "/error"];
 
 export default auth((req) => {
   const { pathname } = req.nextUrl;
+
+  // Legacy redirects: .html pages, /phone/, /tablet/ — 301 permanent
+  const legacyDest = matchLegacyRedirect(pathname);
+  if (legacyDest) {
+    return NextResponse.redirect(new URL(legacyDest, req.nextUrl), 301);
+  }
 
   // Public pages, static files, public APIs → allow
   if (
