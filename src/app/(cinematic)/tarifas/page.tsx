@@ -125,14 +125,14 @@ export default function TarifasPage() {
                     </span>
                     <span
                       className="text-sm"
-                      style={{ color: "#6b7280" }}
+                      style={{ color: "#5f6b78" }}
                     >
                       / pack
                     </span>
                   </div>
                   <p
                     className="text-sm mt-1"
-                    style={{ color: "#6b7280" }}
+                    style={{ color: "#5f6b78" }}
                   >
                     {tier.hours} clases de 55 min
                   </p>
@@ -165,7 +165,7 @@ export default function TarifasPage() {
 
           <p
             className="text-center mt-10 text-sm"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Todos los packs son mensuales. Puedes renovar o cambiar de nivel en
             cualquier momento.

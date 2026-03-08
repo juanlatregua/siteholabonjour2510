@@ -175,7 +175,7 @@ export default function HomePage() {
             style={{
               fontSize: "clamp(1rem, 2vw, 1.2rem)",
               lineHeight: 1.6,
-              color: "#6b7280",
+              color: "#5f6b78",
               marginBottom: "2.5rem",
               maxWidth: 600,
               marginLeft: "auto",
@@ -231,7 +231,7 @@ export default function HomePage() {
               >
                 {stat.value}
               </div>
-              <div style={{ fontSize: "0.9rem", color: "#6b7280" }}>
+              <div style={{ fontSize: "0.9rem", color: "#5f6b78" }}>
                 {stat.label}
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function HomePage() {
           <p
             style={{
               textAlign: "center",
-              color: "#6b7280",
+              color: "#5f6b78",
               fontSize: "1rem",
               marginBottom: "3rem",
               maxWidth: 500,
@@ -341,7 +341,7 @@ export default function HomePage() {
                     style={{
                       fontSize: "0.9rem",
                       lineHeight: 1.5,
-                      color: "#6b7280",
+                      color: "#5f6b78",
                       margin: 0,
                       marginBottom: "1rem",
                     }}
@@ -421,7 +421,7 @@ export default function HomePage() {
                   style={{
                     fontSize: "0.9rem",
                     lineHeight: 1.6,
-                    color: "#6b7280",
+                    color: "#5f6b78",
                     margin: 0,
                   }}
                 >
@@ -541,7 +541,7 @@ export default function HomePage() {
             style={{
               fontSize: "1rem",
               lineHeight: 1.6,
-              color: "#6b7280",
+              color: "#5f6b78",
               marginBottom: "2rem",
               maxWidth: 520,
               marginLeft: "auto",
@@ -644,7 +644,7 @@ export default function HomePage() {
             style={{
               fontSize: "1.1rem",
               lineHeight: 1.6,
-              color: "#6b7280",
+              color: "#5f6b78",
               marginBottom: "2.5rem",
               maxWidth: 520,
               marginLeft: "auto",

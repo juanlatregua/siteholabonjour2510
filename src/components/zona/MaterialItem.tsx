@@ -10,6 +10,7 @@ interface MaterialItemProps {
   publicUrl?: string | null;
   createdAt: Date | string;
   sizeBytes?: number | null;
+  downloadEndpoint?: string;
 }
 
 const typeIcons: Record<string, React.ReactNode> = {
@@ -32,10 +33,11 @@ export default function MaterialItem({
   publicUrl,
   createdAt,
   sizeBytes,
+  downloadEndpoint = "/api/zona-alumno/download",
 }: MaterialItemProps) {
   const date =
     typeof createdAt === "string" ? new Date(createdAt) : createdAt;
-  const downloadHref = publicUrl || `/api/zona-profesor/download?path=${encodeURIComponent(storagePath)}`;
+  const downloadHref = publicUrl || `${downloadEndpoint}?path=${encodeURIComponent(storagePath)}`;
 
   return (
     <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3">

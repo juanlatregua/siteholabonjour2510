@@ -1,3 +1,5 @@
+export const maxDuration = 60;
+
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { prisma } from "@/lib/prisma";
@@ -149,10 +151,22 @@ export async function POST(req: NextRequest) {
       level,
       taskType,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[corrections/submit] Error:", error);
+
+    // Provide more specific error messages
+    const errMsg = error instanceof Error ? error.message : String(error);
+    let userMessage = "Error interno del servidor. Inténtalo de nuevo.";
+    if (errMsg.includes("timeout") || errMsg.includes("ETIMEDOUT") || errMsg.includes("ECONNRESET")) {
+      userMessage = "La corrección tardó demasiado. Inténtalo de nuevo con un texto más corto.";
+    } else if (errMsg.includes("authentication") || errMsg.includes("api_key") || errMsg.includes("401")) {
+      userMessage = "Error de configuración del servicio de IA. Contacta con info@holabonjour.es.";
+    } else if (errMsg.includes("rate_limit") || errMsg.includes("429")) {
+      userMessage = "Demasiadas solicitudes simultáneas. Espera unos segundos e inténtalo de nuevo.";
+    }
+
     return NextResponse.json(
-      { error: "Error interno del servidor" },
+      { error: userMessage },
       { status: 500 },
     );
   }

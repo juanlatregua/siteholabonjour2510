@@ -45,7 +45,7 @@ export default function ContratarPage() {
 
       <CinematicSection className="pb-10 px-6">
         <div className="mx-auto max-w-3xl">
-          <Suspense fallback={<div style={{ textAlign: "center", padding: "2rem", color: "#6b7280" }}>Cargando...</div>}>
+          <Suspense fallback={<div style={{ textAlign: "center", padding: "2rem", color: "#5f6b78" }}>Cargando...</div>}>
             <BookingFunnel />
           </Suspense>
         </div>

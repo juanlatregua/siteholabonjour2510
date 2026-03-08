@@ -153,7 +153,7 @@ export default function ClasesParticularesPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   {benefit.description}
                 </p>
@@ -208,7 +208,7 @@ export default function ClasesParticularesPage() {
                     >
                       {item.title}
                     </h3>
-                    <p style={{ color: "#6b7280" }}>
+                    <p style={{ color: "#5f6b78" }}>
                       {item.text}
                     </p>
                   </div>
@@ -230,7 +230,7 @@ export default function ClasesParticularesPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Inf&oacute;rmate sin compromiso. Te asesoramos sobre el programa ideal para ti.
           </p>

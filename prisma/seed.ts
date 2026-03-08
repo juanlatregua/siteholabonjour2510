@@ -54,7 +54,7 @@ async function main() {
       studentId: student.id,
       hoursTotal: 4,
       hoursUsed: 1,
-      price: 140,
+      price: 150,
       levelRange: "A1-B2",
       status: "ACTIVE",
       expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),

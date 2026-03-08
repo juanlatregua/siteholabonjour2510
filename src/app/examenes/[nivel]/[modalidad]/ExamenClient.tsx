@@ -37,7 +37,7 @@ const C = {
   text: "#1a1f36",
   textMuted: "#4a5568",
   textSecondary: "#4a5568",
-  text3: "#9aabbf",
+  text3: "#637080",
   green: "#0E9F6E",
   greenLight: "#ECFDF5",
   shadow: "0 2px 12px rgba(20,113,179,0.08)",
@@ -51,6 +51,18 @@ const SECCION_ICONS: Record<string, string> = {
   PO: "🗣️",
 };
 
+interface AiAnalysis {
+  probabilityOfPassing: number;
+  estimatedLevel: string;
+  strengths: string[];
+  weaknesses: string[];
+  sectionAnalysis: Record<string, { score: number; max: number; verdict: string; tip: string }>;
+  urgencyLevel: "low" | "medium" | "high" | "critical";
+  personalizedMessage: string;
+  recommendedAction: "pack" | "diagnostic" | "correction" | "retry";
+  studyPlan: string[];
+}
+
 export default function ExamenClient({ examen, config }: ExamenClientProps) {
   const { data: session } = useSession();
   const [estado, setEstado] = useState<Estado>("intro");
@@ -58,6 +70,8 @@ export default function ExamenClient({ examen, config }: ExamenClientProps) {
   const [respuestas, setRespuestas] = useState<Respuestas>({});
   const [textos, setTextos] = useState<Record<string, string>>({});
   const attemptIdRef = useRef<string | null>(null);
+  const [aiAnalysis, setAiAnalysis] = useState<AiAnalysis | null>(null);
+  const [aiLoading, setAiLoading] = useState(false);
 
   const seccion = examen.secciones[seccionIdx];
 
@@ -126,6 +140,19 @@ export default function ExamenClient({ examen, config }: ExamenClientProps) {
         totalScore: total,
         passed: total >= examen.puntuacionMinTotal,
       });
+      // Trigger AI analysis
+      if (attemptIdRef.current && session?.user) {
+        setAiLoading(true);
+        fetch("/api/examenes/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ attemptId: attemptIdRef.current }),
+        })
+          .then((r) => r.ok ? r.json() : null)
+          .then((data) => { if (data?.analysis) setAiAnalysis(data.analysis); })
+          .catch(() => {})
+          .finally(() => setAiLoading(false));
+      }
     }
   };
 
@@ -501,60 +528,184 @@ export default function ExamenClient({ examen, config }: ExamenClientProps) {
         </div>
       </div>
 
-      {/* CTA cards */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+      {/* AI Diagnosis */}
+      {aiLoading && (
+        <div style={{
+          background: C.card, border: `1px solid ${C.border}`, borderRadius: "0.875rem",
+          padding: "2rem", marginBottom: "1.5rem", boxShadow: C.shadow, textAlign: "center",
+        }}>
+          <div style={{ display: "inline-block", width: 32, height: 32, border: `3px solid ${C.border}`, borderTopColor: C.bleu, borderRadius: "50%", animation: "spin 0.8s linear infinite", marginBottom: "0.75rem" }} />
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } } @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }`}</style>
+          <p style={{ color: C.textMuted, fontSize: "0.9rem", fontWeight: 600 }}>Analysons vos résultats...</p>
+          <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center", marginTop: "1rem" }}>
+            {[1, 2, 3].map((i) => (
+              <div key={i} style={{ height: 8, borderRadius: 4, background: C.bleuMid, width: 60, animation: `pulse 1.5s ${i * 0.3}s infinite` }} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {aiAnalysis && (
+        <div style={{
+          background: C.card, border: `1px solid ${C.border}`, borderRadius: "0.875rem",
+          overflow: "hidden", marginBottom: "1.5rem", boxShadow: C.shadow,
+        }}>
+          {/* Probability bar */}
+          <div style={{ padding: "1.25rem 1.5rem", borderBottom: `1px solid ${C.borderLight}` }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+              <span style={{ fontSize: "0.8rem", fontWeight: 700, color: C.textMuted, textTransform: "uppercase" as const, letterSpacing: "0.05em" }}>
+                Probabilité de réussite
+              </span>
+              <span style={{
+                fontSize: "1.4rem", fontWeight: 700, fontFamily: "'Playfair Display', serif",
+                color: aiAnalysis.probabilityOfPassing > 70 ? C.green : aiAnalysis.probabilityOfPassing > 40 ? "#f59e0b" : C.rouge,
+              }}>
+                {aiAnalysis.probabilityOfPassing}%
+              </span>
+            </div>
+            <div style={{ height: 10, background: C.bg3, borderRadius: 5, overflow: "hidden" }}>
+              <div style={{
+                height: "100%", borderRadius: 5, transition: "width 1s ease",
+                width: `${aiAnalysis.probabilityOfPassing}%`,
+                background: aiAnalysis.probabilityOfPassing > 70
+                  ? `linear-gradient(90deg, ${C.green}, #34d399)`
+                  : aiAnalysis.probabilityOfPassing > 40
+                    ? "linear-gradient(90deg, #f59e0b, #fbbf24)"
+                    : `linear-gradient(90deg, ${C.rouge}, #f87171)`,
+              }} />
+            </div>
+            <div style={{ fontSize: "0.75rem", color: C.textMuted, marginTop: "0.35rem" }}>
+              Niveau estimé : <strong style={{ color: C.bleuDark }}>{aiAnalysis.estimatedLevel}</strong>
+            </div>
+          </div>
+
+          {/* Strengths / Weaknesses */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: `1px solid ${C.borderLight}` }}>
+            <div style={{ padding: "1.25rem 1.5rem", borderRight: `1px solid ${C.borderLight}` }}>
+              <div style={{ fontSize: "0.75rem", fontWeight: 700, color: C.green, textTransform: "uppercase" as const, letterSpacing: "0.05em", marginBottom: "0.6rem" }}>
+                Points forts
+              </div>
+              {aiAnalysis.strengths.map((s, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.4rem", marginBottom: "0.4rem", fontSize: "0.85rem", color: C.text }}>
+                  <span style={{ color: C.green, flexShrink: 0, marginTop: 1 }}>&#10003;</span>
+                  <span>{s}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ padding: "1.25rem 1.5rem" }}>
+              <div style={{ fontSize: "0.75rem", fontWeight: 700, color: C.rouge, textTransform: "uppercase" as const, letterSpacing: "0.05em", marginBottom: "0.6rem" }}>
+                Points à améliorer
+              </div>
+              {aiAnalysis.weaknesses.map((w, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.4rem", marginBottom: "0.4rem", fontSize: "0.85rem", color: C.text }}>
+                  <span style={{ color: C.rouge, flexShrink: 0, marginTop: 1 }}>&#9888;</span>
+                  <span>{w}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Study plan */}
+          <div style={{ padding: "1.25rem 1.5rem" }}>
+            <div style={{ fontSize: "0.75rem", fontWeight: 700, color: C.bleuDark, textTransform: "uppercase" as const, letterSpacing: "0.05em", marginBottom: "0.6rem" }}>
+              Plan d&apos;étude recommandé
+            </div>
+            <ol style={{ margin: 0, paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+              {aiAnalysis.studyPlan.map((step, i) => (
+                <li key={i} style={{ fontSize: "0.85rem", color: C.text, lineHeight: 1.5 }}>{step}</li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      )}
+
+      {/* Primary CTA (contextual based on AI analysis) */}
+      {aiAnalysis && (
+        <div style={{ marginBottom: "1.5rem" }}>
+          {(aiAnalysis.urgencyLevel === "critical" || aiAnalysis.urgencyLevel === "high") ? (
+            <Link href={`/contratar?producto=diagnostico&nivel=${examen.nivel}`} style={{
+              display: "block", background: C.rouge, borderRadius: "0.875rem", padding: "1.25rem 1.5rem",
+              textAlign: "center", textDecoration: "none", boxShadow: "0 4px 16px rgba(229,0,70,0.3)",
+            }}>
+              <div style={{ color: "white", fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.25rem" }}>
+                Réserver une session diagnostic — 25 €
+              </div>
+              <div style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.8rem" }}>
+                30 min avec une préparatrice experte FEI
+              </div>
+            </Link>
+          ) : aiAnalysis.urgencyLevel === "medium" ? (
+            <Link href={`/contratar?nivel=${examen.nivel}`} style={{
+              display: "block", background: C.bleu, borderRadius: "0.875rem", padding: "1.25rem 1.5rem",
+              textAlign: "center", textDecoration: "none", boxShadow: "0 4px 16px rgba(20,113,179,0.3)",
+            }}>
+              <div style={{ color: "white", fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.25rem" }}>
+                Voir les packs de préparation — dès 150 €
+              </div>
+              <div style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.8rem" }}>
+                4 séances individuelles avec une préparatrice
+              </div>
+            </Link>
+          ) : (
+            <Link href="/correccion-ia" style={{
+              display: "block", background: C.green, borderRadius: "0.875rem", padding: "1.25rem 1.5rem",
+              textAlign: "center", textDecoration: "none", boxShadow: "0 4px 16px rgba(14,159,110,0.3)",
+            }}>
+              <div style={{ color: "white", fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.25rem" }}>
+                Perfectionner votre production écrite
+              </div>
+              <div style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.8rem" }}>
+                Correction IA avec critères officiels FEI
+              </div>
+            </Link>
+          )}
+        </div>
+      )}
+
+      {/* Secondary CTAs */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.75rem", marginBottom: "1.5rem" }}>
         <Link href="/correccion-ia" style={{
           background: "white", border: `1px solid ${C.border}`, borderTop: `3px solid ${C.bleu}`,
-          borderRadius: "0.875rem", padding: "1.5rem", textAlign: "center", textDecoration: "none",
-          boxShadow: C.shadow, transition: "all 0.2s",
+          borderRadius: "0.75rem", padding: "1rem", textAlign: "center", textDecoration: "none",
+          boxShadow: C.shadow,
         }}>
-          <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>✍️</div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: C.text, marginBottom: "0.35rem" }}>Correction IA</div>
-          <div style={{ fontSize: "0.8rem", color: C.textMuted, marginBottom: "0.85rem" }}>Corrigez votre production écrite avec les critères officiels</div>
-          <span style={{ padding: "0.5rem 1.25rem", borderRadius: "1.5rem", background: `linear-gradient(135deg, ${C.bleu}, ${C.bleuDark})`, color: "white", fontSize: "0.85rem", fontWeight: 700, boxShadow: "0 2px 8px rgba(20,113,179,0.3)" }}>
-            Corriger
-          </span>
+          <div style={{ fontSize: "1.25rem", marginBottom: "0.35rem" }}>✍️</div>
+          <div style={{ fontSize: "0.85rem", fontWeight: 700, color: C.text, marginBottom: "0.2rem" }}>Correction IA</div>
+          <div style={{ fontSize: "0.7rem", color: C.textMuted }}>Production écrite</div>
         </Link>
         <div
-          onClick={() => { setRespuestas({}); setTextos({}); setSeccionIdx(0); setEstado("intro"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          onClick={() => { setRespuestas({}); setTextos({}); setSeccionIdx(0); setEstado("intro"); setAiAnalysis(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           style={{
             background: "white", border: `1px solid ${C.border}`, borderTop: `3px solid ${C.rouge}`,
-            borderRadius: "0.875rem", padding: "1.5rem", textAlign: "center",
-            boxShadow: C.shadow, cursor: "pointer", transition: "all 0.2s",
+            borderRadius: "0.75rem", padding: "1rem", textAlign: "center",
+            boxShadow: C.shadow, cursor: "pointer",
           }}
         >
-          <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>🔄</div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: C.text, marginBottom: "0.35rem" }}>Réessayer l&apos;examen</div>
-          <div style={{ fontSize: "0.8rem", color: C.textMuted, marginBottom: "0.85rem" }}>Améliorez votre score à votre rythme</div>
-          <span style={{ padding: "0.5rem 1.25rem", borderRadius: "1.5rem", border: `1.5px solid ${C.border}`, fontSize: "0.85rem", fontWeight: 600, color: C.textSecondary }}>
-            Recommencer
-          </span>
+          <div style={{ fontSize: "1.25rem", marginBottom: "0.35rem" }}>🔄</div>
+          <div style={{ fontSize: "0.85rem", fontWeight: 700, color: C.text, marginBottom: "0.2rem" }}>Réessayer</div>
+          <div style={{ fontSize: "0.7rem", color: C.textMuted }}>Recommencer l&apos;examen</div>
         </div>
-        <Link href={`/contratar?producto=diagnostico&nivel=${examen.nivel}`} style={{
-          background: "white", border: `1px solid ${C.border}`, borderTop: `3px solid ${C.violet}`,
-          borderRadius: "0.875rem", padding: "1.5rem", textAlign: "center", textDecoration: "none",
-          boxShadow: C.shadow, transition: "all 0.2s",
-        }}>
-          <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>🎯</div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: C.text, marginBottom: "0.35rem" }}>Session diagnostic</div>
-          <div style={{ fontSize: "0.8rem", color: C.textMuted, marginBottom: "0.85rem" }}>30 min avec une préparatrice — 25 €</div>
-          <span style={{ padding: "0.5rem 1.25rem", borderRadius: "1.5rem", background: `linear-gradient(135deg, ${C.violet}, #5a2d91)`, color: "white", fontSize: "0.85rem", fontWeight: 700, boxShadow: "0 2px 8px rgba(107,63,160,0.3)" }}>
-            Réserver
-          </span>
-        </Link>
         <Link href={`/contratar?nivel=${examen.nivel}`} style={{
           background: "white", border: `1px solid ${C.border}`, borderTop: `3px solid ${C.green}`,
-          borderRadius: "0.875rem", padding: "1.5rem", textAlign: "center", textDecoration: "none",
-          boxShadow: C.shadow, transition: "all 0.2s",
+          borderRadius: "0.75rem", padding: "1rem", textAlign: "center", textDecoration: "none",
+          boxShadow: C.shadow,
         }}>
-          <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>📚</div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: C.text, marginBottom: "0.35rem" }}>Pack préparation</div>
-          <div style={{ fontSize: "0.8rem", color: C.textMuted, marginBottom: "0.85rem" }}>4 séances individuelles — dès 150 €</div>
-          <span style={{ padding: "0.5rem 1.25rem", borderRadius: "1.5rem", background: `linear-gradient(135deg, ${C.green}, #0d8c61)`, color: "white", fontSize: "0.85rem", fontWeight: 700, boxShadow: "0 2px 8px rgba(14,159,110,0.3)" }}>
-            Voir les packs
-          </span>
+          <div style={{ fontSize: "1.25rem", marginBottom: "0.35rem" }}>📚</div>
+          <div style={{ fontSize: "0.85rem", fontWeight: 700, color: C.text, marginBottom: "0.2rem" }}>Pack préparation</div>
+          <div style={{ fontSize: "0.7rem", color: C.textMuted }}>Dès 150 €</div>
         </Link>
       </div>
+
+      {/* Personalized message */}
+      {aiAnalysis?.personalizedMessage && (
+        <div style={{
+          borderLeft: `4px solid ${C.bleuDark}`, background: C.bleuLight,
+          padding: "1rem 1.25rem", borderRadius: "0 0.75rem 0.75rem 0",
+          fontSize: "0.9rem", color: C.text, lineHeight: 1.6, fontStyle: "italic",
+        }}>
+          {aiAnalysis.personalizedMessage}
+        </div>
+      )}
     </div>
   );
 }

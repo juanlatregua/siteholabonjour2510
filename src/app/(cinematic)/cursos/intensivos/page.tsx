@@ -143,7 +143,7 @@ export default function IntensivosPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   {course.description}
                 </p>
@@ -168,7 +168,7 @@ export default function IntensivosPage() {
             </p>
             <p
               className="leading-relaxed"
-              style={{ color: "#6b7280" }}
+              style={{ color: "#5f6b78" }}
             >
               Sesiones individuales diarias de 55 minutos por Zoom con profesores nativos.
               Apuntes y seguimiento personalizado.
@@ -220,7 +220,7 @@ export default function IntensivosPage() {
                 </h3>
                 <p
                   className="text-sm"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   {item.text}
                 </p>
@@ -241,7 +241,7 @@ export default function IntensivosPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Reserva tu plaza ahora. Clases individuales con horarios flexibles.
           </p>

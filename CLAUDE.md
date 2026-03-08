@@ -2,7 +2,7 @@
 
 ## Stack
 - **Framework**: Next.js 15 (App Router) + React 19 + TypeScript
-- **DB**: PostgreSQL on Supabase, Prisma 7 ORM (25 models)
+- **DB**: PostgreSQL on Supabase, Prisma 7 ORM (26 models)
 - **Auth**: NextAuth v5 beta — magic link (students), credentials (teachers)
 - **Payments**: Stripe (checkout sessions, webhooks)
 - **Email**: Azure Communication Services (`src/lib/azure-mail.ts`)
@@ -22,29 +22,52 @@ npx prisma generate  # Regenerate client after schema change
 ```
 src/
 ├── app/
-│   ├── (cinematic)/     # Public pages — light palette (#faf7f2)
-│   ├── (public)/        # Le Côté Vie cultural content
-│   ├── (auth)/          # Login, verify-email, error
-│   ├── (zona-alumno)/   # Student portal (auth required)
-│   ├── (zona-profesor)/ # Teacher portal (TEACHER/ADMIN role)
-│   ├── examenes/        # Exam engine (own layout)
-│   ├── contratar/       # Booking funnel
-│   ├── preparateurs/    # Marketplace profiles
-│   └── api/             # API routes
+│   ├── (cinematic)/          # Public pages — light palette (#faf7f2)
+│   ├── (public)/             # Le Côté Vie cultural content
+│   ├── (auth)/               # Login, verify-email, error
+│   ├── (zona-alumno)/        # Student portal (auth required)
+│   ├── (zona-profesor)/      # Teacher portal (TEACHER/ADMIN role)
+│   ├── examenes/             # Exam engine (own layout)
+│   ├── contratar/            # Booking funnel
+│   ├── confirmacion/         # Post-purchase confirmation
+│   ├── preparateurs/         # Marketplace profiles
+│   ├── preguntas-frecuentes/ # FAQ page
+│   └── api/                  # API routes
 ├── components/
 │   ├── cinematic/       # Public site components (GlassCard, GoldButton, etc.)
 │   ├── zona/            # Portal components
 │   ├── correction/      # AI correction UI
 │   ├── booking/         # PublicSlotPicker
+│   ├── assessment/      # Assessment/quiz UI
+│   ├── chat/            # Chat components
+│   ├── exam/            # Exam UI components
+│   ├── examenes/        # Exam components (Spanish)
+│   ├── le-cinema/, la-cuisine/, le-jeu/, etc.  # Le Côté Vie section components
 │   └── ui/              # Base UI components
 ├── lib/
 │   ├── auth.ts          # NextAuth config
+│   ├── auth.config.ts   # NextAuth provider config
+│   ├── auth-helpers.ts  # Auth utility functions
 │   ├── prisma.ts        # Prisma client singleton
 │   ├── stripe.ts        # Stripe helpers + PACK_PRICES
 │   ├── brand.ts         # Design tokens
 │   ├── constants.ts     # Pricing, teacher emails, contact
+│   ├── azure-mail.ts    # Azure email service
+│   ├── email.ts         # Email utility wrapper
+│   ├── sms.ts           # Twilio SMS
+│   ├── sms-templates.ts # SMS templates
+│   ├── supabase.ts      # Direct Supabase client
+│   ├── teacher.ts       # Teacher utilities
+│   ├── student-zone-db.ts    # Student portal DB helpers
+│   ├── assessment-engine.ts  # Assessment processing
+│   ├── delf-dalf.ts     # DELF/DALF exam data
+│   ├── faq-content.ts   # FAQ content
+│   ├── fei-resources.ts # FEI resources
+│   ├── level-content.ts # Level-specific content
 │   ├── correction/      # AI correction engine (rubrics, prompts, scoring)
-│   └── examenes/        # Exam data files + types
+│   ├── examenes/        # Exam data files + types
+│   ├── assessment/      # Assessment utilities
+│   └── chat/            # Chat/conversation logic
 └── generated/prisma/    # Generated Prisma client
 ```
 
@@ -59,7 +82,7 @@ Everything else uses light backgrounds:
 | Card bg | `#ffffff` | Cards, inputs |
 | Title text | `#1e2d4a` | Headings |
 | Body text | `#3d4a5c` | Paragraphs |
-| Muted text | `#6b7280` | Captions, labels |
+| Muted text | `#5f6b78` | Captions, labels |
 | Rouge accent | `#E50046` | CTAs, highlights |
 | Bleu accent | `#395D9F` | Badges, links |
 | Nav/Footer bg | `#1e2d4a` | Only these two |
@@ -99,10 +122,10 @@ TEACHER_PASSWORD_HASH_ISABELLEGUITTON
 - Prisma schema — Always create a migration after changes
 - Footer / Header nav — Keep navy background
 
-## Prisma Models (25 total)
+## Prisma Models (26 total)
 Auth: Account, Session, VerificationToken, User
 Booking: Pack, Lesson, Payment, Availability
-Exams: ExamAttempt, ExamSession, ExamReminder
+Exams: ExamAttempt, ExamSession, ExamReminder, ExamenModelo
 Assessment: AssessmentLink, AssessmentAttempt, AssessmentAttemptAnswer, Quiz, QuizQuestion, QuizResult
 Corrections: WritingCorrection, CorrectionQuota, TeacherAnnotation
 Content: Material, NewsletterSubscriber

@@ -12,6 +12,7 @@ interface LessonData {
   status: string;
   focus: string | null;
   zoomLink: string | null;
+  zoomStartUrl?: string | null;
   durationMinutes: number;
   studentName: string;
 }
@@ -63,8 +64,10 @@ export default function ClasesFilterProfesor({ upcoming, past }: ClasesFilterPro
                 focus={lesson.focus}
                 teacherName={lesson.studentName}
                 zoomLink={lesson.zoomLink}
+                zoomStartUrl={lesson.zoomStartUrl}
                 durationMinutes={lesson.durationMinutes}
                 personLabel="Alumno"
+                isTeacher
               />
             </Link>
           ))}

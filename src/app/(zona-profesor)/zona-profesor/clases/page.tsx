@@ -46,6 +46,7 @@ export default async function ClasesPage() {
           status: l.status,
           focus: l.focus,
           zoomLink: l.zoomLink,
+          zoomStartUrl: l.zoomStartUrl,
           durationMinutes: l.durationMinutes,
           studentName: l.student.name || l.student.email,
         }))}
@@ -55,6 +56,7 @@ export default async function ClasesPage() {
           status: l.status,
           focus: l.focus,
           zoomLink: l.zoomLink,
+          zoomStartUrl: l.zoomStartUrl,
           durationMinutes: l.durationMinutes,
           studentName: l.student.name || l.student.email,
         }))}

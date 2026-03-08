@@ -456,10 +456,13 @@ model ExamAttempt {
   scorePO     Float?
   totalScore  Float?
   passed      Boolean?
-  status      String    @default("in_progress") // in_progress | finished
-  answers     String?   // JSON: RespuestaCandidat[] serialized
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  status         String    @default("in_progress") // in_progress | finished
+  answers        String?   // JSON: RespuestaCandidat[] serialized
+  aiAnalysis     String?   // JSON: AI analysis result
+  aiAnalyzedAt   DateTime?
+  followupSentAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
   user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   corrections WritingCorrection[]

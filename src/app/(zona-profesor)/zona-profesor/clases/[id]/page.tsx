@@ -11,6 +11,7 @@ import MaterialItem from "@/components/zona/MaterialItem";
 import Card, { CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import EmptyState from "@/components/ui/EmptyState";
 import LessonEditForm from "./LessonEditForm";
+import ZoomEditForm from "./ZoomEditForm";
 
 export default async function ClaseDetailPage({
   params,
@@ -61,9 +62,26 @@ export default async function ClaseDetailPage({
         focus={lesson.focus}
         teacherName={lesson.student.name || lesson.student.email}
         zoomLink={lesson.zoomLink}
+        zoomStartUrl={lesson.zoomStartUrl}
         durationMinutes={lesson.durationMinutes}
         personLabel="Alumno"
+        isTeacher
       />
+
+      {/* Zoom management */}
+      {lesson.status === "SCHEDULED" && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Zoom</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ZoomEditForm
+              lessonId={lesson.id}
+              initialZoomLink={lesson.zoomLink || ""}
+            />
+          </CardContent>
+        </Card>
+      )}
 
       {/* Edit notes & feedback */}
       <Card>
@@ -97,6 +115,7 @@ export default async function ClaseDetailPage({
                   storagePath={m.storagePath}
                   publicUrl={m.publicUrl}
                   createdAt={m.createdAt}
+                  downloadEndpoint="/api/zona-profesor/download"
                   sizeBytes={m.sizeBytes}
                 />
               ))}

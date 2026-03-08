@@ -17,6 +17,7 @@ import {
   FiCreditCard,
   FiFileText,
   FiBarChart2,
+  FiEdit3,
 } from "react-icons/fi";
 
 const quickLinks = [
@@ -43,7 +44,15 @@ export default async function ZonaProfesorDashboard() {
   const todayEnd = new Date();
   todayEnd.setHours(23, 59, 59, 999);
 
-  const [studentCount, todayLessons, upcomingLessons, weekLessons, pendingPayments] = await Promise.all([
+  // Get student IDs for correction queries
+  const studentIds = (
+    await prisma.user.findMany({
+      where: { coachId: teacherId },
+      select: { id: true },
+    })
+  ).map((s) => s.id);
+
+  const [studentCount, todayLessons, upcomingLessons, weekLessons, pendingPayments, pendingCorrections] = await Promise.all([
     prisma.user.count({
       where: { coachId: teacherId },
     }),
@@ -85,6 +94,16 @@ export default async function ZonaProfesorDashboard() {
         method: { in: ["BIZUM", "TRANSFER"] },
       },
     }),
+    // Corrections completed but not yet reviewed by teacher
+    studentIds.length > 0
+      ? prisma.writingCorrection.count({
+          where: {
+            userId: { in: studentIds },
+            status: "COMPLETED",
+            teacherAnnotations: { none: {} },
+          },
+        })
+      : Promise.resolve(0),
   ]);
 
   const teacher = await prisma.user.findUnique({
@@ -99,7 +118,7 @@ export default async function ZonaProfesorDashboard() {
         <h2 className="text-2xl font-bold text-gray-900">
           Bienvenido{teacher?.name ? `, ${teacher.name.split(" ")[0]}` : ""}
         </h2>
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-1 text-sm text-gray-600">
           Aquí tienes un resumen de tu actividad docente.
         </p>
       </div>
@@ -108,25 +127,25 @@ export default async function ZonaProfesorDashboard() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardContent>
-            <p className="text-sm text-gray-500">Alumnos</p>
+            <p className="text-sm text-gray-600">Alumnos</p>
             <p className="mt-1 text-2xl font-bold text-gray-900">{studentCount}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent>
-            <p className="text-sm text-gray-500">Clases hoy</p>
+            <p className="text-sm text-gray-600">Clases hoy</p>
             <p className="mt-1 text-2xl font-bold text-gray-900">{todayLessons.length}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent>
-            <p className="text-sm text-gray-500">Próximas clases</p>
+            <p className="text-sm text-gray-600">Próximas clases</p>
             <p className="mt-1 text-2xl font-bold text-gray-900">{upcomingLessons.length}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent>
-            <p className="text-sm text-gray-500">Completadas esta semana</p>
+            <p className="text-sm text-gray-600">Completadas esta semana</p>
             <p className="mt-1 text-2xl font-bold text-gray-900">{weekLessons}</p>
           </CardContent>
         </Card>
@@ -134,11 +153,27 @@ export default async function ZonaProfesorDashboard() {
           <Link href="/zona-profesor/pagos">
             <Card>
               <CardContent>
-                <p className="text-sm text-gray-500">Pagos pendientes</p>
+                <p className="text-sm text-gray-600">Pagos pendientes</p>
                 <div className="mt-1 flex items-center gap-2">
                   <p className="text-2xl font-bold text-amber-600">{pendingPayments}</p>
                   <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
                     Pendiente
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        )}
+        {pendingCorrections > 0 && (
+          <Link href="/zona-profesor/correcciones">
+            <Card>
+              <CardContent>
+                <p className="text-sm text-gray-600">Correcciones sin revisar</p>
+                <div className="mt-1 flex items-center gap-2">
+                  <p className="text-2xl font-bold text-purple-600">{pendingCorrections}</p>
+                  <span className="rounded-full bg-purple-100 px-2 py-0.5 text-xs font-semibold text-purple-700">
+                    <FiEdit3 className="mr-1 inline h-3 w-3" />
+                    Revisar
                   </span>
                 </div>
               </CardContent>
@@ -164,8 +199,10 @@ export default async function ZonaProfesorDashboard() {
                     focus={lesson.focus}
                     teacherName={lesson.student.name || lesson.student.email}
                     zoomLink={lesson.zoomLink}
+                    zoomStartUrl={lesson.zoomStartUrl}
                     durationMinutes={lesson.durationMinutes}
                     personLabel="Alumno"
+                    isTeacher
                   />
                 ))}
               </div>
@@ -193,8 +230,10 @@ export default async function ZonaProfesorDashboard() {
                     focus={lesson.focus}
                     teacherName={lesson.student.name || lesson.student.email}
                     zoomLink={lesson.zoomLink}
+                    zoomStartUrl={lesson.zoomStartUrl}
                     durationMinutes={lesson.durationMinutes}
                     personLabel="Alumno"
+                    isTeacher
                   />
                 ))}
               </div>

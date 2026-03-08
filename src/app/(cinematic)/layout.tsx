@@ -8,7 +8,7 @@ export default function CinematicLayout({ children }: { children: React.ReactNod
   return (
     <>
       <ClientScripts />
-      <Header variant="cinematic" />
+      <Header />
       <main className="flex-1">{children}</main>
       <Footer />
       <WhatsAppFloat />

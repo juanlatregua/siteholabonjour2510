@@ -77,7 +77,7 @@ export async function sendClassReminderEmail(data: {
       <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Hora</td><td>${data.time}</td></tr>
     </table>
     ${zoomHtml}
-    <p style="font-size:13px; color:#6b7280;">Anulación: al menos 48h antes.</p>
+    <p style="font-size:13px; color:#5f6b78;">Anulación: al menos 48h antes.</p>
     <p>À demain !<br/>Equipo HolaBonjour</p>
   `;
 
@@ -203,6 +203,72 @@ export async function sendExamReviewEmail(data: {
 
   await sendMail({
     to: staffTo,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendExamFollowupEmail(data: {
+  toEmail: string;
+  customerName: string;
+  nivel: string;
+  totalScore: number;
+  passed: boolean;
+  probabilityOfPassing?: number;
+  personalizedMessage?: string;
+  recommendedAction?: string;
+  studyPlan?: string[];
+}) {
+  const diploma = ["C1", "C2"].includes(data.nivel) ? "DALF" : "DELF";
+  const subject = `Tes résultats ${diploma} ${data.nivel} — prochaines étapes`;
+
+  const badge = data.passed
+    ? '<span style="display:inline-block; background:#ecfdf5; color:#0E9F6E; border:1px solid #a7f3d0; border-radius:20px; padding:4px 14px; font-size:13px; font-weight:700;">DIPLÔME OBTENU</span>'
+    : '<span style="display:inline-block; background:rgba(229,0,70,0.06); color:#E50046; border:1px solid rgba(229,0,70,0.2); border-radius:20px; padding:4px 14px; font-size:13px; font-weight:700;">NON OBTENU</span>';
+
+  const aiSection = data.probabilityOfPassing !== undefined
+    ? `
+      <div style="margin:16px 0; padding:12px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px;">
+        <p style="margin:0 0 8px 0; font-weight:600; color:#1e2d4a;">Probabilité de réussite : ${data.probabilityOfPassing}%</p>
+        ${data.personalizedMessage ? `<p style="margin:0; font-style:italic; color:#4a5568;">${data.personalizedMessage}</p>` : ""}
+      </div>
+      ${data.studyPlan?.length ? `
+        <div style="margin:16px 0;">
+          <p style="font-weight:600; color:#1e2d4a; margin:0 0 8px 0;">Plan d'étude recommandé :</p>
+          <ol style="margin:0; padding-left:20px; color:#4a5568; font-size:14px; line-height:1.6;">
+            ${data.studyPlan.map((s) => `<li>${s}</li>`).join("")}
+          </ol>
+        </div>
+      ` : ""}
+    `
+    : "";
+
+  let ctaHtml: string;
+  if (!data.passed && (data.recommendedAction === "diagnostic" || (data.probabilityOfPassing !== undefined && data.probabilityOfPassing < 40))) {
+    ctaHtml = `<p><a href="${BRAND_HOME_URL}/contratar?producto=diagnostico&nivel=${data.nivel}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Réserver une session diagnostic — 25 €</a></p>`;
+  } else if (!data.passed) {
+    ctaHtml = `<p><a href="${BRAND_HOME_URL}/contratar?nivel=${data.nivel}" style="display:inline-block; background:#395D9F; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Voir les packs de préparation</a></p>`;
+  } else {
+    ctaHtml = `<p><a href="${BRAND_HOME_URL}/correccion-ia" style="display:inline-block; background:#0E9F6E; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Perfectionner avec la correction IA</a></p>`;
+  }
+
+  const html = `
+    <h2>Tes résultats ${diploma} ${data.nivel}</h2>
+    <p>Bonjour ${data.customerName},</p>
+    <p>Voici le résumé de ton simulacre :</p>
+    <div style="text-align:center; margin:16px 0;">
+      <span style="font-size:32px; font-weight:700; color:${data.passed ? "#0E9F6E" : "#E50046"};">${data.totalScore}</span>
+      <span style="font-size:16px; color:#5f6b78;"> / 100</span>
+      <br/>${badge}
+    </div>
+    ${aiSection}
+    ${ctaHtml}
+    <p style="margin-top:16px;"><a href="${BRAND_HOME_URL}/examenes" style="color:#395D9F; font-size:13px; text-decoration:none;">Réessayer le simulacre →</a></p>
+    <p>Bon courage !<br/>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
     subject,
     html: wrapEmailHtml(html),
   });

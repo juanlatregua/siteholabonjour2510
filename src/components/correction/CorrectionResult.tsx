@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import ScoreGauge from "./ScoreGauge";
 import CriterionBreakdown from "./CriterionBreakdown";
 import AnnotatedText from "./AnnotatedText";
@@ -31,6 +32,7 @@ interface CorrectionResultProps {
     taskType: string;
   };
   inputText: string;
+  onReset?: () => void;
 }
 
 type Tab = "annotations" | "corrected";
@@ -48,6 +50,7 @@ const CRITERION_NAMES: Record<string, string> = {
 export default function CorrectionResult({
   result,
   inputText,
+  onReset,
 }: CorrectionResultProps) {
   const [activeTab, setActiveTab] = useState<Tab>("annotations");
 
@@ -159,15 +162,145 @@ export default function CorrectionResult({
         </div>
       )}
 
-      {/* CTA */}
-      <div className="border-t pt-4">
-        <a
-          href="/contratar"
+      {/* CTA contextual */}
+      <DynamicCTA
+        percentage={percentage}
+        level={result.level}
+        criterionScores={result.criterionScores}
+        onReset={onReset}
+      />
+    </div>
+  );
+}
+
+/* ─── Dynamic CTA based on score ─── */
+
+function DynamicCTA({
+  percentage,
+  level,
+  criterionScores,
+  onReset,
+}: {
+  percentage: number;
+  level: string;
+  criterionScores: Record<string, { score: number; max: number; comment: string }>;
+  onReset?: () => void;
+}) {
+  // Find the lowest-scoring criterion
+  const lowestCriterion = Object.entries(criterionScores).reduce<{
+    key: string;
+    pct: number;
+  } | null>((lowest, [key, { score, max }]) => {
+    if (max === 0) return lowest;
+    const pct = score / max;
+    if (!lowest || pct < lowest.pct) return { key, pct };
+    return lowest;
+  }, null);
+
+  const lowestName = lowestCriterion
+    ? CRITERION_NAMES[lowestCriterion.key] || lowestCriterion.key.replace(/_/g, " ")
+    : null;
+
+  const nivelParam = level.toLowerCase();
+
+  // CASO 1 — Puntuacion < 50%
+  if (percentage < 50) {
+    return (
+      <div className="border-t pt-4 space-y-3">
+        <p className="text-sm text-gray-700 leading-relaxed">
+          Con esta puntuaci&oacute;n tienes pocas probabilidades de aprobar el{" "}
+          <strong>{level}</strong>. Isabelle puede ayudarte a identificar
+          exactamente qu&eacute; trabajar.
+          {lowestName && (
+            <>
+              {" "}Tu punto m&aacute;s d&eacute;bil es la <strong>{lowestName.toLowerCase()}</strong> &mdash;
+              es donde m&aacute;s puntos se pierden en el examen real.
+            </>
+          )}
+        </p>
+        <Link
+          href={`/contratar?producto=diagnostico&nivel=${nivelParam}&origen=correccion-ia`}
           className="block w-full text-center bg-[#E50046] text-white font-semibold py-3 rounded-lg hover:bg-[#c7003b] transition-colors"
         >
-          Contrata un pack → correcciones ilimitadas + clases + profe
-        </a>
+          Reservar sesi&oacute;n diagn&oacute;stico &mdash; 25 &euro;
+        </Link>
+        {onReset && (
+          <button
+            onClick={onReset}
+            className="block w-full text-center border border-gray-300 text-gray-600 font-medium py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+          >
+            Corregir otro texto
+          </button>
+        )}
       </div>
+    );
+  }
+
+  // CASO 2 — Puntuacion 50-70%
+  if (percentage <= 70) {
+    return (
+      <div className="border-t pt-4 space-y-3">
+        <p className="text-sm text-gray-700 leading-relaxed">
+          Vas por buen camino pero hay aspectos clave que trabajar antes del examen.
+          {lowestName && (
+            <>
+              {" "}Tu punto m&aacute;s d&eacute;bil es la <strong>{lowestName.toLowerCase()}</strong> &mdash;
+              es donde m&aacute;s puntos se pierden en el examen real.
+            </>
+          )}
+        </p>
+        <Link
+          href={`/contratar?producto=pack&nivel=${nivelParam}&origen=correccion-ia`}
+          className="block w-full text-center bg-[#395D9F] text-white font-semibold py-3 rounded-lg hover:bg-[#2d4a80] transition-colors"
+        >
+          Ver pack de preparaci&oacute;n {level}
+        </Link>
+        {onReset && (
+          <button
+            onClick={onReset}
+            className="block w-full text-center border border-gray-300 text-gray-600 font-medium py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+          >
+            Corregir otro texto
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  // CASO 3 — Puntuacion > 70%
+  return (
+    <div className="border-t pt-4 space-y-3">
+      <p className="text-sm text-gray-700 leading-relaxed">
+        Buen nivel. Sigue practicando con m&aacute;s correcciones para consolidar antes
+        del examen.
+        {lowestName && (
+          <>
+            {" "}Puedes enfocarte en mejorar la <strong>{lowestName.toLowerCase()}</strong> para
+            subir tu puntuaci&oacute;n.
+          </>
+        )}
+      </p>
+      {onReset ? (
+        <button
+          onClick={onReset}
+          className="block w-full text-center bg-[#0E9F6E] text-white font-semibold py-3 rounded-lg hover:bg-[#0d8c61] transition-colors"
+        >
+          Corregir otro texto
+        </button>
+      ) : (
+        <Link
+          href="/correccion-ia"
+          className="block w-full text-center bg-[#0E9F6E] text-white font-semibold py-3 rounded-lg hover:bg-[#0d8c61] transition-colors"
+        >
+          Corregir otro texto
+        </Link>
+      )}
+      <Link
+        href={`/examenes/${nivelParam}/1`}
+        className="block w-full text-center border border-gray-300 text-gray-600 font-medium py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+      >
+        Hacer un simulacro completo {level}
+      </Link>
     </div>
   );
 }

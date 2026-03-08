@@ -46,26 +46,28 @@
 }
 
 .text {
-  margin: 0.35rem 0 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  margin: 0.5rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
 }
 
-.trustList {
-  margin: 0.8rem 0 0;
-  padding: 0;
-  list-style: none;
+.contact {
+  margin-top: 0.8rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.trustList li {
-  font-size: 0.75rem;
-  color: #e5f1ff;
-  border: 1px solid rgba(255, 255, 255, 0.26);
-  border-radius: 999px;
-  padding: 0.26rem 0.58rem;
+.contact a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.15s ease;
+}
+
+.contact a:hover {
+  color: #E50046;
 }
 
 .linkList {

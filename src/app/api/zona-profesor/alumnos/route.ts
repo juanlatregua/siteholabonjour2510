@@ -91,11 +91,30 @@ export async function POST(request: NextRequest) {
 
   // Check if email already exists
   const existing = await prisma.user.findUnique({ where: { email } });
+
   if (existing) {
-    return NextResponse.json(
-      { ok: false, error: "EMAIL_EXISTS", message: "Ya existe un usuario con este email" },
-      { status: 409 }
-    );
+    // Already assigned to this teacher
+    if (existing.coachId === session.user.id) {
+      return NextResponse.json(
+        { ok: false, error: "ALREADY_ASSIGNED", message: "Este alumno ya está asignado a tu cuenta" },
+        { status: 409 }
+      );
+    }
+
+    // User exists (e.g. from booking flow) — adopt and update profile
+    const student = await prisma.user.update({
+      where: { id: existing.id },
+      data: {
+        name: existing.name || name,
+        role: "STUDENT",
+        level: level || existing.level || null,
+        route: route || existing.route || null,
+        phone: phone || existing.phone || null,
+        coachId: session.user.id,
+      },
+    });
+
+    return NextResponse.json({ ok: true, student, adopted: true }, { status: 200 });
   }
 
   const student = await prisma.user.create({

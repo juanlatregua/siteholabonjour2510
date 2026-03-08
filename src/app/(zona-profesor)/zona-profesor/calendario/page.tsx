@@ -9,17 +9,24 @@ export default async function CalendarioPage() {
   const session = await auth();
   if (!session?.user?.id) redirect("/iniciar-sesion");
 
-  const lessons = await prisma.lesson.findMany({
-    where: { teacherId: session.user.id },
-    select: {
-      id: true,
-      scheduledAt: true,
-      status: true,
-      focus: true,
-      student: { select: { name: true, email: true } },
-    },
-    orderBy: { scheduledAt: "asc" },
-  });
+  const [lessons, availabilitySlots] = await Promise.all([
+    prisma.lesson.findMany({
+      where: { teacherId: session.user.id },
+      select: {
+        id: true,
+        scheduledAt: true,
+        status: true,
+        focus: true,
+        student: { select: { name: true, email: true } },
+      },
+      orderBy: { scheduledAt: "asc" },
+    }),
+    prisma.availability.findMany({
+      where: { teacherId: session.user.id, active: true },
+      select: { dayOfWeek: true, startTime: true, endTime: true },
+      orderBy: [{ dayOfWeek: "asc" }, { startTime: "asc" }],
+    }),
+  ]);
 
   const calendarLessons = lessons.map((l) => ({
     id: l.id,
@@ -35,7 +42,7 @@ export default async function CalendarioPage() {
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Calendario</h2>
           <p className="mt-1 text-sm text-gray-500">
-            Vista mensual de todas tus clases.
+            Vista mensual de clases y disponibilidad.
           </p>
         </div>
         <Link
@@ -46,7 +53,10 @@ export default async function CalendarioPage() {
         </Link>
       </div>
 
-      <CalendarioProfesorClient lessons={calendarLessons} />
+      <CalendarioProfesorClient
+        lessons={calendarLessons}
+        availability={availabilitySlots}
+      />
     </div>
   );
 }

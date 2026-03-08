@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { isSameDay, format } from "date-fns";
 import CalendarView from "@/components/zona/CalendarView";
-import type { CalendarLesson } from "@/components/zona/CalendarView";
+import type { CalendarLesson, CalendarAvailability } from "@/components/zona/CalendarView";
 
 const statusLabel: Record<string, string> = {
   SCHEDULED: "Programada",
@@ -21,19 +21,25 @@ const statusDot: Record<string, string> = {
 
 interface Props {
   lessons: CalendarLesson[];
+  availability?: CalendarAvailability[];
 }
 
-export default function CalendarioProfesorClient({ lessons }: Props) {
+export default function CalendarioProfesorClient({ lessons, availability }: Props) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const selectedLessons = selectedDate
     ? lessons.filter((l) => isSameDay(new Date(l.scheduledAt), selectedDate))
     : [];
 
+  const selectedAvailability = selectedDate && availability
+    ? availability.filter((a) => a.dayOfWeek === selectedDate.getDay())
+    : [];
+
   return (
     <>
       <CalendarView
         lessons={lessons}
+        availability={availability}
         onDayClick={(date) => setSelectedDate(date)}
         selectedDate={selectedDate}
       />
@@ -46,11 +52,7 @@ export default function CalendarioProfesorClient({ lessons }: Props) {
             {selectedLessons.length === 1 ? "clase" : "clases"}
           </h3>
 
-          {selectedLessons.length === 0 ? (
-            <p className="mt-2 text-sm text-gray-400">
-              No hay clases este dia.
-            </p>
-          ) : (
+          {selectedLessons.length > 0 && (
             <ul className="mt-3 divide-y divide-gray-100">
               {selectedLessons.map((l) => (
                 <li
@@ -73,6 +75,30 @@ export default function CalendarioProfesorClient({ lessons }: Props) {
                 </li>
               ))}
             </ul>
+          )}
+
+          {selectedAvailability.length > 0 && (
+            <div className={selectedLessons.length > 0 ? "mt-4 border-t border-gray-100 pt-3" : "mt-2"}>
+              <p className="text-xs font-semibold text-emerald-700 uppercase tracking-wide">
+                Huecos disponibles
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {selectedAvailability.map((a) => (
+                  <span
+                    key={`${a.dayOfWeek}-${a.startTime}`}
+                    className="rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 border border-emerald-200"
+                  >
+                    {a.startTime} – {a.endTime}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {selectedLessons.length === 0 && selectedAvailability.length === 0 && (
+            <p className="mt-2 text-sm text-gray-400">
+              No hay clases ni disponibilidad este día.
+            </p>
           )}
         </div>
       )}

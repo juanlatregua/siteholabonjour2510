@@ -117,7 +117,7 @@ export default function RecursosPage() {
                   </h2>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "#6b7280" }}
+                    style={{ color: "#5f6b78" }}
                   >
                     {resource.description}
                   </p>

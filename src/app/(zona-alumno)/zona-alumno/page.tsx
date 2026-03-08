@@ -74,7 +74,7 @@ export default async function ZonaAlumnoDashboard() {
         <h2 className="text-2xl font-bold text-gray-900">
           Bienvenido{user.name ? `, ${user.name.split(" ")[0]}` : ""}
         </h2>
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-1 text-sm text-gray-600">
           Aquí tienes un resumen de tu actividad.
         </p>
       </div>
@@ -131,7 +131,16 @@ export default async function ZonaAlumnoDashboard() {
             ) : (
               <EmptyState
                 title="Sin pack activo"
-                description="Consulta las opciones de packs disponibles."
+                description="Contrata un pack de clases para empezar."
+                action={
+                  <Link
+                    href="/contratar"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#E50046] px-4 py-2 text-sm font-semibold text-white hover:bg-[#c7003d]"
+                  >
+                    <FiPlus className="h-4 w-4" />
+                    Contratar pack
+                  </Link>
+                }
               />
             )}
           </CardContent>
@@ -150,7 +159,7 @@ export default async function ZonaAlumnoDashboard() {
                 <p className="text-sm font-medium text-gray-900">
                   {latestCorrection.level} — {latestCorrection.taskType.replace(/_/g, " ")}
                 </p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-600">
                   {latestCorrection.globalScore != null && latestCorrection.maxScore != null
                     ? `${latestCorrection.globalScore}/${latestCorrection.maxScore} puntos`
                     : "Procesando..."}

@@ -154,7 +154,7 @@ export default function ConversacionPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   {feature.description}
                 </p>
@@ -209,7 +209,7 @@ export default function ConversacionPage() {
                     >
                       {item.title}
                     </h3>
-                    <p style={{ color: "#6b7280" }}>
+                    <p style={{ color: "#5f6b78" }}>
                       {item.text}
                     </p>
                   </div>
@@ -231,7 +231,7 @@ export default function ConversacionPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Reserva tu sesion individual de conversacion.
           </p>

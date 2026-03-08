@@ -66,7 +66,7 @@ export const cinematic = {
   accentLight:"#ff3366",
   text:       "#1e2d4a",
   textBody:   "#3d4a5c",
-  textMuted:  "#6b7280",
+  textMuted:  "#5f6b78",
   navBg:      "#1e2d4a",
   navText:    "#f1f5f9",
 } as const;

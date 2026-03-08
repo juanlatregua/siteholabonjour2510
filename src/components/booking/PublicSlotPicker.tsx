@@ -102,7 +102,7 @@ export default function PublicSlotPicker({ onSelect, slug }: PublicSlotPickerPro
       <div style={{
         padding: "3rem 1rem",
         textAlign: "center",
-        color: "#6b7280",
+        color: "#5f6b78",
       }}>
         <div style={{
           width: 32, height: 32, border: "3px solid rgba(30,45,74,0.1)",
@@ -127,40 +127,59 @@ export default function PublicSlotPicker({ onSelect, slug }: PublicSlotPickerPro
         boxShadow: "0 2px 12px rgba(30,45,74,0.06)",
       }}>
         <p style={{ fontSize: "1.1rem", fontWeight: 600, marginBottom: "0.5rem", color: "#1e2d4a" }}>
-          No hay plazas disponibles ahora mismo
+          Sin disponibilidad configurada
         </p>
-        <p style={{ fontSize: "0.85rem", color: "#6b7280", marginBottom: "1.25rem" }}>
-          Déjanos tu email y te avisamos cuando se abran nuevas plazas.
+        <p style={{ fontSize: "0.85rem", color: "#5f6b78", marginBottom: "1.25rem" }}>
+          La profesora aún no ha configurado su disponibilidad para estas semanas.
+          Contacta por WhatsApp para reservar tu clase directamente.
         </p>
-        {waitlistSent ? (
-          <p style={{ color: "#10b981", fontWeight: 600 }}>Te avisaremos pronto.</p>
-        ) : (
-          <form onSubmit={handleWaitlist} style={{ display: "flex", gap: "0.5rem", maxWidth: 400, margin: "0 auto" }}>
-            <input
-              type="email"
-              required
-              placeholder="tu@email.com"
-              value={waitlistEmail}
-              onChange={(e) => setWaitlistEmail(e.target.value)}
-              style={{
-                flex: 1, padding: "0.6rem 1rem", borderRadius: "0.5rem",
-                border: "1px solid rgba(30,45,74,0.15)",
-                background: "#ffffff", color: "#1e2d4a",
-                fontSize: "0.85rem",
-              }}
-            />
-            <button
-              type="submit"
-              style={{
-                padding: "0.6rem 1.25rem", borderRadius: "0.5rem",
-                background: "#E50046", color: "white", border: "none",
-                fontWeight: 600, fontSize: "0.85rem", cursor: "pointer",
-              }}
-            >
-              Avisar
-            </button>
-          </form>
-        )}
+        <a
+          href="https://wa.me/34685070304"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex", alignItems: "center", gap: "0.5rem",
+            padding: "0.7rem 1.5rem", borderRadius: "0.75rem",
+            background: "#25D366", color: "white", border: "none",
+            fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
+          }}
+        >
+          Contactar por WhatsApp
+        </a>
+        <div style={{ marginTop: "1.25rem", borderTop: "1px solid rgba(30,45,74,0.06)", paddingTop: "1rem" }}>
+          <p style={{ fontSize: "0.8rem", color: "#9ca3af", marginBottom: "0.5rem" }}>
+            O déjanos tu email y te avisamos cuando se abran nuevas plazas:
+          </p>
+          {waitlistSent ? (
+            <p style={{ color: "#10b981", fontWeight: 600, fontSize: "0.85rem" }}>Te avisaremos pronto.</p>
+          ) : (
+            <form onSubmit={handleWaitlist} style={{ display: "flex", gap: "0.5rem", maxWidth: 400, margin: "0 auto" }}>
+              <input
+                type="email"
+                required
+                placeholder="tu@email.com"
+                value={waitlistEmail}
+                onChange={(e) => setWaitlistEmail(e.target.value)}
+                style={{
+                  flex: 1, padding: "0.6rem 1rem", borderRadius: "0.5rem",
+                  border: "1px solid rgba(30,45,74,0.15)",
+                  background: "#ffffff", color: "#1e2d4a",
+                  fontSize: "0.85rem",
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  padding: "0.6rem 1.25rem", borderRadius: "0.5rem",
+                  background: "#E50046", color: "white", border: "none",
+                  fontWeight: 600, fontSize: "0.85rem", cursor: "pointer",
+                }}
+              >
+                Avisar
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     );
   }
@@ -168,7 +187,7 @@ export default function PublicSlotPicker({ onSelect, slug }: PublicSlotPickerPro
   return (
     <div>
       {teacherName && (
-        <p style={{ fontSize: "0.85rem", color: "#6b7280", marginBottom: "0.75rem" }}>
+        <p style={{ fontSize: "0.85rem", color: "#5f6b78", marginBottom: "0.75rem" }}>
           Profesora: <strong style={{ color: "#1e2d4a" }}>{teacherName}</strong>
         </p>
       )}

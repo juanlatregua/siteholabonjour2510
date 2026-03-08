@@ -1,3 +1,5 @@
+export const maxDuration = 60;
+
 import { NextRequest, NextResponse } from "next/server";
 import { streamChat, type ChatMessage } from "@/lib/chat/anthropic";
 import { checkRateLimit } from "@/lib/chat/rate-limit";

@@ -75,6 +75,7 @@ export default async function MaterialesPage() {
                     publicUrl={item.publicUrl}
                     createdAt={item.createdAt}
                     sizeBytes={item.sizeBytes}
+                    downloadEndpoint="/api/zona-profesor/download"
                   />
                 ),
               },

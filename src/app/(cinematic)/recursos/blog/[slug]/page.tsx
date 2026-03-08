@@ -107,7 +107,7 @@ const proseStyles = `
     margin: 1.5rem 0;
     background: rgba(229,0,70,0.04);
     border-radius: 0 12px 12px 0;
-    color: #6b7280;
+    color: #5f6b78;
     font-style: italic;
   }
   .prose-content table {
@@ -246,7 +246,7 @@ export default async function BlogArticlePage({ params }: Props) {
           {/* Breadcrumbs */}
           <nav
             className="mb-8 text-sm"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
             aria-label="Breadcrumb"
           >
             <ol className="flex items-center justify-center gap-2 flex-wrap">
@@ -254,7 +254,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 <Link
                   href="/"
                   className="hover:underline"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   HolaBonjour
                 </Link>
@@ -264,7 +264,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 <Link
                   href="/recursos"
                   className="hover:underline"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   Recursos
                 </Link>
@@ -274,7 +274,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 <Link
                   href="/recursos/blog"
                   className="hover:underline"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   Blog
                 </Link>
@@ -318,7 +318,7 @@ export default async function BlogArticlePage({ params }: Props) {
             {/* Reading time */}
             <span
               className="text-xs"
-              style={{ color: "#6b7280" }}
+              style={{ color: "#5f6b78" }}
             >
               {post.readingMinutes} min de lectura
             </span>
@@ -326,7 +326,7 @@ export default async function BlogArticlePage({ params }: Props) {
             {/* Date */}
             <span
               className="text-xs"
-              style={{ color: "#6b7280" }}
+              style={{ color: "#5f6b78" }}
             >
               {formatDate(post.publishedAt)}
             </span>
@@ -435,7 +435,7 @@ export default async function BlogArticlePage({ params }: Props) {
                     </h3>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ color: "#6b7280" }}
+                      style={{ color: "#5f6b78" }}
                     >
                       {relPost.description.length > 120
                         ? relPost.description.slice(0, 120) + "..."
@@ -473,7 +473,7 @@ export default async function BlogArticlePage({ params }: Props) {
             </h2>
             <p
               className="text-base mb-8 leading-relaxed max-w-xl mx-auto"
-              style={{ color: "#6b7280" }}
+              style={{ color: "#5f6b78" }}
             >
               Descubre tu nivel actual con nuestro test gratuito o ponte en
               contacto con nosotros para diseñar un plan de estudio

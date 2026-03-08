@@ -1,10 +1,11 @@
 import React from "react";
+import Link from "next/link";
 import { requireStudent } from "@/lib/auth-helpers";
 import { prisma } from "@/lib/prisma";
 import PackCard from "@/components/zona/PackCard";
 import Card, { CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import EmptyState from "@/components/ui/EmptyState";
-import { FiPackage } from "react-icons/fi";
+import { FiPackage, FiPlus } from "react-icons/fi";
 
 export default async function PackPage() {
   const session = await requireStudent();
@@ -40,7 +41,16 @@ export default async function PackPage() {
         <EmptyState
           icon={<FiPackage className="h-12 w-12" />}
           title="Sin pack activo"
-          description="Actualmente no tienes un pack de horas activo. Contacta con nosotros para adquirir uno."
+          description="Contrata un pack de clases para empezar."
+          action={
+            <Link
+              href="/contratar"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#E50046] px-4 py-2 text-sm font-semibold text-white hover:bg-[#c7003d]"
+            >
+              <FiPlus className="h-4 w-4" />
+              Contratar pack
+            </Link>
+          }
         />
       )}
 

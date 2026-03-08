@@ -88,7 +88,7 @@ export default function ContabilidadClient() {
             type="button"
             disabled={loading}
             onClick={() => handleExport("csv")}
-            style={buttonStyle("#6b7280")}
+            style={buttonStyle("#5f6b78")}
           >
             Exportar CSV
           </button>

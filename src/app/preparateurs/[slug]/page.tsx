@@ -118,7 +118,7 @@ export default async function PreparateurPage({ params }: Props) {
             background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)",
             borderRadius: "0.875rem", padding: "1.25rem",
           }}>
-            <p style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.5rem" }}>Niveles</p>
+            <p style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", color: "#5f6b78", marginBottom: "0.5rem" }}>Niveles</p>
             <div style={{ display: "flex", gap: "0.35rem", flexWrap: "wrap" }}>
               {profile.levels.map((l) => (
                 <span key={l} style={{
@@ -137,7 +137,7 @@ export default async function PreparateurPage({ params }: Props) {
             background: "#ffffff", border: "1px solid rgba(30,45,74,0.08)",
             borderRadius: "0.875rem", padding: "1.25rem",
           }}>
-            <p style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.5rem" }}>Idiomas</p>
+            <p style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", color: "#5f6b78", marginBottom: "0.5rem" }}>Idiomas</p>
             <div style={{ display: "flex", gap: "0.35rem", flexWrap: "wrap" }}>
               {profile.languages.map((lang) => (
                 <span key={lang} style={{
@@ -189,14 +189,14 @@ export default async function PreparateurPage({ params }: Props) {
                     {r.source === "google" && (
                       <span style={{
                         fontSize: "0.65rem", padding: "0.1rem 0.4rem",
-                        background: "rgba(57,93,159,0.08)", color: "#6b7280",
+                        background: "rgba(57,93,159,0.08)", color: "#5f6b78",
                         borderRadius: "0.25rem", fontWeight: 600,
                       }}>
                         Google
                       </span>
                     )}
                     {r.source === "google" && r.studentId && !r.studentId.startsWith("google-review") && (
-                      <span style={{ fontSize: "0.8rem", color: "#6b7280", fontWeight: 500 }}>
+                      <span style={{ fontSize: "0.8rem", color: "#5f6b78", fontWeight: 500 }}>
                         — {r.studentId}
                       </span>
                     )}
@@ -220,7 +220,7 @@ export default async function PreparateurPage({ params }: Props) {
           <h2 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: "0.5rem" }}>
             Reserva tu clase con {profile.displayName.split(" ")[0]}
           </h2>
-          <p style={{ fontSize: "0.85rem", color: "#6b7280", marginBottom: "1rem" }}>
+          <p style={{ fontSize: "0.85rem", color: "#5f6b78", marginBottom: "1rem" }}>
             Pack de 4 clases individuales por Zoom · Desde {hourlyEur} €/h
           </p>
           <Link

@@ -80,7 +80,7 @@ export default async function NivelPage({ params }: PageProps) {
           >
             {data.frenchName} — {data.name}
           </h1>
-          <p className="text-sm font-medium mb-4" style={{ color: "#6b7280" }}>
+          <p className="text-sm font-medium mb-4" style={{ color: "#5f6b78" }}>
             {data.hours} de preparación estimada
           </p>
           <p
@@ -137,7 +137,7 @@ export default async function NivelPage({ params }: PageProps) {
                       key={h}
                       className="px-4 py-3 text-xs font-semibold uppercase tracking-wider"
                       style={{
-                        color: "#6b7280",
+                        color: "#5f6b78",
                         borderBottom: "2px solid rgba(30,45,74,0.1)",
                       }}
                     >
@@ -169,7 +169,7 @@ export default async function NivelPage({ params }: PageProps) {
                     </td>
                     <td
                       className="px-4 py-4 text-sm"
-                      style={{ color: "#6b7280", borderBottom: "1px solid rgba(30,45,74,0.06)" }}
+                      style={{ color: "#5f6b78", borderBottom: "1px solid rgba(30,45,74,0.06)" }}
                     >
                       {row.evalua}
                     </td>
@@ -180,7 +180,7 @@ export default async function NivelPage({ params }: PageProps) {
           </div>
           <p
             className="mt-6 text-sm font-medium text-center"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             {data.examNote}
           </p>
@@ -270,7 +270,7 @@ export default async function NivelPage({ params }: PageProps) {
                       className="text-sm font-medium px-4 py-2 rounded-full"
                       style={{
                         background: "rgba(107,114,128,0.1)",
-                        color: "#6b7280",
+                        color: "#5f6b78",
                       }}
                     >
                       Próximamente
@@ -305,7 +305,7 @@ export default async function NivelPage({ params }: PageProps) {
             >
               &ldquo;{data.mcerDescriptor}&rdquo;
             </p>
-            <p className="mt-4 text-xs font-medium" style={{ color: "#6b7280" }}>
+            <p className="mt-4 text-xs font-medium" style={{ color: "#5f6b78" }}>
               — Marco Común Europeo de Referencia para las Lenguas (MCER)
             </p>
           </div>
@@ -377,7 +377,7 @@ export default async function NivelPage({ params }: PageProps) {
                           key={h}
                           className="px-4 py-3 text-xs font-semibold uppercase tracking-wider"
                           style={{
-                            color: "#6b7280",
+                            color: "#5f6b78",
                             borderBottom: "2px solid rgba(30,45,74,0.1)",
                           }}
                         >
@@ -437,7 +437,7 @@ export default async function NivelPage({ params }: PageProps) {
           <p className="text-lg mb-2" style={{ color: "#3d4a5c" }}>
             El 100% de los alumnos de Isabelle aprueba desde 2017.
           </p>
-          <p className="text-sm mb-8" style={{ color: "#6b7280" }}>
+          <p className="text-sm mb-8" style={{ color: "#5f6b78" }}>
             Sesión diagnóstico — 25€ &middot; Sin compromiso
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -454,7 +454,7 @@ export default async function NivelPage({ params }: PageProps) {
       {/* Breadcrumb nav */}
       <CinematicSection className="py-6 px-6">
         <div className="mx-auto max-w-3xl">
-          <nav className="text-sm" style={{ color: "#6b7280" }}>
+          <nav className="text-sm" style={{ color: "#5f6b78" }}>
             <Link href="/preparacion-delf-dalf" className="hover:underline" style={{ color: "#395D9F" }}>
               ← Todos los niveles DELF/DALF
             </Link>

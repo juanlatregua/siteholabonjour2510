@@ -100,7 +100,7 @@ export default function NuevoPackForm({ students }: NuevoPackFormProps) {
         type="number"
         step="0.01"
         min="0"
-        placeholder="Ej: 140.00"
+        placeholder="Ej: 150.00"
         {...register("price", {
           required: "El precio es obligatorio",
           min: { value: 0, message: "El precio no puede ser negativo" },

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
 import { SessionProvider } from "next-auth/react";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { auth } from "@/lib/auth";
 import { Playfair_Display, DM_Sans, Space_Grotesk, DM_Mono, Nunito, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -118,6 +120,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             {children}
           </main>
         </SessionProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

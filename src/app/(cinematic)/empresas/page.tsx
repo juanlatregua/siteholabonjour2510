@@ -164,7 +164,7 @@ export default function EmpresasPage() {
           <p
             style={{
               textAlign: "center",
-              color: "#6b7280",
+              color: "#5f6b78",
               fontSize: "1rem",
               marginBottom: "3rem",
               maxWidth: 500,
@@ -280,7 +280,7 @@ export default function EmpresasPage() {
                   style={{
                     fontSize: "0.88rem",
                     lineHeight: 1.6,
-                    color: "#6b7280",
+                    color: "#5f6b78",
                     margin: 0,
                   }}
                 >
@@ -316,7 +316,7 @@ export default function EmpresasPage() {
               }}
             >
               <div>
-                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.4rem" }}>
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#5f6b78", marginBottom: "0.4rem" }}>
                   Niveles
                 </p>
                 <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>
@@ -324,7 +324,7 @@ export default function EmpresasPage() {
                 </p>
               </div>
               <div>
-                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.4rem" }}>
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#5f6b78", marginBottom: "0.4rem" }}>
                   Formato
                 </p>
                 <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>
@@ -332,7 +332,7 @@ export default function EmpresasPage() {
                 </p>
               </div>
               <div>
-                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.4rem" }}>
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#5f6b78", marginBottom: "0.4rem" }}>
                   Mínimo
                 </p>
                 <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>
@@ -340,7 +340,7 @@ export default function EmpresasPage() {
                 </p>
               </div>
               <div>
-                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#6b7280", marginBottom: "0.4rem" }}>
+                <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#5f6b78", marginBottom: "0.4rem" }}>
                   Precio
                 </p>
                 <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>

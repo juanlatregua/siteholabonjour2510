@@ -26,7 +26,7 @@ export default function VerifyEmailPage() {
         Te hemos enviado un enlace de acceso. Haz clic en el enlace del email
         para entrar a tu cuenta.
       </p>
-      <p className="text-xs text-[#6b7280] mb-6">
+      <p className="text-xs text-[#5f6b78] mb-6">
         Si no lo ves, revisa la carpeta de spam o correo no deseado.
       </p>
       <Link

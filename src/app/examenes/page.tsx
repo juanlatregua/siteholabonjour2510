@@ -70,14 +70,14 @@ function NivelCard({ nivel }: { nivel: Nivel }) {
             >
               {cfg.diploma}
             </span>
-            <span style={{ fontSize: "0.75rem", color: "#6b7280", fontFamily: "monospace" }}>
+            <span style={{ fontSize: "0.75rem", color: "#5f6b78", fontFamily: "monospace" }}>
               {cfg.duracionTotalMinutos} min
             </span>
           </div>
           <h3 style={{ fontSize: "1.5rem", fontWeight: 700, letterSpacing: "-0.02em", color: "#1a1a2e" }}>
             {nivel}
           </h3>
-          <p style={{ fontSize: "0.85rem", color: "#6b7280" }}>{cfg.descripcion}</p>
+          <p style={{ fontSize: "0.85rem", color: "#5f6b78" }}>{cfg.descripcion}</p>
           <p style={{ fontSize: "0.75rem", color: "#9ca3af", marginTop: "0.15rem" }}>{cfg.descripcionEs}</p>
         </div>
         {!disponible && (
@@ -89,7 +89,7 @@ function NivelCard({ nivel }: { nivel: Nivel }) {
               border: "1px solid #E2E8F0",
               padding: "0.25rem 0.5rem",
               borderRadius: "0.25rem",
-              color: "#6b7280",
+              color: "#5f6b78",
             }}
           >
             Próximamente
@@ -256,7 +256,7 @@ export default function ExamenesHub() {
               style={{
                 fontSize: "0.7rem",
                 fontFamily: "monospace",
-                color: "#6b7280",
+                color: "#5f6b78",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
               }}
@@ -281,7 +281,7 @@ export default function ExamenesHub() {
 
           <p
             style={{
-              color: "#6b7280",
+              color: "#5f6b78",
               fontSize: "1.05rem",
               maxWidth: 600,
               lineHeight: 1.6,
@@ -298,7 +298,7 @@ export default function ExamenesHub() {
               gap: "1rem",
               marginTop: "2rem",
               fontSize: "0.85rem",
-              color: "#6b7280",
+              color: "#5f6b78",
             }}
           >
             <span style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}>
@@ -321,11 +321,11 @@ export default function ExamenesHub() {
           <div style={{ marginBottom: "1.5rem" }}>
             <h2 style={{ fontSize: "1.25rem", fontWeight: 700, color: "#1a1a2e" }}>
               DELF{" "}
-              <span style={{ color: "#6b7280", fontWeight: 400, fontSize: "1rem" }}>
+              <span style={{ color: "#5f6b78", fontWeight: 400, fontSize: "1rem" }}>
                 — Diplôme d&apos;études en langue française
               </span>
             </h2>
-            <p style={{ fontSize: "0.85rem", color: "#6b7280", marginTop: "0.25rem" }}>
+            <p style={{ fontSize: "0.85rem", color: "#5f6b78", marginTop: "0.25rem" }}>
               Niveaux A1 à B2 · Certification indépendante et permanente
             </p>
           </div>
@@ -350,11 +350,11 @@ export default function ExamenesHub() {
           <div style={{ marginBottom: "1.5rem" }}>
             <h2 style={{ fontSize: "1.25rem", fontWeight: 700, color: "#1a1a2e" }}>
               DALF{" "}
-              <span style={{ color: "#6b7280", fontWeight: 400, fontSize: "1rem" }}>
+              <span style={{ color: "#5f6b78", fontWeight: 400, fontSize: "1rem" }}>
                 — Diplôme approfondi de langue française
               </span>
             </h2>
-            <p style={{ fontSize: "0.85rem", color: "#6b7280", marginTop: "0.25rem" }}>
+            <p style={{ fontSize: "0.85rem", color: "#5f6b78", marginTop: "0.25rem" }}>
               Niveaux C1 et C2 · Maîtrise avancée
             </p>
           </div>
@@ -380,7 +380,7 @@ export default function ExamenesHub() {
             borderRadius: "0.5rem",
             padding: "1.25rem 1.5rem",
             fontSize: "0.85rem",
-            color: "#6b7280",
+            color: "#5f6b78",
             lineHeight: 1.6,
           }}
         >

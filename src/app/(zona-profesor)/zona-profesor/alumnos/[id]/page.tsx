@@ -131,7 +131,9 @@ export default async function AlumnoDetailPage({
                   focus={lesson.focus}
                   teacherName={lesson.teacher.name}
                   zoomLink={lesson.zoomLink}
+                  zoomStartUrl={lesson.zoomStartUrl}
                   durationMinutes={lesson.durationMinutes}
+                  isTeacher
                 />
               ))}
             </div>
@@ -157,6 +159,7 @@ export default async function AlumnoDetailPage({
                   storagePath={m.storagePath}
                   publicUrl={m.publicUrl}
                   createdAt={m.createdAt}
+                  downloadEndpoint="/api/zona-profesor/download"
                   sizeBytes={m.sizeBytes}
                 />
               ))}

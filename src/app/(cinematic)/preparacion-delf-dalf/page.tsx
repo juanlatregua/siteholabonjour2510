@@ -119,7 +119,7 @@ export default function PreparacionDelfDalfHub() {
             Simulacros oficiales FEI, corrección IA con criterios reales y clases con
             Isabelle, examinadora oficial.
           </p>
-          <p className="text-sm tracking-wide mb-8" style={{ color: "#6b7280" }}>
+          <p className="text-sm tracking-wide mb-8" style={{ color: "#5f6b78" }}>
             Simulacros gratuitos &middot; Corrección IA &middot; Clases individuales
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -159,7 +159,7 @@ export default function PreparacionDelfDalfHub() {
                         className="text-xs font-semibold px-3 py-1 rounded-full"
                         style={{
                           background: "rgba(107,114,128,0.12)",
-                          color: "#6b7280",
+                          color: "#5f6b78",
                           border: "1px solid rgba(107,114,128,0.2)",
                         }}
                       >
@@ -184,7 +184,7 @@ export default function PreparacionDelfDalfHub() {
                   >
                     {level.badge} {level.code} — {level.name}
                   </h3>
-                  <p className="text-sm mb-3" style={{ color: "#6b7280" }}>
+                  <p className="text-sm mb-3" style={{ color: "#5f6b78" }}>
                     {level.hours} &middot; {level.subtitle}
                   </p>
                   <p className="text-sm leading-relaxed" style={{ color: "#3d4a5c" }}>
@@ -259,7 +259,7 @@ export default function PreparacionDelfDalfHub() {
               >
                 Corrección IA
               </h3>
-              <p className="text-sm mb-4" style={{ color: "#6b7280" }}>
+              <p className="text-sm mb-4" style={{ color: "#5f6b78" }}>
                 Corrige tu producción escrita con los mismos criterios que los examinadores
                 DELF/DALF. 3 correcciones gratis.
               </p>
@@ -274,7 +274,7 @@ export default function PreparacionDelfDalfHub() {
               >
                 Calendario de exámenes
               </h3>
-              <p className="text-sm mb-4" style={{ color: "#6b7280" }}>
+              <p className="text-sm mb-4" style={{ color: "#5f6b78" }}>
                 Todas las fechas DELF/DALF en España: Alliance Française, Institut
                 Français, EOI. Activa un recordatorio.
               </p>
@@ -289,7 +289,7 @@ export default function PreparacionDelfDalfHub() {
               >
                 Simulacros completos
               </h3>
-              <p className="text-sm mb-4" style={{ color: "#6b7280" }}>
+              <p className="text-sm mb-4" style={{ color: "#5f6b78" }}>
                 Practica con simulacros idénticos al examen real. Audio oficial FEI,
                 4 pruebas completas, cronómetro.
               </p>
@@ -304,7 +304,7 @@ export default function PreparacionDelfDalfHub() {
               >
                 Test de nivel
               </h3>
-              <p className="text-sm mb-4" style={{ color: "#6b7280" }}>
+              <p className="text-sm mb-4" style={{ color: "#5f6b78" }}>
                 Descubre tu nivel de francés en menos de 20 minutos con nuestro test
                 adaptativo gratuito.
               </p>
@@ -381,7 +381,7 @@ export default function PreparacionDelfDalfHub() {
           <p className="text-lg mb-2" style={{ color: "#3d4a5c" }}>
             El 100% de los alumnos de Isabelle aprueba desde 2017.
           </p>
-          <p className="text-sm mb-8" style={{ color: "#6b7280" }}>
+          <p className="text-sm mb-8" style={{ color: "#5f6b78" }}>
             Sesión diagnóstico — 25€ &middot; Sin compromiso
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

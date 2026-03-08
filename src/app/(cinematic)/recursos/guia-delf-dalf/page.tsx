@@ -356,7 +356,7 @@ export default function GuiaDelfDalfPage() {
           </p>
           <p
             className="text-sm max-w-xl mx-auto"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Guia actualizada para 2026 &mdash; por HolaBonjour, academia de
             frances en Malaga.
@@ -461,7 +461,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             El DELF y el DALF abren puertas en muchos ambitos profesionales,
             academicos y administrativos. Estas son las principales razones
@@ -621,7 +621,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Duracion de cada prueba, duracion total del examen y precio
             orientativo para todos los niveles del DELF y DALF.
@@ -674,7 +674,7 @@ export default function GuiaDelfDalfPage() {
                         </td>
                         <td
                           className="py-3 px-3 text-sm"
-                          style={{ color: "#6b7280" }}
+                          style={{ color: "#5f6b78" }}
                         >
                           {l.diploma}
                         </td>
@@ -721,7 +721,7 @@ export default function GuiaDelfDalfPage() {
               </div>
               <p
                 className="text-xs mt-4"
-                style={{ color: "#6b7280" }}
+                style={{ color: "#5f6b78" }}
               >
                 * Los precios son orientativos y pueden variar segun el centro
                 examinador. Fuente: France Education International 2025-2026.
@@ -755,7 +755,7 @@ export default function GuiaDelfDalfPage() {
                   <div>
                     <span
                       className="text-xs block"
-                      style={{ color: "#6b7280" }}
+                      style={{ color: "#5f6b78" }}
                     >
                       Comp. oral
                     </span>
@@ -766,7 +766,7 @@ export default function GuiaDelfDalfPage() {
                   <div>
                     <span
                       className="text-xs block"
-                      style={{ color: "#6b7280" }}
+                      style={{ color: "#5f6b78" }}
                     >
                       Comp. escrita
                     </span>
@@ -777,7 +777,7 @@ export default function GuiaDelfDalfPage() {
                   <div>
                     <span
                       className="text-xs block"
-                      style={{ color: "#6b7280" }}
+                      style={{ color: "#5f6b78" }}
                     >
                       Prod. escrita
                     </span>
@@ -788,7 +788,7 @@ export default function GuiaDelfDalfPage() {
                   <div>
                     <span
                       className="text-xs block"
-                      style={{ color: "#6b7280" }}
+                      style={{ color: "#5f6b78" }}
                     >
                       Prod. oral
                     </span>
@@ -822,7 +822,7 @@ export default function GuiaDelfDalfPage() {
         <div className="mx-auto max-w-3xl text-center">
           <p
             className="text-base mb-5"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             No sabes a que nivel presentarte? Haz nuestro test gratuito.
           </p>
@@ -853,7 +853,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Estimacion del tiempo de preparacion segun tu nivel actual y tu
             objetivo. Las horas incluyen clases, estudio personal y practica.
@@ -925,7 +925,7 @@ export default function GuiaDelfDalfPage() {
               </div>
               <p
                 className="text-xs mt-4"
-                style={{ color: "#6b7280" }}
+                style={{ color: "#5f6b78" }}
               >
                 * Estimacion basada en el MCER. El tiempo real depende de
                 factores como tu lengua materna, tu dedicacion y si cuentas con
@@ -940,7 +940,7 @@ export default function GuiaDelfDalfPage() {
               <GlassCard key={row.objetivo}>
                 <p
                   className="text-xs mb-1"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   De {row.actual} a
                 </p>
@@ -958,7 +958,7 @@ export default function GuiaDelfDalfPage() {
                 </p>
                 <p
                   className="text-xs"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   {row.meses}
                 </p>
@@ -969,7 +969,7 @@ export default function GuiaDelfDalfPage() {
           <div className="text-center mt-8">
             <p
               className="text-sm mb-4"
-              style={{ color: "#6b7280" }}
+              style={{ color: "#5f6b78" }}
             >
               Con clases individuales 1 a 1 por Zoom puedes acelerar tu
               preparacion significativamente: cada sesion se adapta 100% a tus
@@ -1023,7 +1023,7 @@ export default function GuiaDelfDalfPage() {
             </div>
             <p
               className="text-xs mt-4"
-              style={{ color: "#6b7280" }}
+              style={{ color: "#5f6b78" }}
             >
               Consulta la web de cada centro para ver las fechas exactas de
               convocatoria, plazos de inscripcion y tasas vigentes.
@@ -1097,7 +1097,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Consejos practicos organizados por cada competencia del examen.
             Aplicarlos desde el primer dia de preparacion marca la diferencia.
@@ -1155,7 +1155,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-center text-base mb-10 max-w-2xl mx-auto"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Webs y herramientas gratuitas para complementar tu preparacion.
             Usarlas a diario es la mejor inversion de tiempo.
@@ -1272,7 +1272,7 @@ export default function GuiaDelfDalfPage() {
           </h2>
           <p
             className="text-lg mb-4"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Preparate con clases individuales 1 a 1 por Zoom, adaptadas a tu
             nivel y a las exigencias del examen. Profesores nativos
@@ -1280,7 +1280,7 @@ export default function GuiaDelfDalfPage() {
           </p>
           <p
             className="text-sm mb-8"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             WhatsApp:{" "}
             <a

@@ -203,7 +203,7 @@ export default function BookingFunnel() {
               )}
             </p>
             {prepInfo.levels.length > 0 && (
-              <p style={{ fontSize: "0.75rem", color: "#6b7280" }}>
+              <p style={{ fontSize: "0.75rem", color: "#5f6b78" }}>
                 Niveles: {prepInfo.levels.join(", ")}
               </p>
             )}
@@ -236,7 +236,7 @@ export default function BookingFunnel() {
               borderRadius: "1rem", padding: "1.25rem",
             }}>
               <p style={{ fontWeight: 700, fontSize: "1.05rem", color: "#1e2d4a" }}>Sesión diagnóstico</p>
-              <p style={{ fontSize: "0.85rem", color: "#6b7280", marginTop: "0.25rem" }}>
+              <p style={{ fontSize: "0.85rem", color: "#5f6b78", marginTop: "0.25rem" }}>
                 30 min por Zoom — Evaluamos tu nivel real y te damos un plan de preparación personalizado.
               </p>
               <p style={{ fontSize: "1.5rem", fontWeight: 800, color: "#E50046", marginTop: "0.5rem" }}>25 €</p>
@@ -247,7 +247,7 @@ export default function BookingFunnel() {
           {!isDiagnostico && (
             <div>
               <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#1e2d4a" }}>Nivel de francés</h3>
-              <p style={{ fontSize: "0.85rem", color: "#6b7280", marginTop: "0.15rem" }}>
+              <p style={{ fontSize: "0.85rem", color: "#5f6b78", marginTop: "0.15rem" }}>
                 Clases individuales (1 a 1) por Zoom, 55 minutos.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "0.5rem", marginTop: "0.75rem" }}>
@@ -267,7 +267,7 @@ export default function BookingFunnel() {
                 ))}
               </div>
               {pack && (
-                <p style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#6b7280" }}>
+                <p style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#5f6b78" }}>
                   Pack {pack.levelRange}: {pack.totalEur} € ({pack.perSession.toFixed(2)} €/sesión)
                 </p>
               )}
@@ -394,10 +394,37 @@ export default function BookingFunnel() {
               background: "rgba(229,0,70,0.04)", border: "1px solid rgba(229,0,70,0.15)",
             }}>
               <p style={{ fontSize: "1.75rem", fontWeight: 800, color: "#E50046" }}>{pack.totalEur} €</p>
-              <p style={{ fontSize: "0.8rem", color: "#6b7280" }}>
+              <p style={{ fontSize: "0.8rem", color: "#5f6b78" }}>
                 {isDiagnostico ? "Sesión diagnóstico · IVA incluido" : `${pack.perSession.toFixed(2)} €/sesión · IVA incluido`}
               </p>
             </div>
+          </div>
+
+          {/* What's included */}
+          <div style={{
+            background: "rgba(57,93,159,0.03)", border: "1px solid rgba(57,93,159,0.1)",
+            borderRadius: "0.75rem", padding: "1rem",
+          }}>
+            <h4 style={{ fontSize: "0.9rem", fontWeight: 700, color: "#1e2d4a", marginBottom: "0.5rem" }}>
+              {isDiagnostico ? "Qué incluye la sesión diagnóstico" : "Qué incluye el pack"}
+            </h4>
+            {isDiagnostico ? (
+              <ul style={{ fontSize: "0.85rem", color: "#3d4a5c", lineHeight: 1.8, listStyle: "none", padding: 0, margin: 0 }}>
+                <li>✓ 30 minutos por Zoom con Isabelle Guitton</li>
+                <li>✓ Evaluación de tu nivel real</li>
+                <li>✓ Plan de preparación personalizado</li>
+                <li>✓ El enlace Zoom te llegará por email y en tu zona de alumno</li>
+                <li>✓ Acceso inmediato a tu zona de alumno tras el pago</li>
+              </ul>
+            ) : (
+              <ul style={{ fontSize: "0.85rem", color: "#3d4a5c", lineHeight: 1.8, listStyle: "none", padding: 0, margin: 0 }}>
+                <li>✓ 4 clases individuales de 55 min por Zoom</li>
+                <li>✓ Profesora nativa certificada FEI</li>
+                <li>✓ Material personalizado según tu nivel</li>
+                <li>✓ Acceso a tu zona de alumno con materiales y seguimiento</li>
+                <li>✓ Enlace Zoom para cada clase por email</li>
+              </ul>
+            )}
           </div>
 
           {/* Payment method selector */}
@@ -429,7 +456,7 @@ export default function BookingFunnel() {
             }}>
               <p style={{ fontWeight: 700, color: "#1e2d4a", marginBottom: "0.5rem" }}>Envía el Bizum a:</p>
               <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "#395D9F", letterSpacing: "0.05em" }}>{BANK_INFO.bizumPhone}</p>
-              <p style={{ color: "#6b7280", marginTop: "0.25rem" }}>Concepto: tu nombre + email</p>
+              <p style={{ color: "#5f6b78", marginTop: "0.25rem" }}>Concepto: tu nombre + email</p>
               <div style={{ marginTop: "0.75rem" }}>
                 <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "#1e2d4a", marginBottom: "0.25rem" }}>
                   Referencia Bizum (opcional)
@@ -455,12 +482,12 @@ export default function BookingFunnel() {
               <p style={{ fontWeight: 700, color: "#1e2d4a", marginBottom: "0.5rem" }}>Datos bancarios:</p>
               <table style={{ fontSize: "0.85rem", borderCollapse: "collapse" }}>
                 <tbody>
-                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#6b7280" }}>Titular:</td><td style={{ color: "#1e2d4a" }}>{BANK_INFO.holder}</td></tr>
-                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#6b7280" }}>IBAN:</td><td style={{ fontFamily: "monospace", color: "#1e2d4a" }}>{BANK_INFO.iban}</td></tr>
-                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#6b7280" }}>BIC:</td><td style={{ fontFamily: "monospace", color: "#1e2d4a" }}>{BANK_INFO.bic}</td></tr>
+                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#5f6b78" }}>Titular:</td><td style={{ color: "#1e2d4a" }}>{BANK_INFO.holder}</td></tr>
+                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#5f6b78" }}>IBAN:</td><td style={{ fontFamily: "monospace", color: "#1e2d4a" }}>{BANK_INFO.iban}</td></tr>
+                  <tr><td style={{ padding: "2px 8px 2px 0", fontWeight: 600, color: "#5f6b78" }}>BIC:</td><td style={{ fontFamily: "monospace", color: "#1e2d4a" }}>{BANK_INFO.bic}</td></tr>
                 </tbody>
               </table>
-              <p style={{ color: "#6b7280", marginTop: "0.5rem" }}>Concepto: tu nombre + email</p>
+              <p style={{ color: "#5f6b78", marginTop: "0.5rem" }}>Concepto: tu nombre + email</p>
               <div style={{ marginTop: "0.75rem" }}>
                 <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "#1e2d4a", marginBottom: "0.25rem" }}>
                   Referencia transferencia (opcional)
@@ -481,7 +508,11 @@ export default function BookingFunnel() {
             borderRadius: "0.75rem", padding: "1rem", fontSize: "0.85rem",
             background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.2)", color: "#b45309",
           }}>
-            <strong>Anulación:</strong> 48h antes. Si no, se descuenta del bono. Excepción: justificante médico en 24h.
+            {isDiagnostico ? (
+              <><strong>Anulación:</strong> Cancelación gratuita con 48h de antelación.</>
+            ) : (
+              <><strong>Anulación:</strong> 48h antes. Si no, se descuenta del bono. Excepción: justificante médico en 24h.</>
+            )}
           </div>
           {error && (
             <p style={{

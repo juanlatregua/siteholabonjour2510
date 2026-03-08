@@ -110,7 +110,7 @@ export default function ContactoPage() {
                 </h2>
                 <p
                   className="text-sm mb-1"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   {method.description}
                 </p>
@@ -154,7 +154,7 @@ export default function ContactoPage() {
           <GoldButton href="/recursos/blog" variant="outline">
             Ir al blog
           </GoldButton>
-          <p className="mt-8" style={{ color: "#6b7280" }}>
+          <p className="mt-8" style={{ color: "#5f6b78" }}>
             Clases 100% online. Alumnos en España, Francia y Latinoamérica.
           </p>
         </div>

@@ -1,13 +1,23 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import BookingSlotPicker from "@/components/zona/BookingSlotPicker";
 import Button from "@/components/ui/Button";
 import Card, { CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
+import EmptyState from "@/components/ui/EmptyState";
+import { FiPackage } from "react-icons/fi";
 
 interface Teacher {
   id: string;
   name: string | null;
+}
+
+interface ActivePack {
+  id: string;
+  hoursTotal: number;
+  hoursUsed: number;
+  levelRange: string;
 }
 
 export default function ReservarPage() {
@@ -18,28 +28,35 @@ export default function ReservarPage() {
   const [focus, setFocus] = useState("");
   const [notes, setNotes] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [activePack, setActivePack] = useState<ActivePack | null>(null);
   const [message, setMessage] = useState<{
     type: "success" | "error";
     text: string;
   } | null>(null);
 
-  // Fetch available teachers (coach or all teachers)
+  // Fetch available teachers and pack status
   useEffect(() => {
-    async function loadTeachers() {
+    async function loadData() {
       try {
         const res = await fetch("/api/zona-alumno/dashboard");
         const data = await res.json();
-        if (data.ok && data.teachers) {
-          setTeachers(data.teachers);
-          if (data.teachers.length > 0) {
-            setSelectedTeacherId(data.teachers[0].id);
+        if (data.ok) {
+          if (data.teachers) {
+            setTeachers(data.teachers);
+            if (data.teachers.length > 0) {
+              setSelectedTeacherId(data.teachers[0].id);
+            }
           }
+          setActivePack(data.activePack ?? null);
         }
       } catch {
-        // If dashboard doesn't return teachers, we'll handle it below
+        // handled below
+      } finally {
+        setLoading(false);
       }
     }
-    loadTeachers();
+    loadData();
   }, []);
 
   function handleSlotSelect(date: string, time: string) {
@@ -97,12 +114,48 @@ export default function ReservarPage() {
     }
   }
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-[#1e2d4a]" />
+      </div>
+    );
+  }
+
+  if (!activePack) {
+    return (
+      <div className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900">Reservar Clase</h2>
+        </div>
+        <EmptyState
+          icon={<FiPackage className="h-12 w-12" />}
+          title="Necesitas un pack activo"
+          description="Para reservar clases necesitas un pack de horas. Contrata uno y vuelve aquí para elegir tu horario."
+          action={
+            <Link
+              href="/contratar"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#E50046] px-4 py-2 text-sm font-semibold text-white hover:bg-[#c7003d]"
+            >
+              Contratar pack
+            </Link>
+          }
+        />
+      </div>
+    );
+  }
+
+  const hoursRemaining = activePack.hoursTotal - activePack.hoursUsed;
+
   return (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-gray-900">Reservar Clase</h2>
         <p className="mt-1 text-sm text-gray-500">
           Selecciona un horario disponible y completa la reserva.
+        </p>
+        <p className="mt-1 text-sm font-medium text-[#395D9F]">
+          Pack {activePack.levelRange} — {hoursRemaining} de {activePack.hoursTotal} horas disponibles
         </p>
       </div>
 

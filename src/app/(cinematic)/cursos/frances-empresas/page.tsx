@@ -149,7 +149,7 @@ export default function FrancesEmpresasPage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "#6b7280" }}
+                  style={{ color: "#5f6b78" }}
                 >
                   {sector.description}
                 </p>
@@ -175,7 +175,7 @@ export default function FrancesEmpresasPage() {
             </p>
             <p
               className="leading-relaxed"
-              style={{ color: "#6b7280" }}
+              style={{ color: "#5f6b78" }}
             >
               Nos adaptamos al calendario y horario de tu empresa. Emitimos
               factura a nombre de la empresa y gestionamos la bonificacion
@@ -222,7 +222,7 @@ export default function FrancesEmpresasPage() {
                 >
                   {item.title}
                 </h3>
-                <p style={{ color: "#6b7280" }}>{item.text}</p>
+                <p style={{ color: "#5f6b78" }}>{item.text}</p>
               </GlassCard>
             ))}
           </div>
@@ -240,7 +240,7 @@ export default function FrancesEmpresasPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Contactanos para recibir un presupuesto personalizado para tu
             empresa.

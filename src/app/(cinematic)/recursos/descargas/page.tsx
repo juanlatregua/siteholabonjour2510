@@ -139,7 +139,7 @@ export default function DescargasPage() {
                   </div>
                   <p
                     className="text-sm leading-relaxed mb-5"
-                    style={{ color: "#6b7280" }}
+                    style={{ color: "#5f6b78" }}
                   >
                     {resource.description}
                   </p>
@@ -171,7 +171,7 @@ export default function DescargasPage() {
           </h2>
           <p
             className="text-lg mb-8"
-            style={{ color: "#6b7280" }}
+            style={{ color: "#5f6b78" }}
           >
             Nuestras profesoras nativas diseñan un plan de estudio adaptado a
             tus objetivos.

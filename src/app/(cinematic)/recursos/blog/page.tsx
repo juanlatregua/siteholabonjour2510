@@ -88,7 +88,7 @@ export default function BlogPage() {
             </h2>
             <p
               className="text-base mb-8 leading-relaxed max-w-xl mx-auto"
-              style={{ color: "#6b7280" }}
+              style={{ color: "#5f6b78" }}
             >
               Descubre tu nivel actual con nuestro test gratuito o ponte en
               contacto con nosotros para diseñar un plan de estudio

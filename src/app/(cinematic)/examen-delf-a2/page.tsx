@@ -54,7 +54,7 @@ export default function ExamenDelfA2Page() {
             Examen complet avec les 4 épreuves : compréhension orale et écrite,
             production écrite (corrigée par IA) et production orale.
           </p>
-          <div className="flex justify-center gap-4 mt-4 text-xs text-[#6b7280]">
+          <div className="flex justify-center gap-4 mt-4 text-xs text-[#5f6b78]">
             <span>4 sections</span>
             <span>&middot;</span>
             <span>100 points</span>

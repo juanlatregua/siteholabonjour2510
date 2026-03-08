@@ -49,12 +49,12 @@ export default async function ConfirmacionPage({
               : "Tu pack de clases ha sido activado. Recibirás un email de confirmación con los detalles."}
           </p>
           {isPending && (
-            <p className="mt-2 text-sm" style={{ color: "#6b7280" }}>
+            <p className="mt-2 text-sm" style={{ color: "#5f6b78" }}>
               Si tienes alguna duda, escríbenos a info@holabonjour.es
             </p>
           )}
           {!isPending && (
-            <p className="mt-2 text-sm" style={{ color: "#6b7280" }}>
+            <p className="mt-2 text-sm" style={{ color: "#5f6b78" }}>
               Nos pondremos en contacto contigo para organizar tus clases.
             </p>
           )}
