@@ -22,10 +22,12 @@ const preparacionLinks = [
 const hbLinks = [
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
   { href: "/recursos/blog", label: "Blog" },
+  { href: "/opiniones", label: "Opiniones" },
   { href: "/contacto", label: "Contacto" },
   { href: "/colabora", label: "Colabora con nosotros" },
   { href: "/aviso-legal", label: "Aviso legal" },
   { href: "/politica-de-privacidad", label: "Política de privacidad" },
+  { href: "/politica-de-cookies", label: "Política de cookies" },
 ];
 
 const Footer = () => {
@@ -50,6 +52,14 @@ const Footer = () => {
               </a>
               <a href="mailto:info@holabonjour.es">
                 info@holabonjour.es
+              </a>
+            </div>
+            <div className={styles.social}>
+              <a href="https://www.instagram.com/holabonjour.es/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <img src="/images/icons-instagram.svg" alt="Instagram" width={22} height={22} />
+              </a>
+              <a href="https://www.facebook.com/holabonjour.es" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <img src="/images/icons-facebook.svg" alt="Facebook" width={22} height={22} />
               </a>
             </div>
           </section>

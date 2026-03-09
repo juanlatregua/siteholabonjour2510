@@ -96,8 +96,8 @@ export default function PoliticaDePrivacidadPage() {
           <h2>1. Responsable del tratamiento</h2>
           <ul>
             <li><strong>Denominaci&oacute;n social:</strong> HBTJ Consultores Ling&uuml;&iacute;sticos S.L.</li>
-            <li><strong>CIF:</strong> [CIF de la empresa]</li>
-            <li><strong>Domicilio:</strong> [Direcci&oacute;n fiscal de la empresa]</li>
+            <li><strong>CIF:</strong> B93712784</li>
+            <li><strong>Domicilio:</strong> Calle Barroso, 10, 29001 M&aacute;laga</li>
             <li><strong>Correo electr&oacute;nico:</strong> <a href="mailto:info@holabonjour.es">info@holabonjour.es</a></li>
             <li><strong>Tel&eacute;fono:</strong> 685 070 304</li>
           </ul>

@@ -95,12 +95,12 @@ export default function AvisoLegalPage() {
           <h2>1. Datos del titular</h2>
           <ul>
             <li><strong>Denominaci&oacute;n social:</strong> HBTJ Consultores Ling&uuml;&iacute;sticos S.L.</li>
-            <li><strong>CIF:</strong> [CIF de la empresa]</li>
-            <li><strong>Domicilio social:</strong> [Direcci&oacute;n fiscal de la empresa]</li>
+            <li><strong>CIF:</strong> B93712784</li>
+            <li><strong>Domicilio social:</strong> Calle Barroso, 10, 29001 M&aacute;laga</li>
             <li><strong>Correo electr&oacute;nico:</strong> <a href="mailto:info@holabonjour.es">info@holabonjour.es</a></li>
             <li><strong>Tel&eacute;fono:</strong> 685 070 304</li>
             <li><strong>Sitio web:</strong> <a href="https://holabonjour.es">holabonjour.es</a></li>
-            <li><strong>Datos registrales:</strong> [Datos del Registro Mercantil]</li>
+            <li><strong>Datos registrales:</strong> Inscrita en el Registro Mercantil de M&aacute;laga</li>
           </ul>
 
           <h2>2. Objeto del sitio web</h2>
