@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const lesson = await prisma.lesson.create({
+  let lesson = await prisma.lesson.create({
     data: {
       studentId,
       teacherId: session.user.id,
@@ -130,6 +130,28 @@ export async function POST(request: NextRequest) {
       status: "SCHEDULED",
     },
   });
+
+  // Create Zoom meeting if no link provided (non-blocking)
+  if (!lesson.zoomLink) {
+    try {
+      const { createZoomMeeting } = await import("@/lib/zoom");
+      const zoom = await createZoomMeeting({
+        topic: `Clase HolaBonjour — ${student.name || "Alumno"}`,
+        startTime: scheduledDate,
+        durationMinutes,
+      });
+      lesson = await prisma.lesson.update({
+        where: { id: lesson.id },
+        data: {
+          zoomLink: zoom.joinUrl,
+          zoomMeetingId: zoom.meetingId,
+          zoomStartUrl: zoom.startUrl,
+        },
+      });
+    } catch (err) {
+      console.error("[zona-profesor/clases] Zoom creation failed:", err);
+    }
+  }
 
   return NextResponse.json({ ok: true, lesson }, { status: 201 });
 }

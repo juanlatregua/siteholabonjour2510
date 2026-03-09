@@ -224,6 +224,22 @@ export default function PublicSlotPicker({ onSelect, slug }: PublicSlotPickerPro
         </button>
       </div>
 
+      {/* Empty week message */}
+      {Object.keys(weekSlots).length === 0 && (
+        <div style={{
+          textAlign: "center", padding: "1.5rem", borderRadius: "0.75rem",
+          background: "rgba(57,93,159,0.04)", border: "1px solid rgba(57,93,159,0.1)",
+          marginBottom: "0.75rem",
+        }}>
+          <p style={{ fontSize: "0.9rem", color: "#3d4a5c", fontWeight: 600, marginBottom: "0.25rem" }}>
+            No hay horarios disponibles esta semana
+          </p>
+          <p style={{ fontSize: "0.8rem", color: "#5f6b78" }}>
+            Prueba la semana siguiente o <a href="https://wa.me/34685070304" target="_blank" rel="noopener noreferrer" style={{ color: "#E50046", fontWeight: 600 }}>contáctanos por WhatsApp</a>.
+          </p>
+        </div>
+      )}
+
       {/* Grid */}
       <div style={{
         display: "grid",

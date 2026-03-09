@@ -195,6 +195,24 @@ export default function HomePage() {
             <GoldButton href="/examenes">
               Hacer simulacro gratis
             </GoldButton>
+            <Link
+              href="/contratar"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "0.85rem 2rem",
+                borderRadius: "0.75rem",
+                border: "2px solid #E50046",
+                color: "#E50046",
+                fontWeight: 700,
+                fontSize: "0.95rem",
+                textDecoration: "none",
+                transition: "all 0.2s ease",
+              }}
+            >
+              Contratar clases
+            </Link>
           </div>
         </div>
       </section>

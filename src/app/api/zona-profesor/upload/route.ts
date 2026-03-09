@@ -20,6 +20,20 @@ export async function POST(request: Request) {
     );
   }
 
+  const MAX_SIZE = 20 * 1024 * 1024; // 20MB
+  const ALLOWED_TYPES = new Set([
+    "application/pdf",
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "audio/mpeg",
+    "audio/mp4",
+    "audio/wav",
+    "video/mp4",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  ]);
+
   const formData = await request.formData();
   const file = formData.get("file") as File;
   const studentId = formData.get("studentId") as string;
@@ -32,8 +46,27 @@ export async function POST(request: Request) {
     );
   }
 
+  if (file.size > MAX_SIZE) {
+    return NextResponse.json(
+      { ok: false, error: "FILE_TOO_LARGE", message: "El archivo supera el límite de 20MB" },
+      { status: 400 }
+    );
+  }
+
+  if (!ALLOWED_TYPES.has(file.type)) {
+    return NextResponse.json(
+      { ok: false, error: "INVALID_TYPE", message: "Tipo de archivo no permitido" },
+      { status: 400 }
+    );
+  }
+
+  // Sanitize filename to prevent path traversal
+  const safeName = file.name
+    .replace(/[^a-zA-Z0-9._-]/g, "_")
+    .replace(/\.{2,}/g, "_");
+
   const buffer = Buffer.from(await file.arrayBuffer());
-  const path = `${session.user.id}/${studentId}/${Date.now()}-${file.name}`;
+  const path = `${session.user.id}/${studentId}/${Date.now()}-${safeName}`;
   const { path: storagePath } = await uploadMaterial(buffer, path);
 
   // Generate a signed URL for download (7 days expiry)

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { getLevelRange, PACK_PRICES, type PackLevel } from "@/lib/stripe";
 import { formatPhoneSpain } from "@/lib/sms";
@@ -19,6 +20,16 @@ const manualSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
+  // Auth: only TEACHER or ADMIN can create manual bookings
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+  }
+  const role = (session.user as { role?: string }).role;
+  if (role !== "TEACHER" && role !== "ADMIN") {
+    return NextResponse.json({ error: "Acceso denegado" }, { status: 403 });
+  }
+
   try {
     const body = await req.json();
     const parsed = manualSchema.safeParse(body);

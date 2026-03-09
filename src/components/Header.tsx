@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
-import { FileText, GraduationCap, BookOpen, Sparkles, Briefcase, Calendar } from "lucide-react";
+import { FileText, GraduationCap, BookOpen, Sparkles, Briefcase, Calendar, ClipboardCheck } from "lucide-react";
 import styles from "./Header.module.css";
 
 /* ─── Menu data ─── */
@@ -40,8 +40,9 @@ const menuItems: MenuItem[] = [
       { icon: <BookOpen style={ICON_STYLE} />, label: "Guías por nivel", desc: "DELF A2, B1, B2 · DALF C1, C2", href: "/preparacion-delf-dalf" },
       { icon: <Sparkles style={ICON_STYLE} />, label: "Corrección IA", desc: "Corrige tu producción escrita al instante", href: "/correccion-ia" },
       { icon: <Briefcase style={ICON_STYLE} />, label: "Para empresas", desc: "Oracle, ALISS y equipos profesionales", href: "/empresas" },
+      { icon: <ClipboardCheck style={ICON_STYLE} />, label: "Test de nivel", desc: "Descubre tu nivel de francés gratis", href: "/test-de-nivel" },
     ],
-    separator: [2],
+    separator: [2, 3],
   },
   { label: "Tarifas", href: "/tarifas" },
   { label: "Sobre nosotros", href: "/sobre-nosotros" },

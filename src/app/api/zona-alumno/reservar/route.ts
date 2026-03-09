@@ -153,22 +153,43 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Create the lesson (race-safe: catch unique constraint on teacherId+scheduledAt)
+  // Create lesson + increment pack hours atomically
   let lesson;
   try {
-    lesson = await prisma.lesson.create({
-      data: {
-        studentId: session.user.id,
-        teacherId,
-        packId: activePack.id,
-        scheduledAt,
-        durationMinutes: 60,
-        status: "SCHEDULED",
-        focus: focus || null,
-        notes: notes || null,
-      },
+    lesson = await prisma.$transaction(async (tx) => {
+      // Re-check pack hours inside transaction
+      const freshPack = await tx.pack.findUniqueOrThrow({ where: { id: activePack.id } });
+      if (freshPack.hoursUsed + 1 > freshPack.hoursTotal) {
+        throw new Error("PACK_EXHAUSTED");
+      }
+
+      const newLesson = await tx.lesson.create({
+        data: {
+          studentId: session.user.id,
+          teacherId,
+          packId: activePack.id,
+          scheduledAt,
+          durationMinutes: 60,
+          status: "SCHEDULED",
+          focus: focus || null,
+          notes: notes || null,
+        },
+      });
+
+      await tx.pack.update({
+        where: { id: activePack.id },
+        data: { hoursUsed: { increment: 1 } },
+      });
+
+      return newLesson;
     });
   } catch (err: unknown) {
+    if (err instanceof Error && err.message === "PACK_EXHAUSTED") {
+      return NextResponse.json(
+        { ok: false, error: "PACK_EXHAUSTED", message: "Tu pack no tiene horas disponibles." },
+        { status: 400 },
+      );
+    }
     if (err && typeof err === "object" && "code" in err && (err as { code: string }).code === "P2002") {
       return NextResponse.json(
         { ok: false, error: "SLOT_TAKEN", message: "Este horario ya no está disponible." },
@@ -177,12 +198,6 @@ export async function POST(request: NextRequest) {
     }
     throw err;
   }
-
-  // Increment hours used on the pack
-  await prisma.pack.update({
-    where: { id: activePack.id },
-    data: { hoursUsed: { increment: 1 } },
-  });
 
   // Create Zoom meeting (non-blocking — class still created if Zoom fails)
   try {

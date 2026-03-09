@@ -70,6 +70,14 @@ export async function PATCH(
   }
 
   if (parsed.data.status === "CONFIRMED") {
+    // Idempotency: reject if already confirmed
+    if (payment.status === "CONFIRMED") {
+      return NextResponse.json(
+        { ok: false, error: "ALREADY_CONFIRMED", message: "Este pago ya fue confirmado" },
+        { status: 409 }
+      );
+    }
+
     // Update payment
     const updated = await prisma.payment.update({
       where: { id },
