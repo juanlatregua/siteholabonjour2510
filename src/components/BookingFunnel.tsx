@@ -51,6 +51,7 @@ export default function BookingFunnel() {
   const [prepInfo, setPrepInfo] = useState<PreparateurInfo | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card");
   const [manualReference, setManualReference] = useState("");
+  const [honeypot, setHoneypot] = useState(""); // anti-bot honeypot
 
   // Fetch preparateur info
   useEffect(() => {
@@ -148,6 +149,7 @@ export default function BookingFunnel() {
           reference: manualReference.trim() || undefined,
           producto: isDiagnostico ? "diagnostico" : undefined,
           preparateurSlug: prepInfo?.slug || undefined,
+          website: honeypot, // honeypot field
         }),
       });
 
@@ -347,6 +349,14 @@ export default function BookingFunnel() {
                 border: "1px solid rgba(30,45,74,0.15)", background: "#ffffff",
                 color: "#1e2d4a", fontSize: "0.9rem",
               }}
+            />
+          </div>
+          {/* Honeypot — hidden from humans, bots fill it */}
+          <div style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, overflow: "hidden" }} aria-hidden="true">
+            <label htmlFor="booking-website">Website</label>
+            <input
+              id="booking-website" type="text" tabIndex={-1} autoComplete="off"
+              value={honeypot} onChange={(e) => setHoneypot(e.target.value)}
             />
           </div>
           <button

@@ -1,33 +1,64 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { getLevelRange, PACK_PRICES, type PackLevel } from "@/lib/stripe";
 import { formatPhoneSpain } from "@/lib/sms";
 import { getTeacherBySlugOrDefault } from "@/lib/teacher";
 import { z } from "zod";
 
+const VALID_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
+
 const manualSchema = z.object({
-  level: z.string().min(1),
-  name: z.string().min(2),
-  email: z.string().email(),
-  phone: z.string().optional(),
+  level: z.string().min(1).max(2).refine((v) => VALID_LEVELS.has(v), "Nivel no válido"),
+  name: z.string().min(2).max(100),
+  email: z.string().email().max(200),
+  phone: z.string().max(20).optional(),
   selectedDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   selectedTime: z.string().regex(/^\d{2}:\d{2}$/),
   method: z.enum(["BIZUM", "TRANSFER"]),
-  reference: z.string().optional(),
-  producto: z.string().optional(),
-  preparateurSlug: z.string().optional(),
+  reference: z.string().max(100).optional(),
+  producto: z.enum(["diagnostico", ""]).optional(),
+  preparateurSlug: z.string().max(100).optional(),
+  // Honeypot: must be empty (bots fill hidden fields)
+  website: z.string().max(0, "").optional(),
 });
 
-export async function POST(req: NextRequest) {
-  // Auth: only TEACHER or ADMIN can create manual bookings
-  const session = await auth();
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "No autenticado" }, { status: 401 });
+// ── IP-based rate limit: max 10 requests per IP per 15 min ──
+const ipRequests = new Map<string, { count: number; resetAt: number }>();
+const RATE_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const RATE_MAX = 10;
+
+function checkIpRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = ipRequests.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    ipRequests.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return true;
   }
-  const role = (session.user as { role?: string }).role;
-  if (role !== "TEACHER" && role !== "ADMIN") {
-    return NextResponse.json({ error: "Acceso denegado" }, { status: 403 });
+
+  entry.count++;
+  return entry.count <= RATE_MAX;
+}
+
+// Cleanup stale entries periodically (prevent memory leak in long-running instances)
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of ipRequests) {
+    if (now > entry.resetAt) ipRequests.delete(ip);
+  }
+}, 5 * 60 * 1000);
+
+export async function POST(req: NextRequest) {
+  // IP rate limit
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
+    || req.headers.get("x-real-ip")
+    || "unknown";
+
+  if (!checkIpRateLimit(ip)) {
+    return NextResponse.json(
+      { error: "Demasiadas solicitudes. Inténtalo en unos minutos." },
+      { status: 429 }
+    );
   }
 
   try {
@@ -39,6 +70,11 @@ export async function POST(req: NextRequest) {
         { error: "Datos no válidos.", details: parsed.error.flatten() },
         { status: 400 }
       );
+    }
+
+    // Honeypot triggered — silently reject (looks like success to bot)
+    if (parsed.data.website) {
+      return NextResponse.json({ ok: true, message: "Reserva registrada." });
     }
 
     const {
