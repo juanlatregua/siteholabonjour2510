@@ -252,7 +252,7 @@ export default function BookingFunnel() {
               <p style={{ fontSize: "0.85rem", color: "#5f6b78", marginTop: "0.15rem" }}>
                 Clases individuales (1 a 1) por Zoom, 55 minutos.
               </p>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "0.5rem", marginTop: "0.75rem" }}>
+              <div style={{ display: "grid", gap: "0.5rem", marginTop: "0.75rem" }} className="grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
                 {LEVELS.map((l) => (
                   <button
                     key={l} type="button" onClick={() => setLevel(l)}
@@ -525,7 +525,7 @@ export default function BookingFunnel() {
             )}
           </div>
           {error && (
-            <p style={{
+            <p role="alert" style={{
               borderRadius: "0.75rem", padding: "0.75rem", fontSize: "0.85rem", fontWeight: 600,
               background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.2)", color: "#ef4444",
             }}>

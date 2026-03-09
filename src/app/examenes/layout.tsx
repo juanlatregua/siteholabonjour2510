@@ -9,9 +9,9 @@ export default function ExamenesLayout({
   return (
     <>
       <Header />
-      <main style={{ background: "#F5F7FF", color: "#1a1f36", minHeight: "100vh", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}>
+      <div style={{ background: "#F5F7FF", color: "#1a1f36", minHeight: "100vh", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}>
         {children}
-      </main>
+      </div>
       <Footer />
     </>
   );

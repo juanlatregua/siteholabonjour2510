@@ -1,25 +1,37 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendMail } from "@/lib/azure-mail";
+import { z } from "zod";
+
+const leadSchema = z.object({
+  name: z.string().min(2).max(100),
+  email: z.string().email().max(200),
+  phone: z.string().max(20).optional(),
+  objetivo: z.string().max(200).optional(),
+  source: z.string().max(50).optional(),
+  message: z.string().max(2000).optional(),
+});
 
 export async function POST(request: Request) {
-  const body = (await request.json()) as {
-    name?: string;
-    email?: string;
-    objetivo?: string;
-    source?: string;
-    message?: string;
-    phone?: string;
-  };
-
-  const { name, email, objetivo, source, message, phone } = body;
-
-  if (!name || !email) {
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
     return NextResponse.json(
-      { ok: false, message: "Nombre y email son obligatorios." },
+      { ok: false, message: "JSON no válido." },
       { status: 400 },
     );
   }
+
+  const parsed = leadSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { ok: false, message: "Datos no válidos.", details: parsed.error.flatten() },
+      { status: 400 },
+    );
+  }
+
+  const { name, email, phone, objetivo, message, source } = parsed.data;
 
   try {
     await prisma.lead.create({

@@ -27,25 +27,25 @@ const benefits = [
     icon: "📅",
     title: "Flexibilité totale",
     description:
-      "Horarios que se adaptan a ti. Mananas, tardes o fines de semana. Tu eliges cuando aprender.",
+      "Horarios que se adaptan a ti. Mañanas, tardes o fines de semana. Tu eliges cuando aprender.",
   },
   {
     icon: "🎯",
     title: "Contenu personnalisé",
     description:
-      "Cada clase disenada para tus necesidades especificas. Sin programas genericos.",
+      "Cada clase diseñada para tus necesidades específicas. Sin programas genéricos.",
   },
   {
     icon: "💻",
     title: "100% en ligne",
     description:
-      "Clases por Zoom desde cualquier lugar. Solo necesitas conexion a internet.",
+      "Clases por Zoom desde cualquier lugar. Solo necesitas conexión a internet.",
   },
   {
     icon: "🚀",
     title: "Progression rapide",
     description:
-      "Avanza mas rapido con atencion exclusiva. Tu profesor se centra unicamente en ti.",
+      "Avanza más rápido con atención exclusiva. Tu profesor se centra únicamente en ti.",
   },
 ];
 
@@ -185,7 +185,7 @@ export default function ClasesParticularesPage() {
               {
                 step: "02",
                 title: "Plan personnalisé",
-                text: "Disenamos un plan de estudio adaptado a tus objetivos, tu nivel y tu disponibilidad.",
+                text: "Diseñamos un plan de estudio adaptado a tus objetivos, tu nivel y tu disponibilidad.",
               },
               {
                 step: "03",

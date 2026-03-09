@@ -8,10 +8,20 @@ import { buildSystemPrompt, buildCorrectionToolSchema } from "@/lib/correction/p
 import { parseToolUseResponse, validateAndNormalize, countWords } from "@/lib/correction/scoring";
 import { getQuotaStatus, decrementQuota } from "@/lib/correction/quota";
 import { auth } from "@/lib/auth";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const anthropic = new Anthropic();
 
 export async function POST(req: NextRequest) {
+  // Rate limit: 5 requests per IP per hour
+  const ip = getClientIp(req);
+  if (!checkRateLimit("corrections-submit", ip, 5, 60 * 60 * 1000)) {
+    return NextResponse.json(
+      { error: "Demasiadas correcciones. Inténtalo en una hora." },
+      { status: 429 },
+    );
+  }
+
   try {
     const body = await req.json();
     const { email, level, taskType, taskPrompt, inputText, attemptId } = body;

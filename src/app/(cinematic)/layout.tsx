@@ -9,7 +9,7 @@ export default function CinematicLayout({ children }: { children: React.ReactNod
     <>
       <ClientScripts />
       <Header />
-      <main className="flex-1">{children}</main>
+      <div className="flex-1">{children}</div>
       <Footer />
       <WhatsAppFloat />
       <ChatWidget />

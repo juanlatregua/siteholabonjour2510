@@ -27,19 +27,19 @@ const courseTypes = [
     icon: "☀️",
     title: "Été",
     description:
-      "Cursos de verano. Inmersion intensiva de julio a septiembre. Aprovecha las vacaciones para dar un salto de nivel.",
+      "Cursos de verano. Inmersión intensiva de julio a septiembre. Aprovecha las vacaciones para dar un salto de nivel.",
   },
   {
     icon: "📝",
     title: "Pré-examen",
     description:
-      "Sprint de preparacion antes de tu convocatoria DELF/DALF. Simulacros intensivos y estrategia por prueba.",
+      "Sprint de preparación antes de tu convocatoria DELF/DALF. Simulacros intensivos y estrategia por prueba.",
   },
   {
     icon: "⚡",
     title: "Sur mesure",
     description:
-      "Programa personalizado segun tus necesidades y plazos. Tu marcas el ritmo, nosotros el contenido.",
+      "Programa personalizado según tus necesidades y plazos. Tu marcas el ritmo, nosotros el contenido.",
   },
 ];
 
@@ -113,8 +113,8 @@ export default function IntensivosPage() {
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "#3d4a5c" }}
           >
-            Cursos sprint de 2-4 semanas. Ideal para preparacion de examenes,
-            viajes o inmersion rapida.
+            Cursos sprint de 2-4 semanas. Ideal para preparación de exámenes,
+            viajes o inmersión rápida.
           </p>
         </div>
       </CinematicSection>
@@ -193,7 +193,7 @@ export default function IntensivosPage() {
             {[
               {
                 title: "Test de niveau initial",
-                text: "Evaluacion previa para disenar tu programa individual.",
+                text: "Evaluación previa para diseñar tu programa individual.",
               },
               {
                 title: "Matériel pédagogique",
@@ -201,7 +201,7 @@ export default function IntensivosPage() {
               },
               {
                 title: "Suivi quotidien",
-                text: "Feedback diario y correccion de ejercicios.",
+                text: "Feedback diario y corrección de ejercicios.",
               },
               {
                 title: "Certificat de fin",

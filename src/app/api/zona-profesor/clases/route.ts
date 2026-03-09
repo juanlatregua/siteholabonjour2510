@@ -118,6 +118,21 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Check for existing lesson at this time (prevent self-double-booking)
+  const existingLesson = await prisma.lesson.findFirst({
+    where: {
+      teacherId: session.user.id,
+      scheduledAt: scheduledDate,
+      status: { in: ["SCHEDULED", "PENDING_PAYMENT"] },
+    },
+  });
+  if (existingLesson) {
+    return NextResponse.json(
+      { ok: false, error: "SLOT_TAKEN", message: "Ya tienes una clase programada en ese horario." },
+      { status: 409 }
+    );
+  }
+
   let lesson = await prisma.lesson.create({
     data: {
       studentId,

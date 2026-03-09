@@ -31,7 +31,7 @@ export default async function ZonaProfesorLayout({ children }: { children: React
       <ZonaSidebar links={teacherLinks} user={userData} />
       <div className="flex flex-1 flex-col overflow-hidden">
         <ZonaTopbar title="Zona Profesor" user={userData} />
-        <main className="flex-1 overflow-y-auto p-4 lg:p-8">{children}</main>
+        <div className="flex-1 overflow-y-auto p-4 lg:p-8">{children}</div>
       </div>
     </div>
   );

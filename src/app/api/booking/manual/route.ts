@@ -4,6 +4,7 @@ import { getLevelRange, PACK_PRICES, type PackLevel } from "@/lib/stripe";
 import { formatPhoneSpain } from "@/lib/sms";
 import { getTeacherBySlugOrDefault } from "@/lib/teacher";
 import { z } from "zod";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const VALID_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
@@ -22,39 +23,10 @@ const manualSchema = z.object({
   website: z.string().max(0, "").optional(),
 });
 
-// ── IP-based rate limit: max 10 requests per IP per 15 min ──
-const ipRequests = new Map<string, { count: number; resetAt: number }>();
-const RATE_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
-const RATE_MAX = 10;
-
-function checkIpRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const entry = ipRequests.get(ip);
-
-  if (!entry || now > entry.resetAt) {
-    ipRequests.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
-    return true;
-  }
-
-  entry.count++;
-  return entry.count <= RATE_MAX;
-}
-
-// Cleanup stale entries periodically (prevent memory leak in long-running instances)
-setInterval(() => {
-  const now = Date.now();
-  for (const [ip, entry] of ipRequests) {
-    if (now > entry.resetAt) ipRequests.delete(ip);
-  }
-}, 5 * 60 * 1000);
-
 export async function POST(req: NextRequest) {
-  // IP rate limit
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
-    || req.headers.get("x-real-ip")
-    || "unknown";
-
-  if (!checkIpRateLimit(ip)) {
+  // Rate limit: 10 requests per IP per 15 min
+  const ip = getClientIp(req);
+  if (!checkRateLimit("booking-manual", ip, 10, 15 * 60 * 1000)) {
     return NextResponse.json(
       { error: "Demasiadas solicitudes. Inténtalo en unos minutos." },
       { status: 429 }

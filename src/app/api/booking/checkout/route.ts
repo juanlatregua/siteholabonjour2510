@@ -3,23 +3,44 @@ import { prisma } from "@/lib/prisma";
 import { createCheckoutSession, getLevelRange, PACK_PRICES, type PackLevel } from "@/lib/stripe";
 import { formatPhoneSpain } from "@/lib/sms";
 import { getTeacherBySlugOrDefault } from "@/lib/teacher";
+import { z } from "zod";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const VALID_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
+const checkoutSchema = z.object({
+  level: z.string().min(1).max(2).refine((v) => VALID_LEVELS.has(v), "Nivel no válido"),
+  name: z.string().min(2).max(100),
+  email: z.string().email().max(200),
+  phone: z.string().max(20).optional(),
+  selectedDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  selectedTime: z.string().regex(/^\d{2}:\d{2}$/).optional(),
+  producto: z.enum(["diagnostico", ""]).optional(),
+  preparateurSlug: z.string().max(100).optional(),
+});
+
 export async function POST(req: NextRequest) {
+  // Rate limit: 10 requests per IP per 15 min
+  const ip = getClientIp(req);
+  if (!checkRateLimit("booking-checkout", ip, 10, 15 * 60 * 1000)) {
+    return NextResponse.json(
+      { error: "Demasiadas solicitudes. Inténtalo en unos minutos." },
+      { status: 429 },
+    );
+  }
+
   try {
     const body = await req.json();
-    const { level, name, email, phone, selectedDate, selectedTime, producto, preparateurSlug } = body;
+    const parsed = checkoutSchema.safeParse(body);
 
-    if (!level || !VALID_LEVELS.has(level)) {
-      return NextResponse.json({ error: "Nivel no válido." }, { status: 400 });
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Datos no válidos.", details: parsed.error.flatten() },
+        { status: 400 },
+      );
     }
-    if (!name || typeof name !== "string" || name.trim().length < 2) {
-      return NextResponse.json({ error: "Nombre requerido." }, { status: 400 });
-    }
-    if (!email || typeof email !== "string" || !email.includes("@")) {
-      return NextResponse.json({ error: "Email no válido." }, { status: 400 });
-    }
+
+    const { level, name, email, phone, selectedDate, selectedTime, producto, preparateurSlug } = parsed.data;
 
     const isDiagnostico = producto === "diagnostico";
     const packLevel = level as PackLevel;

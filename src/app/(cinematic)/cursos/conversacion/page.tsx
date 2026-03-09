@@ -27,7 +27,7 @@ const features = [
     icon: "💬",
     title: "Thèmes variés",
     description:
-      "Actualidad, cultura francesa, debates eticos, cine, gastronomia y mucho mas. Temas adaptados a tus intereses.",
+      "Actualidad, cultura francesa, debates éticos, cine, gastronomía y mucho más. Temas adaptados a tus intereses.",
   },
   {
     icon: "📊",
@@ -116,7 +116,7 @@ export default function ConversacionPage() {
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "#3d4a5c" }}
           >
-            Sesiones individuales de conversacion con profesores nativos. Cultura,
+            Sesiones individuales de conversación con profesores nativos. Cultura,
             actualidad, debates y expresiones coloquiales.
           </p>
         </div>
@@ -181,12 +181,12 @@ export default function ConversacionPage() {
               {
                 step: "01",
                 title: "Choisis ton niveau",
-                text: "Indica tu nivel (A2-B1, B2 o C1-C2) y adaptamos la sesion a ti.",
+                text: "Indica tu nivel (A2-B1, B2 o C1-C2) y adaptamos la sesión a ti.",
               },
               {
                 step: "02",
                 title: "Connecte-toi",
-                text: "Recibe tu enlace de Zoom y conectate a tu sesion individual.",
+                text: "Recibe tu enlace de Zoom y conéctate a tu sesión individual.",
               },
               {
                 step: "03",
@@ -233,7 +233,7 @@ export default function ConversacionPage() {
             className="text-lg mb-8"
             style={{ color: "#5f6b78" }}
           >
-            Reserva tu sesion individual de conversacion.
+            Reserva tu sesión individual de conversación.
           </p>
           <GoldButton href={CONTACT.whatsapp}>R&eacute;server ma s&eacute;ance</GoldButton>
         </div>
