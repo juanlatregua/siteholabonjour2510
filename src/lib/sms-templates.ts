@@ -31,3 +31,10 @@ export function smsAnulacionTardia(data: {
 }): string {
   return `HolaBonjour: La clase del ${data.fecha} fue anulada con menos de 48h. Se descontara del bono salvo justificante medico (24h).`;
 }
+
+export function smsResenaRequest(data: {
+  nombre: string;
+  linkOpinion: string;
+}): string {
+  return `HolaBonjour: Gracias por tu clase, ${data.nombre}! Nos encantaria conocer tu opinion: ${data.linkOpinion}`;
+}

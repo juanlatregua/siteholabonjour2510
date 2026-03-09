@@ -42,6 +42,7 @@ const PUBLIC_PATHS = [
   "/blog", "/sobre-nosotros", "/correccion-ia", "/examen-delf-a1",
   "/examen-delf-a2", "/examenes", "/calendario-examenes",
   "/preparateurs", "/unirse", "/colabora", "/confirmacion",
+  "/opinion",
 ];
 
 const AUTH_PATHS = ["/iniciar-sesion", "/verificar-email", "/error"];

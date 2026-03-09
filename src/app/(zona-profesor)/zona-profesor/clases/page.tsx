@@ -15,6 +15,7 @@ export default async function ClasesPage() {
     orderBy: { scheduledAt: "desc" },
     include: {
       student: { select: { id: true, name: true, email: true } },
+      review: { select: { id: true, submittedAt: true } },
     },
   });
 
@@ -49,6 +50,7 @@ export default async function ClasesPage() {
           zoomStartUrl: l.zoomStartUrl,
           durationMinutes: l.durationMinutes,
           studentName: l.student.name || l.student.email,
+          hasReview: !!l.review,
         }))}
         past={past.map((l) => ({
           id: l.id,
@@ -59,6 +61,7 @@ export default async function ClasesPage() {
           zoomStartUrl: l.zoomStartUrl,
           durationMinutes: l.durationMinutes,
           studentName: l.student.name || l.student.email,
+          hasReview: !!l.review,
         }))}
       />
     </div>

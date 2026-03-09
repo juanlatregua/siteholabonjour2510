@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import LessonCard from "@/components/zona/LessonCard";
 import EmptyState from "@/components/ui/EmptyState";
-import { FiBook } from "react-icons/fi";
+import { FiBook, FiStar } from "react-icons/fi";
 import Link from "next/link";
 
 interface LessonData {
@@ -15,6 +15,7 @@ interface LessonData {
   zoomStartUrl?: string | null;
   durationMinutes: number;
   studentName: string;
+  hasReview: boolean;
 }
 
 interface ClasesFilterProfesorProps {
@@ -24,8 +25,33 @@ interface ClasesFilterProfesorProps {
 
 export default function ClasesFilterProfesor({ upcoming, past }: ClasesFilterProfesorProps) {
   const [tab, setTab] = useState<"upcoming" | "past">("upcoming");
+  const [sendingReview, setSendingReview] = useState<string | null>(null);
+  const [sentReviews, setSentReviews] = useState<Set<string>>(new Set());
 
   const lessons = tab === "upcoming" ? upcoming : past;
+
+  async function handlePedirResena(lessonId: string, e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    setSendingReview(lessonId);
+    try {
+      const res = await fetch("/api/zona-profesor/resena", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lessonId }),
+      });
+      if (res.ok) {
+        setSentReviews((prev) => new Set(prev).add(lessonId));
+      } else {
+        const data = await res.json();
+        alert(data.error || "Error al enviar solicitud");
+      }
+    } catch {
+      alert("Error de conexión");
+    } finally {
+      setSendingReview(null);
+    }
+  }
 
   return (
     <div>
@@ -57,19 +83,37 @@ export default function ClasesFilterProfesor({ upcoming, past }: ClasesFilterPro
       {lessons.length > 0 ? (
         <div className="space-y-3">
           {lessons.map((lesson) => (
-            <Link key={lesson.id} href={`/zona-profesor/clases/${lesson.id}`} className="block">
-              <LessonCard
-                scheduledAt={lesson.scheduledAt}
-                status={lesson.status}
-                focus={lesson.focus}
-                teacherName={lesson.studentName}
-                zoomLink={lesson.zoomLink}
-                zoomStartUrl={lesson.zoomStartUrl}
-                durationMinutes={lesson.durationMinutes}
-                personLabel="Alumno"
-                isTeacher
-              />
-            </Link>
+            <div key={lesson.id} className="relative">
+              <Link href={`/zona-profesor/clases/${lesson.id}`} className="block">
+                <LessonCard
+                  scheduledAt={lesson.scheduledAt}
+                  status={lesson.status}
+                  focus={lesson.focus}
+                  teacherName={lesson.studentName}
+                  zoomLink={lesson.zoomLink}
+                  zoomStartUrl={lesson.zoomStartUrl}
+                  durationMinutes={lesson.durationMinutes}
+                  personLabel="Alumno"
+                  isTeacher
+                />
+              </Link>
+              {lesson.status === "COMPLETED" && !lesson.hasReview && !sentReviews.has(lesson.id) && (
+                <button
+                  onClick={(e) => handlePedirResena(lesson.id, e)}
+                  disabled={sendingReview === lesson.id}
+                  className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-lg bg-[#395D9F] px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-[#2e4d8a] disabled:opacity-50"
+                >
+                  <FiStar className="h-3.5 w-3.5" />
+                  {sendingReview === lesson.id ? "Enviando..." : "Pedir reseña"}
+                </button>
+              )}
+              {(lesson.hasReview || sentReviews.has(lesson.id)) && lesson.status === "COMPLETED" && (
+                <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-lg bg-green-100 px-3 py-1.5 text-xs font-semibold text-green-700">
+                  <FiStar className="h-3.5 w-3.5" />
+                  Reseña solicitada
+                </span>
+              )}
+            </div>
           ))}
         </div>
       ) : (

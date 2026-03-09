@@ -86,6 +86,7 @@ model User {
   examAttempts        ExamAttempt[]
   preparateurProfile  PreparateurProfile?
   examenModelos       ExamenModelo[]
+  reviews             Review[]
 
   @@map("users")
 }
@@ -131,6 +132,7 @@ model Lesson {
   teacher   User       @relation("TeacherLessons", fields: [teacherId], references: [id])
   pack      Pack?      @relation(fields: [packId], references: [id])
   materials Material[]
+  review    Review?
 
   @@index([studentId, scheduledAt])
   @@index([teacherId, scheduledAt])
@@ -540,6 +542,26 @@ model ExamenModelo {
   @@index([creadoPor])
   @@index([nivel, status])
   @@map("examen_modelos")
+}
+
+// ── Reviews (post-clase) ──
+
+model Review {
+  id          String    @id @default(cuid())
+  lessonId    String    @unique
+  studentId   String
+  studentName String?
+  rating      Int?      // 1-5
+  comment     String?
+  token       String    @unique @default(cuid())
+  createdAt   DateTime  @default(now())
+  submittedAt DateTime?
+
+  lesson  Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  student User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId])
+  @@map("reviews")
 }
 
 model PreparateurApplication {
