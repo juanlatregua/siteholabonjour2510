@@ -124,10 +124,11 @@ const Header = () => {
   const userName = session?.user?.name?.split(" ")[0] || null;
 
   return (
+    <>
     <header
       className={`${styles.header}${scrolled ? ` ${styles.headerScrolled}` : ""}`}
       style={{
-        transform: visible ? "translateY(0)" : "translateY(-100%)",
+        transform: visible || menuOpen ? "translateY(0)" : "translateY(-100%)",
         transition: "transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease",
       }}
     >
@@ -230,99 +231,100 @@ const Header = () => {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* ═══ Mobile overlay menu ═══ */}
-      <div
-        className={`${styles.overlay}${menuOpen ? ` ${styles.overlayOpen}` : ""}`}
-        aria-hidden={!menuOpen}
-      >
-        <nav className={styles.overlayInner} aria-label="Navegación móvil">
-          <ul className={styles.mobileList}>
-            {menuItems.map((item) => {
-              if (!item.children) {
-                return (
-                  <li key={item.label}>
-                    <Link href={item.href!} className={styles.mobileLink} onClick={closeMenu}>
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              }
-              const isOpen = mobileAccordion === item.label;
+    {/* ═══ Mobile overlay — OUTSIDE header to avoid backdrop-filter stacking context ═══ */}
+    <div
+      className={`${styles.overlay}${menuOpen ? ` ${styles.overlayOpen}` : ""}`}
+      aria-hidden={!menuOpen}
+    >
+      <nav className={styles.overlayInner} aria-label="Navegación móvil">
+        <ul className={styles.mobileList}>
+          {menuItems.map((item) => {
+            if (!item.children) {
               return (
                 <li key={item.label}>
-                  <button
-                    className={styles.mobileLink}
-                    onClick={() => setMobileAccordion(isOpen ? null : item.label)}
-                    style={{ width: "100%", background: "none", border: "none", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}
-                  >
+                  <Link href={item.href!} className={styles.mobileLink} onClick={closeMenu}>
                     {item.label}
-                    <FiChevronDown
-                      size={18}
-                      style={{
-                        transition: "transform 0.2s",
-                        transform: isOpen ? "rotate(180deg)" : "rotate(0)",
-                        opacity: 0.5,
-                      }}
-                    />
-                  </button>
-                  <div
-                    style={{
-                      maxHeight: isOpen ? 600 : 0,
-                      overflow: "hidden",
-                      transition: "max-height 0.3s ease",
-                    }}
-                  >
-                    <div style={{ padding: "0.25rem 0 0.5rem 0.75rem", display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                      {item.children.map((child, idx) => (
-                        <React.Fragment key={child.href}>
-                          {item.separator?.includes(idx - 1) && (
-                            <div style={{ height: 1, background: "rgba(255,255,255,0.08)", margin: "0.35rem 0" }} />
-                          )}
-                          <Link
-                            href={child.href}
-                            onClick={closeMenu}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "0.6rem",
-                              padding: "0.6rem 0.5rem",
-                              textDecoration: "none",
-                              borderRadius: "0.5rem",
-                            }}
-                          >
-                            <span style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>{child.icon}</span>
-                            <div>
-                              <span style={{ display: "block", fontSize: "0.95rem", fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
-                                {child.label}
-                              </span>
-                              <span style={{ display: "block", fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", marginTop: 1 }}>
-                                {child.desc}
-                              </span>
-                            </div>
-                          </Link>
-                        </React.Fragment>
-                      ))}
-                    </div>
-                  </div>
+                  </Link>
                 </li>
               );
-            })}
-          </ul>
+            }
+            const isOpen = mobileAccordion === item.label;
+            return (
+              <li key={item.label}>
+                <button
+                  className={styles.mobileLink}
+                  onClick={() => setMobileAccordion(isOpen ? null : item.label)}
+                  style={{ width: "100%", background: "none", border: "none", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}
+                >
+                  {item.label}
+                  <FiChevronDown
+                    size={18}
+                    style={{
+                      transition: "transform 0.2s",
+                      transform: isOpen ? "rotate(180deg)" : "rotate(0)",
+                      opacity: 0.5,
+                    }}
+                  />
+                </button>
+                <div
+                  style={{
+                    maxHeight: isOpen ? 600 : 0,
+                    overflow: "hidden",
+                    transition: "max-height 0.3s ease",
+                  }}
+                >
+                  <div style={{ padding: "0.25rem 0 0.5rem 0.75rem", display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                    {item.children.map((child, idx) => (
+                      <React.Fragment key={child.href}>
+                        {item.separator?.includes(idx - 1) && (
+                          <div style={{ height: 1, background: "rgba(30,45,74,0.08)", margin: "0.35rem 0" }} />
+                        )}
+                        <Link
+                          href={child.href}
+                          onClick={closeMenu}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.6rem",
+                            padding: "0.6rem 0.5rem",
+                            textDecoration: "none",
+                            borderRadius: "0.5rem",
+                          }}
+                        >
+                          <span style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>{child.icon}</span>
+                          <div>
+                            <span style={{ display: "block", fontSize: "0.95rem", fontWeight: 600, color: "#1e2d4a" }}>
+                              {child.label}
+                            </span>
+                            <span style={{ display: "block", fontSize: "0.75rem", color: "#5f6b78", marginTop: 1 }}>
+                              {child.desc}
+                            </span>
+                          </div>
+                        </Link>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
 
-          <div className={styles.mobileCtas}>
-            {authHref && status !== "loading" && (
-              <Link href={authHref} className={styles.btnOutline} onClick={closeMenu}>
-                {userName || authLabel}
-              </Link>
-            )}
-            <Link href="/examenes" className={styles.btnCta} onClick={closeMenu}>
-              Simulacro gratis
+        <div className={styles.mobileCtas}>
+          {authHref && status !== "loading" && (
+            <Link href={authHref} className={styles.btnOutline} onClick={closeMenu}>
+              {userName || authLabel}
             </Link>
-          </div>
-        </nav>
-      </div>
-    </header>
+          )}
+          <Link href="/examenes" className={styles.btnCta} onClick={closeMenu}>
+            Simulacro gratis
+          </Link>
+        </div>
+      </nav>
+    </div>
+    </>
   );
 };
 

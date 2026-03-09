@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { auth } from "@/lib/auth";
 import { Playfair_Display, DM_Sans, Space_Grotesk, DM_Mono, Nunito, JetBrains_Mono } from "next/font/google";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -120,6 +121,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             {children}
           </main>
         </SessionProvider>
+        <CookieBanner />
         <Analytics />
         <SpeedInsights />
       </body>
