@@ -81,7 +81,7 @@ export default function CursosPage() {
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            style={{ color: "#5f6b78" }}
           >
             Programas adaptados a tu nivel y objetivo. Clases en directo con
             profesores nativos.
@@ -118,7 +118,7 @@ export default function CursosPage() {
                       {course.levels}
                     </span>
                   </div>
-                  <p style={{ color: "rgba(255,255,255,0.65)", lineHeight: 1.6 }}>
+                  <p style={{ color: "#3d4a5c", lineHeight: 1.6 }}>
                     {course.description}
                   </p>
                 </GlassCard>
@@ -143,8 +143,8 @@ export default function CursosPage() {
                 key={item.level}
                 className="rounded-2xl p-5 text-center"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "#ffffff",
+                  border: "1px solid rgba(30,45,74,0.1)",
                 }}
               >
                 <p

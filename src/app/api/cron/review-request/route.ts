@@ -2,16 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendNotification, formatPhoneSpain } from "@/lib/sms";
 import { smsResenaRequest } from "@/lib/sms-templates";
+import { validateCronAuth } from "@/lib/cron-auth";
 
 // Vercel cron: daily at 20:00 UTC — sends review requests for yesterday's completed lessons
 
 export async function GET(req: NextRequest) {
-  const authHeader = req.headers.get("authorization");
-  const cronSecret = process.env.CRON_SECRET;
-
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const authCheck = validateCronAuth(req);
+  if (!authCheck.ok) return authCheck.response;
 
   const now = new Date();
   const yesterday = new Date(now);

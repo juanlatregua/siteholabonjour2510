@@ -25,6 +25,12 @@ export async function POST(req: NextRequest) {
   }
 
   if (event.type === "checkout.session.completed") {
+    // Idempotency: skip already-processed events
+    const existing = await prisma.stripeEvent.findUnique({ where: { id: event.id } });
+    if (existing) {
+      return NextResponse.json({ received: true });
+    }
+
     const session = event.data.object as Stripe.Checkout.Session;
 
     // Handle correction pack purchases
@@ -42,6 +48,7 @@ export async function POST(req: NextRequest) {
         }
       }
 
+      await prisma.stripeEvent.create({ data: { id: event.id } }).catch(() => {});
       return NextResponse.json({ received: true });
     }
 
@@ -186,6 +193,9 @@ export async function POST(req: NextRequest) {
       console.error("[stripe-webhook] Error:", err);
       return NextResponse.json({ error: "Processing error" }, { status: 500 });
     }
+
+    // Mark event as processed (idempotency)
+    await prisma.stripeEvent.create({ data: { id: event.id } }).catch(() => {});
   }
 
   return NextResponse.json({ received: true });

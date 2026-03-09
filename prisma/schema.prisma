@@ -564,6 +564,27 @@ model Review {
   @@map("reviews")
 }
 
+model StripeEvent {
+  id        String   @id // Stripe event.id (evt_...)
+  createdAt DateTime @default(now())
+
+  @@map("stripe_events")
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  objetivo  String?
+  message   String?
+  source    String?
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@map("leads")
+}
+
 model PreparateurApplication {
   id         String   @id @default(cuid())
   name       String

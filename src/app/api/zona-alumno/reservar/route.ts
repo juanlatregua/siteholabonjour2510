@@ -153,19 +153,30 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Create the lesson
-  let lesson = await prisma.lesson.create({
-    data: {
-      studentId: session.user.id,
-      teacherId,
-      packId: activePack.id,
-      scheduledAt,
-      durationMinutes: 60,
-      status: "SCHEDULED",
-      focus: focus || null,
-      notes: notes || null,
-    },
-  });
+  // Create the lesson (race-safe: catch unique constraint on teacherId+scheduledAt)
+  let lesson;
+  try {
+    lesson = await prisma.lesson.create({
+      data: {
+        studentId: session.user.id,
+        teacherId,
+        packId: activePack.id,
+        scheduledAt,
+        durationMinutes: 60,
+        status: "SCHEDULED",
+        focus: focus || null,
+        notes: notes || null,
+      },
+    });
+  } catch (err: unknown) {
+    if (err && typeof err === "object" && "code" in err && (err as { code: string }).code === "P2002") {
+      return NextResponse.json(
+        { ok: false, error: "SLOT_TAKEN", message: "Este horario ya no está disponible." },
+        { status: 409 },
+      );
+    }
+    throw err;
+  }
 
   // Increment hours used on the pack
   await prisma.pack.update({

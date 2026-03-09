@@ -117,20 +117,30 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Create PENDING_PAYMENT lesson if slot selected
+    // Create PENDING_PAYMENT lesson if slot selected (race-safe)
     if (selectedDate && selectedTime) {
       const scheduledAt = new Date(`${selectedDate}T${selectedTime}:00`);
-      await prisma.lesson.create({
-        data: {
-          studentId: user.id,
-          teacherId: teacher.id,
-          packId: pack.id,
-          scheduledAt,
-          durationMinutes: isDiagnostico ? 30 : 60,
-          status: "PENDING_PAYMENT",
-          focus: isDiagnostico ? "Sesión diagnóstico DELF/DALF" : null,
-        },
-      });
+      try {
+        await prisma.lesson.create({
+          data: {
+            studentId: user.id,
+            teacherId: teacher.id,
+            packId: pack.id,
+            scheduledAt,
+            durationMinutes: isDiagnostico ? 30 : 60,
+            status: "PENDING_PAYMENT",
+            focus: isDiagnostico ? "Sesión diagnóstico DELF/DALF" : null,
+          },
+        });
+      } catch (err: unknown) {
+        if (err && typeof err === "object" && "code" in err && (err as { code: string }).code === "P2002") {
+          return NextResponse.json(
+            { error: "Este horario ya no está disponible. Por favor elige otro." },
+            { status: 409 },
+          );
+        }
+        throw err;
+      }
     }
 
     // Create Stripe Checkout session

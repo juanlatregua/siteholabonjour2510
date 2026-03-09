@@ -3,16 +3,13 @@ import { prisma } from "@/lib/prisma";
 import { sendNotification } from "@/lib/sms";
 import { smsRecordatorioClase } from "@/lib/sms-templates";
 import { sendClassReminderEmail } from "@/lib/email";
+import { validateCronAuth } from "@/lib/cron-auth";
 
 // Vercel cron: daily at 10:00 UTC — sends reminders for tomorrow's lessons
 
 export async function GET(req: NextRequest) {
-  const authHeader = req.headers.get("authorization");
-  const cronSecret = process.env.CRON_SECRET;
-
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const authCheck = validateCronAuth(req);
+  if (!authCheck.ok) return authCheck.response;
 
   const now = new Date();
   const tomorrow = new Date(now);

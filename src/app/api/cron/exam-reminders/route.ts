@@ -1,15 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendMail } from "@/lib/azure-mail";
+import { validateCronAuth } from "@/lib/cron-auth";
 
-const CRON_SECRET = process.env.CRON_SECRET;
-
-export async function POST(req: NextRequest) {
-  // Verify cron secret
-  const authHeader = req.headers.get("authorization");
-  if (CRON_SECRET && authHeader !== `Bearer ${CRON_SECRET}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+export async function GET(req: NextRequest) {
+  const authCheck = validateCronAuth(req);
+  if (!authCheck.ok) return authCheck.response;
 
   const now = new Date();
   const tomorrow = new Date(now);

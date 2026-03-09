@@ -1,16 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendExamFollowupEmail } from "@/lib/email";
+import { validateCronAuth } from "@/lib/cron-auth";
 
 // Vercel cron: every 30 min — sends follow-up emails ~1h after exam completion
 
 export async function GET(req: NextRequest) {
-  const authHeader = req.headers.get("authorization");
-  const cronSecret = process.env.CRON_SECRET;
-
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const authCheck = validateCronAuth(req);
+  if (!authCheck.ok) return authCheck.response;
 
   const now = new Date();
   const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
