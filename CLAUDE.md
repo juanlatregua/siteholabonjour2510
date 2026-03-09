@@ -2,7 +2,7 @@
 
 ## Stack
 - **Framework**: Next.js 15 (App Router) + React 19 + TypeScript
-- **DB**: PostgreSQL on Supabase, Prisma 7 ORM (26 models)
+- **DB**: PostgreSQL on Supabase, Prisma 7 ORM (28 models)
 - **Auth**: NextAuth v5 beta — magic link (students), credentials (teachers)
 - **Payments**: Stripe (checkout sessions, webhooks)
 - **Email**: Azure Communication Services (`src/lib/azure-mail.ts`)
@@ -122,7 +122,7 @@ TEACHER_PASSWORD_HASH_ISABELLEGUITTON
 - Prisma schema — Always create a migration after changes
 - Footer / Header nav — Keep navy background
 
-## Prisma Models (26 total)
+## Prisma Models (28 total)
 Auth: Account, Session, VerificationToken, User
 Booking: Pack, Lesson, Payment, Availability
 Exams: ExamAttempt, ExamSession, ExamReminder, ExamenModelo
@@ -130,3 +130,38 @@ Assessment: AssessmentLink, AssessmentAttempt, AssessmentAttemptAnswer, Quiz, Qu
 Corrections: WritingCorrection, CorrectionQuota, TeacherAnnotation
 Content: Material, NewsletterSubscriber
 Marketplace: PreparateurProfile, PreparateurReview, PreparateurApplication
+Reviews: Review
+
+## PROTOCOLO OBLIGATORIO — Verificación antes de proponer fixes
+
+1. **Siempre ejecutar `bash scripts/project-map.sh`** al inicio de cualquier sesión de audit o fixes. Nunca asumir rutas.
+
+2. **Verificar archivos antes de editarlos:**
+   ```bash
+   find . -path "*/api/*" -name "route.ts" | grep <término>
+   ```
+   Si el archivo no existe donde se supone → buscarlo.
+   Distinguir siempre entre "archivo a modificar" vs "archivo a crear".
+
+3. **Todo prompt de fixes debe incluir una sección "Rutas verificadas"** al inicio, con la lista de archivos confirmados con ✓.
+
+4. **Reglas de stack:**
+   - **UI**: Tailwind v4 + inline styles. CSS Modules solo en Footer y Header. NO hay shadcn/ui, Radix, ni MUI instalados.
+   - **Storage**: Supabase Storage (via `src/lib/supabase.ts` con service role key). NO hay Vercel Blob, S3, ni Cloudinary.
+   - **Admin pages**: Server Components con Prisma directo (zona-profesor). Client components solo para interactividad (formularios, filtros).
+   - **Auth**: NextAuth v5 beta. Magic link para alumnos, credentials para profesores. JWT strategy sin maxAge explícito (30 días default).
+   - **Pagos**: Stripe checkout sessions + webhooks. Bizum/Transfer manual vía `/api/booking/manual`.
+   - **Email**: Azure Communication Services (`@azure/communication-email`). NO Resend, NO SendGrid.
+   - **SMS/WhatsApp**: Twilio REST API directa (sin SDK). Canal WhatsApp preferido si `TWILIO_WHATSAPP_FROM` está configurado.
+   - **AI**: Anthropic Claude SDK para correcciones de escritura y análisis de exámenes.
+   - **Deploy**: Vercel (vercel --prod). Crons en vercel.json.
+   - **DB**: PostgreSQL en Supabase, Prisma 7. Shadow DB falla → usar `prisma db push` + migration manual.
+   - **NO instalados**: drizzle-orm, resend, supabase SDK, redis, ioredis
+
+5. **Formato obligatorio de prompts de fixes:**
+   ```
+   ## Rutas verificadas (fecha)
+   ## BLOQUE 1 — ALTA
+   ## BLOQUE 2 — MEDIA
+   ## AL TERMINAR — build + checklist en dev
+   ```
