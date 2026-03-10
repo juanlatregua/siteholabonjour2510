@@ -71,6 +71,8 @@ export default auth((req) => {
     pathname.startsWith("/api/public") ||
     pathname.startsWith("/api/booking") ||
     pathname.startsWith("/api/webhook") ||
+    pathname.startsWith("/api/cron") ||
+    pathname.startsWith("/api/contabilidad") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/images") ||
     pathname.startsWith("/assets") ||
