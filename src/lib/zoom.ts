@@ -63,7 +63,7 @@ export async function createZoomMeeting(opts: {
       settings: {
         join_before_host: true,
         waiting_room: false,
-        auto_recording: "none",
+        auto_recording: "cloud",
       },
     }),
   });
