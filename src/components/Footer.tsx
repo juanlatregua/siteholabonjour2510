@@ -28,6 +28,7 @@ const hbLinks = [
   { href: "/aviso-legal", label: "Aviso legal" },
   { href: "/politica-de-privacidad", label: "Política de privacidad" },
   { href: "/politica-de-cookies", label: "Política de cookies" },
+  { href: "/iniciar-sesion", label: "Acceso docente" },
 ];
 
 const Footer = () => {
