@@ -3,6 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
+import { FiLogOut } from "react-icons/fi";
 
 interface ZonaTopbarProps {
   title: string;
@@ -74,8 +76,8 @@ export default function ZonaTopbar({ title, user }: ZonaTopbarProps) {
         <h1 className="truncate text-lg font-semibold text-gray-900">{title}</h1>
       </div>
 
-      {/* User avatar */}
-      <div className="flex-shrink-0">
+      {/* User avatar + logout */}
+      <div className="flex items-center gap-3 flex-shrink-0">
         {user.image ? (
           <img
             src={user.image}
@@ -87,6 +89,14 @@ export default function ZonaTopbar({ title, user }: ZonaTopbarProps) {
             {initials}
           </div>
         )}
+        <button
+          onClick={() => signOut({ callbackUrl: "/iniciar-sesion" })}
+          className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
+          title="Cerrar sesión"
+        >
+          <FiLogOut className="h-3.5 w-3.5" />
+          <span className="hidden sm:inline">Salir</span>
+        </button>
       </div>
     </header>
   );
