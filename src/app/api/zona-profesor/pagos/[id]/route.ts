@@ -137,13 +137,24 @@ export async function PATCH(
     const levelRange = payment.pack?.levelRange || "Pack";
     const totalEur = payment.amount.toFixed(2);
 
-    Promise.allSettled([
+    // Get first confirmed lesson for .ics attachment
+    const firstLesson = payment.packId
+      ? await prisma.lesson.findFirst({
+          where: { packId: payment.packId, status: "SCHEDULED" },
+          orderBy: { scheduledAt: "asc" },
+        })
+      : null;
+
+    const notifications: Promise<unknown>[] = [
       import("@/lib/email").then(({ sendPaymentConfirmationEmail }) =>
         sendPaymentConfirmationEmail({
           toEmail: payment.student.email,
           customerName: payment.student.name || "Alumno",
           levelRange,
           totalEur,
+          lessonScheduledAt: firstLesson?.scheduledAt ?? undefined,
+          lessonDurationMinutes: firstLesson?.durationMinutes ?? undefined,
+          zoomLink: firstLesson?.zoomLink,
         })
       ),
       payment.student.phone
@@ -160,7 +171,77 @@ export async function PATCH(
             )
           )
         : Promise.resolve(),
-    ]).catch(() => {});
+    ];
+
+    // Send booking confirmation + teacher email if a lesson was activated
+    if (firstLesson) {
+      const teacherData = await prisma.user.findUnique({
+        where: { id: firstLesson.teacherId },
+        select: { name: true, email: true },
+      });
+      const dateLabel = firstLesson.scheduledAt.toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
+      const timeLabel = firstLesson.scheduledAt.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+
+      notifications.push(
+        import("@/lib/email").then(({ sendBookingConfirmationEmail }) =>
+          sendBookingConfirmationEmail({
+            toEmail: payment.student.email,
+            customerName: payment.student.name || "Alumno",
+            teacherName: teacherData?.name || "Profesor",
+            date: dateLabel,
+            time: timeLabel,
+            durationMinutes: firstLesson.durationMinutes,
+            zoomLink: firstLesson.zoomLink,
+            scheduledAt: firstLesson.scheduledAt,
+          })
+        )
+      );
+
+      if (teacherData?.email) {
+        const freshPack = payment.packId
+          ? await prisma.pack.findUnique({ where: { id: payment.packId } })
+          : null;
+        notifications.push(
+          import("@/lib/email").then(({ sendNewLessonTeacherEmail }) =>
+            sendNewLessonTeacherEmail({
+              toEmail: teacherData.email!,
+              teacherName: teacherData.name || "Profesor",
+              studentName: payment.student.name || "Alumno",
+              studentEmail: payment.student.email,
+              studentPhone: payment.student.phone,
+              levelRange,
+              hoursRemaining: freshPack ? freshPack.hoursTotal - freshPack.hoursUsed : 0,
+              date: dateLabel,
+              time: timeLabel,
+              durationMinutes: firstLesson.durationMinutes,
+              zoomStartUrl: firstLesson.zoomStartUrl,
+              zoomJoinUrl: firstLesson.zoomLink,
+              scheduledAt: firstLesson.scheduledAt,
+            })
+          )
+        );
+      }
+
+      if (payment.student.phone) {
+        notifications.push(
+          import("@/lib/sms").then(({ sendNotification }) =>
+            import("@/lib/sms-templates").then(({ smsClaseConfirmada }) =>
+              sendNotification({
+                to: payment.student.phone!,
+                body: smsClaseConfirmada({
+                  nombre: (payment.student.name || "").split(" ")[0] || "Alumno",
+                  fecha: dateLabel,
+                  hora: timeLabel,
+                  profesor: (teacherData?.name || "Profesor").split(" ")[0],
+                }),
+              })
+            )
+          )
+        );
+      }
+    }
+
+    Promise.allSettled(notifications).catch(() => {});
 
     return NextResponse.json({ ok: true, payment: updated });
   }

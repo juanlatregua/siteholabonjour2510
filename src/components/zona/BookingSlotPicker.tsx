@@ -9,6 +9,7 @@ import {
   format,
   getISOWeek,
   getYear,
+  endOfWeek,
 } from "date-fns";
 import { es } from "date-fns/locale/es";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
@@ -37,6 +38,8 @@ export default function BookingSlotPicker({
   );
 
   const weekCode = `${getYear(weekStart)}-W${String(getISOWeek(weekStart)).padStart(2, "0")}`;
+  const weekEnd = endOfWeek(weekStart, { weekStartsOn: 1 });
+  const weekLabel = `${format(weekStart, "d", { locale: es })} – ${format(weekEnd, "d MMM yyyy", { locale: es })}`;
 
   const fetchSlots = useCallback(async () => {
     setLoading(true);
@@ -79,8 +82,8 @@ export default function BookingSlotPicker({
         >
           <FiChevronLeft className="h-5 w-5" />
         </button>
-        <h3 className="text-sm font-semibold text-gray-900">
-          Semana {weekCode}
+        <h3 className="text-sm font-semibold text-gray-900 capitalize">
+          {weekLabel}
         </h3>
         <button
           onClick={() => setWeekStart(addWeeks(weekStart, 1))}

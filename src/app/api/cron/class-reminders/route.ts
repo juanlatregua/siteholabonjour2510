@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendNotification } from "@/lib/sms";
 import { smsRecordatorioClase } from "@/lib/sms-templates";
-import { sendClassReminderEmail } from "@/lib/email";
+import { sendClassReminderEmail, sendClassReminderTeacherEmail } from "@/lib/email";
 import { validateCronAuth } from "@/lib/cron-auth";
 
 // Vercel cron: daily at 10:00 UTC — sends reminders for tomorrow's lessons
@@ -25,12 +25,16 @@ export async function GET(req: NextRequest) {
         scheduledAt: { gte: startOfTomorrow, lt: endOfTomorrow },
         status: "SCHEDULED",
       },
-      include: { student: true },
+      include: {
+        student: true,
+        teacher: { select: { id: true, name: true, email: true } },
+      },
     });
 
     let sent = 0;
     for (const lesson of lessons) {
       const student = lesson.student;
+      const teacher = lesson.teacher;
       const dateLabel = startOfTomorrow.toLocaleDateString("es-ES", {
         weekday: "long", day: "numeric", month: "long",
       });
@@ -38,6 +42,7 @@ export async function GET(req: NextRequest) {
         hour: "2-digit", minute: "2-digit",
       });
 
+      // SMS to student
       if (student.phone) {
         await sendNotification({
           to: student.phone,
@@ -49,13 +54,28 @@ export async function GET(req: NextRequest) {
         });
       }
 
+      // Email to student
       await sendClassReminderEmail({
         toEmail: student.email,
         customerName: student.name || "Alumno",
         date: dateLabel,
         time: timeLabel,
         zoomLink: lesson.zoomLink || undefined,
+        scheduledAt: lesson.scheduledAt,
+        durationMinutes: lesson.durationMinutes,
       });
+
+      // Email to teacher
+      if (teacher.email) {
+        await sendClassReminderTeacherEmail({
+          toEmail: teacher.email,
+          teacherName: teacher.name || "Profesor",
+          studentName: student.name || "Alumno",
+          date: dateLabel,
+          time: timeLabel,
+          zoomStartUrl: lesson.zoomStartUrl,
+        });
+      }
 
       sent++;
     }

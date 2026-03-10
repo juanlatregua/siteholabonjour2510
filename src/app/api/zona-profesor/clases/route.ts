@@ -168,5 +168,46 @@ export async function POST(request: NextRequest) {
     }
   }
 
+  // Send confirmation email + SMS to student (fire-and-forget)
+  const teacherUser = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { name: true },
+  });
+  const teacherName = teacherUser?.name || "Profesor";
+  const dateLabel = scheduledDate.toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
+  const timeLabel = scheduledDate.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+
+  if (student.email) {
+    import("@/lib/email").then(({ sendBookingConfirmationEmail }) => {
+      sendBookingConfirmationEmail({
+        toEmail: student.email,
+        customerName: student.name || "Alumno",
+        teacherName,
+        date: dateLabel,
+        time: timeLabel,
+        durationMinutes,
+        focus: focus || null,
+        zoomLink: lesson.zoomLink || null,
+        scheduledAt: scheduledDate,
+      }).catch(() => {});
+    });
+  }
+
+  if (student.phone) {
+    import("@/lib/sms").then(({ sendNotification }) => {
+      import("@/lib/sms-templates").then(({ smsClaseConfirmada }) => {
+        sendNotification({
+          to: student.phone!,
+          body: smsClaseConfirmada({
+            nombre: (student.name || "").split(" ")[0] || "Alumno",
+            fecha: dateLabel,
+            hora: timeLabel,
+            profesor: teacherName.split(" ")[0],
+          }),
+        }).catch(() => {});
+      });
+    });
+  }
+
   return NextResponse.json({ ok: true, lesson }, { status: 201 });
 }

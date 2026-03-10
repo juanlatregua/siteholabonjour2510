@@ -11,6 +11,7 @@ interface SidebarLink {
   href: string;
   label: string;
   icon: React.ReactNode;
+  badge?: number;
 }
 
 interface ZonaSidebarProps {
@@ -101,6 +102,11 @@ export default function ZonaSidebar({ links, user }: ZonaSidebarProps) {
             >
               <span className="text-lg">{link.icon}</span>
               {link.label}
+              {link.badge != null && link.badge > 0 && (
+                <span className="ml-auto inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#E50046] px-1.5 text-[10px] font-bold text-white">
+                  {link.badge}
+                </span>
+              )}
             </Link>
           );
         })}

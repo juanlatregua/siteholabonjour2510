@@ -25,6 +25,15 @@ export function smsRecordatorioClase(data: {
   return `HolaBonjour: Recordatorio: tu clase de frances es manana ${data.fecha} a las ${data.hora}h. Anulacion: 48h antes. A demain!`;
 }
 
+export function smsClaseConfirmada(data: {
+  nombre: string;
+  fecha: string;
+  hora: string;
+  profesor: string;
+}): string {
+  return `HolaBonjour: Clase confirmada el ${data.fecha} a las ${data.hora}h con ${data.profesor}. Detalles en tu email. A bientot!`;
+}
+
 export function smsAnulacionTardia(data: {
   nombre: string;
   fecha: string;
@@ -37,4 +46,10 @@ export function smsResenaRequest(data: {
   linkOpinion: string;
 }): string {
   return `HolaBonjour: Gracias por tu clase, ${data.nombre}! Nos encantaria conocer tu opinion: ${data.linkOpinion}`;
+}
+
+export function smsPostClase(data: {
+  nombre: string;
+}): string {
+  return `HolaBonjour: Merci ${data.nombre}! Gracias por tu clase de hoy. La grabacion estara disponible pronto en tu zona de alumno. A bientot!`;
 }

@@ -44,18 +44,25 @@ async function getAccessToken(): Promise<string> {
   return cachedToken.token;
 }
 
+export interface MailAttachment {
+  name: string;
+  contentType: string;
+  contentBytes: string; // base64
+}
+
 interface SendMailOptions {
   to: string;
   subject: string;
   html: string;
   text?: string;
+  attachments?: MailAttachment[];
 }
 
-export async function sendMail({ to, subject, html }: SendMailOptions) {
+export async function sendMail({ to, subject, html, attachments }: SendMailOptions) {
   const from = process.env.EMAIL_FROM || "info@holabonjour.es";
   const token = await getAccessToken();
 
-  const message = {
+  const message: Record<string, unknown> = {
     message: {
       subject,
       body: {
@@ -63,6 +70,14 @@ export async function sendMail({ to, subject, html }: SendMailOptions) {
         content: html,
       },
       toRecipients: [{ emailAddress: { address: to } }],
+      ...(attachments?.length && {
+        attachments: attachments.map((a) => ({
+          "@odata.type": "#microsoft.graph.fileAttachment",
+          name: a.name,
+          contentType: a.contentType,
+          contentBytes: a.contentBytes,
+        })),
+      }),
     },
     saveToSentItems: false,
   };

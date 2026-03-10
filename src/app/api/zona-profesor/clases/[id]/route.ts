@@ -142,29 +142,44 @@ export async function PATCH(
     });
   }
 
-  // Send notifications for late cancellation (fire-and-forget, don't block response)
-  if (isLateCancellation && lesson.student) {
+  // Send notifications for cancellation (fire-and-forget, don't block response)
+  if (isCancelling && lesson.student) {
     const dateStr = format(lesson.scheduledAt, "EEEE d 'de' MMMM, HH:mm", { locale: es });
 
-    // Email notification
-    sendLateCancellationEmail({
-      toEmail: lesson.student.email || "",
-      customerName: lesson.student.name || "alumno/a",
-      date: dateStr,
-    }).catch(() => { /* non-blocking */ });
-
-    // SMS notification
-    if (lesson.student.phone) {
-      const phone = lesson.student.phone.startsWith("+")
-        ? lesson.student.phone
-        : `+34${lesson.student.phone.replace(/\s/g, "")}`;
-      sendSMS({
-        to: phone,
-        body: smsAnulacionTardia({
-          nombre: lesson.student.name || "alumno/a",
-          fecha: dateStr,
-        }),
+    if (isLateCancellation) {
+      // Late cancellation: existing email + SMS
+      sendLateCancellationEmail({
+        toEmail: lesson.student.email || "",
+        customerName: lesson.student.name || "alumno/a",
+        date: dateStr,
       }).catch(() => { /* non-blocking */ });
+
+      if (lesson.student.phone) {
+        const phone = lesson.student.phone.startsWith("+")
+          ? lesson.student.phone
+          : `+34${lesson.student.phone.replace(/\s/g, "")}`;
+        sendSMS({
+          to: phone,
+          body: smsAnulacionTardia({
+            nombre: lesson.student.name || "alumno/a",
+            fecha: dateStr,
+          }),
+        }).catch(() => { /* non-blocking */ });
+      }
+    } else {
+      // Early cancellation (>48h): hour returned to pack, notify student
+      if (lesson.packId) {
+        const freshPack = await prisma.pack.findUnique({ where: { id: lesson.packId } });
+        const hoursRemaining = freshPack ? freshPack.hoursTotal - freshPack.hoursUsed : 0;
+        import("@/lib/email").then(({ sendCancellationConfirmedEmail }) => {
+          sendCancellationConfirmedEmail({
+            toEmail: lesson.student.email || "",
+            customerName: lesson.student.name || "alumno/a",
+            date: dateStr,
+            hoursRemaining,
+          }).catch(() => {});
+        });
+      }
     }
   }
 

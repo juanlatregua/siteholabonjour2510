@@ -223,20 +223,71 @@ export async function POST(request: NextRequest) {
     console.error("[reservar] Zoom meeting creation failed:", err);
   }
 
-  // Send confirmation email (fire-and-forget)
+  // Send confirmation email + SMS + teacher notification (fire-and-forget)
   const student = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: { email: true, name: true },
+    select: { email: true, name: true, phone: true },
   });
 
+  const teacherName = teacher.name || "Profesor";
+  const dateLabel = scheduledAt.toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
+  const timeLabel = scheduledAt.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+
+  // Email to student
   if (student?.email) {
-    import("@/lib/email").then(({ sendClassReminderEmail }) => {
-      sendClassReminderEmail({
+    import("@/lib/email").then(({ sendBookingConfirmationEmail }) => {
+      sendBookingConfirmationEmail({
         toEmail: student.email,
         customerName: student.name || "Alumno",
-        date,
-        time,
-        zoomLink: lesson.zoomLink || undefined,
+        teacherName,
+        date: dateLabel,
+        time: timeLabel,
+        durationMinutes: 60,
+        focus: focus || null,
+        zoomLink: lesson.zoomLink || null,
+        scheduledAt,
+      }).catch(() => {});
+    });
+  }
+
+  // SMS to student
+  if (student?.phone) {
+    import("@/lib/sms").then(({ sendNotification }) => {
+      import("@/lib/sms-templates").then(({ smsClaseConfirmada }) => {
+        sendNotification({
+          to: student.phone!,
+          body: smsClaseConfirmada({
+            nombre: (student.name || "").split(" ")[0] || "Alumno",
+            fecha: dateLabel,
+            hora: timeLabel,
+            profesor: teacherName.split(" ")[0],
+          }),
+        }).catch(() => {});
+      });
+    });
+  }
+
+  // Email to teacher (new booking notification)
+  if (teacher.email) {
+    const freshPack = await prisma.pack.findUnique({ where: { id: activePack.id } });
+    const hoursRemaining = freshPack ? freshPack.hoursTotal - freshPack.hoursUsed : 0;
+
+    import("@/lib/email").then(({ sendNewLessonTeacherEmail }) => {
+      sendNewLessonTeacherEmail({
+        toEmail: teacher.email,
+        teacherName,
+        studentName: student?.name || "Alumno",
+        studentEmail: student?.email || "",
+        studentPhone: student?.phone,
+        levelRange: activePack.levelRange,
+        hoursRemaining,
+        date: dateLabel,
+        time: timeLabel,
+        durationMinutes: 60,
+        focus: focus || null,
+        zoomStartUrl: lesson.zoomStartUrl || null,
+        zoomJoinUrl: lesson.zoomLink || null,
+        scheduledAt,
       }).catch(() => {});
     });
   }

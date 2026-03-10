@@ -52,7 +52,10 @@ export default async function ZonaProfesorDashboard() {
     })
   ).map((s) => s.id);
 
-  const [studentCount, todayLessons, upcomingLessons, weekLessons, pendingPayments, pendingCorrections] = await Promise.all([
+  // New bookings in last 24h
+  const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
+  const [studentCount, todayLessons, upcomingLessons, weekLessons, pendingPayments, pendingCorrections, newBookingsCount] = await Promise.all([
     prisma.user.count({
       where: { coachId: teacherId },
     }),
@@ -104,6 +107,14 @@ export default async function ZonaProfesorDashboard() {
           },
         })
       : Promise.resolve(0),
+    // New bookings in last 24h
+    prisma.lesson.count({
+      where: {
+        teacherId,
+        status: "SCHEDULED",
+        createdAt: { gte: oneDayAgo },
+      },
+    }),
   ]);
 
   const teacher = await prisma.user.findUnique({
@@ -122,6 +133,20 @@ export default async function ZonaProfesorDashboard() {
           Aquí tienes un resumen de tu actividad docente.
         </p>
       </div>
+
+      {/* New bookings banner */}
+      {newBookingsCount > 0 && (
+        <Link href="/zona-profesor/clases">
+          <div className="flex items-center gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#E50046] text-sm font-bold text-white">
+              {newBookingsCount}
+            </span>
+            <p className="text-sm font-medium text-gray-900">
+              Tienes {newBookingsCount} reserva{newBookingsCount !== 1 ? "s" : ""} nueva{newBookingsCount !== 1 ? "s" : ""} en las últimas 24h
+            </p>
+          </div>
+        </Link>
+      )}
 
       {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -203,6 +228,8 @@ export default async function ZonaProfesorDashboard() {
                     durationMinutes={lesson.durationMinutes}
                     personLabel="Alumno"
                     isTeacher
+                    recordingUrl={lesson.recordingUrl}
+                    cancellationRequestedAt={lesson.cancellationRequestedAt}
                   />
                 ))}
               </div>
@@ -234,6 +261,8 @@ export default async function ZonaProfesorDashboard() {
                     durationMinutes={lesson.durationMinutes}
                     personLabel="Alumno"
                     isTeacher
+                    recordingUrl={lesson.recordingUrl}
+                    cancellationRequestedAt={lesson.cancellationRequestedAt}
                   />
                 ))}
               </div>

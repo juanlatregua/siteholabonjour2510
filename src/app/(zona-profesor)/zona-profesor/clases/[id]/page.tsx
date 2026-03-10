@@ -66,6 +66,8 @@ export default async function ClaseDetailPage({
         durationMinutes={lesson.durationMinutes}
         personLabel="Alumno"
         isTeacher
+        recordingUrl={lesson.recordingUrl}
+        cancellationRequestedAt={lesson.cancellationRequestedAt}
       />
 
       {/* Zoom management */}

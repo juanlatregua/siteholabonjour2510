@@ -162,13 +162,21 @@ export async function POST(req: NextRequest) {
 
       const totalEur = pack.price.toFixed(2);
 
+      // Fetch confirmed lesson for .ics attachment
+      const lessonForIcs = confirmedLesson
+        ? await prisma.lesson.findUnique({ where: { id: confirmedLesson.id } })
+        : null;
+
       // Fire-and-forget notifications
-      Promise.allSettled([
+      const notifications: Promise<unknown>[] = [
         sendPaymentConfirmationEmail({
           toEmail: user.email,
           customerName: user.name || "Alumno",
           levelRange: pack.levelRange,
           totalEur,
+          lessonScheduledAt: lessonForIcs?.scheduledAt ?? undefined,
+          lessonDurationMinutes: lessonForIcs?.durationMinutes ?? undefined,
+          zoomLink: lessonForIcs?.zoomLink,
         }),
         sendNewBookingStaffEmail({
           customerName: user.name || "Alumno",
@@ -188,7 +196,70 @@ export async function POST(req: NextRequest) {
               }),
             })
           : Promise.resolve(),
-      ]).catch((err) => console.error("[stripe-webhook] Notification error:", err));
+      ];
+
+      // Send booking confirmation + teacher email if a lesson was confirmed
+      if (lessonForIcs) {
+        const teacherData = await prisma.user.findUnique({
+          where: { id: lessonForIcs.teacherId },
+          select: { name: true, email: true },
+        });
+        const dateLabel = lessonForIcs.scheduledAt.toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
+        const timeLabel = lessonForIcs.scheduledAt.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+
+        const { sendBookingConfirmationEmail, sendNewLessonTeacherEmail } = await import("@/lib/email");
+        const { smsClaseConfirmada } = await import("@/lib/sms-templates");
+
+        notifications.push(
+          sendBookingConfirmationEmail({
+            toEmail: user.email,
+            customerName: user.name || "Alumno",
+            teacherName: teacherData?.name || "Profesor",
+            date: dateLabel,
+            time: timeLabel,
+            durationMinutes: lessonForIcs.durationMinutes,
+            zoomLink: lessonForIcs.zoomLink,
+            scheduledAt: lessonForIcs.scheduledAt,
+          })
+        );
+
+        if (teacherData?.email) {
+          const freshPack = await prisma.pack.findUnique({ where: { id: pack.id } });
+          notifications.push(
+            sendNewLessonTeacherEmail({
+              toEmail: teacherData.email,
+              teacherName: teacherData.name || "Profesor",
+              studentName: user.name || "Alumno",
+              studentEmail: user.email,
+              studentPhone: user.phone,
+              levelRange: pack.levelRange,
+              hoursRemaining: freshPack ? freshPack.hoursTotal - freshPack.hoursUsed : 0,
+              date: dateLabel,
+              time: timeLabel,
+              durationMinutes: lessonForIcs.durationMinutes,
+              zoomStartUrl: lessonForIcs.zoomStartUrl,
+              zoomJoinUrl: lessonForIcs.zoomLink,
+              scheduledAt: lessonForIcs.scheduledAt,
+            })
+          );
+        }
+
+        if (user.phone) {
+          notifications.push(
+            sendNotification({
+              to: user.phone,
+              body: smsClaseConfirmada({
+                nombre: (user.name || "").split(" ")[0] || "Alumno",
+                fecha: dateLabel,
+                hora: timeLabel,
+                profesor: (teacherData?.name || "Profesor").split(" ")[0],
+              }),
+            })
+          );
+        }
+      }
+
+      Promise.allSettled(notifications).catch((err) => console.error("[stripe-webhook] Notification error:", err));
     } catch (err) {
       console.error("[stripe-webhook] Error:", err);
       return NextResponse.json({ error: "Processing error" }, { status: 500 });
