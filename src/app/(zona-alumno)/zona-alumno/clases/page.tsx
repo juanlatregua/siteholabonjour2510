@@ -50,12 +50,15 @@ export default async function ClasesPage(props: {
           {lessons.map((lesson) => (
             <LessonCard
               key={lesson.id}
+              lessonId={lesson.id}
               scheduledAt={lesson.scheduledAt}
               status={lesson.status}
               focus={lesson.focus}
               teacherName={lesson.teacher.name}
               zoomLink={lesson.zoomLink}
               durationMinutes={lesson.durationMinutes}
+              recordingUrl={lesson.recordingUrl}
+              cancellationRequestedAt={lesson.cancellationRequestedAt}
             />
           ))}
         </div>

@@ -89,12 +89,15 @@ export default async function ZonaAlumnoDashboard() {
           <CardContent>
             {nextLesson ? (
               <LessonCard
+                lessonId={nextLesson.id}
                 scheduledAt={nextLesson.scheduledAt}
                 status={nextLesson.status}
                 focus={nextLesson.focus}
                 teacherName={nextLesson.teacher.name}
                 zoomLink={nextLesson.zoomLink}
                 durationMinutes={nextLesson.durationMinutes}
+                recordingUrl={nextLesson.recordingUrl}
+                cancellationRequestedAt={nextLesson.cancellationRequestedAt}
               />
             ) : (
               <EmptyState
