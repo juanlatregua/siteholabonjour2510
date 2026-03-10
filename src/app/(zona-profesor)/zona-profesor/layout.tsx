@@ -1,6 +1,7 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import { requireTeacher, getCurrentUser } from "@/lib/auth-helpers";
+import { requireTeacher } from "@/lib/auth-helpers";
+import { prisma } from "@/lib/prisma";
 import ZonaSidebar from "@/components/zona/ZonaSidebar";
 import ZonaTopbar from "@/components/zona/ZonaTopbar";
 import { FiHome, FiUsers, FiBook, FiCalendar, FiFolder, FiClock, FiPackage, FiCreditCard, FiEdit3, FiFileText, FiBarChart2 } from "react-icons/fi";
@@ -21,7 +22,10 @@ const teacherLinks = [
 
 export default async function ZonaProfesorLayout({ children }: { children: React.ReactNode }) {
   const session = await requireTeacher();
-  const user = await getCurrentUser(session.user.id);
+  const user = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { name: true, email: true, image: true, role: true },
+  });
   if (!user) redirect("/iniciar-sesion");
 
   const userData = { name: user.name, email: user.email, image: user.image, role: user.role };
