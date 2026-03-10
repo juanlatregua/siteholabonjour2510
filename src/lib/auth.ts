@@ -3,7 +3,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import Credentials from "next-auth/providers/credentials";
 import type { EmailConfig } from "next-auth/providers";
 import { prisma } from "@/lib/prisma";
-import { TEACHER_EMAILS } from "@/lib/constants";
 import { sendMail } from "@/lib/azure-mail";
 import { authConfig } from "@/lib/auth.config";
 
@@ -76,16 +75,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           if (!credentials?.email || !credentials?.password) return null;
 
           const email = (credentials.email as string).toLowerCase().trim();
-          if (!TEACHER_EMAILS.includes(email as typeof TEACHER_EMAILS[number])) return null;
 
           const user = await prisma.user.findUnique({ where: { email } });
           if (!user || (user.role !== "TEACHER" && user.role !== "ADMIN")) return null;
 
           const bcrypt = await import("bcryptjs");
-          const envKey = `TEACHER_PASSWORD_HASH_${email.split("@")[0].toUpperCase().replace(/[^A-Z]/g, "")}`;
-          const storedHash = process.env[envKey];
+
+          // Primary: hash from DB. Fallback: env var (legacy, remove after backfill).
+          let storedHash = user.passwordHash ?? null;
           if (!storedHash) {
-            console.error(`[auth] Missing env var: ${envKey}`);
+            const envKey = `TEACHER_PASSWORD_HASH_${email.split("@")[0].toUpperCase().replace(/[^A-Z]/g, "")}`;
+            storedHash = process.env[envKey] ?? null;
+          }
+          if (!storedHash) {
+            console.error(`[auth] No passwordHash for ${email}`);
             return null;
           }
 
