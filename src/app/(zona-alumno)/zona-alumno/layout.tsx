@@ -13,6 +13,7 @@ import {
   FiBarChart2,
   FiFolder,
   FiEdit3,
+  FiUser,
 } from "react-icons/fi";
 
 const studentLinks = [
@@ -25,6 +26,7 @@ const studentLinks = [
   { href: "/zona-alumno/pagos", label: "Pagos", icon: <FiCreditCard /> },
   { href: "/zona-alumno/resultados", label: "Resultados", icon: <FiBarChart2 /> },
   { href: "/zona-alumno/recursos", label: "Recursos", icon: <FiFolder /> },
+  { href: "/zona-alumno/perfil", label: "Mi perfil", icon: <FiUser /> },
 ];
 
 export default async function ZonaAlumnoLayout({

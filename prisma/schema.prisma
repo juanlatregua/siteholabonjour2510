@@ -58,6 +58,7 @@ model User {
   name          String?
   image         String?
   role          String    @default("STUDENT") // STUDENT | TEACHER | ADMIN
+  passwordHash  String?
   level         String?   // CEFR: A1, A2, B1, B2, C1, C2
   route         String?   // "preparacion-examen" | "conversacion"
   phone         String?
@@ -65,6 +66,17 @@ model User {
   coachId       String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+
+  // Billing / facturación
+  billingType        String?
+  billingNif         String?
+  billingRazonSocial String?
+  billingDireccion   String?
+  billingCiudad      String?
+  billingCP          String?
+  billingPais        String?   @default("España")
+  billingContacto    String?
+  billingEmail       String?
 
   coach    User?  @relation("CoachStudents", fields: [coachId], references: [id])
   students User[] @relation("CoachStudents")
@@ -82,6 +94,7 @@ model User {
   uploadedMaterials   Material[]     @relation("UploadedMaterials")
 
   invoices            Invoice[]
+  facturas            Factura[]  @relation("FacturasAlumno")
   assessmentLinks     AssessmentLink[]
   examAttempts        ExamAttempt[]
   preparateurProfile  PreparateurProfile?
@@ -127,6 +140,25 @@ model Lesson {
   studentFeedback String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+
+  // Zoom recording (Phase 1A)
+  recordingUrl       String?
+  recordingPassword  String?
+  recordingReadyAt   DateTime?
+
+  // Zoom attendance tracking (Phase 2)
+  teacherJoinedAt    DateTime?
+  teacherLeftAt      DateTime?
+  studentJoinedAt    DateTime?
+  studentLeftAt      DateTime?
+  actualDurationMin  Int?
+  attendanceSource   String?    // "zoom_webhook" | "manual"
+
+  // Post-class flow (Phase 3)
+  postClassEmailSentAt DateTime?
+
+  // Cancellation request
+  cancellationRequestedAt DateTime?
 
   student   User       @relation("StudentLessons", fields: [studentId], references: [id])
   teacher   User       @relation("TeacherLessons", fields: [teacherId], references: [id])
@@ -585,6 +617,17 @@ model Lead {
   @@map("leads")
 }
 
+model ZoomEvent {
+  id        String   @id
+  type      String
+  meetingId String
+  payload   String?
+  createdAt DateTime @default(now())
+
+  @@index([meetingId])
+  @@map("zoom_events")
+}
+
 model PreparateurApplication {
   id         String   @id @default(cuid())
   name       String
@@ -598,4 +641,40 @@ model PreparateurApplication {
   createdAt  DateTime @default(now())
 
   @@map("preparateur_applications")
+}
+
+// ── Facturas formales ──
+
+model Factura {
+  id                     String    @id @default(cuid())
+  numero                 String    @unique
+  serie                  String    @default("HB")
+  anio                   Int
+  secuencial             Int
+  pagoId                 String?
+  alumnoId               String
+  clienteNombre          String
+  clienteNif             String?
+  clienteRazonSocial     String?
+  clienteDireccion       String?
+  clienteEmail           String?
+  concepto               String
+  baseImponible          Float
+  tipoIva                Float     @default(21)
+  cuotaIva               Float
+  total                  Float
+  formaPago              String?
+  estado                 String    @default("emitida") // emitida | anulada
+  facturaRectificativaId String?
+  fechaEmision           DateTime  @default(now())
+  fechaAnulacion         DateTime?
+  motivoAnulacion        String?
+  pdfPath                String?
+  createdAt              DateTime  @default(now())
+
+  alumno User @relation("FacturasAlumno", fields: [alumnoId], references: [id])
+
+  @@index([alumnoId])
+  @@index([anio, serie])
+  @@map("facturas")
 }

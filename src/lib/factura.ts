@@ -2,6 +2,7 @@
 import { jsPDF } from "jspdf";
 import { prisma } from "@/lib/prisma";
 import { uploadFile, getSignedUrlFromBucket } from "@/lib/supabase";
+import { sendInvoiceEmail } from "@/lib/email";
 
 const BUCKET = "facturas";
 
@@ -224,6 +225,16 @@ export async function createAndStoreInvoice(paymentId: string) {
       issuedAt,
     },
   });
+
+  // Fire-and-forget email with PDF attached
+  sendInvoiceEmail({
+    toEmail: payment.student.email,
+    customerName: payment.student.name || "Cliente",
+    concept,
+    totalEur: totalAmount.toFixed(2),
+    invoiceNumber: number,
+    pdfBuffer,
+  }).catch((err) => console.error("Failed to send invoice email:", err));
 
   return invoice;
 }

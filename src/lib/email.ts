@@ -1,5 +1,6 @@
 // lib/email.ts — Transactional emails via Microsoft Graph API (Azure AD)
-import { sendMail } from "@/lib/azure-mail";
+import { sendMail, type MailAttachment } from "@/lib/azure-mail";
+import { generateLessonICS } from "@/lib/ics";
 
 const BRAND_HOME_URL = "https://www.holabonjour.es";
 
@@ -30,6 +31,9 @@ export async function sendPaymentConfirmationEmail(data: {
   customerName: string;
   levelRange: string;
   totalEur: string;
+  lessonScheduledAt?: Date;
+  lessonDurationMinutes?: number;
+  zoomLink?: string | null;
 }) {
   const subject = `Pago confirmado — Pack clases ${data.levelRange}`;
 
@@ -48,10 +52,156 @@ export async function sendPaymentConfirmationEmail(data: {
     <p>Equipo HolaBonjour</p>
   `;
 
+  const attachments: MailAttachment[] = [];
+  if (data.lessonScheduledAt) {
+    const icsContent = generateLessonICS({
+      studentName: data.customerName,
+      scheduledAt: data.lessonScheduledAt,
+      durationMinutes: data.lessonDurationMinutes || 60,
+      zoomLink: data.zoomLink,
+    });
+    attachments.push({
+      name: "clase-holabonjour.ics",
+      contentType: "text/calendar",
+      contentBytes: Buffer.from(icsContent, "utf-8").toString("base64"),
+    });
+  }
+
   await sendMail({
     to: data.toEmail,
     subject,
     html: wrapEmailHtml(html),
+    attachments: attachments.length ? attachments : undefined,
+  });
+}
+
+export async function sendBookingConfirmationEmail(data: {
+  toEmail: string;
+  customerName: string;
+  teacherName: string;
+  date: string;
+  time: string;
+  durationMinutes: number;
+  focus?: string | null;
+  zoomLink?: string | null;
+  scheduledAt: Date;
+}) {
+  const subject = `Clase confirmada — ${data.date} a las ${data.time}`;
+
+  const zoomHtml = data.zoomLink
+    ? `<p><a href="${data.zoomLink}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Unirse a Zoom</a></p>`
+    : `<p style="font-size:13px; color:#5f6b78;">Te enviaremos el enlace de Zoom antes de la clase.</p>`;
+
+  const focusHtml = data.focus
+    ? `<tr><td style="padding:4px 12px 4px 0; font-weight:600;">Tema</td><td>${data.focus}</td></tr>`
+    : "";
+
+  const html = `
+    <h2>Clase confirmada</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>Tu clase de francés ha sido confirmada:</p>
+    <table style="border-collapse:collapse; margin:12px 0;">
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Fecha</td><td>${data.date}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Hora</td><td>${data.time}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Duración</td><td>${data.durationMinutes} min</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Profesor</td><td>${data.teacherName}</td></tr>
+      ${focusHtml}
+    </table>
+    ${zoomHtml}
+    <p style="padding:10px; background:#fef3c7; border:1px solid #fbbf24; border-radius:8px; font-size:13px;">
+      <strong>Política de anulación:</strong> 48h de antelación. Excepción: justificante médico en 24h.
+    </p>
+    <p><a href="${BRAND_HOME_URL}/zona-alumno/clases" style="display:inline-block; background:#395D9F; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ver mi clase</a></p>
+    <p>À bientôt !<br/>Equipo HolaBonjour</p>
+  `;
+
+  const icsContent = generateLessonICS({
+    studentName: data.customerName,
+    scheduledAt: data.scheduledAt,
+    durationMinutes: data.durationMinutes,
+    zoomLink: data.zoomLink,
+  });
+  const attachments: MailAttachment[] = [
+    {
+      name: "clase-holabonjour.ics",
+      contentType: "text/calendar",
+      contentBytes: Buffer.from(icsContent, "utf-8").toString("base64"),
+    },
+  ];
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+    attachments,
+  });
+}
+
+export async function sendNewLessonTeacherEmail(data: {
+  toEmail: string;
+  teacherName: string;
+  studentName: string;
+  studentEmail: string;
+  studentPhone?: string | null;
+  levelRange: string;
+  hoursRemaining: number;
+  date: string;
+  time: string;
+  durationMinutes: number;
+  focus?: string | null;
+  zoomStartUrl?: string | null;
+  zoomJoinUrl?: string | null;
+  scheduledAt: Date;
+}) {
+  const subject = `Nueva reserva — ${data.studentName} — ${data.date} a las ${data.time}`;
+
+  const focusHtml = data.focus
+    ? `<tr><td style="padding:4px 12px 4px 0; font-weight:600;">Tema</td><td>${data.focus}</td></tr>`
+    : "";
+
+  const zoomHtml = data.zoomStartUrl
+    ? `<p><a href="${data.zoomStartUrl}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Iniciar clase</a></p>`
+    : "";
+
+  const html = `
+    <h2>Nueva reserva</h2>
+    <p>Hola ${data.teacherName.split(" ")[0]},</p>
+    <p>Tienes una nueva clase programada:</p>
+    <table style="border-collapse:collapse; margin:12px 0;">
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Alumno</td><td>${data.studentName}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Email</td><td>${data.studentEmail}</td></tr>
+      ${data.studentPhone ? `<tr><td style="padding:4px 12px 4px 0; font-weight:600;">Teléfono</td><td>${data.studentPhone}</td></tr>` : ""}
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Pack</td><td>${data.levelRange}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Horas restantes</td><td>${data.hoursRemaining}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Fecha</td><td>${data.date}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Hora</td><td>${data.time}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Duración</td><td>${data.durationMinutes} min</td></tr>
+      ${focusHtml}
+    </table>
+    ${zoomHtml}
+    <p><a href="${BRAND_HOME_URL}/zona-profesor/clases" style="display:inline-block; background:#395D9F; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ver en mi zona</a></p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  const icsContent = generateLessonICS({
+    studentName: data.studentName,
+    scheduledAt: data.scheduledAt,
+    durationMinutes: data.durationMinutes,
+    zoomLink: data.zoomJoinUrl,
+  });
+  const attachments: MailAttachment[] = [
+    {
+      name: "clase-holabonjour.ics",
+      contentType: "text/calendar",
+      contentBytes: Buffer.from(icsContent, "utf-8").toString("base64"),
+    },
+  ];
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+    attachments,
   });
 }
 
@@ -61,6 +211,8 @@ export async function sendClassReminderEmail(data: {
   date: string;
   time: string;
   zoomLink?: string;
+  scheduledAt?: Date;
+  durationMinutes?: number;
 }) {
   const subject = `Recordatorio: clase de francés mañana ${data.date}`;
 
@@ -81,10 +233,26 @@ export async function sendClassReminderEmail(data: {
     <p>À demain !<br/>Equipo HolaBonjour</p>
   `;
 
+  const attachments: MailAttachment[] = [];
+  if (data.scheduledAt) {
+    const icsContent = generateLessonICS({
+      studentName: data.customerName,
+      scheduledAt: data.scheduledAt,
+      durationMinutes: data.durationMinutes || 60,
+      zoomLink: data.zoomLink,
+    });
+    attachments.push({
+      name: "clase-holabonjour.ics",
+      contentType: "text/calendar",
+      contentBytes: Buffer.from(icsContent, "utf-8").toString("base64"),
+    });
+  }
+
   await sendMail({
     to: data.toEmail,
     subject,
     html: wrapEmailHtml(html),
+    attachments: attachments.length ? attachments : undefined,
   });
 }
 
@@ -274,6 +442,45 @@ export async function sendExamFollowupEmail(data: {
   });
 }
 
+export async function sendInvoiceEmail(data: {
+  toEmail: string;
+  customerName: string;
+  concept: string;
+  totalEur: string;
+  invoiceNumber: string;
+  pdfBuffer: Buffer;
+}) {
+  const subject = `Tu recibo de HolaBonjour — ${data.concept}`;
+
+  const html = `
+    <h2>Tu recibo</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>Adjuntamos el recibo de tu compra:</p>
+    <table style="border-collapse:collapse; margin:12px 0;">
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Concepto</td><td>${data.concept}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Importe</td><td>${data.totalEur} EUR</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Recibo</td><td>${data.invoiceNumber}</td></tr>
+    </table>
+    <p><a href="${BRAND_HOME_URL}/zona-alumno/pagos" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ver mis pagos</a></p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  const attachments: MailAttachment[] = [
+    {
+      name: `recibo-${data.invoiceNumber}.pdf`,
+      contentType: "application/pdf",
+      contentBytes: data.pdfBuffer.toString("base64"),
+    },
+  ];
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+    attachments,
+  });
+}
+
 export async function sendLateCancellationEmail(data: {
   toEmail: string;
   customerName: string;
@@ -286,6 +493,195 @@ export async function sendLateCancellationEmail(data: {
     <p>Hola ${data.customerName},</p>
     <p>La clase del <strong>${data.date}</strong> fue anulada con menos de 48h.</p>
     <p>Se descuenta del bono. Excepción: justificante médico en 24h (responde a este email).</p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendClassReminderTeacherEmail(data: {
+  toEmail: string;
+  teacherName: string;
+  studentName: string;
+  date: string;
+  time: string;
+  zoomStartUrl?: string | null;
+}) {
+  const subject = `Mañana: clase con ${data.studentName} a las ${data.time}`;
+
+  const zoomHtml = data.zoomStartUrl
+    ? `<p><a href="${data.zoomStartUrl}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Iniciar clase</a></p>`
+    : "";
+
+  const html = `
+    <h2>Recordatorio de clase</h2>
+    <p>Hola ${data.teacherName.split(" ")[0]},</p>
+    <p>Tienes una clase <strong>mañana</strong>:</p>
+    <table style="border-collapse:collapse; margin:12px 0;">
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Alumno</td><td>${data.studentName}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Fecha</td><td>${data.date}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Hora</td><td>${data.time}</td></tr>
+    </table>
+    ${zoomHtml}
+    <p><a href="${BRAND_HOME_URL}/zona-profesor/clases" style="display:inline-block; background:#395D9F; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ver en mi zona</a></p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendCancellationRequestStudentEmail(data: {
+  toEmail: string;
+  customerName: string;
+  date: string;
+  isLate: boolean;
+}) {
+  const subject = `Solicitud de cancelación enviada — ${data.date}`;
+
+  const lateWarning = data.isLate
+    ? `<p style="padding:10px; background:#fef3c7; border:1px solid #fbbf24; border-radius:8px; font-size:13px;">
+        <strong>Atención:</strong> Según la política de cancelación (48h), la hora se descontará del pack salvo justificante médico en 24h.
+      </p>`
+    : "";
+
+  const html = `
+    <h2>Solicitud de cancelación enviada</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>Hemos enviado tu solicitud de cancelación para la clase del <strong>${data.date}</strong> al profesor.</p>
+    <p>Te informaremos cuando el profesor confirme la cancelación.</p>
+    ${lateWarning}
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendCancellationRequestTeacherEmail(data: {
+  toEmail: string;
+  teacherName: string;
+  studentName: string;
+  date: string;
+  time: string;
+  isLate: boolean;
+  lessonId: string;
+}) {
+  const subject = `Solicitud de cancelación — ${data.studentName} — ${data.date} a las ${data.time}`;
+
+  const policyNote = data.isLate
+    ? `<p style="padding:10px; background:#fef3c7; border:1px solid #fbbf24; border-radius:8px; font-size:13px;">
+        <strong>Cancelación con menos de 48h.</strong> Según la política, la hora se descuenta del pack. Puedes devolverla si lo consideras oportuno.
+      </p>`
+    : `<p style="padding:10px; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; font-size:13px;">
+        El alumno solicita cancelar con más de 48h. Si cancelas, la hora se devuelve al pack.
+      </p>`;
+
+  const html = `
+    <h2>Solicitud de cancelación</h2>
+    <p>Hola ${data.teacherName.split(" ")[0]},</p>
+    <p><strong>${data.studentName}</strong> solicita cancelar su clase:</p>
+    <table style="border-collapse:collapse; margin:12px 0;">
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Fecha</td><td>${data.date}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Hora</td><td>${data.time}</td></tr>
+    </table>
+    ${policyNote}
+    <p><a href="${BRAND_HOME_URL}/zona-profesor/clases/${data.lessonId}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Gestionar en mi zona</a></p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendCancellationConfirmedEmail(data: {
+  toEmail: string;
+  customerName: string;
+  date: string;
+  hoursRemaining: number;
+}) {
+  const subject = `Clase cancelada — hora devuelta a tu pack`;
+
+  const html = `
+    <h2>Clase cancelada</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>La clase del <strong>${data.date}</strong> ha sido cancelada. La hora ha sido devuelta a tu pack.</p>
+    <p style="padding:10px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; font-size:13px;">
+      <strong>Horas restantes en tu pack:</strong> ${data.hoursRemaining}
+    </p>
+    <p><a href="${BRAND_HOME_URL}/zona-alumno/reservar" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Reservar otra clase</a></p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendPostClassEmail(data: {
+  toEmail: string;
+  customerName: string;
+  recordingUrl?: string;
+  hoursRemaining?: number | null;
+}) {
+  const subject = "Merci pour ta classe ! — HolaBonjour";
+
+  const recordingHtml = data.recordingUrl
+    ? `<p><a href="${data.recordingUrl}" style="display:inline-block; background:#7c3aed; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ver grabación de la clase</a></p>`
+    : `<p style="font-size:13px; color:#5f6b78;">La grabación estará disponible pronto. Te enviaremos un email cuando esté lista.</p>`;
+
+  const hoursHtml = data.hoursRemaining != null
+    ? `<p style="padding:10px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; font-size:13px;">
+        <strong>Horas restantes en tu pack:</strong> ${data.hoursRemaining}
+      </p>`
+    : "";
+
+  const html = `
+    <h2>Merci pour ta classe !</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>Gracias por tu clase de hoy. Esperamos que haya sido productiva.</p>
+    ${recordingHtml}
+    ${hoursHtml}
+    <p><a href="${BRAND_HOME_URL}/zona-alumno/reservar" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Reservar siguiente clase</a></p>
+    <p><a href="${BRAND_HOME_URL}/zona-alumno/recursos" style="color:#395D9F; font-size:13px; text-decoration:none;">Ver materiales y recursos</a></p>
+    <p>À bientôt !<br/>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendRecordingReadyEmail(data: {
+  toEmail: string;
+  customerName: string;
+  recordingUrl: string;
+}) {
+  const subject = "Tu grabación está lista — HolaBonjour";
+
+  const html = `
+    <h2>Tu grabación está lista</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>La grabación de tu clase ya está disponible:</p>
+    <p><a href="${data.recordingUrl}" style="display:inline-block; background:#7c3aed; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ver grabación</a></p>
+    <p style="font-size:13px; color:#5f6b78;">También puedes acceder desde tu zona de alumno.</p>
     <p>Equipo HolaBonjour</p>
   `;
 

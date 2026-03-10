@@ -10,6 +10,7 @@ import PaymentRow from "@/components/zona/PaymentRow";
 import Badge from "@/components/ui/Badge";
 import Card, { CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import EmptyState from "@/components/ui/EmptyState";
+import BillingForm from "./BillingForm";
 
 export default async function AlumnoDetailPage({
   params,
@@ -134,6 +135,8 @@ export default async function AlumnoDetailPage({
                   zoomStartUrl={lesson.zoomStartUrl}
                   durationMinutes={lesson.durationMinutes}
                   isTeacher
+                  recordingUrl={lesson.recordingUrl}
+                  cancellationRequestedAt={lesson.cancellationRequestedAt}
                 />
               ))}
             </div>
@@ -193,6 +196,29 @@ export default async function AlumnoDetailPage({
           ) : (
             <EmptyState title="Sin pagos" description="No hay pagos registrados." />
           )}
+        </CardContent>
+      </Card>
+
+      {/* Billing */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Datos de facturación</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <BillingForm
+            studentId={student.id}
+            billing={{
+              billingType: student.billingType,
+              billingNif: student.billingNif,
+              billingRazonSocial: student.billingRazonSocial,
+              billingDireccion: student.billingDireccion,
+              billingCiudad: student.billingCiudad,
+              billingCP: student.billingCP,
+              billingPais: student.billingPais,
+              billingContacto: student.billingContacto,
+              billingEmail: student.billingEmail,
+            }}
+          />
         </CardContent>
       </Card>
     </div>
