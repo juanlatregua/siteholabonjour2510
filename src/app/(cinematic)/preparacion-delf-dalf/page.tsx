@@ -195,7 +195,7 @@ export default function PreparacionDelfDalfHub() {
 
               if (isDisabled) {
                 return (
-                  <div key={level.code} className="opacity-60 cursor-not-allowed">
+                  <div key={level.code} className="opacity-75 cursor-not-allowed">
                     {card}
                   </div>
                 );

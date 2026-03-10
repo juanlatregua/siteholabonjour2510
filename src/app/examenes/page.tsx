@@ -46,7 +46,7 @@ function NivelCard({ nivel }: { nivel: Nivel }) {
         border: `1px solid ${disponible ? "#E2E8F0" : "#F1F5F9"}`,
         borderRadius: "0.75rem",
         padding: "1.5rem",
-        opacity: disponible ? 1 : 0.5,
+        opacity: disponible ? 1 : 0.7,
         transition: "border-color 0.3s, box-shadow 0.3s",
       }}
     >
@@ -78,7 +78,7 @@ function NivelCard({ nivel }: { nivel: Nivel }) {
             {nivel}
           </h3>
           <p style={{ fontSize: "0.85rem", color: "#5f6b78" }}>{cfg.descripcion}</p>
-          <p style={{ fontSize: "0.75rem", color: "#9ca3af", marginTop: "0.15rem" }}>{cfg.descripcionEs}</p>
+          <p style={{ fontSize: "0.75rem", color: "#6b7280", marginTop: "0.15rem" }}>{cfg.descripcionEs}</p>
         </div>
         {!disponible && (
           <span
@@ -123,7 +123,7 @@ function NivelCard({ nivel }: { nivel: Nivel }) {
               <div style={{ fontSize: "0.7rem", fontWeight: 500, color: "#374151", lineHeight: 1 }}>
                 {s.codigo}
               </div>
-              <div style={{ fontSize: "0.65rem", color: "#9ca3af", lineHeight: 1, marginTop: "0.15rem" }}>
+              <div style={{ fontSize: "0.65rem", color: "#6b7280", lineHeight: 1, marginTop: "0.15rem" }}>
                 {s.duracion} min
               </div>
             </div>
@@ -148,7 +148,7 @@ function NivelCard({ nivel }: { nivel: Nivel }) {
                     borderRadius: "0.35rem",
                     textAlign: "center",
                     fontSize: "0.8rem",
-                    color: "#9ca3af",
+                    color: "#6b7280",
                     background: "#F8FAFC",
                     border: "1px solid #E2E8F0",
                     cursor: "not-allowed",
@@ -192,7 +192,7 @@ function NivelCard({ nivel }: { nivel: Nivel }) {
             textAlign: "center",
             padding: "0.5rem",
             fontSize: "0.75rem",
-            color: "#9ca3af",
+            color: "#6b7280",
             fontFamily: "monospace",
           }}
         >

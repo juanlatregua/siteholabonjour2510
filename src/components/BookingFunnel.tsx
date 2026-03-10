@@ -297,8 +297,8 @@ export default function BookingFunnel() {
             onClick={() => setStep(2)}
             style={{
               width: "100%", padding: "0.8rem", borderRadius: "0.75rem",
-              background: canProceedStep1 ? "#E50046" : "rgba(229,0,70,0.3)",
-              color: "white", border: "none", fontWeight: 700, fontSize: "0.95rem",
+              background: canProceedStep1 ? "#E50046" : "#E2E8F0",
+              color: canProceedStep1 ? "white" : "#9ca3af", border: "none", fontWeight: 700, fontSize: "0.95rem",
               cursor: canProceedStep1 ? "pointer" : "default",
               transition: "all 0.15s",
             }}
@@ -363,8 +363,8 @@ export default function BookingFunnel() {
             type="button" disabled={!canProceedStep2} onClick={() => setStep(3)}
             style={{
               width: "100%", padding: "0.8rem", borderRadius: "0.75rem",
-              background: canProceedStep2 ? "#E50046" : "rgba(229,0,70,0.3)",
-              color: "white", border: "none", fontWeight: 700, fontSize: "0.95rem",
+              background: canProceedStep2 ? "#E50046" : "#E2E8F0",
+              color: canProceedStep2 ? "white" : "#9ca3af", border: "none", fontWeight: 700, fontSize: "0.95rem",
               cursor: canProceedStep2 ? "pointer" : "default",
             }}
           >
@@ -539,14 +539,14 @@ export default function BookingFunnel() {
                 type="button" disabled={loading} onClick={handleCheckout}
                 style={{
                   width: "100%", padding: "0.8rem", borderRadius: "0.75rem",
-                  background: loading ? "rgba(16,185,129,0.4)" : "#10b981",
+                  background: loading ? "#9ca3af" : "#10b981",
                   color: "white", border: "none", fontWeight: 700, fontSize: "0.95rem",
                   cursor: loading ? "default" : "pointer",
                 }}
               >
                 {loading ? "Procesando..." : `Pagar ${pack.totalEur} € con tarjeta`}
               </button>
-              <p style={{ textAlign: "center", fontSize: "0.75rem", color: "#9ca3af" }}>
+              <p style={{ textAlign: "center", fontSize: "0.75rem", color: "#6b7280" }}>
                 Serás redirigido a Stripe para completar el pago.
               </p>
             </>
@@ -556,7 +556,7 @@ export default function BookingFunnel() {
                 type="button" disabled={loading} onClick={handleManualPayment}
                 style={{
                   width: "100%", padding: "0.8rem", borderRadius: "0.75rem",
-                  background: loading ? "rgba(57,93,159,0.4)" : "#395D9F",
+                  background: loading ? "#9ca3af" : "#395D9F",
                   color: "white", border: "none", fontWeight: 700, fontSize: "0.95rem",
                   cursor: loading ? "default" : "pointer",
                 }}
