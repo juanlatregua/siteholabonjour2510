@@ -3,10 +3,11 @@ import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect, notFound } from "next/navigation";
-import { format } from "date-fns";
+import { format, addDays } from "date-fns";
 import { es } from "date-fns/locale/es";
 import LessonCard from "@/components/zona/LessonCard";
 import MaterialItem from "@/components/zona/MaterialItem";
+import ConfirmNextClassButton from "@/components/zona/ConfirmNextClassButton";
 
 import Card, { CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import EmptyState from "@/components/ui/EmptyState";
@@ -36,6 +37,32 @@ export default async function ClaseDetailPage({
 
   if (!lesson || lesson.teacherId !== session.user.id) {
     notFound();
+  }
+
+  // Check for recurring slot if lesson is completed
+  let nextDateLabel: string | null = null;
+  if (lesson.status === "COMPLETED") {
+    const lessonDay = lesson.scheduledAt.getDay();
+    const lessonTime = `${String(lesson.scheduledAt.getHours()).padStart(2, "0")}:${String(lesson.scheduledAt.getMinutes()).padStart(2, "0")}`;
+
+    const recurringSlot = await prisma.recurringSlot.findFirst({
+      where: {
+        teacherId: session.user.id,
+        studentId: lesson.studentId,
+        dayOfWeek: lessonDay,
+        startTime: lessonTime,
+        active: true,
+      },
+    });
+
+    if (recurringSlot) {
+      let nextDate = addDays(lesson.scheduledAt, 7);
+      const now = new Date();
+      while (nextDate < now) {
+        nextDate = addDays(nextDate, 7);
+      }
+      nextDateLabel = format(nextDate, "EEEE d 'de' MMMM, HH:mm", { locale: es });
+    }
   }
 
   return (
@@ -69,7 +96,23 @@ export default async function ClaseDetailPage({
         isTeacher
         recordingUrl={lesson.recordingUrl}
         cancellationRequestedAt={lesson.cancellationRequestedAt}
+        modality={lesson.modality}
       />
+
+      {/* Confirm next class for recurring students */}
+      {lesson.status === "COMPLETED" && nextDateLabel && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Siguiente clase</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ConfirmNextClassButton
+              lessonId={lesson.id}
+              nextDateLabel={nextDateLabel}
+            />
+          </CardContent>
+        </Card>
+      )}
 
       {/* Cancellation management */}
       <CancellationActions
@@ -84,7 +127,7 @@ export default async function ClaseDetailPage({
       />
 
       {/* Zoom management */}
-      {lesson.status === "SCHEDULED" && (
+      {lesson.status === "SCHEDULED" && lesson.modality !== "PRESENCIAL" && (
         <Card>
           <CardHeader>
             <CardTitle>Zoom</CardTitle>

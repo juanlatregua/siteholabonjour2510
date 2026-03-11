@@ -25,9 +25,11 @@ export async function POST(req: NextRequest) {
   }
 
   if (event.type === "checkout.session.completed") {
-    // Idempotency: skip already-processed events
-    const existing = await prisma.stripeEvent.findUnique({ where: { id: event.id } });
-    if (existing) {
+    // Idempotency: atomically insert event ID — if it already exists, skip
+    try {
+      await prisma.stripeEvent.create({ data: { id: event.id } });
+    } catch {
+      // Unique constraint violation = already processed
       return NextResponse.json({ received: true });
     }
 
@@ -48,7 +50,6 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      await prisma.stripeEvent.create({ data: { id: event.id } }).catch(() => {});
       return NextResponse.json({ received: true });
     }
 
@@ -259,14 +260,17 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      Promise.allSettled(notifications).catch((err) => console.error("[stripe-webhook] Notification error:", err));
+      Promise.allSettled(notifications).then((results) => {
+        results.forEach((r, i) => {
+          if (r.status === "rejected") {
+            console.error(`[stripe-webhook] Notification #${i} failed:`, r.reason);
+          }
+        });
+      });
     } catch (err) {
       console.error("[stripe-webhook] Error:", err);
       return NextResponse.json({ error: "Processing error" }, { status: 500 });
     }
-
-    // Mark event as processed (idempotency)
-    await prisma.stripeEvent.create({ data: { id: event.id } }).catch(() => {});
   }
 
   return NextResponse.json({ received: true });

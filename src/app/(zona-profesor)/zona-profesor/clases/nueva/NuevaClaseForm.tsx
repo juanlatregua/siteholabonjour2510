@@ -14,6 +14,7 @@ interface FormData {
   durationMinutes: string;
   zoomLink: string;
   focus: string;
+  modality: string;
 }
 
 interface NuevaClaseFormProps {
@@ -27,6 +28,8 @@ export default function NuevaClaseForm({ students }: NuevaClaseFormProps) {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     defaultValues: {
@@ -36,6 +39,7 @@ export default function NuevaClaseForm({ students }: NuevaClaseFormProps) {
       durationMinutes: "60",
       zoomLink: "",
       focus: "",
+      modality: "ZOOM",
     },
   });
 
@@ -52,6 +56,7 @@ export default function NuevaClaseForm({ students }: NuevaClaseFormProps) {
           durationMinutes: parseInt(data.durationMinutes, 10),
           zoomLink: data.zoomLink || null,
           focus: data.focus || null,
+          modality: data.modality,
         }),
       });
 
@@ -95,13 +100,43 @@ export default function NuevaClaseForm({ students }: NuevaClaseFormProps) {
       <input type="hidden" {...register("durationMinutes")} />
       <p className="text-sm text-gray-500">Duración: 60 minutos</p>
 
-      <Input
-        label="Enlace Zoom"
-        type="url"
-        placeholder="https://zoom.us/j/..."
-        {...register("zoomLink")}
-        error={errors.zoomLink?.message}
-      />
+      <div>
+        <label className="mb-1 block text-sm font-medium text-gray-700">Modalidad</label>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => setValue("modality", "ZOOM")}
+            className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+              watch("modality") === "ZOOM"
+                ? "bg-blue-100 text-blue-700"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            Zoom
+          </button>
+          <button
+            type="button"
+            onClick={() => setValue("modality", "PRESENCIAL")}
+            className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+              watch("modality") === "PRESENCIAL"
+                ? "bg-green-100 text-green-700"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            Presencial
+          </button>
+        </div>
+      </div>
+
+      {watch("modality") === "ZOOM" && (
+        <Input
+          label="Enlace Zoom"
+          type="url"
+          placeholder="https://zoom.us/j/..."
+          {...register("zoomLink")}
+          error={errors.zoomLink?.message}
+        />
+      )}
 
       <Input
         label="Tema / Enfoque"

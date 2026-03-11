@@ -101,6 +101,9 @@ model User {
   examenModelos       ExamenModelo[]
   reviews             Review[]
 
+  teacherRecurringSlots RecurringSlot[] @relation("TeacherRecurringSlots")
+  studentRecurringSlots RecurringSlot[] @relation("StudentRecurringSlots")
+
   @@map("users")
 }
 
@@ -160,8 +163,13 @@ model Lesson {
   // Cancellation request
   cancellationRequestedAt DateTime?
 
-  student   User       @relation("StudentLessons", fields: [studentId], references: [id])
-  teacher   User       @relation("TeacherLessons", fields: [teacherId], references: [id])
+  // Modality & recurring
+  modality        String  @default("ZOOM") // ZOOM | PRESENCIAL
+  recurringSlotId String?
+
+  student       User           @relation("StudentLessons", fields: [studentId], references: [id])
+  teacher       User           @relation("TeacherLessons", fields: [teacherId], references: [id])
+  recurringSlot RecurringSlot? @relation(fields: [recurringSlotId], references: [id], onDelete: SetNull)
   pack      Pack?      @relation(fields: [packId], references: [id])
   materials Material[]
   review    Review?
@@ -677,4 +685,27 @@ model Factura {
   @@index([alumnoId])
   @@index([anio, serie])
   @@map("facturas")
+}
+
+// ── Recurring Slots (horarios reservados) ──
+
+model RecurringSlot {
+  id        String   @id @default(cuid())
+  teacherId String
+  studentId String
+  dayOfWeek Int      // 0=Sun..6=Sat
+  startTime String   // "09:00"
+  modality  String   @default("ZOOM") // ZOOM | PRESENCIAL
+  active    Boolean  @default(true)
+  notes     String?  // ej: "Oficina C/Larios"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  teacher User     @relation("TeacherRecurringSlots", fields: [teacherId], references: [id], onDelete: Cascade)
+  student User     @relation("StudentRecurringSlots", fields: [studentId], references: [id], onDelete: Cascade)
+  lessons Lesson[]
+
+  @@unique([teacherId, dayOfWeek, startTime])
+  @@index([studentId])
+  @@map("recurring_slots")
 }

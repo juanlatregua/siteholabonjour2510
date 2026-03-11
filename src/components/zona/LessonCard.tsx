@@ -18,6 +18,7 @@ interface LessonCardProps {
   isTeacher?: boolean;
   recordingUrl?: string | null;
   cancellationRequestedAt?: Date | string | null;
+  modality?: string | null;
 }
 
 const statusVariant: Record<string, "info" | "success" | "danger" | "warning"> = {
@@ -49,6 +50,7 @@ export default function LessonCard({
   isTeacher = false,
   recordingUrl,
   cancellationRequestedAt,
+  modality,
 }: LessonCardProps) {
   const date = typeof scheduledAt === "string" ? new Date(scheduledAt) : scheduledAt;
   const now = new Date();
@@ -138,6 +140,9 @@ export default function LessonCard({
           <Badge variant={statusVariant[status] || "default"}>
             {statusLabel[status] || status}
           </Badge>
+          {modality === "PRESENCIAL" && (
+            <Badge variant="success">Presencial</Badge>
+          )}
           {cancelRequested && status === "SCHEDULED" && (
             <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-700">
               Cancelación solicitada
@@ -146,8 +151,8 @@ export default function LessonCard({
         </div>
       </div>
 
-      {/* Zoom section */}
-      {status === "SCHEDULED" && (
+      {/* Zoom section (only for ZOOM modality) */}
+      {status === "SCHEDULED" && modality !== "PRESENCIAL" && (
         <div className="mt-3 border-t border-gray-100 pt-3">
           {zoomUrl ? (
             <div className="flex items-center gap-3">

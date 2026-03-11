@@ -12,6 +12,7 @@ const createLessonSchema = z.object({
   zoomLink: z.string().url().optional(),
   focus: z.string().optional(),
   packId: z.string().optional(),
+  modality: z.enum(["ZOOM", "PRESENCIAL"]).optional().default("ZOOM"),
 });
 
 export async function GET(request: NextRequest) {
@@ -96,7 +97,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { studentId, scheduledAt, durationMinutes, zoomLink, focus, packId } = parsed.data;
+  const { studentId, scheduledAt, durationMinutes, zoomLink, focus, packId, modality } = parsed.data;
 
   const scheduledDate = new Date(scheduledAt);
   if (isNaN(scheduledDate.getTime())) {
@@ -142,12 +143,13 @@ export async function POST(request: NextRequest) {
       zoomLink: zoomLink || null,
       focus: focus || null,
       packId: packId || null,
+      modality,
       status: "SCHEDULED",
     },
   });
 
-  // Create Zoom meeting if no link provided (non-blocking)
-  if (!lesson.zoomLink) {
+  // Create Zoom meeting if no link provided and modality is ZOOM (non-blocking)
+  if (!lesson.zoomLink && modality === "ZOOM") {
     try {
       const { createZoomMeeting } = await import("@/lib/zoom");
       const zoom = await createZoomMeeting({

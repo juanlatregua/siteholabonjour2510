@@ -49,6 +49,12 @@ export default async function AlumnoDetailPage({
     notFound();
   }
 
+  // Fetch recurring slots for this student
+  const recurringSlots = await prisma.recurringSlot.findMany({
+    where: { studentId: id, teacherId: session.user.id, active: true },
+    orderBy: [{ dayOfWeek: "asc" }, { startTime: "asc" }],
+  });
+
   const levelVariant: Record<string, "info" | "success" | "warning" | "default"> = {
     A1: "info",
     A2: "info",
@@ -90,6 +96,27 @@ export default async function AlumnoDetailPage({
           Volver
         </Link>
       </div>
+
+      {/* Recurring slots */}
+      {recurringSlots.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Horarios reservados</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {recurringSlots.map((slot) => {
+                const dayLabels = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+                return (
+                  <Badge key={slot.id} variant={slot.modality === "ZOOM" ? "info" : "success"}>
+                    {dayLabels[slot.dayOfWeek]} {slot.startTime} ({slot.modality === "ZOOM" ? "Zoom" : "Presencial"})
+                  </Badge>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Packs */}
       <Card>
@@ -139,6 +166,7 @@ export default async function AlumnoDetailPage({
                   isTeacher
                   recordingUrl={lesson.recordingUrl}
                   cancellationRequestedAt={lesson.cancellationRequestedAt}
+                  modality={lesson.modality}
                 />
               ))}
             </div>

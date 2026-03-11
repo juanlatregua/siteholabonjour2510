@@ -32,55 +32,62 @@ export async function GET(req: NextRequest) {
     });
 
     let sent = 0;
+    const errors: string[] = [];
+
     for (const lesson of lessons) {
-      const student = lesson.student;
-      const teacher = lesson.teacher;
-      const dateLabel = startOfTomorrow.toLocaleDateString("es-ES", {
-        weekday: "long", day: "numeric", month: "long",
-      });
-      const timeLabel = lesson.scheduledAt.toLocaleTimeString("es-ES", {
-        hour: "2-digit", minute: "2-digit",
-      });
-
-      // SMS to student
-      if (student.phone) {
-        await sendNotification({
-          to: student.phone,
-          body: smsRecordatorioClase({
-            nombre: (student.name || "").split(" ")[0] || "Alumno",
-            fecha: dateLabel,
-            hora: timeLabel,
-          }),
+      try {
+        const student = lesson.student;
+        const teacher = lesson.teacher;
+        const dateLabel = startOfTomorrow.toLocaleDateString("es-ES", {
+          weekday: "long", day: "numeric", month: "long",
         });
-      }
+        const timeLabel = lesson.scheduledAt.toLocaleTimeString("es-ES", {
+          hour: "2-digit", minute: "2-digit",
+        });
 
-      // Email to student
-      await sendClassReminderEmail({
-        toEmail: student.email,
-        customerName: student.name || "Alumno",
-        date: dateLabel,
-        time: timeLabel,
-        zoomLink: lesson.zoomLink || undefined,
-        scheduledAt: lesson.scheduledAt,
-        durationMinutes: lesson.durationMinutes,
-      });
+        // SMS to student
+        if (student.phone) {
+          await sendNotification({
+            to: student.phone,
+            body: smsRecordatorioClase({
+              nombre: (student.name || "").split(" ")[0] || "Alumno",
+              fecha: dateLabel,
+              hora: timeLabel,
+            }),
+          });
+        }
 
-      // Email to teacher
-      if (teacher.email) {
-        await sendClassReminderTeacherEmail({
-          toEmail: teacher.email,
-          teacherName: teacher.name || "Profesor",
-          studentName: student.name || "Alumno",
+        // Email to student
+        await sendClassReminderEmail({
+          toEmail: student.email,
+          customerName: student.name || "Alumno",
           date: dateLabel,
           time: timeLabel,
-          zoomStartUrl: lesson.zoomStartUrl,
+          zoomLink: lesson.zoomLink || undefined,
+          scheduledAt: lesson.scheduledAt,
+          durationMinutes: lesson.durationMinutes,
         });
-      }
 
-      sent++;
+        // Email to teacher
+        if (teacher.email) {
+          await sendClassReminderTeacherEmail({
+            toEmail: teacher.email,
+            teacherName: teacher.name || "Profesor",
+            studentName: student.name || "Alumno",
+            date: dateLabel,
+            time: timeLabel,
+            zoomStartUrl: lesson.zoomStartUrl,
+          });
+        }
+
+        sent++;
+      } catch (err) {
+        console.error(`[cron/class-reminders] Failed for lesson ${lesson.id}:`, err);
+        errors.push(lesson.id);
+      }
     }
 
-    return NextResponse.json({ ok: true, reminders: sent });
+    return NextResponse.json({ ok: true, reminders: sent, failed: errors });
   } catch (err) {
     console.error("[cron/class-reminders]", err);
     return NextResponse.json({ error: "Internal error" }, { status: 500 });

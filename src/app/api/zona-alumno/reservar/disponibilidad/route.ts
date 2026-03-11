@@ -80,6 +80,15 @@ export async function GET(request: NextRequest) {
     })
   );
 
+  // Fetch active recurring slots (reserved for continuity students)
+  const recurringSlots = await prisma.recurringSlot.findMany({
+    where: { teacherId, active: true },
+    select: { dayOfWeek: true, startTime: true },
+  });
+  const reservedSet = new Set(
+    recurringSlots.map((s) => `${s.dayOfWeek}-${s.startTime}`)
+  );
+
   // Build available slots per day
   const slots: Record<string, string[]> = {};
 
@@ -95,6 +104,9 @@ export async function GET(request: NextRequest) {
     const availableSlots: string[] = [];
 
     for (const avail of dayAvailabilities) {
+      // Skip slots reserved for recurring students
+      if (reservedSet.has(`${dayOfWeek}-${avail.startTime}`)) continue;
+
       const key = `${dateStr}_${avail.startTime}`;
       if (!bookedSet.has(key)) {
         // Also check that the slot is in the future
