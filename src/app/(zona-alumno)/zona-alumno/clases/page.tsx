@@ -59,6 +59,7 @@ export default async function ClasesPage(props: {
               durationMinutes={lesson.durationMinutes}
               recordingUrl={lesson.recordingUrl}
               cancellationRequestedAt={lesson.cancellationRequestedAt}
+              modality={lesson.modality}
             />
           ))}
         </div>

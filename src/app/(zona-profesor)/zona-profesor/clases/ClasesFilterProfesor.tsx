@@ -18,6 +18,7 @@ interface LessonData {
   hasReview: boolean;
   recordingUrl?: string | null;
   cancellationRequestedAt?: string | null;
+  modality?: string | null;
 }
 
 interface ClasesFilterProfesorProps {
@@ -99,6 +100,7 @@ export default function ClasesFilterProfesor({ upcoming, past }: ClasesFilterPro
                   isTeacher
                   recordingUrl={lesson.recordingUrl}
                   cancellationRequestedAt={lesson.cancellationRequestedAt}
+                  modality={lesson.modality}
                 />
               </Link>
               {lesson.status === "COMPLETED" && !lesson.hasReview && !sentReviews.has(lesson.id) && (

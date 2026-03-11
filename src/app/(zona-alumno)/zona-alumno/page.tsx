@@ -98,6 +98,7 @@ export default async function ZonaAlumnoDashboard() {
                 durationMinutes={nextLesson.durationMinutes}
                 recordingUrl={nextLesson.recordingUrl}
                 cancellationRequestedAt={nextLesson.cancellationRequestedAt}
+                modality={nextLesson.modality}
               />
             ) : (
               <EmptyState

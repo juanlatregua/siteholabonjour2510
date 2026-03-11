@@ -230,6 +230,7 @@ export default async function ZonaProfesorDashboard() {
                     isTeacher
                     recordingUrl={lesson.recordingUrl}
                     cancellationRequestedAt={lesson.cancellationRequestedAt}
+                    modality={lesson.modality}
                   />
                 ))}
               </div>
@@ -263,6 +264,7 @@ export default async function ZonaProfesorDashboard() {
                     isTeacher
                     recordingUrl={lesson.recordingUrl}
                     cancellationRequestedAt={lesson.cancellationRequestedAt}
+                    modality={lesson.modality}
                   />
                 ))}
               </div>

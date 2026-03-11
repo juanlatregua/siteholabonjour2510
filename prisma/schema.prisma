@@ -176,6 +176,7 @@ model Lesson {
 
   @@index([studentId, scheduledAt])
   @@index([teacherId, scheduledAt])
+  @@index([zoomMeetingId])
   @@map("lessons")
 }
 
@@ -408,7 +409,7 @@ model WritingCorrection {
   examAttempt        ExamAttempt?         @relation(fields: [attemptId], references: [id])
 
   @@index([candidateEmail])
-  @@index([userId])
+  @@index([userId, status])
   @@index([attemptId])
   @@map("writing_corrections")
 }

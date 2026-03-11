@@ -53,6 +53,7 @@ export default async function ClasesPage() {
           hasReview: !!l.review,
           recordingUrl: l.recordingUrl,
           cancellationRequestedAt: l.cancellationRequestedAt?.toISOString() || null,
+          modality: l.modality,
         }))}
         past={past.map((l) => ({
           id: l.id,
@@ -66,6 +67,7 @@ export default async function ClasesPage() {
           hasReview: !!l.review,
           recordingUrl: l.recordingUrl,
           cancellationRequestedAt: l.cancellationRequestedAt?.toISOString() || null,
+          modality: l.modality,
         }))}
       />
     </div>
