@@ -9,8 +9,8 @@ const bookingSchema = z.object({
   teacherId: z.string().min(1),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   time: z.string().regex(/^\d{2}:\d{2}$/),
-  focus: z.string().optional(),
-  notes: z.string().optional(),
+  focus: z.string().max(500).optional(),
+  notes: z.string().max(1000).optional(),
 });
 
 export async function POST(request: NextRequest) {

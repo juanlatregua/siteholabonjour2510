@@ -5,6 +5,7 @@ import { formatPhoneSpain } from "@/lib/sms";
 import { getTeacherBySlugOrDefault } from "@/lib/teacher";
 import { z } from "zod";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+import { parseSpainDateTime } from "@/lib/date-utils";
 
 const VALID_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
@@ -66,7 +67,7 @@ export async function POST(req: NextRequest) {
     const { teacher } = await getTeacherBySlugOrDefault(preparateurSlug);
 
     // Validate slot
-    const scheduledAt = new Date(`${selectedDate}T${selectedTime}:00`);
+    const scheduledAt = parseSpainDateTime(selectedDate, selectedTime);
     if (isNaN(scheduledAt.getTime()) || scheduledAt <= new Date()) {
       return NextResponse.json({ error: "Horario no válido." }, { status: 400 });
     }

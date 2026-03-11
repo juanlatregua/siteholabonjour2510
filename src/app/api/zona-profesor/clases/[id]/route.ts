@@ -13,11 +13,11 @@ import { smsAnulacionTardia } from "@/lib/sms-templates";
 const CANCELLATION_WINDOW_MS = 48 * 60 * 60 * 1000; // 48 hours
 
 const updateLessonSchema = z.object({
-  status: z.string().optional(),
-  notes: z.string().optional(),
-  studentFeedback: z.string().optional(),
-  zoomLink: z.string().optional(),
-  focus: z.string().optional(),
+  status: z.string().max(20).optional(),
+  notes: z.string().max(2000).optional(),
+  studentFeedback: z.string().max(2000).optional(),
+  zoomLink: z.string().max(500).optional(),
+  focus: z.string().max(500).optional(),
   rejectCancellation: z.boolean().optional(),
 });
 

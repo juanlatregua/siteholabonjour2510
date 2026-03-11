@@ -10,7 +10,7 @@ const createSlotSchema = z.object({
   dayOfWeek: z.number().int().min(0).max(6),
   startTime: z.string().regex(/^\d{2}:\d{2}$/),
   modality: z.enum(["ZOOM", "PRESENCIAL"]).optional().default("ZOOM"),
-  notes: z.string().optional(),
+  notes: z.string().max(500).optional(),
 });
 
 export async function GET() {

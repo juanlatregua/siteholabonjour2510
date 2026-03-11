@@ -3,14 +3,15 @@ export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { formatPhoneSpain } from "@/lib/sms";
 import { z } from "zod";
 
 const createStudentSchema = z.object({
-  name: z.string().min(1, "El nombre es obligatorio"),
-  email: z.string().email("Email invalido"),
-  level: z.string().optional(),
-  route: z.string().optional(),
-  phone: z.string().optional(),
+  name: z.string().min(1, "El nombre es obligatorio").max(100),
+  email: z.string().email("Email invalido").max(200),
+  level: z.string().max(5).optional(),
+  route: z.string().max(50).optional(),
+  phone: z.string().max(20).optional(),
 });
 
 export async function GET() {
@@ -44,6 +45,7 @@ export async function GET() {
       },
     },
     orderBy: { name: "asc" },
+    take: 200, // Safety limit
   });
 
   return NextResponse.json({ ok: true, students });
@@ -109,7 +111,7 @@ export async function POST(request: NextRequest) {
         role: "STUDENT",
         level: level || existing.level || null,
         route: route || existing.route || null,
-        phone: phone || existing.phone || null,
+        phone: phone ? formatPhoneSpain(phone) : existing.phone || null,
         coachId: session.user.id,
       },
     });
@@ -124,7 +126,7 @@ export async function POST(request: NextRequest) {
       role: "STUDENT",
       level: level || null,
       route: route || null,
-      phone: phone || null,
+      phone: phone ? formatPhoneSpain(phone) : null,
       coachId: session.user.id,
     },
   });

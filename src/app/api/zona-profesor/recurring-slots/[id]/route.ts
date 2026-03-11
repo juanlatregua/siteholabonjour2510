@@ -8,7 +8,7 @@ import { z } from "zod";
 const updateSlotSchema = z.object({
   active: z.boolean().optional(),
   modality: z.enum(["ZOOM", "PRESENCIAL"]).optional(),
-  notes: z.string().nullable().optional(),
+  notes: z.string().max(500).nullable().optional(),
 });
 
 export async function PATCH(

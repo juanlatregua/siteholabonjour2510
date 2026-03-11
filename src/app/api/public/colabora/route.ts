@@ -6,22 +6,22 @@ import { sendMail } from "@/lib/azure-mail";
 import { getSignedUrlFromBucket } from "@/lib/supabase";
 
 const colaboraSchema = z.object({
-  nombre: z.string().min(1, "El nombre es obligatorio"),
-  email: z.string().email("Email inválido"),
-  telefono: z.string().min(1, "El teléfono es obligatorio"),
-  nivelFrances: z.string().min(1, "Selecciona tu nivel de francés"),
-  nivelFrancesOtro: z.string().optional(),
-  titulacion: z.string().min(1, "Selecciona tu titulación"),
-  titulacionDetalle: z.string().min(1, "Especifica tu titulación y centro"),
+  nombre: z.string().min(1, "El nombre es obligatorio").max(100),
+  email: z.string().email("Email inválido").max(200),
+  telefono: z.string().min(1, "El teléfono es obligatorio").max(20),
+  nivelFrances: z.string().min(1, "Selecciona tu nivel de francés").max(20),
+  nivelFrancesOtro: z.string().max(100).optional(),
+  titulacion: z.string().min(1, "Selecciona tu titulación").max(100),
+  titulacionDetalle: z.string().min(1, "Especifica tu titulación y centro").max(500),
   experiencia: z.number().int().min(1, "Se requiere al menos 1 año de experiencia"),
   disponibilidad: z.number().int().min(4, "La disponibilidad mínima es de 4 horas semanales"),
-  linkedinUrl: z.string().url("La URL debe empezar por http:// o https://").optional().or(z.literal("")),
-  archivos: z.array(z.object({ name: z.string(), path: z.string() })).optional(),
-  motivacion: z.string().min(200, "Por favor escribe al menos 200 caracteres contando tu motivación y experiencia relevante."),
-  especialidades: z.array(z.string()).optional(),
-  especialidadOtro: z.string().optional(),
-  otrosIdiomas: z.string().optional(),
-  comoNosConociste: z.string().optional(),
+  linkedinUrl: z.string().url("La URL debe empezar por http:// o https://").max(500).optional().or(z.literal("")),
+  archivos: z.array(z.object({ name: z.string().max(200), path: z.string().max(500) })).max(5).optional(),
+  motivacion: z.string().min(200, "Por favor escribe al menos 200 caracteres contando tu motivación y experiencia relevante.").max(5000),
+  especialidades: z.array(z.string().max(50)).max(10).optional(),
+  especialidadOtro: z.string().max(200).optional(),
+  otrosIdiomas: z.string().max(200).optional(),
+  comoNosConociste: z.string().max(200).optional(),
 });
 
 const BRAND_HOME_URL = "https://www.holabonjour.es";

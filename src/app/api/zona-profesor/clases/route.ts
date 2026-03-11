@@ -4,14 +4,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
+import { parseSpainDateTime } from "@/lib/date-utils";
 
 const createLessonSchema = z.object({
   studentId: z.string().min(1, "El estudiante es obligatorio"),
   scheduledAt: z.string().min(1, "La fecha es obligatoria"),
   durationMinutes: z.number().int().positive().optional().default(60),
   zoomLink: z.string().url().optional(),
-  focus: z.string().optional(),
-  packId: z.string().optional(),
+  focus: z.string().max(500).optional(),
+  packId: z.string().max(50).optional(),
   modality: z.enum(["ZOOM", "PRESENCIAL"]).optional().default("ZOOM"),
 });
 
@@ -34,6 +35,8 @@ export async function GET(request: NextRequest) {
   const status = searchParams.get("status");
   const from = searchParams.get("from");
   const to = searchParams.get("to");
+  const page = Math.max(1, parseInt(searchParams.get("page") || "1", 10));
+  const limit = Math.min(100, Math.max(1, parseInt(searchParams.get("limit") || "50", 10)));
 
   const where: Record<string, unknown> = { teacherId: session.user.id };
 
@@ -48,15 +51,20 @@ export async function GET(request: NextRequest) {
     where.scheduledAt = scheduledAt;
   }
 
-  const lessons = await prisma.lesson.findMany({
-    where,
-    orderBy: { scheduledAt: "desc" },
-    include: {
-      student: { select: { id: true, name: true, email: true } },
-    },
-  });
+  const [lessons, total] = await Promise.all([
+    prisma.lesson.findMany({
+      where,
+      orderBy: { scheduledAt: "desc" },
+      include: {
+        student: { select: { id: true, name: true, email: true } },
+      },
+      skip: (page - 1) * limit,
+      take: limit,
+    }),
+    prisma.lesson.count({ where }),
+  ]);
 
-  return NextResponse.json({ ok: true, lessons });
+  return NextResponse.json({ ok: true, lessons, total, page, limit });
 }
 
 export async function POST(request: NextRequest) {
@@ -99,7 +107,11 @@ export async function POST(request: NextRequest) {
 
   const { studentId, scheduledAt, durationMinutes, zoomLink, focus, packId, modality } = parsed.data;
 
-  const scheduledDate = new Date(scheduledAt);
+  // scheduledAt comes as "2026-03-11T10:00:00" from the form
+  const dateTimeParts = scheduledAt.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2})/);
+  const scheduledDate = dateTimeParts
+    ? parseSpainDateTime(dateTimeParts[1], dateTimeParts[2])
+    : new Date(scheduledAt);
   if (isNaN(scheduledDate.getTime())) {
     return NextResponse.json(
       { ok: false, error: "INVALID_DATE", message: "Fecha invalida" },
