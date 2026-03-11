@@ -102,11 +102,13 @@ export default async function AlumnoDetailPage({
               {student.studentPacks.map((pack) => (
                 <PackCard
                   key={pack.id}
+                  packId={pack.id}
                   hoursTotal={pack.hoursTotal}
                   hoursUsed={pack.hoursUsed}
                   levelRange={pack.levelRange}
                   status={pack.status}
                   purchasedAt={pack.purchasedAt}
+                  isTeacher
                 />
               ))}
             </div>

@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 import { format } from "date-fns";
 import { es } from "date-fns/locale/es";
-import { sendLateCancellationEmail } from "@/lib/email";
+import { sendLateCancellationEmail, sendCancellationRejectedEmail } from "@/lib/email";
 import { sendSMS } from "@/lib/sms";
 import { smsAnulacionTardia } from "@/lib/sms-templates";
 
@@ -18,6 +18,7 @@ const updateLessonSchema = z.object({
   studentFeedback: z.string().optional(),
   zoomLink: z.string().optional(),
   focus: z.string().optional(),
+  rejectCancellation: z.boolean().optional(),
 });
 
 export async function PATCH(
@@ -83,6 +84,26 @@ export async function PATCH(
     );
   }
 
+  // Handle rejection of cancellation request
+  if (parsed.data.rejectCancellation) {
+    const updated = await prisma.lesson.update({
+      where: { id },
+      data: { cancellationRequestedAt: null },
+    });
+
+    // Notify student
+    if (lesson.student?.email) {
+      const dateStr = format(lesson.scheduledAt, "EEEE d 'de' MMMM, HH:mm", { locale: es });
+      sendCancellationRejectedEmail({
+        toEmail: lesson.student.email,
+        customerName: lesson.student.name || "alumno/a",
+        date: dateStr,
+      }).catch(() => { /* non-blocking */ });
+    }
+
+    return NextResponse.json({ ok: true, lesson: updated });
+  }
+
   const data: Record<string, unknown> = {};
   if (parsed.data.status !== undefined) data.status = parsed.data.status;
   if (parsed.data.notes !== undefined) data.notes = parsed.data.notes;
@@ -126,6 +147,14 @@ export async function PATCH(
         await tx.pack.update({
           where: { id: lesson.packId },
           data: { hoursUsed: { increment: hoursDelta } },
+        });
+      }
+
+      // Early cancellation from SCHEDULED: return the reserved hour
+      if (isCancelling && !isLateCancellation && oldStatus === "SCHEDULED") {
+        await tx.pack.update({
+          where: { id: lesson.packId },
+          data: { hoursUsed: { decrement: hoursDelta } },
         });
       }
     }

@@ -691,3 +691,54 @@ export async function sendRecordingReadyEmail(data: {
     html: wrapEmailHtml(html),
   });
 }
+
+export async function sendCancellationRejectedEmail(data: {
+  toEmail: string;
+  customerName: string;
+  date: string;
+}) {
+  const subject = "Solicitud de cancelación rechazada — HolaBonjour";
+
+  const html = `
+    <h2>Solicitud de cancelación rechazada</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>Tu profesor ha revisado tu solicitud de cancelación para la clase del <strong>${data.date}</strong> y ha decidido mantener la clase programada.</p>
+    <p>Si tienes alguna duda, no dudes en ponerte en contacto con nosotros.</p>
+    <p><a href="${BRAND_HOME_URL}/zona-alumno/clases" style="display:inline-block; background:#395D9F; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Ver mis clases</a></p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
+
+export async function sendHoursReturnedEmail(data: {
+  toEmail: string;
+  customerName: string;
+  hours: number;
+  motivo: string;
+  hoursRemaining: number;
+}) {
+  const subject = "Hora(s) devuelta(s) a tu pack — HolaBonjour";
+
+  const html = `
+    <h2>Hora(s) devuelta(s)</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>Tu profesor te ha devuelto <strong>${data.hours} hora(s)</strong> a tu pack.</p>
+    <p><strong>Motivo:</strong> ${data.motivo}</p>
+    <p style="padding:10px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; font-size:13px;">
+      <strong>Horas restantes en tu pack:</strong> ${data.hoursRemaining}
+    </p>
+    <p><a href="${BRAND_HOME_URL}/zona-alumno/reservar" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Reservar clase</a></p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}

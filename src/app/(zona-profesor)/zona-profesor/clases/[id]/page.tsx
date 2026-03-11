@@ -12,6 +12,7 @@ import Card, { CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import EmptyState from "@/components/ui/EmptyState";
 import LessonEditForm from "./LessonEditForm";
 import ZoomEditForm from "./ZoomEditForm";
+import CancellationActions from "./CancellationActions";
 
 export default async function ClaseDetailPage({
   params,
@@ -68,6 +69,18 @@ export default async function ClaseDetailPage({
         isTeacher
         recordingUrl={lesson.recordingUrl}
         cancellationRequestedAt={lesson.cancellationRequestedAt}
+      />
+
+      {/* Cancellation management */}
+      <CancellationActions
+        lessonId={lesson.id}
+        status={lesson.status}
+        scheduledAt={lesson.scheduledAt.toISOString()}
+        cancellationRequestedAt={
+          lesson.cancellationRequestedAt?.toISOString() ?? null
+        }
+        packId={lesson.packId}
+        studentName={lesson.student.name || lesson.student.email || "Alumno"}
       />
 
       {/* Zoom management */}

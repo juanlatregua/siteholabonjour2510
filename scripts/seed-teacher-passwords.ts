@@ -1,11 +1,20 @@
 /**
  * Backfill teacher passwordHash from env vars to DB.
  * Run once after adding the passwordHash column:
- *   npx tsx scripts/seed-teacher-passwords.ts
+ *   DATABASE_URL="..." npx tsx scripts/seed-teacher-passwords.ts
  */
-import { PrismaClient } from "../src/generated/prisma";
+import { PrismaClient } from "../src/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 
-const prisma = new PrismaClient();
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL!,
+  max: 1,
+});
+
+const prisma = new PrismaClient({
+  adapter: new PrismaPg(pool),
+});
 
 const TEACHER_EMAILS = [
   "juansilva@traduccionesjuradas.net",
@@ -41,4 +50,7 @@ main()
     console.error(e);
     process.exit(1);
   })
-  .finally(() => prisma.$disconnect());
+  .finally(async () => {
+    await prisma.$disconnect();
+    await pool.end();
+  });
