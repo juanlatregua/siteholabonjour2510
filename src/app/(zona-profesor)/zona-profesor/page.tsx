@@ -18,6 +18,7 @@ import {
   FiFileText,
   FiBarChart2,
   FiEdit3,
+  FiTrendingUp,
 } from "react-icons/fi";
 
 const quickLinks = [
@@ -30,6 +31,7 @@ const quickLinks = [
   { href: "/zona-profesor/pagos", label: "Pagos", icon: <FiCreditCard className="h-5 w-5" />, color: "bg-teal-50 text-teal-600" },
   { href: "/zona-profesor/contabilidad", label: "Contabilidad", icon: <FiBarChart2 className="h-5 w-5" />, color: "bg-orange-50 text-orange-600" },
   { href: "/zona-profesor/examenes", label: "Mis exámenes", icon: <FiFileText className="h-5 w-5" />, color: "bg-rose-50 text-rose-600" },
+  { href: "/zona-profesor/analiticas", label: "Analíticas", icon: <FiTrendingUp className="h-5 w-5" />, color: "bg-cyan-50 text-cyan-600" },
 ];
 
 export default async function ZonaProfesorDashboard() {

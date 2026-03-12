@@ -11,7 +11,8 @@
     "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint",
-    "sync:fei": "node scripts/sync-fei-resources.mjs"
+    "sync:fei": "node scripts/sync-fei-resources.mjs",
+    "prepare": "husky"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
@@ -39,11 +40,20 @@
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
     "stripe": "^20.4.0",
+    "web-push": "^3.6.7",
     "xlsx": "^0.18.5",
     "zod": "^4.3.6"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ],
+    "prisma/schema.prisma": [
+      "npx prisma validate"
+    ]
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -54,9 +64,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-slick": "^0.23.13",
+    "@types/web-push": "^3.6.4",
     "dotenv": "^17.3.1",
     "eslint": "^9",
     "eslint-config-next": "^15.5.12",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.3",
     "prisma": "^7.4.2",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",

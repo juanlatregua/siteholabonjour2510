@@ -60,6 +60,7 @@ export default async function ClasesPage(props: {
               recordingUrl={lesson.recordingUrl}
               cancellationRequestedAt={lesson.cancellationRequestedAt}
               modality={lesson.modality}
+              detailHref={`/zona-alumno/clases/${lesson.id}`}
             />
           ))}
         </div>

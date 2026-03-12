@@ -44,6 +44,7 @@ Supabase Storage (archivos) | Tailwind v4 + inline styles | Deploy: Vercel
 - `src/lib/correction/` — Motor IA de corrección
 - `src/middleware.ts` — Solo añadir paths, no reestructurar
 - `prisma/schema.prisma` — Siempre crear migración después de cambios
+- **NUNCA usar `prisma db push` en producción** — siempre `prisma migrate dev` + `prisma migrate deploy`
 - Footer/Header nav — Mantener fondo navy
 
 ## PROTOCOLO OBLIGATORIO — Verificación antes de proponer fixes

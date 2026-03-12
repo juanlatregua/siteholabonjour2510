@@ -1,6 +1,7 @@
 // lib/email.ts — Transactional emails via Microsoft Graph API (Azure AD)
 import { sendMail, type MailAttachment } from "@/lib/azure-mail";
 import { generateLessonICS } from "@/lib/ics";
+import { sendPushToUser } from "@/lib/web-push";
 
 const BRAND_HOME_URL = "https://www.holabonjour.es";
 
@@ -152,6 +153,7 @@ export async function sendNewLessonTeacherEmail(data: {
   zoomStartUrl?: string | null;
   zoomJoinUrl?: string | null;
   scheduledAt: Date;
+  teacherId?: string;
 }) {
   const subject = `Nueva reserva — ${data.studentName} — ${data.date} a las ${data.time}`;
 
@@ -203,6 +205,15 @@ export async function sendNewLessonTeacherEmail(data: {
     html: wrapEmailHtml(html),
     attachments,
   });
+
+  // Push notification (fire-and-forget)
+  if (data.teacherId) {
+    sendPushToUser(data.teacherId, {
+      title: "Nueva reserva",
+      body: `${data.studentName} — ${data.date} a las ${data.time}`,
+      url: "/zona-profesor/clases",
+    }).catch(() => {});
+  }
 }
 
 export async function sendClassReminderEmail(data: {
@@ -213,6 +224,7 @@ export async function sendClassReminderEmail(data: {
   zoomLink?: string;
   scheduledAt?: Date;
   durationMinutes?: number;
+  userId?: string;
 }) {
   const subject = `Recordatorio: clase de francés mañana ${data.date}`;
 
@@ -254,6 +266,15 @@ export async function sendClassReminderEmail(data: {
     html: wrapEmailHtml(html),
     attachments: attachments.length ? attachments : undefined,
   });
+
+  // Push notification (fire-and-forget)
+  if (data.userId) {
+    sendPushToUser(data.userId, {
+      title: "Recordatorio de clase",
+      body: `Tu clase es mañana ${data.date} a las ${data.time}`,
+      url: "/zona-alumno/clases",
+    }).catch(() => {});
+  }
 }
 
 export async function sendNewBookingStaffEmail(data: {
@@ -638,6 +659,7 @@ export async function sendPostClassEmail(data: {
   customerName: string;
   recordingUrl?: string;
   hoursRemaining?: number | null;
+  userId?: string;
 }) {
   const subject = "Merci pour ta classe ! — HolaBonjour";
 
@@ -667,12 +689,22 @@ export async function sendPostClassEmail(data: {
     subject,
     html: wrapEmailHtml(html),
   });
+
+  // Push notification (fire-and-forget)
+  if (data.userId) {
+    sendPushToUser(data.userId, {
+      title: "Merci pour ta classe !",
+      body: "Revisa los materiales y reserva tu siguiente clase",
+      url: "/zona-alumno/clases",
+    }).catch(() => {});
+  }
 }
 
 export async function sendRecordingReadyEmail(data: {
   toEmail: string;
   customerName: string;
   recordingUrl: string;
+  userId?: string;
 }) {
   const subject = "Tu grabación está lista — HolaBonjour";
 
@@ -690,6 +722,15 @@ export async function sendRecordingReadyEmail(data: {
     subject,
     html: wrapEmailHtml(html),
   });
+
+  // Push notification (fire-and-forget)
+  if (data.userId) {
+    sendPushToUser(data.userId, {
+      title: "Grabación lista",
+      body: "La grabación de tu clase ya está disponible",
+      url: "/zona-alumno/grabaciones",
+    }).catch(() => {});
+  }
 }
 
 export async function sendCancellationRejectedEmail(data: {

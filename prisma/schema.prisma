@@ -104,6 +104,11 @@ model User {
   teacherRecurringSlots RecurringSlot[] @relation("TeacherRecurringSlots")
   studentRecurringSlots RecurringSlot[] @relation("StudentRecurringSlots")
 
+  studentConversations  Conversation[] @relation("StudentConversations")
+  teacherConversations  Conversation[] @relation("TeacherConversations")
+  sentMessages          Message[]      @relation("SentMessages")
+  pushSubscriptions     PushSubscription[] @relation("PushSubscriptions")
+
   @@map("users")
 }
 
@@ -709,4 +714,56 @@ model RecurringSlot {
   @@unique([teacherId, dayOfWeek, startTime])
   @@index([studentId])
   @@map("recurring_slots")
+}
+
+// ── Chat (mensajería alumno-profesor) ──
+
+model Conversation {
+  id            String    @id @default(cuid())
+  studentId     String
+  teacherId     String
+  lastMessageAt DateTime  @default(now())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  student  User      @relation("StudentConversations", fields: [studentId], references: [id], onDelete: Cascade)
+  teacher  User      @relation("TeacherConversations", fields: [teacherId], references: [id], onDelete: Cascade)
+  messages Message[]
+
+  @@unique([studentId, teacherId])
+  @@index([studentId])
+  @@index([teacherId])
+  @@map("conversations")
+}
+
+model Message {
+  id             String    @id @default(cuid())
+  conversationId String
+  senderId       String
+  content        String
+  readAt         DateTime?
+  createdAt      DateTime  @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       User         @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+  @@index([senderId])
+  @@map("messages")
+}
+
+// ── Push Notifications ──
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  userId    String
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
+
+  user User @relation("PushSubscriptions", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("push_subscriptions")
 }

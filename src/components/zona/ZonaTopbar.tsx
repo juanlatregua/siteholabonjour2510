@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { FiLogOut } from "react-icons/fi";
+import NotificationBell from "@/components/zona/NotificationBell";
 
 interface ZonaTopbarProps {
   title: string;
@@ -32,6 +33,15 @@ const breadcrumbLabels: Record<string, string> = {
   subir: "Subir material",
   disponibilidad: "Disponibilidad",
   packs: "Packs",
+  grabaciones: "Grabaciones",
+  mensajes: "Mensajes",
+  correcciones: "Correcciones",
+  perfil: "Mi perfil",
+  resenas: "Reseñas",
+  contabilidad: "Contabilidad",
+  cuenta: "Mi cuenta",
+  analiticas: "Analíticas",
+  examenes: "Exámenes",
 };
 
 export default function ZonaTopbar({ title, user }: ZonaTopbarProps) {
@@ -76,8 +86,9 @@ export default function ZonaTopbar({ title, user }: ZonaTopbarProps) {
         <h1 className="truncate text-lg font-semibold text-gray-900">{title}</h1>
       </div>
 
-      {/* User avatar + logout */}
+      {/* Notifications + User avatar + logout */}
       <div className="flex items-center gap-3 flex-shrink-0">
+        <NotificationBell />
         {user.image ? (
           <img
             src={user.image}

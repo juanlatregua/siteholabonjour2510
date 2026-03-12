@@ -1,0 +1,16 @@
+{
+  "name": "HolaBonjour",
+  "short_name": "HolaBonjour",
+  "description": "Plataforma de clases de francés — DELF/DALF",
+  "start_url": "/zona-alumno",
+  "display": "standalone",
+  "theme_color": "#1e2d4a",
+  "background_color": "#faf7f2",
+  "icons": [
+    {
+      "src": "/images/logo-holabonjour-01.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

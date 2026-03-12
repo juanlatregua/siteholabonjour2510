@@ -46,7 +46,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.holabonjour.es"),
+  manifest: "/manifest.json",
+  metadataBase: new URL("https://holabonjour.es"),
   title: {
     default: "Preparación online DELF/DALF | HolaBonjour",
     template: "%s | HolaBonjour",

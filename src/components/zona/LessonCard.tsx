@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { format, isToday, isTomorrow } from "date-fns";
 import { es } from "date-fns/locale/es";
 import Badge from "@/components/ui/Badge";
@@ -19,6 +20,7 @@ interface LessonCardProps {
   recordingUrl?: string | null;
   cancellationRequestedAt?: Date | string | null;
   modality?: string | null;
+  detailHref?: string;
 }
 
 const statusVariant: Record<string, "info" | "success" | "danger" | "warning"> = {
@@ -51,6 +53,7 @@ export default function LessonCard({
   recordingUrl,
   cancellationRequestedAt,
   modality,
+  detailHref,
 }: LessonCardProps) {
   const date = typeof scheduledAt === "string" ? new Date(scheduledAt) : scheduledAt;
   const now = new Date();
@@ -251,6 +254,18 @@ export default function LessonCard({
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3" /></svg>
             Ver grabación
           </a>
+        </div>
+      )}
+
+      {/* Detail link */}
+      {detailHref && (
+        <div className="mt-3 border-t border-gray-100 pt-3">
+          <Link
+            href={detailHref}
+            className="text-sm font-medium text-[#1e2d4a] transition-colors hover:text-[#395D9F]"
+          >
+            Ver detalle →
+          </Link>
         </div>
       )}
     </div>
