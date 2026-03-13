@@ -1,6 +1,6 @@
 # Prisma Schema — NO MODIFICAR SIN MIGRACIÓN
 
-## 28+ modelos en schema.prisma
+## 30+ modelos en schema.prisma
 
 ### Grupos de modelos
 
@@ -34,8 +34,15 @@
 - Material — archivos de clase (storage en Supabase)
 - NewsletterSubscriber
 
-**Marketplace:**
-- PreparateurProfile, PreparateurReview, PreparateurApplication
+**Marketplace / SaaS profesores:**
+- PreparateurProfile — perfil público del profesor (slug, bio, tarifa, niveles, badge verificado). Tiene campos Stripe Connect preparados (stripeCustomerId, stripeSubscriptionId, subscriptionStatus)
+- PreparateurReview — reseñas de alumnos sobre profesores
+- PreparateurApplication — candidatura de profesor FLE (extendida: telefono, nivelFrances, titulacion, especialidades, motivacion, archivos, rejectionReason). Status: PENDING/APPROVED/REJECTED
+
+**Chat y notificaciones:**
+- Conversation — conversación alumno-profesor (unique por par studentId+teacherId)
+- Message — mensaje individual con readAt para unread tracking
+- PushSubscription — suscripción Web Push por usuario (endpoint + keys VAPID)
 
 **Otros:**
 - Review — valoración de clase
@@ -52,12 +59,26 @@ Lesson ──< Review
 User ──< WritingCorrection
 WritingCorrection ──< TeacherAnnotation
 Payment ──< Factura
+User ──< Conversation (student) ──< Message
+User ──< Conversation (teacher)
+User ──< PushSubscription
+User ──1 PreparateurProfile ──< PreparateurReview
+```
+
+### Flujo de candidatura profesor
+```
+/colabora (formulario) → PreparateurApplication (status: PENDING)
+  → /zona-profesor/candidaturas (admin revisa)
+  → PATCH /api/zona-profesor/candidaturas/[id] { action: "approve" }
+  → Crea User (role: TEACHER) + PreparateurProfile (status: ACTIVE)
+  → Email con credenciales temporales
 ```
 
 ### Reglas
 - SIEMPRE crear migración después de cambiar el schema
 - NUNCA editar migraciones ya aplicadas en producción
+- NUNCA usar `prisma db push` en producción — usar migraciones manuales SQL + `prisma migrate resolve --applied`
 - Campos nuevos en tablas con datos → opcionales (`?`) o con default
 - Regenerar cliente: `npx prisma generate`
 - JSON fields: validar con Zod antes de escribir
-- Shadow DB falla en Supabase → usar `prisma db push`
+- Migraciones en `prisma/migrations/YYYYMMDD_nombre/migration.sql`

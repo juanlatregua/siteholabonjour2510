@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { sendMail } from "@/lib/azure-mail";
 import { getSignedUrlFromBucket } from "@/lib/supabase";
+import { prisma } from "@/lib/prisma";
 
 const colaboraSchema = z.object({
   nombre: z.string().min(1, "El nombre es obligatorio").max(100),
@@ -145,6 +146,32 @@ ${d.motivacion}
       { ok: false, error: "EMAIL_FAILED", message: "Error al enviar. Inténtalo de nuevo o escríbenos a info@holabonjour.es." },
       { status: 500 }
     );
+  }
+
+  // Persist to DB for admin review panel
+  try {
+    await prisma.preparateurApplication.create({
+      data: {
+        name: d.nombre,
+        email: d.email,
+        telefono: d.telefono,
+        nivelFrances: d.nivelFrances,
+        titulacion: d.titulacion,
+        titulacionDetalle: d.titulacionDetalle,
+        levels: d.especialidades || [],
+        especialidades: d.especialidades || [],
+        experience: d.experiencia,
+        disponibilidad: d.disponibilidad,
+        hourlyRate: 0,
+        linkedinUrl: d.linkedinUrl || null,
+        motivacion: d.motivacion,
+        archivos: d.archivos?.map((a) => a.path) || [],
+        message: d.motivacion,
+      },
+    });
+  } catch (dbErr) {
+    // Non-fatal: emails already sent, log and continue
+    console.error("[colabora] DB save failed:", dbErr);
   }
 
   return NextResponse.json({ ok: true });

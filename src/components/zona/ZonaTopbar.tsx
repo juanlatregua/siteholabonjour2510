@@ -42,6 +42,8 @@ const breadcrumbLabels: Record<string, string> = {
   cuenta: "Mi cuenta",
   analiticas: "Analíticas",
   examenes: "Exámenes",
+  candidaturas: "Candidaturas",
+  suscripcion: "Suscripción",
 };
 
 export default function ZonaTopbar({ title, user }: ZonaTopbarProps) {

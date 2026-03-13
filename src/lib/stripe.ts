@@ -142,6 +142,100 @@ export async function createCorrectionCheckoutSession(params: {
   return session;
 }
 
+// ── Teacher SaaS Subscriptions ──
+
+export const SUBSCRIPTION_PLANS = {
+  essentiel: {
+    name: "Essentiel",
+    priceEur: 0,
+    features: ["10 alumnos", "Perfil público", "Calendario básico", "Enlace de reserva manual"],
+  },
+  professionnel: {
+    name: "Professionnel",
+    priceEur: 39,
+    features: [
+      "Alumnos ilimitados",
+      "Clases por Teams (cuenta Microsoft 365 incluida)",
+      "Grabaciones automáticas",
+      "Corrección IA para alumnos",
+      "Simuladores de examen",
+      "Facturación automática",
+      "Chat con alumnos",
+      "Analíticas avanzadas",
+      "Soporte prioritario",
+    ],
+  },
+};
+
+/**
+ * Create a Stripe Checkout Session for the Professionnel subscription.
+ * Uses Stripe's `mode: "subscription"` with a dynamically created price.
+ */
+export async function createSubscriptionCheckout(params: {
+  profileId: string;
+  customerEmail: string;
+  customerId?: string; // reuse existing Stripe customer if available
+}) {
+  const stripe = getStripe();
+  const baseUrl = process.env.NEXTAUTH_URL || "https://www.holabonjour.es";
+
+  // Use existing customer or let Stripe create one
+  const sessionParams: Stripe.Checkout.SessionCreateParams = {
+    mode: "subscription",
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price_data: {
+          currency: "eur",
+          unit_amount: 3900, // €39.00
+          recurring: { interval: "month" },
+          product_data: {
+            name: "HolaBonjour Professionnel",
+            description: "Plan mensual para profesores FLE · Alumnos ilimitados, Teams, IA, simuladores",
+          },
+        },
+        quantity: 1,
+      },
+    ],
+    metadata: {
+      type: "teacher_subscription",
+      profileId: params.profileId,
+    },
+    success_url: `${baseUrl}/zona-profesor/suscripcion?success=true`,
+    cancel_url: `${baseUrl}/zona-profesor/suscripcion`,
+    subscription_data: {
+      metadata: {
+        type: "teacher_subscription",
+        profileId: params.profileId,
+      },
+    },
+  };
+
+  if (params.customerId) {
+    sessionParams.customer = params.customerId;
+  } else {
+    sessionParams.customer_email = params.customerEmail;
+  }
+
+  const session = await stripe.checkout.sessions.create(sessionParams);
+  return session;
+}
+
+/**
+ * Create a Stripe Customer Portal session for managing subscription.
+ */
+export async function createCustomerPortalSession(customerId: string) {
+  const stripe = getStripe();
+  const baseUrl = process.env.NEXTAUTH_URL || "https://www.holabonjour.es";
+
+  const session = await stripe.billingPortal.sessions.create({
+    customer: customerId,
+    return_url: `${baseUrl}/zona-profesor/suscripcion`,
+  });
+
+  return session;
+}
+
 export function verifyWebhookSignature(payload: string | Buffer, signature: string) {
   const stripe = getStripe();
   const secret = process.env.STRIPE_WEBHOOK_SECRET;

@@ -89,6 +89,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Préparateurs ──
     { url: `${BASE_URL}/preparateurs`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/profesores`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/para-profesores`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/aplicar`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 
     // ── Exámenes y simuladores ──
     { url: `${BASE_URL}/examenes`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

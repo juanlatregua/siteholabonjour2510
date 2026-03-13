@@ -41,7 +41,7 @@ const PUBLIC_PATHS = [
   "/le-mot-du-jour", "/le-jeu", "/tarifas", "/frances-empresas",
   "/blog", "/sobre-nosotros", "/correccion-ia", "/examen-delf-a1",
   "/examen-delf-a2", "/examenes", "/calendario-examenes",
-  "/preparateurs", "/unirse", "/colabora", "/confirmacion",
+  "/preparateurs", "/unirse", "/colabora", "/profesores", "/para-profesores", "/aplicar", "/confirmacion",
   "/opinion",
 ];
 
@@ -69,6 +69,7 @@ export default auth((req) => {
     pathname.startsWith("/api/examenes") ||
     pathname.startsWith("/api/debug") ||
     pathname.startsWith("/api/public") ||
+    pathname.startsWith("/api/profesores/aplicar") ||
     pathname.startsWith("/api/booking") ||
     pathname.startsWith("/api/webhook") ||
     pathname.startsWith("/api/cron") ||

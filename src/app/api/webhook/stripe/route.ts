@@ -24,6 +24,30 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
+  // ── Handle subscription lifecycle events ──
+  if (
+    event.type === "customer.subscription.updated" ||
+    event.type === "customer.subscription.deleted"
+  ) {
+    const subscription = event.data.object as Stripe.Subscription;
+    const profileId = subscription.metadata?.profileId;
+    if (profileId) {
+      try {
+        await prisma.preparateurProfile.update({
+          where: { id: profileId },
+          data: {
+            subscriptionStatus: subscription.status, // active, past_due, canceled, etc.
+            stripeSubscriptionId: subscription.id,
+          },
+        });
+        console.log(`[stripe-webhook] Subscription ${subscription.id} → ${subscription.status} for profile ${profileId}`);
+      } catch (err) {
+        console.error("[stripe-webhook] Subscription update failed:", err);
+      }
+    }
+    return NextResponse.json({ received: true });
+  }
+
   if (event.type === "checkout.session.completed") {
     // Idempotency: atomically insert event ID — if it already exists, skip
     try {
@@ -34,6 +58,27 @@ export async function POST(req: NextRequest) {
     }
 
     const session = event.data.object as Stripe.Checkout.Session;
+
+    // Handle teacher subscription checkout
+    if (session.metadata?.type === "teacher_subscription") {
+      const profileId = session.metadata.profileId;
+      if (profileId && session.subscription && session.customer) {
+        try {
+          await prisma.preparateurProfile.update({
+            where: { id: profileId },
+            data: {
+              stripeCustomerId: session.customer as string,
+              stripeSubscriptionId: session.subscription as string,
+              subscriptionStatus: "active",
+            },
+          });
+          console.log(`[stripe-webhook] Teacher subscription activated for profile ${profileId}`);
+        } catch (err) {
+          console.error("[stripe-webhook] Teacher subscription activation failed:", err);
+        }
+      }
+      return NextResponse.json({ received: true });
+    }
 
     // Handle correction pack purchases
     if (session.metadata?.type === "correction_pack") {

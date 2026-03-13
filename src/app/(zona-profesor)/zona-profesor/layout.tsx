@@ -4,7 +4,7 @@ import { requireTeacher } from "@/lib/auth-helpers";
 import { prisma } from "@/lib/prisma";
 import ZonaSidebar from "@/components/zona/ZonaSidebar";
 import ZonaTopbar from "@/components/zona/ZonaTopbar";
-import { FiHome, FiUsers, FiBook, FiCalendar, FiFolder, FiClock, FiPackage, FiCreditCard, FiEdit3, FiFileText, FiBarChart2, FiStar, FiTrendingUp, FiMessageSquare, FiSettings } from "react-icons/fi";
+import { FiHome, FiUsers, FiBook, FiCalendar, FiFolder, FiClock, FiPackage, FiCreditCard, FiEdit3, FiFileText, FiBarChart2, FiStar, FiTrendingUp, FiMessageSquare, FiSettings, FiUserPlus, FiUser, FiZap } from "react-icons/fi";
 
 function buildTeacherLinks(newLessonCount: number, unreadMsgCount: number) {
   return [
@@ -22,6 +22,9 @@ function buildTeacherLinks(newLessonCount: number, unreadMsgCount: number) {
     { href: "/zona-profesor/contabilidad", label: "Contabilidad", icon: <FiBarChart2 /> },
     { href: "/zona-profesor/resenas", label: "Reseñas", icon: <FiStar /> },
     { href: "/zona-profesor/analiticas", label: "Analíticas", icon: <FiTrendingUp /> },
+    { href: "/zona-profesor/candidaturas", label: "Candidaturas", icon: <FiUserPlus /> },
+    { href: "/zona-profesor/perfil", label: "Mi perfil", icon: <FiUser /> },
+    { href: "/zona-profesor/suscripcion", label: "Suscripción", icon: <FiZap /> },
     { href: "/zona-profesor/cuenta", label: "Mi cuenta", icon: <FiSettings /> },
   ];
 }
