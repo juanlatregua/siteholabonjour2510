@@ -48,6 +48,77 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ received: true });
   }
 
+  // ── Handle abandoned checkout (session expired without payment) ──
+  if (event.type === "checkout.session.expired") {
+    const session = event.data.object as Stripe.Checkout.Session;
+
+    // Only handle student pack checkouts (not subscriptions or corrections)
+    if (session.metadata?.type === "teacher_subscription" || session.metadata?.type === "correction_pack") {
+      return NextResponse.json({ received: true });
+    }
+
+    const packId = session.metadata?.packId;
+    if (!packId) {
+      return NextResponse.json({ received: true });
+    }
+
+    try {
+      // Clean up orphaned records
+      const pack = await prisma.pack.findUnique({ where: { id: packId } });
+      if (pack && pack.status === "PENDING") {
+        // Delete PENDING_PAYMENT lessons
+        await prisma.lesson.deleteMany({
+          where: { packId, status: "PENDING_PAYMENT" },
+        });
+
+        // Delete PENDING payment
+        await prisma.payment.deleteMany({
+          where: { packId, status: "PENDING" },
+        });
+
+        // Delete PENDING pack
+        await prisma.pack.delete({ where: { id: packId } });
+      }
+
+      // Send recovery email
+      const customerEmail = session.customer_email || session.customer_details?.email;
+      const customerName = session.metadata?.customerName || "Alumno";
+      const levelRange = session.metadata?.levelRange;
+
+      if (customerEmail && levelRange) {
+        const baseUrl = process.env.NEXTAUTH_URL || "https://www.holabonjour.es";
+        const retryParams = new URLSearchParams();
+        if (session.metadata?.producto) retryParams.set("producto", session.metadata.producto);
+        if (session.metadata?.preparateurSlug) retryParams.set("preparateur", session.metadata.preparateurSlug);
+        if (levelRange !== "diagnostico") {
+          const nivel = levelRange === "C1-C2" ? "C1" : "B2";
+          retryParams.set("nivel", nivel);
+        }
+        const retryUrl = `${baseUrl}/contratar${retryParams.toString() ? `?${retryParams}` : ""}`;
+
+        const { PACK_PRICES } = await import("@/lib/stripe");
+        const packPrice = PACK_PRICES[levelRange];
+
+        const { sendAbandonedCheckoutEmail } = await import("@/lib/email");
+        await sendAbandonedCheckoutEmail({
+          toEmail: customerEmail,
+          customerName,
+          levelRange,
+          totalEur: packPrice ? packPrice.totalEur.toFixed(2) : "—",
+          retryUrl,
+        }).catch((err) => {
+          console.error("[stripe-webhook] Abandoned checkout email failed:", err);
+        });
+
+        console.log(`[stripe-webhook] Abandoned checkout cleaned up + recovery email sent to ${customerEmail}`);
+      }
+    } catch (err) {
+      console.error("[stripe-webhook] Abandoned checkout cleanup failed:", err);
+    }
+
+    return NextResponse.json({ received: true });
+  }
+
   if (event.type === "checkout.session.completed") {
     // Idempotency: atomically insert event ID — if it already exists, skip
     try {

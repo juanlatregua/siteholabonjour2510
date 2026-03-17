@@ -783,3 +783,33 @@ export async function sendHoursReturnedEmail(data: {
     html: wrapEmailHtml(html),
   });
 }
+
+export async function sendAbandonedCheckoutEmail(data: {
+  toEmail: string;
+  customerName: string;
+  levelRange: string;
+  totalEur: string;
+  retryUrl: string;
+}) {
+  const subject = "Tu reserva está esperándote — HolaBonjour";
+
+  const html = `
+    <h2>¿Olvidaste completar tu reserva?</h2>
+    <p>Hola ${data.customerName},</p>
+    <p>Vimos que empezaste a reservar tu pack de clases de francés pero no completaste el pago.</p>
+    <table style="border-collapse:collapse; margin:12px 0;">
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Pack</td><td>${data.levelRange}</td></tr>
+      <tr><td style="padding:4px 12px 4px 0; font-weight:600;">Importe</td><td>${data.totalEur} EUR</td></tr>
+    </table>
+    <p>Si tuviste algún problema con el pago o tienes dudas, responde a este email y te ayudamos.</p>
+    <p><a href="${data.retryUrl}" style="display:inline-block; background:#E50046; color:#fff; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600;">Completar mi reserva</a></p>
+    <p style="font-size:13px; color:#5f6b78;">Si ya completaste tu reserva por otro medio, puedes ignorar este email.</p>
+    <p>Equipo HolaBonjour</p>
+  `;
+
+  await sendMail({
+    to: data.toEmail,
+    subject,
+    html: wrapEmailHtml(html),
+  });
+}
