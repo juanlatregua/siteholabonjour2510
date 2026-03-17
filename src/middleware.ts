@@ -5,9 +5,7 @@ import { authConfig } from "@/lib/auth.config";
 const { auth } = NextAuth(authConfig);
 
 // Legacy .html and prefix redirects — handled before auth
-const LEGACY_REDIRECTS: [RegExp | string, string][] = [
-  ["/phone/", "/"],
-  ["/tablet/", "/"],
+const LEGACY_HTML_REDIRECTS: [string, string][] = [
   ["/horarios-clases-frances-malaga.html", "/contratar"],
   ["/cursos-frances-malaga.html", "/preparacion-delf-dalf"],
   ["/precios-curso-frances-malaga.html", "/contratar"],
@@ -18,16 +16,29 @@ const LEGACY_REDIRECTS: [RegExp | string, string][] = [
   ["/aviso-legal.html", "/aviso-legal"],
   ["/testdelfa1.html", "/examenes/a1/1"],
   ["/contacto.html", "/contacto"],
+  ["/index.html", "/"],
 ];
 
 function matchLegacyRedirect(pathname: string): string | null {
-  for (const [source, dest] of LEGACY_REDIRECTS) {
-    if (typeof source === "string" && (pathname === source || pathname.startsWith(source))) {
+  // Strip /phone/ and /tablet/ device prefixes from old responsive site
+  let normalized = pathname;
+  if (pathname.startsWith("/phone/")) {
+    normalized = "/" + pathname.slice(7);
+  } else if (pathname.startsWith("/tablet/")) {
+    normalized = "/" + pathname.slice(8);
+  }
+
+  // Check specific .html redirects (works with or without prefix)
+  for (const [source, dest] of LEGACY_HTML_REDIRECTS) {
+    if (normalized === source) {
       return dest;
     }
   }
+
   // Catch-all: any remaining .html → home
-  if (pathname.endsWith(".html")) return "/";
+  if (normalized.endsWith(".html")) return "/";
+  // Bare /phone/ or /tablet/ prefix → home
+  if (normalized !== pathname) return "/";
   return null;
 }
 
